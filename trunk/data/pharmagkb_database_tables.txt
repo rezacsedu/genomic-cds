@@ -1,0 +1,89 @@
+CREATE TABLE gene (
+PharmGKB_Accession VARCHAR(20),
+EntrezID VARCHAR(20),
+EnsemblID VARCHAR(25),
+UniprotID VARCHAR(20),
+Name TEXT,
+Symbol TEXT,
+AlternateName TEXT,
+AlternateSymbol TEXT,
+Genotyped VARCHAR(20),
+VIP VARCHAR(20),
+PD VARCHAR(20),
+PK VARCHAR(20),
+VariantAnnotation VARCHAR(20)
+);
+
+LOAD DATA LOCAL INFILE '/path/genes.tsv'
+INTO TABLE gene
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+(PharmGKB_Accession, EntrezID, EnsemblID, UniprotID, Name, Symbol, AlternateName, AlternateSymbol, Genotyped, VIP, PD, PK, VariantAnnotation );
+
+
+CREATE TABLE drugs (
+PharmGKB_Accession VARCHAR(20),
+Name TEXT,
+AlternateName TEXT,
+BrandName TEXT,
+Type TEXT,
+Reference TEXT,
+Smiles TEXT,
+ExternalVocabulary TEXT
+);
+
+
+LOAD DATA LOCAL INFILE '/path/drugs.tsv'
+INTO TABLE drugs
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+(PharmGKB_Accession, Name, AlternateName, BrandName, Type, Reference, Smiles, ExternalVocabulary );
+
+
+CREATE TABLE diseases (
+PharmGKB_Accession VARCHAR(20),
+Name TEXT,
+AlternateName TEXT,
+Reference TEXT,
+ExternalVocabulary TEXT
+);
+
+LOAD DATA LOCAL INFILE '/path/diseases.tsv'
+INTO TABLE diseases
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+(PharmGKB_Accession, Name, AlternateName, Reference, ExternalVocabulary );
+
+
+CREATE TABLE relationships (
+Entity1_ID TEXT,
+Entity1_Name TEXT,
+Entity2_ID TEXT,
+Entity2_Name TEXT,
+Evidence TEXT,
+Evidence_Source TEXT,
+PharmacoDynamics TEXT,
+PharmacoKynetics TEXT
+);
+
+LOAD DATA LOCAL INFILE '/path/relationships.tsv'
+INTO TABLE relationships
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+(Entity1_ID, Entity1_Name, Entity2_ID, Entity2_Name, Evidence, Evidence_Source, PharmacoDynamics, PharmacoKynetics);
+
+
+CREATE TABLE RSID (
+RSID TEXT,
+GeneIDs TEXT,
+Gene_Symbols TEXT
+);
+
+LOAD DATA LOCAL INFILE '/path/rsid.tsv'
+INTO TABLE RSID
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+(RSID, GeneIDs, Gene_Symbols);
+
+
+
