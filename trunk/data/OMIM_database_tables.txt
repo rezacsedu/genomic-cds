@@ -1,0 +1,70 @@
+CREATE TABLE morbidmap (
+disorder VARCHAR(150) NOT NULL,
+gene_symbol VARCHAR(100),
+gene_MIMno VARCHAR(100),
+cytogenetic_loc VARCHAR(100)
+);
+
+LOAD DATA LOCAL INFILE '/****path***'
+INTO TABLE morbidmap
+FIELDS TERMINATED BY '|'
+LINES TERMINATED BY '\n'
+(disorder, gene_symbol, gene_MIMno, cytogenetic_loc);
+
+
+CREATE TABLE genemap (
+numbering_system VARCHAR(20) NOT NULL,
+month VARCHAR(20),
+day VARCHAR(20),
+year VARCHAR(20),
+cytogenetic_loc TEXT,
+gene_symbol TEXT,
+gene_status TEXT,
+title TEXT,
+title_cont TEXT,
+MIMno TEXT,
+method TEXT,
+comments TEXT,
+comments_cont TEXT,
+disorder TEXT,
+disorder_cont1 TEXT,
+disorder_cont2 TEXT,
+mouse_correlate TEXT,
+reference TEXT
+);
+
+LOAD DATA LOCAL INFILE '/****path***'
+INTO TABLE genemap
+FIELDS TERMINATED BY '|'
+LINES TERMINATED BY '\n'
+(numbering_system, month, day, year, cytogenetic_loc, gene_symbol, gene_status, title, title_cont,
+MIMno, method, comments, comments_cont, disorder, disorder_cont1,  disorder_cont2,  mouse_correlate,
+reference );
+
+
+
+CREATE TABLE mim2gene (
+MIMno VARCHAR(20),
+type VARCHAR(100),
+gene_id VARCHAR(100),
+gene_symbol VARCHAR(100)
+);
+
+
+LOAD DATA LOCAL INFILE '/****path***'
+INTO TABLE mim2gene
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+(MIMno, type, gene_id, gene_symbol);
+
+
+CREATE TABLE omimtext (
+MIMno VARCHAR(20),
+text_body TEXT);
+
+
+LOAD DATA LOCAL INFILE '****path***'
+INTO TABLE omimtext
+FIELDS TERMINATED BY '\t'
+LINES TERMINATED BY '\n'
+(MIMno, text_body);
