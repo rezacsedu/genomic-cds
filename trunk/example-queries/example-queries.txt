@@ -1,0 +1,99 @@
+##### Integration with the Genomic CDS Ontology
+
+Instructions:
+1) open the ontology "genomic-cds-demo-with-SPL-statements.owl" in Protege 4.X
+
+2) In the "Active Ontology" tab, use "Direct Imports" to import the SPL annotations in data/all-paired-annotations-from-092012-BETA-OA-model-03132013.n3
+
+3) The Classes tab should show PharmacogenomicsStatement, SPLConstrainedTarget, and some other classes that are not native to the genomic-cds ontology.
+
+4) If (3) checks out ok, go to the SPARQL Query tab and test the queries below.
+
+-------------- EXAMPLE QUERIES ----------
+
+# What sections of the Warfarin SPL have been annotated for pharmgx
+# information and what is described?
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX gcds: <http://www.genomic-cds.org/ont/genomic-cds.owl#>
+PREFIX splPoc: <http://purl.org/net/nlprepository/spl-pharmgx-annotation-poc#>
+PREFIX oa: <http://www.w3.org/ns/oa#>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX linkedSPLs: <http://dbmi-icode-01.dbmi.pitt.edu/linkedSPLs/vocab/resource/>
+
+SELECT ?section ?describes ?dailyMedPage
+  WHERE { 
+     ?subject rdfs:seeAlso gcds:Warfarin.
+     ?subject rdfs:seeAlso gcds:CYP2C9.
+     ?subject sio:SIO_000563 ?describes.
+
+     ?annot oa:hasBody ?subject.
+     ?annot oa:hasTarget ?target.
+     
+     ?target splPoc:SPLSection ?section.
+     ?target oa:hasSource ?dailyMedPage.
+  }
+
+---
+
+# What is the monitoring recommendation in the SPL for Warfarin and CYP2C9?
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX gcds: <http://www.genomic-cds.org/ont/genomic-cds.owl#>
+PREFIX splPoc: <http://purl.org/net/nlprepository/spl-pharmgx-annotation-poc#>
+PREFIX oa: <http://www.w3.org/ns/oa#>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX linkedSPLs: <http://dbmi-icode-01.dbmi.pitt.edu/linkedSPLs/vocab/resource/>
+
+SELECT ?recommendation ?exact
+  WHERE { 
+     ?subject rdfs:seeAlso gcds:Warfarin.
+     ?subject rdfs:seeAlso gcds:CYP2C9.
+     ?subject splPoc:MonitoringRecommendation ?recommendation.
+
+     ?annot oa:hasBody ?subject.
+     ?annot oa:hasTarget ?target.
+     
+     ?target oa:hasSelector ?selector.
+
+     ?selector oa:exact ?exact.
+  }
+
+---
+
+# Get the text from the Clinical Pharmacology section of an SPL that
+# discusses the pharmacokinetic impact of CYP2C9 on Warfarin
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX gcds: <http://www.genomic-cds.org/ont/genomic-cds.owl#>
+PREFIX splPoc: <http://purl.org/net/nlprepository/spl-pharmgx-annotation-poc#>
+PREFIX oa: <http://www.w3.org/ns/oa#>
+PREFIX sio: <http://semanticscience.org/resource/>
+PREFIX linkedSPLs: <http://dbmi-icode-01.dbmi.pitt.edu/linkedSPLs/vocab/resource/>
+
+SELECT ?prefix ?exact ?postfix
+  WHERE { 
+     ?subject rdfs:seeAlso gcds:Warfarin.
+     ?subject rdfs:seeAlso gcds:CYP2C9.
+     ?subject sio:SIO_000563 splPoc:PharmacokineticImpact.
+
+     ?annot oa:hasBody ?subject.
+     ?annot oa:hasTarget ?target.
+     
+     ?target splPoc:SPLSection linkedSPLs:clinicalPharmacology.
+     ?target oa:hasSource ?dailyMedPage.
+     ?target oa:hasSelector ?selector.
+
+     ?selector oa:prefix ?prefix.
+     ?selector oa:exact ?exact.
+     ?selector oa:postfix ?postfix.
+  }
