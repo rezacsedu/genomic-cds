@@ -1,0 +1,570 @@
+-- Report -- 
+
+INFO: No tagging polymorphism variants found for ABCB1_star_1
+INFO: No tagging polymorphism variants found for ADRB1_H1
+INFO: No tagging polymorphism variants found for ADRB1_H2
+INFO: No tagging polymorphism variants found for ADRB1_H3
+INFO: No tagging polymorphism variants found for BRCA1_1
+INFO: No tagging polymorphism variants found for BRCA1_1_hash
+INFO: No tagging polymorphism variants found for BRCA1_2
+INFO: No tagging polymorphism variants found for BRCA1_2_hash
+INFO: No tagging polymorphism variants found for BRCA1_3
+INFO: No tagging polymorphism variants found for BRCA1_3_hash
+INFO: No tagging polymorphism variants found for BRCA1_4
+INFO: No tagging polymorphism variants found for BRCA1_4_hash
+INFO: No tagging polymorphism variants found for BRCA1_6
+INFO: No tagging polymorphism variants found for BRCA1_7
+INFO: No tagging polymorphism variants found for BRCA1_8
+INFO: No tagging polymorphism variants found for BRCA1_9
+INFO: No tagging polymorphism variants found for BRCA1_10
+INFO: No tagging polymorphism variants found for COMT_Haplotype_high_activity
+INFO: No tagging polymorphism variants found for COMT_Haplotype_intermediate_activity
+INFO: No tagging polymorphism variants found for COMT_Haplotype_low_activity
+INFO: No tagging polymorphism variants found for CYP1A2_star_1A
+ERROR: Polymorphism variant "rs35694136_del" in allele CYP1A2 *1D does not match dbSNP. Skipping conversion for the entire allele.
+INFO: No tagging polymorphism variants found for CYP1A2_star_1H
+INFO: No tagging polymorphism variants found for CYP1A2_star_5
+INFO: No tagging polymorphism variants found for CYP1A2_star_9
+INFO: No tagging polymorphism variants found for CYP1A2_star_12
+INFO: No tagging polymorphism variants found for CYP1A2_star_18
+INFO: No tagging polymorphism variants found for CYP1A2_star_19
+INFO: No tagging polymorphism variants found for CYP1A2_star_20
+INFO: No tagging polymorphism variants found for CYP2A6_star_1A
+INFO: No tagging polymorphism variants found for CYP2A6_star_1C
+INFO: No tagging polymorphism variants found for CYP2A6_star_1D
+INFO: No tagging polymorphism variants found for CYP2A6_star_1E
+INFO: No tagging polymorphism variants found for CYP2A6_star_1F
+INFO: No tagging polymorphism variants found for CYP2A6_star_1G
+INFO: No tagging polymorphism variants found for CYP2A6_star_1H
+INFO: No tagging polymorphism variants found for CYP2A6_star_1J
+INFO: No tagging polymorphism variants found for CYP2A6_star_1K
+INFO: No tagging polymorphism variants found for CYP2A6_star_1L
+INFO: No tagging polymorphism variants found for CYP2A6_star_3
+ERROR: Polymorphism variant "rs1801272_del" in allele CYP2A6 *4A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1809810_del" in allele CYP2A6 *4A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399433_del" in allele CYP2A6 *4A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399434_del" in allele CYP2A6 *4A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399435_del" in allele CYP2A6 *4A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399454_del" in allele CYP2A6 *4A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399468_del" in allele CYP2A6 *4A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4986891_del" in allele CYP2A6 *4A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5031016_del" in allele CYP2A6 *4A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5031017_del" in allele CYP2A6 *4A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_del" in allele CYP2A6 *4B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1809810_del" in allele CYP2A6 *4B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399433_del" in allele CYP2A6 *4B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399434_del" in allele CYP2A6 *4B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399435_del" in allele CYP2A6 *4B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399454_del" in allele CYP2A6 *4B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399468_del" in allele CYP2A6 *4B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4986891_del" in allele CYP2A6 *4B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5031016_del" in allele CYP2A6 *4B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5031017_del" in allele CYP2A6 *4B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_del" in allele CYP2A6 *4C does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1809810_del" in allele CYP2A6 *4C does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399433_del" in allele CYP2A6 *4C does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399434_del" in allele CYP2A6 *4C does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399435_del" in allele CYP2A6 *4C does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399454_del" in allele CYP2A6 *4C does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399468_del" in allele CYP2A6 *4C does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4986891_del" in allele CYP2A6 *4C does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5031016_del" in allele CYP2A6 *4C does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5031017_del" in allele CYP2A6 *4C does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_del" in allele CYP2A6 *4D does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1809810_del" in allele CYP2A6 *4D does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399433_del" in allele CYP2A6 *4D does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399434_del" in allele CYP2A6 *4D does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399435_del" in allele CYP2A6 *4D does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399454_del" in allele CYP2A6 *4D does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399468_del" in allele CYP2A6 *4D does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4986891_del" in allele CYP2A6 *4D does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5031016_del" in allele CYP2A6 *4D does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5031017_del" in allele CYP2A6 *4D does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_del" in allele CYP2A6 *4E does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1809810_del" in allele CYP2A6 *4E does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399433_del" in allele CYP2A6 *4E does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399434_del" in allele CYP2A6 *4E does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399435_del" in allele CYP2A6 *4E does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399454_del" in allele CYP2A6 *4E does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399468_del" in allele CYP2A6 *4E does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4986891_del" in allele CYP2A6 *4E does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5031016_del" in allele CYP2A6 *4E does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5031017_del" in allele CYP2A6 *4E does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_del" in allele CYP2A6 *4F does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1809810_del" in allele CYP2A6 *4F does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399433_del" in allele CYP2A6 *4F does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399434_del" in allele CYP2A6 *4F does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399435_del" in allele CYP2A6 *4F does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399454_del" in allele CYP2A6 *4F does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399468_del" in allele CYP2A6 *4F does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4986891_del" in allele CYP2A6 *4F does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5031016_del" in allele CYP2A6 *4F does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5031017_del" in allele CYP2A6 *4F does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_del" in allele CYP2A6 *4G does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1809810_del" in allele CYP2A6 *4G does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399433_del" in allele CYP2A6 *4G does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399434_del" in allele CYP2A6 *4G does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399435_del" in allele CYP2A6 *4G does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399454_del" in allele CYP2A6 *4G does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399468_del" in allele CYP2A6 *4G does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4986891_del" in allele CYP2A6 *4G does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5031016_del" in allele CYP2A6 *4G does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5031017_del" in allele CYP2A6 *4G does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_del" in allele CYP2A6 *4H does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1809810_del" in allele CYP2A6 *4H does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399433_del" in allele CYP2A6 *4H does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399434_del" in allele CYP2A6 *4H does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399435_del" in allele CYP2A6 *4H does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399454_del" in allele CYP2A6 *4H does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28399468_del" in allele CYP2A6 *4H does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4986891_del" in allele CYP2A6 *4H does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5031016_del" in allele CYP2A6 *4H does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5031017_del" in allele CYP2A6 *4H does not match dbSNP. Skipping conversion for the entire allele.
+INFO: No tagging polymorphism variants found for CYP2A6_star_8
+INFO: No tagging polymorphism variants found for CYP2A6_star_11
+INFO: No tagging polymorphism variants found for CYP2A6_star_12A
+INFO: No tagging polymorphism variants found for CYP2A6_star_12B
+INFO: No tagging polymorphism variants found for CYP2A6_star_12C
+INFO: No tagging polymorphism variants found for CYP2A6_star_14
+INFO: No tagging polymorphism variants found for CYP2A6_star_16
+INFO: No tagging polymorphism variants found for CYP2A6_star_1B1
+INFO: No tagging polymorphism variants found for CYP2A6_star_1B2
+INFO: No tagging polymorphism variants found for CYP2A6_star_1B3
+INFO: No tagging polymorphism variants found for CYP2A6_star_1B4
+INFO: No tagging polymorphism variants found for CYP2A6_star_1B5
+INFO: No tagging polymorphism variants found for CYP2A6_star_1B6
+INFO: No tagging polymorphism variants found for CYP2A6_star_1B7
+INFO: No tagging polymorphism variants found for CYP2A6_star_1B8
+INFO: No tagging polymorphism variants found for CYP2A6_star_1B9
+INFO: No tagging polymorphism variants found for CYP2A6_star_1B10
+INFO: No tagging polymorphism variants found for CYP2A6_star_1B11
+INFO: No tagging polymorphism variants found for CYP2A6_star_1B12
+INFO: No tagging polymorphism variants found for CYP2A6_star_1B13
+INFO: No tagging polymorphism variants found for CYP2A6_star_1B14
+INFO: No tagging polymorphism variants found for CYP2A6_star_1B15
+INFO: No tagging polymorphism variants found for CYP2A6_star_1B16
+INFO: No tagging polymorphism variants found for CYP2A6_star_1B17
+INFO: No tagging polymorphism variants found for CYP2A6_star_1X2A
+INFO: No tagging polymorphism variants found for CYP2A6_star_1X2B
+ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *20 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *21 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *22 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *23 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *24A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *24B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *25 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *26 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *27 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *28A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *28B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *31A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *31B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *34 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *35A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *35B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *36 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *37 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs2279342_A_T" in allele CYP2B6 *1 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4802101_T_C" in allele CYP2B6 *1 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4803418_C_G" in allele CYP2B6 *1 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4803419_C_T" in allele CYP2B6 *1 does not match dbSNP. Skipping conversion for the entire allele.
+INFO: No tagging polymorphism variants found for CYP2B6_star_1A
+INFO: No tagging polymorphism variants found for CYP2B6_star_1B
+INFO: No tagging polymorphism variants found for CYP2B6_star_1E
+INFO: No tagging polymorphism variants found for CYP2B6_star_1F
+INFO: No tagging polymorphism variants found for CYP2B6_star_1M
+ERROR: Polymorphism variant "rs2279341_G_C" in allele CYP2B6 *2 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs2279342_A_T" in allele CYP2B6 *4 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4802101_T_C" in allele CYP2B6 *4 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4802101_T_C" in allele CYP2B6 *5 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4802101_T_C" in allele CYP2B6 *6 does not match dbSNP. Skipping conversion for the entire allele.
+INFO: No tagging polymorphism variants found for CYP2B6_star_6A
+ERROR: Polymorphism variant "rs4802101_T_C" in allele CYP2B6 *7 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs2279344_G_A" in allele CYP2B6 *11 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4803419_T_C" in allele CYP2B6 *13 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs2279344_A_G" in allele CYP2B6 *15 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs35468935_C_T" in allele CYP2B6 *17 does not match dbSNP. Skipping conversion for the entire allele.
+INFO: No tagging polymorphism variants found for CYP2B6_star_23
+INFO: No tagging polymorphism variants found for CYP2B6_star_24
+INFO: No tagging polymorphism variants found for CYP2B6_star_25
+INFO: No tagging polymorphism variants found for CYP2B6_star_26
+INFO: No tagging polymorphism variants found for CYP2B6_star_29
+INFO: No tagging polymorphism variants found for CYP2C9_star_1
+ERROR: Polymorphism variant "rs9332131_del" in allele CYP2C9 *6 does not match dbSNP. Skipping conversion for the entire allele.
+INFO: No tagging polymorphism variants found for CYP2C9_star_17
+INFO: No tagging polymorphism variants found for CYP2C9_star_19
+INFO: No tagging polymorphism variants found for CYP2C9_star_20
+INFO: No tagging polymorphism variants found for CYP2C9_star_21
+INFO: No tagging polymorphism variants found for CYP2C9_star_22
+INFO: No tagging polymorphism variants found for CYP2C9_star_23
+ERROR: Polymorphism variant "rs1799853_C_OR_T" in allele CYP2C9 *24 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs72558188_del" in allele CYP2C9 *25 does not match dbSNP. Skipping conversion for the entire allele.
+INFO: No tagging polymorphism variants found for CYP2C9_star_26
+INFO: No tagging polymorphism variants found for CYP2C9_star_27
+INFO: No tagging polymorphism variants found for CYP2C9_star_28
+INFO: No tagging polymorphism variants found for CYP2C9_star_29
+INFO: No tagging polymorphism variants found for CYP2C9_star_30
+INFO: No tagging polymorphism variants found for CYP2C9_star_32
+INFO: No tagging polymorphism variants found for CYP2C19_star_1A
+INFO: No tagging polymorphism variants found for CYP2C19_star_1B
+INFO: No tagging polymorphism variants found for CYP2C19_star_1C
+INFO: No tagging polymorphism variants found for CYP2C19_star_6
+INFO: No tagging polymorphism variants found for CYP2C19_star_9
+INFO: No tagging polymorphism variants found for CYP2C19_star_16
+INFO: No tagging polymorphism variants found for CYP2C19_star_18
+INFO: No tagging polymorphism variants found for CYP2C19_star_19
+INFO: No tagging polymorphism variants found for CYP2C19_star_22
+INFO: No tagging polymorphism variants found for CYP2C19_star_23
+INFO: No tagging polymorphism variants found for CYP2C19_star_24
+INFO: No tagging polymorphism variants found for CYP2C19_star_25
+INFO: No tagging polymorphism variants found for CYP2C19_star_26
+INFO: No tagging polymorphism variants found for CYP2D6_star_1
+ERROR: Polymorphism variant "rs35742686_del" in allele CYP2D6 *3 does not match dbSNP. Skipping conversion for the entire allele.
+INFO: No tagging polymorphism variants found for CYP2D6_star_4
+ERROR: Polymorphism variant "rs1065852_del" in allele CYP2D6 *5 [gene deletion] does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs16947_del" in allele CYP2D6 *5 [gene deletion] does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28371706_del" in allele CYP2D6 *5 [gene deletion] does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs28371725_del" in allele CYP2D6 *5 [gene deletion] does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs35742686_del" in allele CYP2D6 *5 [gene deletion] does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs3892097_del" in allele CYP2D6 *5 [gene deletion] does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5030655_del" in allele CYP2D6 *5 [gene deletion] does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5030656_del" in allele CYP2D6 *5 [gene deletion] does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs59421388_del" in allele CYP2D6 *5 [gene deletion] does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs61736512_del" in allele CYP2D6 *5 [gene deletion] does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5030655_del" in allele CYP2D6 *6 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5030656_del" in allele CYP2D6 *9 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs2740574_T_C" in allele CYP3A4 *1 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1C does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1D does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1E does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1F does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1G does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1H does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1J does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1K does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1L does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1M does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1N does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1P does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1Q does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1R does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1S does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1T does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *2 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *3 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *4 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *5 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *7 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *8 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *9 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *10 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *11 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *12 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *13 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *14 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs2740574_T_C" in allele CYP3A4 *15 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *15 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *15A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *15B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *16 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *16A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *16B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *17 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *18 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *18A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *18B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *19 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *20 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs147545709_C" in allele DPYD *1 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs72549309_A" in allele DPYD *1 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs147545709_C" in allele DPYD *2A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs72549309_A" in allele DPYD *2A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs147545709_C" in allele DPYD *2B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs72549309_A" in allele DPYD *2B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs147545709_C" in allele DPYD *3 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs72549303_del" in allele DPYD *3 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs72549309_A" in allele DPYD *3 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs147545709_C" in allele DPYD *4 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs72549309_A" in allele DPYD *4 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs147545709_C" in allele DPYD *5 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs72549309_A" in allele DPYD *5 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs147545709_C" in allele DPYD *6 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs72549309_A" in allele DPYD *6 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs147545709_C" in allele DPYD *7 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs72549309_del" in allele DPYD *7 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs147545709_C" in allele DPYD *8 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs72549309_A" in allele DPYD *8 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs147545709_C" in allele DPYD *9A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs72549309_A" in allele DPYD *9A does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs147545709_T" in allele DPYD *9B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs72549309_A" in allele DPYD *9B does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs147545709_C" in allele DPYD *10 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs72549309_A" in allele DPYD *10 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs147545709_C" in allele DPYD *11 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs72549309_A" in allele DPYD *11 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs147545709_C" in allele DPYD *12 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs72549309_A" in allele DPYD *12 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs147545709_C" in allele DPYD *13 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs72549309_A" in allele DPYD *13 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5853517_del" in allele P2RY12 H1 does not match dbSNP. Skipping conversion for the entire allele.
+INFO: No tagging polymorphism variants found for SULT1A1_star_1
+INFO: No tagging polymorphism variants found for TPMT_star_1
+INFO: No tagging polymorphism variants found for TPMT_star_5
+INFO: No tagging polymorphism variants found for TPMT_star_6
+INFO: No tagging polymorphism variants found for TPMT_star_7
+INFO: No tagging polymorphism variants found for TPMT_star_8
+INFO: No tagging polymorphism variants found for TPMT_star_9
+INFO: No tagging polymorphism variants found for TPMT_star_10
+INFO: No tagging polymorphism variants found for TPMT_star_11
+INFO: No tagging polymorphism variants found for TPMT_star_12
+INFO: No tagging polymorphism variants found for TPMT_star_13
+INFO: No tagging polymorphism variants found for TPMT_star_14
+INFO: No tagging polymorphism variants found for TPMT_star_15
+INFO: No tagging polymorphism variants found for TPMT_star_16
+INFO: No tagging polymorphism variants found for TPMT_star_17
+INFO: No tagging polymorphism variants found for TPMT_star_18
+INFO: No tagging polymorphism variants found for TPMT_star_21
+INFO: No tagging polymorphism variants found for TPMT_star_22
+INFO: No tagging polymorphism variants found for TPMT_star_23
+INFO: No tagging polymorphism variants found for TPMT_star_25
+INFO: No tagging polymorphism variants found for TPMT_star_20_PMID_16917910_
+INFO: No tagging polymorphism variants found for TPMT_star_20_PMID_16946561_
+INFO: No tagging polymorphism variants found for TPMT_star_24_PMID__18602085_
+INFO: No tagging polymorphism variants found for TPMT_star_24_PMID__18708949_
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *1L IA does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *1a does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *1a IA does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *1a WILDTYPE does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *1b does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *1b IB does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *1c IB does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *1d IA does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *1e IA does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *1f IA does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *1g IA does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *1h IA does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *1i IA does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *1j IB does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *1k IB does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *6a does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *6b does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *6c does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *6d does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *28b does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *28c does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *28d does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *36b does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs8175347_5" in allele UGT1A1 *36b does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *37b does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *364L IA does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *533P IB does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *60a does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *60b does not match dbSNP. Skipping conversion for the entire allele.
+INFO: No tagging polymorphism variants found for UGT1A1_star_60c
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *I does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *II does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *III does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *IV does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *IX does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *V does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *VI does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *VII does not match dbSNP. Skipping conversion for the entire allele.
+INFO: No tagging polymorphism variants found for UGT1A1_star_VIII
+ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *X does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs8175347_5" in allele UGT1A1 *X does not match dbSNP. Skipping conversion for the entire allele.
+INFO: No tagging polymorphism variants found for VKORC1_star_1
+INFO: No tagging polymorphism variants found for G6PD_haplotype_B__wildtype_
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 41, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 42, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 43, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 44, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 45, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 46, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 47, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 51, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 52, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 53, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 54, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 55, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 56, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 57, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 58, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 59, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 60, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 61, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 62, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 63, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 64, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 65, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 66, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 67, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 68, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 69, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 70, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 71, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 72, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 73, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 74, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 75, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 76, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 77, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 78, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 79, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 80, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 81, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 82, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 83, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 84, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 85, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 86, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 87, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 88, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 89, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 90, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 91, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 92, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 93, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 94, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 95, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 96, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 97, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 98, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 99, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 100, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 101, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 102, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 103, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 104, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 105, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 106, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 107, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 108, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 109, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 110, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 111, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 112, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 113, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 114, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 115, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 116, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 117, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 118, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 119, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 120, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 121, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 122, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 123, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 124, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 125, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 126, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 127, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 128, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 129, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 130, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 131, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 132, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 133, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 134, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 135, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 136, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 137, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 138, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 139, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 140, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 141, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 142, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 143, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 144, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 145, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 146, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 147, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 148, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 149, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 150, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 151, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 152, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 153, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 154, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 155, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 156, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 157, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 158, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 159, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 160, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 161, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 162, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 163, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 164, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 165, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 166, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 167, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 168, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 169, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 170, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 171, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 172, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 173, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 174, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 175, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 176, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 177, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 178, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 179, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 180, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 181, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 182, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 183, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 184, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 185, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 186, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 187, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 188, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 189, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 190, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 191, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 192, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 193, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 194, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 195, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 196, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 197, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 198, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 199, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 200, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 201, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 202, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 203, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 204, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 205, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 206, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 207, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 208, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 209, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 210, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 211, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 212, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 213, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 214, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 215, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 216, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 217, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 218, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 219, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 220, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 221, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 222, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 223, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 224, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 225, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 226, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 227, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 228, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 229, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 230, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 231, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 232, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 233, skipping conversion of this row.
+NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row 234, skipping conversion of this row.
