@@ -1,0 +1,788 @@
+
+# baseURI: http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl
+# imports: http://www.w3.org/2001/sw/hcls/ns/transmed/tmo
+
+@prefix tmo: <http://www.w3.org/2001/sw/hcls/ns/transmed/tmo/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . 
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . 
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+@prefix genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#> .
+@prefix sc: <http://safety-code.org/ontology/safety-code.ttl#> .
+
+<http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl>
+      rdf:type owl:Ontology ;
+      owl:imports <http://www.w3.org/2001/sw/hcls/ns/transmed/tmo> .
+sc:this_profile a sc:profile . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1208_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1695_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4633_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4680_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4818_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs5219_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs5275_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs5629_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs6025_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs6269_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs6277_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs7294_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs12516_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs12659_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs16940_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs16941_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs16942_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs16947_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs20417_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs316019_variant_G_G . 
+
+sc:this_profile sc:has_variant sc:genotype_rs628031_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs689466_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs701265_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs717620_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs762551_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs776746_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs799912_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs799917_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs873478_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs887829_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs890293_variant_G_G . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1041983_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1042713_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1042714_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1045642_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1048943_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1050828_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1050829_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1051266_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1051296_variant_G_G . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1051298_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1057910_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1057911_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1058930_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1060915_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1065411_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1065776_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1065852_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1080985_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1128503_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1131596_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1135840_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1138272_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1142345_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1143671_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1143672_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1799732_variant_-_- . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1799752_variant_-_- . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1799814_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1799853_variant_T_T . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1799929_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1799930_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1799931_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1799949_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1799966_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1800031_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1800460_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1800462_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1800497_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1800566_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1800584_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1800888_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1801028_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1801030_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1801131_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1801133_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1801158_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1801159_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1801160_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1801252_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1801253_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1801265_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1801266_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1801267_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1801268_variant_G_G . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1801272_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1801279_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1801280_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1805123_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1805124_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1805158_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1809810_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs1902023_variant_G_G . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2032582_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2046934_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2066853_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2069514_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2069526_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2115819_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2230037_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2231142_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2235013_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2235033_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2256871_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2257212_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2273697_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2279341_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2279342_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2279343_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2279344_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2282143_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2293616_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2306168_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2306283_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2359612_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2395029_variant_G_G . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2470890_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2472304_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2740574_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2844682_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs2884737_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3092995_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3211369_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3211371_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3213619_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3740066_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3745274_variant_G_G . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3758580_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3758581_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3761738_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3761739_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3807375_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3814055_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3815459_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3826711_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3846662_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3846663_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3892097_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3909184_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs3918290_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4124874_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4148323_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4149015_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4149056_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4149117_variant_G_G . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4244285_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4417205_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4629571_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4646277_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4646278_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4646438_variant_-_- . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4704209_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4802101_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4803418_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4803419_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4917623_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4986782_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4986783_variant_G_G . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4986850_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4986852_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4986891_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4986893_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4986894_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4986907_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4986908_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4986909_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4986910_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4986913_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs4987161_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs5030655_variant_-_- . 
+
+sc:this_profile sc:has_variant sc:genotype_rs5030656_variant_-_- . 
+
+sc:this_profile sc:has_variant sc:genotype_rs5030839_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs5030862_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs5030863_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs5030865_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs5030867_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs5030868_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs5031016_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs5031017_variant_G_G . 
+
+sc:this_profile sc:has_variant sc:genotype_rs5853517_variant_-_- . 
+
+sc:this_profile sc:has_variant sc:genotype_rs6413438_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs6453131_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs6791924_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs6809699_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs7088784_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs7196161_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs7311358_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs7439366_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs7626962_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs7900194_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs7902257_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs7916649_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs8050894_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs8175347_variant__TA_5__TA_5 . 
+
+sc:this_profile sc:has_variant sc:genotype_rs8176318_variant_G_G . 
+
+sc:this_profile sc:has_variant sc:genotype_rs8177504_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs8177507_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs8177516_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs8177517_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs8192709_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs8192719_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs9282861_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs9332130_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs9332131_variant_-_- . 
+
+sc:this_profile sc:has_variant sc:genotype_rs9332239_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs9908805_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs9911630_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs9923231_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs9934438_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs10038095_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs10264272_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs10276036_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs10509681_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs10929302_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs10935838_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs11045819_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs11045852_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs11045853_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs11188072_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs11568626_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs11568732_variant_G_G . 
+
+sc:this_profile sc:has_variant sc:genotype_rs11572080_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs11572103_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs12208357_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs12248560_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs12571421_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs12720441_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs12720461_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs12721608_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs12721627_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs12721629_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs12721634_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs12721649_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs12721655_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs12769205_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs12979860_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs13404099_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs17238484_variant_G_G . 
+
+sc:this_profile sc:has_variant sc:genotype_rs17238540_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs17244841_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs17599948_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs17708472_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs17861157_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs17878459_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs17878649_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs17879685_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs17879992_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs17880887_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs17881535_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs17882687_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs17884712_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs17884832_variant_G_G . 
+
+sc:this_profile sc:has_variant sc:genotype_rs17885098_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs17886522_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28365083_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28365085_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28371685_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28371686_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28371706_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28371725_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28371759_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28374453_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28383468_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28383479_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28399424_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28399433_variant_G_G . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28399434_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28399435_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28399444_variant_-_- . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28399447_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28399454_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28399468_variant_G_G . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28399499_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28399504_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs28399513_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs33926104_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs33973337_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs33980385_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs34059508_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs34097093_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs34130495_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs34223104_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs34284776_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs34489327_variant_-_- . 
+
+sc:this_profile sc:has_variant sc:genotype_rs34671512_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs34698757_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs34743033_variant__CCGCGCCACTTCGCCTGCCTCCGTCCCG_2__CCGCGCCACTTCGCCTGCCTCCGTCCCG_2 . 
+
+sc:this_profile sc:has_variant sc:genotype_rs34826503_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs34883432_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs34946978_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs34993780_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs35010098_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs35266616_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs35303484_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs35350960_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs35468935_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs35622401_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs35694136_variant_-_- . 
+
+sc:this_profile sc:has_variant sc:genotype_rs35742686_variant_-_- . 
+
+sc:this_profile sc:has_variant sc:genotype_rs35773040_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs35796837_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs35979566_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs36056539_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs36060847_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs36079186_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs36103319_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs36210421_variant_G_G . 
+
+sc:this_profile sc:has_variant sc:genotype_rs41279854_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs41279857_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs41291556_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs41303343_variant_-_- . 
+
+sc:this_profile sc:has_variant sc:genotype_rs45482602_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs45486893_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs55640102_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs55737008_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs55750087_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs55752064_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs55785340_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs55793712_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs55817950_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs55886062_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs55901008_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs55918055_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs55965422_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56061388_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56101265_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56107638_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56160784_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56161402_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56165452_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56172717_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56199088_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56199535_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56220353_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56244447_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56276455_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56296335_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56313657_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56318881_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56337013_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56379106_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56387224_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs56411402_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs57505750_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs58973490_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs59113707_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs59421388_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs59502379_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs59710386_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs61736512_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs67807361_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72547511_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72547512_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72547513_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72547515_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72547516_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72547517_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72549303_variant_-_- . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72549306_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72549309_variant_-_- . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72552267_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72552791_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72558184_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72558186_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72558187_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72558188_variant_-_- . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72558189_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72558190_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72558192_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72558193_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72559745_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs72559748_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs76293380_variant_-_- . 
+
+sc:this_profile sc:has_variant sc:genotype_rs76723693_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs78060119_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs79135870_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs80081766_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs118203756_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs118203757_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs118203759_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs137852328_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs139257324_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs140790673_variant_C_C . 
+
+sc:this_profile sc:has_variant sc:genotype_rs142965323_variant_A_A . 
+
+sc:this_profile sc:has_variant sc:genotype_rs147545709_variant_A_A . 
+

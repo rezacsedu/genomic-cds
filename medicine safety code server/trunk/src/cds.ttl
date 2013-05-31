@@ -1,0 +1,142 @@
+# Saved by TopBraid on Tue Apr 24 13:37:36 CEST 2012
+# baseURI: http://safety-code.org/ontology/cds.ttl
+
+@prefix :        <http://safety-code.org/ontology/cds.ttl#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+
+<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-10> a <http://purl.org/zen/ssr.ttl#SPARQL_query> ;
+<http://purl.org/zen/ssr.ttl#query_code> """
+PREFIX genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#>
+PREFIX sc: <http://safety-code.org/ontology/safety-code.ttl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+CONSTRUCT { 
+?this sc:CDS_message _:CDS_message . 
+_:CDS_message rdfs:label '3-4 mg warfarin per day should be considered as a starting dose range for a patient with this genotype according to the Warfarin drug label (Bristol-Myers Squibb).'@en . } 
+WHERE { 
+?this sc:has_variant / genomic:criteria_syntax 'rs1799853(T;T)' . 
+ ?this sc:has_variant / genomic:criteria_syntax 'rs9923231(C;C)' . 
+ }
+""" .
+<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-11> a <http://purl.org/zen/ssr.ttl#SPARQL_query> ;
+<http://purl.org/zen/ssr.ttl#query_code> """
+PREFIX genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#>
+PREFIX sc: <http://safety-code.org/ontology/safety-code.ttl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+CONSTRUCT { 
+?this sc:CDS_message _:CDS_message . 
+_:CDS_message rdfs:label '3-4 mg warfarin per day should be considered as a starting dose range for a patient with this genotype according to the Warfarin drug label (Bristol-Myers Squibb).'@en . } 
+WHERE { 
+?this sc:has_variant / genomic:criteria_syntax 'rs1799853(T;T)' . 
+ ?this sc:has_variant / genomic:criteria_syntax 'rs9923231(C;T)' . 
+ }
+""" .
+<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-12> a <http://purl.org/zen/ssr.ttl#SPARQL_query> ;
+<http://purl.org/zen/ssr.ttl#query_code> """
+PREFIX genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#>
+PREFIX sc: <http://safety-code.org/ontology/safety-code.ttl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+CONSTRUCT { 
+?this sc:CDS_message _:CDS_message . 
+_:CDS_message rdfs:label '0.5-2 mg warfarin per day should be considered as a starting dose range for a patient with this genotype according to the Warfarin drug label (Bristol-Myers Squibb).'@en . } 
+WHERE { 
+?this sc:has_variant / genomic:criteria_syntax 'rs1799853(T;T)' . 
+ ?this sc:has_variant / genomic:criteria_syntax 'rs9923231(T;T)' . 
+ }
+""" .
+<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-13> a <http://purl.org/zen/ssr.ttl#SPARQL_query> ;
+<http://purl.org/zen/ssr.ttl#query_code> """
+PREFIX genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#>
+PREFIX sc: <http://safety-code.org/ontology/safety-code.ttl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+CONSTRUCT { 
+?this sc:CDS_message _:CDS_message . 
+_:CDS_message rdfs:label '3-4 mg warfarin per day should be considered as a starting dose range for a patient with this genotype according to the Warfarin drug label (Bristol-Myers Squibb).'@en . } 
+WHERE { 
+?this sc:has_variant / genomic:criteria_syntax 'rs1799853(C;T)' . 
+ ?this sc:has_variant / genomic:criteria_syntax 'rs1057910(A;C)' . 
+ ?this sc:has_variant / genomic:criteria_syntax 'rs1057911(A;A)' . 
+ ?this sc:has_variant / genomic:criteria_syntax 'rs9923231(C;C)' . 
+ }
+""" .
+<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-14> a <http://purl.org/zen/ssr.ttl#SPARQL_query> ;
+<http://purl.org/zen/ssr.ttl#query_code> """
+PREFIX genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#>
+PREFIX sc: <http://safety-code.org/ontology/safety-code.ttl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+CONSTRUCT { 
+?this sc:CDS_message _:CDS_message . 
+_:CDS_message rdfs:label '0.5-2 mg warfarin per day should be considered as a starting dose range for a patient with this genotype according to the Warfarin drug label (Bristol-Myers Squibb).'@en . } 
+WHERE { 
+?this sc:has_variant / genomic:criteria_syntax 'rs1799853(C;T)' . 
+ ?this sc:has_variant / genomic:criteria_syntax 'rs1057910(A;C)' . 
+ ?this sc:has_variant / genomic:criteria_syntax 'rs1057911(A;A)' . 
+ ?this sc:has_variant / genomic:criteria_syntax 'rs9923231(C;T)' . 
+ }
+""" .
+<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-15> a <http://purl.org/zen/ssr.ttl#SPARQL_query> ;
+<http://purl.org/zen/ssr.ttl#query_code> """
+PREFIX genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#>
+PREFIX sc: <http://safety-code.org/ontology/safety-code.ttl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+CONSTRUCT { 
+?this sc:CDS_message _:CDS_message . 
+_:CDS_message rdfs:label '0.5-2 mg warfarin per day should be considered as a starting dose range for a patient with this genotype according to the Warfarin drug label (Bristol-Myers Squibb).'@en . } 
+WHERE { 
+?this sc:has_variant / genomic:criteria_syntax 'rs1799853(C;T)' . 
+ ?this sc:has_variant / genomic:criteria_syntax 'rs1057910(A;C)' . 
+ ?this sc:has_variant / genomic:criteria_syntax 'rs1057911(A;A)' . 
+ ?this sc:has_variant / genomic:criteria_syntax 'rs9923231(T;T)' . 
+ }
+""" .
+<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-16> a <http://purl.org/zen/ssr.ttl#SPARQL_query> ;
+<http://purl.org/zen/ssr.ttl#query_code> """
+PREFIX genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#>
+PREFIX sc: <http://safety-code.org/ontology/safety-code.ttl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+CONSTRUCT { 
+?this sc:CDS_message _:CDS_message . 
+_:CDS_message rdfs:label '0.5-2 mg warfarin per day should be considered as a starting dose range for a patient with this genotype according to the Warfarin drug label (Bristol-Myers Squibb).'@en . } 
+WHERE { 
+?this sc:has_variant / genomic:criteria_syntax 'rs1057910(C;C)' . 
+ ?this sc:has_variant / genomic:criteria_syntax 'rs1057911(A;A)' . 
+ ?this sc:has_variant / genomic:criteria_syntax 'rs9923231(C;C)' . 
+ }
+""" .
+<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-17> a <http://purl.org/zen/ssr.ttl#SPARQL_query> ;
+<http://purl.org/zen/ssr.ttl#query_code> """
+PREFIX genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#>
+PREFIX sc: <http://safety-code.org/ontology/safety-code.ttl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+CONSTRUCT { 
+?this sc:CDS_message _:CDS_message . 
+_:CDS_message rdfs:label '0.5-2 mg warfarin per day should be considered as a starting dose range for a patient with this genotype according to the Warfarin drug label (Bristol-Myers Squibb).'@en . } 
+WHERE { 
+?this sc:has_variant / genomic:criteria_syntax 'rs1057910(C;C)' . 
+ ?this sc:has_variant / genomic:criteria_syntax 'rs1057911(A;A)' . 
+ ?this sc:has_variant / genomic:criteria_syntax 'rs9923231(C;T)' . 
+ }
+""" .
+<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-18> a <http://purl.org/zen/ssr.ttl#SPARQL_query> ;
+<http://purl.org/zen/ssr.ttl#query_code> """
+PREFIX genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#>
+PREFIX sc: <http://safety-code.org/ontology/safety-code.ttl#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+CONSTRUCT { 
+?this sc:CDS_message _:CDS_message . 
+_:CDS_message rdfs:label '0.5-2 mg warfarin per day should be considered as a starting dose range for a patient with this genotype according to the Warfarin drug label (Bristol-Myers Squibb).'@en . } 
+WHERE { 
+?this sc:has_variant / genomic:criteria_syntax 'rs1057910(C;C)' . 
+ ?this sc:has_variant / genomic:criteria_syntax 'rs1057911(A;A)' . 
+ ?this sc:has_variant / genomic:criteria_syntax 'rs9923231(T;T)' . 
+ }
+""" .
