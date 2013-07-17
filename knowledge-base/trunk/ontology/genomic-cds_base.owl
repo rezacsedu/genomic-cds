@@ -1,0 +1,165 @@
+Prefix: : <http://www.genomic-cds.org/ont/genomic-cds.owl#>
+Prefix: dc: <http://purl.org/dc/elements/1.1/>
+Prefix: owl: <http://www.w3.org/2002/07/owl#>
+Prefix: rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+Prefix: xsd: <http://www.w3.org/2001/XMLSchema#>
+Prefix: rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+
+
+Ontology: <http://www.genomic-cds.org/ont/genomic-cds.owl>
+
+    Annotations: 
+        rdfs:label "Pharmacogenomic Clinical Decision Support ontology ('Genomic CDS')",
+        rdfs:comment "If you want to contribute or report a bug, please write an e-mail to Matthias Samwald, samwald@gmx.at",
+        dc:license "Creative Commons 3.0 CC-by license",
+        dc:creator "Matthias Samwald, http://samwald.info/",
+        owl:versionInfo "0.8.0",
+        dc:contributor "Contributors are those that engage in discussions in the context of the Genomic CDS ontology:
+Bob Freimuth,
+Michel Dumontier, 
+Bob Powers, 
+Simon Lin, 
+Scott Marshall, 
+Joanne Luciano, 
+Richard Boyce, 
+Eric Prud'Hommeaux"
+        
+AnnotationProperty: rdfs:label
+
+    
+AnnotationProperty: rdfs:comment
+
+
+AnnotationProperty: rdfs:seeAlso
+
+
+AnnotationProperty: owl:versionInfo
+
+
+AnnotationProperty: dc:license
+
+
+AnnotationProperty: dc:creator
+
+
+AnnotationProperty: dc:contributor
+
+
+AnnotationProperty: rsid
+
+    Annotations: 
+        rdfs:label "rsid",
+        rdfs:comment "The RS identifier of a corresponding entry in the NCBI dbSNP database."
+    
+AnnotationProperty: symbol_of_associated_gene
+
+    Annotations: 
+        rdfs:label "symbol of associated gene"
+
+
+AnnotationProperty: dbsnp_orientation_on_reference_genome
+
+    Annotations: 
+        rdfs:label "dbSNP orientation on reference genome",
+        rdfs:comment "The orientation of the polymorphism in the corresponding dbSNP entry with respect to the reference genome. The value 'forward' means that the dbSNP entry uses the same orientation as the reference genome, the value 'reverse' means that the dbSNP entry uses the reverse orientation (i.e., the opposite strand of DNA). This information can be used for normalizing the orientation, and converting sequences from one strand to the other. All polymorphisms and sequences in the Genomic CDS ontology are reported using the forward orientation of the reference genome (the 'plus' strand)."
+
+    
+AnnotationProperty: CDS_message
+
+    Annotations: 
+        rdfs:label "CDS message",
+        rdfs:comment "A clinical decision support message relevant for a patient belonging to this class."
+
+    
+Datatype: rdf:PlainLiteral
+
+    
+AnnotationProperty: relevant_for
+
+    Annotations: 
+        rdfs:label "relevant for",
+        rdfs:comment "A generic property, stating that one entitiy is relevant in the context of obersving some other entity. For example, it can be used to state that a specific classification of a patient is relevant for dosing a specific drug."
+    
+    
+ObjectProperty: taken_by
+
+    Annotations: 
+        rdfs:label "taken by",
+        rdfs:comment "A property used for reasoning about possible alleles given a set of polymorphism variants. If a specific polymorphism variant is 'taken by' a specific allele, it cannot be used for calling another allele."
+    
+    
+ObjectProperty: has
+
+    Annotations: 
+        rdfs:label "has",
+        rdfs:comment "A generic property. For example, it can be used to relate a patient with specific attributes and features, such as genetic polymorphisms, alleles and phenotypes."
+    
+    
+Class: human_with_genetic_polymorphism
+
+    Annotations: 
+        rdfs:label "Human with genetic polymorphism"
+    
+    SubClassOf: 
+        human
+    
+    
+Class: allele
+
+    Annotations: 
+        rdfs:label "Allele",
+        rdfs:comment "A specific variant of a gene, including the wild-type allele. Note that the Pharmacogenomc CDS ontology has no dedicated class for genes. Genes are considered as broad classes of alleles."
+    
+    
+Class: polymorphism
+
+    Annotations: 
+        rdfs:label "Polymorphism",
+        rdfs:comment "A small part of the genome of an individual where studies have shown that genetic sequences vary between individuals. For example: single nucleotide polymorphisms (SNPs), insertions, deletions, indels, microsatellites. All polymorphisms and sequences in the Genomic CDS ontology are reported using the forward orientation of the reference genome (the 'plus' strand)."
+    
+    SubClassOf: 
+        taken_by exactly 1 allele,
+        taken_by only allele
+    
+        
+Class: drug
+
+    Annotations: 
+        rdfs:label "Drug"
+    
+    
+Class: phenotype
+
+    Annotations: 
+        rdfs:label "Phenotype",
+        rdfs:comment "A phenotype is an observable characteristic of an organism. For example: characteristics of drug metabolism and response."
+        
+    
+Class: human
+
+    Annotations: 
+        rdfs:label "Human"
+    
+    
+Class: human_triggering_CDS_rule
+
+    Annotations: 
+        rdfs:label "Human triggering CDS rule"
+    
+    SubClassOf: 
+        human
+    
+    
+Class: human_triggering_phenotype_inference_rule
+
+    Annotations: 
+        rdfs:label "Human triggering phenotype inference rule"
+    
+    SubClassOf: 
+        human
+    
+Class: allele    
+DisjointClasses: 
+    allele,human,phenotype,polymorphism,drug
+
