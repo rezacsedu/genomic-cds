@@ -1,0 +1,53 @@
+<!-- BEGIN: main -->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Upload file and generate Medicine Safety Code</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/medicine-safety-code.css" />
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.1.0/jquery.mobile.structure-1.1.0.min.css" />
+<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/latest/jquery.mobile.min.js"></script>
+</head>
+<body>
+	<div data-role="page" id="mainPage" data-theme="c">
+		<div data-role="header" data-theme="c"
+			style="text-align: center; padding: 3px">
+			<img src="medicine-safety-code-logo-for-header.png" width="209"
+				height="30" alt="safety-code.org" />
+		</div>
+		<div data-role="content">
+			<h1>Upload file in 23andMe format to generate a Medicine Safety Code</h1>
+			<p>You can upload a file with genetic data in the <a href="http://23andme.org">23andMe</a> file format to generate a 
+				Medicine Safety Code. Examples of data in the 23andMe format can be found <a href="http://www.genomesunzipped.org/data">here</a>.</p>
+				<p><b>Please select a file below.</b> Files should not be compressed and their size should not exceed 50 MB. Uploading and processing the file may take some time.</p>
+			<form data-ajax="false" action="SafetyCodeGenerator" method="post"
+				enctype="multipart/form-data">
+				<fieldset data-role="controlgroup" data-mini="true">
+    				<input type="radio" name="strand-orientation" id="dbsnp-orientation" value="dbsnp-orientation" checked="checked" />
+    				<label for="dbsnp-orientation">Strand orientation in my data matches dbSNP</label>
+    				<input type="radio" name="strand-orientation" id="forward-orientation" value="forward-orientation"  />
+				    <label for="forward-orientation">Strand orientation in my data matches forward strand of human reference genome (will be normalized to match dbSNP)</label>
+				</fieldset>
+				<label for="file-input-field">File:</label>
+				<input name="file-input-field" id="file-input-field" type="file" size="60" name="file" />
+				<div>
+					<button type="submit" data-theme="a" data-mini="true">Submit</button>
+				</div>
+			</form>
+			<p>Please note that most direct-to-consumer genetic testing services are not certified to provide data for guiding clinical decision making.
+			Data from these testing services should not be used for such purposes.</p>
+		</div>
+		<div data-theme="c" data-role="footer"
+			style="text-align: center; padding: 5px;">
+			<div>
+				This service is provided for research purposes only and comes
+				without any warranty. (C)&nbsp;2012&nbsp;<a
+					href="http://safety-code.org/" data-ajax="false">safety-code.org</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<!-- END: main -->

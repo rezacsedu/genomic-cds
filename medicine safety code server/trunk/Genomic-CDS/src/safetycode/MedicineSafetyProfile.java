@@ -1,6 +1,7 @@
 package safetycode;
 import java.io.*;
 import java.util.ArrayList;
+
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
@@ -16,6 +17,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.util.FileManager;
 
 import utils.Common;
+import exception.VariantDoesNotMatchAnAllowedVariantException;
 
 /**
  * This class represents the genomics dataset related to an user.
@@ -90,7 +92,7 @@ public class MedicineSafetyProfile {
 		int linesThatDidNotMatchAllowedVariant	= 0;	//Number of processedMatchingLines that could not be matched in the model.
 		String processingReport					= "";	//Report that contains the missing matched criteria syntax and general statistics of the parser.
 		ArrayList<String[]> listRsids 			= getListRsids();	//Sorted list of strand markers.
-		
+		int numberOfRsids = listRsids.size();
 		//Parsing the 23AndMe file
 		try{
 			String rsid 			= "";	//strand id
@@ -128,7 +130,8 @@ public class MedicineSafetyProfile {
 			e.printStackTrace();
 		}
 		//End parsing 23AndMe file
-		
+
+	
 		String base2ProfileString=""; // binary code of patient variants
 		OntClass humanClass = owlReader.getOntClass("http://www.genomic-cds.org/ont/genomic-cds.owl#human");		//Human class definition
 		Individual patient = humanClass.createIndividual("http://www.genomic-cds.org/ont/genomic-cds.owl#patient");	//Individual that represents the patient conceptualization
@@ -154,7 +157,8 @@ public class MedicineSafetyProfile {
 			}
 			base2ProfileString+=bit_code;
 		}
-		processingReport+=("<p><b>Processed " + processedLines + " lines describing variants. Of these, " + processedMatchingLines + " lines matched allowed Medicine Safety Code RS numbers. Of these, " + linesThatDidNotMatchAllowedVariant + " lines contained genotypes that did not match allowed Medicine Safety Code genotypes. </b></p>");
+		processingReport+=("<p><b>Processed " + processedLines + " lines describing variants. Of these, " + processedMatchingLines + " lines matched allowed Medicine Safety Code RS numbers. Of these, " + (numberOfRsids - linesThatDidNotMatchAllowedVariant - processedMatchingLines) + " lines contained genotypes that did not match allowed Medicine Safety Code genotypes. </b></p>");
+		
 		base64ProfileString = Common.convertFrom2To64(base2ProfileString);
 		return processingReport;
 	}
@@ -260,18 +264,6 @@ public class MedicineSafetyProfile {
 		String bit_code=null;
 		
 		String criteriaSyntax_def=criteriaSyntax.substring(0,criteriaSyntax.indexOf("("))+"(null;null)";
-		/*String queryString = Common.SPARQL_NAME_SPACES 
-				+ "	SELECT ?variant ?bit_code ?variant_def"
-				+ "	WHERE { "
-				+ "		{" 
-				+ "			?variant sc:criteria_syntax ?criteria . "   
-				+ "			FILTER regex(?criteria, \""+criteriaSyntax+"\", \"i\") " 
-				+ "			?variant sc:bit_code ?bit_code . "
-				+ "		} UNION { "
-				+ "			?variant_def sc:criteria_syntax ?criteria_def . "
-				+ "			FILTER regex(?criteria_def,\""+criteriaSyntax_def+"\", \"i\") " 
-				+ "     } "
-				+ "	} ";*/
 		String queryString = Common.SPARQL_NAME_SPACES 
 				+ "	SELECT ?variant ?bit_code ?variant_def"
 				+ "	WHERE { "
@@ -306,6 +298,44 @@ public class MedicineSafetyProfile {
 		return bit_code;
 	}
 		
+	
+	/**
+	 * It associate the classes of variants that match the criteria syntax to the patient instance in the model.
+	 * 
+	 * @param patient			Individual that corresponds to the instance of the patient in the model.
+	 * @param criteriaSyntax	It represents the criteria syntax of a variant in the model.
+	 * @throws	A VariantDoesNotMatchAnAllowedVariantException when an error is detected in the model definition.
+	 * @return	It returns the bit code associated to the user or null if the criteria syntax could not be matched in the model.
+	 * */
+	private boolean addVariantToPatient(Individual patient, String rsid, String bit_code) throws VariantDoesNotMatchAnAllowedVariantException{
+		boolean added=false;	
+		String queryString = Common.SPARQL_NAME_SPACES 
+				+ "	SELECT ?variant \n"
+				+ "	WHERE { \n"
+				+ " 	?marker pgx:rsid	\""+rsid+"\" . \n"
+				+ "		?variant rdfs:subClassOf ?marker . \n" 
+				+ "		?variant sc:bit_code \""+bit_code+"\" . \n"
+				+ "	} ";
+		
+		QueryExecution qexec = QueryExecutionFactory.create(QueryFactory.create(queryString), owlReader);
+		try {
+			ResultSet results = qexec.execSelect();
+			if(results.hasNext()){
+				QuerySolution soln	= results.nextSolution();
+				Resource resource	= soln.getResource("variant");
+				if(resource!=null){
+					patient.addOntClass(resource);
+					added=true;
+				}
+			}
+		}catch (Exception e) {
+			throw new VariantDoesNotMatchAnAllowedVariantException("<p>ERROR: Cannot query the model with bit_code "+bit_code+" for marker "+rsid+"</p>");
+		}finally {
+			qexec.close();
+		}
+		return added;
+	}
+	
 	/*public void generateQRCode(String fileName) throws Exception {////No se llama nunca a este método porque está implementado en el servlet MSCImageGenerator
 		Charset charset = Charset.forName("ISO-8859-1");
 		CharsetEncoder encoder = charset.newEncoder();
@@ -418,6 +448,34 @@ public class MedicineSafetyProfile {
 		return base64ProfileString;
 	}
 	
+	/**
+	 * Create the patient model that is related to the base64Profile.
+	 * 
+	 * @param base64Profile		Base 64 number that represent the binary codification of a patient genotype. 
+	 * @throws VariantDoesNotMatchAnAllowedVariantException 
+	 * */
+	public void readBase64ProfileString(String base64Profile) throws VariantDoesNotMatchAnAllowedVariantException{
+		base64ProfileString				= base64Profile;
+		String binaryProfile			= Common.convertFrom64To2(base64ProfileString);
+		ArrayList<String[]> listRsids	= getListRsids();
+		
+		OntClass humanClass = owlReader.getOntClass("http://www.genomic-cds.org/ont/genomic-cds.owl#human");		//Human class definition
+		Individual patient = humanClass.createIndividual("http://www.genomic-cds.org/ont/genomic-cds.owl#patient");	//Individual that represents the patient conceptualization
+		
+		for(int position = 0, i = 0;i<listRsids.size();i++){
+			String[] genotype = listRsids.get(i);
+			int bit_length = Integer.parseInt(genotype[1]);
+			if(binaryProfile.length()<position+bit_length) {
+				throw new VariantDoesNotMatchAnAllowedVariantException("<p>Warning: the length of the patient profile is shorter than the defined in the model</p>");
+			}
+			String bit_code = binaryProfile.substring(position,position+bit_length);
+			genotype[4]=bit_code;
+			position+=bit_length;
+			if(!addVariantToPatient(patient, genotype[0],genotype[4])){
+				throw new VariantDoesNotMatchAnAllowedVariantException("<p>Warning: the genotype mark \""+genotype[0]+"\" or its corresponding code variant were not found in the model</p>");
+			}
+		}
+	}
 	
 	/**
 	 * Close the model and write it into a file if the parameter is not null.
@@ -455,16 +513,5 @@ public class MedicineSafetyProfile {
 				}
 			}
 		}
-	}
-}
-
-/**
- * This Exception will capture any problem when matching criteria syntax strings to retrieve genetic variants.
- */
-class VariantDoesNotMatchAnAllowedVariantException extends Exception {
-	private static final long serialVersionUID = 1L;
-	
-	public VariantDoesNotMatchAnAllowedVariantException(String string) {
-		super(string);
 	}
 }

@@ -1,4 +1,6 @@
-import java.io.BufferedWriter;
+import utils.Common;
+
+/*import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -21,7 +23,7 @@ import com.hp.hpl.jena.util.FileManager;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 
 import safetycode.MedicineSafetyProfile;
-import utils.Common;
+import utils.Common;*/
 
 public class test {
 
@@ -30,16 +32,23 @@ public class test {
 	 */
 	public static void main(String[] args) {
 		
-		MedicineSafetyProfile msp = new MedicineSafetyProfile();
+		System.out.println(Common.convertFrom64To2("cCB3RLNS2vCXUgK5Gl3c2z12jrLzVjqND-AG3bH7jWhDSVG392k2SR_NWK0nzPwTq51Y27ZaVmMFKHvuUpTUrYFZYXICleZWeBgQYW--8V1GAC80Ftvio9N9piVo0I2yH0-3Y0vmFC3KG0000"));
+		System.out.println(Common.convertFrom2To64("100110001100001011000011011011010101010111011100000010111001001100100001011110101011110100000101010000101111000011100110000010111101000001000010101101110101010101111101011111101101110100010111001101111110001010010000000011100101010001000111101101100000101011001101011100011111010000000011001001000010101110000010011100011011111111010111100000010100000000110001111101011001111010011101110100000101000001100010000010000111100011100100011111110000010110001111010100010001111001111000011110110011011101011110110101100010001111100011100010100001010010001100101111101000100011100000101000001011101010011010100010100000111110111110001000011111000001010000001010001100001000000000001111110111111001101100110010001001010111001001110011101100011111110010000000010010000010111100010001000000111110000011100010000000111001110000001111001100000011010100010000000000000000000000000000"));
+		
+		/*TEST 2
 		InputStream my23AndMeFileStream=null;
 		String fileName="D:/workspace/Genomic-CDS/1097.23andme.564";
+		String report="";
+		MedicineSafetyProfile msp = null;
+		
+		msp = new MedicineSafetyProfile();
 		try {
 			my23AndMeFileStream = new FileInputStream(fileName);
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			System.out.println("ERROR");
 		}
-		String report = msp.read23AndMeFileStream(my23AndMeFileStream, Common.DBSNP_ORIENTATION);
+		report = msp.read23AndMeFileStream(my23AndMeFileStream, Common.DBSNP_ORIENTATION);
 		try{
 			BufferedWriter bw = new BufferedWriter(new FileWriter("D:/workspace/Genomic-CDS/report.txt"));
 			bw.write(report+"\n");
@@ -66,8 +75,10 @@ public class test {
 			e.printStackTrace();
 		}
 		System.out.println(msp.getBase64ProfileString());
-		msp.closeModel(null);
-		/*
+		msp.closeModel(null);*/
+		
+		
+		/*TEST 1
 		OntModel model = ModelFactory.createOntologyModel();
 		InputStream in = FileManager.get().open("D:/workspace/Genomic-CDS/MSC_classes.ttl");
 		if (in == null) {
