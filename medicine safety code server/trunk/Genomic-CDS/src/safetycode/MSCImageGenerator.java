@@ -24,6 +24,7 @@ import com.google.zxing.qrcode.QRCodeWriter;
 
 /**
  * Servlet implementation class MSCImageGenerator
+ * It generates the QR image with the corresponding URL.
  */
 public class MSCImageGenerator extends HttpServlet {
 	private static final long serialVersionUID = 1L;

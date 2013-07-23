@@ -1,16 +1,57 @@
-# Saved by TopBraid on Tue Apr 24 13:37:36 CEST 2012
-# baseURI: http://safety-code.org/ontology/cds.ttl
+@prefix : <http://safety-code.org/ontology/cds.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://safety-code.org/ontology/cds.ttl> .
 
-@prefix :        <http://safety-code.org/ontology/cds.ttl#> .
-@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+<http://safety-code.org/ontology/cds.ttl> rdf:type owl:Ontology .
 
-<http://safety-code.org/ontology/cds.ttl>
-      a <http://www.w3.org/2002/07/owl#Ontology> ;
-      <http://www.w3.org/2002/07/owl#imports> <http://purl.org/zen/ssr.ttl> .
 
-<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-10> a <http://purl.org/zen/ssr.ttl#SPARQL_query> ;
-<http://purl.org/zen/ssr.ttl#query_code> """
+#################################################################
+#
+#    Data properties
+#
+#################################################################
+
+
+###  http://purl.org/zen/ssr.ttl#query_code
+
+<http://purl.org/zen/ssr.ttl#query_code> rdf:type owl:DatatypeProperty .
+
+
+
+
+
+#################################################################
+#
+#    Classes
+#
+#################################################################
+
+
+###  http://purl.org/zen/ssr.ttl#SPARQL_query
+
+<http://purl.org/zen/ssr.ttl#SPARQL_query> rdf:type owl:Class .
+
+
+
+
+
+#################################################################
+#
+#    Individuals
+#
+#################################################################
+
+
+###  http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-10
+
+<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-10> rdf:type <http://purl.org/zen/ssr.ttl#SPARQL_query> ,
+                                                                                                       owl:NamedIndividual ;
+                                                                                              
+                                                                                              <http://purl.org/zen/ssr.ttl#query_code> """
 PREFIX genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#>
 PREFIX sc: <http://safety-code.org/ontology/safety-code.ttl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -24,9 +65,14 @@ WHERE {
  }
 """ .
 
- 
-<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-11> a <http://purl.org/zen/ssr.ttl#SPARQL_query> ;
-<http://purl.org/zen/ssr.ttl#query_code> """
+
+
+###  http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-11
+
+<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-11> rdf:type <http://purl.org/zen/ssr.ttl#SPARQL_query> ,
+                                                                                                       owl:NamedIndividual ;
+                                                                                              
+                                                                                              <http://purl.org/zen/ssr.ttl#query_code> """
 PREFIX genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#>
 PREFIX sc: <http://safety-code.org/ontology/safety-code.ttl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -40,9 +86,14 @@ WHERE {
  }
 """ .
 
- 
-<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-12> a <http://purl.org/zen/ssr.ttl#SPARQL_query> ;
-<http://purl.org/zen/ssr.ttl#query_code> """
+
+
+###  http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-12
+
+<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-12> rdf:type <http://purl.org/zen/ssr.ttl#SPARQL_query> ,
+                                                                                                       owl:NamedIndividual ;
+                                                                                              
+                                                                                              <http://purl.org/zen/ssr.ttl#query_code> """
 PREFIX genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#>
 PREFIX sc: <http://safety-code.org/ontology/safety-code.ttl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -56,9 +107,14 @@ WHERE {
  }
 """ .
 
- 
-<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-13> a <http://purl.org/zen/ssr.ttl#SPARQL_query> ;
-<http://purl.org/zen/ssr.ttl#query_code> """
+
+
+###  http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-13
+
+<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-13> rdf:type <http://purl.org/zen/ssr.ttl#SPARQL_query> ,
+                                                                                                       owl:NamedIndividual ;
+                                                                                              
+                                                                                              <http://purl.org/zen/ssr.ttl#query_code> """
 PREFIX genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#>
 PREFIX sc: <http://safety-code.org/ontology/safety-code.ttl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -74,9 +130,14 @@ WHERE {
  }
 """ .
 
- 
-<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-14> a <http://purl.org/zen/ssr.ttl#SPARQL_query> ;
-<http://purl.org/zen/ssr.ttl#query_code> """
+
+
+###  http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-14
+
+<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-14> rdf:type <http://purl.org/zen/ssr.ttl#SPARQL_query> ,
+                                                                                                       owl:NamedIndividual ;
+                                                                                              
+                                                                                              <http://purl.org/zen/ssr.ttl#query_code> """
 PREFIX genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#>
 PREFIX sc: <http://safety-code.org/ontology/safety-code.ttl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -90,11 +151,16 @@ WHERE {
  ?this sc:has_variant / genomic:criteria_syntax 'rs1057911(A;A)' . 
  ?this sc:has_variant / genomic:criteria_syntax 'rs9923231(A;G)' . 
  }
-""" . 
+""" .
 
 
-<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-15> a <http://purl.org/zen/ssr.ttl#SPARQL_query> ;
-<http://purl.org/zen/ssr.ttl#query_code> """
+
+###  http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-15
+
+<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-15> rdf:type <http://purl.org/zen/ssr.ttl#SPARQL_query> ,
+                                                                                                       owl:NamedIndividual ;
+                                                                                              
+                                                                                              <http://purl.org/zen/ssr.ttl#query_code> """
 PREFIX genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#>
 PREFIX sc: <http://safety-code.org/ontology/safety-code.ttl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -111,8 +177,13 @@ WHERE {
 """ .
 
 
-<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-16> a <http://purl.org/zen/ssr.ttl#SPARQL_query> ;
-<http://purl.org/zen/ssr.ttl#query_code> """
+
+###  http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-16
+
+<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-16> rdf:type <http://purl.org/zen/ssr.ttl#SPARQL_query> ,
+                                                                                                       owl:NamedIndividual ;
+                                                                                              
+                                                                                              <http://purl.org/zen/ssr.ttl#query_code> """
 PREFIX genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#>
 PREFIX sc: <http://safety-code.org/ontology/safety-code.ttl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -125,11 +196,16 @@ WHERE {
  ?this sc:has_variant / genomic:criteria_syntax 'rs1057911(A;A)' . 
  ?this sc:has_variant / genomic:criteria_syntax 'rs9923231(G;G)' . 
  }
-""" . 
+""" .
 
 
-<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-17> a <http://purl.org/zen/ssr.ttl#SPARQL_query> ;
-<http://purl.org/zen/ssr.ttl#query_code> """
+
+###  http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-17
+
+<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-17> rdf:type <http://purl.org/zen/ssr.ttl#SPARQL_query> ,
+                                                                                                       owl:NamedIndividual ;
+                                                                                              
+                                                                                              <http://purl.org/zen/ssr.ttl#query_code> """
 PREFIX genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#>
 PREFIX sc: <http://safety-code.org/ontology/safety-code.ttl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -145,8 +221,13 @@ WHERE {
 """ .
 
 
-<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-18> a <http://purl.org/zen/ssr.ttl#SPARQL_query> ;
-<http://purl.org/zen/ssr.ttl#query_code> """
+
+###  http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-18
+
+<http://safety-code.org/ont/cds.ttl#warfarin-coumadin-bristol-myers-squibb-fda-drug-label-18> rdf:type <http://purl.org/zen/ssr.ttl#SPARQL_query> ,
+                                                                                                       owl:NamedIndividual ;
+                                                                                              
+                                                                                              <http://purl.org/zen/ssr.ttl#query_code> """
 PREFIX genomic: <http://translationalmedicineontology.googlecode.com/svn/trunk/ontology/extensions/core_pharmacogenomics.ttl#>
 PREFIX sc: <http://safety-code.org/ontology/safety-code.ttl#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
@@ -159,4 +240,10 @@ WHERE {
  ?this sc:has_variant / genomic:criteria_syntax 'rs1057911(A;A)' . 
  ?this sc:has_variant / genomic:criteria_syntax 'rs9923231(A;A)' . 
  }
-""" . 
+""" .
+
+
+
+
+###  Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net
+

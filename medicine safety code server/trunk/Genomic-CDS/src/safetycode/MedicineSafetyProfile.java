@@ -17,6 +17,8 @@ import com.hp.hpl.jena.rdf.model.Resource;
 import com.hp.hpl.jena.util.FileManager;
 
 import utils.Common;
+import exception.BadFormedBase64NumberException;
+import exception.BadFormedBinaryNumberException;
 import exception.VariantDoesNotMatchAnAllowedVariantException;
 
 /**
@@ -24,20 +26,28 @@ import exception.VariantDoesNotMatchAnAllowedVariantException;
  * 
  * */
 public class MedicineSafetyProfile {
-	/** 64 base representation of the variant codes of the associated patient. */
+	/**
+	 * 64 base representation of the variant codes of the associated patient. 
+	 * */
 	private String base64ProfileString; 
-	/** Ontology model that contains the patient conceptualization and pharmacogenomics semantic rules. */
+	/**
+	 * Ontology model that contains the patient conceptualization and pharmacogenomics semantic rules. 
+	 * */
 	private OntModel owlReader;
 
 	
-	/**Constructor of the class. It initializes the model of the pharmacogenomics dataset*/
+	/**
+	 * Constructor of the class. It initializes the model of the pharmacogenomics dataset.
+	 * */
 	public MedicineSafetyProfile() {
 		super();
 		initializeModel();
 	}
 	
 	
-	/**Constructor of the class. It initializes the owl model with a given model*/
+	/**
+	 * Constructor of the class. It initializes the owl model with a given model.
+	 * */
 	public MedicineSafetyProfile(OntModel passedOntModel) {		
 		owlReader=passedOntModel;
 	}
@@ -90,7 +100,7 @@ public class MedicineSafetyProfile {
 		int processedLines 						= 0;	//Number of processed lines of strands from the input 23AndMe file.
 		int processedMatchingLines				= 0;	//Number of processedLines that corresponds to markers in the model.
 		int linesThatDidNotMatchAllowedVariant	= 0;	//Number of processedMatchingLines that could not be matched in the model.
-		String processingReport					= "";	//Report that contains the missing matched criteria syntax and general statistics of the parser.
+		String processingReport					= "<ul>\n";	//Report that contains the missing matched criteria syntax and general statistics of the parser.
 		ArrayList<String[]> listRsids 			= getListRsids();	//Sorted list of strand markers.
 		int numberOfRsids = listRsids.size();
 		//Parsing the 23AndMe file
@@ -144,22 +154,25 @@ public class MedicineSafetyProfile {
 			try{
 				bit_code=addVariantToPatient(patient,criteriaSyntax);//Create rdf:type link between patient individual and matched variant class with the criteria syntax
 			}catch(VariantDoesNotMatchAnAllowedVariantException e){
-				processingReport+=e.getMessage();
+				processingReport+="<li>"+e.getMessage();
 			}catch(Exception e){
-				processingReport+=e.getMessage();
+				processingReport+="<li>"+e.getMessage();
 			}
 			if(bit_code==null){//The criteria syntax did not match any not "null;null" variant
 				bit_code=genotype[4];
 				linesThatDidNotMatchAllowedVariant++;
-				processingReport+="<p>Warning: " + criteriaSyntax + " does not match any allowed genotype. Only genotypes listed in dbSNP are allowed. A possible reason for this could be that your data is not based on the same strand (+ or -) as dbSNP, and you did not choose the proper settings for strand orientation. This genotype will be reported as 'NULL;NULL' in the resulting Medicine Safety Code. </p>";
+				processingReport+="<li>Warning: " + criteriaSyntax + " does not match any allowed genotype. Only genotypes listed in dbSNP are allowed. A possible reason for this could be that your data is not based on the same strand (+ or -) as dbSNP, and you did not choose the proper settings for strand orientation. This genotype will be reported as 'NULL;NULL' in the resulting Medicine Safety Code.";
 			}else{
 				genotype[4]=bit_code;
 			}
 			base2ProfileString+=bit_code;
 		}
-		processingReport+=("<p><b>Processed " + processedLines + " lines describing variants. Of these, " + processedMatchingLines + " lines matched allowed Medicine Safety Code RS numbers. Of these, " + (numberOfRsids - linesThatDidNotMatchAllowedVariant - processedMatchingLines) + " lines contained genotypes that did not match allowed Medicine Safety Code genotypes. </b></p>");
-		
-		base64ProfileString = Common.convertFrom2To64(base2ProfileString);
+		processingReport+=("</ul><p><b>Processed " + processedLines + " lines describing variants. Of these, " + processedMatchingLines + " lines matched allowed Medicine Safety Code RS numbers. Of these, " + (numberOfRsids - linesThatDidNotMatchAllowedVariant - processedMatchingLines) + " lines contained genotypes that did not match allowed Medicine Safety Code genotypes. </b></p>");
+		try{		
+			base64ProfileString = Common.convertFrom2To64(base2ProfileString);
+		}catch(BadFormedBinaryNumberException e){
+			System.err.println("ERROR: "+e.getMessage());
+		}
 		return processingReport;
 	}
 	
@@ -456,7 +469,13 @@ public class MedicineSafetyProfile {
 	 * */
 	public void readBase64ProfileString(String base64Profile) throws VariantDoesNotMatchAnAllowedVariantException{
 		base64ProfileString				= base64Profile;
-		String binaryProfile			= Common.convertFrom64To2(base64ProfileString);
+		String binaryProfile			="";
+		try{
+			binaryProfile				= Common.convertFrom64To2(base64ProfileString);	
+		}catch(BadFormedBase64NumberException e){
+			System.err.println("ERROR: "+e.getMessage());
+		}
+		
 		ArrayList<String[]> listRsids	= getListRsids();
 		
 		OntClass humanClass = owlReader.getOntClass("http://www.genomic-cds.org/ont/genomic-cds.owl#human");		//Human class definition
@@ -483,10 +502,10 @@ public class MedicineSafetyProfile {
 	 * */
 	public void closeModel(String fileOut){
 		try{
-			owlReader.close();
 			if(fileOut!=null){
 				writeModel(fileOut);
 			}
+			owlReader.close();
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -501,7 +520,7 @@ public class MedicineSafetyProfile {
 		BufferedWriter bw=null;
 		try {
 			bw = new BufferedWriter(new FileWriter(fileOut));
-			owlReader.write(bw);
+			owlReader.write(bw,"RDF/XML");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}finally{

@@ -40,5 +40,17 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/velocity-1.7-dep.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/wstx-asl-3.2.9.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/xercesImpl-2.7.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/bzip2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-configuration-1.6.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/derby.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/h2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jetty-all.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/JSAP-2.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/json_simple.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.protege.editor.core.application.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.protege.editor.owl.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/owlapi3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/pg.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

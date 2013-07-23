@@ -36,24 +36,30 @@ public class SafetyCodeGenerator extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 
 		response.setContentType("text/html");
-		PrintWriter out = response.getWriter();
+		
+		PrintWriter out;
+		try {
+			out = response.getWriter();
+		} catch (IOException e1) {
+			throw new ServletException("Error when processing the response.");
+		}
 		StringBuffer contentHTML = new StringBuffer("");
 		contentHTML.append("<h1>A Medicine Safety Code was generated for your data</h1>");
-		String strandOrientationOfInputData = "dbsnp-orientation";
+		String strandOrientationOfInputData = Common.DBSNP_ORIENTATION;
 		FileItem my23andMeFileItem = null;
 		
 		try {
-	        @SuppressWarnings("unchecked")
+			@SuppressWarnings("unchecked")
 			List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
 	        for (FileItem item : items) {
 	            if (item.isFormField()) {
@@ -62,7 +68,7 @@ public class SafetyCodeGenerator extends HttpServlet {
 	                String fieldvalue = item.getString();
 	                System.out.println("Fieldname: " + fieldname + ", Fieldvalue: " + fieldvalue);
 	                if (fieldname.equals("strand-orientation") && fieldvalue.equals("forward-orientation")) strandOrientationOfInputData = Common.FORWARD_ORIENTATION;
-	                if (fieldname.equals("strand-orientation") && fieldvalue.equals("dbsnp-orientation")) strandOrientationOfInputData = Common.DBSNP_ORIENTATION;
+	                //The option dbsnp_orientation is the default value.
 	            } else {
 	               my23andMeFileItem = item;
 	            }
@@ -70,27 +76,34 @@ public class SafetyCodeGenerator extends HttpServlet {
 	        if (my23andMeFileItem == null) {
 	        	throw new ServletException("File is missing.");
 	        }
+	        
+	        
 	        MedicineSafetyProfile myProfile = new MedicineSafetyProfile();
         	String processingReport = myProfile.read23AndMeFileStream(my23andMeFileItem.getInputStream(), strandOrientationOfInputData);
         	String encodedProfileURL = URLEncoder.encode(Common.ROOT_URL+myProfile.getBase64ProfileString(), "UTF-8");
         	contentHTML.append("<p align='center'><img src='MSCImageGenerator?code=" + encodedProfileURL + "' alt='Medicine Safety Code' /></p>");
-        	contentHTML.append("<p><a href='" + encodedProfileURL.toString() + "'>" + encodedProfileURL.toString() + "</a></p>");
+        	contentHTML.append("<p>You can visit the generated profile <a href='" + encodedProfileURL.toString() + "'> here</a>.</p>");
         	contentHTML.append("<h3>Processing report</h3><p>\n" + processingReport + "\n</p>");
+        	myProfile.closeModel(null);        	
 	    } catch (FileUploadException e) {
-	        throw new ServletException("Cannot parse multipart request.", e);
+	        throw new ServletException("Cannot parse multipart request.");
 	    } catch (Exception e) {
-			e.printStackTrace();
+	    	throw new ServletException("Unexpected error has occurred.");
 		}
 		
-		// Below, the Apache StrSubstitutor class is used as a very simple
-		// templating engine
+		// Below, the Apache StrSubstitutor class is used as a very simple templating engine
 		StringReader myStringReader = new StringReader();
-		String templateString = myStringReader.readFile("general-template.html");
+		
+		String templateString;
+		try {
+			templateString = myStringReader.readFile("general-template.html");
+		} catch (IOException e) {
+			throw new ServletException("Error when processing the reponse template");
+		}
 		Map<String,StringBuffer> valuesMap = new HashMap<String,StringBuffer>();
 		valuesMap.put("content", contentHTML);
 		StrSubstitutor sub = new StrSubstitutor(valuesMap);
 		String resolvedString = sub.replace(templateString);
 		out.println(resolvedString);
-		
 	}
 }

@@ -1,14 +1,18 @@
 package utils;
 
+import exception.BadFormedBase64NumberException;
+import exception.BadFormedBinaryNumberException;
+
 public class Common {
-	public static final String SPARQL_NAME_SPACES = "" 
+	
+	public final static String SPARQL_NAME_SPACES = "" 
 			+ "PREFIX sc: <http://www.genomic-cds.org/ont/MSC_classes.owl#>\n"
 			+ "PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>\n"
 			+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n"
 			+ "PREFIX pgx: <http://www.genomic-cds.org/ont/genomic-cds.owl#>\n"
 			+ "PREFIX ssr: <http://purl.org/zen/ssr.ttl#>\n";
 	
-	public static final String BASE_DIGITS = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz-_";
+	public final static char[] BASE_DIGITS = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','-','_'};
 	public final static String DBSNP_ORIENTATION = "dbsnp-orientation";
 	public final static String FORWARD_ORIENTATION = "forward-orientation";
 	public final static String ROOT_URL = "http://safety-code.org/v0.2/";
@@ -19,8 +23,9 @@ public class Common {
 	 * 
 	 * @param parameter		Binary number to transform into base 64
 	 * @return		The binary number in base 64.
+	 * @throws BadFormedBinaryNumberException
 	 * */
-	public static String convertFrom2To64(String parameter){
+	public static String convertFrom2To64(String parameter) throws BadFormedBinaryNumberException{
 		int base2 = 2;
 		String notBinaryString="";
 		if(parameter.length()%6!=0){
@@ -35,22 +40,25 @@ public class Common {
 			try{
 				numero = Integer.valueOf(num, base2);
 			}catch (NumberFormatException e) {
-				System.err.print("\nERROR : El numero " + num +" no es soportado en la base " + base2);
+				System.err.print("\nERROR : The number " + num +" is not correctly represented in base " + base2);
+				throw new BadFormedBinaryNumberException("ERROR : The number " + num +" is not in correctly represented in base " + base2);
 			}
-			notBinaryString+=BASE_DIGITS.toCharArray()[numero.intValue()];
+			notBinaryString+=BASE_DIGITS[numero.intValue()];
 		}
-		return notBinaryString;
-	
+		return notBinaryString;	
 	}
+	
 	
 	/**
 	 * It transform a base 64 number into a binary number.
 	 * 
 	 * @param parameter		Base 64 number to transform into base 2
 	 * @return		The binary number which corresponds to parameter.
+	 * @throws BadFormedBase64NumberException 
 	 * */
-	public static String convertFrom64To2(String parameter){
+	public static String convertFrom64To2(String parameter) throws BadFormedBase64NumberException{
 		char[] list = parameter.toCharArray();
+		
 		String binaryString = "";
 		for(int i=0;i<list.length;i++){
 			char c = list[i];
@@ -249,7 +257,7 @@ public class Common {
 				binaryString+="111111";
 				break;
 			default:
-				
+				throw new BadFormedBase64NumberException("ERROR : The number " + parameter +" is not in correctly represented in base 64");
 			}
 		}
 		return binaryString;
