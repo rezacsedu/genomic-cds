@@ -19,7 +19,7 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javase.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/junit-4.5.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/velocity-1.7-dep.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/lib_trowl/owlapi3.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/lib_trowl/TrOWLCore.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/owlapi3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/TrOWLCore.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

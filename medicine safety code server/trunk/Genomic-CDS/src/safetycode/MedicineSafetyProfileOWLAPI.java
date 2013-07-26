@@ -21,7 +21,6 @@ import org.semanticweb.owlapi.model.OWLIndividual;
 import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.reasoner.NodeSet;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
@@ -37,6 +36,8 @@ import eu.trowl.owlapi3.rel.reasoner.dl.RELReasonerFactory;
 import exception.BadFormedBase64NumberException;
 import exception.BadFormedBinaryNumberException;
 import exception.VariantDoesNotMatchAnAllowedVariantException;
+
+
 
 public class MedicineSafetyProfileOWLAPI {
 	/**
@@ -73,55 +74,22 @@ public class MedicineSafetyProfileOWLAPI {
 	private void initializeModel (String ontologyFile) {
 		
 		if(ontologyFile==null){
-			ontologyFile="file:/D:/workspace/Genomic-CDS/MSC_classes.ttl";
+			ontologyFile="file:MSC_classes.ttl";
+		}else{
+			ontologyFile="file:/"+ontologyFile;
 		}
 				
 		try{
 			 manager=OWLManager.createOWLOntologyManager();
 			 IRI physicalURI = IRI.create(ontologyFile);
 			 ontology = manager.loadOntologyFromOntologyDocument(physicalURI);
-			 //File inputOntologyFile = new File(ontologyFile);
-			 //ontology=manager.loadOntologyFromOntologyDocument(inputOntologyFile);
-			 //factory = manager.getOWLDataFactory();
-		     OWLReasonerFactory reasonerFactory = new StructuralReasonerFactory();
+			 OWLReasonerFactory reasonerFactory = new StructuralReasonerFactory();
 		     reasoner = reasonerFactory.createNonBufferingReasoner(ontology);
-		    
-		     /*reasoner=new RELReasonerFactory().createReasoner(ontology);
-		     reasoner.precomputeInferences();
-		     boolean isConsistent = reasoner.isConsistent();
-		     if(isConsistent) System.out.println("La ontología es consistente");*/
-		     
 		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
 	
-	public void calculateInferences() throws OWLOntologyCreationException{
-		//reasoner.precomputeInferences();
-		reasoner.interrupt();
-		reasoner.dispose();
-		IRI documentIRI = writeModel("reason_model_");
-		/*manager.removeOntology(ontology);
-		manager.clearIRIMappers();
-		factory.purge();
-		*/
-		manager=null;
-		//factory=null;
-		ontology=null;
-		reasoner=null;
-		
-		Runtime.getRuntime().gc();
-		System.gc();
-		
-		manager=OWLManager.createOWLOntologyManager();
-		ontology = manager.loadOntologyFromOntologyDocument(documentIRI);
-		//factory = manager.getOWLDataFactory();
-	    
-	    reasoner = new RELReasonerFactory().createReasoner(ontology);
-		reasoner.precomputeInferences();
-		boolean isConsistent = reasoner.isConsistent();
-		if(isConsistent) System.out.println("La ontología es consistente");
-	}
 	
 	/**
 	 * It parsers the 23AndMe file with the default strand orientation (dbnsp_orientation).
@@ -674,27 +642,4 @@ public class MedicineSafetyProfileOWLAPI {
 		
 		return list_recommendations;
 	}
-	
-	
-	/**
-	 * It provides the information that is related to the CDS rules in the model for every drug.
-	 * 
-	 * */
-	/*public HashMap<String,HashSet<String>> obtainDrugRecommendationsThread(){
-		HashMap<String,HashSet<String>> list_recommendations = new HashMap<String,HashSet<String>>();
-		IRI documentIRI = writeModel("reason_model_");
-		manager=null;
-		ontology=null;
-		reasoner=null;
-				
-		PatientProfileReasoning ppr = new PatientProfileReasoning(list_recommendations,documentIRI);
-		try{
-			ppr.start();
-			ppr.join();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-				
-		return list_recommendations;
-	}*/
 }
