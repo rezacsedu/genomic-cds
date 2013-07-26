@@ -144,7 +144,7 @@ public class MedicineSafetyProfile {
 	
 		String base2ProfileString=""; // binary code of patient variants
 		OntClass humanClass = owlReader.getOntClass("http://www.genomic-cds.org/ont/genomic-cds.owl#human");		//Human class definition
-		Individual patient = humanClass.createIndividual("http://www.genomic-cds.org/ont/genomic-cds.owl#patient");	//Individual that represents the patient conceptualization
+		Individual patient = humanClass.createIndividual("http://www.genomic-cds.org/ont/genomic-cds.owl#this_patient");	//Individual that represents the patient conceptualization
 		
 		//Process all patient variations
 		for(int i=0;i<listRsids.size();i++){
@@ -479,7 +479,7 @@ public class MedicineSafetyProfile {
 		ArrayList<String[]> listRsids	= getListRsids();
 		
 		OntClass humanClass = owlReader.getOntClass("http://www.genomic-cds.org/ont/genomic-cds.owl#human");		//Human class definition
-		Individual patient = humanClass.createIndividual("http://www.genomic-cds.org/ont/genomic-cds.owl#patient");	//Individual that represents the patient conceptualization
+		Individual patient = humanClass.createIndividual("http://www.genomic-cds.org/ont/genomic-cds.owl#this_patient");	//Individual that represents the patient conceptualization
 		
 		for(int position = 0, i = 0;i<listRsids.size();i++){
 			String[] genotype = listRsids.get(i);

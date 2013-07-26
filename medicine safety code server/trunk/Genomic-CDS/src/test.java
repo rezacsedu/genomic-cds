@@ -1,62 +1,378 @@
-import eu.trowl.jena.TrOWLJenaFactory;
 import eu.trowl.owlapi3.rel.reasoner.dl.RELReasonerFactory;
 import exception.BadFormedBase64NumberException;
 import exception.BadFormedBinaryNumberException;
-import utils.Common;
-
-import java.io.BufferedWriter;
+import exception.VariantDoesNotMatchAnAllowedVariantException;
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.InputStream;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
+import org.semanticweb.owlapi.model.AddAxiom;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAnnotation;
+import org.semanticweb.owlapi.model.OWLAnnotationProperty;
+import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
+import org.semanticweb.owlapi.model.OWLClassAxiom;
 import org.semanticweb.owlapi.model.OWLDataFactory;
+import org.semanticweb.owlapi.model.OWLDeclarationAxiom;
+import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.model.OWLOntologyStorageException;
-import org.semanticweb.owlapi.model.PrefixManager;
+import org.semanticweb.owlapi.model.RemoveAxiom;
 import org.semanticweb.owlapi.reasoner.NodeSet;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
-import org.semanticweb.owlapi.util.DefaultPrefixManager;
+import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
+import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 
-import com.hp.hpl.jena.ontology.Individual;
-import com.hp.hpl.jena.ontology.OntClass;
-import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.ontology.OntModelSpec;
-import com.hp.hpl.jena.ontology.OntProperty;
-import com.hp.hpl.jena.ontology.OntResource;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.util.iterator.ExtendedIterator;
-/*
-import com.hp.hpl.jena.ontology.AnnotationProperty;
-import com.hp.hpl.jena.ontology.OntClass;
-import com.hp.hpl.jena.query.QueryExecution;
-import com.hp.hpl.jena.query.QueryExecutionFactory;
-import com.hp.hpl.jena.query.QueryFactory;
-import com.hp.hpl.jena.query.QuerySolution;
-import com.hp.hpl.jena.query.ResultSet;
-import com.hp.hpl.jena.rdf.model.Literal;
-import com.hp.hpl.jena.rdf.model.RDFNode;
-import com.hp.hpl.jena.rdf.model.RDFReader;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.util.FileManager;
-import com.hp.hpl.jena.util.iterator.ExtendedIterator;*/
 
-import safetycode.MedicineSafetyProfile;
-//import utils.Common;
+import safetycode.PatientProfileReasoning;
+import safetycode.MedicineSafetyProfileOWLAPI;
+import safetycode.PatientProfileReasoningPellet;
 
 public class test {
 
+	
+	/*private void parserOWLAPI() throws OWLOntologyCreationException, OWLOntologyStorageException{
+	
+        OWLOntology ontology = null;
+    	OWLOntologyManager manager = null;
+    	OWLDataFactory factory = null;
+    	OWLReasoner trOwl	= null;
+    	
+    	manager=OWLManager.createOWLOntologyManager();
+        
+        String ontologyFile="D:/workspace/Genomic-CDS/MSC_classes.ttl";
+        File inputOntologyFile = new File(ontologyFile);
+
+        ontology=manager.loadOntologyFromOntologyDocument(inputOntologyFile);
+        factory = manager.getOWLDataFactory();
+             
+        trOwl=new RELReasonerFactory().createReasoner(ontology);
+		trOwl.precomputeInferences();
+        boolean isConsistent = trOwl.isConsistent();
+        if(isConsistent) System.out.println("La ontología es consistente");
+        
+        OWLClass human_with_genotype_marker = factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#human_with_genotype_marker"));
+        OWLDeclarationAxiom declarationAxiom = factory.getOWLDeclarationAxiom(human_with_genotype_marker);
+		manager.addAxiom(ontology, declarationAxiom);
+		
+		OWLClass human = factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#human"));
+		OWLAxiom axiom = factory.getOWLSubClassOfAxiom(human_with_genotype_marker,human);
+		AddAxiom addAxiom = new AddAxiom(ontology, axiom);
+		manager.applyChange(addAxiom);
+		
+		NodeSet<OWLClass> list_human = trOwl.getSubClasses(human, false);
+        for(OWLClass clase: list_human.getFlattened() ){
+        	Set<OWLAnnotation> list_ann = clase.getAnnotations(ontology);
+        	for(OWLAnnotation ann : list_ann){
+				if(ann.getProperty().getIRI().toString().contains("#rank")){
+					//Asociamos la clase padre a la clase hijo
+					axiom = factory.getOWLSubClassOfAxiom(clase, human_with_genotype_marker);
+					addAxiom = new AddAxiom(ontology, axiom);
+					manager.applyChange(addAxiom);
+					break;
+				}
+			}
+    	}       
+        
+		list_human = trOwl.getSubClasses(human_with_genotype_marker, true);
+        for(OWLClass clase: list_human.getFlattened() ){
+        	Iterator<OWLClassAxiom> it = ontology.getAxioms(clase).iterator();
+        	while(it.hasNext()){
+				OWLClassAxiom oca = it.next();
+				if(oca.toString().contains("<http://www.genomic-cds.org/ont/genomic-cds.owl#human>")){
+					RemoveAxiom removeAxiom = new RemoveAxiom(ontology,oca);
+					manager.applyChange(removeAxiom);
+				}
+			}       	
+    	}
+        manager.saveOntology(ontology);
+	}
+	
+	private static void test7(){
+		MedicineSafetyProfileOWLAPI msp = new MedicineSafetyProfileOWLAPI();
+		String base64Profile="cCB3RLNS2vCXUgK5Gl3c2z12jrLzVjqND-AG3bH7jWhDSVG392k2SR_NWK0nzPwTq51Y27ZaVmMFKHvuUpTUrYFZYXICleZWeBgQYW--8V1GAC80Ftvio9N9piVo0I2yH0-3Y0vmFC3KG0000";
+		try {
+			msp.readBase64ProfileString(base64Profile);
+		} catch (VariantDoesNotMatchAnAllowedVariantException e1) {
+			e1.printStackTrace();
+		}
+		try {
+			msp.calculateInferences();
+		} catch (OWLOntologyCreationException e) {
+			e.printStackTrace();
+		}
+		System.out.println("Execute all");
+		HashMap<String,HashSet<String>> drug_recommendations = msp.obtainDrugRecommendations();
+		Iterator<String> it_keys = drug_recommendations.keySet().iterator();
+		while(it_keys.hasNext()){
+			String key = it_keys.next();
+			System.out.println(key+":");
+			Iterator<String> it_messages = drug_recommendations.get(key).iterator();
+			while(it_messages.hasNext()){
+				System.out.println("\t"+it_messages.next());
+			}
+		}
+	}
+	
+	private static void parserReasonOWLAPI() throws OWLOntologyCreationException, OWLOntologyStorageException{
+		
+        OWLOntology ontology = null;
+    	OWLOntologyManager manager = null;
+    	OWLDataFactory factory = null;
+    	OWLReasoner trOwl	= null;
+    	
+    	manager=OWLManager.createOWLOntologyManager();
+        
+        String ontologyFile="C:/Users/Jose/AppData/Local/Temp/reason_model_3994847516189396849.owl";
+        File inputOntologyFile = new File(ontologyFile);
+
+        ontology=manager.loadOntologyFromOntologyDocument(inputOntologyFile);
+        factory = manager.getOWLDataFactory();
+             
+        trOwl=new RELReasonerFactory().createReasoner(ontology);
+		trOwl.precomputeInferences();
+        boolean isConsistent = trOwl.isConsistent();
+        if(isConsistent) System.out.println("La ontología es consistente");
+        
+        HashMap<String,HashSet<String>> list_recommendations = new HashMap<String,HashSet<String>>();
+		
+		OWLNamedIndividual patient				= factory.getOWLNamedIndividual(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#patient"));//We obtain the patient instance
+		OWLAnnotationProperty ann_relevant_for	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#relevant_for"));
+		OWLAnnotationProperty ann_cds_message	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#CDS_message"));
+        if(patient!=null){
+        	NodeSet<OWLClass> list_types = trOwl.getTypes(patient, false);
+        	for(OWLClass type: list_types.getFlattened() ){
+        		String drug_name="";
+        		for (OWLAnnotation annotation : type.getAnnotations(ontology, ann_relevant_for)) {
+        			IRI drug_IRI = IRI.create(annotation.getValue().toString());
+        			OWLClass drug_class = factory.getOWLClass(drug_IRI);
+        			if(drug_class!=null){
+        				Set<OWLAnnotation> listLabels = drug_class.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
+        				for(OWLAnnotation labelAnn: listLabels){
+        					if (labelAnn.getValue() instanceof OWLLiteral) {
+        						OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
+        						drug_name = literal.getLiteral().trim().toLowerCase();
+        					}
+        				}
+     	                System.out.println("\t\t\tdrug="+drug_name);
+     	                break;
+        			}
+    	        }
+        		
+        		if(!drug_name.isEmpty()){
+        			String cds_message = "";
+        			for (OWLAnnotation annotation : type.getAnnotations(ontology, ann_cds_message)) {
+        	            if (annotation.getValue() instanceof OWLLiteral) {
+        	                OWLLiteral rule_message = (OWLLiteral) annotation.getValue();
+        	                cds_message = rule_message.getLiteral();
+        	                if(list_recommendations.containsKey(drug_name)){
+        	                	HashSet<String> list_messages = list_recommendations.get(drug_name);
+        	                	list_messages.add(cds_message);
+        	                }else{
+        	                	HashSet<String> list_messages = new HashSet<String>();
+        	                	list_messages.add(cds_message);
+        	                	list_recommendations.put(drug_name, list_messages);
+        	                }
+        	                break;
+        	            }
+        	        }
+        		}	
+        	}
+        }
+        
+		System.out.println("Resultados test 6");
+		Iterator<String> it_keys = list_recommendations.keySet().iterator();
+		while(it_keys.hasNext()){
+			String key = it_keys.next();
+			System.out.println(key);
+			Iterator<String> it_sms = list_recommendations.get(key).iterator();
+			while(it_sms.hasNext()){
+				System.out.println("\t"+it_sms.next());
+			}
+		}
+	}
+	
+	
+	
+	private static void test8(){
+		
+		HashMap<String,HashSet<String>> list_recommendations = new HashMap<String,HashSet<String>>();
+		PatientProfileReasoning ppr = new PatientProfileReasoning(list_recommendations,IRI.create("file:/C:/Users/Jose/AppData/Local/Temp/reason_model_3774406547210853476.owl"));
+		try{
+			ppr.start();
+			ppr.join();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		System.out.println("Resultados test 8");
+		Iterator<String> it_keys = list_recommendations.keySet().iterator();
+		while(it_keys.hasNext()){
+			String key = it_keys.next();
+			System.out.println(key);
+			Iterator<String> it_sms = list_recommendations.get(key).iterator();
+			while(it_sms.hasNext()){
+				System.out.println("\t"+it_sms.next());
+			}
+		}
+	}
+	
+	
+	private static void test10(){
+		
+		HashMap<String,HashSet<String>> list_recommendations = new HashMap<String,HashSet<String>>();
+		PatientProfileReasoningPellet ppr = new PatientProfileReasoningPellet(list_recommendations,IRI.create("file:/C:/Users/Jose/AppData/Local/Temp/reason_model_3774406547210853476.owl"));
+		try{
+			ppr.start();
+			ppr.join();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		System.out.println("Resultados test 8");
+		Iterator<String> it_keys = list_recommendations.keySet().iterator();
+		while(it_keys.hasNext()){
+			String key = it_keys.next();
+			System.out.println(key);
+			Iterator<String> it_sms = list_recommendations.get(key).iterator();
+			while(it_sms.hasNext()){
+				System.out.println("\t"+it_sms.next());
+			}
+		}
+	}
+	
+	private static void test9(){
+		HashMap<String,HashSet<String>> list_recommendations = new HashMap<String,HashSet<String>>();
+		
+		OWLOntology ontology = null;
+    	OWLOntologyManager manager = null;
+    	OWLReasoner reasoner	= null;
+    	
+    	 
+        String ontologyFile="D:/workspace/Genomic-CDS/genomic-cds-demo.owl";
+        File inputOntologyFile = new File(ontologyFile);
+        manager=OWLManager.createOWLOntologyManager();
+        try {
+			ontology=manager.loadOntologyFromOntologyDocument(inputOntologyFile);
+		} catch (OWLOntologyCreationException e) {
+			e.printStackTrace();
+		}
+        
+        OWLReasonerFactory reasonerFactory = new StructuralReasonerFactory();
+	    reasoner = reasonerFactory.createNonBufferingReasoner(ontology);
+                
+        reasoner=new RELReasonerFactory().createReasoner(ontology);
+		reasoner.precomputeInferences();
+        boolean isConsistent = reasoner.isConsistent();
+        if(isConsistent) System.out.println("La ontología es consistente");
+        
+        OWLDataFactory factory = manager.getOWLDataFactory();
+		OWLNamedIndividual patient				= factory.getOWLNamedIndividual(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#this_patient"));//We obtain the patient instance
+		OWLAnnotationProperty ann_relevant_for	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#relevant_for"));
+		OWLAnnotationProperty ann_cds_message	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#CDS_message"));
+        if(patient!=null){
+        	NodeSet<OWLClass> list_types = reasoner.getTypes(patient, false);
+        	for(OWLClass type: list_types.getFlattened() ){
+        		String drug_name="";
+        		for (OWLAnnotation annotation : type.getAnnotations(ontology, ann_relevant_for)) {
+        			IRI drug_IRI = IRI.create(annotation.getValue().toString());
+        			OWLClass drug_class = factory.getOWLClass(drug_IRI);
+        			if(drug_class!=null){
+        				Set<OWLAnnotation> listLabels = drug_class.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
+        				for(OWLAnnotation labelAnn: listLabels){
+        					if (labelAnn.getValue() instanceof OWLLiteral) {
+        						OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
+        						drug_name = literal.getLiteral().trim().toLowerCase();
+        					}
+        				}
+     	                break;
+        			}
+    	        }
+        		
+        		if(!drug_name.isEmpty()){
+        			String cds_message = "";
+        			for (OWLAnnotation annotation : type.getAnnotations(ontology, ann_cds_message)) {
+        	            if (annotation.getValue() instanceof OWLLiteral) {
+        	                OWLLiteral rule_message = (OWLLiteral) annotation.getValue();
+        	                cds_message = rule_message.getLiteral();
+        	                if(list_recommendations.containsKey(drug_name)){
+        	                	HashSet<String> list_messages = list_recommendations.get(drug_name);
+        	                	list_messages.add(cds_message);
+        	                }else{
+        	                	HashSet<String> list_messages = new HashSet<String>();
+        	                	list_messages.add(cds_message);
+        	                	list_recommendations.put(drug_name, list_messages);
+        	                }
+        	                break;
+        	            }
+        	        }
+        		}	
+        	}
+        }
+        
+        System.out.println("Resultados test 9");
+		Iterator<String> it_keys = list_recommendations.keySet().iterator();
+		while(it_keys.hasNext()){
+			String key = it_keys.next();
+			System.out.println(key);
+			Iterator<String> it_sms = list_recommendations.get(key).iterator();
+			while(it_sms.hasNext()){
+				System.out.println("\t"+it_sms.next());
+			}
+		}
+        
+	}
+	
+	private static void test11(){
+		String ontologyFile="file:/D:/workspace/Genomic-CDS/genomic-cds-demo.owl";
+        HashMap<String,HashSet<String>> list_recommendations = new HashMap<String,HashSet<String>>();
+        IRI documentIRI = IRI.create(ontologyFile);
+		
+		PatientProfileReasoning ppr = new PatientProfileReasoning(list_recommendations,documentIRI);
+        try{
+        	ppr.start();
+        	System.out.println("Empezamos a ejecutar el código");
+        	ppr.join();
+        }catch(Exception e){
+        	e.printStackTrace();
+        }
+        
+        System.out.println("Resultados test 11");
+		Iterator<String> it_keys = list_recommendations.keySet().iterator();
+		while(it_keys.hasNext()){
+			String key = it_keys.next();
+			System.out.println(key);
+			Iterator<String> it_sms = list_recommendations.get(key).iterator();
+			while(it_sms.hasNext()){
+				System.out.println("\t"+it_sms.next());
+			}
+		}
+	}*/
+	
+	
+	private static void test12(){
+		String ontologyFile="file:/D:/workspace/Genomic-CDS/genomic-cds-demo.owl";
+        MedicineSafetyProfileOWLAPI msp = new MedicineSafetyProfileOWLAPI(ontologyFile);
+        HashMap<String,HashSet<String>> list_recommendations = msp.obtainDrugRecommendations();
+		
+		System.out.println("Resultados test 11");
+		Iterator<String> it_keys = list_recommendations.keySet().iterator();
+		while(it_keys.hasNext()){
+			String key = it_keys.next();
+			System.out.println(key);
+			Iterator<String> it_sms = list_recommendations.get(key).iterator();
+			while(it_sms.hasNext()){
+				System.out.println("\t"+it_sms.next());
+			}
+		}
+	}
+	
+	
 	/**
 	 * @param args
 	 * @throws BadFormedBase64NumberException 
@@ -65,9 +381,6 @@ public class test {
 	 * @throws OWLOntologyStorageException 
 	 */
 	public static void main(String[] args) throws BadFormedBase64NumberException, BadFormedBinaryNumberException, OWLOntologyCreationException, OWLOntologyStorageException {
-		
-		
-		
 		Runtime rt = Runtime.getRuntime();
         long totalMem = rt.totalMemory();
         long maxMem = rt.maxMemory();
@@ -78,18 +391,43 @@ public class test {
         System.out.println ("Max Memory:   " + maxMem + " (" + (maxMem/megs) + " MiB)");
         System.out.println ("Free Memory:  " + freeMem + " (" + (freeMem/megs) + " MiB)");
 		
-		/*TEST 5*/
+        /*TEST 12*/
+        test12();
+        
+        /*TEST 11*/
+        //test11();
+        
+        /*TEST 10*/
+        //test10();
+        
+        /*TEST 9*/
+        //test9();
+        
+        /*TEST 8*/
+        //test8();
+        
+        /*TEST 6*/
+        //test7();
+        
+        
+        /*TEST 6*/
+        //parserReasonOWLAPI();
+        
+        
+        
+		/*TEST 5
         OWLOntology ontology = null;
     	OWLOntologyManager manager = null;
     	OWLDataFactory factory = null;
     	OWLReasoner trOwl	= null;
-     // Primero, creamos un objeto OWLOntologyManager. Este gestor nos permitirá 
+    	
+    	// Primero, creamos un objeto OWLOntologyManager. Este gestor nos permitirá 
     	// cargar y guardar la ontogía. 
         manager=OWLManager.createOWLOntologyManager();
         
         // Ahora, creamos el objeto File con la ruta que contiene la ontologia para el 
         // Matching de Expertos.
-        String ontologyFile="D:/workspace/Genomic-CDS/model_1097.23andme.564.owl";
+        String ontologyFile="D:/workspace/Genomic-CDS/MSC_classes.ttl";
         File inputOntologyFile = new File(ontologyFile);
 
         // Utilizamos la librería OWL API para cargar la ontología. 
@@ -102,27 +440,8 @@ public class test {
 		trOwl.precomputeInferences();
         boolean isConsistent = trOwl.isConsistent();
         if(isConsistent) System.out.println("La ontología es consistente");
-        //prefixManager =  new DefaultPrefixManager("http://www.genomic-cds.org/ont/genomic-cds.owl#");
-        OWLClass human = factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#human"));
-        NodeSet<OWLClass> list_human = trOwl.getSubClasses(human, false);
-        boolean change=false;
-        for(OWLClass clase: list_human.getFlattened() ){
-        	Set<OWLAnnotation> list_ann = clase.getAnnotations(ontology);
-        	for(OWLAnnotation ann : list_ann){
-				if(ann.getProperty().getIRI().toString().contains("#rank")){
-					change=true;
-					break;
-				}
-			}
-        	if(change){
-        		
-        	}
-        	change=false;
-    	}       
         
-        manager.saveOntology(ontology);
-        
-        /*OWLNamedIndividual patient = factory.getOWLNamedIndividual(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#patient"));
+        OWLNamedIndividual patient = factory.getOWLNamedIndividual(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#patient"));
         HashSet<String> list_rules = new HashSet<String>();
         OWLClass root_rule = factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#human_triggering_CDS_rule"));
         if(root_rule!=null){
@@ -163,7 +482,7 @@ public class test {
         			System.out.println("\tcomment="+rule_comment);
         		}
         		if(list_polymorphism.contains(type.getIRI().toString())){
-        			//System.out.println("POLY="+type.getIRI());
+        			System.out.println("POLY="+type.getIRI());
         		}
         	}
         }*/
@@ -328,5 +647,16 @@ public class test {
 		} finally {
 			qexec.close();
 		}*/
+        
+        
+        rt = Runtime.getRuntime();
+        totalMem = rt.totalMemory();
+        maxMem = rt.maxMemory();
+        freeMem = rt.freeMemory();
+        megs = 1048576.0;
+
+        System.out.println ("Total Memory: " + totalMem + " (" + (totalMem/megs) + " MiB)");
+        System.out.println ("Max Memory:   " + maxMem + " (" + (maxMem/megs) + " MiB)");
+        System.out.println ("Free Memory:  " + freeMem + " (" + (freeMem/megs) + " MiB)");
 	}
 }

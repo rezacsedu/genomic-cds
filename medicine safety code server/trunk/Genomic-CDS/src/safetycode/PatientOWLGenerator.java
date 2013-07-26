@@ -1,5 +1,6 @@
 package safetycode;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
@@ -45,7 +46,7 @@ public class PatientOWLGenerator extends HttpServlet {
 		Writer out = response.getWriter();
 		StringBuffer contentHTML = new StringBuffer("");
 		contentHTML.append("<h1>A Medicine Safety Code was generated for your data</h1>");
-		String strandOrientationOfInputData = "dbsnp-orientation";
+		String strandOrientationOfInputData = Common.DBSNP_ORIENTATION;
 		FileItem my23andMeFileItem = null;
 		
 		try {
@@ -58,21 +59,20 @@ public class PatientOWLGenerator extends HttpServlet {
 	                String fieldvalue = item.getString();
 	                System.out.println("Fieldname: " + fieldname + ", Fieldvalue: " + fieldvalue);
 	                if (fieldname.equals("strand-orientation") && fieldvalue.equals("forward-orientation")) strandOrientationOfInputData = Common.FORWARD_ORIENTATION;
-	                if (fieldname.equals("strand-orientation") && fieldvalue.equals("dbsnp-orientation")) strandOrientationOfInputData = Common.DBSNP_ORIENTATION;
 	            } else {
-	                // Process form file field (input type="file").
-	                //String fieldname = item.getFieldName();
-	                //if (fieldname == "file") { // IF clause did not seem to match even though it should have
-	                my23andMeFileItem = item;
-	                //}
+	                 my23andMeFileItem = item;
 	            }
 	        }
 	        if (my23andMeFileItem == null) {
 	        	throw new ServletException("File is missing.");
 	        }
-	        MedicineSafetyProfile myProfile = new MedicineSafetyProfile();
+	        MedicineSafetyProfileOWLAPI myProfile = new MedicineSafetyProfileOWLAPI();
         	myProfile.read23AndMeFileStream(my23andMeFileItem.getInputStream(), strandOrientationOfInputData);
-        	myProfile.getRDFModel().getWriter().write(myProfile.getRDFModel(), out, "http://safety-code.org/ont/default-namespace/");
+        	
+        	ByteArrayOutputStream baops = new ByteArrayOutputStream();
+        	myProfile.writeModel(baops);
+        	out.write(baops.toString());
+        	
 	    } catch (FileUploadException e) {
 	        throw new ServletException("Cannot parse multipart request.", e);
 	    } catch (Exception e) {

@@ -15,7 +15,6 @@ import exception.VariantDoesNotMatchAnAllowedVariantException;
 import safetycode.MedicineSafetyProfile;
 import utils.Common;
 
-
 /**
  * This JUnit test case check the results from the MedicineSafetProfile's methods are correctly implemented.  
  * */
@@ -43,10 +42,10 @@ public class TestCase1 {
 	
 	
 	/**
-	 * This method checks if the a 23AndMe file produces the correct code in forward orientation. 
+	 * This method checks if the a 23AndMe file produces the correct code in dbsnp orientation. 
 	 * */
 	@Test
-	public void testRead23AndMeFileStreamInputStreamString() {
+	public void testRead23AndMeFileStreamInputStreamStringDbsnp() {
 		InputStream my23AndMeFileStream=null;
 		String fileName="D:/workspace/Genomic-CDS/1097.23andme.564";
 		
@@ -59,6 +58,16 @@ public class TestCase1 {
 		msp.read23AndMeFileStream(my23AndMeFileStream, Common.DBSNP_ORIENTATION);
 		String base64Profile = msp.getBase64ProfileString();
 		assertEquals("We check if the file "+fileName+" produces the correct code in dbsnp orientation","cCA100742P422e200g206b0gjW30K00G3zHG1b0e1Wg9SOG092c2y8VNWK0ny1v0040027ZaVm00KHvuUpTSLYEXYXICle3WWA00W06-8V1GAC80FtuCo9N9piVo0I2yH0-3Y0XmCC3KG0000",base64Profile);
+	}
+	
+	
+	/**
+	 * This method checks if the a 23AndMe file produces the correct code in forward orientation. 
+	 * */
+	@Test
+	public void testRead23AndMeFileStreamInputStreamStringForward() {
+		InputStream my23AndMeFileStream=null;
+		String fileName="D:/workspace/Genomic-CDS/1097.23andme.564";
 		
 		try {
 			my23AndMeFileStream = new FileInputStream(fileName);
@@ -66,9 +75,9 @@ public class TestCase1 {
 			e.printStackTrace();
 			System.out.println("ERROR");
 		}
-		
+				
 		msp.read23AndMeFileStream(my23AndMeFileStream, Common.FORWARD_ORIENTATION);
-		base64Profile = msp.getBase64ProfileString();
+		String base64Profile = msp.getBase64ProfileString();
 		assertEquals("We check if the file "+fileName+" produces the correct code in forward orientation","cCB3RLNS2vCXUgK5Gl3c2z12jrLzVjqND-AG3bH7jWhDSVG392k2SR_NWK0nzPwTq51Y27ZaVmMFKHvuUpTUrYFZYXICleZWeBgQYW--8V1GAC80Ftvio9N9piVo0I2yH0-3Y0vmFC3KG0000",base64Profile);
 	}
 	

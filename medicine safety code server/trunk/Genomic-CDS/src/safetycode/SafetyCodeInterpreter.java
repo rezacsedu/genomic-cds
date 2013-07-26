@@ -3,6 +3,8 @@ package safetycode;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -12,11 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.text.StrSubstitutor;
 
-import eu.trowl.jena.TrOWLJenaFactory;
 import exception.VariantDoesNotMatchAnAllowedVariantException;
 
-import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.rdf.model.*;
 
 /**
  * Servlet implementation class SafetyCodeInterpreter
@@ -25,7 +24,7 @@ import com.hp.hpl.jena.rdf.model.*;
 public class SafetyCodeInterpreter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private MedicineSafetyProfile bootstrapProfile;
+	private MedicineSafetyProfileOWLAPI bootstrapProfile;
 
 	/**
 	 * @throws IOException
@@ -35,10 +34,7 @@ public class SafetyCodeInterpreter extends HttpServlet {
 		super();
 		
 		// initialize bootstrapProfile, which is used to speed up the creation of new MedicineSafetyProfiles
-		bootstrapProfile = new MedicineSafetyProfile();
-		Model model = bootstrapProfile.getRDFModel();
-		OntModel reasonerModel = ModelFactory.createOntologyModel(TrOWLJenaFactory.THE_SPEC );
-		reasonerModel.addSubModel(model,true);
+		bootstrapProfile = new MedicineSafetyProfileOWLAPI();
 	}
 
 	/**
@@ -50,44 +46,55 @@ public class SafetyCodeInterpreter extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		
-		
 		String base64ProfileString = request.getPathInfo().substring(1);
 		
-		if ((base64ProfileString.equals("")) || (base64ProfileString == null)) 
-			throw (new ServletException("Error: Submitted code is invalid or missing."));
+		if ((base64ProfileString.equals("")) || (base64ProfileString == null)) 	throw (new ServletException("Error: Submitted code is invalid or missing."));
 		
-		/*String queryString;
-		Query query;
-		QueryExecution qexec;
-		ResultSet results;*/
-
-		MedicineSafetyProfile myProfile = bootstrapProfile;
-
 		try {
-			myProfile.readBase64ProfileString(base64ProfileString);
+			bootstrapProfile.readBase64ProfileString(base64ProfileString);
 		} catch (VariantDoesNotMatchAnAllowedVariantException e) {
 			throw (new ServletException( e.getMessage()));
 		}
 		
-		StringBuffer recommendationsHTML = new StringBuffer("");
-		StringBuffer rawDataHTML = new StringBuffer("");
+		HashMap<String,HashSet<String>> list_recommendations = bootstrapProfile.obtainDrugRecommendations();
+		Map<String,StringBuffer> valuesMap = new HashMap<String, StringBuffer>();
 		
+		// Output raw data
+		StringBuffer rawDataHTML = new StringBuffer("");
+		if(list_recommendations.containsKey("raw_data")){
+			rawDataHTML.append("<ul>");
+			Iterator<String> list_data = list_recommendations.get("raw_data").iterator();
+			while(list_data.hasNext()){
+				rawDataHTML.append("<li>"+list_data.next()+"</li>");
+			}
+			rawDataHTML.append("</ul>");
+			list_recommendations.remove("raw_data");
+		}
+		valuesMap.put("raw_data", rawDataHTML);
 		
 		// Output recommendations
 		
+		if(!list_recommendations.isEmpty()){
+			Iterator<String> it_keys = list_recommendations.keySet().iterator();
+			while(it_keys.hasNext()){
+				String key = it_keys.next();
+				StringBuffer recommendationsHTML = new StringBuffer("");
+				recommendationsHTML.append("<ul>");
+				Iterator<String> list_data = list_recommendations.get(key).iterator();
+				while(list_data.hasNext()){
+					recommendationsHTML.append("<li>"+list_data.next()+"</li>");
+				}
+				recommendationsHTML.append("</ul>");
+				valuesMap.put("recommendations_"+key.toLowerCase(), recommendationsHTML);
+			}
+			list_recommendations.clear();
+		}
 		
-		// Output raw data
-				
-
+		
 		// Below, the Apache StrSubstitutor class is used as a very simple
-		// templating engine
-		
+		// templating engine		
 		StringReader myStringReader = new StringReader();
 		String templateString = myStringReader.readFile("interpretation-template.html");
-		
-		Map<String,StringBuffer> valuesMap = new HashMap<String, StringBuffer>();
-		valuesMap.put("recommendations", recommendationsHTML);
-		valuesMap.put("raw_data", rawDataHTML);
 		StrSubstitutor sub = new StrSubstitutor(valuesMap);
 		String resolvedString = sub.replace(templateString);
 

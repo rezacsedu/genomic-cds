@@ -13,44 +13,13 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/arq-2.8.7.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-codec-1.6-javadoc.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-codec-1.6-sources.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-codec-1.6-tests.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-codec-1.6.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-fileupload-1.2.2.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-io-2.3-javadoc.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-io-2.3.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/core.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/icu4j-3.4.4.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/iri-0.8.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/javase.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jena-2.6.4-javadoc.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jena-2.6.4-tests.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jena-2.6.4.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jtpl-2.0.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/junit-4.5.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/log4j-1.2.13.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/lucene-core-2.3.1.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-api-1.5.8.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/slf4j-log4j12-1.5.8.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/ST-4.0.5.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/stax-api-1.0.1.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/TrOWLCore.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/velocity-1.7-dep.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/wstx-asl-3.2.9.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/xercesImpl-2.7.1.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/bzip2.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/commons-configuration-1.6.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/derby.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/h2.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jetty-all.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/JSAP-2.1.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/json_simple.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.protege.editor.core.application.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/org.protege.editor.owl.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/owlapi3.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/pg.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/servlet-api.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/lib_trowl/owlapi3.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/lib_trowl/TrOWLCore.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

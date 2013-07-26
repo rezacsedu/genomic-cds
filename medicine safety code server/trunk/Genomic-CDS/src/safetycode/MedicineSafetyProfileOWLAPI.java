@@ -1,32 +1,39 @@
 package safetycode;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
-import org.semanticweb.owlapi.model.OWLAxiom;
+import org.semanticweb.owlapi.model.OWLAnnotation;
+import org.semanticweb.owlapi.model.OWLAnnotationProperty;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
 import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLDataProperty;
+import org.semanticweb.owlapi.model.OWLIndividual;
+import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
+import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.model.PrefixManager;
+import org.semanticweb.owlapi.reasoner.NodeSet;
 import org.semanticweb.owlapi.reasoner.OWLReasoner;
-import org.semanticweb.owlapi.util.DefaultPrefixManager;
+import org.semanticweb.owlapi.reasoner.OWLReasonerFactory;
+import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
+import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 
 import utils.Common;
 
-
+import eu.trowl.owlapi3.rel.reasoner.dl.RELReasoner;
 import eu.trowl.owlapi3.rel.reasoner.dl.RELReasonerFactory;
+
 import exception.BadFormedBase64NumberException;
 import exception.BadFormedBinaryNumberException;
 import exception.VariantDoesNotMatchAnAllowedVariantException;
@@ -39,11 +46,10 @@ public class MedicineSafetyProfileOWLAPI {
 	/**
 	 * Ontology model that contains the patient conceptualization and pharmacogenomics semantic rules. 
 	 * */
-	private OWLOntology ontology = null;
-	private OWLOntologyManager manager = null;
- 	private OWLDataFactory factory = null;
- 	private PrefixManager prefixManager = null;
- 	private OWLReasoner trOwl	= null;
+	private OWLOntology ontology		= null;
+	private OWLOntologyManager manager	= null;
+ 	//private OWLDataFactory factory		= null;
+ 	private OWLReasoner reasoner		= null;
 	
  	
 	/**
@@ -51,25 +57,38 @@ public class MedicineSafetyProfileOWLAPI {
 	 * */
 	public MedicineSafetyProfileOWLAPI() {
 		super();
-		initializeModel();
+		initializeModel(null);
 	}
+	public MedicineSafetyProfileOWLAPI(String ontologyFile){
+		super();
+		initializeModel(ontologyFile);
+		
+	}
+	
 	
 	
 	/**
 	 * initialize model with core pharmacogenomic dataset.
 	 * */
-	private void initializeModel () {
-		String ontologyFile="D:/workspace/Genomic-CDS/MSC_classes.ttl";
-		//String namespace="http://www.genomic-cds.org/ont/genomic-cds.owl";
+	private void initializeModel (String ontologyFile) {
 		
+		if(ontologyFile==null){
+			ontologyFile="file:/D:/workspace/Genomic-CDS/MSC_classes.ttl";
+		}
+				
 		try{
 			 manager=OWLManager.createOWLOntologyManager();
-			 File inputOntologyFile = new File(ontologyFile);
-			 ontology=manager.loadOntologyFromOntologyDocument(inputOntologyFile);
-		     factory = manager.getOWLDataFactory();
-		     /*trOwl=new RELReasonerFactory().createReasoner(ontology);
-		     trOwl.precomputeInferences();
-		     boolean isConsistent = trOwl.isConsistent();
+			 IRI physicalURI = IRI.create(ontologyFile);
+			 ontology = manager.loadOntologyFromOntologyDocument(physicalURI);
+			 //File inputOntologyFile = new File(ontologyFile);
+			 //ontology=manager.loadOntologyFromOntologyDocument(inputOntologyFile);
+			 //factory = manager.getOWLDataFactory();
+		     OWLReasonerFactory reasonerFactory = new StructuralReasonerFactory();
+		     reasoner = reasonerFactory.createNonBufferingReasoner(ontology);
+		    
+		     /*reasoner=new RELReasonerFactory().createReasoner(ontology);
+		     reasoner.precomputeInferences();
+		     boolean isConsistent = reasoner.isConsistent();
 		     if(isConsistent) System.out.println("La ontología es consistente");*/
 		     
 		}catch(Exception e){
@@ -77,6 +96,32 @@ public class MedicineSafetyProfileOWLAPI {
 		}
 	}
 	
+	public void calculateInferences() throws OWLOntologyCreationException{
+		//reasoner.precomputeInferences();
+		reasoner.interrupt();
+		reasoner.dispose();
+		IRI documentIRI = writeModel("reason_model_");
+		/*manager.removeOntology(ontology);
+		manager.clearIRIMappers();
+		factory.purge();
+		*/
+		manager=null;
+		//factory=null;
+		ontology=null;
+		reasoner=null;
+		
+		Runtime.getRuntime().gc();
+		System.gc();
+		
+		manager=OWLManager.createOWLOntologyManager();
+		ontology = manager.loadOntologyFromOntologyDocument(documentIRI);
+		//factory = manager.getOWLDataFactory();
+	    
+	    reasoner = new RELReasonerFactory().createReasoner(ontology);
+		reasoner.precomputeInferences();
+		boolean isConsistent = reasoner.isConsistent();
+		if(isConsistent) System.out.println("La ontología es consistente");
+	}
 	
 	/**
 	 * It parsers the 23AndMe file with the default strand orientation (dbnsp_orientation).
@@ -105,6 +150,7 @@ public class MedicineSafetyProfileOWLAPI {
 		String processingReport					= "<ul>\n";	//Report that contains the missing matched criteria syntax and general statistics of the parser.
 		ArrayList<String[]> listRsids 			= getListRsids();	//Sorted list of strand markers.
 		int numberOfRsids = listRsids.size();
+		
 		//Parsing the 23AndMe file
 		try{
 			String rsid 			= "";	//strand id
@@ -142,13 +188,11 @@ public class MedicineSafetyProfileOWLAPI {
 			e.printStackTrace();
 		}
 		//End parsing 23AndMe file
-
-	
+		
 		String base2ProfileString=""; // binary code of patient variants
 		
 		//Create the individual patient
 		OWLNamedIndividual patient = createPatient();
-		
 		
 		//Process all patient variations
 		for(int i=0;i<listRsids.size();i++){
@@ -156,7 +200,7 @@ public class MedicineSafetyProfileOWLAPI {
 			String criteriaSyntax=genotype[3];//Criteria syntax that will be related to the patient
 			String bit_code=null;
 			try{
-				bit_code=addVariantToPatient(patient,criteriaSyntax);//Create rdf:type link between patient individual and matched variant class with the criteria syntax
+				bit_code=addVariantToPatientByCriteriaSyntax(patient,genotype[0],criteriaSyntax);//Create rdf:type link between patient individual and matched variant class with the criteria syntax
 			}catch(VariantDoesNotMatchAnAllowedVariantException e){
 				processingReport+="<li>"+e.getMessage();
 			}catch(Exception e){
@@ -184,14 +228,15 @@ public class MedicineSafetyProfileOWLAPI {
 	/**
 	 * Create the patient instance in the model
 	 * */
-	private OWLNamedIndividual createPatient(){		
+	private OWLNamedIndividual createPatient(){
+		OWLDataFactory factory = manager.getOWLDataFactory();
 		OWLClass humanClass = factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#human"));
-		OWLNamedIndividual patientIndividual = factory.getOWLNamedIndividual(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#patient"));
+		OWLNamedIndividual patientIndividual = factory.getOWLNamedIndividual(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#this_patient"));
 		OWLClassAssertionAxiom classAssertion = factory.getOWLClassAssertionAxiom(humanClass,patientIndividual);
 		manager.addAxiom(ontology,classAssertion);
+		
 		return patientIndividual;
 	}
-	
 	
 	
 	/**
@@ -209,35 +254,89 @@ public class MedicineSafetyProfileOWLAPI {
 		// [3] -> criteria_syntax
 		// [4] -> bit_code
 		
-		String queryString = Common.SPARQL_NAME_SPACES
-				+ " SELECT ?rsid ?bit_length ?orientation" 
-				+ " WHERE { " 
-				+ "     ?item pgx:rsid ?rsid . "
-				+ "		?item sc:rank ?rank . "  
-				+ "		?item sc:bit_length ?bit_length . "
-				+ "     ?item pgx:dbsnp_orientation_on_reference_genome ?orientation ."
-				+ " } ORDER BY ?rank ";
-		
-		QueryExecution qexec = QueryExecutionFactory.create(QueryFactory.create(queryString), owlReader);
-		try{
-			ResultSet results = qexec.execSelect();//The markers will be obtained in order by rank of markers
-			while (results.hasNext()) {
-				QuerySolution soln	= results.nextSolution();
-				String rsid			= soln.getLiteral("rsid").getString();
-				int bit_length		= soln.getLiteral("bit_length").getInt();
-				String orientation	= soln.getLiteral("orientation").getString();
+		HashMap<Integer,String[]> results = new HashMap<Integer,String[]>();
 				
-				String criteria_syntax = rsid+"(null;null)"; //Generate the criteria syntax of "null;null" variant of this marker
-				String bit_code = "";						 //Generate the bit code of "null;null" variant of this marker
-				for(int i=0;i<bit_length;i++){
-					bit_code+="0";
-				}
-				String[] genotype = {rsid,""+bit_length,orientation,criteria_syntax,bit_code}; //create the corresponding string array of this markers
-				listRsids.add(genotype); //Insert the string array to the list of markers
+		OWLDataFactory factory = manager.getOWLDataFactory();
+		OWLClass human_with_genotype_marker = factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#human_with_genotype_marker"));
+		NodeSet<OWLClass> list_marker = reasoner.getSubClasses(human_with_genotype_marker, true);
+        for(OWLClass clase: list_marker.getFlattened() ){
+        	String rank="";
+        	OWLAnnotationProperty ann_rank			= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#rank"));
+        	for (OWLAnnotation annotation : clase.getAnnotations(ontology, ann_rank)) {
+                if (annotation.getValue() instanceof OWLLiteral) {
+                    OWLLiteral val = (OWLLiteral) annotation.getValue();
+                    rank=val.getLiteral();
+                    break;
+                }
+            }
+        	if(rank==null || rank.isEmpty()) continue;
+        	int rank_int = -1;
+        	try{
+        		rank_int = Integer.parseInt(rank);
+        	}catch(NumberFormatException e){
+        		e.printStackTrace();
+        		continue;
+        	}
+        	        	
+        	String bit_length="";
+        	OWLAnnotationProperty ann_bit_length	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#bit_length"));
+        	for (OWLAnnotation annotation : clase.getAnnotations(ontology, ann_bit_length)) {
+                if (annotation.getValue() instanceof OWLLiteral) {
+                    OWLLiteral val = (OWLLiteral) annotation.getValue();
+                    bit_length=val.getLiteral();
+                    break;
+                }
+            }
+        	if(bit_length==null || bit_length.isEmpty()) continue;
+        	
+        	String rsid="";
+        	OWLAnnotationProperty ann_rsid			= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#rsid"));
+        	for (OWLAnnotation annotation : clase.getAnnotations(ontology, ann_rsid)) {
+                if (annotation.getValue() instanceof OWLLiteral) {
+                    OWLLiteral val = (OWLLiteral) annotation.getValue();
+                    rsid=val.getLiteral();
+                    break;
+                }
+            }
+        	if(rsid==null || rsid.isEmpty()) continue;
+        	
+        	String orientation="";
+        	OWLAnnotationProperty ann_orientation	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#dbsnp_orientation_on_reference_genome"));
+        	for (OWLAnnotation annotation : clase.getAnnotations(ontology, ann_orientation)) {
+                if (annotation.getValue() instanceof OWLLiteral) {
+                    OWLLiteral val = (OWLLiteral) annotation.getValue();
+                    orientation=val.getLiteral();
+                    break;
+                }
+            }
+        	if(orientation==null || orientation.isEmpty()) continue;
+        	
+        	String criteria_syntax = rsid+"(null;null)";	//Generate the criteria syntax of "null;null" variant of this marker
+        	
+        	String bit_code = "";							//Generate the bit code of "null;null" variant of this marker
+        	int length=2;
+        	try{
+        		length = Integer.parseInt(bit_length);
+        	}catch(NumberFormatException e){
+        		e.printStackTrace();
+        	}
+        	for(int i=0;i<length;i++){
+				bit_code+="0";
 			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}		
+        	
+        	String[] genotype = {rsid,bit_length,orientation,criteria_syntax,bit_code}; //create the corresponding string array of this markers
+        	results.put(rank_int, genotype);
+        }
+        
+        //Sort the list of markers by their rank number.
+		for(int key=0;!results.isEmpty();key++){ 
+			if(results.containsKey(key)){
+				String[] genotype=results.get(key);
+				listRsids.add(genotype);
+				results.remove(key);
+			}
+		}
+		
 		return listRsids;
 	}
 	
@@ -286,189 +385,136 @@ public class MedicineSafetyProfileOWLAPI {
 	 * It associate the classes of variants that match the criteria syntax to the patient instance in the model.
 	 * 
 	 * @param patient			Individual that corresponds to the instance of the patient in the model.
+	 * @param rsid				Indicates the id of the genotype marker.
 	 * @param criteriaSyntax	It represents the criteria syntax of a variant in the model.
 	 * @throws	A VariantDoesNotMatchAnAllowedVariantException when an error is detected in the model definition.
 	 * @return	It returns the bit code associated to the user or null if the criteria syntax could not be matched in the model.
 	 * */
-	private String addVariantToPatient(Individual patient, String criteriaSyntax) throws VariantDoesNotMatchAnAllowedVariantException{
+	private String addVariantToPatientByCriteriaSyntax(OWLIndividual patient, String rsid, String criteriaSyntax) throws VariantDoesNotMatchAnAllowedVariantException{
 		String bit_code=null;
+		OWLDataFactory factory = manager.getOWLDataFactory();
+		String criteriaSyntax_def 			= criteriaSyntax.substring(0,criteriaSyntax.indexOf("("))+"(null;null)";
+		OWLClass human_with_genotype_marker = factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#human_with_genotype_marker"));
+		OWLAnnotationProperty ann_rsid		= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#rsid"));
+		OWLAnnotationProperty ann_bit_code	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#bit_code"));
+    	OWLAnnotationProperty ann_criteria	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#criteria_syntax"));
+    	OWLClass matchedVariantClass		= null;
+    	OWLClass matchedVariantDefClass 	= null;
+		NodeSet<OWLClass> list_marker 		= reasoner.getSubClasses(human_with_genotype_marker, true);
 		
-		String criteriaSyntax_def=criteriaSyntax.substring(0,criteriaSyntax.indexOf("("))+"(null;null)";
-		String queryString = Common.SPARQL_NAME_SPACES 
-				+ "	SELECT ?variant ?bit_code ?variant_def"
-				+ "	WHERE { "
-				+ "		{" 
-				+ "			?variant sc:criteria_syntax \""+criteriaSyntax+"\" . " 
-				+ "			?variant sc:bit_code ?bit_code . "
-				+ "		} UNION { "
-				+ "			?variant_def sc:criteria_syntax \""+criteriaSyntax_def+"\" . "
-				+ "     } "
-				+ "	} ";
-		
-		QueryExecution qexec = QueryExecutionFactory.create(QueryFactory.create(queryString), owlReader);
-		try {
-			ResultSet results = qexec.execSelect();
-			if(results.hasNext()){
-				QuerySolution soln	= results.nextSolution();
-				Resource resource	= soln.getResource("variant");
-				if(resource!=null){
-					patient.addOntClass(resource);
-					bit_code=soln.getLiteral("bit_code").getString();
-				}else{
-					resource 		= soln.getResource("variant_def");
-					if(resource==null) throw new VariantDoesNotMatchAnAllowedVariantException("<p>ERROR: "+criteriaSyntax_def+" was not found in the model</p>");
-					patient.addOntClass(resource);				
-				}
-			}
-		}catch (Exception e) {
-			throw new VariantDoesNotMatchAnAllowedVariantException("<p>ERROR: Cannot query the model with "+criteriaSyntax_def+"</p>");
-		}finally {
-			qexec.close();
-		}
+		//Seek for the corresponding marker in the ontology
+		for(OWLClass clase: list_marker.getFlattened() ){
+        	String literal_rsid="";
+        	//Obtain the rsid of each marker
+        	for (OWLAnnotation annotation : clase.getAnnotations(ontology, ann_rsid)) {
+                if (annotation.getValue() instanceof OWLLiteral) {
+                    OWLLiteral val = (OWLLiteral) annotation.getValue();
+                    literal_rsid=val.getLiteral();
+                }
+            }
+        	if(literal_rsid!=null && literal_rsid.equalsIgnoreCase(rsid)){//Check if the literal_rsid is equal to the marker's rsid we are looking for
+        		NodeSet<OWLClass> list_variants = reasoner.getSubClasses(clase, true);
+        		//Seek for the variants that contain the critieriaSyntax or criteriaSyntax_def
+        		for(OWLClass variant: list_variants.getFlattened()){
+        			//We obtain the criteriaSyntax annotation value and compare with the given string
+                	for (OWLAnnotation annotation : variant.getAnnotations(ontology, ann_criteria)) {
+                        if (annotation.getValue() instanceof OWLLiteral) {
+                            OWLLiteral val = (OWLLiteral) annotation.getValue();
+                            if(criteriaSyntax.equalsIgnoreCase(val.getLiteral())){//This variant matches the criteriaSyntax
+                            	matchedVariantClass = variant;
+                            	break;
+                            }
+                            if(criteriaSyntax_def.equalsIgnoreCase(val.getLiteral())){//This variant matches the criteriaSyntax_def
+                            	matchedVariantDefClass = variant;
+                            	break;
+                            }
+                        }
+                	}
+                	if(matchedVariantClass!=null) break;
+                }
+        		
+        		//We obtain the bit_code digits if the desired variant is found
+            	if(matchedVariantClass!=null){
+            		for (OWLAnnotation annotation : matchedVariantClass.getAnnotations(ontology, ann_bit_code)) {
+                        if (annotation.getValue() instanceof OWLLiteral) {
+                            OWLLiteral val = (OWLLiteral) annotation.getValue();
+                            bit_code=val.getLiteral();
+                        }
+                    }
+            		//We add the variant class to the patient instance in the ontology
+            		OWLClassAssertionAxiom classAssertion = factory.getOWLClassAssertionAxiom(matchedVariantClass,patient);
+            		manager.addAxiom(ontology,classAssertion);
+            	}else{
+            		if(matchedVariantDefClass!=null){
+            			//We add the variant null class to the patient instance in the ontology
+                		OWLClassAssertionAxiom classAssertion = factory.getOWLClassAssertionAxiom(matchedVariantDefClass,patient);
+                		manager.addAxiom(ontology,classAssertion);
+                	}
+            	}
+            	break;
+        	}
+        }   
 		return bit_code;
 	}
 		
 	
 	/**
-	 * It associate the classes of variants that match the criteria syntax to the patient instance in the model.
+	 * It associate the classes of variants that match the bit_code of the marker to the patient instance in the model.
 	 * 
 	 * @param patient			Individual that corresponds to the instance of the patient in the model.
 	 * @param criteriaSyntax	It represents the criteria syntax of a variant in the model.
 	 * @throws	A VariantDoesNotMatchAnAllowedVariantException when an error is detected in the model definition.
-	 * @return	It returns the bit code associated to the user or null if the criteria syntax could not be matched in the model.
+	 * @return	It returns true if the variant is added to the patient and false otherwise.
 	 * */
-	private boolean addVariantToPatient(Individual patient, String rsid, String bit_code) throws VariantDoesNotMatchAnAllowedVariantException{
-		boolean added=false;	
-		String queryString = Common.SPARQL_NAME_SPACES 
-				+ "	SELECT ?variant \n"
-				+ "	WHERE { \n"
-				+ " 	?marker pgx:rsid	\""+rsid+"\" . \n"
-				+ "		?variant rdfs:subClassOf ?marker . \n" 
-				+ "		?variant sc:bit_code \""+bit_code+"\" . \n"
-				+ "	} ";
+	private boolean addVariantToPatientByBitCode(OWLIndividual patient, String rsid, String bit_code) throws VariantDoesNotMatchAnAllowedVariantException{
+		boolean added=false;
+		OWLDataFactory factory = manager.getOWLDataFactory();
+		OWLClass human_with_genotype_marker = factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#human_with_genotype_marker"));
+		OWLAnnotationProperty ann_rsid		= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#rsid"));
+		OWLAnnotationProperty ann_bit_code	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#bit_code"));
+    	OWLClass matchedVariantClass		= null;
+    	NodeSet<OWLClass> list_marker 		= reasoner.getSubClasses(human_with_genotype_marker, true);
 		
-		QueryExecution qexec = QueryExecutionFactory.create(QueryFactory.create(queryString), owlReader);
-		try {
-			ResultSet results = qexec.execSelect();
-			if(results.hasNext()){
-				QuerySolution soln	= results.nextSolution();
-				Resource resource	= soln.getResource("variant");
-				if(resource!=null){
-					patient.addOntClass(resource);
-					added=true;
-				}
-			}
-		}catch (Exception e) {
-			throw new VariantDoesNotMatchAnAllowedVariantException("<p>ERROR: Cannot query the model with bit_code "+bit_code+" for marker "+rsid+"</p>");
-		}finally {
-			qexec.close();
-		}
+		//Seek for the corresponding marker in the ontology
+		for(OWLClass clase: list_marker.getFlattened() ){
+        	String literal_rsid="";
+        	//Obtain the rsid of each marker
+        	for (OWLAnnotation annotation : clase.getAnnotations(ontology, ann_rsid)) {
+                if (annotation.getValue() instanceof OWLLiteral) {
+                    OWLLiteral val = (OWLLiteral) annotation.getValue();
+                    literal_rsid=val.getLiteral();
+                }
+            }
+        	if(literal_rsid!=null && literal_rsid.equalsIgnoreCase(rsid)){//Check if the literal_rsid is equal to the marker's rsid we are looking for
+        		NodeSet<OWLClass> list_variants = reasoner.getSubClasses(clase, true);
+        		//Seek for the variants that contain the desired bit_code
+        		for(OWLClass variant: list_variants.getFlattened() ){
+        			//We obtain the criteriaSyntax annotation value and compare with the given string
+                	for (OWLAnnotation annotation : variant.getAnnotations(ontology, ann_bit_code)) {
+                        if (annotation.getValue() instanceof OWLLiteral) {
+                            OWLLiteral val = (OWLLiteral) annotation.getValue();
+                            if(bit_code.equals(val.getLiteral())){
+                            	matchedVariantClass = variant;
+                            }
+                        }
+                	}
+                	if(matchedVariantClass!=null) break;
+                }
+        		
+        		//We obtain the bit_code digits if the desired variant is found
+            	if(matchedVariantClass!=null){
+            		//We add the variant class to the patient instance in the ontology
+            		OWLClassAssertionAxiom classAssertion = factory.getOWLClassAssertionAxiom(matchedVariantClass,patient);
+            		manager.addAxiom(ontology,classAssertion);
+            		added=true;
+            	}
+        	}
+        }
+		
 		return added;
 	}
 	
-	/*public void generateQRCode(String fileName) throws Exception {////No se llama nunca a este método porque está implementado en el servlet MSCImageGenerator
-		Charset charset = Charset.forName("ISO-8859-1");
-		CharsetEncoder encoder = charset.newEncoder();
-		byte[] b = null;
-		try {
-			// Convert string of ProfileURL to ISO-8859-1 bytes in a ByteBuffer
-			ByteBuffer bbuf = encoder.encode(CharBuffer.wrap(this.getProfileURL()));
-			b = bbuf.array();
-		} catch (CharacterCodingException e) {
-			System.out.println(e.getMessage());
-		}
-
-		String data;
-		try {
-			data = new String(b, "ISO-8859-1");
-		} catch (UnsupportedEncodingException e) {
-			System.out.println(e.getMessage());
-			return;
-		}
-
-		// get a BitMatrix for the data
-		BitMatrix matrix = null;
-		int h = 200;
-		int w = 200;
-		com.google.zxing.Writer writer = new QRCodeWriter();
-		try {
-			matrix = writer.encode(data,
-					com.google.zxing.BarcodeFormat.QR_CODE, w, h);
-		} catch (com.google.zxing.WriterException e) {
-			System.out.println(e.getMessage());
-			return;
-		}
-
-		File file = new File(fileName);
-		try {
-			MatrixToImageWriter.writeToFile(matrix, "PNG", file);
-			System.out.println("printing to " + file.getAbsolutePath());
-		} catch (IOException e) {
-			System.out.println(e.getMessage());
-		}
-	}*/
-
-	/*
-	public void readCAMDAFileStream(InputStream my23AndMeFileStream) throws IOException {
-		BufferedReader reader = new BufferedReader(new InputStreamReader(my23AndMeFileStream));
-		String line = null;
-		String criteriaSyntax;
-		String[] lineArray;
-		String rsid;
-			
-		initializeCodeModel();
 		
-		Vector<String> acceptedRsids = getAcceptedRsids();
-		
-		// Skip first line
-		reader.readLine();
-		
-		// Iterate through lines in 23andMe file
-		while ((line = reader.readLine()) != null) {
-
-			// Parse line
-			lineArray = line.split(",");
-			rsid = lineArray[2];
-			String[] haplotypeArray = lineArray[5].split("/");
-		
-			// Skip when rsid is not in Vector of accepted rsids, remove from Vector if it was matched
-			if (acceptedRsids.contains(rsid) == false) continue;
-			acceptedRsids.remove(rsid);
-			
-			// Skip when code does not have length of 2 (e.g., "C" instead of "CC")
-			if (haplotypeArray.length != 2) continue;
-			
-			// Sort alphabetically to match convention used by criteria syntax
-			Arrays.sort(haplotypeArray);
-			
-			// Generate criteria syntax representation for the SNP described in this line
-			criteriaSyntax = rsid + "(" + haplotypeArray[0] + ";" + haplotypeArray[1] + ")";
-			
-			// Generate triples representing matching variants
-			try {
-				addVariantBasedOnCriteriaSyntax(criteriaSyntax);
-			}
-			catch (Exception e)
-			{
-				
-			}
-		}
-		
-		// generate "NULL" genotypes for genotypes that are not yet described in codeModel
-		repairCodeModel();
-		
-		updateStringRepresentationsFromCodeModel();	
-	}
-	*/
-	
-	/**
-	 * Get method to obtain the generated model.
-	 * @return	The generated model of the patient.
-	 * */
-	public Model getRDFModel () {
-		return owlReader;
-	}
-
 	/**
 	 * Get method to obtain the 64 base representation of the patient variants of the markers.
 	 * @return	The string associated to the variants of the patient or null if it is not yet defined. 
@@ -495,8 +541,8 @@ public class MedicineSafetyProfileOWLAPI {
 		
 		ArrayList<String[]> listRsids	= getListRsids();
 		
-		OntClass humanClass = owlReader.getOntClass("http://www.genomic-cds.org/ont/genomic-cds.owl#human");		//Human class definition
-		Individual patient = humanClass.createIndividual("http://www.genomic-cds.org/ont/genomic-cds.owl#patient");	//Individual that represents the patient conceptualization
+		//OWLNamedIndividual patient = factory.getOWLNamedIndividual(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#patient"));
+		OWLNamedIndividual patient = createPatient();
 		
 		for(int position = 0, i = 0;i<listRsids.size();i++){
 			String[] genotype = listRsids.get(i);
@@ -507,24 +553,9 @@ public class MedicineSafetyProfileOWLAPI {
 			String bit_code = binaryProfile.substring(position,position+bit_length);
 			genotype[4]=bit_code;
 			position+=bit_length;
-			if(!addVariantToPatient(patient, genotype[0],genotype[4])){
+			if(!addVariantToPatientByBitCode(patient, genotype[0],genotype[4])){
 				throw new VariantDoesNotMatchAnAllowedVariantException("<p>Warning: the genotype mark \""+genotype[0]+"\" or its corresponding code variant were not found in the model</p>");
 			}
-		}
-	}
-	
-	/**
-	 * Close the model and write it into a file if the parameter is not null.
-	 * @param fileOut	The file that will contain the model of the patient or null.
-	 * */
-	public void closeModel(String fileOut){
-		try{
-			if(fileOut!=null){
-				writeModel(fileOut);
-			}
-			owlReader.close();
-		}catch(Exception e){
-			e.printStackTrace();
 		}
 	}
 	
@@ -533,22 +564,137 @@ public class MedicineSafetyProfileOWLAPI {
 	 * Write the model into a file.
 	 * @param fileOut	The file that will contain the model of the patient.
 	 * */
-	public void writeModel(String fileOut){
-		BufferedWriter bw=null;
-		try {
-			bw = new BufferedWriter(new FileWriter(fileOut));
-			owlReader.write(bw,"RDF/XML");
-		} catch (IOException e) {
+	public IRI writeModel(String fileOut){
+		// Save to RDF/XML
+		try{
+			File output = File.createTempFile(fileOut,".owl");
+			IRI documentIRI = IRI.create(output);
+			System.out.println("IRI="+documentIRI.toString());
+			manager.saveOntology(ontology,documentIRI);
+			return documentIRI;
+		}catch(Exception e){
 			e.printStackTrace();
-		}finally{
-			if(bw!=null){
-				try {
-					bw.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
+		}
+		return null;
+	}
+	
+	
+	/**
+	 * Write the model into a OutputStream.
+	 * @param output	The output stream where the ontology will be printed.
+	 * */
+	public void writeModel(OutputStream output){
+		// Save to RDF/XML
+		try{
+			manager.saveOntology(ontology, output);
+		}catch(Exception e){
+			e.printStackTrace();
 		}
 	}
-
+	
+	
+	/**
+	 * It provides the information that is related to the CDS rules in the model for every drug.
+	 * 
+	 * */
+	public HashMap<String,HashSet<String>> obtainDrugRecommendations(){
+		HashMap<String,HashSet<String>> list_recommendations = new HashMap<String,HashSet<String>>();
+			
+		RELReasoner			local_reasoner	= new RELReasonerFactory().createReasoner(ontology);
+		local_reasoner.precomputeInferences();
+		
+		OWLDataFactory 			factory				= manager.getOWLDataFactory();
+		OWLNamedIndividual		patient				= factory.getOWLNamedIndividual(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#this_patient"));//We obtain the patient instance
+		OWLAnnotationProperty	ann_relevant_for	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#relevant_for"));
+		OWLAnnotationProperty	ann_cds_message		= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#CDS_message"));
+        
+		if(patient!=null){
+        	NodeSet<OWLClass> list_types = local_reasoner.getTypes(patient, false);
+        	for(OWLClass type: list_types.getFlattened() ){
+        		String drug_name="";
+        		for (OWLAnnotation annotation : type.getAnnotations(ontology, ann_relevant_for)) {
+        			IRI drug_IRI = IRI.create(annotation.getValue().toString());
+        			OWLClass drug_class = factory.getOWLClass(drug_IRI);
+        			if(drug_class!=null){
+        				Set<OWLAnnotation> listLabels = drug_class.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
+        				for(OWLAnnotation labelAnn: listLabels){
+        					if (labelAnn.getValue() instanceof OWLLiteral) {
+        						OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
+        						drug_name = literal.getLiteral().trim().toLowerCase();
+        					}
+        				}
+     	                break;
+        			}
+    	        }
+        		
+        		NodeSet<OWLClass> list_superclasses = local_reasoner.getSuperClasses(type, true);
+        		for(OWLClass superclass : list_superclasses.getFlattened()){
+        			if(superclass.getIRI().toString().contains("human_with_genetic_polymorphism")){
+        				String label = "";
+        				Set<OWLAnnotation> listLabels = type.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
+        				for(OWLAnnotation labelAnn: listLabels){
+        					if (labelAnn.getValue() instanceof OWLLiteral) {
+        						OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
+        						label = literal.getLiteral().trim().toLowerCase();
+        					}
+        				}
+        				
+        				if(list_recommendations.containsKey("raw_data")){
+     	                	HashSet<String> list_messages = list_recommendations.get("raw_data");
+     	                	list_messages.add(label);
+     	                }else{
+     	                	HashSet<String> list_messages = new HashSet<String>();
+     	                	list_messages.add(label);
+     	                	list_recommendations.put("raw_data", list_messages);
+     	                }
+     	                break; 
+        			}
+        		}
+        		
+        		if(!drug_name.isEmpty()){
+        			String cds_message = "";
+        			for (OWLAnnotation annotation : type.getAnnotations(ontology, ann_cds_message)) {
+        	            if (annotation.getValue() instanceof OWLLiteral) {
+        	                OWLLiteral rule_message = (OWLLiteral) annotation.getValue();
+        	                cds_message = rule_message.getLiteral();
+        	                if(list_recommendations.containsKey(drug_name)){
+        	                	HashSet<String> list_messages = list_recommendations.get(drug_name);
+        	                	list_messages.add(cds_message);
+        	                }else{
+        	                	HashSet<String> list_messages = new HashSet<String>();
+        	                	list_messages.add(cds_message);
+        	                	list_recommendations.put(drug_name, list_messages);
+        	                }
+        	                break;
+        	            }
+        	        }
+        		}	
+        	}
+        }
+		
+		return list_recommendations;
+	}
+	
+	
+	/**
+	 * It provides the information that is related to the CDS rules in the model for every drug.
+	 * 
+	 * */
+	/*public HashMap<String,HashSet<String>> obtainDrugRecommendationsThread(){
+		HashMap<String,HashSet<String>> list_recommendations = new HashMap<String,HashSet<String>>();
+		IRI documentIRI = writeModel("reason_model_");
+		manager=null;
+		ontology=null;
+		reasoner=null;
+				
+		PatientProfileReasoning ppr = new PatientProfileReasoning(list_recommendations,documentIRI);
+		try{
+			ppr.start();
+			ppr.join();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+				
+		return list_recommendations;
+	}*/
 }
