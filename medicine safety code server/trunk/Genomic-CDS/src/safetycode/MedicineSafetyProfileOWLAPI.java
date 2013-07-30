@@ -7,7 +7,6 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Set;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
@@ -49,7 +48,6 @@ public class MedicineSafetyProfileOWLAPI {
 	 * */
 	private OWLOntology ontology		= null;
 	private OWLOntologyManager manager	= null;
- 	//private OWLDataFactory factory		= null;
  	private OWLReasoner reasoner		= null;
 	
  	
@@ -60,6 +58,7 @@ public class MedicineSafetyProfileOWLAPI {
 		super();
 		initializeModel(null);
 	}
+	
 	public MedicineSafetyProfileOWLAPI(String ontologyFile){
 		super();
 		initializeModel(ontologyFile);
@@ -80,7 +79,7 @@ public class MedicineSafetyProfileOWLAPI {
 		}
 				
 		try{
-			 manager=OWLManager.createOWLOntologyManager();
+			 manager = OWLManager.createOWLOntologyManager();
 			 IRI physicalURI = IRI.create(ontologyFile);
 			 ontology = manager.loadOntologyFromOntologyDocument(physicalURI);
 			 OWLReasonerFactory reasonerFactory = new StructuralReasonerFactory();
@@ -497,19 +496,17 @@ public class MedicineSafetyProfileOWLAPI {
 	 * 
 	 * @param base64Profile		Base 64 number that represent the binary codification of a patient genotype. 
 	 * @throws VariantDoesNotMatchAnAllowedVariantException 
+	 * @throws BadFormedBase64NumberException 
 	 * */
-	public void readBase64ProfileString(String base64Profile) throws VariantDoesNotMatchAnAllowedVariantException{
+	public void readBase64ProfileString(String base64Profile) throws VariantDoesNotMatchAnAllowedVariantException, BadFormedBase64NumberException{
 		base64ProfileString				= base64Profile;
 		String binaryProfile			="";
-		try{
-			binaryProfile				= Common.convertFrom64To2(base64ProfileString);	
-		}catch(BadFormedBase64NumberException e){
-			System.err.println("ERROR: "+e.getMessage());
-		}
+		
+		binaryProfile				= Common.convertFrom64To2(base64ProfileString);	
+		
 		
 		ArrayList<String[]> listRsids	= getListRsids();
 		
-		//OWLNamedIndividual patient = factory.getOWLNamedIndividual(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#patient"));
 		OWLNamedIndividual patient = createPatient();
 		
 		for(int position = 0, i = 0;i<listRsids.size();i++){
@@ -565,9 +562,9 @@ public class MedicineSafetyProfileOWLAPI {
 	 * It provides the information that is related to the CDS rules in the model for every drug.
 	 * 
 	 * */
-	public HashMap<String,HashSet<String>> obtainDrugRecommendations(){
-		HashMap<String,HashSet<String>> list_recommendations = new HashMap<String,HashSet<String>>();
-			
+	public HashMap<String,ArrayList<String>> obtainDrugRecommendations(){
+		HashMap<String,ArrayList<String>> list_recommendations = new HashMap<String,ArrayList<String>>();
+		
 		RELReasoner			local_reasoner	= new RELReasonerFactory().createReasoner(ontology);
 		local_reasoner.precomputeInferences();
 		
@@ -575,7 +572,9 @@ public class MedicineSafetyProfileOWLAPI {
 		OWLNamedIndividual		patient				= factory.getOWLNamedIndividual(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#this_patient"));//We obtain the patient instance
 		OWLAnnotationProperty	ann_relevant_for	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#relevant_for"));
 		OWLAnnotationProperty	ann_cds_message		= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#CDS_message"));
-        
+		OWLAnnotationProperty	ann_criteria		= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#criteria_syntax"));
+        OWLAnnotationProperty	ann_gene_symbol		= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#symbol_of_associated_gene"));
+		        		
 		if(patient!=null){
         	NodeSet<OWLClass> list_types = local_reasoner.getTypes(patient, false);
         	for(OWLClass type: list_types.getFlattened() ){
@@ -594,31 +593,6 @@ public class MedicineSafetyProfileOWLAPI {
      	                break;
         			}
     	        }
-        		
-        		NodeSet<OWLClass> list_superclasses = local_reasoner.getSuperClasses(type, true);
-        		for(OWLClass superclass : list_superclasses.getFlattened()){
-        			if(superclass.getIRI().toString().contains("human_with_genetic_polymorphism")){
-        				String label = "";
-        				Set<OWLAnnotation> listLabels = type.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
-        				for(OWLAnnotation labelAnn: listLabels){
-        					if (labelAnn.getValue() instanceof OWLLiteral) {
-        						OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
-        						label = literal.getLiteral().trim().toLowerCase();
-        					}
-        				}
-        				
-        				if(list_recommendations.containsKey("raw_data")){
-     	                	HashSet<String> list_messages = list_recommendations.get("raw_data");
-     	                	list_messages.add(label);
-     	                }else{
-     	                	HashSet<String> list_messages = new HashSet<String>();
-     	                	list_messages.add(label);
-     	                	list_recommendations.put("raw_data", list_messages);
-     	                }
-     	                break; 
-        			}
-        		}
-        		
         		if(!drug_name.isEmpty()){
         			String cds_message = "";
         			for (OWLAnnotation annotation : type.getAnnotations(ontology, ann_cds_message)) {
@@ -626,19 +600,92 @@ public class MedicineSafetyProfileOWLAPI {
         	                OWLLiteral rule_message = (OWLLiteral) annotation.getValue();
         	                cds_message = rule_message.getLiteral();
         	                if(list_recommendations.containsKey(drug_name)){
-        	                	HashSet<String> list_messages = list_recommendations.get(drug_name);
-        	                	list_messages.add(cds_message);
+        	                	ArrayList<String> list_messages = list_recommendations.get(drug_name);
+        	                	if(!list_messages.contains(cds_message)){
+        	                		list_messages.add(cds_message);
+        	                	}
         	                }else{
-        	                	HashSet<String> list_messages = new HashSet<String>();
+        	                	ArrayList<String> list_messages = new ArrayList<String>();
         	                	list_messages.add(cds_message);
         	                	list_recommendations.put(drug_name, list_messages);
         	                }
         	                break;
         	            }
         	        }
-        		}	
+        		}else{
+        			String criteriaSyntax="";
+        			for (OWLAnnotation annotation : type.getAnnotations(ontology, ann_criteria)) {
+                        if (annotation.getValue() instanceof OWLLiteral) {
+                            OWLLiteral val = (OWLLiteral) annotation.getValue();
+                            criteriaSyntax=val.getLiteral();
+                            break;
+                        }
+                    }
+                	if(!criteriaSyntax.isEmpty()){
+                		NodeSet<OWLClass> list_superclasses = local_reasoner.getSuperClasses(type, true);
+                		for(OWLClass superclass : list_superclasses.getFlattened()){
+                			boolean insert=false;
+                			for (OWLAnnotation annotation : superclass.getAnnotations(ontology, ann_gene_symbol)) {
+                                if (annotation.getValue() instanceof OWLLiteral) {
+                                    OWLLiteral val = (OWLLiteral) annotation.getValue();
+                            		String gene_symbol=val.getLiteral();
+                            		insert=true;
+                            		if(list_recommendations.containsKey("raw_data")){
+                	                	ArrayList<String> list_data = list_recommendations.get("raw_data");
+                	                	if(!list_data.contains(gene_symbol+": "+criteriaSyntax)){
+                	                		list_data.add(gene_symbol+": "+criteriaSyntax);
+                	                	}
+                	                }else{
+                	                	ArrayList<String> list_messages = new ArrayList<String>();
+                	                	list_messages.add(gene_symbol+": "+criteriaSyntax);
+                	                	list_recommendations.put("raw_data", list_messages);
+                	                }
+                                }
+                            }
+                			if(!insert){
+                				if(list_recommendations.containsKey("raw_data")){
+            	                	ArrayList<String> list_data = list_recommendations.get("raw_data");
+            	                	if(!list_data.contains(": "+criteriaSyntax)){
+            	                		list_data.add(": "+criteriaSyntax);
+            	                	}
+            	                }else{
+            	                	ArrayList<String> list_messages = new ArrayList<String>();
+            	                	list_messages.add(": "+criteriaSyntax);
+            	                	list_recommendations.put("raw_data", list_messages);
+            	                }
+                			}
+		        		}
+                	}else{
+                		NodeSet<OWLClass> list_superclasses = local_reasoner.getSuperClasses(type, true);
+                		for(OWLClass superclass : list_superclasses.getFlattened()){
+		        			if(superclass.getIRI().toString().contains("human_with_genetic_polymorphism")){
+		        				String label = "";
+		        				Set<OWLAnnotation> listLabels = type.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
+		        				for(OWLAnnotation labelAnn: listLabels){
+		        					if (labelAnn.getValue() instanceof OWLLiteral) {
+		        						OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
+		        						label = literal.getLiteral().trim().toLowerCase();
+		        					}
+		        				}
+		        				
+		        				if(list_recommendations.containsKey("inferred_alleles")){
+		        					ArrayList<String> list_messages = list_recommendations.get("inferred_alleles");
+		        					if(!list_messages.contains(label)){
+		        						list_messages.add(label);
+		        					}
+		     	                }else{
+		     	                	ArrayList<String> list_messages = new ArrayList<String>();
+		     	                	list_messages.add(label);
+		     	                	list_recommendations.put("inferred_alleles", list_messages);
+		     	                }
+		     	                break;
+		        			}
+		        		}
+                	}
+        		}
         	}
         }
+		
 		
 		return list_recommendations;
 	}

@@ -7,7 +7,6 @@ import java.io.FileNotFoundException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -15,6 +14,7 @@ import org.junit.Test;
 
 import safetycode.MedicineSafetyProfileOWLAPI;
 import utils.Common;
+import exception.BadFormedBase64NumberException;
 import exception.VariantDoesNotMatchAnAllowedVariantException;
 
 public class TestCase1OwlApi {
@@ -88,9 +88,10 @@ public class TestCase1OwlApi {
 	/**
 	 * This method will throw an exception when parsing a wrong base64 patient profile.
 	 * @throws VariantDoesNotMatchAnAllowedVariantException
+	 * @throws BadFormedBase64NumberException 
 	 * */
 	@Test(expected=VariantDoesNotMatchAnAllowedVariantException.class)
-	public void testReadBase64ProfileString() throws VariantDoesNotMatchAnAllowedVariantException {
+	public void testReadBase64ProfileString() throws VariantDoesNotMatchAnAllowedVariantException, BadFormedBase64NumberException {
 		String base64Profile="cCB3RLNS2vCXUhq5Gl3c2z12jrLzVjqND-AG3bH7jWhDSVG392k2SR_NWK0nzPwTq51Y27ZaVmMFKHvuUpTUrYFZYXICleZWeBgQYW--8V1GAC80Ftvio9N9piVo0I2yH0-3Y0vmFC3KG0000";
 		msp.readBase64ProfileString(base64Profile);
 	}
@@ -99,9 +100,10 @@ public class TestCase1OwlApi {
 	/**
 	 * This method will not throw any exception when parsing a well formed base 64 patient profile.
 	 * @throws VariantDoesNotMatchAnAllowedVariantException
+	 * @throws BadFormedBase64NumberException 
 	 * */
 	@Test
-	public void testReadBase64ProfileString2() throws VariantDoesNotMatchAnAllowedVariantException {
+	public void testReadBase64ProfileString2() throws VariantDoesNotMatchAnAllowedVariantException, BadFormedBase64NumberException {
 		
 		msp=new MedicineSafetyProfileOWLAPI("MSC_classes.ttl");
 		String base64Profile="fWFJK3uySfF1z-K3GkZ66xX2tcLvGzqRDwbG1bH7hohhSVmAe2owOQvImK06zPoTq51ZY7WaPGOFaHruVZSDra9Y41GEle1W8AA2gW-sWI1GAC80Ftnim0000000000000000000000000000";
@@ -112,14 +114,15 @@ public class TestCase1OwlApi {
 	/**
 	 * This method will obtain the drug recommendations from a well formed base 64 patient profile.
 	 * @throws VariantDoesNotMatchAnAllowedVariantException
+	 * @throws BadFormedBase64NumberException 
 	 * */
 	@Test
-	public void testObtainDrugRecommendations() throws VariantDoesNotMatchAnAllowedVariantException{
+	public void testObtainDrugRecommendations() throws VariantDoesNotMatchAnAllowedVariantException, BadFormedBase64NumberException{
 		msp = new MedicineSafetyProfileOWLAPI("MSC_classes.ttl");
 		String base64Profile="fWFJK3uySfF1z-K3GkZ66xX2tcLvGzqRDwbG1bH7hohhSVmAe2owOQvImK06zPoTq51ZY7WaPGOFaHruVZSDra9Y41GEle1W8AA2gW-sWI1GAC80Ftnim0000000000000000000000000000";
 		msp.readBase64ProfileString(base64Profile);
 		
-		HashMap<String,HashSet<String>> drug_recommendations = msp.obtainDrugRecommendations();
+		HashMap<String,ArrayList<String>> drug_recommendations = msp.obtainDrugRecommendations();
 				
 		assertEquals("We check that the list of drug recommendations and raw data is not empty", false, drug_recommendations.isEmpty());
 	}

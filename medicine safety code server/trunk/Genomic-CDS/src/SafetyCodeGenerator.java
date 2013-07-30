@@ -18,8 +18,8 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.lang.text.StrSubstitutor;
 
 import safetycode.MedicineSafetyProfileOWLAPI;
-import safetycode.StringReader;
 import utils.Common;
+import utils.StringReader;
 
 /**
  * Servlet implementation class SafetyCodeGenerator 
@@ -67,7 +67,6 @@ public class SafetyCodeGenerator extends HttpServlet {
 	                // Process regular form field (input type="text|radio|checkbox|etc", select, etc).
 	                String fieldname = item.getFieldName();
 	                String fieldvalue = item.getString();
-	                System.out.println("Fieldname: " + fieldname + ", Fieldvalue: " + fieldvalue);
 	                if (fieldname.equals("strand-orientation") && fieldvalue.equals("forward-orientation")) strandOrientationOfInputData = Common.FORWARD_ORIENTATION;
 	                //The option dbsnp_orientation is the default value.
 	            } else {
@@ -82,9 +81,9 @@ public class SafetyCodeGenerator extends HttpServlet {
 	        path=path.replaceAll("\\\\", "/");
 	        MedicineSafetyProfileOWLAPI myProfile = new MedicineSafetyProfileOWLAPI(path+"MSC_classes.ttl");
         	String processingReport = myProfile.read23AndMeFileStream(my23andMeFileItem.getInputStream(), strandOrientationOfInputData);
-        	String encodedProfileURL = URLEncoder.encode(Common.ROOT_URL+myProfile.getBase64ProfileString(), "UTF-8");
-        	contentHTML.append("<p align='center'><img src='MSCImageGenerator?code=" + encodedProfileURL + "' alt='Medicine Safety Code' /></p>");
-        	contentHTML.append("<p>You can visit the generated profile <a href='" + encodedProfileURL.toString() + "'> here</a>.</p>");
+        	String encodedProfileURL = URLEncoder.encode(Common.ROOT_URL+"?code="+myProfile.getBase64ProfileString(), "UTF-8");
+        	contentHTML.append("<p align='center'><img src='http://safety-code.org/Genomic-CDS/MSCImageGenerator?url=" + encodedProfileURL + "' alt='Medicine Safety Code' /></p>");
+        	contentHTML.append("<p>You can visit the generated profile <a href='" + Common.ROOT_URL+"?code="+myProfile.getBase64ProfileString()+ "'> here</a>.</p>");
         	contentHTML.append("<h3>Processing report</h3><p>\n" + processingReport + "\n</p>");
 	    } catch (FileUploadException e) {
 	        throw new ServletException("Cannot parse multipart request.");
@@ -99,10 +98,9 @@ public class SafetyCodeGenerator extends HttpServlet {
 		String templateString;
 		try {
 			String path = this.getServletContext().getRealPath("/");
-	        path="file:/"+path.replaceAll("\\\\", "/");
-	        System.out.println("readfile="+path+"general-template.html");
-			templateString = myStringReader.readFile(path+"general-template.html");
-		} catch (IOException e) {
+	        path=path.replaceAll("\\\\", "/");
+	        templateString = myStringReader.readFile(path+"general-template.html");
+		} catch (Exception e) {
 			e.printStackTrace();
 			throw new ServletException("Error when processing the reponse template");
 		}

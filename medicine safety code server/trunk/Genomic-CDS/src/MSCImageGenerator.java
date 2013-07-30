@@ -1,6 +1,8 @@
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.nio.ByteBuffer;
@@ -39,7 +41,7 @@ public class MSCImageGenerator extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String code = URLDecoder.decode(request.getParameter("code"), "UTF-8");
+		String code = URLDecoder.decode(request.getParameter("url"), "UTF-8");
 		ServletOutputStream out = response.getOutputStream();
 		
 		Charset charset = Charset.forName("ISO-8859-1");
@@ -57,6 +59,7 @@ public class MSCImageGenerator extends HttpServlet {
 		try {
 			data = new String(b, "ISO-8859-1");
 		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
 			System.out.println(e.getMessage());
 			return;
 		}
@@ -70,12 +73,16 @@ public class MSCImageGenerator extends HttpServlet {
 			matrix = writer.encode(data,
 					com.google.zxing.BarcodeFormat.QR_CODE, w, h);
 		} catch (com.google.zxing.WriterException e) {
+			e.printStackTrace();
 			System.out.println(e.getMessage());
 			return;
 		}
 			
 		try {
-			BufferedImage frameImage = ImageIO.read(this.getClass().getResourceAsStream("safetyCodeFrameImage2.png"));
+			String path = this.getServletContext().getRealPath("/");
+	        path=path.replaceAll("\\\\", "/");
+			InputStream is = new FileInputStream(path+"images/safetyCodeFrameImage2.png");
+			BufferedImage frameImage = ImageIO.read(is);
 			BufferedImage finalImage = new BufferedImage(frameImage.getWidth(), frameImage.getHeight(), BufferedImage.TYPE_INT_RGB);
 			BufferedImage barcodeImage = MatrixToImageWriter.toBufferedImage(matrix);
 			
@@ -85,6 +92,7 @@ public class MSCImageGenerator extends HttpServlet {
 			ImageIO.write(finalImage, "PNG", out);		
 			g.dispose();
 		} catch (IOException e) {
+			e.printStackTrace();
 			System.out.println(e.getMessage());
 		} 		
 	}
