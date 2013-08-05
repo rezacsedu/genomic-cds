@@ -5,23 +5,20 @@ require_once 'Classes/PHPExcel/IOFactory.php';
 /*
  * Input file locations
  */
-$db_snp_xml_input_file_location = "D:\\safetycode\\data\\dbSNP\\core_rsid_data_from_dbsnp.xml";
-$pharmacogenomic_CDS_base_file_location = "D:\\safetycode\\ontologies\\genomic-cds_base.owl";
-$MSC_classes_base_file_location = "D:\\safetycode\\ontologies\\MSC_classes_base.owl";
-$haplotype_spreadsheet_file_location = "D:\\safetycode\\data\\PharmGKB\\haplotype_spreadsheet.xlsx";
-$pharmacogenomics_decision_support_spreadsheet_file_location = "D:\\safetycode\\data\\decision-support-rules\\Pharmacogenomics decision support spreadsheet.xlsx";
-$pharmacogenomic_CDS_demo_additions_file_location = "D:\\safetycode\\ontologies\\genomic-cds_demo_additions.owl";
-
-
+$db_snp_xml_input_file_location = "..\\data\\dbSNP\\core_rsid_data_from_dbsnp.xml";
+$pharmacogenomic_CDS_base_file_location = "..\\ontology\\genomic-cds_base.owl";
+$MSC_classes_base_file_location = "..\\ontology\\MSC_classes_base.owl";
+$haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet.xlsx";
+$pharmacogenomics_decision_support_spreadsheet_file_location = "..\\data\\decision-support-rules\\Pharmacogenomics decision support spreadsheet.xlsx";
+$pharmacogenomic_CDS_demo_additions_file_location = "..\\ontology\\genomic-cds_demo_additions.owl";
 
 /*
  * Output file locations
  */
-$pharmacogenomic_CDS_file_location = "D:\\safetycode\\ontologies\\genomic-cds.owl";
-$MSC_classes_file_location = "D:\\safetycode\\ontologies\\MSC_classes.owl";
-$report_file_location = "D:\\safetycode\\ontologies\\generate_genomic_CDS.report.txt";
-$pharmacogenomic_CDS_demo_file_location = "D:\\safetycode\\ontologies\\genomic-cds-demo.owl";
-
+$pharmacogenomic_CDS_file_location = "..\\ontology\\genomic-cds.owl";
+$MSC_classes_file_location = "..\\ontology\\MSC_classes.owl";
+$report_file_location = "..\\ontology\\generate_genomic_CDS.report.txt";
+$pharmacogenomic_CDS_demo_file_location = "..\\ontology\\genomic-cds-demo.owl";
 
 /*
  * Initializing important variables
@@ -309,15 +306,17 @@ $owl .= "\n\n#\n# Data from haplotype spreadsheet\n#\n\n";
 $objPHPExcel = PHPExcel_IOFactory::load($haplotype_spreadsheet_file_location);
 
 $allele_id_array = array(); // Needed for creating disjoints later on
-$homozygous_human_id_array = array(); // Needed for creating disjoints later on
 
 foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 	
-	// Skip sheets starting with "_" (can be used for sheets that need more work etc.)
-	$worksheet_title = $objWorksheet->getTitle();
-	//print("Processing haplotype spreadsheet " . $worksheet_title . "\n");
+	$homozygous_human_id_array = array(); // Needed for creating disjoints later on
 	
-	if (strpos($worksheet_title,"_") === 0) { //Avoid _SLCO1B1
+	$worksheet_title = $objWorksheet->getTitle();
+	
+	print("Processing haplotype spreadsheet " . $worksheet_title . "\n");
+	
+	// Skip sheets starting with "_" (can be used for sheets that need more work etc.)
+	if (strpos($worksheet_title,"_") === 0) { 
 		continue; 
 	};
 	
@@ -347,12 +346,14 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 		foreach ($cellIterator as $cell) {
 			$row_array[$cell->getColumn()] = $cell->getValue();
 		}
-	
-		$gene_label = $row_array['A'];
-		$gene_id = make_valid_id($gene_label);
-		$allele_label = $row_array['A'] . " " . $row_array['C'];
-		$allele_id = make_valid_id($allele_label);
 		
+		$allele_status = $row_array['A'];
+		
+		$gene_label = $row_array['B'];
+		$gene_id = make_valid_id($gene_label);
+		$allele_label = $row_array['B'] . " " . $row_array['D'];
+		$allele_id = make_valid_id($allele_label);
+	
 		$human_label = "human with " . $allele_label;
 		$human_id = make_valid_id($human_label);
 		$human_homozygous_label = "human with homozygous " . $allele_label;
@@ -361,9 +362,10 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 		$allele_polymorphism_variants = array();
 		$allele_tag_polymorphism_variants = array();
 		
+	
 		foreach($row_array as $key=>$value) {
-			// Skip first three columns ("A", "B", "C")
-			if (($key == "A") or ($key == "B") or ($key == "C")) continue; 
+			// Skip first four columns 
+			if (($key == "A") or ($key == "B") or ($key == "C") or ($key == "D")) continue; 
 			
 			$allele_polymorphism_variant = make_valid_id($header_array[$key] . "_" . trim(str_replace("[tag]", "", $row_array[$key]))); // e.g. "rs12345_A"
 			
@@ -393,12 +395,12 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 		 */
 		
 		// If cell in superclass column is empty...
-		if (isset($row_array['B']) == false) {
+		if (isset($row_array['C']) == false) {
 			$owl .= "Class: " . $allele_id . "\n";
 			$owl .= "    Annotations: rdfs:label \"" . $allele_label . "\"\n";
 			$owl .= "    SubClassOf: " . $gene_id . "\n\n";
 		}else {// If cell in superclass column is not empty (i.e., a superclass is defined)...
-			$superclass_label = $row_array['A'] . " " . $row_array['B'];
+			$superclass_label = $row_array['B'] . " " . $row_array['C'];
 			$superclass_id = make_valid_id($superclass_label);
 			
 			$owl .= "Class: " . $superclass_id . "\n";
@@ -418,30 +420,35 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 		$owl .= "SubClassOf: human_with_genetic_polymorphism" . "\n";
 		$owl .= "Annotations: rdfs:label \"" . $human_label . "\"\n";
 		
-		// If there are polymorphism variants...
-		if (empty($allele_polymorphism_variants) == false) {
+		
+		if ($row_array['A'] ==! "disabled") {
+
+			// If there are polymorphism variants...
+			if (empty($allele_polymorphism_variants) == false) {
+				$owl .= "SubClassOf:" . "\n";
+				// TODO: Introduce logic for phasing (if it ever works...)
+				//$owl .= "has some (" . implode(" that (taken_by some " . $allele_id . ")) and has some (", $allele_polymorphism_variants) . " that (taken_by some " . $allele_id . "))";
+				$owl .= "has some " . implode(" and has some ", $allele_polymorphism_variants);
+				$owl .= "\n\n";
+			}
+			else {
+				$report .= "WARNING: No polymorphism variants found at all for " . $allele_id . "\n";
+			}
+			
+			// If there are tagging polymorphism variants...
+			if (empty($allele_tag_polymorphism_variants) == false) {
+				$owl .= "EquivalentTo:" . "\n";
+				$owl .= "has some " . implode(" and has some ", $allele_tag_polymorphism_variants);
+				$owl .= "\n\n";
+			}
+			else {
+				$report .= "INFO: No tagging polymorphism variants found for " . $allele_id . "\n";
+			}
+			
 			$owl .= "SubClassOf:" . "\n";
-			// TODO: Introduce logic for phasing (if it ever works...)
-			//$owl .= "has some (" . implode(" that (taken_by some " . $allele_id . ")) and has some (", $allele_polymorphism_variants) . " that (taken_by some " . $allele_id . "))";
-			$owl .= "has some " . implode(" and has some ", $allele_polymorphism_variants);
-			$owl .= "\n\n";
-		}
-		else {
-			$report .= "WARNING: No polymorphism variants found at all for " . $allele_id . "\n";
+			$owl .= "has some " . $allele_id . "\n\n";
 		}
 		
-		// If there are tagging polymorphism variants...
-		if (empty($allele_tag_polymorphism_variants) == false) {
-			$owl .= "EquivalentTo:" . "\n";
-			$owl .= "has some " . implode(" and has some ", $allele_tag_polymorphism_variants);
-			$owl .= "\n\n";
-		}
-		else {
-			$report .= "INFO: No tagging polymorphism variants found for " . $allele_id . "\n";
-		}
-		
-		$owl .= "SubClassOf:" . "\n";
-		$owl .= "has some " . $allele_id . "\n\n";
 		
 		/*
 		 * Rules for homozygous polymorphisms and alleles
@@ -450,16 +457,23 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 		$owl .= "Class: " . $human_homozygous_id . "\n";
 		$owl .= "SubClassOf: human_with_genetic_polymorphism" . "\n";
 		$owl .= "Annotations: rdfs:label \"" . $human_homozygous_label . "\" \n";
-		// If there are tagging polymorphism variants...
-		if (empty($allele_tag_polymorphism_variants) == false) {
-			$owl .= "EquivalentTo:" . "\n";
-			$owl .= "has exactly 2 " . implode(" and has exactly 2 ", $allele_tag_polymorphism_variants);
-			$owl .= "\n\n";
-		}
 		
-		$owl .= "EquivalentTo:" . "\n";
-		$owl .= "has exactly 2 " . $allele_id . "\n\n";
+		if ($row_array['A'] ==! "disabled") {
+			// If there are tagging polymorphism variants...
+			if (empty($allele_tag_polymorphism_variants) == false) {
+				$owl .= "EquivalentTo:" . "\n";
+				$owl .= "has exactly 2 " . implode(" and has exactly 2 ", $allele_tag_polymorphism_variants);
+				$owl .= "\n\n";
+			}
+			
+			$owl .= "EquivalentTo:" . "\n";
+			$owl .= "has exactly 2 " . $allele_id . "\n\n";
+		}
 	}
+	
+	// NOTE: Disjoints between underdefined/overlapping alleles produce unsatisfiable homozygous humans.
+	$owl .= "# homozygous human disjoints\n";
+	$owl .= generateDisjointClassesOWL($homozygous_human_id_array);
 }
 
 /************************
@@ -571,10 +585,6 @@ $owl .= "# polymorphism disjoints\n";
 $owl .= generateDisjointClassesOWL($polymorphism_disjoint_list);
 $owl .= "# gene/allele disjoints\n";
 $owl .= generateDisjointClassesOWL($gene_ids);
-
-// NOTE: Disjoints of homozygous humans could are disabled for now (disjoints between underdefined/overlapping alleles produce unsatisfiable homozygous humans )
-$owl .= "#homozygous human disjoints\n";
-$owl .= generateDisjointClassesOWL($homozygous_human_id_array);
 
 /************************
  * Write to disk
