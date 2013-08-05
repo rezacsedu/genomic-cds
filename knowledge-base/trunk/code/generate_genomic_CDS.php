@@ -5,22 +5,22 @@ require_once 'Classes/PHPExcel/IOFactory.php';
 /*
  * Input file locations
  */
-$db_snp_xml_input_file_location = "C:\\Users\\m\Documents\\workspace\\safety-tag\\Data\\dbSNP\\core_rsid_data_from_dbsnp.xml";
-$pharmacogenomic_CDS_base_file_location = "C:\\Users\\m\Documents\\workspace\\ontologies\\genomic-cds_base.owl";
-$MSC_classes_base_file_location = "C:\\Users\\m\Documents\\workspace\\ontologies\\MSC_classes_base.owl";
-$haplotype_spreadsheet_file_location = "C:\\Users\\m\\Documents\\workspace\\safety-tag\\Data\\PharmGKB\\haplotype_spreadsheet.xlsx";
-$pharmacogenomics_decision_support_spreadsheet_file_location = "C:\\Users\\m\\Documents\\workspace\\safety-tag\\Data\\Pharmacogenomics decision support spreadsheet\\Pharmacogenomics decision support spreadsheet.xlsx";
-$pharmacogenomic_CDS_demo_additions_file_location = "C:\\Users\\m\Documents\\workspace\\ontologies\\genomic-cds_demo_additions.owl";
+$db_snp_xml_input_file_location = "D:\\safetycode\\data\\dbSNP\\core_rsid_data_from_dbsnp.xml";
+$pharmacogenomic_CDS_base_file_location = "D:\\safetycode\\ontologies\\genomic-cds_base.owl";
+$MSC_classes_base_file_location = "D:\\safetycode\\ontologies\\MSC_classes_base.owl";
+$haplotype_spreadsheet_file_location = "D:\\safetycode\\data\\PharmGKB\\haplotype_spreadsheet.xlsx";
+$pharmacogenomics_decision_support_spreadsheet_file_location = "D:\\safetycode\\data\\decision-support-rules\\Pharmacogenomics decision support spreadsheet.xlsx";
+$pharmacogenomic_CDS_demo_additions_file_location = "D:\\safetycode\\ontologies\\genomic-cds_demo_additions.owl";
 
 
 
 /*
  * Output file locations
  */
-$pharmacogenomic_CDS_file_location = "C:\\Users\\m\Documents\\workspace\\ontologies\\genomic-cds.owl";
-$MSC_classes_file_location = "C:\\Users\\m\Documents\\workspace\\ontologies\\MSC_classes.owl";
-$report_file_location = "C:\\Users\\m\Documents\\workspace\\ontologies\\generate_genomic_CDS.report.txt";
-$pharmacogenomic_CDS_demo_file_location = "C:\\Users\\m\Documents\\workspace\\ontologies\\genomic-cds-demo.owl";
+$pharmacogenomic_CDS_file_location = "D:\\safetycode\\ontologies\\genomic-cds.owl";
+$MSC_classes_file_location = "D:\\safetycode\\ontologies\\MSC_classes.owl";
+$report_file_location = "D:\\safetycode\\ontologies\\generate_genomic_CDS.report.txt";
+$pharmacogenomic_CDS_demo_file_location = "D:\\safetycode\\ontologies\\genomic-cds-demo.owl";
 
 
 /*
@@ -93,12 +93,13 @@ function make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 
 		$owl_fragment .= "    SubClassOf: has some  $allele_1_id and has some $allele_2_id \n";
 	}
 	$owl_fragment .= 
-			"    Annotations: sc:decimal_code \"$decimal_code\"^^xsd:integer \n" . //TODO: Remove
+//			"    Annotations: sc:decimal_code \"$decimal_code\"^^xsd:integer \n" . //TODO: Remove
 			"    Annotations: sc:bit_code \"$binary_code\" \n" .
-			"    Annotations: rdfs:label \"human with rs" . $rs_id . "(" . $allele_1 . ";" . $allele_2 . ")\"  \n\n" .
+			"    Annotations: rdfs:label \"human with rs" . $rs_id . "(" . $allele_1 . ";" . $allele_2 . ")\"  \n" .
 			"    Annotations: sc:criteria_syntax \"rs" . $rs_id . "(" . $allele_1 . ";" . $allele_2 . ")\"  \n\n";
 	return $owl_fragment;
 }
+
 
 /************************
  * Read and convert dbSNP data
@@ -119,23 +120,54 @@ foreach ($xml->Rs as $Rs) {
 	$human_with_genotype_at_locus = "human_with_genotype_at_rs" . $rs_id;
 	$snp_class = $Rs['snpClass'];
 	$observed_alleles = $Rs->Sequence->Observed;
-	$fxn_sets = $Rs->Assembly->Component->MapLoc->FxnSet; // TODO: This does not give results for a few Rs numbers
-	$assembly_genome_build = $Rs->Assembly['genomeBuild'];
-	$assembly_group_label = $Rs->Assembly['groupLabel'];
-	$orient = $Rs->Assembly->Component->MapLoc['orient']; 
+	//$fxn_sets = $Rs->Assembly->Component->MapLoc->FxnSet; // TODO: This does not give results for a few Rs numbers
+	//$assembly_genome_build = $Rs->Assembly['genomeBuild'];
+	//$assembly_group_label = $Rs->Assembly['groupLabel'];
+	//$orient = $Rs->Assembly->Component->MapLoc['orient'];
 	
-	// Add gene symbols in this entry to array
+	//** Get the right Assembly element with reference=true **//
+	$fxn_sets = null; //$Rs->Assembly->Component->MapLoc->FxnSet;
+	$assembly_genome_build = null; //$Rs->Assembly['genomeBuild'];
+	$assembly_group_label = null; //$Rs->Assembly['groupLabel'];
+	$orient = null; //$Rs->Assembly->Component->MapLoc['orient']; 
+	
+	
+	$assembly_sets = $Rs->Assembly;
+	if(isset($assembly_sets)){
+		foreach($assembly_sets as $assembly_set) {
+			if(isset($assembly_set['reference']) && $assembly_set['reference'] == true){
+				$assembly_genome_build = $assembly_set['genomeBuild'];
+				$assembly_group_label = $assembly_set['groupLabel'];
+				$component_sets = $assembly_set->Component;
+				if(isset($component_sets)){
+					foreach($component_sets as $component_set){
+						$maploc_sets = $component_set->MapLoc;
+						if(isset($maploc_sets)){
+							foreach($maploc_sets as $maploc_set){
+								$orient=$maploc_set['orient'];
+								$fxn_sets = $maploc_set->FxnSet;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	if(!isset($fxn_sets) || !isset($assembly_genome_build) || !isset($assembly_group_label) || !isset($orient)){
+		print($i." Not processed.\n");
+		continue;
+	}
+	
+	// Add gene symbols in this entry to array.
 	foreach ($fxn_sets as $fxn_set) {
 		$gene_ids[] = make_valid_id($fxn_set["symbol"]);
 	}
-
-	// Normalize orientation to the plus strand.	TODO: Ensure that this works as intended
+	
+	// Normalize orientation to the plus strand.
 	if ($orient == "reverse") {
 		$observed_alleles = flipOrientationOfStringRepresentation($observed_alleles);
 	}
-	
-	// print ($observed_alleles . "\n");
-	
+		
 	$observed_alleles = preg_split("/\//", $observed_alleles);
 	sort($observed_alleles, SORT_STRING);
 	
@@ -145,10 +177,18 @@ foreach ($xml->Rs as $Rs) {
 	
 	$owl .= "Class: " . $class_id . "\n";
 	$owl .= "    SubClassOf: polymorphism" . "\n";
-	$owl .= "    Annotations: rsid \"rs" . $rs_id . "\"";
-	$owl .= "    Annotations: rdfs:label \"rs" . $rs_id . "\"";
+	$owl .= "    Annotations: rsid \"rs" . $rs_id . "\"\n";
+	$owl .= "    Annotations: rdfs:label \"rs" . $rs_id . "\"\n";
+	
+	$fxn_symbols=null;
 	foreach ($fxn_sets as $fxn_set) {
-		$owl .= "    Annotations: relevant_for " . make_valid_id($fxn_set["symbol"]) . "\n";
+		$fxn_symbols[] = make_valid_id($fxn_set["symbol"]);
+	} 
+	if(isset($fxn_symbols)){
+		$fxn_symbols = array_unique($fxn_symbols);
+		foreach ($fxn_symbols as $fxn_symbol){
+			$owl .= "    Annotations: relevant_for " .$fxn_symbol. "\n";
+		}
 	}
 	$owl .= "    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs" . $rs_id . ">\n"; 
 	$owl .= "    Annotations: dbsnp_orientation_on_reference_genome \"" . $orient . "\" \n\n";
@@ -173,10 +213,11 @@ foreach ($xml->Rs as $Rs) {
 	// Generate Medicine Safety Code classes
 	
 	$msc_owl .= "Class: sc:$human_with_genotype_at_locus \n";
-	$msc_owl .= "    SubClassOf: human \n";
+	//$msc_owl .= "    SubClassOf: human \n";
+	$msc_owl .= "    SubClassOf: human_with_genotype_marker \n";
 	$msc_owl .= "    Annotations: rsid \"rs" . $rs_id . "\" \n";
 	$msc_owl .= "    Annotations: sc:rank \"" . $i . "\"^^xsd:integer \n";
-	$msc_owl .= "    Annotations: dbsnp_orientation_on_reference_genome \"" . $orient . "\" \n\n";
+	$msc_owl .= "    Annotations: dbsnp_orientation_on_reference_genome \"" . $orient . "\" \n";
 	
 	$gene_symbols = array();
 	foreach ($fxn_sets as $fxn_set) {
@@ -200,13 +241,14 @@ foreach ($xml->Rs as $Rs) {
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 1, "01", $observed_alleles[0],  $observed_alleles[0], $rs_id);
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 2, "10", $observed_alleles[0],  $observed_alleles[1], $rs_id);
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 3, "11", $observed_alleles[1],  $observed_alleles[1], $rs_id);
-	
+			$msc_owl .= "\n";
+			
 			$position_in_base_2_string = $position_in_base_2_string + $bit_length;
 			break;
 		case 3:
 			$bit_length = 3;
 			$msc_owl .= "    Annotations: sc:bit_length \"" . $bit_length . "\"^^xsd:integer \n";
-			$msc_owl .= "    Annotations: sc:position_in_base_2_string \"" . $position_in_base_2_string . "\"^^xsd:integer \n";
+			$msc_owl .= "    Annotations: sc:position_in_base_2_string \"" . $position_in_base_2_string . "\"^^xsd:integer \n\n";
 	
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 0, "000", "null", "null", $rs_id);
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 1, "001", $observed_alleles[0], $observed_alleles[0], $rs_id);
@@ -215,13 +257,14 @@ foreach ($xml->Rs as $Rs) {
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 4, "100", $observed_alleles[1], $observed_alleles[1], $rs_id);
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 5, "101", $observed_alleles[1], $observed_alleles[2], $rs_id);
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 6, "110", $observed_alleles[2], $observed_alleles[2], $rs_id);
-	
+			$msc_owl .= "\n";
+			
 			$position_in_base_2_string += $bit_length;
 			break;
 		case 4:
 			$bit_length = 4;
 			$msc_owl .= "    Annotations: sc:bit_length \"" . $bit_length . "\"^^xsd:integer \n";
-			$msc_owl .= "    Annotations: sc:position_in_base_2_string \"" . $position_in_base_2_string . "\"^^xsd:integer \n";
+			$msc_owl .= "    Annotations: sc:position_in_base_2_string \"" . $position_in_base_2_string . "\"^^xsd:integer \n\n";
 	
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 0, "0000", "null", "null", $rs_id);
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 1, "0001", $observed_alleles[0], $observed_alleles[0], $rs_id);
@@ -234,7 +277,8 @@ foreach ($xml->Rs as $Rs) {
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 8, "1000", $observed_alleles[2], $observed_alleles[2], $rs_id);
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 9, "1001", $observed_alleles[2], $observed_alleles[3], $rs_id);
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 10, "1010", $observed_alleles[3], $observed_alleles[3], $rs_id);
-	
+			$msc_owl .= "\n";
+			
 			$position_in_base_2_string += $bit_length;
 			break;
 		default:
@@ -271,10 +315,9 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 	
 	// Skip sheets starting with "_" (can be used for sheets that need more work etc.)
 	$worksheet_title = $objWorksheet->getTitle();
-	print("Processing haplotype spreadsheet " . $worksheet_title . "\n");
-	//print(strpos($objWorksheet->getTitle(),"_"));
+	//print("Processing haplotype spreadsheet " . $worksheet_title . "\n");
 	
-	if (strpos($worksheet_title,"_") === 0) { 
+	if (strpos($worksheet_title,"_") === 0) { //Avoid _SLCO1B1
 		continue; 
 	};
 	
@@ -293,6 +336,7 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 			foreach ($cellIterator as $cell) {
 				$header_array[$cell->getColumn()] = $cell->getValue();
 			}
+			
 			continue;
 		}
 	
@@ -328,14 +372,14 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 				$report .= "ERROR: Polymorphism variant \"" . $allele_polymorphism_variant . "\" in allele " . $allele_label . " does not match dbSNP. Skipping conversion for the entire allele." . "\n";
 				$error_during_processing = true;
 			}
-				
+			
 			// Add id of polymorphism to array
 			$allele_polymorphism_variants[] = $allele_polymorphism_variant;
-			
+				
 			if (strpos($value,'[tag]') !== false) {
 				// Add id of tagging polymorphism to tag array
 				$allele_tag_polymorphism_variants[] = $allele_polymorphism_variant;
-			}
+			}			
 		}
 		
 		// CONTINUE if error occured (i.e., don't add any OWL expressions at all for this row)
@@ -353,9 +397,7 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 			$owl .= "Class: " . $allele_id . "\n";
 			$owl .= "    Annotations: rdfs:label \"" . $allele_label . "\"\n";
 			$owl .= "    SubClassOf: " . $gene_id . "\n\n";
-		}
-		// If cell in superclass column is not empty (i.e., a superclass is defined)...
-		else {
+		}else {// If cell in superclass column is not empty (i.e., a superclass is defined)...
 			$superclass_label = $row_array['A'] . " " . $row_array['B'];
 			$superclass_id = make_valid_id($superclass_label);
 			
@@ -447,10 +489,24 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	foreach ($cellIterator as $cell) {
 		$row_array[$cell->getColumn()] = $cell->getCalculatedValue();
 	}
-	
+	if(!isset($row_array['A'])){
+		continue;		
+	}
 	$human_class_label = $row_array['A'];
+	
+	if(!isset($row_array['C'])){
+		continue;		
+	}
 	$drug_label = $row_array['C'];
+	
+	if(!isset($row_array['F'])){
+		continue;		
+	}
 	$logical_description_of_genetic_attributes = $row_array['F'];
+	
+	if(!isset($row_array['G'])){
+		continue;		
+	}
 	$recommendation_in_english = $row_array['G'];
 	
 	// Skip processing if not all required data items are present
@@ -472,6 +528,7 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	$owl .= "	Annotations: CDS_message \"" . addslashes($recommendation_in_english) . "\"\n\n";	
 }
 
+$drug_labels = array_unique($drug_labels);
 foreach ($drug_labels as $drug_label) {
 	$owl .= "Class: " . make_valid_id($drug_label) . "\n";
 	$owl .= "    Annotations: rdfs:label \"" . $drug_label . "\"\n";
@@ -516,8 +573,8 @@ $owl .= "# gene/allele disjoints\n";
 $owl .= generateDisjointClassesOWL($gene_ids);
 
 // NOTE: Disjoints of homozygous humans could are disabled for now (disjoints between underdefined/overlapping alleles produce unsatisfiable homozygous humans )
-// $owl .= "#homozygous human disjoints\n";
-// $owl .= generateDisjointClassesOWL($homozygous_human_id_array);
+$owl .= "#homozygous human disjoints\n";
+$owl .= generateDisjointClassesOWL($homozygous_human_id_array);
 
 /************************
  * Write to disk
