@@ -105,6 +105,15 @@ Class: human_with_genetic_polymorphism
         human
     
     
+Class: human_with_genotype_marker
+
+    Annotations: 
+        rdfs:label "Human with a genotype marker variation"
+    
+    SubClassOf: 
+        human
+    	
+	
 Class: allele
 
     Annotations: 
