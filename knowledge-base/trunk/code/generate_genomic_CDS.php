@@ -313,7 +313,7 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 	
 	$worksheet_title = $objWorksheet->getTitle();
 	
-	print("Processing haplotype spreadsheet " . $worksheet_title . "\n");
+	//print("Processing haplotype spreadsheet " . $worksheet_title . "\n");
 	
 	// Skip sheets starting with "_" (can be used for sheets that need more work etc.)
 	if (strpos($worksheet_title,"_") === 0) { 
@@ -347,8 +347,11 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 			$row_array[$cell->getColumn()] = $cell->getValue();
 		}
 		
-		$allele_status = $row_array['A'];
-		
+		if(isset($row_array['A'])){
+			$allele_status = $row_array['A'];
+		}else{
+			$allele_status = "enabled";
+		}
 		$gene_label = $row_array['B'];
 		$gene_id = make_valid_id($gene_label);
 		$allele_label = $row_array['B'] . " " . $row_array['D'];
@@ -421,7 +424,7 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 		$owl .= "Annotations: rdfs:label \"" . $human_label . "\"\n";
 		
 		
-		if ($row_array['A'] ==! "disabled") {
+		if (!isset($row_array['A']) || $row_array['A'] ==! "disabled") {
 
 			// If there are polymorphism variants...
 			if (empty($allele_polymorphism_variants) == false) {
@@ -458,7 +461,7 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 		$owl .= "SubClassOf: human_with_genetic_polymorphism" . "\n";
 		$owl .= "Annotations: rdfs:label \"" . $human_homozygous_label . "\" \n";
 		
-		if ($row_array['A'] ==! "disabled") {
+		if (!isset($row_array['A']) || $row_array['A'] ==! "disabled") {
 			// If there are tagging polymorphism variants...
 			if (empty($allele_tag_polymorphism_variants) == false) {
 				$owl .= "EquivalentTo:" . "\n";
