@@ -46,6 +46,13 @@ AnnotationProperty: dc:creator
 AnnotationProperty: dc:contributor
 
 
+AnnotationProperty: can_be_tested_with
+
+    Annotations: 
+        rdfs:label "can be tested with",
+        rdfs:comment "A property connecting a genetic marker with a genetic assay that can be used to test for that marker."
+
+
 AnnotationProperty: rsid
 
     Annotations: 
@@ -105,15 +112,6 @@ Class: human_with_genetic_polymorphism
         human
     
     
-Class: human_with_genotype_marker
-
-    Annotations: 
-        rdfs:label "Human with a genotype marker variation"
-    
-    SubClassOf: 
-        human
-    	
-	
 Class: allele
 
     Annotations: 
@@ -167,8 +165,51 @@ Class: human_triggering_phenotype_inference_rule
     
     SubClassOf: 
         human
+        
+        
+Class: assay
+
+    Annotations: 
+        rdfs:label "Assay"
+        
+ 
+Individual: 23andMe_v2
+
+    Annotations: 
+        rdfs:label "23andMe v2"
+        
+    Types:
+    	assay
+    	
+
+Individual: 23andMe_v3
+
+    Annotations: 
+        rdfs:label "23andMe v3"
+        
+    Types:
+    	assay
+    	
+    	
+Individual: University_of_Florida_and_Stanford_University_chip
+
+    Annotations: 
+        rdfs:label "University of Florida and Stanford University chip"
+        
+    Types:
+    	assay
+    	
+    	
+Individual: Affymetrix_DMET_chip
+
+    Annotations: 
+        rdfs:label "Affymetrix DMET chip"
+        
+    Types:
+    	assay
+        
     
 Class: allele    
 DisjointClasses: 
-    allele,human,phenotype,polymorphism,drug
+    allele,human,phenotype,polymorphism,drug,assay
 
