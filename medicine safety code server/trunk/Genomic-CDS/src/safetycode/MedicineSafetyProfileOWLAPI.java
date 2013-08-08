@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
+//import java.util.Iterator;
 import java.util.Set;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
@@ -15,10 +16,12 @@ import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLAnnotationProperty;
 import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
+//import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLIndividual;
 import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
+//import org.semanticweb.owlapi.model.OWLObjectProperty;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.reasoner.NodeSet;
@@ -91,14 +94,14 @@ public class MedicineSafetyProfileOWLAPI {
 	
 	
 	/**
-	 * It parsers the 23AndMe file with the default strand orientation (dbnsp_orientation).
+	 * It parsers the 23AndMe file with the default strand orientation (forward_orientation).
 	 * 
 	 * @param my23AndMeFileStream	The 23AndMe file to parse.
 	 * @return		The processing report of the 23AndMe file.
 	 * */
 	public String read23AndMeFileStream(InputStream my23AndMeFileStream){
-		// default to dbSNP orientation when strand orientation of input data is not given
-		return read23AndMeFileStream(my23AndMeFileStream, Common.DBSNP_ORIENTATION);
+		// default to forward orientation when strand orientation of input data is not given
+		return read23AndMeFileStream(my23AndMeFileStream, Common.FORWARD_ORIENTATION);
 	}
 	
 	
@@ -116,7 +119,7 @@ public class MedicineSafetyProfileOWLAPI {
 		int linesThatDidNotMatchAllowedVariant	= 0;	//Number of processedMatchingLines that could not be matched in the model.
 		String processingReport					= "<ul>\n";	//Report that contains the missing matched criteria syntax and general statistics of the parser.
 		ArrayList<String[]> listRsids 			= getListRsids();	//Sorted list of strand markers.
-		int numberOfRsids = listRsids.size();
+		//int numberOfRsids = listRsids.size();
 		
 		//Parsing the 23AndMe file
 		try{
@@ -169,20 +172,20 @@ public class MedicineSafetyProfileOWLAPI {
 			try{
 				bit_code=addVariantToPatientByCriteriaSyntax(patient,genotype[0],criteriaSyntax);//Create rdf:type link between patient individual and matched variant class with the criteria syntax
 			}catch(VariantDoesNotMatchAnAllowedVariantException e){
-				processingReport+="<li>"+e.getMessage();
+				processingReport+="<li>"+e.getMessage()+"\n";
 			}catch(Exception e){
-				processingReport+="<li>"+e.getMessage();
+				processingReport+="<li>"+e.getMessage()+"\n";
 			}
 			if(bit_code==null){//The criteria syntax did not match any not "null;null" variant
 				bit_code=genotype[4];
 				linesThatDidNotMatchAllowedVariant++;
-				processingReport+="<li>Warning: " + criteriaSyntax + " does not match any allowed genotype. Only genotypes listed in dbSNP are allowed. A possible reason for this could be that your data is not based on the same strand (+ or -) as dbSNP, and you did not choose the proper settings for strand orientation. This genotype will be reported as 'NULL;NULL' in the resulting Medicine Safety Code.";
+				processingReport+="<li>Warning: " + criteriaSyntax + " does not match any allowed genotype. Only genotypes listed in dbSNP are allowed. A possible reason for this could be that your data is not based on the same strand (+ or -) as dbSNP, and you did not choose the proper settings for strand orientation. This genotype will be reported as 'NULL;NULL' in the resulting Medicine Safety Code.\n";
 			}else{
 				genotype[4]=bit_code;
 			}
 			base2ProfileString+=bit_code;
 		}
-		processingReport+=("</ul><p><b>Processed " + processedLines + " lines describing variants. Of these, " + processedMatchingLines + " lines matched allowed Medicine Safety Code RS numbers. Of these, " + (numberOfRsids - linesThatDidNotMatchAllowedVariant - processedMatchingLines) + " lines contained genotypes that did not match allowed Medicine Safety Code genotypes. </b></p>");
+		processingReport+=("</ul><p><b>Processed " + processedLines + " lines describing variants. Of these, " + processedMatchingLines + " lines matched allowed Medicine Safety Code RS numbers. Of these, " +   linesThatDidNotMatchAllowedVariant + " lines contained genotypes that did not match allowed Medicine Safety Code genotypes. </b></p>");
 		try{		
 			base64ProfileString = Common.convertFrom2To64(base2ProfileString);
 		}catch(BadFormedBinaryNumberException e){
@@ -685,8 +688,183 @@ public class MedicineSafetyProfileOWLAPI {
         		}
         	}
         }
-		
-		
 		return list_recommendations;
+	}
+	
+	
+	public ArrayList<String> getSimplifiedListRsids(){
+		ArrayList<String> list_rsids = new ArrayList<String> ();
+		
+		HashMap<Integer,String> results		= new HashMap<Integer,String>();
+		OWLDataFactory factory 				= manager.getOWLDataFactory();
+		OWLAnnotationProperty ann_rank		= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#rank"));
+    	OWLAnnotationProperty ann_rsid		= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#rsid"));
+		OWLClass human_with_genotype_marker = factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#human_with_genotype_marker"));
+		NodeSet<OWLClass> list_marker 		= reasoner.getSubClasses(human_with_genotype_marker, true);
+		
+        for(OWLClass clase: list_marker.getFlattened() ){
+        	String rank="";
+        	for (OWLAnnotation annotation : clase.getAnnotations(ontology, ann_rank)) {
+                if (annotation.getValue() instanceof OWLLiteral) {
+                    OWLLiteral val = (OWLLiteral) annotation.getValue();
+                    rank=val.getLiteral();
+                    break;
+                }
+            }
+        	if(rank==null || rank.isEmpty()) continue;
+        	int rank_int = -1;
+        	try{
+        		rank_int = Integer.parseInt(rank);
+        	}catch(NumberFormatException e){
+        		e.printStackTrace();
+        		continue;
+        	}
+
+        	String rsid="";
+        	for (OWLAnnotation annotation : clase.getAnnotations(ontology, ann_rsid)) {
+                if (annotation.getValue() instanceof OWLLiteral) {
+                    OWLLiteral val = (OWLLiteral) annotation.getValue();
+                    rsid=val.getLiteral();
+                    break;
+                }
+            }
+        	if(rsid==null || rsid.isEmpty()) continue;
+        	        	
+        	results.put(rank_int, rsid);
+        }
+        
+        //Sort the list of markers by their rank number.
+		for(int key=0;!results.isEmpty();key++){ 
+			if(results.containsKey(key)){
+				String genotype=results.get(key);
+				list_rsids.add(genotype);
+				results.remove(key);
+			}
+		}
+		
+		return list_rsids;
+	}
+	
+	
+	public ArrayList<String> getSimplifiedListPolymorphisms(){
+		ArrayList<String> list_polymorphism = new ArrayList<String> ();
+		
+		OWLDataFactory factory 						= manager.getOWLDataFactory();
+		OWLClass human_with_genetic_polymorphism	= factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#human_with_genetic_polymorphism"));
+		NodeSet<OWLClass> list_marker				= reasoner.getSubClasses(human_with_genetic_polymorphism, true);
+		
+        for(OWLClass clase: list_marker.getFlattened() ){
+        	String name=clase.getIRI().toString();
+        	name = name.substring(name.indexOf("_with_")+6);
+        	boolean inserted=false;
+        	for(int i=0;i<list_polymorphism.size();i++){
+        		if(list_polymorphism.get(i).compareTo(name)>=0){
+        			list_polymorphism.add(i, name);
+        			inserted=true;
+        			break;
+        		}
+        	}
+        	if(!inserted) list_polymorphism.add(name);
+        }
+        
+        return list_polymorphism;
+	}
+	
+	
+	public ArrayList<String> getSimplifiedListRules(){
+		ArrayList<String> list_rules = new ArrayList<String> ();
+		
+		OWLDataFactory factory 				= manager.getOWLDataFactory();
+		OWLClass human_triggering_CDS_rule	= factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#human_triggering_CDS_rule"));
+		NodeSet<OWLClass> list_marker		= reasoner.getSubClasses(human_triggering_CDS_rule, true);
+		
+        for(OWLClass clase: list_marker.getFlattened() ){
+        	String name=clase.getIRI().toString();
+        	name = name.substring(name.indexOf("rule_"));
+        	int position = Integer.parseInt(name.substring(5));
+        	boolean inserted=false;
+        	for(int i=0;i<list_rules.size();i++){
+        		String name2 = list_rules.get(i);
+        		int position2= Integer.parseInt(name2.substring(5));
+        		if(position2>=position){
+        			list_rules.add(i, name);
+        			inserted=true;
+        			break;
+        		}
+        	}
+        	if(!inserted) list_rules.add(name);
+        }
+        
+        return list_rules;
+	}
+	
+	
+	public ArrayList<String> getStatistics(ArrayList<String> list_snp, ArrayList<String> list_poly, ArrayList<String> list_rule){
+		
+		ArrayList<String> results = new ArrayList<String>(list_snp.size()+list_poly.size()+list_rule.size());
+		for(int i=0;i<(list_snp.size()+list_poly.size()+list_rule.size());i++ ){
+			results.add("");
+		}
+		
+		RELReasoner			local_reasoner	= new RELReasonerFactory().createReasoner(ontology);
+		local_reasoner.precomputeInferences();
+		
+		OWLDataFactory 			factory				= manager.getOWLDataFactory();
+		OWLNamedIndividual		patient				= factory.getOWLNamedIndividual(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#this_patient"));//We obtain the patient instance
+		OWLAnnotationProperty	ann_relevant_for	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#relevant_for"));
+		OWLAnnotationProperty	ann_criteria		= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#criteria_syntax"));
+               		
+		if(patient!=null){
+        	NodeSet<OWLClass> list_types = local_reasoner.getTypes(patient, false);
+        	for(OWLClass type: list_types.getFlattened()){
+        		//FIND RULES TRIGGERED
+        		Set<OWLAnnotation> match = type.getAnnotations(ontology, ann_relevant_for);
+        		if(match!=null&&!match.isEmpty()){
+        			String rule_name = type.getIRI().toString();
+        			rule_name = rule_name.substring(rule_name.indexOf("_rule")+1);
+        			for(int i=0;i<list_rule.size();i++){
+        				if(rule_name.equals(list_rule.get(i))){
+        					results.set(i+list_snp.size()+list_poly.size(), "1");
+        					break;
+        				}
+        			}
+        			//System.out.println("Rule="+type.getIRI());
+        			continue;
+    	        }
+        		
+        		match = type.getAnnotations(ontology,ann_criteria); 
+        		if(match!=null&&!match.isEmpty()){
+        			String snp_name = type.getIRI().toString();
+        			snp_name = snp_name.substring(snp_name.indexOf("_rs")+1);
+        			String rsid = snp_name.substring(0,snp_name.indexOf("_variant"));
+        			for(int i=0;i<list_snp.size();i++){
+        				if(rsid.equals(list_snp.get(i))){
+        					results.set(i, snp_name);
+        					break;
+        				}
+        			}
+        			//System.out.println("raw_data="+type.getIRI());
+        			continue;
+        		}
+                
+                NodeSet<OWLClass> list_superclasses = local_reasoner.getSuperClasses(type, true);
+                for(OWLClass superclass : list_superclasses.getFlattened()){
+		        	if(superclass.getIRI().toString().contains("human_with_genetic_polymorphism")){
+		        		String poly_name = type.getIRI().toString();
+		        		poly_name = poly_name.substring(poly_name.indexOf("_with_")+6);
+		        		for(int i=0;i<list_poly.size();i++){
+	        				if(poly_name.equals(list_poly.get(i))){
+	        					results.set(i+list_snp.size(), "1");
+	        					break;
+	        				}
+	        			}
+		        		//System.out.println("allele="+type.getIRI());
+		     	        break;
+		        	}
+		        }
+        	}
+        }
+		
+		return results;
 	}
 }
