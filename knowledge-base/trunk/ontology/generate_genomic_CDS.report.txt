@@ -197,7 +197,7 @@ INFO: No tagging polymorphism variants found for CYP2C9_star_20
 INFO: No tagging polymorphism variants found for CYP2C9_star_21
 INFO: No tagging polymorphism variants found for CYP2C9_star_22
 INFO: No tagging polymorphism variants found for CYP2C9_star_23
-ERROR: Polymorphism variant "rs1799853_C_OR_T" in allele CYP2C9 *24 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs1799853_C_T" in allele CYP2C9 *24 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs72558188_del" in allele CYP2C9 *25 does not match dbSNP. Skipping conversion for the entire allele.
 INFO: No tagging polymorphism variants found for CYP2C9_star_26
 INFO: No tagging polymorphism variants found for CYP2C9_star_27
