@@ -32,9 +32,11 @@ public class BulkThread extends Thread {
 				String report = msp.read23AndMeFileStream(input);
 				input.close();
 				ArrayList<String> reportStatistics = parseReportFile(report);
-				results = msp.getStatistics(sortedSNP,sortedPoly, sortedRule);
-				results.addAll(reportStatistics);
-				ce.compoundResults(fileInput.getName(), results, true);
+				if(reportStatistics.get(1)!="0"){
+					results = msp.getStatistics(sortedSNP,sortedPoly, sortedRule);
+					results.addAll(reportStatistics);
+					ce.compoundResults(fileInput.getName(), results, true);
+				}
 				fileInput = ce.getNextFile();
 			}
 		}catch(Exception e){

@@ -29,6 +29,7 @@ import java.io.File;
 			nThreads = Integer.parseInt(args[3]);
 		}catch(Exception e){
 			System.out.println("Warning: The number of threads is not correct default value of 3 was set.");
+			nThreads=3;
 		}
 		
 		File folder = new File(parsing_folder);
@@ -38,10 +39,11 @@ import java.io.File;
 			System.exit(1);
 		}
 		
-		CoordinateExecution coordinator = new CoordinateExecution(output_results, folder, ontology_model, nThreads);
-		coordinator.execute();
+		CoordinateExecution coordinator = new CoordinateExecution(ontology_model);
+		coordinator.execute(output_results, folder, nThreads);
+		coordinator.processRawData(output_results);
 		
 		System.out.println("End execution");
-	}	
+	}
 
 }

@@ -828,7 +828,7 @@ public class MedicineSafetyProfileOWLAPI {
         					break;
         				}
         			}
-        			//System.out.println("Rule="+type.getIRI());
+
         			continue;
     	        }
         		
@@ -843,7 +843,7 @@ public class MedicineSafetyProfileOWLAPI {
         					break;
         				}
         			}
-        			//System.out.println("raw_data="+type.getIRI());
+
         			continue;
         		}
                 
@@ -858,7 +858,7 @@ public class MedicineSafetyProfileOWLAPI {
 	        					break;
 	        				}
 	        			}
-		        		//System.out.println("allele="+type.getIRI());
+
 		     	        break;
 		        	}
 		        }
