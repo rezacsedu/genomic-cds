@@ -1,6 +1,7 @@
 <?php
 error_reporting(E_ALL);
 require_once 'Classes/PHPExcel/IOFactory.php';
+date_default_timezone_set('Europe/London');
 
 /*
  * Input file locations
@@ -8,7 +9,7 @@ require_once 'Classes/PHPExcel/IOFactory.php';
 $db_snp_xml_input_file_location = "..\\data\\dbSNP\\core_rsid_data_from_dbsnp.xml";
 $pharmacogenomic_CDS_base_file_location = "..\\ontology\\genomic-cds_base.owl";
 $MSC_classes_base_file_location = "..\\ontology\\MSC_classes_base.owl";
-$haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet.xlsx";
+$haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet_v2.xlsx";
 $pharmacogenomics_decision_support_spreadsheet_file_location = "..\\data\\decision-support-rules\\Pharmacogenomics decision support spreadsheet.xlsx";
 $pharmacogenomic_CDS_demo_additions_file_location = "..\\ontology\\genomic-cds_demo_additions.owl";
 
