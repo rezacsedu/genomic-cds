@@ -12,7 +12,7 @@ $haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadshee
 /*
  * Output file locations
  */
-$haplotype_spreadsheet_file_location_v2 = "..\\data\\PharmGKB\\haplotype_spreadsheet_v2.xlsx";
+$haplotype_spreadsheet_file_location_v2 = "..\\data\\PharmGKB\\haplotype_spreadsheet_v3.xlsx";
 
 /*
  * Initializing important variables
@@ -40,21 +40,6 @@ function get_list_snps_for_allele($allele_name){
 }
  
  
-function make_valid_id($string) {
-	$substitutions = array(
-			"(" => "_",
-			")" => "_",
-			" " => "_",
-			"[" => "_",
-			"]" => "_",
-			"/" => "_",
-			":" => "_",
-			"*" => "star_", 
-			"#" => "_hash"
-	);
-	return strtr($string, $substitutions);
-}
-
 /************************
  * Read and convert data from haplotype spreadsheet
  ************************/
@@ -79,13 +64,13 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 	if(empty($array_snps)){		
 		continue;
 	}
-	print("worksheet = ".$worksheet_title."\n");
+	//print("worksheet = ".$worksheet_title."\n");
 	$lastRow = $objWorksheet->getHighestRow();
 	for ($row = 2; $row <= $lastRow; $row++) {
 		$superClass_cell = $objWorksheet->getCell('C'.$row);
 		$haplotype_cell = $objWorksheet->getCell('D'.$row);
 		if($superClass_cell->getValue() == "*1" || $haplotype_cell->getValue() == "*1"){
-			print("matched C".$row." o D".$row."\n");
+			//print("matched C".$row." o D".$row."\n");
 			$lastColumn = $objWorksheet->getHighestColumn();
 			$lastColumn++;
 			for ($column = 'E'; $column != $lastColumn; $column++) {
@@ -96,7 +81,7 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 						$cell_value =  $objWorksheet->getCell($column.$row)->getValue();
 						if (strpos($cell_value,'[tag]') == false) {
 							$objWorksheet->setCellValue($column.$row,$cell_value." [tag]");
-							print("Celda [$column,$row]= ".$cell_value." [tag]\n");
+							//print("Celda [$column,$row]= ".$cell_value." [tag]\n");
 						}
 					}
 				}
