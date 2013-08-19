@@ -41,7 +41,7 @@ public class SafetyCodeInterpreter extends HttpServlet {
 		// initialize bootstrapProfile
 		String path = this.getServletContext().getRealPath("/");
 		path=path.replaceAll("\\\\", "/");
-		bootstrapProfile = new MedicineSafetyProfileOWLAPI(path+"MSC_classes.ttl");
+		bootstrapProfile = new MedicineSafetyProfileOWLAPI(path+"MSC_classes.owl");
 		
 		
 		PrintWriter out = response.getWriter();

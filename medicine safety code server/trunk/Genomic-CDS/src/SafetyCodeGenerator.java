@@ -58,7 +58,8 @@ public class SafetyCodeGenerator extends HttpServlet {
 		contentHTML.append("<h1>A Medicine Safety Code was generated for your data</h1>");
 		String strandOrientationOfInputData = Common.DBSNP_ORIENTATION;
 		FileItem my23andMeFileItem = null;
-		
+		String path =  this.getServletContext().getRealPath("/");
+		path=path.replaceAll("\\\\", "/");
 		try {
 			@SuppressWarnings("unchecked")
 			List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
@@ -77,9 +78,7 @@ public class SafetyCodeGenerator extends HttpServlet {
 	        	throw new ServletException("File is missing.");
 	        }
 	        
-	        String path = this.getServletContext().getRealPath("/");
-	        path=path.replaceAll("\\\\", "/");
-	        MedicineSafetyProfileOWLAPI myProfile = new MedicineSafetyProfileOWLAPI(path+"MSC_classes.ttl");
+	        MedicineSafetyProfileOWLAPI myProfile = new MedicineSafetyProfileOWLAPI(path+"MSC_classes.owl");
         	String processingReport = myProfile.read23AndMeFileStream(my23andMeFileItem.getInputStream(), strandOrientationOfInputData);
         	String encodedProfileURL = URLEncoder.encode(Common.ROOT_URL+"?code="+myProfile.getBase64ProfileString(), "UTF-8");
         	contentHTML.append("<p align='center'><img src='http://safety-code.org/Genomic-CDS/MSCImageGenerator?url=" + encodedProfileURL + "' alt='Medicine Safety Code' /></p>");
@@ -89,16 +88,14 @@ public class SafetyCodeGenerator extends HttpServlet {
 	        throw new ServletException("Cannot parse multipart request.");
 	    } catch (Exception e) {
 	    	e.printStackTrace();
-	    	throw new ServletException("Unexpected error has occurred.");
+	    	throw new ServletException("Unexpected error has occurred. Ontology="+path+"MSC_classes.ttl");
 		}
 		
 		// Below, the Apache StrSubstitutor class is used as a very simple templating engine
 		StringReader myStringReader = new StringReader();
 		
 		String templateString;
-		try {
-			String path = this.getServletContext().getRealPath("/");
-	        path=path.replaceAll("\\\\", "/");
+		try {			
 	        templateString = myStringReader.readFile(path+"general-template.html");
 		} catch (Exception e) {
 			e.printStackTrace();

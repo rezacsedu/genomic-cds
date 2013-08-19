@@ -75,20 +75,24 @@ public class MedicineSafetyProfileOWLAPI {
 	 * */
 	private void initializeModel (String ontologyFile) {
 		
-		if(ontologyFile==null){
-			ontologyFile="file:MSC_classes.ttl";
+		/*if(ontologyFile==null){
+			ontologyFile="file:MSC_classes.owl";
 		}else{
 			ontologyFile="file:/"+ontologyFile;
-		}
+		}*/
 				
 		try{
 			 manager = OWLManager.createOWLOntologyManager();
-			 IRI physicalURI = IRI.create(ontologyFile);
-			 ontology = manager.loadOntologyFromOntologyDocument(physicalURI);
+			 File file = new File (ontologyFile);
+			 //IRI physicalURI = IRI.create(ontologyFile);
+			 
+			 //ontology = manager.loadOntologyFromOntologyDocument(physicalURI);
+			 ontology = manager.loadOntologyFromOntologyDocument(file);
 			 OWLReasonerFactory reasonerFactory = new StructuralReasonerFactory();
 		     reasoner = reasonerFactory.createNonBufferingReasoner(ontology);
 		}catch(Exception e){
 			e.printStackTrace();
+			System.err.println("ERROR in Path = "+ontologyFile);
 		}
 	}
 	
@@ -228,10 +232,10 @@ public class MedicineSafetyProfileOWLAPI {
 				
 		OWLDataFactory factory = manager.getOWLDataFactory();
 		OWLClass human_with_genotype_marker = factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#human_with_genotype_marker"));
+		OWLAnnotationProperty ann_rank			= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#rank"));
 		NodeSet<OWLClass> list_marker = reasoner.getSubClasses(human_with_genotype_marker, true);
         for(OWLClass clase: list_marker.getFlattened() ){
         	String rank="";
-        	OWLAnnotationProperty ann_rank			= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#rank"));
         	for (OWLAnnotation annotation : clase.getAnnotations(ontology, ann_rank)) {
                 if (annotation.getValue() instanceof OWLLiteral) {
                     OWLLiteral val = (OWLLiteral) annotation.getValue();

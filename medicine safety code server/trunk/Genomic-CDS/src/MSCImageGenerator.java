@@ -44,6 +44,8 @@ public class MSCImageGenerator extends HttpServlet {
 		String code = URLDecoder.decode(request.getParameter("url"), "UTF-8");
 		ServletOutputStream out = response.getOutputStream();
 		
+		//request.setAttribute("Cache-control", "private");
+		
 		Charset charset = Charset.forName("ISO-8859-1");
 		CharsetEncoder encoder = charset.newEncoder();
 		byte[] b = null;
