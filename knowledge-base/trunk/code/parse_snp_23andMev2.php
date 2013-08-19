@@ -12,7 +12,7 @@ $haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadshee
 /*
  * Output file locations
  */
-$haplotype_spreadsheet_file_location_v2 = "..\\data\\PharmGKB\\haplotype_spreadsheet_v3.xlsx";
+$haplotype_spreadsheet_file_location_v2 = "..\\data\\PharmGKB\\haplotype_spreadsheet_v4.xlsx";
 
 /*
  * Initializing important variables

@@ -9,7 +9,7 @@ date_default_timezone_set('Europe/London');
 $db_snp_xml_input_file_location = "..\\data\\dbSNP\\core_rsid_data_from_dbsnp.xml";
 $pharmacogenomic_CDS_base_file_location = "..\\ontology\\genomic-cds_base.owl";
 $MSC_classes_base_file_location = "..\\ontology\\MSC_classes_base.owl";
-$haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet_v3.xlsx";
+$haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet_v4.xlsx";
 $pharmacogenomics_decision_support_spreadsheet_file_location = "..\\data\\decision-support-rules\\Pharmacogenomics decision support spreadsheet.xlsx";
 $pharmacogenomic_CDS_demo_additions_file_location = "..\\ontology\\genomic-cds_demo_additions.owl";
 
@@ -102,6 +102,12 @@ function generate_assay_annotations($rsid_string){
 	
 	return $owl;
 }
+ 
+function beep ($int_beeps = 1) {
+	$string_beeps = "";
+    for ($i = 0; $i < $int_beeps; $i++): $string_beeps .= "\x07"; endfor;
+    isset ($_SERVER['SERVER_PROTOCOL']) ? false : print $string_beeps;
+} 
  
 function make_valid_id($string) {
 	$substitutions = array(
@@ -674,4 +680,5 @@ file_put_contents($MSC_classes_file_location, $owl . $msc_owl); // $owl and $msc
 file_put_contents($pharmacogenomic_CDS_demo_file_location, $owl . file_get_contents($pharmacogenomic_CDS_demo_additions_file_location));
 file_put_contents($report_file_location, $report);
 
+beep(2);
 ?> 
