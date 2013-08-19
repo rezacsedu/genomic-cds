@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
-    <uri id="User Entered Import Resolution" name="file:/home/boycerd/DI_DIR/swat-4-med-safety/analyses/pharmgx-statement-annotation/data/all-paired-annotations-from-092012-BETA-OA-model-03132013.n3" uri="file:/D:/workspace/Genomic%20CDS/knowledge-base/trunk/data/all-paired-annotations-from-092012-BETA-OA-model-03132013.n3"/>
-    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base=""/>
-</catalog>

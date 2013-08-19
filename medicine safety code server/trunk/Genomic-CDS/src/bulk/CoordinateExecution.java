@@ -191,7 +191,7 @@ public class CoordinateExecution {
 			}
 			bw.close();
 			bw_final.write("Matched SNPs = "+value+"\nMax SNP "+max_label+" -> value = "+max+"\n");
-			bw_final.write("Mean matched SNPs = "+(value/nFiles)+"\n");
+			bw_final.write("Mean matched SNPs = "+(value/(double)nFiles)+"\n");
 			
 			bw = new BufferedWriter(new FileWriter(prefix+"_Poly_statistics.csv"));
 			bw.write("Polymorphism name;Number of occurrences\n");
@@ -213,7 +213,7 @@ public class CoordinateExecution {
 			}
 			bw.close();
 			bw_final.write("Matched Poly = "+value+"\nMax poly "+max_label+"-> value = "+max+"\n");
-			bw_final.write("Mean matched Polymorphisms = "+(value/nFiles)+"\n");
+			bw_final.write("Mean matched Polymorphisms = "+(value/(double)nFiles)+"\n");
 			
 			bw = new BufferedWriter(new FileWriter(prefix+"_Rules_statistics.csv"));
 			bw.write("Rules name;Number of occurrences\n");
@@ -236,7 +236,7 @@ public class CoordinateExecution {
 			bw.close();
 			bw_warn.close();
 			bw_final.write("Matched rules = "+value+"\nMax rule "+max_label+" -> value = "+max+"\n");
-			bw_final.write("Mean matched Rules = "+(value/nFiles)+"\n");
+			bw_final.write("Mean matched Rules = "+(value/(double)nFiles)+"\n");
 			bw_final.close();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -285,8 +285,7 @@ public class CoordinateExecution {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		System.out.println("File "+file_input+" processed.");
 	}
-
-	
 	
 }

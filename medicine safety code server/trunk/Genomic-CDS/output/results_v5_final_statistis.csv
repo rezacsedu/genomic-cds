@@ -1,10 +1,10 @@
-Number of files processed is 416
-Matched SNPs = 104412
-Max SNP rs2066853 -> value = 389
-Mean matched SNPs = 250
-Matched Poly = 0
-Max poly -> value = 0
-Mean matched Polymorphisms = 0
-Matched rules = 386
-Max rule rule_47 -> value = 274
-Mean matched Rules = 0
+Number of files processed is 344
+Matched SNPs = 94656
+Max SNP rs717620 -> value = 343
+Mean matched SNPs = 275.16279069767444
+Matched Poly = 9812
+Max poly TPMT_star_1-> value = 342
+Mean matched Polymorphisms = 28.523255813953487
+Matched rules = 2139
+Max rule rule_31 -> value = 315
+Mean matched Rules = 6.218023255813954

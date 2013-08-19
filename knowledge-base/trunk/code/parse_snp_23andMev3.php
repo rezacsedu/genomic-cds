@@ -12,7 +12,7 @@ $haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadshee
 /*
  * Output file locations
  */
-$haplotype_spreadsheet_file_location_v2 = "..\\data\\PharmGKB\\haplotype_spreadsheet_v4.xlsx";
+$haplotype_spreadsheet_file_location_v2 = "..\\data\\PharmGKB\\haplotype_spreadsheet_v5.xlsx";
 
 /*
  * Initializing important variables
@@ -66,10 +66,10 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 	}
 	//print("worksheet = ".$worksheet_title."\n");
 	$lastRow = $objWorksheet->getHighestRow();
-	for ($row = 2; $row <= $lastRow; $row++) {
+	for ($row = 2; $row <= 2/*$lastRow*/; $row++) {
 		$superClass_cell = $objWorksheet->getCell('C'.$row);
 		$haplotype_cell = $objWorksheet->getCell('D'.$row);
-		if($superClass_cell->getValue() == "*1" || $haplotype_cell->getValue() == "*1"){
+		if(/*$superClass_cell->getValue() == "*1" || $haplotype_cell->getValue() == "*1"*/ true){
 			//print("matched C".$row." o D".$row."\n");
 			$lastColumn = $objWorksheet->getHighestColumn();
 			$lastColumn++;

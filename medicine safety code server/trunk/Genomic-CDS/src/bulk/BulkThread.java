@@ -26,13 +26,14 @@ public class BulkThread extends Thread {
 		String ontology = ce.getOntology();
 		try{
 			while(fileInput!=null){
-				System.out.println("Start parsing file "+fileInput.getName());
+				
 				MedicineSafetyProfileOWLAPI msp = new MedicineSafetyProfileOWLAPI(ontology);
 				InputStream input = new FileInputStream(fileInput);
 				String report = msp.read23AndMeFileStream(input);
 				input.close();
 				ArrayList<String> reportStatistics = parseReportFile(report);
-				if(reportStatistics.get(1)!="0"){
+				Integer nLinesProcessed = Integer.parseInt(reportStatistics.get(0));
+				if(reportStatistics.get(1)!="0" && nLinesProcessed>900000){
 					results = msp.getStatistics(sortedSNP,sortedPoly, sortedRule);
 					results.addAll(reportStatistics);
 					ce.compoundResults(fileInput.getName(), results, true);
