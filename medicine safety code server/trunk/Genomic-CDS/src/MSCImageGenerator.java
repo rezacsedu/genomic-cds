@@ -41,10 +41,11 @@ public class MSCImageGenerator extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String path = this.getServletContext().getRealPath("/");
+        path=path.replaceAll("\\\\", "/");
+		
 		String code = URLDecoder.decode(request.getParameter("url"), "UTF-8");
 		ServletOutputStream out = response.getOutputStream();
-		
-		//request.setAttribute("Cache-control", "private");
 		
 		Charset charset = Charset.forName("ISO-8859-1");
 		CharsetEncoder encoder = charset.newEncoder();
@@ -81,8 +82,7 @@ public class MSCImageGenerator extends HttpServlet {
 		}
 			
 		try {
-			String path = this.getServletContext().getRealPath("/");
-	        path=path.replaceAll("\\\\", "/");
+			
 			InputStream is = new FileInputStream(path+"images/safetyCodeFrameImage2.png");
 			BufferedImage frameImage = ImageIO.read(is);
 			BufferedImage finalImage = new BufferedImage(frameImage.getWidth(), frameImage.getHeight(), BufferedImage.TYPE_INT_RGB);
@@ -91,8 +91,12 @@ public class MSCImageGenerator extends HttpServlet {
 			Graphics g = finalImage.getGraphics();
 			g.drawImage(frameImage, 0, 0, null); // draw the frame and logo of the Medicine Safety Code
 			g.drawImage(barcodeImage, 3, 28, null); // position barcode inside frame
+			
 			ImageIO.write(finalImage, "PNG", out);		
 			g.dispose();
+
+			is.close();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.out.println(e.getMessage());

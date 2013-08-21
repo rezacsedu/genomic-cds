@@ -45,7 +45,7 @@ public class SafetyCodeGenerator extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException {
-
+		
 		response.setContentType("text/html");
 		
 		PrintWriter out;
@@ -68,8 +68,8 @@ public class SafetyCodeGenerator extends HttpServlet {
 	                // Process regular form field (input type="text|radio|checkbox|etc", select, etc).
 	                String fieldname = item.getFieldName();
 	                String fieldvalue = item.getString();
+	                //The option forward_orientation is the default value.
 	                if (fieldname.equals("strand-orientation") && fieldvalue.equals("forward-orientation")) strandOrientationOfInputData = Common.FORWARD_ORIENTATION;
-	                //The option dbsnp_orientation is the default value.
 	            } else {
 	               my23andMeFileItem = item;
 	            }
@@ -80,9 +80,9 @@ public class SafetyCodeGenerator extends HttpServlet {
 	        
 	        MedicineSafetyProfileOWLAPI myProfile = new MedicineSafetyProfileOWLAPI(path+"MSC_classes.owl");
         	String processingReport = myProfile.read23AndMeFileStream(my23andMeFileItem.getInputStream(), strandOrientationOfInputData);
-        	String encodedProfileURL = URLEncoder.encode(Common.ROOT_URL+"?code="+myProfile.getBase64ProfileString(), "UTF-8");
-        	contentHTML.append("<p align='center'><img src='http://safety-code.org/Genomic-CDS/MSCImageGenerator?url=" + encodedProfileURL + "' alt='Medicine Safety Code' /></p>");
-        	contentHTML.append("<p>You can visit the generated profile <a href='" + Common.ROOT_URL+"?code="+myProfile.getBase64ProfileString()+ "'> here</a>.</p>");
+        	String encodedProfileURL = URLEncoder.encode(Common.ROOT_URL+"/"+Common.VERSION+"?code="+myProfile.getBase64ProfileString(), "UTF-8");
+        	contentHTML.append("<p align='center'><img src='"+Common.ROOT_URL+"/MSCImageGenerator?url=" + encodedProfileURL + "' alt='Medicine Safety Code' /></p>");
+        	contentHTML.append("<p>You can visit the generated profile <a href='" + Common.ROOT_URL+"/"+Common.VERSION+"?code="+myProfile.getBase64ProfileString()+ "'> here</a>.</p>");
         	contentHTML.append("<h3>Processing report</h3><p>\n" + processingReport + "\n</p>");
 	    } catch (FileUploadException e) {
 	        throw new ServletException("Cannot parse multipart request.");

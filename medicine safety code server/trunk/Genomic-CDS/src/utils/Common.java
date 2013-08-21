@@ -15,8 +15,9 @@ public class Common {
 	public final static char[] BASE_DIGITS = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','-','_'};
 	public final static String DBSNP_ORIENTATION = "dbsnp-orientation";
 	public final static String FORWARD_ORIENTATION = "forward-orientation";
-	public final static String ROOT_URL = "http://safety-code.org/Genomic-CDS/v0.2";
-	
+	public final static String ROOT_URL = "http://safety-code.org/Genomic-CDS";
+	//public final static String ROOT_URL = "http://localhost:8080/Genomic-CDS";
+	public final static String VERSION = "v0.2";
 	
 	/**
 	 * It transform a binary number into a base 64 number. We assume that the binary number has a multiple of six digits. In other case, we will add '0' until we obtain a multiple of 6 digits. We add the extra digits to the right side because we process the number from left to right.
