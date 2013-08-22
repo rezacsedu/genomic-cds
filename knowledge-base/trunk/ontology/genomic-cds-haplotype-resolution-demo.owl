@@ -1,0 +1,993 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY dc "http://purl.org/dc/elements/1.1/" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.safety-code.org/ont/pgx.owl#"
+     xml:base="http://www.safety-code.org/ont/pgx.owl"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+    <owl:Ontology rdf:about="http://www.safety-code.org/ont/pgx.owl"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#comment -->
+
+    <owl:AnnotationProperty rdf:about="&rdfs;comment"/>
+    
+
+
+    <!-- http://www.w3.org/2000/01/rdf-schema#label -->
+
+    <owl:AnnotationProperty rdf:about="&rdfs;label"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral -->
+
+    <rdfs:Datatype rdf:about="&rdf;PlainLiteral"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#has -->
+
+    <owl:ObjectProperty rdf:about="http://www.safety-code.org/ont/pgx.owl#has">
+        <rdfs:label>has</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#taken_by -->
+
+    <owl:ObjectProperty rdf:about="http://www.safety-code.org/ont/pgx.owl#taken_by">
+        <rdfs:label xml:lang="en">taken by</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#GENE1 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#GENE1">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#GENE1_star_1"/>
+                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#GENE1_star_2"/>
+                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#GENE1_star_3"/>
+                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#GENE1_star_4"/>
+                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#GENE1_star_5"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#allele"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#GENE1_star_1 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#GENE1_star_1">
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#GENE1_star_2 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#GENE1_star_2">
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#GENE1_star_3 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#GENE1_star_3">
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#GENE1_star_4 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#GENE1_star_4">
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#GENE1_star_5 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#GENE1_star_5">
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#allele -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#allele">
+        <rdfs:label>allele</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#human -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#human">
+        <rdfs:label>human</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs1"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs2"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#human_with_GENE1_star_1 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#human_with_GENE1_star_1">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_1"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs1_A"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_1"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs2_A"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_1"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs3_A"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_1"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#human_with_genetic_polymorphism"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#human_with_GENE1_star_2 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#human_with_GENE1_star_2">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs3_C"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_2"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_2"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#human_with_genetic_polymorphism"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs1_A"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_2"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs2_A"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_2"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#human_with_GENE1_star_3 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#human_with_GENE1_star_3">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_3"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs1_T"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_3"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs2_G"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_3"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#human_with_genetic_polymorphism"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs3_A"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_3"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#human_with_GENE1_star_4 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#human_with_GENE1_star_4">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_4"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs2_G"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_4"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs_bob_1_C"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_4"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#human_with_genetic_polymorphism"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs3_A"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_4"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#human_with_GENE1_star_5 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#human_with_GENE1_star_5">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs2_A"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_5"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs_bob_1_C"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_5"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_5"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#human_with_genetic_polymorphism"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs3_A"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_5"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#human_with_genetic_polymorphism -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#human_with_genetic_polymorphism">
+        <rdfs:label>human with genetic polymorphism</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#human"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1">
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#human_with_genetic_polymorphism"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1_star_1 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1_star_1">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_1"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs1_A"/>
+                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs2_A"/>
+                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs3_A"/>
+                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1_star_2 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1_star_2">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_2"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs3_C"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_2"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:onClass>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:onClass>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs1_A"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_2"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:onClass>
+                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:onClass>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs2_A"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                        <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_2"/>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:onClass>
+                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1_star_3 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1_star_3">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs1_T"/>
+                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs2_G"/>
+                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_3"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs3_A"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_3"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:onClass>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1_star_4 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1_star_4">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs2_G"/>
+                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs_bob_1_C"/>
+                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_4"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:onClass>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs3_A"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                                <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_4"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:onClass>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1_star_5 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1_star_5">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs2_A"/>
+                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs_bob_1_C"/>
+                        <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#GENE1_star_5"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs3_A"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#polymorphism -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#polymorphism">
+        <rdfs:label>polymorphism</rdfs:label>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#taken_by"/>
+                <owl:onClass rdf:resource="http://www.safety-code.org/ont/pgx.owl#allele"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#rs1 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#rs1">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs1_A"/>
+                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs1_T"/>
+                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs_bob_1_C"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#polymorphism"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#rs1_A -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#rs1_A">
+        <rdfs:label xml:lang="en">rs1_A</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs1"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#rs1_T -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#rs1_T">
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs1"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#rs2 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#rs2">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs2_A"/>
+                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs2_G"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#polymorphism"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#rs2_A -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#rs2_A">
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs2"/>
+        <owl:disjointWith rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs2_G"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#rs2_G -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#rs2_G">
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs2"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#rs3 -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#rs3">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs3_A"/>
+                    <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs3_C"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#polymorphism"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#rs3_A -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#rs3_A">
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs3"/>
+        <owl:disjointWith rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs3_C"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#rs3_C -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#rs3_C">
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs3"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#rs_bob_1_C -->
+
+    <owl:Class rdf:about="http://www.safety-code.org/ont/pgx.owl#rs_bob_1_C">
+        <rdfs:label xml:lang="en">rs1_C</rdfs:label>
+        <rdfs:subClassOf rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs1"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.safety-code.org/ont/pgx.owl#this_patient -->
+
+    <owl:NamedIndividual rdf:about="http://www.safety-code.org/ont/pgx.owl#this_patient">
+        <rdf:type rdf:resource="http://www.safety-code.org/ont/pgx.owl#human"/>
+        <rdf:type>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs1_T"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs2_A"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs2_G"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.safety-code.org/ont/pgx.owl#has"/>
+                        <owl:someValuesFrom rdf:resource="http://www.safety-code.org/ont/pgx.owl#rs_bob_1_C"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdf:type>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#allele"/>
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#human"/>
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#polymorphism"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs1_A"/>
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs1_T"/>
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs_bob_1_C"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1_star_1"/>
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1_star_2"/>
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1_star_3"/>
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1_star_4"/>
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#human_with_homozygous_GENE1_star_5"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#GENE1_star_1"/>
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#GENE1_star_2"/>
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#GENE1_star_3"/>
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#GENE1_star_4"/>
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#GENE1_star_5"/>
+        </owl:members>
+    </rdf:Description>
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs1"/>
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs2"/>
+            <rdf:Description rdf:about="http://www.safety-code.org/ont/pgx.owl#rs3"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.4.2) http://owlapi.sourceforge.net -->
+
