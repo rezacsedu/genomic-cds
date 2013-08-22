@@ -14,7 +14,6 @@ Ontology: <http://www.genomic-cds.org/ont/genomic-cds.owl>
         rdfs:comment "If you want to contribute or report a bug, please write an e-mail to Matthias Samwald, samwald@gmx.at",
         dc:license "Creative Commons 3.0 CC-by license",
         dc:creator "Matthias Samwald, http://samwald.info/",
-        owl:versionInfo "0.8.0",
         dc:contributor "Contributors are those that engage in discussions in the context of the Genomic CDS ontology:
 Bob Freimuth,
 Michel Dumontier, 

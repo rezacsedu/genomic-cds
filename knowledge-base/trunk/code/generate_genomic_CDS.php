@@ -171,6 +171,14 @@ function make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 
 	return $owl_fragment;
 }
 
+/************************
+ * Add version information (for reasons of simplicity, we are using the date of generation of the ontology for versioning)
+************************/
+
+$owl .= "\n\n";
+$owl .=  "Ontology: <http://www.genomic-cds.org/ont/genomic-cds.owl>\n";
+$owl .=  "    Annotations: owl:versionInfo \"" . date("Y/m/d") . "\"\n";
+
 
 /************************
  * Read and convert dbSNP data
@@ -185,8 +193,7 @@ function make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 
 //$snps_Affimetrix_DMET_chip = preg_split("/[\n|\s]/",$snps_Affimetrix_DMET_chip);
 //$snps_University_of_Florida_and_Standford_chip = file_get_contents($snps_covered_by_University_of_Florida_and_Standford_chip);
 //$snps_University_of_Florida_and_Standford_chip = preg_split("/[\n|\s]/",$snps_University_of_Florida_and_Standford_chip);
- 
- 
+
 $owl .= "\n\n#\n# dbSNP data\n#\n\n";
 
 print("Processing dbSNP data" . "\n");
