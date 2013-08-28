@@ -9,7 +9,7 @@ date_default_timezone_set('Europe/London');
 $db_snp_xml_input_file_location = "..\\data\\dbSNP\\core_rsid_data_from_dbsnp.xml";
 $pharmacogenomic_CDS_base_file_location = "..\\ontology\\genomic-cds_base.owl";
 $MSC_classes_base_file_location = "..\\ontology\\MSC_classes_base.owl";
-$haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet_v5.xlsx";
+$haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet_vAuto.xlsx";
 $pharmacogenomics_decision_support_spreadsheet_file_location = "..\\data\\decision-support-rules\\Pharmacogenomics decision support spreadsheet.xlsx";
 $pharmacogenomic_CDS_demo_additions_file_location = "..\\ontology\\genomic-cds_demo_additions.owl";
 
@@ -403,6 +403,8 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 	$worksheet_title = $objWorksheet->getTitle();
 	
 	//print("Processing haplotype spreadsheet " . $worksheet_title . "\n");
+	// Array to record the disjoints haplotypes
+	$haplotypes_disjoints = array();
 	
 	// Skip sheets starting with "_" (can be used for sheets that need more work etc.)
 	if (strpos($worksheet_title,"_") === 0) { 
@@ -424,7 +426,6 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 			foreach ($cellIterator as $cell) {
 				$header_array[$cell->getColumn()] = $cell->getValue();
 			}
-			
 			continue;
 		}
 	
@@ -488,12 +489,41 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 		
 		// If cell in superclass column is empty...
 		if (isset($row_array['C']) == false) {
+			if(isset($haplotypes_disjoints[0])){
+				$array_aux = $haplotypes_disjoints[0];
+				$array_aux[] = $allele_id;
+				$haplotypes_disjoints[0] = $array_aux;
+			}else{
+				$array_aux = array();
+				$array_aux[] = $allele_id;
+				$haplotypes_disjoints[0] = $array_aux;
+			}
 			$owl .= "Class: " . $allele_id . "\n";
 			$owl .= "    Annotations: rdfs:label \"" . $allele_label . "\"\n";
 			$owl .= "    SubClassOf: " . $gene_id . "\n\n";
 		}else {// If cell in superclass column is not empty (i.e., a superclass is defined)...
 			$superclass_label = $row_array['B'] . " " . $row_array['C'];
 			$superclass_id = make_valid_id($superclass_label);
+			
+			if(isset($haplotypes_disjoints[$superclass_id])){
+				$array_aux = $haplotypes_disjoints[$superclass_id];
+				$array_aux[] = $allele_id;
+				$haplotypes_disjoints[$superclass_id] = $array_aux;
+			}else{
+				$array_aux = array();
+				$array_aux[] = $allele_id;
+				$haplotypes_disjoints[$superclass_id] = $array_aux;
+			}
+			
+			if(isset($haplotypes_disjoints[0])){
+				$array_aux = $haplotypes_disjoints[0];
+				$array_aux[] = $superclass_id;
+				$haplotypes_disjoints[0] = $array_aux;
+			}else{
+				$array_aux = array();
+				$array_aux[] = $superclass_id;
+				$haplotypes_disjoints[0] = $array_aux;
+			}
 			
 			$owl .= "Class: " . $superclass_id . "\n";
 			$owl .= "    Annotations: rdfs:label \"" . $superclass_label . "\"\n";
@@ -512,9 +542,8 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 		$owl .= "SubClassOf: human_with_genetic_polymorphism" . "\n";
 		$owl .= "Annotations: rdfs:label \"" . $human_label . "\"\n";
 		
-		
 		if (!isset($row_array['A']) || $row_array['A'] ==! "disabled") {
-
+		
 			// If there are polymorphism variants...
 			if (empty($allele_polymorphism_variants) == false) {
 				$owl .= "SubClassOf:" . "\n";
@@ -526,6 +555,9 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 			else {
 				$report .= "WARNING: No polymorphism variants found at all for " . $allele_id . "\n";
 			}
+
+			$owl .= "SubClassOf:" . "\n";
+			$owl .= "has some " . $allele_id . "\n\n";
 			
 			// If there are tagging polymorphism variants...
 			if (empty($allele_tag_polymorphism_variants) == false) {
@@ -536,9 +568,6 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 			else {
 				$report .= "INFO: No tagging polymorphism variants found for " . $allele_id . "\n";
 			}
-			
-			$owl .= "SubClassOf:" . "\n";
-			$owl .= "has some " . $allele_id . "\n\n";
 		}
 		
 		
@@ -562,6 +591,18 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 			$owl .= "has exactly 2 " . $allele_id . "\n\n";
 		}
 	}
+	
+	
+	// Produce disjoints between alleles variants
+	foreach($haplotypes_disjoints as $group_alleles_disjoints){
+		/*print("disjoints->");
+		foreach($group_alleles_disjoints as $allele_disjoint){
+			print($allele_disjoint." ");
+		}
+		print("\n");*/
+		$owl .=	generateDisjointClassesOWL($group_alleles_disjoints);
+	}
+	
 	
 	// NOTE: Disjoints between underdefined/overlapping alleles produce unsatisfiable homozygous humans.
 	$owl .= "# homozygous human disjoints\n";

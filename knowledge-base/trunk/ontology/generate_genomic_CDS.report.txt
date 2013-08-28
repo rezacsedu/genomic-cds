@@ -1,39 +1,19 @@
 -- Report -- 
 
 INFO: No tagging polymorphism variants found for ADRB1_H2
-INFO: No tagging polymorphism variants found for ADRB1_H3
 INFO: No tagging polymorphism variants found for BRCA1_1_hash
 INFO: No tagging polymorphism variants found for BRCA1_2
 INFO: No tagging polymorphism variants found for BRCA1_2_hash
 INFO: No tagging polymorphism variants found for BRCA1_3
 INFO: No tagging polymorphism variants found for BRCA1_3_hash
-INFO: No tagging polymorphism variants found for BRCA1_4
 INFO: No tagging polymorphism variants found for BRCA1_4_hash
 INFO: No tagging polymorphism variants found for BRCA1_6
-INFO: No tagging polymorphism variants found for BRCA1_7
 INFO: No tagging polymorphism variants found for BRCA1_8
 INFO: No tagging polymorphism variants found for BRCA1_9
 INFO: No tagging polymorphism variants found for BRCA1_10
 INFO: No tagging polymorphism variants found for COMT_Haplotype_intermediate_activity
 INFO: No tagging polymorphism variants found for COMT_Haplotype_low_activity
 ERROR: Polymorphism variant "rs35694136_del" in allele CYP1A2 *1D does not match dbSNP. Skipping conversion for the entire allele.
-INFO: No tagging polymorphism variants found for CYP1A2_star_1H
-INFO: No tagging polymorphism variants found for CYP1A2_star_5
-INFO: No tagging polymorphism variants found for CYP1A2_star_9
-INFO: No tagging polymorphism variants found for CYP1A2_star_12
-INFO: No tagging polymorphism variants found for CYP1A2_star_18
-INFO: No tagging polymorphism variants found for CYP1A2_star_19
-INFO: No tagging polymorphism variants found for CYP1A2_star_20
-INFO: No tagging polymorphism variants found for CYP2A6_star_1C
-INFO: No tagging polymorphism variants found for CYP2A6_star_1D
-INFO: No tagging polymorphism variants found for CYP2A6_star_1E
-INFO: No tagging polymorphism variants found for CYP2A6_star_1F
-INFO: No tagging polymorphism variants found for CYP2A6_star_1G
-INFO: No tagging polymorphism variants found for CYP2A6_star_1H
-INFO: No tagging polymorphism variants found for CYP2A6_star_1J
-INFO: No tagging polymorphism variants found for CYP2A6_star_1K
-INFO: No tagging polymorphism variants found for CYP2A6_star_1L
-INFO: No tagging polymorphism variants found for CYP2A6_star_3
 ERROR: Polymorphism variant "rs1801272_del" in allele CYP2A6 *4A does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs1809810_del" in allele CYP2A6 *4A does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs28399433_del" in allele CYP2A6 *4A does not match dbSNP. Skipping conversion for the entire allele.
@@ -115,31 +95,7 @@ ERROR: Polymorphism variant "rs4986891_del" in allele CYP2A6 *4H does not match 
 ERROR: Polymorphism variant "rs5031016_del" in allele CYP2A6 *4H does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs5031017_del" in allele CYP2A6 *4H does not match dbSNP. Skipping conversion for the entire allele.
 INFO: No tagging polymorphism variants found for CYP2A6_star_8
-INFO: No tagging polymorphism variants found for CYP2A6_star_11
-INFO: No tagging polymorphism variants found for CYP2A6_star_12A
-INFO: No tagging polymorphism variants found for CYP2A6_star_12B
-INFO: No tagging polymorphism variants found for CYP2A6_star_12C
 INFO: No tagging polymorphism variants found for CYP2A6_star_14
-INFO: No tagging polymorphism variants found for CYP2A6_star_16
-INFO: No tagging polymorphism variants found for CYP2A6_star_1B1
-INFO: No tagging polymorphism variants found for CYP2A6_star_1B2
-INFO: No tagging polymorphism variants found for CYP2A6_star_1B3
-INFO: No tagging polymorphism variants found for CYP2A6_star_1B4
-INFO: No tagging polymorphism variants found for CYP2A6_star_1B5
-INFO: No tagging polymorphism variants found for CYP2A6_star_1B6
-INFO: No tagging polymorphism variants found for CYP2A6_star_1B7
-INFO: No tagging polymorphism variants found for CYP2A6_star_1B8
-INFO: No tagging polymorphism variants found for CYP2A6_star_1B9
-INFO: No tagging polymorphism variants found for CYP2A6_star_1B10
-INFO: No tagging polymorphism variants found for CYP2A6_star_1B11
-INFO: No tagging polymorphism variants found for CYP2A6_star_1B12
-INFO: No tagging polymorphism variants found for CYP2A6_star_1B13
-INFO: No tagging polymorphism variants found for CYP2A6_star_1B14
-INFO: No tagging polymorphism variants found for CYP2A6_star_1B15
-INFO: No tagging polymorphism variants found for CYP2A6_star_1B16
-INFO: No tagging polymorphism variants found for CYP2A6_star_1B17
-INFO: No tagging polymorphism variants found for CYP2A6_star_1X2A
-INFO: No tagging polymorphism variants found for CYP2A6_star_1X2B
 ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *20 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *21 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs1801272_N" in allele CYP2A6 *22 does not match dbSNP. Skipping conversion for the entire allele.
@@ -162,54 +118,30 @@ ERROR: Polymorphism variant "rs2279342_A_T" in allele CYP2B6 *1 does not match d
 ERROR: Polymorphism variant "rs4802101_T_C" in allele CYP2B6 *1 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs4803418_C_G" in allele CYP2B6 *1 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs4803419_C_T" in allele CYP2B6 *1 does not match dbSNP. Skipping conversion for the entire allele.
-INFO: No tagging polymorphism variants found for CYP2B6_star_1A
-INFO: No tagging polymorphism variants found for CYP2B6_star_1B
-INFO: No tagging polymorphism variants found for CYP2B6_star_1E
-INFO: No tagging polymorphism variants found for CYP2B6_star_1F
-INFO: No tagging polymorphism variants found for CYP2B6_star_1M
 ERROR: Polymorphism variant "rs2279341_G_C" in allele CYP2B6 *2 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs2279342_A_T" in allele CYP2B6 *4 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs4802101_T_C" in allele CYP2B6 *4 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs4802101_T_C" in allele CYP2B6 *5 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs4802101_T_C" in allele CYP2B6 *6 does not match dbSNP. Skipping conversion for the entire allele.
-INFO: No tagging polymorphism variants found for CYP2B6_star_6A
 ERROR: Polymorphism variant "rs4802101_T_C" in allele CYP2B6 *7 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs2279344_G_A" in allele CYP2B6 *11 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs4803419_T_C" in allele CYP2B6 *13 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs2279344_A_G" in allele CYP2B6 *15 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs35468935_C_T" in allele CYP2B6 *17 does not match dbSNP. Skipping conversion for the entire allele.
 INFO: No tagging polymorphism variants found for CYP2B6_star_23
-INFO: No tagging polymorphism variants found for CYP2B6_star_24
-INFO: No tagging polymorphism variants found for CYP2B6_star_25
 INFO: No tagging polymorphism variants found for CYP2B6_star_26
 INFO: No tagging polymorphism variants found for CYP2B6_star_29
 ERROR: Polymorphism variant "rs9332131_del" in allele CYP2C9 *6 does not match dbSNP. Skipping conversion for the entire allele.
-INFO: No tagging polymorphism variants found for CYP2C9_star_17
-INFO: No tagging polymorphism variants found for CYP2C9_star_19
-INFO: No tagging polymorphism variants found for CYP2C9_star_20
-INFO: No tagging polymorphism variants found for CYP2C9_star_21
-INFO: No tagging polymorphism variants found for CYP2C9_star_22
-INFO: No tagging polymorphism variants found for CYP2C9_star_23
 ERROR: Polymorphism variant "rs1799853_C_T" in allele CYP2C9 *24 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs72558188_del" in allele CYP2C9 *25 does not match dbSNP. Skipping conversion for the entire allele.
-INFO: No tagging polymorphism variants found for CYP2C9_star_26
-INFO: No tagging polymorphism variants found for CYP2C9_star_27
-INFO: No tagging polymorphism variants found for CYP2C9_star_28
-INFO: No tagging polymorphism variants found for CYP2C9_star_29
-INFO: No tagging polymorphism variants found for CYP2C9_star_30
-INFO: No tagging polymorphism variants found for CYP2C9_star_32
 INFO: No tagging polymorphism variants found for CYP2C19_star_1B
-INFO: No tagging polymorphism variants found for CYP2C19_star_1C
 INFO: No tagging polymorphism variants found for CYP2C19_star_6
 INFO: No tagging polymorphism variants found for CYP2C19_star_9
 INFO: No tagging polymorphism variants found for CYP2C19_star_16
 INFO: No tagging polymorphism variants found for CYP2C19_star_18
-INFO: No tagging polymorphism variants found for CYP2C19_star_19
-INFO: No tagging polymorphism variants found for CYP2C19_star_22
 INFO: No tagging polymorphism variants found for CYP2C19_star_23
 INFO: No tagging polymorphism variants found for CYP2C19_star_24
 INFO: No tagging polymorphism variants found for CYP2C19_star_25
-INFO: No tagging polymorphism variants found for CYP2C19_star_26
 ERROR: Polymorphism variant "rs35742686_del" in allele CYP2D6 *3 does not match dbSNP. Skipping conversion for the entire allele.
 INFO: No tagging polymorphism variants found for CYP2D6_star_4
 ERROR: Polymorphism variant "rs1065852_del" in allele CYP2D6 *5 [gene deletion] does not match dbSNP. Skipping conversion for the entire allele.
@@ -301,28 +233,6 @@ ERROR: Polymorphism variant "rs72549309_A" in allele DPYD *12 does not match dbS
 ERROR: Polymorphism variant "rs147545709_C" in allele DPYD *13 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs72549309_A" in allele DPYD *13 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs5853517_del" in allele P2RY12 H1 does not match dbSNP. Skipping conversion for the entire allele.
-INFO: No tagging polymorphism variants found for TPMT_star_5
-INFO: No tagging polymorphism variants found for TPMT_star_6
-INFO: No tagging polymorphism variants found for TPMT_star_7
-INFO: No tagging polymorphism variants found for TPMT_star_8
-INFO: No tagging polymorphism variants found for TPMT_star_9
-INFO: No tagging polymorphism variants found for TPMT_star_10
-INFO: No tagging polymorphism variants found for TPMT_star_11
-INFO: No tagging polymorphism variants found for TPMT_star_12
-INFO: No tagging polymorphism variants found for TPMT_star_13
-INFO: No tagging polymorphism variants found for TPMT_star_14
-INFO: No tagging polymorphism variants found for TPMT_star_15
-INFO: No tagging polymorphism variants found for TPMT_star_16
-INFO: No tagging polymorphism variants found for TPMT_star_17
-INFO: No tagging polymorphism variants found for TPMT_star_18
-INFO: No tagging polymorphism variants found for TPMT_star_21
-INFO: No tagging polymorphism variants found for TPMT_star_22
-INFO: No tagging polymorphism variants found for TPMT_star_23
-INFO: No tagging polymorphism variants found for TPMT_star_25
-INFO: No tagging polymorphism variants found for TPMT_star_20_PMID_16917910_
-INFO: No tagging polymorphism variants found for TPMT_star_20_PMID_16946561_
-INFO: No tagging polymorphism variants found for TPMT_star_24_PMID__18602085_
-INFO: No tagging polymorphism variants found for TPMT_star_24_PMID__18708949_
 ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *1L IA does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *1a does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs13404099_C" in allele UGT1A1 *1a IA does not match dbSNP. Skipping conversion for the entire allele.
