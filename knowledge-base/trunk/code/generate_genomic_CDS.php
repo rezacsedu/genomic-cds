@@ -460,6 +460,9 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 			// Skip first four columns 
 			if (($key == "A") or ($key == "B") or ($key == "C") or ($key == "D")) continue; 
 			
+			if(!isset($header_array[$key])){
+				print($worksheet_title." in column $key\n");
+			}
 			$allele_polymorphism_variant = make_valid_id($header_array[$key] . "_" . trim(str_replace("[tag]", "", $row_array[$key]))); // e.g. "rs12345_A"
 			
 			// Report an error if the allele polymorphism variant was not already generated during the dbSNP conversion (we want to make sure everything matches dbSNP. If it does not, this is an indication of an error in the data).

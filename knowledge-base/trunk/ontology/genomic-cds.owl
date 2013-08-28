@@ -14,7 +14,6 @@ Ontology: <http://www.genomic-cds.org/ont/genomic-cds.owl>
         rdfs:comment "If you want to contribute or report a bug, please write an e-mail to Matthias Samwald, samwald@gmx.at",
         dc:license "Creative Commons 3.0 CC-by license",
         dc:creator "Matthias Samwald, http://samwald.info/",
-        owl:versionInfo "0.8.0",
         dc:contributor "Contributors are those that engage in discussions in the context of the Genomic CDS ontology:
 Bob Freimuth,
 Michel Dumontier, 
@@ -225,6 +224,10 @@ DisjointClasses:
 
 
 
+
+
+Ontology: <http://www.genomic-cds.org/ont/genomic-cds.owl>
+    Annotations: owl:versionInfo "2013/08/28"
 
 
 #
@@ -11083,9 +11086,18 @@ Class: BRCA1_7
 Class: human_with_BRCA1_7
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with BRCA1 7"
+SubClassOf:
+has some rs1060915_G and has some rs12516_G and has some rs16940_G and has some rs16941_C and has some rs16942_C and has some rs17599948_A and has some rs1799949_A and has some rs1799966_C and has some rs3092995_C and has some rs4986850_T and has some rs4986852_C and has some rs799912_C and has some rs799917_A and has some rs8176318_C and has some rs9908805_T and has some rs9911630_G
+
+SubClassOf:
+has some BRCA1_7
+
 Class: human_with_homozygous_BRCA1_7
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous BRCA1 7" 
+EquivalentTo:
+has exactly 2 BRCA1_7
+
 Class: BRCA1_8
     Annotations: rdfs:label "BRCA1 8"
     SubClassOf: BRCA1
@@ -11307,9 +11319,24 @@ Class: CYP1A2_star_1E
 Class: human_with_CYP1A2_star_1E
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP1A2 *1E"
+SubClassOf:
+has some rs12720461_C and has some rs17861157_C and has some rs2069514_G and has some rs2069526_G and has some rs2470890_T and has some rs2472304_G and has some rs28399424_C and has some rs35694136_T and has some rs35796837_G and has some rs45486893_C and has some rs56107638_G and has some rs56160784_C and has some rs56276455_G and has some rs72547511_C and has some rs72547512_G and has some rs72547513_C and has some rs72547515_G and has some rs72547516_A and has some rs72547517_G and has some rs762551_C
+
+SubClassOf:
+has some CYP1A2_star_1E
+
+EquivalentTo:
+has some rs2069526_G
+
 Class: human_with_homozygous_CYP1A2_star_1E
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP1A2 *1E" 
+EquivalentTo:
+has exactly 2 rs2069526_G
+
+EquivalentTo:
+has exactly 2 CYP1A2_star_1E
+
 Class: CYP1A2_star_1
     Annotations: rdfs:label "CYP1A2 *1"
     SubClassOf: CYP1A2
@@ -11321,9 +11348,24 @@ Class: CYP1A2_star_1F
 Class: human_with_CYP1A2_star_1F
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP1A2 *1F"
+SubClassOf:
+has some rs12720461_C and has some rs17861157_C and has some rs2069514_G and has some rs2069526_T and has some rs2470890_T and has some rs2472304_G and has some rs28399424_C and has some rs35694136_T and has some rs35796837_G and has some rs45486893_C and has some rs56107638_G and has some rs56160784_C and has some rs56276455_G and has some rs72547511_C and has some rs72547512_G and has some rs72547513_C and has some rs72547515_G and has some rs72547516_A and has some rs72547517_G and has some rs762551_A
+
+SubClassOf:
+has some CYP1A2_star_1F
+
+EquivalentTo:
+has some rs762551_A
+
 Class: human_with_homozygous_CYP1A2_star_1F
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP1A2 *1F" 
+EquivalentTo:
+has exactly 2 rs762551_A
+
+EquivalentTo:
+has exactly 2 CYP1A2_star_1F
+
 Class: CYP1A2_star_1
     Annotations: rdfs:label "CYP1A2 *1"
     SubClassOf: CYP1A2
@@ -11387,9 +11429,24 @@ Class: CYP1A2_star_2
 Class: human_with_CYP1A2_star_2
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP1A2 *2"
+SubClassOf:
+has some rs12720461_C and has some rs17861157_C and has some rs2069514_G and has some rs2069526_T and has some rs2470890_T and has some rs2472304_G and has some rs28399424_C and has some rs35694136_T and has some rs35796837_G and has some rs45486893_C and has some rs56107638_G and has some rs56160784_G and has some rs56276455_G and has some rs72547511_C and has some rs72547512_G and has some rs72547513_C and has some rs72547515_G and has some rs72547516_A and has some rs72547517_G and has some rs762551_C
+
+SubClassOf:
+has some CYP1A2_star_2
+
+EquivalentTo:
+has some rs56160784_G
+
 Class: human_with_homozygous_CYP1A2_star_2
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP1A2 *2" 
+EquivalentTo:
+has exactly 2 rs56160784_G
+
+EquivalentTo:
+has exactly 2 CYP1A2_star_2
+
 Class: CYP1A2_star_3
     Annotations: rdfs:label "CYP1A2 *3"
     SubClassOf: CYP1A2
@@ -11407,9 +11464,24 @@ Class: CYP1A2_star_4
 Class: human_with_CYP1A2_star_4
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP1A2 *4"
+SubClassOf:
+has some rs12720461_C and has some rs17861157_C and has some rs2069514_G and has some rs2069526_T and has some rs2470890_T and has some rs2472304_G and has some rs28399424_C and has some rs35694136_T and has some rs35796837_G and has some rs45486893_C and has some rs56107638_G and has some rs56160784_C and has some rs56276455_G and has some rs72547511_C and has some rs72547512_G and has some rs72547513_C and has some rs72547515_G and has some rs72547516_T and has some rs72547517_G and has some rs762551_C
+
+SubClassOf:
+has some CYP1A2_star_4
+
+EquivalentTo:
+has some rs72547516_T
+
 Class: human_with_homozygous_CYP1A2_star_4
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP1A2 *4" 
+EquivalentTo:
+has exactly 2 rs72547516_T
+
+EquivalentTo:
+has exactly 2 CYP1A2_star_4
+
 Class: CYP1A2_star_5
     Annotations: rdfs:label "CYP1A2 *5"
     SubClassOf: CYP1A2
@@ -11427,9 +11499,24 @@ Class: CYP1A2_star_6
 Class: human_with_CYP1A2_star_6
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP1A2 *6"
+SubClassOf:
+has some rs12720461_C and has some rs17861157_C and has some rs2069514_G and has some rs2069526_T and has some rs2470890_T and has some rs2472304_G and has some rs28399424_T and has some rs35694136_T and has some rs35796837_G and has some rs45486893_C and has some rs56107638_G and has some rs56160784_C and has some rs56276455_G and has some rs72547511_C and has some rs72547512_G and has some rs72547513_C and has some rs72547515_G and has some rs72547516_A and has some rs72547517_G and has some rs762551_C
+
+SubClassOf:
+has some CYP1A2_star_6
+
+EquivalentTo:
+has some rs28399424_T
+
 Class: human_with_homozygous_CYP1A2_star_6
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP1A2 *6" 
+EquivalentTo:
+has exactly 2 rs28399424_T
+
+EquivalentTo:
+has exactly 2 CYP1A2_star_6
+
 Class: CYP1A2_star_7
     Annotations: rdfs:label "CYP1A2 *7"
     SubClassOf: CYP1A2
@@ -11437,9 +11524,24 @@ Class: CYP1A2_star_7
 Class: human_with_CYP1A2_star_7
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP1A2 *7"
+SubClassOf:
+has some rs12720461_C and has some rs17861157_C and has some rs2069514_G and has some rs2069526_T and has some rs2470890_T and has some rs2472304_G and has some rs28399424_C and has some rs35694136_T and has some rs35796837_G and has some rs45486893_C and has some rs56107638_A and has some rs56160784_C and has some rs56276455_G and has some rs72547511_C and has some rs72547512_G and has some rs72547513_C and has some rs72547515_G and has some rs72547516_A and has some rs72547517_G and has some rs762551_C
+
+SubClassOf:
+has some CYP1A2_star_7
+
+EquivalentTo:
+has some rs56107638_A
+
 Class: human_with_homozygous_CYP1A2_star_7
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP1A2 *7" 
+EquivalentTo:
+has exactly 2 rs56107638_A
+
+EquivalentTo:
+has exactly 2 CYP1A2_star_7
+
 Class: CYP1A2_star_8
     Annotations: rdfs:label "CYP1A2 *8"
     SubClassOf: CYP1A2
@@ -11467,9 +11569,24 @@ Class: CYP1A2_star_10
 Class: human_with_CYP1A2_star_10
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP1A2 *10"
+SubClassOf:
+has some rs12720461_C and has some rs17861157_C and has some rs2069514_G and has some rs2069526_T and has some rs2470890_T and has some rs2472304_G and has some rs28399424_C and has some rs35694136_T and has some rs35796837_G and has some rs45486893_C and has some rs56107638_G and has some rs56160784_C and has some rs56276455_G and has some rs72547511_C and has some rs72547512_C and has some rs72547513_C and has some rs72547515_G and has some rs72547516_A and has some rs72547517_G and has some rs762551_C
+
+SubClassOf:
+has some CYP1A2_star_10
+
+EquivalentTo:
+has some rs72547512_C
+
 Class: human_with_homozygous_CYP1A2_star_10
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP1A2 *10" 
+EquivalentTo:
+has exactly 2 rs72547512_C
+
+EquivalentTo:
+has exactly 2 CYP1A2_star_10
+
 Class: CYP1A2_star_11
     Annotations: rdfs:label "CYP1A2 *11"
     SubClassOf: CYP1A2
@@ -11477,9 +11594,24 @@ Class: CYP1A2_star_11
 Class: human_with_CYP1A2_star_11
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP1A2 *11"
+SubClassOf:
+has some rs12720461_C and has some rs17861157_C and has some rs2069514_G and has some rs2069526_T and has some rs2470890_T and has some rs2472304_G and has some rs28399424_C and has some rs35694136_T and has some rs35796837_G and has some rs45486893_C and has some rs56107638_G and has some rs56160784_C and has some rs56276455_G and has some rs72547511_C and has some rs72547512_G and has some rs72547513_A and has some rs72547515_G and has some rs72547516_A and has some rs72547517_G and has some rs762551_C
+
+SubClassOf:
+has some CYP1A2_star_11
+
+EquivalentTo:
+has some rs72547513_A
+
 Class: human_with_homozygous_CYP1A2_star_11
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP1A2 *11" 
+EquivalentTo:
+has exactly 2 rs72547513_A
+
+EquivalentTo:
+has exactly 2 CYP1A2_star_11
+
 Class: CYP1A2_star_12
     Annotations: rdfs:label "CYP1A2 *12"
     SubClassOf: CYP1A2
@@ -11497,9 +11629,24 @@ Class: CYP1A2_star_13
 Class: human_with_CYP1A2_star_13
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP1A2 *13"
+SubClassOf:
+has some rs12720461_C and has some rs17861157_C and has some rs2069514_G and has some rs2069526_T and has some rs2470890_T and has some rs2472304_G and has some rs28399424_C and has some rs35694136_T and has some rs35796837_A and has some rs45486893_C and has some rs56107638_G and has some rs56160784_C and has some rs56276455_G and has some rs72547511_C and has some rs72547512_G and has some rs72547513_C and has some rs72547515_G and has some rs72547516_A and has some rs72547517_G and has some rs762551_C
+
+SubClassOf:
+has some CYP1A2_star_13
+
+EquivalentTo:
+has some rs35796837_A
+
 Class: human_with_homozygous_CYP1A2_star_13
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP1A2 *13" 
+EquivalentTo:
+has exactly 2 rs35796837_A
+
+EquivalentTo:
+has exactly 2 CYP1A2_star_13
+
 Class: CYP1A2_star_14
     Annotations: rdfs:label "CYP1A2 *14"
     SubClassOf: CYP1A2
@@ -11507,9 +11654,24 @@ Class: CYP1A2_star_14
 Class: human_with_CYP1A2_star_14
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP1A2 *14"
+SubClassOf:
+has some rs12720461_C and has some rs17861157_C and has some rs2069514_G and has some rs2069526_T and has some rs2470890_T and has some rs2472304_G and has some rs28399424_C and has some rs35694136_T and has some rs35796837_G and has some rs45486893_T and has some rs56107638_G and has some rs56160784_C and has some rs56276455_G and has some rs72547511_C and has some rs72547512_G and has some rs72547513_C and has some rs72547515_G and has some rs72547516_A and has some rs72547517_G and has some rs762551_C
+
+SubClassOf:
+has some CYP1A2_star_14
+
+EquivalentTo:
+has some rs45486893_T
+
 Class: human_with_homozygous_CYP1A2_star_14
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP1A2 *14" 
+EquivalentTo:
+has exactly 2 rs45486893_T
+
+EquivalentTo:
+has exactly 2 CYP1A2_star_14
+
 Class: CYP1A2_star_15
     Annotations: rdfs:label "CYP1A2 *15"
     SubClassOf: CYP1A2
@@ -11800,9 +11962,24 @@ Class: CYP2A6_star_6
 Class: human_with_CYP2A6_star_6
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2A6 *6"
+SubClassOf:
+has some rs1801272_A and has some rs1809810_T and has some rs28399433_A and has some rs28399434_C and has some rs28399435_C and has some rs28399454_C and has some rs28399468_C and has some rs4986891_T and has some rs5031016_A and has some rs5031017_C
+
+SubClassOf:
+has some CYP2A6_star_6
+
+EquivalentTo:
+has some rs4986891_T
+
 Class: human_with_homozygous_CYP2A6_star_6
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2A6 *6" 
+EquivalentTo:
+has exactly 2 rs4986891_T
+
+EquivalentTo:
+has exactly 2 CYP2A6_star_6
+
 Class: CYP2A6_star_7
     Annotations: rdfs:label "CYP2A6 *7"
     SubClassOf: CYP2A6
@@ -11810,9 +11987,24 @@ Class: CYP2A6_star_7
 Class: human_with_CYP2A6_star_7
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2A6 *7"
+SubClassOf:
+has some rs1801272_A and has some rs1809810_T and has some rs28399433_A and has some rs28399434_C and has some rs28399435_C and has some rs28399454_C and has some rs28399468_C and has some rs4986891_C and has some rs5031016_G and has some rs5031017_C
+
+SubClassOf:
+has some CYP2A6_star_7
+
+EquivalentTo:
+has some rs5031016_G
+
 Class: human_with_homozygous_CYP2A6_star_7
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2A6 *7" 
+EquivalentTo:
+has exactly 2 rs5031016_G
+
+EquivalentTo:
+has exactly 2 CYP2A6_star_7
+
 Class: CYP2A6_star_8
     Annotations: rdfs:label "CYP2A6 *8"
     SubClassOf: CYP2A6
@@ -11843,9 +12035,24 @@ Class: CYP2A6_star_9A
 Class: human_with_CYP2A6_star_9A
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2A6 *9A"
+SubClassOf:
+has some rs1801272_A and has some rs1809810_T and has some rs28399433_C and has some rs28399434_C and has some rs28399435_C and has some rs28399454_C and has some rs28399468_C and has some rs4986891_C and has some rs5031016_A and has some rs5031017_C
+
+SubClassOf:
+has some CYP2A6_star_9A
+
+EquivalentTo:
+has some rs28399433_C
+
 Class: human_with_homozygous_CYP2A6_star_9A
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2A6 *9A" 
+EquivalentTo:
+has exactly 2 rs28399433_C
+
+EquivalentTo:
+has exactly 2 CYP2A6_star_9A
+
 Class: CYP2A6_star_9
     Annotations: rdfs:label "CYP2A6 *9"
     SubClassOf: CYP2A6
@@ -11978,9 +12185,24 @@ Class: CYP2A6_star_17
 Class: human_with_CYP2A6_star_17
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2A6 *17"
+SubClassOf:
+has some rs1801272_A and has some rs1809810_T and has some rs28399433_A and has some rs28399434_C and has some rs28399435_C and has some rs28399454_T and has some rs28399468_C and has some rs4986891_C and has some rs5031016_A and has some rs5031017_C
+
+SubClassOf:
+has some CYP2A6_star_17
+
+EquivalentTo:
+has some rs28399454_T
+
 Class: human_with_homozygous_CYP2A6_star_17
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2A6 *17" 
+EquivalentTo:
+has exactly 2 rs28399454_T
+
+EquivalentTo:
+has exactly 2 CYP2A6_star_17
+
 Class: CYP2A6_star_18
     Annotations: rdfs:label "CYP2A6 *18"
     SubClassOf: CYP2A6
@@ -11992,9 +12214,24 @@ Class: CYP2A6_star_18A
 Class: human_with_CYP2A6_star_18A
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2A6 *18A"
+SubClassOf:
+has some rs1801272_A and has some rs1809810_A and has some rs28399433_A and has some rs28399434_C and has some rs28399435_C and has some rs28399454_C and has some rs28399468_C and has some rs4986891_C and has some rs5031016_A and has some rs5031017_C
+
+SubClassOf:
+has some CYP2A6_star_18A
+
+EquivalentTo:
+has some rs1809810_A
+
 Class: human_with_homozygous_CYP2A6_star_18A
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2A6 *18A" 
+EquivalentTo:
+has exactly 2 rs1809810_A
+
+EquivalentTo:
+has exactly 2 CYP2A6_star_18A
+
 Class: CYP2A6_star_18
     Annotations: rdfs:label "CYP2A6 *18"
     SubClassOf: CYP2A6
@@ -12488,9 +12725,24 @@ Class: CYP2B6_star_3
 Class: human_with_CYP2B6_star_3
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2B6 *3"
+SubClassOf:
+has some rs12721649_G and has some rs12721655_A and has some rs2279341_G and has some rs2279342_A and has some rs2279343_A and has some rs2279344_G and has some rs28399499_T and has some rs3211369_A and has some rs3211371_C and has some rs33926104_C and has some rs33973337_A and has some rs33980385_A and has some rs34097093_C and has some rs34223104_T and has some rs34284776_G and has some rs34698757_C and has some rs34826503_C and has some rs34883432_A and has some rs35010098_C and has some rs35266616_C and has some rs35303484_A and has some rs35468935_C and has some rs35622401_G and has some rs35773040_G and has some rs35979566_T and has some rs36056539_C and has some rs36060847_G and has some rs36079186_T and has some rs3745274_G and has some rs3826711_C and has some rs45482602_A and has some rs4802101_T and has some rs4803418_C and has some rs4803419_C and has some rs8192709_C and has some rs8192719_C
+
+SubClassOf:
+has some CYP2B6_star_3
+
+EquivalentTo:
+has some rs45482602_A
+
 Class: human_with_homozygous_CYP2B6_star_3
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2B6 *3" 
+EquivalentTo:
+has exactly 2 rs45482602_A
+
+EquivalentTo:
+has exactly 2 CYP2B6_star_3
+
 Class: CYP2B6_star_4
     Annotations: rdfs:label "CYP2B6 *4"
     SubClassOf: CYP2B6
@@ -12502,9 +12754,24 @@ Class: CYP2B6_star_4A
 Class: human_with_CYP2B6_star_4A
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2B6 *4A"
+SubClassOf:
+has some rs12721649_G and has some rs12721655_A and has some rs2279341_G and has some rs2279342_A and has some rs2279343_G and has some rs2279344_G and has some rs28399499_T and has some rs3211369_A and has some rs3211371_C and has some rs33926104_C and has some rs33973337_A and has some rs33980385_A and has some rs34097093_C and has some rs34223104_T and has some rs34284776_G and has some rs34698757_C and has some rs34826503_C and has some rs34883432_A and has some rs35010098_C and has some rs35266616_C and has some rs35303484_A and has some rs35468935_C and has some rs35622401_G and has some rs35773040_G and has some rs35979566_T and has some rs36056539_C and has some rs36060847_G and has some rs36079186_T and has some rs3745274_G and has some rs3826711_C and has some rs45482602_C and has some rs4802101_T and has some rs4803418_C and has some rs4803419_C and has some rs8192709_C and has some rs8192719_C
+
+SubClassOf:
+has some CYP2B6_star_4A
+
+EquivalentTo:
+has some rs2279343_G
+
 Class: human_with_homozygous_CYP2B6_star_4A
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2B6 *4A" 
+EquivalentTo:
+has exactly 2 rs2279343_G
+
+EquivalentTo:
+has exactly 2 CYP2B6_star_4A
+
 Class: CYP2B6_star_4
     Annotations: rdfs:label "CYP2B6 *4"
     SubClassOf: CYP2B6
@@ -12666,9 +12933,24 @@ Class: CYP2B6_star_8
 Class: human_with_CYP2B6_star_8
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2B6 *8"
+SubClassOf:
+has some rs12721649_G and has some rs12721655_G and has some rs2279341_G and has some rs2279342_A and has some rs2279343_A and has some rs2279344_G and has some rs28399499_T and has some rs3211369_A and has some rs3211371_C and has some rs33926104_C and has some rs33973337_A and has some rs33980385_A and has some rs34097093_C and has some rs34223104_T and has some rs34284776_G and has some rs34698757_C and has some rs34826503_C and has some rs34883432_A and has some rs35010098_C and has some rs35266616_C and has some rs35303484_A and has some rs35468935_C and has some rs35622401_G and has some rs35773040_G and has some rs35979566_T and has some rs36056539_C and has some rs36060847_G and has some rs36079186_T and has some rs3745274_G and has some rs3826711_C and has some rs45482602_C and has some rs4802101_T and has some rs4803418_C and has some rs4803419_C and has some rs8192709_C and has some rs8192719_C
+
+SubClassOf:
+has some CYP2B6_star_8
+
+EquivalentTo:
+has some rs12721655_G
+
 Class: human_with_homozygous_CYP2B6_star_8
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2B6 *8" 
+EquivalentTo:
+has exactly 2 rs12721655_G
+
+EquivalentTo:
+has exactly 2 CYP2B6_star_8
+
 Class: CYP2B6_star_9
     Annotations: rdfs:label "CYP2B6 *9"
     SubClassOf: CYP2B6
@@ -12676,9 +12958,24 @@ Class: CYP2B6_star_9
 Class: human_with_CYP2B6_star_9
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2B6 *9"
+SubClassOf:
+has some rs12721649_G and has some rs12721655_A and has some rs2279341_G and has some rs2279342_A and has some rs2279343_A and has some rs2279344_G and has some rs28399499_T and has some rs3211369_A and has some rs3211371_C and has some rs33926104_C and has some rs33973337_A and has some rs33980385_A and has some rs34097093_C and has some rs34223104_T and has some rs34284776_G and has some rs34698757_C and has some rs34826503_C and has some rs34883432_A and has some rs35010098_C and has some rs35266616_C and has some rs35303484_A and has some rs35468935_C and has some rs35622401_G and has some rs35773040_G and has some rs35979566_T and has some rs36056539_C and has some rs36060847_G and has some rs36079186_T and has some rs3745274_T and has some rs3826711_C and has some rs45482602_C and has some rs4802101_T and has some rs4803418_C and has some rs4803419_C and has some rs8192709_C and has some rs8192719_T
+
+SubClassOf:
+has some CYP2B6_star_9
+
+EquivalentTo:
+has some rs8192719_T
+
 Class: human_with_homozygous_CYP2B6_star_9
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2B6 *9" 
+EquivalentTo:
+has exactly 2 rs8192719_T
+
+EquivalentTo:
+has exactly 2 CYP2B6_star_9
+
 Class: CYP2B6_star_10
     Annotations: rdfs:label "CYP2B6 *10"
     SubClassOf: CYP2B6
@@ -12700,9 +12997,24 @@ Class: CYP2B6_star_11A
 Class: human_with_CYP2B6_star_11A
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2B6 *11A"
+SubClassOf:
+has some rs12721649_G and has some rs12721655_A and has some rs2279341_G and has some rs2279342_A and has some rs2279343_A and has some rs2279344_G and has some rs28399499_T and has some rs3211369_A and has some rs3211371_C and has some rs33926104_C and has some rs33973337_A and has some rs33980385_A and has some rs34097093_C and has some rs34223104_T and has some rs34284776_G and has some rs34698757_C and has some rs34826503_C and has some rs34883432_A and has some rs35010098_C and has some rs35266616_C and has some rs35303484_G and has some rs35468935_C and has some rs35622401_G and has some rs35773040_G and has some rs35979566_T and has some rs36056539_C and has some rs36060847_G and has some rs36079186_T and has some rs3745274_G and has some rs3826711_C and has some rs45482602_C and has some rs4802101_T and has some rs4803418_C and has some rs4803419_C and has some rs8192709_C and has some rs8192719_C
+
+SubClassOf:
+has some CYP2B6_star_11A
+
+EquivalentTo:
+has some rs35303484_G
+
 Class: human_with_homozygous_CYP2B6_star_11A
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2B6 *11A" 
+EquivalentTo:
+has exactly 2 rs35303484_G
+
+EquivalentTo:
+has exactly 2 CYP2B6_star_11A
+
 Class: CYP2B6_star_11
     Annotations: rdfs:label "CYP2B6 *11"
     SubClassOf: CYP2B6
@@ -12724,9 +13036,24 @@ Class: CYP2B6_star_12
 Class: human_with_CYP2B6_star_12
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2B6 *12"
+SubClassOf:
+has some rs12721649_G and has some rs12721655_A and has some rs2279341_G and has some rs2279342_A and has some rs2279343_A and has some rs2279344_A and has some rs28399499_T and has some rs3211369_A and has some rs3211371_C and has some rs33926104_C and has some rs33973337_A and has some rs33980385_A and has some rs34097093_C and has some rs34223104_T and has some rs34284776_G and has some rs34698757_C and has some rs34826503_C and has some rs34883432_A and has some rs35010098_C and has some rs35266616_C and has some rs35303484_A and has some rs35468935_C and has some rs35622401_G and has some rs35773040_G and has some rs35979566_T and has some rs36056539_C and has some rs36060847_A and has some rs36079186_T and has some rs3745274_G and has some rs3826711_C and has some rs45482602_C and has some rs4802101_T and has some rs4803418_C and has some rs4803419_C and has some rs8192709_C and has some rs8192719_C
+
+SubClassOf:
+has some CYP2B6_star_12
+
+EquivalentTo:
+has some rs2279344_A
+
 Class: human_with_homozygous_CYP2B6_star_12
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2B6 *12" 
+EquivalentTo:
+has exactly 2 rs2279344_A
+
+EquivalentTo:
+has exactly 2 CYP2B6_star_12
+
 Class: CYP2B6_star_13
     Annotations: rdfs:label "CYP2B6 *13"
     SubClassOf: CYP2B6
@@ -12776,9 +13103,24 @@ Class: CYP2B6_star_15A
 Class: human_with_CYP2B6_star_15A
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2B6 *15A"
+SubClassOf:
+has some rs12721649_G and has some rs12721655_A and has some rs2279341_G and has some rs2279342_A and has some rs2279343_A and has some rs2279344_G and has some rs28399499_T and has some rs3211369_A and has some rs3211371_C and has some rs33926104_C and has some rs33973337_A and has some rs33980385_A and has some rs34097093_C and has some rs34223104_T and has some rs34284776_G and has some rs34698757_C and has some rs34826503_C and has some rs34883432_A and has some rs35010098_C and has some rs35266616_C and has some rs35303484_A and has some rs35468935_C and has some rs35622401_G and has some rs35773040_G and has some rs35979566_A and has some rs36056539_C and has some rs36060847_G and has some rs36079186_T and has some rs3745274_G and has some rs3826711_C and has some rs45482602_C and has some rs4802101_T and has some rs4803418_C and has some rs4803419_T and has some rs8192709_C and has some rs8192719_C
+
+SubClassOf:
+has some CYP2B6_star_15A
+
+EquivalentTo:
+has some rs35979566_A and has some rs4803419_T
+
 Class: human_with_homozygous_CYP2B6_star_15A
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2B6 *15A" 
+EquivalentTo:
+has exactly 2 rs35979566_A and has exactly 2 rs4803419_T
+
+EquivalentTo:
+has exactly 2 CYP2B6_star_15A
+
 Class: CYP2B6_star_15
     Annotations: rdfs:label "CYP2B6 *15"
     SubClassOf: CYP2B6
@@ -12927,18 +13269,9 @@ Class: CYP2B6_star_26
 Class: human_with_CYP2B6_star_26
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2B6 *26"
-SubClassOf:
-has some rs12721649_G and has some rs12721655_A and has some rs2279341_G and has some rs2279342_A and has some rs2279343_G and has some rs2279344_G and has some rs28399499_T and has some rs3211369_A and has some rs3211371_C and has some rs33926104_C and has some rs33973337_A and has some rs33980385_A and has some rs34097093_C and has some rs34223104_T and has some rs34284776_G and has some rs34698757_C and has some rs34826503_C and has some rs34883432_A and has some rs35010098_C and has some rs35266616_C and has some rs35303484_A and has some rs35468935_C and has some rs35622401_G and has some rs35773040_G and has some rs35979566_T and has some rs36056539_C and has some rs36060847_G and has some rs36079186_T and has some rs3745274_T and has some rs3826711_G and has some rs45482602_C and has some rs4802101_T and has some rs4803418_C and has some rs4803419_C and has some rs8192709_C and has some rs8192719_C
-
-SubClassOf:
-has some CYP2B6_star_26
-
 Class: human_with_homozygous_CYP2B6_star_26
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2B6 *26" 
-EquivalentTo:
-has exactly 2 CYP2B6_star_26
-
 Class: CYP2B6_star_27
     Annotations: rdfs:label "CYP2B6 *27"
     SubClassOf: CYP2B6
@@ -13084,9 +13417,24 @@ Class: CYP2C9_star_3
 Class: human_with_CYP2C9_star_3
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C9 *3"
+SubClassOf:
+has some rs1057910_C and has some rs1057911_A and has some rs1799853_C and has some rs2256871_A and has some rs28371685_C and has some rs28371686_C and has some rs56165452_T and has some rs57505750_C and has some rs67807361_C and has some rs72558184_G and has some rs72558187_T and has some rs72558188_AGAAATGGAA and has some rs72558189_G and has some rs72558190_C and has some rs72558192_A and has some rs72558193_A and has some rs7900194_G and has some rs9332130_A and has some rs9332131_A and has some rs9332239_C
+
+SubClassOf:
+has some CYP2C9_star_3
+
+EquivalentTo:
+has some rs1057910_C
+
 Class: human_with_homozygous_CYP2C9_star_3
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C9 *3" 
+EquivalentTo:
+has exactly 2 rs1057910_C
+
+EquivalentTo:
+has exactly 2 CYP2C9_star_3
+
 Class: CYP2C9_star_4
     Annotations: rdfs:label "CYP2C9 *4"
     SubClassOf: CYP2C9
@@ -13104,9 +13452,24 @@ Class: CYP2C9_star_5
 Class: human_with_CYP2C9_star_5
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C9 *5"
+SubClassOf:
+has some rs1057910_A and has some rs1057911_A and has some rs1799853_C and has some rs2256871_A and has some rs28371685_C and has some rs28371686_G and has some rs56165452_T and has some rs57505750_C and has some rs67807361_C and has some rs72558184_G and has some rs72558187_T and has some rs72558188_AGAAATGGAA and has some rs72558189_G and has some rs72558190_C and has some rs72558192_A and has some rs72558193_A and has some rs7900194_G and has some rs9332130_A and has some rs9332131_A and has some rs9332239_C
+
+SubClassOf:
+has some CYP2C9_star_5
+
+EquivalentTo:
+has some rs28371686_G
+
 Class: human_with_homozygous_CYP2C9_star_5
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C9 *5" 
+EquivalentTo:
+has exactly 2 rs28371686_G
+
+EquivalentTo:
+has exactly 2 CYP2C9_star_5
+
 Class: CYP2C9_star_7
     Annotations: rdfs:label "CYP2C9 *7"
     SubClassOf: CYP2C9
@@ -13114,9 +13477,24 @@ Class: CYP2C9_star_7
 Class: human_with_CYP2C9_star_7
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C9 *7"
+SubClassOf:
+has some rs1057910_A and has some rs1057911_A and has some rs1799853_C and has some rs2256871_A and has some rs28371685_C and has some rs28371686_C and has some rs56165452_T and has some rs57505750_C and has some rs67807361_A and has some rs72558184_G and has some rs72558187_T and has some rs72558188_AGAAATGGAA and has some rs72558189_G and has some rs72558190_C and has some rs72558192_A and has some rs72558193_A and has some rs7900194_G and has some rs9332130_A and has some rs9332131_A and has some rs9332239_C
+
+SubClassOf:
+has some CYP2C9_star_7
+
+EquivalentTo:
+has some rs67807361_A
+
 Class: human_with_homozygous_CYP2C9_star_7
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C9 *7" 
+EquivalentTo:
+has exactly 2 rs67807361_A
+
+EquivalentTo:
+has exactly 2 CYP2C9_star_7
+
 Class: CYP2C9_star_8
     Annotations: rdfs:label "CYP2C9 *8"
     SubClassOf: CYP2C9
@@ -13124,9 +13502,24 @@ Class: CYP2C9_star_8
 Class: human_with_CYP2C9_star_8
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C9 *8"
+SubClassOf:
+has some rs1057910_A and has some rs1057911_A and has some rs1799853_C and has some rs2256871_A and has some rs28371685_C and has some rs28371686_C and has some rs56165452_T and has some rs57505750_C and has some rs67807361_C and has some rs72558184_G and has some rs72558187_T and has some rs72558188_AGAAATGGAA and has some rs72558189_G and has some rs72558190_C and has some rs72558192_A and has some rs72558193_A and has some rs7900194_A and has some rs9332130_A and has some rs9332131_A and has some rs9332239_C
+
+SubClassOf:
+has some CYP2C9_star_8
+
+EquivalentTo:
+has some rs7900194_A
+
 Class: human_with_homozygous_CYP2C9_star_8
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C9 *8" 
+EquivalentTo:
+has exactly 2 rs7900194_A
+
+EquivalentTo:
+has exactly 2 CYP2C9_star_8
+
 Class: CYP2C9_star_9
     Annotations: rdfs:label "CYP2C9 *9"
     SubClassOf: CYP2C9
@@ -13134,9 +13527,24 @@ Class: CYP2C9_star_9
 Class: human_with_CYP2C9_star_9
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C9 *9"
+SubClassOf:
+has some rs1057910_A and has some rs1057911_A and has some rs1799853_C and has some rs2256871_G and has some rs28371685_C and has some rs28371686_C and has some rs56165452_T and has some rs57505750_C and has some rs67807361_C and has some rs72558184_G and has some rs72558187_T and has some rs72558188_AGAAATGGAA and has some rs72558189_G and has some rs72558190_C and has some rs72558192_A and has some rs72558193_A and has some rs7900194_G and has some rs9332130_A and has some rs9332131_A and has some rs9332239_C
+
+SubClassOf:
+has some CYP2C9_star_9
+
+EquivalentTo:
+has some rs2256871_G
+
 Class: human_with_homozygous_CYP2C9_star_9
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C9 *9" 
+EquivalentTo:
+has exactly 2 rs2256871_G
+
+EquivalentTo:
+has exactly 2 CYP2C9_star_9
+
 Class: CYP2C9_star_10
     Annotations: rdfs:label "CYP2C9 *10"
     SubClassOf: CYP2C9
@@ -13144,9 +13552,24 @@ Class: CYP2C9_star_10
 Class: human_with_CYP2C9_star_10
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C9 *10"
+SubClassOf:
+has some rs1057910_A and has some rs1057911_A and has some rs1799853_C and has some rs2256871_A and has some rs28371685_C and has some rs28371686_C and has some rs56165452_T and has some rs57505750_C and has some rs67807361_C and has some rs72558184_G and has some rs72558187_T and has some rs72558188_AGAAATGGAA and has some rs72558189_G and has some rs72558190_C and has some rs72558192_A and has some rs72558193_A and has some rs7900194_G and has some rs9332130_G and has some rs9332131_A and has some rs9332239_C
+
+SubClassOf:
+has some CYP2C9_star_10
+
+EquivalentTo:
+has some rs9332130_G
+
 Class: human_with_homozygous_CYP2C9_star_10
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C9 *10" 
+EquivalentTo:
+has exactly 2 rs9332130_G
+
+EquivalentTo:
+has exactly 2 CYP2C9_star_10
+
 Class: CYP2C9_star_11
     Annotations: rdfs:label "CYP2C9 *11"
     SubClassOf: CYP2C9
@@ -13154,9 +13577,24 @@ Class: CYP2C9_star_11
 Class: human_with_CYP2C9_star_11
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C9 *11"
+SubClassOf:
+has some rs1057910_A and has some rs1057911_A and has some rs1799853_C and has some rs2256871_A and has some rs28371685_T and has some rs28371686_C and has some rs56165452_T and has some rs57505750_C and has some rs67807361_C and has some rs72558184_G and has some rs72558187_T and has some rs72558188_AGAAATGGAA and has some rs72558189_G and has some rs72558190_C and has some rs72558192_A and has some rs72558193_A and has some rs7900194_G and has some rs9332130_A and has some rs9332131_A and has some rs9332239_C
+
+SubClassOf:
+has some CYP2C9_star_11
+
+EquivalentTo:
+has some rs28371685_T
+
 Class: human_with_homozygous_CYP2C9_star_11
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C9 *11" 
+EquivalentTo:
+has exactly 2 rs28371685_T
+
+EquivalentTo:
+has exactly 2 CYP2C9_star_11
+
 Class: CYP2C9_star_12
     Annotations: rdfs:label "CYP2C9 *12"
     SubClassOf: CYP2C9
@@ -13164,9 +13602,24 @@ Class: CYP2C9_star_12
 Class: human_with_CYP2C9_star_12
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C9 *12"
+SubClassOf:
+has some rs1057910_A and has some rs1057911_A and has some rs1799853_C and has some rs2256871_A and has some rs28371685_C and has some rs28371686_C and has some rs56165452_T and has some rs57505750_C and has some rs67807361_C and has some rs72558184_G and has some rs72558187_T and has some rs72558188_AGAAATGGAA and has some rs72558189_G and has some rs72558190_C and has some rs72558192_A and has some rs72558193_A and has some rs7900194_G and has some rs9332130_A and has some rs9332131_A and has some rs9332239_T
+
+SubClassOf:
+has some CYP2C9_star_12
+
+EquivalentTo:
+has some rs9332239_T
+
 Class: human_with_homozygous_CYP2C9_star_12
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C9 *12" 
+EquivalentTo:
+has exactly 2 rs9332239_T
+
+EquivalentTo:
+has exactly 2 CYP2C9_star_12
+
 Class: CYP2C9_star_13
     Annotations: rdfs:label "CYP2C9 *13"
     SubClassOf: CYP2C9
@@ -13174,9 +13627,24 @@ Class: CYP2C9_star_13
 Class: human_with_CYP2C9_star_13
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C9 *13"
+SubClassOf:
+has some rs1057910_A and has some rs1057911_A and has some rs1799853_C and has some rs2256871_A and has some rs28371685_C and has some rs28371686_C and has some rs56165452_T and has some rs57505750_C and has some rs67807361_C and has some rs72558184_G and has some rs72558187_C and has some rs72558188_AGAAATGGAA and has some rs72558189_G and has some rs72558190_C and has some rs72558192_A and has some rs72558193_A and has some rs7900194_G and has some rs9332130_A and has some rs9332131_A and has some rs9332239_C
+
+SubClassOf:
+has some CYP2C9_star_13
+
+EquivalentTo:
+has some rs72558187_C
+
 Class: human_with_homozygous_CYP2C9_star_13
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C9 *13" 
+EquivalentTo:
+has exactly 2 rs72558187_C
+
+EquivalentTo:
+has exactly 2 CYP2C9_star_13
+
 Class: CYP2C9_star_14
     Annotations: rdfs:label "CYP2C9 *14"
     SubClassOf: CYP2C9
@@ -13184,9 +13652,24 @@ Class: CYP2C9_star_14
 Class: human_with_CYP2C9_star_14
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C9 *14"
+SubClassOf:
+has some rs1057910_A and has some rs1057911_A and has some rs1799853_C and has some rs2256871_A and has some rs28371685_C and has some rs28371686_C and has some rs56165452_T and has some rs57505750_C and has some rs67807361_C and has some rs72558184_G and has some rs72558187_T and has some rs72558188_AGAAATGGAA and has some rs72558189_A and has some rs72558190_C and has some rs72558192_A and has some rs72558193_A and has some rs7900194_G and has some rs9332130_A and has some rs9332131_A and has some rs9332239_C
+
+SubClassOf:
+has some CYP2C9_star_14
+
+EquivalentTo:
+has some rs72558189_A
+
 Class: human_with_homozygous_CYP2C9_star_14
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C9 *14" 
+EquivalentTo:
+has exactly 2 rs72558189_A
+
+EquivalentTo:
+has exactly 2 CYP2C9_star_14
+
 Class: CYP2C9_star_15
     Annotations: rdfs:label "CYP2C9 *15"
     SubClassOf: CYP2C9
@@ -13194,9 +13677,24 @@ Class: CYP2C9_star_15
 Class: human_with_CYP2C9_star_15
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C9 *15"
+SubClassOf:
+has some rs1057910_A and has some rs1057911_A and has some rs1799853_C and has some rs2256871_A and has some rs28371685_C and has some rs28371686_C and has some rs56165452_T and has some rs57505750_C and has some rs67807361_C and has some rs72558184_G and has some rs72558187_T and has some rs72558188_AGAAATGGAA and has some rs72558189_G and has some rs72558190_A and has some rs72558192_A and has some rs72558193_A and has some rs7900194_G and has some rs9332130_A and has some rs9332131_A and has some rs9332239_C
+
+SubClassOf:
+has some CYP2C9_star_15
+
+EquivalentTo:
+has some rs72558190_A
+
 Class: human_with_homozygous_CYP2C9_star_15
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C9 *15" 
+EquivalentTo:
+has exactly 2 rs72558190_A
+
+EquivalentTo:
+has exactly 2 CYP2C9_star_15
+
 Class: CYP2C9_star_16
     Annotations: rdfs:label "CYP2C9 *16"
     SubClassOf: CYP2C9
@@ -13204,9 +13702,24 @@ Class: CYP2C9_star_16
 Class: human_with_CYP2C9_star_16
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C9 *16"
+SubClassOf:
+has some rs1057910_A and has some rs1057911_A and has some rs1799853_C and has some rs2256871_A and has some rs28371685_C and has some rs28371686_C and has some rs56165452_T and has some rs57505750_C and has some rs67807361_C and has some rs72558184_G and has some rs72558187_T and has some rs72558188_AGAAATGGAA and has some rs72558189_G and has some rs72558190_C and has some rs72558192_G and has some rs72558193_A and has some rs7900194_G and has some rs9332130_A and has some rs9332131_A and has some rs9332239_C
+
+SubClassOf:
+has some CYP2C9_star_16
+
+EquivalentTo:
+has some rs72558192_G
+
 Class: human_with_homozygous_CYP2C9_star_16
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C9 *16" 
+EquivalentTo:
+has exactly 2 rs72558192_G
+
+EquivalentTo:
+has exactly 2 CYP2C9_star_16
+
 Class: CYP2C9_star_17
     Annotations: rdfs:label "CYP2C9 *17"
     SubClassOf: CYP2C9
@@ -13354,9 +13867,24 @@ Class: CYP2C9_star_33
 Class: human_with_CYP2C9_star_33
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C9 *33"
+SubClassOf:
+has some rs1057910_A and has some rs1057911_A and has some rs1799853_C and has some rs2256871_A and has some rs28371685_C and has some rs28371686_C and has some rs56165452_T and has some rs57505750_C and has some rs67807361_C and has some rs72558184_A and has some rs72558187_T and has some rs72558188_AGAAATGGAA and has some rs72558189_G and has some rs72558190_C and has some rs72558192_A and has some rs72558193_A and has some rs7900194_G and has some rs9332130_A and has some rs9332131_A and has some rs9332239_C
+
+SubClassOf:
+has some CYP2C9_star_33
+
+EquivalentTo:
+has some rs72558184_A
+
 Class: human_with_homozygous_CYP2C9_star_33
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C9 *33" 
+EquivalentTo:
+has exactly 2 rs72558184_A
+
+EquivalentTo:
+has exactly 2 CYP2C9_star_33
+
 Class: CYP2C9_star_34
     Annotations: rdfs:label "CYP2C9 *34"
     SubClassOf: CYP2C9
@@ -13364,9 +13892,24 @@ Class: CYP2C9_star_34
 Class: human_with_CYP2C9_star_34
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C9 *34"
+SubClassOf:
+has some rs1057910_A and has some rs1057911_A and has some rs1799853_C and has some rs2256871_A and has some rs28371685_C and has some rs28371686_C and has some rs56165452_T and has some rs57505750_T and has some rs67807361_C and has some rs72558184_G and has some rs72558187_T and has some rs72558188_AGAAATGGAA and has some rs72558189_G and has some rs72558190_C and has some rs72558192_A and has some rs72558193_A and has some rs7900194_G and has some rs9332130_A and has some rs9332131_A and has some rs9332239_C
+
+SubClassOf:
+has some CYP2C9_star_34
+
+EquivalentTo:
+has some rs57505750_T
+
 Class: human_with_homozygous_CYP2C9_star_34
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C9 *34" 
+EquivalentTo:
+has exactly 2 rs57505750_T
+
+EquivalentTo:
+has exactly 2 CYP2C9_star_34
+
 Class: CYP2C9_star_1
 DisjointClasses:
 CYP2C9_star_1,CYP2C9_star_2,CYP2C9_star_3,CYP2C9_star_4,CYP2C9_star_5,CYP2C9_star_7,CYP2C9_star_8,CYP2C9_star_9,CYP2C9_star_10,CYP2C9_star_11,CYP2C9_star_12,CYP2C9_star_13,CYP2C9_star_14,CYP2C9_star_15,CYP2C9_star_16,CYP2C9_star_17,CYP2C9_star_18,CYP2C9_star_19,CYP2C9_star_20,CYP2C9_star_21,CYP2C9_star_22,CYP2C9_star_23,CYP2C9_star_26,CYP2C9_star_27,CYP2C9_star_28,CYP2C9_star_29,CYP2C9_star_30,CYP2C9_star_31,CYP2C9_star_32,CYP2C9_star_33,CYP2C9_star_34
@@ -13534,9 +14077,24 @@ Class: CYP2C19_star_3A
 Class: human_with_CYP2C19_star_3A
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C19 *3A"
+SubClassOf:
+has some rs11188072_C and has some rs11568732_T and has some rs118203756_G and has some rs118203757_G and has some rs118203759_C and has some rs12248560_C and has some rs12571421_A and has some rs12769205_A and has some rs17878459_G and has some rs17878649_G and has some rs17879685_C and has some rs17879992_T and has some rs17882687_A and has some rs17884712_G and has some rs17884832_T and has some rs17885098_C and has some rs17886522_C and has some rs28399504_A and has some rs28399513_T and has some rs3758580_C and has some rs3758581_G and has some rs41291556_T and has some rs4244285_G and has some rs4417205_C and has some rs4917623_T and has some rs4986893_A and has some rs4986894_T and has some rs55640102_A and has some rs55752064_T and has some rs56337013_C and has some rs58973490_G and has some rs6413438_C and has some rs7088784_A and has some rs72552267_G and has some rs72558186_T and has some rs7902257_G and has some rs7916649_G
+
+SubClassOf:
+has some CYP2C19_star_3A
+
+EquivalentTo:
+has some rs4986893_A
+
 Class: human_with_homozygous_CYP2C19_star_3A
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C19 *3A" 
+EquivalentTo:
+has exactly 2 rs4986893_A
+
+EquivalentTo:
+has exactly 2 CYP2C19_star_3A
+
 Class: CYP2C19_star_3
     Annotations: rdfs:label "CYP2C19 *3"
     SubClassOf: CYP2C19
@@ -13562,9 +14120,24 @@ Class: CYP2C19_star_4A
 Class: human_with_CYP2C19_star_4A
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C19 *4A"
+SubClassOf:
+has some rs11188072_C and has some rs11568732_T and has some rs118203756_G and has some rs118203757_G and has some rs118203759_C and has some rs12248560_C and has some rs12571421_A and has some rs12769205_A and has some rs17878459_G and has some rs17878649_G and has some rs17879685_C and has some rs17879992_T and has some rs17882687_A and has some rs17884712_G and has some rs17884832_T and has some rs17885098_T and has some rs17886522_A and has some rs28399504_G and has some rs28399513_T and has some rs3758580_C and has some rs3758581_G and has some rs41291556_T and has some rs4244285_G and has some rs4417205_C and has some rs4917623_T and has some rs4986893_G and has some rs4986894_T and has some rs55640102_A and has some rs55752064_T and has some rs56337013_C and has some rs58973490_G and has some rs6413438_C and has some rs7088784_A and has some rs72552267_G and has some rs72558186_T and has some rs7902257_G and has some rs7916649_G
+
+SubClassOf:
+has some CYP2C19_star_4A
+
+EquivalentTo:
+has some rs28399504_G
+
 Class: human_with_homozygous_CYP2C19_star_4A
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C19 *4A" 
+EquivalentTo:
+has exactly 2 rs28399504_G
+
+EquivalentTo:
+has exactly 2 CYP2C19_star_4A
+
 Class: CYP2C19_star_4
     Annotations: rdfs:label "CYP2C19 *4"
     SubClassOf: CYP2C19
@@ -13590,9 +14163,24 @@ Class: CYP2C19_star_5A
 Class: human_with_CYP2C19_star_5A
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C19 *5A"
+SubClassOf:
+has some rs11188072_C and has some rs11568732_T and has some rs118203756_G and has some rs118203757_G and has some rs118203759_C and has some rs12248560_C and has some rs12571421_A and has some rs12769205_A and has some rs17878459_G and has some rs17878649_G and has some rs17879685_C and has some rs17879992_T and has some rs17882687_A and has some rs17884712_G and has some rs17884832_T and has some rs17885098_C and has some rs17886522_A and has some rs28399504_A and has some rs28399513_T and has some rs3758580_C and has some rs3758581_A and has some rs41291556_T and has some rs4244285_G and has some rs4417205_C and has some rs4917623_T and has some rs4986893_G and has some rs4986894_T and has some rs55640102_A and has some rs55752064_T and has some rs56337013_T and has some rs58973490_G and has some rs6413438_C and has some rs7088784_A and has some rs72552267_G and has some rs72558186_T and has some rs7902257_G and has some rs7916649_G
+
+SubClassOf:
+has some CYP2C19_star_5A
+
+EquivalentTo:
+has some rs56337013_T
+
 Class: human_with_homozygous_CYP2C19_star_5A
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C19 *5A" 
+EquivalentTo:
+has exactly 2 rs56337013_T
+
+EquivalentTo:
+has exactly 2 CYP2C19_star_5A
+
 Class: CYP2C19_star_5
     Annotations: rdfs:label "CYP2C19 *5"
     SubClassOf: CYP2C19
@@ -13633,9 +14221,24 @@ Class: CYP2C19_star_7
 Class: human_with_CYP2C19_star_7
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C19 *7"
+SubClassOf:
+has some rs11188072_C and has some rs11568732_T and has some rs118203756_G and has some rs118203757_G and has some rs118203759_C and has some rs12248560_C and has some rs12571421_A and has some rs12769205_A and has some rs17878459_G and has some rs17878649_G and has some rs17879685_C and has some rs17879992_T and has some rs17882687_A and has some rs17884712_G and has some rs17884832_T and has some rs17885098_C and has some rs17886522_A and has some rs28399504_A and has some rs28399513_T and has some rs3758580_C and has some rs3758581_A and has some rs41291556_T and has some rs4244285_G and has some rs4417205_C and has some rs4917623_T and has some rs4986893_G and has some rs4986894_T and has some rs55640102_A and has some rs55752064_T and has some rs56337013_C and has some rs58973490_G and has some rs6413438_C and has some rs7088784_A and has some rs72552267_G and has some rs72558186_A and has some rs7902257_G and has some rs7916649_G
+
+SubClassOf:
+has some CYP2C19_star_7
+
+EquivalentTo:
+has some rs72558186_A
+
 Class: human_with_homozygous_CYP2C19_star_7
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C19 *7" 
+EquivalentTo:
+has exactly 2 rs72558186_A
+
+EquivalentTo:
+has exactly 2 CYP2C19_star_7
+
 Class: CYP2C19_star_8
     Annotations: rdfs:label "CYP2C19 *8"
     SubClassOf: CYP2C19
@@ -13643,9 +14246,24 @@ Class: CYP2C19_star_8
 Class: human_with_CYP2C19_star_8
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C19 *8"
+SubClassOf:
+has some rs11188072_C and has some rs11568732_T and has some rs118203756_G and has some rs118203757_G and has some rs118203759_C and has some rs12248560_C and has some rs12571421_A and has some rs12769205_A and has some rs17878459_G and has some rs17878649_G and has some rs17879685_C and has some rs17879992_T and has some rs17882687_A and has some rs17884712_G and has some rs17884832_T and has some rs17885098_C and has some rs17886522_A and has some rs28399504_A and has some rs28399513_T and has some rs3758580_C and has some rs3758581_A and has some rs41291556_C and has some rs4244285_G and has some rs4417205_C and has some rs4917623_T and has some rs4986893_G and has some rs4986894_T and has some rs55640102_A and has some rs55752064_T and has some rs56337013_C and has some rs58973490_G and has some rs6413438_C and has some rs7088784_A and has some rs72552267_G and has some rs72558186_T and has some rs7902257_G and has some rs7916649_G
+
+SubClassOf:
+has some CYP2C19_star_8
+
+EquivalentTo:
+has some rs41291556_C
+
 Class: human_with_homozygous_CYP2C19_star_8
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C19 *8" 
+EquivalentTo:
+has exactly 2 rs41291556_C
+
+EquivalentTo:
+has exactly 2 CYP2C19_star_8
+
 Class: CYP2C19_star_9
     Annotations: rdfs:label "CYP2C19 *9"
     SubClassOf: CYP2C19
@@ -13672,9 +14290,24 @@ Class: CYP2C19_star_10
 Class: human_with_CYP2C19_star_10
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C19 *10"
+SubClassOf:
+has some rs11188072_C and has some rs11568732_T and has some rs118203756_G and has some rs118203757_G and has some rs118203759_C and has some rs12248560_C and has some rs12571421_A and has some rs12769205_A and has some rs17878459_G and has some rs17878649_G and has some rs17879685_C and has some rs17879992_T and has some rs17882687_A and has some rs17884712_G and has some rs17884832_T and has some rs17885098_T and has some rs17886522_A and has some rs28399504_A and has some rs28399513_T and has some rs3758580_C and has some rs3758581_G and has some rs41291556_T and has some rs4244285_G and has some rs4417205_C and has some rs4917623_T and has some rs4986893_G and has some rs4986894_T and has some rs55640102_A and has some rs55752064_T and has some rs56337013_C and has some rs58973490_G and has some rs6413438_T and has some rs7088784_A and has some rs72552267_G and has some rs72558186_T and has some rs7902257_G and has some rs7916649_G
+
+SubClassOf:
+has some CYP2C19_star_10
+
+EquivalentTo:
+has some rs6413438_T
+
 Class: human_with_homozygous_CYP2C19_star_10
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C19 *10" 
+EquivalentTo:
+has exactly 2 rs6413438_T
+
+EquivalentTo:
+has exactly 2 CYP2C19_star_10
+
 Class: CYP2C19_star_11
     Annotations: rdfs:label "CYP2C19 *11"
     SubClassOf: CYP2C19
@@ -13682,9 +14315,24 @@ Class: CYP2C19_star_11
 Class: human_with_CYP2C19_star_11
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C19 *11"
+SubClassOf:
+has some rs11188072_C and has some rs11568732_T and has some rs118203756_G and has some rs118203757_G and has some rs118203759_C and has some rs12248560_C and has some rs12571421_A and has some rs12769205_A and has some rs17878459_G and has some rs17878649_G and has some rs17879685_C and has some rs17879992_T and has some rs17882687_A and has some rs17884712_G and has some rs17884832_T and has some rs17885098_T and has some rs17886522_A and has some rs28399504_A and has some rs28399513_T and has some rs3758580_C and has some rs3758581_G and has some rs41291556_T and has some rs4244285_G and has some rs4417205_C and has some rs4917623_T and has some rs4986893_G and has some rs4986894_T and has some rs55640102_A and has some rs55752064_T and has some rs56337013_C and has some rs58973490_A and has some rs6413438_C and has some rs7088784_A and has some rs72552267_G and has some rs72558186_T and has some rs7902257_G and has some rs7916649_G
+
+SubClassOf:
+has some CYP2C19_star_11
+
+EquivalentTo:
+has some rs58973490_A
+
 Class: human_with_homozygous_CYP2C19_star_11
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C19 *11" 
+EquivalentTo:
+has exactly 2 rs58973490_A
+
+EquivalentTo:
+has exactly 2 CYP2C19_star_11
+
 Class: CYP2C19_star_12
     Annotations: rdfs:label "CYP2C19 *12"
     SubClassOf: CYP2C19
@@ -13692,9 +14340,24 @@ Class: CYP2C19_star_12
 Class: human_with_CYP2C19_star_12
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C19 *12"
+SubClassOf:
+has some rs11188072_C and has some rs11568732_T and has some rs118203756_G and has some rs118203757_G and has some rs118203759_C and has some rs12248560_C and has some rs12571421_A and has some rs12769205_A and has some rs17878459_G and has some rs17878649_G and has some rs17879685_C and has some rs17879992_T and has some rs17882687_A and has some rs17884712_G and has some rs17884832_T and has some rs17885098_T and has some rs17886522_A and has some rs28399504_A and has some rs28399513_T and has some rs3758580_C and has some rs3758581_G and has some rs41291556_T and has some rs4244285_G and has some rs4417205_C and has some rs4917623_T and has some rs4986893_G and has some rs4986894_T and has some rs55640102_C and has some rs55752064_T and has some rs56337013_C and has some rs58973490_G and has some rs6413438_C and has some rs7088784_A and has some rs72552267_G and has some rs72558186_T and has some rs7902257_G and has some rs7916649_G
+
+SubClassOf:
+has some CYP2C19_star_12
+
+EquivalentTo:
+has some rs55640102_C
+
 Class: human_with_homozygous_CYP2C19_star_12
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C19 *12" 
+EquivalentTo:
+has exactly 2 rs55640102_C
+
+EquivalentTo:
+has exactly 2 CYP2C19_star_12
+
 Class: CYP2C19_star_13
     Annotations: rdfs:label "CYP2C19 *13"
     SubClassOf: CYP2C19
@@ -13702,9 +14365,24 @@ Class: CYP2C19_star_13
 Class: human_with_CYP2C19_star_13
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C19 *13"
+SubClassOf:
+has some rs11188072_C and has some rs11568732_T and has some rs118203756_G and has some rs118203757_G and has some rs118203759_C and has some rs12248560_C and has some rs12571421_A and has some rs12769205_A and has some rs17878459_G and has some rs17878649_G and has some rs17879685_T and has some rs17879992_T and has some rs17882687_A and has some rs17884712_G and has some rs17884832_T and has some rs17885098_C and has some rs17886522_A and has some rs28399504_A and has some rs28399513_T and has some rs3758580_C and has some rs3758581_G and has some rs41291556_T and has some rs4244285_G and has some rs4417205_C and has some rs4917623_T and has some rs4986893_G and has some rs4986894_T and has some rs55640102_A and has some rs55752064_T and has some rs56337013_C and has some rs58973490_G and has some rs6413438_C and has some rs7088784_A and has some rs72552267_G and has some rs72558186_T and has some rs7902257_G and has some rs7916649_G
+
+SubClassOf:
+has some CYP2C19_star_13
+
+EquivalentTo:
+has some rs17879685_T
+
 Class: human_with_homozygous_CYP2C19_star_13
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C19 *13" 
+EquivalentTo:
+has exactly 2 rs17879685_T
+
+EquivalentTo:
+has exactly 2 CYP2C19_star_13
+
 Class: CYP2C19_star_14
     Annotations: rdfs:label "CYP2C19 *14"
     SubClassOf: CYP2C19
@@ -13712,9 +14390,24 @@ Class: CYP2C19_star_14
 Class: human_with_CYP2C19_star_14
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C19 *14"
+SubClassOf:
+has some rs11188072_C and has some rs11568732_T and has some rs118203756_G and has some rs118203757_G and has some rs118203759_C and has some rs12248560_C and has some rs12571421_A and has some rs12769205_A and has some rs17878459_G and has some rs17878649_G and has some rs17879685_C and has some rs17879992_T and has some rs17882687_A and has some rs17884712_G and has some rs17884832_T and has some rs17885098_T and has some rs17886522_A and has some rs28399504_A and has some rs28399513_T and has some rs3758580_C and has some rs3758581_G and has some rs41291556_T and has some rs4244285_G and has some rs4417205_C and has some rs4917623_T and has some rs4986893_G and has some rs4986894_T and has some rs55640102_A and has some rs55752064_C and has some rs56337013_C and has some rs58973490_G and has some rs6413438_C and has some rs7088784_A and has some rs72552267_G and has some rs72558186_T and has some rs7902257_G and has some rs7916649_G
+
+SubClassOf:
+has some CYP2C19_star_14
+
+EquivalentTo:
+has some rs55752064_C
+
 Class: human_with_homozygous_CYP2C19_star_14
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C19 *14" 
+EquivalentTo:
+has exactly 2 rs55752064_C
+
+EquivalentTo:
+has exactly 2 CYP2C19_star_14
+
 Class: CYP2C19_star_15
     Annotations: rdfs:label "CYP2C19 *15"
     SubClassOf: CYP2C19
@@ -13722,9 +14415,24 @@ Class: CYP2C19_star_15
 Class: human_with_CYP2C19_star_15
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C19 *15"
+SubClassOf:
+has some rs11188072_C and has some rs11568732_T and has some rs118203756_G and has some rs118203757_G and has some rs118203759_C and has some rs12248560_C and has some rs12571421_A and has some rs12769205_A and has some rs17878459_G and has some rs17878649_G and has some rs17879685_C and has some rs17879992_T and has some rs17882687_C and has some rs17884712_G and has some rs17884832_T and has some rs17885098_C and has some rs17886522_A and has some rs28399504_A and has some rs28399513_T and has some rs3758580_C and has some rs3758581_G and has some rs41291556_T and has some rs4244285_G and has some rs4417205_C and has some rs4917623_T and has some rs4986893_G and has some rs4986894_T and has some rs55640102_A and has some rs55752064_T and has some rs56337013_C and has some rs58973490_G and has some rs6413438_C and has some rs7088784_A and has some rs72552267_G and has some rs72558186_T and has some rs7902257_G and has some rs7916649_G
+
+SubClassOf:
+has some CYP2C19_star_15
+
+EquivalentTo:
+has some rs17882687_C
+
 Class: human_with_homozygous_CYP2C19_star_15
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C19 *15" 
+EquivalentTo:
+has exactly 2 rs17882687_C
+
+EquivalentTo:
+has exactly 2 CYP2C19_star_15
+
 Class: CYP2C19_star_16
     Annotations: rdfs:label "CYP2C19 *16"
     SubClassOf: CYP2C19
@@ -13751,9 +14459,24 @@ Class: CYP2C19_star_17
 Class: human_with_CYP2C19_star_17
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C19 *17"
+SubClassOf:
+has some rs11188072_T and has some rs11568732_T and has some rs118203756_G and has some rs118203757_G and has some rs118203759_C and has some rs12248560_T and has some rs12571421_A and has some rs12769205_A and has some rs17878459_G and has some rs17878649_G and has some rs17879685_C and has some rs17879992_T and has some rs17882687_A and has some rs17884712_G and has some rs17884832_T and has some rs17885098_T and has some rs17886522_A and has some rs28399504_A and has some rs28399513_T and has some rs3758580_C and has some rs3758581_G and has some rs41291556_T and has some rs4244285_G and has some rs4417205_C and has some rs4917623_T and has some rs4986893_G and has some rs4986894_T and has some rs55640102_A and has some rs55752064_T and has some rs56337013_C and has some rs58973490_G and has some rs6413438_C and has some rs7088784_A and has some rs72552267_G and has some rs72558186_T and has some rs7902257_G and has some rs7916649_G
+
+SubClassOf:
+has some CYP2C19_star_17
+
+EquivalentTo:
+has some rs12248560_T
+
 Class: human_with_homozygous_CYP2C19_star_17
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C19 *17" 
+EquivalentTo:
+has exactly 2 rs12248560_T
+
+EquivalentTo:
+has exactly 2 CYP2C19_star_17
+
 Class: CYP2C19_star_18
     Annotations: rdfs:label "CYP2C19 *18"
     SubClassOf: CYP2C19
@@ -13780,9 +14503,18 @@ Class: CYP2C19_star_19
 Class: human_with_CYP2C19_star_19
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C19 *19"
+SubClassOf:
+has some rs11188072_C and has some rs11568732_T and has some rs118203756_G and has some rs118203757_G and has some rs118203759_C and has some rs12248560_C and has some rs12571421_A and has some rs12769205_A and has some rs17878459_G and has some rs17878649_G and has some rs17879685_C and has some rs17879992_T and has some rs17882687_A and has some rs17884712_G and has some rs17884832_T and has some rs17885098_T and has some rs17886522_A and has some rs28399504_A and has some rs28399513_T and has some rs3758580_C and has some rs3758581_G and has some rs41291556_T and has some rs4244285_G and has some rs4417205_C and has some rs4917623_C and has some rs4986893_G and has some rs4986894_T and has some rs55640102_A and has some rs55752064_T and has some rs56337013_C and has some rs58973490_G and has some rs6413438_C and has some rs7088784_A and has some rs72552267_G and has some rs72558186_T and has some rs7902257_G and has some rs7916649_G
+
+SubClassOf:
+has some CYP2C19_star_19
+
 Class: human_with_homozygous_CYP2C19_star_19
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C19 *19" 
+EquivalentTo:
+has exactly 2 CYP2C19_star_19
+
 Class: CYP2C19_star_22
     Annotations: rdfs:label "CYP2C19 *22"
     SubClassOf: CYP2C19
@@ -13857,9 +14589,18 @@ Class: CYP2C19_star_26
 Class: human_with_CYP2C19_star_26
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C19 *26"
+SubClassOf:
+has some rs11188072_C and has some rs11568732_T and has some rs118203756_G and has some rs118203757_G and has some rs118203759_C and has some rs12248560_C and has some rs12571421_A and has some rs12769205_A and has some rs17878459_G and has some rs17878649_G and has some rs17879685_C and has some rs17879992_T and has some rs17882687_A and has some rs17884712_G and has some rs17884832_T and has some rs17885098_T and has some rs17886522_A and has some rs28399504_A and has some rs28399513_T and has some rs3758580_C and has some rs3758581_G and has some rs41291556_T and has some rs4244285_G and has some rs4417205_C and has some rs4917623_T and has some rs4986893_G and has some rs4986894_T and has some rs55640102_A and has some rs55752064_T and has some rs56337013_C and has some rs58973490_G and has some rs6413438_C and has some rs7088784_A and has some rs72552267_G and has some rs72558186_T and has some rs7902257_G and has some rs7916649_G
+
+SubClassOf:
+has some CYP2C19_star_26
+
 Class: human_with_homozygous_CYP2C19_star_26
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C19 *26" 
+EquivalentTo:
+has exactly 2 CYP2C19_star_26
+
 Class: CYP2C19_star_27
     Annotations: rdfs:label "CYP2C19 *27"
     SubClassOf: CYP2C19
@@ -13867,9 +14608,24 @@ Class: CYP2C19_star_27
 Class: human_with_CYP2C19_star_27
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP2C19 *27"
+SubClassOf:
+has some rs11188072_C and has some rs11568732_T and has some rs118203756_G and has some rs118203757_G and has some rs118203759_C and has some rs12248560_C and has some rs12571421_A and has some rs12769205_A and has some rs17878459_G and has some rs17878649_G and has some rs17879685_C and has some rs17879992_T and has some rs17882687_A and has some rs17884712_G and has some rs17884832_T and has some rs17885098_C and has some rs17886522_A and has some rs28399504_A and has some rs28399513_T and has some rs3758580_C and has some rs3758581_G and has some rs41291556_T and has some rs4244285_G and has some rs4417205_C and has some rs4917623_T and has some rs4986893_G and has some rs4986894_T and has some rs55640102_A and has some rs55752064_T and has some rs56337013_C and has some rs58973490_G and has some rs6413438_C and has some rs7088784_A and has some rs72552267_G and has some rs72558186_T and has some rs7902257_A and has some rs7916649_G
+
+SubClassOf:
+has some CYP2C19_star_27
+
+EquivalentTo:
+has some rs7902257_A
+
 Class: human_with_homozygous_CYP2C19_star_27
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP2C19 *27" 
+EquivalentTo:
+has exactly 2 rs7902257_A
+
+EquivalentTo:
+has exactly 2 CYP2C19_star_27
+
 Class: CYP2C19_star_1A
 DisjointClasses:
 CYP2C19_star_1A,CYP2C19_star_1B,CYP2C19_star_1C
@@ -14024,9 +14780,24 @@ Class: CYP3A4_star_6
 Class: human_with_CYP3A4_star_6
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with CYP3A4 *6"
+SubClassOf:
+has some rs12721627_G and has some rs12721629_G and has some rs12721634_A and has some rs2740574_T and has some rs28371759_A and has some rs4646438_T and has some rs4986907_C and has some rs4986908_C and has some rs4986909_G and has some rs4986910_A and has some rs4986913_G and has some rs4987161_A
+
+SubClassOf:
+has some CYP3A4_star_6
+
+EquivalentTo:
+has some rs4646438_T
+
 Class: human_with_homozygous_CYP3A4_star_6
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous CYP3A4 *6" 
+EquivalentTo:
+has exactly 2 rs4646438_T
+
+EquivalentTo:
+has exactly 2 CYP3A4_star_6
+
 Class: CYP3A4_star_6
 DisjointClasses:
 CYP3A4_star_6
@@ -14197,9 +14968,24 @@ Class: SULT1A1_star_5
 Class: human_with_SULT1A1_star_5
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with SULT1A1 *5"
+SubClassOf:
+has some rs1801030_T and has some rs28374453_G and has some rs9282861_C
+
+SubClassOf:
+has some SULT1A1_star_5
+
+EquivalentTo:
+has some rs28374453_G
+
 Class: human_with_homozygous_SULT1A1_star_5
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous SULT1A1 *5" 
+EquivalentTo:
+has exactly 2 rs28374453_G
+
+EquivalentTo:
+has exactly 2 SULT1A1_star_5
+
 Class: SULT1A1_star_1
 DisjointClasses:
 SULT1A1_star_1,SULT1A1_star_2,SULT1A1_star_3,SULT1A1_star_5
@@ -14270,9 +15056,24 @@ Class: TPMT_star_3A
 Class: human_with_TPMT_star_3A
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with TPMT *3A"
+SubClassOf:
+has some rs1142345_C and has some rs1800460_T and has some rs1800462_C and has some rs1800584_C
+
+SubClassOf:
+has some TPMT_star_3A
+
+EquivalentTo:
+has some rs1142345_C and has some rs1800460_T
+
 Class: human_with_homozygous_TPMT_star_3A
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous TPMT *3A" 
+EquivalentTo:
+has exactly 2 rs1142345_C and has exactly 2 rs1800460_T
+
+EquivalentTo:
+has exactly 2 TPMT_star_3A
+
 Class: TPMT_star_3
     Annotations: rdfs:label "TPMT *3"
     SubClassOf: TPMT
@@ -14322,9 +15123,24 @@ Class: TPMT_star_4
 Class: human_with_TPMT_star_4
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with TPMT *4"
+SubClassOf:
+has some rs1142345_T and has some rs1800460_C and has some rs1800462_C and has some rs1800584_T
+
+SubClassOf:
+has some TPMT_star_4
+
+EquivalentTo:
+has some rs1800584_T
+
 Class: human_with_homozygous_TPMT_star_4
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous TPMT *4" 
+EquivalentTo:
+has exactly 2 rs1800584_T
+
+EquivalentTo:
+has exactly 2 TPMT_star_4
+
 Class: TPMT_star_5
     Annotations: rdfs:label "TPMT *5"
     SubClassOf: TPMT
@@ -14637,51 +15453,6 @@ Class: human_with_homozygous_UGT1A1_star_60c
 DisjointClasses:
 human_with_homozygous_UGT1A1_star_60c,human_with_homozygous_UGT1A1_star_VIII
 
-Class: VKORC1_star_2
-    Annotations: rdfs:label "VKORC1 *2"
-    SubClassOf: VKORC1
-
-Class: human_with_VKORC1_star_2
-SubClassOf: human_with_genetic_polymorphism
-Annotations: rdfs:label "human with VKORC1 *2"
-SubClassOf:
-has some rs17708472_G and has some rs2359612_A and has some rs7294_C and has some rs9923231_T and has some rs9934438_A
-
-SubClassOf:
-has some VKORC1_star_2
-
-EquivalentTo:
-has some rs2359612_A and has some rs9923231_T and has some rs9934438_A
-
-Class: human_with_homozygous_VKORC1_star_2
-SubClassOf: human_with_genetic_polymorphism
-Annotations: rdfs:label "human with homozygous VKORC1 *2" 
-EquivalentTo:
-has exactly 2 rs2359612_A and has exactly 2 rs9923231_T and has exactly 2 rs9934438_A
-
-EquivalentTo:
-has exactly 2 VKORC1_star_2
-
-Class: VKORC1_star_3
-    Annotations: rdfs:label "VKORC1 *3"
-    SubClassOf: VKORC1
-
-Class: human_with_VKORC1_star_3
-SubClassOf: human_with_genetic_polymorphism
-Annotations: rdfs:label "human with VKORC1 *3"
-Class: human_with_homozygous_VKORC1_star_3
-SubClassOf: human_with_genetic_polymorphism
-Annotations: rdfs:label "human with homozygous VKORC1 *3" 
-Class: VKORC1_star_4
-    Annotations: rdfs:label "VKORC1 *4"
-    SubClassOf: VKORC1
-
-Class: human_with_VKORC1_star_4
-SubClassOf: human_with_genetic_polymorphism
-Annotations: rdfs:label "human with VKORC1 *4"
-Class: human_with_homozygous_VKORC1_star_4
-SubClassOf: human_with_genetic_polymorphism
-Annotations: rdfs:label "human with homozygous VKORC1 *4" 
 Class: VKORC1_H1
     Annotations: rdfs:label "VKORC1 H1"
     SubClassOf: VKORC1
@@ -14794,24 +15565,9 @@ Class: VKORC1_H7
 Class: human_with_VKORC1_H7
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with VKORC1 H7"
-SubClassOf:
-has some rs17708472_G and has some rs17880887_G and has some rs17881535_C and has some rs2359612_G and has some rs2884737_A and has some rs7196161_A and has some rs7294_T and has some rs8050894_C and has some rs9923231_C and has some rs9934438_G
-
-SubClassOf:
-has some VKORC1_H7
-
-EquivalentTo:
-has some rs17708472_G and has some rs17880887_G and has some rs17881535_C and has some rs2359612_G and has some rs2884737_A and has some rs7196161_A and has some rs7294_T and has some rs8050894_C and has some rs9923231_C and has some rs9934438_G
-
 Class: human_with_homozygous_VKORC1_H7
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous VKORC1 H7" 
-EquivalentTo:
-has exactly 2 rs17708472_G and has exactly 2 rs17880887_G and has exactly 2 rs17881535_C and has exactly 2 rs2359612_G and has exactly 2 rs2884737_A and has exactly 2 rs7196161_A and has exactly 2 rs7294_T and has exactly 2 rs8050894_C and has exactly 2 rs9923231_C and has exactly 2 rs9934438_G
-
-EquivalentTo:
-has exactly 2 VKORC1_H7
-
 Class: VKORC1_H8
     Annotations: rdfs:label "VKORC1 H8"
     SubClassOf: VKORC1
@@ -14819,24 +15575,9 @@ Class: VKORC1_H8
 Class: human_with_VKORC1_H8
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with VKORC1 H8"
-SubClassOf:
-has some rs17708472_G and has some rs17880887_T and has some rs17881535_C and has some rs2359612_G and has some rs2884737_A and has some rs7196161_A and has some rs7294_T and has some rs8050894_C and has some rs9923231_C and has some rs9934438_G
-
-SubClassOf:
-has some VKORC1_H8
-
-EquivalentTo:
-has some rs17708472_G and has some rs17880887_T and has some rs17881535_C and has some rs2359612_G and has some rs2884737_A and has some rs7196161_A and has some rs7294_T and has some rs8050894_C and has some rs9923231_C and has some rs9934438_G
-
 Class: human_with_homozygous_VKORC1_H8
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous VKORC1 H8" 
-EquivalentTo:
-has exactly 2 rs17708472_G and has exactly 2 rs17880887_T and has exactly 2 rs17881535_C and has exactly 2 rs2359612_G and has exactly 2 rs2884737_A and has exactly 2 rs7196161_A and has exactly 2 rs7294_T and has exactly 2 rs8050894_C and has exactly 2 rs9923231_C and has exactly 2 rs9934438_G
-
-EquivalentTo:
-has exactly 2 VKORC1_H8
-
 Class: VKORC1_H9
     Annotations: rdfs:label "VKORC1 H9"
     SubClassOf: VKORC1
@@ -14844,32 +15585,17 @@ Class: VKORC1_H9
 Class: human_with_VKORC1_H9
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with VKORC1 H9"
-SubClassOf:
-has some rs17708472_A and has some rs17880887_T and has some rs17881535_G and has some rs2359612_G and has some rs2884737_A and has some rs7196161_A and has some rs7294_C and has some rs8050894_C and has some rs9923231_C and has some rs9934438_G
-
-SubClassOf:
-has some VKORC1_H9
-
-EquivalentTo:
-has some rs17708472_A and has some rs17880887_T and has some rs17881535_G and has some rs2359612_G and has some rs2884737_A and has some rs7196161_A and has some rs7294_C and has some rs8050894_C and has some rs9923231_C and has some rs9934438_G
-
 Class: human_with_homozygous_VKORC1_H9
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous VKORC1 H9" 
-EquivalentTo:
-has exactly 2 rs17708472_A and has exactly 2 rs17880887_T and has exactly 2 rs17881535_G and has exactly 2 rs2359612_G and has exactly 2 rs2884737_A and has exactly 2 rs7196161_A and has exactly 2 rs7294_C and has exactly 2 rs8050894_C and has exactly 2 rs9923231_C and has exactly 2 rs9934438_G
-
-EquivalentTo:
-has exactly 2 VKORC1_H9
-
-Class: VKORC1_star_2
+Class: VKORC1_H1
 DisjointClasses:
-VKORC1_star_2,VKORC1_star_3,VKORC1_star_4,VKORC1_H1,VKORC1_H2,VKORC1_H3,VKORC1_H4,VKORC1_H5,VKORC1_H6,VKORC1_H7,VKORC1_H8,VKORC1_H9
+VKORC1_H1,VKORC1_H2,VKORC1_H3,VKORC1_H4,VKORC1_H5,VKORC1_H6,VKORC1_H7,VKORC1_H8,VKORC1_H9
 
 # homozygous human disjoints
-Class: human_with_homozygous_VKORC1_star_2
+Class: human_with_homozygous_VKORC1_H1
 DisjointClasses:
-human_with_homozygous_VKORC1_star_2,human_with_homozygous_VKORC1_star_3,human_with_homozygous_VKORC1_star_4,human_with_homozygous_VKORC1_H1,human_with_homozygous_VKORC1_H2,human_with_homozygous_VKORC1_H3,human_with_homozygous_VKORC1_H4,human_with_homozygous_VKORC1_H5,human_with_homozygous_VKORC1_H6,human_with_homozygous_VKORC1_H7,human_with_homozygous_VKORC1_H8,human_with_homozygous_VKORC1_H9
+human_with_homozygous_VKORC1_H1,human_with_homozygous_VKORC1_H2,human_with_homozygous_VKORC1_H3,human_with_homozygous_VKORC1_H4,human_with_homozygous_VKORC1_H5,human_with_homozygous_VKORC1_H6,human_with_homozygous_VKORC1_H7,human_with_homozygous_VKORC1_H8,human_with_homozygous_VKORC1_H9
 
 Class: G6PD_haplotype_A-_202A__376G
     Annotations: rdfs:label "G6PD haplotype A- 202A/ 376G"
@@ -14957,9 +15683,24 @@ Class: G6PD_haplotype_Mediterranean
 Class: human_with_G6PD_haplotype_Mediterranean
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with G6PD haplotype Mediterranean"
+SubClassOf:
+has some rs1050828_C and has some rs1050829_T and has some rs137852328_C and has some rs2230037_A and has some rs5030868_A and has some rs76723693_A
+
+SubClassOf:
+has some G6PD_haplotype_Mediterranean
+
+EquivalentTo:
+has some rs2230037_A and has some rs5030868_A
+
 Class: human_with_homozygous_G6PD_haplotype_Mediterranean
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous G6PD haplotype Mediterranean" 
+EquivalentTo:
+has exactly 2 rs2230037_A and has exactly 2 rs5030868_A
+
+EquivalentTo:
+has exactly 2 G6PD_haplotype_Mediterranean
+
 Class: G6PD_haplotype_A-_202A__376G
 DisjointClasses:
 G6PD_haplotype_A-_202A__376G,G6PD_haplotype_A-_680T__376G,G6PD_haplotype_A-_968C__376G,G6PD_haplotype_B__wildtype_,G6PD_haplotype_Mediterranean

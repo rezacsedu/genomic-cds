@@ -29,25 +29,7 @@ $haplotype_spreadsheet_file_location_v2 = "..\\data\\PharmGKB\\haplotype_spreads
 /*
  * Functions
  */
- 
- function no_matched_pattern($basic_pattern_genes,$array_polymorphisms){
-	foreach($basic_pattern_genes as $pattern){
-		$match=true;
-		for($i=0;$i<count($pattern);$i++){
-			$value1 = $pattern[$i];
-			$value2 = $array_polymorphisms[$i];
-			if(value_match($value1,$value2) == false){
-				$match=false;
-				break;
-			}
-		}
-		if($match){
-			return false;
-		}
-	}
-	return true;
- }
- 
+
  function value_match($string1, $string2){
 	$array_1 = explode("/",$string1);
 	$array_2 = explode("/",$string2);
@@ -68,7 +50,53 @@ $haplotype_spreadsheet_file_location_v2 = "..\\data\\PharmGKB\\haplotype_spreads
  function clean_tagged($poly_value){
 	$substitutions = array(" [tag]" => "");
 	return strtr($poly_value, $substitutions);
-}
+ }
+
+ 
+ function printArray($arrayVar){
+	print("[");
+	foreach($arrayVar as $item){
+		print($item." ");
+	}
+	print("]\n");
+ }
+ 
+ 
+ function no_matched_pattern($basic_pattern,$basic_tagged_pattern,$array_polymorphisms, $array_tagged_poly){
+	foreach($basic_tagged_pattern as $pattern){
+		if(count($pattern)==0) continue;
+		$match=true;
+		for($i=0;$i<count($pattern);$i++){
+			$value1 = $pattern[$i];
+			$value2 = $array_polymorphisms[$i];
+			if(value_match($value1,$value2) == false){
+				$match=false;
+				break;
+			}
+		}
+		if($match){
+			return false;
+		}		
+	}
+	if(count($array_tagged_poly)>0){
+		foreach($basic_pattern as $pattern){
+			$match=true;
+			for($i=0;$i<count($pattern);$i++){
+				$value1 = $pattern[$i];
+				$value2 = $array_tagged_poly[$i];
+				if(value_match($value1,$value2) == false){
+					$match=false;
+					break;
+				}
+			}
+			if($match){
+				return false;
+			}
+		}
+	}
+	return true;
+ }
+ 
 
  
 /************************
@@ -80,47 +108,48 @@ $objPHPExcel = PHPExcel_IOFactory::load($haplotype_spreadsheet_file_location);
 
 foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 	
-	$basic_pattern_genes = array(); // Needed for defining the basic pattern to keep enabled in the model
+	$basic_pattern = array(); // Needed for defining the basic pattern to keep enabled in the model
+	$basic_tagged_pattern = array();
 	
 	$worksheet_title = $objWorksheet->getTitle();
 	
 	// Skip sheets starting with "_" (can be used for sheets that need more work etc.)
 	if (strpos($worksheet_title,"_") === 0) { 
 		continue; 
-	};
-	
+	}
+		
 	print("worksheet = ".$worksheet_title."\n");
-
+	
 	$lastRow = $objWorksheet->getHighestRow();
 	for ($row = 2; $row <= $lastRow; $row++) {
 		$array_polymorphisms = array();
+		$array_tagged_poly = array();
 		$is_tagged = false;
-		$is_enabled = true;
 		$lastColumn = $objWorksheet->getHighestColumn();
 		$lastColumn++;
 		for ($column = 'E'; $column != $lastColumn; $column++) {
 			$cell_value =  $objWorksheet->getCell($column.$row)->getValue();
 			if (strpos($cell_value,'[tag]') == true) {
 				$is_tagged = true;
-				break;
 			}
+			$array_polymorphisms[] = clean_tagged($cell_value);
 		}
 		
-		for ($column = 'E'; $column != $lastColumn; $column++) {	//$header_column = $objWorksheet->getCell($column."1");
+		for ($column = 'E'; $column != $lastColumn; $column++) {
 			$cell_value =  $objWorksheet->getCell($column.$row)->getValue();			
 			if (strpos($cell_value,'[tag]') == true) {
-				$array_polymorphisms[] = clean_tagged($cell_value);	//print("Celda [$column,$row]= ".$cell_value."\n");
+				$array_tagged_poly[] = clean_tagged($cell_value);
 			}else{
 				if($is_tagged){
-					$array_polymorphisms[] = "*";
-				}else{
-					$array_polymorphisms[] = $cell_value;
+					$array_tagged_poly[] = "*";
 				}
 			}
 		}
 		
-		if(no_matched_pattern($basic_pattern_genes,$array_polymorphisms)){
-			$basic_pattern_genes[] = $array_polymorphisms;
+		if(no_matched_pattern($basic_pattern,$basic_tagged_pattern,$array_polymorphisms,$array_tagged_poly)){
+			$basic_tagged_pattern[] = $array_tagged_poly;
+			$basic_pattern[] = $array_polymorphisms;
+			
 			$objWorksheet->setCellValue("A".$row,"");
 		}else{
 			$objWorksheet->setCellValue("A".$row,"disabled");
