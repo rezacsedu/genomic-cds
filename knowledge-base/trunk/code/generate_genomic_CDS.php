@@ -136,7 +136,7 @@ function flipOrientationOfStringRepresentation($string) {
 
 function generateDisjointClassesOWL($id_array) {
 	$owl = "";
-	if (empty($id_array) == false) {
+	if (count($id_array) >= 2) {
 		$owl .= "Class: " . $id_array[0] . "\n";  // TODO: This should not be necessary. It is a fix for a bug in the OWLAPI/Protege Manchester Syntax parser (The last class before the DisjointClasses frame is taken into the disjoint). 
 		$owl .= "DisjointClasses:" ."\n";
 		$owl .= implode(",", $id_array) . "\n\n";

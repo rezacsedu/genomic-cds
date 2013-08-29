@@ -12472,18 +12472,6 @@ Class: CYP2A6_star_9A
 DisjointClasses:
 CYP2A6_star_9A,CYP2A6_star_9B
 
-Class: CYP2A6_star_12A
-DisjointClasses:
-CYP2A6_star_12A
-
-Class: CYP2A6_star_12B
-DisjointClasses:
-CYP2A6_star_12B
-
-Class: CYP2A6_star_12C
-DisjointClasses:
-CYP2A6_star_12C
-
 Class: CYP2A6_star_18A
 DisjointClasses:
 CYP2A6_star_18A,CYP2A6_star_18B,CYP2A6_star_18C
@@ -14798,15 +14786,7 @@ has exactly 2 rs4646438_T
 EquivalentTo:
 has exactly 2 CYP3A4_star_6
 
-Class: CYP3A4_star_6
-DisjointClasses:
-CYP3A4_star_6
-
 # homozygous human disjoints
-Class: human_with_homozygous_CYP3A4_star_6
-DisjointClasses:
-human_with_homozygous_CYP3A4_star_6
-
 # homozygous human disjoints
 Class: HMGCR_H2
     Annotations: rdfs:label "HMGCR H2"
@@ -14892,15 +14872,7 @@ has exactly 2 rs10935838_A and has exactly 2 rs2046934_G and has exactly 2 rs585
 EquivalentTo:
 has exactly 2 P2RY12_H2
 
-Class: P2RY12_H2
-DisjointClasses:
-P2RY12_H2
-
 # homozygous human disjoints
-Class: human_with_homozygous_P2RY12_H2
-DisjointClasses:
-human_with_homozygous_P2RY12_H2
-
 Class: SULT1A1_star_1
     Annotations: rdfs:label "SULT1A1 *1"
     SubClassOf: SULT1A1
@@ -15439,10 +15411,6 @@ SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous UGT1A1 *VIII" 
 EquivalentTo:
 has exactly 2 UGT1A1_star_VIII
-
-Class: UGT1A1_star_60c
-DisjointClasses:
-UGT1A1_star_60c
 
 Class: UGT1A1_star_60
 DisjointClasses:
