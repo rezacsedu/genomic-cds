@@ -6,13 +6,13 @@ date_default_timezone_set('Europe/London');
 /*
  * Input file locations
  */
-$haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet.xlsx";
+$haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet_vAuto.xlsx";
 
 
 /*
  * Output file locations
  */
-$haplotype_spreadsheet_file_location_v2 = "..\\data\\PharmGKB\\haplotype_spreadsheet_v5.xlsx";
+$haplotype_spreadsheet_file_location_v2 = "..\\data\\PharmGKB\\haplotype_spreadsheet_Auto_v1.xlsx";
 
 /*
  * Initializing important variables
@@ -66,7 +66,7 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 	}
 	//print("worksheet = ".$worksheet_title."\n");
 	$lastRow = $objWorksheet->getHighestRow();
-	for ($row = 2; $row <= 2/*$lastRow*/; $row++) {
+	for ($row = 2; $row <= $lastRow; $row++) {
 		$superClass_cell = $objWorksheet->getCell('C'.$row);
 		$haplotype_cell = $objWorksheet->getCell('D'.$row);
 		if(/*$superClass_cell->getValue() == "*1" || $haplotype_cell->getValue() == "*1"*/ true){

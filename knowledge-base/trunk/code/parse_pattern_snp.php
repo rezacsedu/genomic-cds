@@ -14,13 +14,13 @@ $haplotype_spreadsheet_file_location_v2 = $argv[2];
 /*
  * Input file locations
  */
-$haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet_v5.xlsx";
+$haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet_Auto_v1.xlsx";
 
 
 /*
  * Output file locations
  */
-$haplotype_spreadsheet_file_location_v2 = "..\\data\\PharmGKB\\haplotype_spreadsheet_vAuto.xlsx";
+$haplotype_spreadsheet_file_location_v2 = "..\\data\\PharmGKB\\haplotype_spreadsheet_AutoPattern_v1.xlsx";
 
 /*
  * Initializing important variables

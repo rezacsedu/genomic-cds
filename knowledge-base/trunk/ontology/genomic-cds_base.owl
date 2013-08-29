@@ -88,13 +88,6 @@ AnnotationProperty: relevant_for
         rdfs:comment "A generic property, stating that one entitiy is relevant in the context of obersving some other entity. For example, it can be used to state that a specific classification of a patient is relevant for dosing a specific drug."
     
     
-ObjectProperty: taken_by
-
-    Annotations: 
-        rdfs:label "taken by",
-        rdfs:comment "A property used for reasoning about possible alleles given a set of polymorphism variants. If a specific polymorphism variant is 'taken by' a specific allele, it cannot be used for calling another allele."
-    
-    
 ObjectProperty: has
 
     Annotations: 
@@ -123,10 +116,6 @@ Class: polymorphism
     Annotations: 
         rdfs:label "Polymorphism",
         rdfs:comment "A small part of the genome of an individual where studies have shown that genetic sequences vary between individuals. For example: single nucleotide polymorphisms (SNPs), insertions, deletions, indels, microsatellites. All polymorphisms and sequences in the Genomic CDS ontology are reported using the forward orientation of the reference genome (the 'plus' strand)."
-    
-    SubClassOf: 
-        taken_by exactly 1 allele,
-        taken_by only allele
     
         
 Class: drug

@@ -8,9 +8,6 @@ Prefix: pgx: <http://www.genomic-cds.org/ont/genomic-cds.owl#>
 AnnotationProperty: sc:rank
 
     
-AnnotationProperty: sc:decimal_code
-
-    
 AnnotationProperty: sc:bit_length
 
     

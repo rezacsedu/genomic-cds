@@ -9,7 +9,7 @@ date_default_timezone_set('Europe/London');
 $db_snp_xml_input_file_location = "..\\data\\dbSNP\\core_rsid_data_from_dbsnp.xml";
 $pharmacogenomic_CDS_base_file_location = "..\\ontology\\genomic-cds_base.owl";
 $MSC_classes_base_file_location = "..\\ontology\\MSC_classes_base.owl";
-$haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet_vAuto.xlsx";
+$haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet_AutoPattern_v1.xlsx";
 $pharmacogenomics_decision_support_spreadsheet_file_location = "..\\data\\decision-support-rules\\Pharmacogenomics decision support spreadsheet.xlsx";
 $pharmacogenomic_CDS_demo_additions_file_location = "..\\ontology\\genomic-cds_demo_additions.owl";
 
@@ -577,11 +577,13 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 		/*
 		 * Rules for homozygous polymorphisms and alleles
 		 */
+		 
+		 
 		
 		$owl .= "Class: " . $human_homozygous_id . "\n";
 		$owl .= "SubClassOf: human_with_genetic_polymorphism" . "\n";
 		$owl .= "Annotations: rdfs:label \"" . $human_homozygous_label . "\" \n";
-		
+				
 		if (!isset($row_array['A']) || $row_array['A'] ==! "disabled") {
 			// If there are tagging polymorphism variants...
 			if (empty($allele_tag_polymorphism_variants) == false) {
@@ -590,9 +592,11 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {
 				$owl .= "\n\n";
 			}
 			
-			$owl .= "EquivalentTo:" . "\n";
-			$owl .= "has exactly 2 " . $allele_id . "\n\n";
+			//$owl .= "EquivalentTo:" . "\n";
+			//$owl .= "has exactly 2 " . $allele_id . "\n\n";
 		}
+		$owl .= "SubClassOf:" . "\n";
+		$owl .= "has exactly 2 " . $allele_id . "\n\n";
 	}
 	
 	
