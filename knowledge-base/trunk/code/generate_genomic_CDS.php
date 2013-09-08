@@ -32,74 +32,55 @@ $report = "-- Report -- \n\n"; // Content of Report and error log (generate_geno
 
 $valid_polymorphism_variants = array(); // List of valid polymorphism variants from dbSNP (used to find errors and orientation mismatches)
 
+$snps_covered_by_23andMe_v2 = read_file_into_array("..\\data\\assay-information\\SNPs covered by 23andMe v2.txt");
+$snps_covered_by_23andMe_v3 = read_file_into_array("..\\data\\assay-information\\SNPs covered by 23andMe v3.txt");
+$snps_covered_by_Affimetrix_DMET_chip = read_file_into_array("..\\data\\assay-information\\SNPs covered by Affymetrix DMET chip - PMID 20217574.txt");
+$snps_covered_by_University_of_Florida_and_Standford_chip = read_file_into_array("..\\data\\assay-information\\SNPs covered by University of Florida and Stanford University chip - PMID 22910441.txt");
+
 
 /*
  * Functions
  */
 
+function read_file_into_array($file){
+	$search = array("\r\n", "\n");
+	$snp_array = [];
+	$handle = fopen($file, 'r');
+	if ($handle) {
+		while (!feof($handle)) {
+			$line = fgets($handle);
+			$line = str_replace($search, $replace='', $line);
+			$snp_array[] = $line;
+		}
+		fclose($handle);
+	}
+	return $snp_array;
+}
+
 function generate_assay_annotations($rsid_string){
+	global $snps_covered_by_23andMe_v2;
+	global $snps_covered_by_23andMe_v3;
+	global $snps_covered_by_Affimetrix_DMET_chip;
+	global $snps_covered_by_University_of_Florida_and_Standford_chip;
+	
 	$owl="";
 	
-	$search = array("\r\n", "\n");
-	
-	$snps_covered_by_23andMe_v2 = "..\\data\\assay-information\\SNPs covered by 23andMe v2.txt";
-	$snps_covered_by_23andMe_v3 = "..\\data\\assay-information\\SNPs covered by 23andMe v3.txt";
-	$snps_covered_by_Affimetrix_DMET_chip = "..\\data\\assay-information\\SNPs covered by Affymetrix DMET chip - PMID 20217574.txt";
-	$snps_covered_by_University_of_Florida_and_Standford_chip = "..\\data\\assay-information\\SNPs covered by University of Florida and Stanford University chip - PMID 22910441.txt";
-	
-	
-	$handle = fopen($snps_covered_by_23andMe_v2, 'r');
-	if ($handle) {
-		while (!feof($handle)) {
-			$line = fgets($handle);
-			$line = str_replace($search, $replace='', $line);
-			if($line == $rsid_string){
-				$owl .= "\tAnnotations: can_be_tested_with 23andMe_v2 \n";
-				break;
-			}
-		}
-		fclose($handle);
+	if (in_array($rsid_string, $snps_covered_by_23andMe_v2)) {
+		$owl .= "\tAnnotations: can_be_tested_with 23andMe_v2 \n";
 	}
 	
-	$handle = fopen($snps_covered_by_23andMe_v3, 'r');
-	if ($handle) {
-		while (!feof($handle)) {
-			$line = fgets($handle);
-			$line = str_replace($search, $replace='', $line);
-			if($line == $rsid_string){
-				$owl .= "\tAnnotations: can_be_tested_with 23andMe_v3 \n";
-				break;
-			}
-		}
-		fclose($handle);
+	if (in_array($rsid_string, $snps_covered_by_23andMe_v3)) {
+		$owl .= "\tAnnotations: can_be_tested_with 23andMe_v3 \n";
+	}
+	
+	if (in_array($rsid_string, $snps_covered_by_Affimetrix_DMET_chip)) {
+		$owl .= "\tAnnotations: can_be_tested_with Affymetrix_DMET_chip \n";
+	}
+	
+	if (in_array($rsid_string, $snps_covered_by_University_of_Florida_and_Standford_chip)) {
+		$owl .= "\tAnnotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip \n";
 	}
 		
-	$handle = fopen($snps_covered_by_Affimetrix_DMET_chip, 'r');
-	if ($handle) {
-		while (!feof($handle)) {
-			$line = fgets($handle);
-			$line = str_replace($search, $replace='', $line);
-			if($line == $rsid_string){
-				$owl .= "\tAnnotations: can_be_tested_with Affymetrix_DMET_chip \n";
-				break;
-			}
-		}
-		fclose($handle);
-	}
-	
-	$handle = fopen($snps_covered_by_University_of_Florida_and_Standford_chip, 'r');
-	if ($handle) {
-		while (!feof($handle)) {
-			$line = fgets($handle);
-			$line = str_replace($search, $replace='', $line);
-			if($line == $rsid_string){
-				$owl .= "\tAnnotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip \n";
-				break;
-			}
-		}
-		fclose($handle);
-	}
-	
 	return $owl;
 }
  
@@ -183,16 +164,6 @@ $owl .=  "    Annotations: owl:versionInfo \"" . date("Y/m/d") . "\"\n";
 /************************
  * Read and convert dbSNP data
  ************************/
-
-//Read snps processing chips
-//$snps_23andMe_v2 = file_get_contents($snps_covered_by_23andMe_v2);
-//$snps_23andMe_v2 = preg_split("/[\n|\s]/",$snps_23andMe_v2);
-//$snps_23andMe_v3 = file_get_contents($snps_covered_by_23andMe_v3);
-//$snps_23andMe_v3 = preg_split("/[\n|\s]/",$snps_23andMe_v3);
-//$snps_Affimetrix_DMET_chip = file_get_contents($snps_covered_by_Affimetrix_DMET_chip);
-//$snps_Affimetrix_DMET_chip = preg_split("/[\n|\s]/",$snps_Affimetrix_DMET_chip);
-//$snps_University_of_Florida_and_Standford_chip = file_get_contents($snps_covered_by_University_of_Florida_and_Standford_chip);
-//$snps_University_of_Florida_and_Standford_chip = preg_split("/[\n|\s]/",$snps_University_of_Florida_and_Standford_chip);
 
 $owl .= "\n\n#\n# dbSNP data\n#\n\n";
 
