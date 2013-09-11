@@ -116,7 +116,11 @@ ERROR: Polymorphism variant "rs35468935_C_T" in allele CYP2B6 *17 does not match
 ERROR: Polymorphism variant "rs9332131_del" in allele CYP2C9 *6 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs1799853_C_T" in allele CYP2C9 *24 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs72558188_del" in allele CYP2C9 *25 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5030656_TTC" in allele CYP2D6 *1 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5030656_TTC" in allele CYP2D6 *2 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs35742686_del" in allele CYP2D6 *3 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5030656_TTC" in allele CYP2D6 *3 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5030656_TTC" in allele CYP2D6 *4 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs1065852_del" in allele CYP2D6 *5 [gene deletion] does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs16947_del" in allele CYP2D6 *5 [gene deletion] does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs28371706_del" in allele CYP2D6 *5 [gene deletion] does not match dbSNP. Skipping conversion for the entire allele.
@@ -128,7 +132,12 @@ ERROR: Polymorphism variant "rs5030656_del" in allele CYP2D6 *5 [gene deletion] 
 ERROR: Polymorphism variant "rs59421388_del" in allele CYP2D6 *5 [gene deletion] does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs61736512_del" in allele CYP2D6 *5 [gene deletion] does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs5030655_del" in allele CYP2D6 *6 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5030656_TTC" in allele CYP2D6 *6 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs5030656_del" in allele CYP2D6 *9 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5030656_TTC" in allele CYP2D6 *10 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5030656_TTC" in allele CYP2D6 *17 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5030656_TTC" in allele CYP2D6 *29 does not match dbSNP. Skipping conversion for the entire allele.
+ERROR: Polymorphism variant "rs5030656_TTC" in allele CYP2D6 *41 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs2740574_T_C" in allele CYP3A4 *1 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1 does not match dbSNP. Skipping conversion for the entire allele.
 ERROR: Polymorphism variant "rs4646438_del" in allele CYP3A4 *1A does not match dbSNP. Skipping conversion for the entire allele.

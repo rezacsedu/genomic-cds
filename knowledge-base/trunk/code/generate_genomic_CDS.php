@@ -2,11 +2,12 @@
 error_reporting(E_ALL);
 require_once 'Classes/PHPExcel/IOFactory.php';
 date_default_timezone_set('Europe/London');
+ini_set("memory_limit","3072M");
 
 /*
  * Input file locations
  */
-$db_snp_xml_input_file_location = "..\\data\\dbSNP\\core_rsid_data_from_dbsnp.xml";
+$db_snp_xml_input_file_location = "..\\data\\dbSNP\\core_rsid_data_from_dbsnp_9_9_2013.xml";
 $pharmacogenomic_CDS_base_file_location = "..\\ontology\\genomic-cds_base.owl";
 $MSC_classes_base_file_location = "..\\ontology\\MSC_classes_base.owl";
 $haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet_AutoPattern_v1.xlsx";
@@ -112,7 +113,15 @@ function flipOrientationOfStringRepresentation($string) {
 			"C" => "G", 
 			"G" => "C"
 	);
-	return strtr($string, $substitutions);
+	$value = strtr($string, $substitutions);
+	if(strlen($value) > 1){
+		$array_char = str_split($value);
+		$value = "";
+		for($i=(count($array_char)-1);$i>=0;$i--){
+			$value .= $array_char[$i];
+		}
+	}
+	return $value;
 }
 
 function generateDisjointClassesOWL($id_array) {
@@ -148,7 +157,7 @@ function make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 
 //			"    Annotations: sc:decimal_code \"$decimal_code\"^^xsd:integer \n" . //TODO: Remove
 			"    Annotations: sc:bit_code \"$binary_code\" \n" .
 			"    Annotations: rdfs:label \"human with rs" . $rs_id . "(" . $allele_1 . ";" . $allele_2 . ")\"  \n" .
-			"    Annotations: sc:criteria_syntax \"rs" . $rs_id . "(" . $allele_1 . ";" . $allele_2 . ")\"  \n\n";
+			"    Annotations: sc:criteria_syntax \"rs" . $rs_id . "(" . $allele_1 . ";" . $allele_2 . ")\"  \n";
 	return $owl_fragment;
 }
 
@@ -186,46 +195,82 @@ foreach ($xml->Rs as $Rs) {
 	$assembly_genome_build = null; //$Rs->Assembly['genomeBuild'];
 	$assembly_group_label = null; //$Rs->Assembly['groupLabel'];
 	$orient = null; //$Rs->Assembly->Component->MapLoc['orient']; 
-	
+	$ref_allele = null; //$Rs->Assembly->Component->MapLoc['refAllele'];
 	
 	$assembly_sets = $Rs->Assembly;
 	if(isset($assembly_sets)){
 		foreach($assembly_sets as $assembly_set) {
 			if(isset($assembly_set['reference']) && $assembly_set['reference'] == true){
-				$assembly_genome_build = $assembly_set['genomeBuild'];
-				$assembly_group_label = $assembly_set['groupLabel'];
+				if(isset($assembly_set['genomeBuild'])){
+					$assembly_genome_build = $assembly_set['genomeBuild'];
+				}
+				if(isset($assembly_set['groupLabel'])){
+					$assembly_group_label = $assembly_set['groupLabel'];
+				}
 				$component_sets = $assembly_set->Component;
 				if(isset($component_sets)){
 					foreach($component_sets as $component_set){
 						$maploc_sets = $component_set->MapLoc;
 						if(isset($maploc_sets)){
 							foreach($maploc_sets as $maploc_set){
-								$orient=$maploc_set['orient'];
+								if(isset($maploc_set['refAllele'])){
+									$ref_allele = $maploc_set['refAllele'];
+								}
+								if(isset($maploc_set['orient'])){
+									$orient=$maploc_set['orient'];
+								}
 								$fxn_sets = $maploc_set->FxnSet;
+								break;
 							}
 						}
+						break;
 					}
 				}
+				break;
 			}
 		}
 	}
 	if(!isset($fxn_sets) || !isset($assembly_genome_build) || !isset($assembly_group_label) || !isset($orient)){
-		print($i." Not processed.\n");
+		print($i." Not processed rsid = ".$rs_id."\n");
 		continue;
 	}
 	
 	// Add gene symbols in this entry to array.
 	foreach ($fxn_sets as $fxn_set) {
-		$gene_ids[] = make_valid_id($fxn_set["symbol"]);
+		if(isset($fxn_set["symbol"])){
+			$gene_ids[] = make_valid_id($fxn_set["symbol"]);
+		}
+		/*if($fxn_set["fxnClass"] == "reference"){
+			$ref_allele = $fxn_set["allele"];
+		}*/
 	}
-	
+
+	$observed_alleles = preg_split("/\//", $observed_alleles);
 	// Normalize orientation to the plus strand.
 	if ($orient == "reverse") {
-		$observed_alleles = flipOrientationOfStringRepresentation($observed_alleles);
+		for($j=0;$j<count($observed_alleles);$j++){
+			$observed_alleles[$j] = flipOrientationOfStringRepresentation($observed_alleles[$j]);
+		}
 	}
-		
-	$observed_alleles = preg_split("/\//", $observed_alleles);
+	
 	sort($observed_alleles, SORT_STRING);
+	
+	
+	/*WARNING: If is not correct -> delete*/
+	$flip=true;
+	if(!isset($ref_allele)){
+		print("Not initialized ref_allele in rs".$rs_id."\n");
+		$flip=false;
+	}else{
+		foreach($observed_alleles as $observed_allele){
+			if($observed_allele == $ref_allele) $flip = false;
+		}
+	}
+	if($flip){
+		print("rs".$rs_id." do not match reference allele.\n");
+		//$ref_allele = flipOrientationOfStringRepresentation($ref_allele);
+	}
+	/*END WARNING*/
 	
 	// Create OWL for possible genotypes
 
@@ -239,7 +284,9 @@ foreach ($xml->Rs as $Rs) {
 	
 	$fxn_symbols=null;
 	foreach ($fxn_sets as $fxn_set) {
-		$fxn_symbols[] = make_valid_id($fxn_set["symbol"]);
+		if(isset($fxn_set["symbol"])){
+			$fxn_symbols[] = make_valid_id($fxn_set["symbol"]);
+		}
 	} 
 	if(isset($fxn_symbols)){
 		$fxn_symbols = array_unique($fxn_symbols);
@@ -247,7 +294,7 @@ foreach ($xml->Rs as $Rs) {
 			$owl .= "    Annotations: relevant_for " .$fxn_symbol. "\n";
 		}
 	}
-	$owl .= "    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs" . $rs_id . ">\n"; 
+	$owl .= "    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs" . $rs_id . "> \n"; 
 	$owl .= "    Annotations: dbsnp_orientation_on_reference_genome \"" . $orient . "\" \n\n";
 	$polymorphism_disjoint_list [] = $class_id;
 	
@@ -270,7 +317,6 @@ foreach ($xml->Rs as $Rs) {
 	// Generate Medicine Safety Code classes
 	
 	$msc_owl .= "Class: sc:$human_with_genotype_at_locus \n";
-	//$msc_owl .= "    SubClassOf: human \n";
 	$msc_owl .= "    SubClassOf: human_with_genotype_marker \n";
 	$msc_owl .= "    Annotations: rsid \"rs" . $rs_id . "\" \n";
 	$msc_owl .= "    Annotations: sc:rank \"" . $i . "\"^^xsd:integer \n";
@@ -295,9 +341,18 @@ foreach ($xml->Rs as $Rs) {
 			$msc_owl .= "    Annotations: sc:position_in_base_2_string \"" . $position_in_base_2_string . "\"^^xsd:integer \n\n";
 	
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 0, "00", "null", "null", $rs_id);
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 1, "01", $observed_alleles[0],  $observed_alleles[0], $rs_id);
+			if($observed_alleles[0] == $ref_allele){
+				$msc_owl .= "	Annotations: sc:vcf_format_reference \"true\" \n\n" ;
+			}
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 2, "10", $observed_alleles[0],  $observed_alleles[1], $rs_id);
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 3, "11", $observed_alleles[1],  $observed_alleles[1], $rs_id);
+			if($observed_alleles[1] == $ref_allele){
+				$msc_owl .= "	Annotations: sc:vcf_format_reference \"true\" \n\n" ;
+			}
 			$msc_owl .= "\n";
 			
 			$position_in_base_2_string = $position_in_base_2_string + $bit_length;
@@ -308,12 +363,27 @@ foreach ($xml->Rs as $Rs) {
 			$msc_owl .= "    Annotations: sc:position_in_base_2_string \"" . $position_in_base_2_string . "\"^^xsd:integer \n\n";
 	
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 0, "000", "null", "null", $rs_id);
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 1, "001", $observed_alleles[0], $observed_alleles[0], $rs_id);
+			if($observed_alleles[0] == $ref_allele){
+				$msc_owl .= "	Annotations: sc:vcf_format_reference \"true\" \n\n" ;
+			}
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 2, "010", $observed_alleles[0], $observed_alleles[1], $rs_id);
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 3, "011", $observed_alleles[0], $observed_alleles[2], $rs_id);
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 4, "100", $observed_alleles[1], $observed_alleles[1], $rs_id);
+			if($observed_alleles[1] == $ref_allele){
+				$msc_owl .= "	Annotations: sc:vcf_format_reference \"true\" \n\n" ;
+			}
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 5, "101", $observed_alleles[1], $observed_alleles[2], $rs_id);
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 6, "110", $observed_alleles[2], $observed_alleles[2], $rs_id);
+			if($observed_alleles[2] == $ref_allele){
+				$msc_owl .= "	Annotations: sc:vcf_format_reference \"true\" \n\n" ;
+			}
 			$msc_owl .= "\n";
 			
 			$position_in_base_2_string += $bit_length;
@@ -324,16 +394,38 @@ foreach ($xml->Rs as $Rs) {
 			$msc_owl .= "    Annotations: sc:position_in_base_2_string \"" . $position_in_base_2_string . "\"^^xsd:integer \n\n";
 	
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 0, "0000", "null", "null", $rs_id);
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 1, "0001", $observed_alleles[0], $observed_alleles[0], $rs_id);
+			if($observed_alleles[0] == $ref_allele){
+				$msc_owl .= "	Annotations: sc:vcf_format_reference \"true\" \n\n" ;
+			}
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 2, "0010", $observed_alleles[0], $observed_alleles[1], $rs_id);
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 3, "0011", $observed_alleles[0], $observed_alleles[2], $rs_id);
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 4, "0100", $observed_alleles[0], $observed_alleles[3], $rs_id);
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 5, "0101", $observed_alleles[1], $observed_alleles[1], $rs_id);
+			if($observed_alleles[1] == $ref_allele){
+				$msc_owl .= "	Annotations: sc:vcf_format_reference \"true\" \n\n" ;
+			}
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 6, "0110", $observed_alleles[1], $observed_alleles[2], $rs_id);
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 7, "0111", $observed_alleles[1], $observed_alleles[3], $rs_id);
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 8, "1000", $observed_alleles[2], $observed_alleles[2], $rs_id);
+			if($observed_alleles[2] == $ref_allele){
+				$msc_owl .= "	Annotations: sc:vcf_format_reference \"true\" \n\n" ;
+			}
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 9, "1001", $observed_alleles[2], $observed_alleles[3], $rs_id);
+			$msc_owl .= "\n";
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 10, "1010", $observed_alleles[3], $observed_alleles[3], $rs_id);
+			if($observed_alleles[3] == $ref_allele){
+				$msc_owl .= "	Annotations: sc:vcf_format_reference \"true\" \n\n" ;
+			}
 			$msc_owl .= "\n";
 			
 			$position_in_base_2_string += $bit_length;

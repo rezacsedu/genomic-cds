@@ -20,3 +20,5 @@ AnnotationProperty: sc:position_in_base_2_string
 AnnotationProperty: sc:criteria_syntax
 
     
+AnnotationProperty: sc:vcf_format_reference
+

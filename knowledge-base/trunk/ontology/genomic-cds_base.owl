@@ -85,7 +85,7 @@ AnnotationProperty: relevant_for
 
     Annotations: 
         rdfs:label "relevant for",
-        rdfs:comment "A generic property, stating that one entitiy is relevant in the context of obersving some other entity. For example, it can be used to state that a specific classification of a patient is relevant for dosing a specific drug."
+        rdfs:comment "A generic property, stating that one entitiy is relevant in the context of observing some other entity. For example, it can be used to state that a specific classification of a patient is relevant for dosing a specific drug."
     
     
 ObjectProperty: has
