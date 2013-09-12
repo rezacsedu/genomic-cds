@@ -6,8 +6,10 @@ import java.io.File;
 
 	
 	/**
-	 * @param args
-	 */
+	 * Application that defines a workflow to parse a bulk of patient's genotype files and to calculate their corresponding statistics.	 
+	 *  
+	 * @param args The params represent: (1) the directory of all input files; (2) the location of the ontology model; (3) the prefix of the output results; (4) The number of threads to be created.
+	 * */
 	public static void main(String[] args) {
 		
 		if(args.length < 4){

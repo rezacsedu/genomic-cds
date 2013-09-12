@@ -3,7 +3,9 @@ package bulk;
 public class ProcessRawData {
 
 	/**
-	 * @param args
+	 * Application to process the raw data and calculate the statistics of the inferred patient's genotype axioms.
+	 * 
+	 * @param args	It needs two parameters: (1) the file that contains the rawdata to process; (2) the name of the output file where the results will be stored.
 	 */
 	public static void main(String[] args) {
 		if(args.length < 2){

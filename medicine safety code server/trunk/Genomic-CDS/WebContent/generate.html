@@ -27,16 +27,25 @@
 				<p><b>Please select a file below.</b> Files should not be compressed and their size should not exceed 50 MB. Uploading and processing the file may take some time.</p>
 			<form data-ajax="false" action="SafetyCodeGenerator" method="post"	enctype="multipart/form-data">
 				
-				<label><input type="radio" name="strand-orientation" id="dbsnp-orientation" value="dbsnp-orientation" />
-    			Strand orientation in my data matches dbSNP</label>
-				
+				<div data-role="content">
+				<label>Strand orientation:</label>
 				<label><input type="radio" name="strand-orientation" id="forward-orientation" value="forward-orientation" checked="checked" />
 				Strand orientation in my data matches forward strand</label>
-				
-				<label>File:<input name="file-input-field" id="file-input-field" type="file" size="60" name="file"/></label>
-				
-				<button>Submit</button>
-				
+				<label><input type="radio" name="strand-orientation" id="dbsnp-orientation" value="dbsnp-orientation" />
+    			Strand orientation in my data matches dbSNP</label>
+				</div>
+								
+				<div data-role="content">
+				<label>File format:</label>
+				<label><input type="radio" name="file-format" id="23andme-format" value="23andme-format" checked="checked"/>
+    				File format matches 23andMe</label>				
+					<label><input type="radio" name="file-format" id="vcf-format" value="vcf-format" />
+					File format matches Variant Call Format (VCF)</label>
+				</div>
+				<div data-role="content">
+					<label>File:<input name="file-input-field" id="file-input-field" type="file" size="60" name="file"/></label>
+					<button>Submit</button>
+				</div>
 			</form>
 			<p>Please note that most direct-to-consumer genetic testing services are not certified to provide data for guiding clinical decision making.
 			Data from these testing services should not be used for such purposes.</p>

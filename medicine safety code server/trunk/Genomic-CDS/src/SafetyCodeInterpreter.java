@@ -22,7 +22,7 @@ import net.sf.ehcache.Element;
 
 import org.apache.commons.lang.text.StrSubstitutor;
 
-import safetycode.MedicineSafetyProfileOWLAPI;
+import safetycode.MedicineSafetyProfile;
 import utils.StringReader;
 
 import exception.BadFormedBase64NumberException;
@@ -36,7 +36,7 @@ import exception.VariantDoesNotMatchAnAllowedVariantException;
 public class SafetyCodeInterpreter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
-	private MedicineSafetyProfileOWLAPI bootstrapProfile;
+	//private MedicineSafetyProfileOWLAPI bootstrapProfile; //Replaced because of a new version of MedicineSafetyProfile
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -71,19 +71,21 @@ public class SafetyCodeInterpreter extends HttpServlet {
 					out.println((String) object);
 				}
 			}else{
+				
 				//If there is a cache miss
-				//System.out.println("There is a cache miss with key = "+base64ProfileString);
+				
 				// initialize bootstrapProfile
-				bootstrapProfile = new MedicineSafetyProfileOWLAPI(path+"MSC_classes.owl");	
+				//bootstrapProfile = new MedicineSafetyProfileOWLAPI(path+"MSC_classes.owl");	  //Replaced because of a new version of MedicineSafetyProfile
+				MedicineSafetyProfile myProfile = new MedicineSafetyProfile(path+"MSC_classes.owl");
 				try {
-					bootstrapProfile.readBase64ProfileString(base64ProfileString);
+					myProfile.readBase64ProfileString(base64ProfileString);
 				} catch (VariantDoesNotMatchAnAllowedVariantException e) {
 					throw (new ServletException( e.getMessage()));
 				} catch (BadFormedBase64NumberException e) {
 					throw (new ServletException( e.getMessage()));
 				}
 				
-				HashMap<String,ArrayList<String>> list_recommendations = bootstrapProfile.obtainDrugRecommendations();
+				HashMap<String,ArrayList<String>> list_recommendations = myProfile.obtainDrugRecommendations();
 				Map<String,StringBuffer> valuesMap = new HashMap<String, StringBuffer>();
 				
 				// Output raw data

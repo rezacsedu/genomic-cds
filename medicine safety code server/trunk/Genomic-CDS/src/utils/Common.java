@@ -1,5 +1,9 @@
 package utils;
 
+import java.io.File;
+
+import safetycode.FileParserFactory;
+
 import exception.BadFormedBase64NumberException;
 import exception.BadFormedBinaryNumberException;
 
@@ -16,7 +20,7 @@ public class Common {
 	public final static String DBSNP_ORIENTATION = "dbsnp-orientation";
 	public final static String FORWARD_ORIENTATION = "forward-orientation";
 	public final static String ROOT_URL = "http://safety-code.org/Genomic-CDS";
-	//public final static String ROOT_URL = "http://localhost:8080/Genomic-CDS";
+	//public final static String ROOT_URL = "http://localhost:8080/Genomic-CDS";//URL for testing in my local server
 	public final static String VERSION = "v0.2";
 	
 	/**
@@ -262,5 +266,15 @@ public class Common {
 			}
 		}
 		return binaryString;
+	}
+	
+	/**
+	 * This method should process the file to identify the type of file format.
+	 * 
+	 * @param fileInput		File that contains a patient's genotype with a certain file format.
+	 * @return	The type of file format.
+	 * */
+	public static int getTypeFileFormat(File fileInput){
+		return FileParserFactory.FORMAT_23ANDME_FILE;
 	}
 }

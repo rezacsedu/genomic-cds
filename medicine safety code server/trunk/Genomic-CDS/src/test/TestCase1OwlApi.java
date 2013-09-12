@@ -8,29 +8,25 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
-import safetycode.MedicineSafetyProfileOWLAPI;
+import safetycode.FileParserFactory;
+import safetycode.MedicineSafetyProfile;
 import utils.Common;
 import exception.BadFormedBase64NumberException;
 import exception.VariantDoesNotMatchAnAllowedVariantException;
 
 public class TestCase1OwlApi {
 
-	private static MedicineSafetyProfileOWLAPI msp;
-	
-	@BeforeClass
-	public static void testInit(){
-		msp = new MedicineSafetyProfileOWLAPI();
-	}
+	//private static MedicineSafetyProfileOWLAPI msp;//Replaced because of a new version of MedicineSafetyProfile
 	
 	/**
 	 * This method tests if the list of markers are correctly gathered from the ontology model.
 	 * */
 	@Test
 	public void testGetListRsids(){
+		//msp = new MedicineSafetyProfileOWLAPI("MSC_classes.ttl"); //Replaced because of a new version of MedicineSafetyProfile
+		MedicineSafetyProfile msp = new MedicineSafetyProfile("MSC_classes.ttl");
 		ArrayList<String[]> listRsids = msp.getListRsids();
 		String[] firstValue = listRsids.get(0);
 		String[] lastValue = listRsids.get(listRsids.size()-1);
@@ -55,7 +51,9 @@ public class TestCase1OwlApi {
 			e.printStackTrace();
 			System.out.println("ERROR");
 		}
-		msp.read23AndMeFileStream(my23AndMeFileStream, Common.DBSNP_ORIENTATION);
+		//msp = new MedicineSafetyProfileOWLAPI("MSC_classes.ttl"); //Replaced because of a new version of MedicineSafetyProfile
+		MedicineSafetyProfile msp = new MedicineSafetyProfile("MSC_classes.ttl");
+		msp.parseFileStream(my23AndMeFileStream, Common.DBSNP_ORIENTATION, FileParserFactory.FORMAT_23ANDME_FILE);
 		String base64Profile = msp.getBase64ProfileString();
 		
 		assertEquals("We check if the file "+fileName+" produces the correct code in dbsnp orientation","fWE1001a5160ny200g202ZWgtX30G00G3uOG1b0e1og9SOG882YQu8PImK06y1n0040027WaPG00aHruVZSCLa8W41GEle1W0A00W06sWI1GAC80FtmCm0000000000000000000000000000",base64Profile);
@@ -76,9 +74,9 @@ public class TestCase1OwlApi {
 			e.printStackTrace();
 			System.out.println("ERROR");
 		}
-				
-		
-		msp.read23AndMeFileStream(my23AndMeFileStream, Common.FORWARD_ORIENTATION);
+		//msp = new MedicineSafetyProfileOWLAPI("MSC_classes.ttl"); //Replaced because of a new version of MedicineSafetyProfile
+		MedicineSafetyProfile msp = new MedicineSafetyProfile("MSC_classes.ttl");
+		msp.parseFileStream(my23AndMeFileStream, Common.FORWARD_ORIENTATION,FileParserFactory.FORMAT_23ANDME_FILE);
 		String base64Profile = msp.getBase64ProfileString();
 		
 		assertEquals("We check if the file "+fileName+" produces the correct code in forward orientation","fWFJK3uySfF1z-K3GkZ66xX2tcLvGzqRDwbG1bH7hohhSVmAe2owOQvImK06zPoTq51ZY7WaPGOFaHruVZSDra9Y41GEle1W8AA2gW-sWI1GAC80Ftnim0000000000000000000000000000",base64Profile);
@@ -93,6 +91,8 @@ public class TestCase1OwlApi {
 	@Test(expected=VariantDoesNotMatchAnAllowedVariantException.class)
 	public void testReadBase64ProfileString() throws VariantDoesNotMatchAnAllowedVariantException, BadFormedBase64NumberException {
 		String base64Profile="cCB3RLNS2vCXUhq5Gl3c2z12jrLzVjqND-AG3bH7jWhDSVG392k2SR_NWK0nzPwTq51Y27ZaVmMFKHvuUpTUrYFZYXICleZWeBgQYW--8V1GAC80Ftvio9N9piVo0I2yH0-3Y0vmFC3KG0000";
+		//msp = new MedicineSafetyProfileOWLAPI("MSC_classes.ttl"); //Replaced because of a new version of MedicineSafetyProfile
+		MedicineSafetyProfile msp = new MedicineSafetyProfile("MSC_classes.ttl");
 		msp.readBase64ProfileString(base64Profile);
 	}
 	
@@ -104,8 +104,8 @@ public class TestCase1OwlApi {
 	 * */
 	@Test
 	public void testReadBase64ProfileString2() throws VariantDoesNotMatchAnAllowedVariantException, BadFormedBase64NumberException {
-		
-		msp=new MedicineSafetyProfileOWLAPI("MSC_classes.ttl");
+		MedicineSafetyProfile msp = new MedicineSafetyProfile("MSC_classes.ttl");
+		//msp = new MedicineSafetyProfileOWLAPI("MSC_classes.ttl"); //Replaced because of a new version of MedicineSafetyProfile
 		String base64Profile="fWFJK3uySfF1z-K3GkZ66xX2tcLvGzqRDwbG1bH7hohhSVmAe2owOQvImK06zPoTq51ZY7WaPGOFaHruVZSDra9Y41GEle1W8AA2gW-sWI1GAC80Ftnim0000000000000000000000000000";
 		msp.readBase64ProfileString(base64Profile);
 	}
@@ -118,20 +118,12 @@ public class TestCase1OwlApi {
 	 * */
 	@Test
 	public void testObtainDrugRecommendations() throws VariantDoesNotMatchAnAllowedVariantException, BadFormedBase64NumberException{
-		msp = new MedicineSafetyProfileOWLAPI("MSC_classes.ttl");
+		//msp = new MedicineSafetyProfileOWLAPI("MSC_classes.ttl"); //Replaced because of a new version of MedicineSafetyProfile
 		String base64Profile="fWFJK3uySfF1z-K3GkZ66xX2tcLvGzqRDwbG1bH7hohhSVmAe2owOQvImK06zPoTq51ZY7WaPGOFaHruVZSDra9Y41GEle1W8AA2gW-sWI1GAC80Ftnim0000000000000000000000000000";
-		msp.readBase64ProfileString(base64Profile);
-		
+		MedicineSafetyProfile msp = new MedicineSafetyProfile("MSC_classes.ttl");
+		msp.readBase64ProfileString(base64Profile);		
 		HashMap<String,ArrayList<String>> drug_recommendations = msp.obtainDrugRecommendations();
-				
 		assertEquals("We check that the list of drug recommendations and raw data is not empty", false, drug_recommendations.isEmpty());
 	}
-	
-	
-	
-	@AfterClass
-	public static void testEnd(){
-	
-	}
-	
+			
 }

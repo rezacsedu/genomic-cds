@@ -73,8 +73,7 @@ public class MSCImageGenerator extends HttpServlet {
 		int w = 200;
 		com.google.zxing.Writer writer = new QRCodeWriter();
 		try {
-			matrix = writer.encode(data,
-					com.google.zxing.BarcodeFormat.QR_CODE, w, h);
+			matrix = writer.encode(data, com.google.zxing.BarcodeFormat.QR_CODE, w, h);
 		} catch (com.google.zxing.WriterException e) {
 			e.printStackTrace();
 			System.out.println(e.getMessage());

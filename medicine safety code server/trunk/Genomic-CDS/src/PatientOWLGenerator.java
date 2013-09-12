@@ -13,7 +13,8 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-import safetycode.MedicineSafetyProfileOWLAPI;
+import safetycode.FileParserFactory;
+import safetycode.MedicineSafetyProfile;
 import utils.Common;
 
 /**
@@ -65,10 +66,16 @@ public class PatientOWLGenerator extends HttpServlet {
 	        if (my23andMeFileItem == null) {
 	        	throw new ServletException("File is missing.");
 	        }
-	        MedicineSafetyProfileOWLAPI myProfile = new MedicineSafetyProfileOWLAPI();
-        	myProfile.read23AndMeFileStream(my23andMeFileItem.getInputStream(), strandOrientationOfInputData);
+	        
+	        //MedicineSafetyProfileOWLAPI myProfile = new MedicineSafetyProfileOWLAPI(); //Replaced because of a new version of MedicineSafetyProfile
+	        //myProfile.read23AndMeFileStream(my23andMeFileItem.getInputStream(), strandOrientationOfInputData); //Replaced because of a new version of MedicineSafetyProfile
         	
-        	ByteArrayOutputStream baops = new ByteArrayOutputStream();
+	        String path =  this.getServletContext().getRealPath("/");
+			path=path.replaceAll("\\\\", "/");
+	        MedicineSafetyProfile myProfile = new MedicineSafetyProfile(path+"MSC_classes.owl");
+	        myProfile.parseFileStream(my23andMeFileItem.getInputStream(), strandOrientationOfInputData,FileParserFactory.FORMAT_23ANDME_FILE);
+        	myProfile.readBase64ProfileString(myProfile.getBase64ProfileString());
+	        ByteArrayOutputStream baops = new ByteArrayOutputStream();
         	myProfile.writeModel(baops);
         	out.write(baops.toString());
         	

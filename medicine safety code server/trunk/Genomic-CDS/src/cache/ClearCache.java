@@ -10,7 +10,7 @@ import net.sf.ehcache.CacheManager;
 public class ClearCache {
 
 	/**
-	 * @param args
+	 * Application to empty the cache of the server.
 	 */
 	public static void main(String[] args) {
 		String path= new File(".").getAbsolutePath();

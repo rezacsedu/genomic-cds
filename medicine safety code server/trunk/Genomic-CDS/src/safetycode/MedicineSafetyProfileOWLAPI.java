@@ -58,12 +58,10 @@ public class MedicineSafetyProfileOWLAPI {
 	 * Constructor of the class. It initializes the model of the pharmacogenomics dataset.
 	 * */
 	public MedicineSafetyProfileOWLAPI() {
-		super();
 		initializeModel(null);
 	}
 	
 	public MedicineSafetyProfileOWLAPI(String ontologyFile){
-		super();
 		initializeModel(ontologyFile);
 		
 	}
@@ -137,15 +135,21 @@ public class MedicineSafetyProfileOWLAPI {
 				line=(line.replaceAll("#.*","")).trim();	//Avoid comments
 				line=line.replaceAll(" ","");				//Avoid empty spaces (not \t or \n)
 				if(line.isEmpty())	continue;
-				
+								
 				processedLines++;
 				
 				String[] lineArray = line.split("\t");		//Obtain the columns of the strand
 				if(lineArray.length>=4){
 					rsid = lineArray[0].trim();				//Gather rsid of the strand
 					my23AndMeSNPCode = lineArray[3].trim();	//Gather code of the strand
-					if (my23AndMeSNPCode.length() != 2) continue; //Skip this line because of wrong code length
-				}else continue; //Skip this line because of wrong number of columns associated to the strand
+					if(rsid.equals("rs1208")){
+						System.out.println("rsid = "+rsid+" -> code = "+my23AndMeSNPCode);
+					}
+					//if (my23AndMeSNPCode.length() != 2) continue; //Skip this line because of wrong code length
+				}else{
+					//System.out.println("line array length = "+lineArray.length);
+					continue; //Skip this line because of wrong number of columns associated to the strand
+				}
 				
 				//Add the code to the related marker
 				for(int i=0;i<listRsids.size();i++){
@@ -153,7 +157,10 @@ public class MedicineSafetyProfileOWLAPI {
 					if(genotype[0].equalsIgnoreCase(rsid)){//Check which is the related marker defined in the model for this strand
 						processedMatchingLines++;
 						String[] variants = getVariants(my23AndMeSNPCode,strandOrientationOfInputData,genotype[2]); //Obtain the correct code regarding orientation and alphabetical order.
-						genotype[3]=rsid+"("+variants[0]+";"+variants[1]+")";//Generate the new criteri syntax for this strand
+						genotype[3]=rsid+"("+variants[0]+";"+variants[1]+")";//Generate the new criteria syntax for this strand
+						if(rsid.equals("rs1208")){
+							System.out.println("criteria syntax = "+genotype[3]);
+						}
 					}
 				}
 			}
@@ -800,6 +807,20 @@ public class MedicineSafetyProfileOWLAPI {
         }
         
         return list_rules;
+	}
+	
+	
+	public void testInconsistencies(){
+		RELReasoner			local_reasoner	= new RELReasonerFactory().createReasoner(ontology);
+		local_reasoner.precomputeInferences();
+		
+		OWLDataFactory 			factory				= manager.getOWLDataFactory();
+		OWLNamedIndividual		patient				= factory.getOWLNamedIndividual(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#this_patient"));//We obtain the patient instance
+		NodeSet<OWLClass> list_types = local_reasoner.getTypes(patient, false);
+		System.out.println("Patient types:");
+		for(OWLClass type: list_types.getFlattened()){
+    		System.out.println("\t"+type.getIRI());
+    	}
 	}
 	
 	
