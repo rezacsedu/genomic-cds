@@ -23,7 +23,7 @@ import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 public class GetPolymorphismAllele {
 
 	/**
-	 * @param args
+	 * Process the ontology to obtain the list of polymorphisms, their related alleles and the format that can be used to test them. 
 	 */
 	public static void main(String[] args) {
 		OWLOntology ontology		= null;
