@@ -15,7 +15,7 @@ import safetycode.MedicineSafetyProfile;
 import utils.Common;
 import exception.BadFormedBase64NumberException;
 import exception.VariantDoesNotMatchAnAllowedVariantException;
-
+/**Old implementation no more maintained.*/
 public class TestCase1OwlApi {
 
 	//private static MedicineSafetyProfileOWLAPI msp;//Replaced because of a new version of MedicineSafetyProfile

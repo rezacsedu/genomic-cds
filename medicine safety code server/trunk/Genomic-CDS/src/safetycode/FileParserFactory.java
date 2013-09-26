@@ -1,5 +1,7 @@
 package safetycode;
 
+import utils.OntologyManagement;
+
 /**Class that implements the factory pattern to facilitate the creation of different FileParser objects.*/
 public class FileParserFactory {
 
@@ -9,12 +11,12 @@ public class FileParserFactory {
 	/**
 	 * Method to create the file parser that supports the suitable file format. 
 	 * */
-	public static FileParser getFileParser(int typeParser, MedicineSafetyProfile msp){
+	public static FileParser getFileParser(int typeParser, OntologyManagement om){
 		switch(typeParser){
 		case FORMAT_23ANDME_FILE:
-			return new FileParser_23andme(msp.getListRsids(),msp.getMapCriteria2Bitcode());
+			return new FileParser_23andme(om.getListRsids(),om.getMapCriteria2Bitcode());
 		case FORMAT_VCF_FILE:
-			return new FileParser_VCF(msp.getVCFReflistRsids(),msp.getMapCriteria2Bitcode());
+			return new FileParser_VCF(om.getVCFRefListRsids(),om.getMapCriteria2Bitcode());
 		}
 		return null;
 	}

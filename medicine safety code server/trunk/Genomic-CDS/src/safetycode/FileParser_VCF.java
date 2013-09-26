@@ -189,7 +189,14 @@ public class FileParser_VCF implements FileParser {
 	 * @return		It returns the two dimensional array with the corresponding nucleotides with the correct orientation and alphabetical order.
 	 * */
 	private String[] getVariants(String snpCode,String orientation_file, String orientation_seq){
-		if(snpCode.length()<=1) System.out.println("Warning: getVariants("+snpCode+","+orientation_file+","+orientation_seq+")");
+		String[] variant = new String[2];
+		variant[0]="-";
+		variant[1]="-";
+		
+		if(snpCode.length()<=1){
+			System.out.println("Warning: getVariants("+snpCode+","+orientation_file+","+orientation_seq+")");
+			return variant;
+		}
 		
 		String val_1 = snpCode.substring(0,1);
 		String val_2 = snpCode.substring(1);
@@ -221,7 +228,7 @@ public class FileParser_VCF implements FileParser {
 			}
 		}
 		
-		String[] variant = new String[2];
+		
 		if(variants_array.length>1){
 			variant[0] = val_1;
 			for(int i=0;i<variants_array.length;i++){

@@ -24,6 +24,7 @@ public class FileParser_23andme implements FileParser {
 	public FileParser_23andme(ArrayList<String[]> listRsids,HashMap<String,String> criteriaSyntax2bitcode){
 		this.listRsids					= listRsids;
 		this.criteriaSyntax2bitcode		= criteriaSyntax2bitcode;
+		
 		//The base64profile is initialized with the bit_codes of null variants.
 		my23AndMeBase64ProfileString	= "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
 	}
@@ -88,6 +89,8 @@ public class FileParser_23andme implements FileParser {
 			String[] genotype = listRsids.get(i);
 			String criteriaSyntax=genotype[3];//Criteria syntax that will be related to the patient
 			String bit_code=null;
+			if(criteriaSyntax==null) System.out.println("criteriaSyntax is null");
+			if(criteriaSyntax2bitcode == null ) System.out.println("cs2bc is null");
 			if(criteriaSyntax2bitcode.containsKey(criteriaSyntax)){
 				bit_code=criteriaSyntax2bitcode.get(criteriaSyntax);//Get the corresponding bit code to the critieria syntax obtained
 				genotype[4]=bit_code;
@@ -134,7 +137,7 @@ public class FileParser_23andme implements FileParser {
 		variant[0]="-";
 		variant[1]="-";
 		if(snpCode.length()<=1){
-			System.out.println("Warning: getVariants("+snpCode+","+orientation_file+","+orientation_seq+")");
+			//System.out.println("Warning: getVariants("+snpCode+","+orientation_file+","+orientation_seq+")");
 			return variant;
 		}
 		

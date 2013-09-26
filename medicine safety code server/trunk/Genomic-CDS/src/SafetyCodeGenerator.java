@@ -59,10 +59,10 @@ public class SafetyCodeGenerator extends HttpServlet {
 		contentHTML.append("<h1>A Medicine Safety Code was generated for your data</h1>");
 		String strandOrientationOfInputData = Common.DBSNP_ORIENTATION;
 		int fileformat = FileParserFactory.FORMAT_23ANDME_FILE;
-		FileItem my23andMeFileItem = null;
+		FileItem file2Parse = null;
 		String path =  this.getServletContext().getRealPath("/");
 		path=path.replaceAll("\\\\", "/");
-		//System.out.println("Path="+path);
+		System.out.println("Path="+path);
 		try {
 			@SuppressWarnings("unchecked")
 			List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
@@ -75,18 +75,15 @@ public class SafetyCodeGenerator extends HttpServlet {
 	                if(fieldname.equals("strand-orientation") && fieldvalue.equals("forward-orientation")) strandOrientationOfInputData = Common.FORWARD_ORIENTATION;
 	                if(fieldname.equals("file-format") && fieldvalue.equals("vcf-format")) fileformat = FileParserFactory.FORMAT_VCF_FILE;
 	            } else {
-	               my23andMeFileItem = item;
+	            	file2Parse = item;
 	            }
 	        }
-	        if (my23andMeFileItem == null) {
+	        if (file2Parse == null) {
 	        	throw new ServletException("File is missing.");
 	        }
-	        
-	        //MedicineSafetyProfileOWLAPI myProfile = new MedicineSafetyProfileOWLAPI(path+"MSC_classes.owl");  //Replaced because of a new version of MedicineSafetyProfile
-        	//String processingReport = myProfile.read23AndMeFileStream(my23andMeFileItem.getInputStream(), strandOrientationOfInputData);
-	        
+	        	         
 	        MedicineSafetyProfile myProfile = new MedicineSafetyProfile(path+"MSC_classes.owl");
-	        String processingReport = myProfile.parseFileStream(my23andMeFileItem.getInputStream(), strandOrientationOfInputData,fileformat);
+	        String processingReport = myProfile.parseFileStream(file2Parse.getInputStream(), strandOrientationOfInputData,fileformat);
         	String encodedProfileURL = URLEncoder.encode(Common.ROOT_URL+"/"+Common.VERSION+"?code="+myProfile.getBase64ProfileString(), "UTF-8");
         	contentHTML.append("<p align='center'><img src='"+Common.ROOT_URL+"/MSCImageGenerator?url=" + encodedProfileURL + "' alt='Medicine Safety Code' /></p>");
         	contentHTML.append("<p>You can visit the generated profile <a href='" + Common.ROOT_URL+"/"+Common.VERSION+"?code="+myProfile.getBase64ProfileString()+ "'> here</a>.</p>");

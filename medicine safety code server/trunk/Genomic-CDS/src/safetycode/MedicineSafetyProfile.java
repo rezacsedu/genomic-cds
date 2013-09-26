@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Set;
 
-import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
 import org.semanticweb.owlapi.model.OWLAnnotation;
 import org.semanticweb.owlapi.model.OWLAnnotationProperty;
@@ -27,6 +26,7 @@ import org.semanticweb.owlapi.reasoner.structural.StructuralReasonerFactory;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 
 import utils.Common;
+import utils.OntologyManagement;
 import eu.trowl.owlapi3.rel.reasoner.dl.RELReasoner;
 import eu.trowl.owlapi3.rel.reasoner.dl.RELReasonerFactory;
 import exception.BadFormedBase64NumberException;
@@ -41,6 +41,8 @@ public class MedicineSafetyProfile {
 	private OWLOntologyManager manager = null;
 	private OWLReasoner reasoner = null;
 	private String desc="";
+	private OntologyManagement om = null;
+	
 	public void setDesc(String desc){
 		this.desc=desc;
 	}
@@ -60,9 +62,13 @@ public class MedicineSafetyProfile {
 	 * */
 	private void initializeModel(String ontologyFile) {
 		try {
-			manager = OWLManager.createOWLOntologyManager();
-			File file = new File(ontologyFile);
-			ontology = manager.loadOntologyFromOntologyDocument(file);
+			
+			om = OntologyManagement.getOntologyManagement(ontologyFile);
+			ontology = om.getOntology();
+			manager = om.getManager();
+			//manager = OWLManager.createOWLOntologyManager();
+			//File file = new File(ontologyFile);
+			//ontology = manager.loadOntologyFromOntologyDocument(file);
 			OWLReasonerFactory reasonerFactory = new StructuralReasonerFactory();
 			reasoner = reasonerFactory.createNonBufferingReasoner(ontology);
 		} catch (Exception e) {
@@ -405,7 +411,7 @@ public class MedicineSafetyProfile {
 	 * */
 	public String parseFileStream(InputStream fileStream, String strandOrientationOfInputData, int typeFileFormat){
 		
-		FileParser fp= FileParserFactory.getFileParser(typeFileFormat, this);
+		FileParser fp= FileParserFactory.getFileParser(typeFileFormat, om);
 		String report = fp.parse(fileStream, strandOrientationOfInputData);
 		
 		base64ProfileString = fp.getBase64ProfileString();
@@ -422,7 +428,7 @@ public class MedicineSafetyProfile {
 	 * */
 	public String parseFileStream(InputStream fileStream, int typeFileFormat){
 		
-		FileParser fp= FileParserFactory.getFileParser(typeFileFormat, this);
+		FileParser fp= FileParserFactory.getFileParser(typeFileFormat, om);
 		String report = fp.parse(fileStream, Common.FORWARD_ORIENTATION);
 		
 		base64ProfileString = fp.getBase64ProfileString();
