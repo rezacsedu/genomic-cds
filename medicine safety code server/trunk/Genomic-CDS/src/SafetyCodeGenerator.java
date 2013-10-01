@@ -18,7 +18,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.lang.text.StrSubstitutor;
 
 import safetycode.FileParserFactory;
-import safetycode.MedicineSafetyProfile;
+import safetycode.MedicineSafetyProfileOptimized;
 import utils.Common;
 import utils.StringReader;
 
@@ -62,7 +62,7 @@ public class SafetyCodeGenerator extends HttpServlet {
 		FileItem file2Parse = null;
 		String path =  this.getServletContext().getRealPath("/");
 		path=path.replaceAll("\\\\", "/");
-		System.out.println("Path="+path);
+		//System.out.println("Path="+path);
 		try {
 			@SuppressWarnings("unchecked")
 			List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
@@ -82,7 +82,7 @@ public class SafetyCodeGenerator extends HttpServlet {
 	        	throw new ServletException("File is missing.");
 	        }
 	        	         
-	        MedicineSafetyProfile myProfile = new MedicineSafetyProfile(path+"MSC_classes.owl");
+	        MedicineSafetyProfileOptimized myProfile = new MedicineSafetyProfileOptimized(path+"MSC_classes.owl");
 	        String processingReport = myProfile.parseFileStream(file2Parse.getInputStream(), strandOrientationOfInputData,fileformat);
         	String encodedProfileURL = URLEncoder.encode(Common.ROOT_URL+"/"+Common.VERSION+"?code="+myProfile.getBase64ProfileString(), "UTF-8");
         	contentHTML.append("<p align='center'><img src='"+Common.ROOT_URL+"/MSCImageGenerator?url=" + encodedProfileURL + "' alt='Medicine Safety Code' /></p>");

@@ -4,7 +4,6 @@
 <html>
 <head>
 	<title>Error page</title>
-	<meta charset="utf-8">
     <meta name="author" content="Matthias Samwald">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet"  href="css/themes/default/jquery.mobile-1.3.2.min.css">

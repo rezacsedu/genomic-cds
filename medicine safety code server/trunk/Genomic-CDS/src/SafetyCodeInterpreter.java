@@ -22,10 +22,11 @@ import net.sf.ehcache.Element;
 
 import org.apache.commons.lang.text.StrSubstitutor;
 
-import safetycode.MedicineSafetyProfile;
+import safetycode.MedicineSafetyProfileOptimized;
 import utils.StringReader;
 
 import exception.BadFormedBase64NumberException;
+import exception.NotInitializedPatientsGenomicDataException;
 import exception.VariantDoesNotMatchAnAllowedVariantException;
 
 
@@ -57,11 +58,10 @@ public class SafetyCodeInterpreter extends HttpServlet {
 			fis.close();
 			cache = manager.getCache("safetycodecache1"); //Obtain the instance of the configured cache.
 		}catch(Exception e){
-			System.out.println("Cache path = "+path+"ehcache.xml");
+			//System.out.println("Cache was not initialized with the configuration file = "+path+"ehcache.xml");
 			cache=null;
-			//throw (new ServletException("The cache could not be initialized."));
-		}
-		
+			throw (new ServletException("The cache could not be initialized."));
+		}		
 		
 		if(cache!=null && cache.isKeyInCache(base64ProfileString)){	
 			Element element = cache.get(base64ProfileString);
@@ -69,15 +69,19 @@ public class SafetyCodeInterpreter extends HttpServlet {
 			if(String.class.isInstance(object)){
 				out.println((String) object);
 			}
-			manager.shutdown();		//Close the cache manager to reduce the memory use of the application.
+			//System.out.println("Cache: hit! -> CODE="+base64ProfileString);
+			//manager.shutdown();		//Close the cache manager to reduce the memory use of the application.
 		}else{	//If there is a cache miss or the cache is not initialized
 			// initialize patient profile
-			MedicineSafetyProfile myProfile = new MedicineSafetyProfile(path+"MSC_classes.owl");
+			//System.out.println("Cache: miss! -> CODE="+base64ProfileString);
+			MedicineSafetyProfileOptimized myProfile = new MedicineSafetyProfileOptimized(path+"MSC_classes.owl");
 			try {
 				myProfile.readBase64ProfileString(base64ProfileString);
 			} catch (VariantDoesNotMatchAnAllowedVariantException e) {
 				throw (new ServletException( e.getMessage()));
 			} catch (BadFormedBase64NumberException e) {
+				throw (new ServletException( e.getMessage()));
+			} catch (NotInitializedPatientsGenomicDataException e) {
 				throw (new ServletException( e.getMessage()));
 			}
 			
@@ -99,7 +103,6 @@ public class SafetyCodeInterpreter extends HttpServlet {
 				list_recommendations.remove("raw_data");
 			}
 			valuesMap.put("raw_data", rawDataHTML);
-			
 			
 			// Output inferred alleles
 			StringBuffer allelesHTML = new StringBuffer("");
@@ -123,12 +126,11 @@ public class SafetyCodeInterpreter extends HttpServlet {
 				Iterator<String> it_keys = list_recommendations.keySet().iterator();
 				while(it_keys.hasNext()){
 					String key = it_keys.next();
-					String drug_recommendations = "<ul data-inset='true'>";
+					String drug_recommendations = "";
 					Iterator<String> list_data = list_recommendations.get(key).iterator();
 					while(list_data.hasNext()){
-						drug_recommendations+="<li>"+list_data.next()+"</li>";
+						drug_recommendations+="<fieldset style='margin-bottom:20px'><legend>Recommendation</legend><div class='ui-bar ui-bar-e'>"+list_data.next()+"</div></fieldset>\n";
 					}
-					drug_recommendations+="</ul>";
 					String new_drug = "<li><div data-filtertext=\""+key+"\" data-role=\"collapsible\"><h3>"+key+"</h3>"+drug_recommendations+"</div></li>";
 					recommendationsHTML.append(new_drug);
 				}
@@ -147,11 +149,10 @@ public class SafetyCodeInterpreter extends HttpServlet {
 
 			out.println(resolvedString);
 			if(cache!=null){
+				//System.out.println("Cache: insert -> CODE="+base64ProfileString);
 				cache.put(new Element(base64ProfileString,resolvedString)); //Add the new element into the cache.
 				cache.flush(); //We flush the cache to make all element persistent on disk. This avoid the wrong insert of an element due to application errors. We can avoid this here if the performance of the application is penalized.
-				manager.shutdown();
-			}else{
-				System.out.println("The cache is null");
+				//manager.shutdown();
 			}
 		}
 	}

@@ -23,7 +23,6 @@ public class Common {
 	public final static String ROOT_URL = "http://owl.msi.meduniwien.ac.at:8080/Genomic-CDS";
 	//public final static String ROOT_URL = "http://localhost:8080/Genomic-CDS";//URL for testing in my local server
 	public final static String VERSION = "v0.2";
-	
 	/**
 	 * It transform a binary number into a base 64 number. We assume that the binary number has a multiple of six digits. In other case, we will add '0' until we obtain a multiple of 6 digits. We add the extra digits to the right side because we process the number from left to right.
 	 * 
