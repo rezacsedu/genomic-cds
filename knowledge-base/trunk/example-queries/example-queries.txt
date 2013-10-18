@@ -1,13 +1,16 @@
-##### Integration with the Genomic CDS Ontology
+##### Integration of clinical pharmacogenomics statements from FDA
+      Structured product labeling with the Genomic CDS Ontology
+
+NOTE: These queries were tested and worked with Protege 4.2.0 build
+278. Testing on Protege 4.3 was not successful due to errors that
+occured when loading the RDF file with SPL annotations.
 
 Instructions:
 1) open the ontology "genomic-cds-demo-with-SPL-statements.owl" in Protege 4.X
 
-2) In the "Active Ontology" tab, use "Direct Imports" to import the SPL annotations in data/all-paired-annotations-from-092012-BETA-OA-model-03132013.n3
+2) In the Classes tab, there should be listed PharmacogenomicsStatement, SPLConstrainedTarget, and some other classes that are not native to the genomic-cds ontology. If not, in the "Active Ontology" tab, use "Direct Imports" to import the SPL annotations in data/all-paired-annotations-from-092012-BETA-OA-model-03132013.n3
 
-3) The Classes tab should show PharmacogenomicsStatement, SPLConstrainedTarget, and some other classes that are not native to the genomic-cds ontology.
-
-4) If (3) checks out ok, go to the SPARQL Query tab and test the queries below.
+4) If (2) checks out ok, go to the SPARQL Query tab and test the queries below.
 
 -------------- EXAMPLE QUERIES ----------
 
