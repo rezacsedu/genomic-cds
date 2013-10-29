@@ -49,7 +49,7 @@ public class TestCase2 {
 	 * This test will throw an exception when trying to transform a bad formed "base 64 number" into a binary number. 
 	 * @throws BadFormedBase64NumberException 
 	 * */
-	@Test(expected=BadFormedBinaryNumberException.class)
+	@Test(expected=BadFormedBase64NumberException.class)
 	public void testConvertFrom64To2Exception() throws BadFormedBase64NumberException {
 		Common.convertFrom64To2("Matthias?");
 	}

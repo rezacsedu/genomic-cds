@@ -46,7 +46,15 @@ public class MedicineSafetyProfileOptimized {
 	/** Singleton instance of the OntologyManagement class which contains the base ontological model. */
 	private OntologyManagement om = null;
 
-
+	
+	private String desc="";
+	public void setDesc(String desc){
+		this.desc=desc;
+	}
+	public String getDesc(){
+		return desc;
+	}
+	
 	/**
 	 * Constructor of the class. It initializes the model of the pharmacogenomics dataset.
 	 * 
@@ -248,6 +256,51 @@ public class MedicineSafetyProfileOptimized {
 
 	
 	/**
+	 * Create the patient profile based on allele data.
+	 * 
+	 * @param classURI	Indicates the IRI of a class in the ontology related to an Allele.
+	 * @throws NotInitializedPatientsGenomicDataException 
+	 * */
+	public void addPatientAllele(String classURI) throws NotInitializedPatientsGenomicDataException {
+		OWLNamedIndividual patient = null;
+		OWLDataFactory factory = null;
+		if(reasoner_manager==null){
+			reasoner_manager = om.getNewOntologyManager();
+			reasoner_ontology = reasoner_manager.getOntologies().iterator().next();
+			patient = createPatient();
+			factory = reasoner_manager.getOWLDataFactory(); 
+		}else{
+			factory = reasoner_manager.getOWLDataFactory();
+			patient = factory.getOWLNamedIndividual(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#this_patient"));
+		}
+		OWLClass newType = factory.getOWLClass(IRI.create(classURI));
+		OWLClassAssertionAxiom classAssertion = factory.getOWLClassAssertionAxiom(newType,patient);
+		reasoner_manager.addAxiom(reasoner_ontology, classAssertion);
+	}
+	
+	
+	/**
+	 * Obtain the label of a particular class in the ontology.
+	 * 
+	 * @param classURI	The IRI of a class in the ontology.
+	 * @return		The label of the class in the ontology.
+	 * */
+	public String getResourceLabel(String classURI){
+		String label_class="";
+		OWLDataFactory factory = manager.getOWLDataFactory();
+		OWLClass ontoClass = factory.getOWLClass(IRI.create(classURI));
+		
+		Set<OWLAnnotation> listLabels = ontoClass.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
+		for (OWLAnnotation labelAnn : listLabels) {
+			if (labelAnn.getValue() instanceof OWLLiteral) {
+				OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
+				label_class = literal.getLiteral().trim();
+			}
+		}
+		return label_class;
+	}
+	
+	/**
 	 * Write the model into a file.
 	 * 
 	 * @param fileOut The file that will contain the model of the patient.
@@ -291,9 +344,7 @@ public class MedicineSafetyProfileOptimized {
 				
 		RELReasoner local_reasoner = new RELReasonerFactory().createReasoner(reasoner_ontology);
 		local_reasoner.precomputeInferences();
-		
-		
-		
+				
 		OWLDataFactory factory = reasoner_manager.getOWLDataFactory();
 		OWLNamedIndividual patient = factory.getOWLNamedIndividual(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#this_patient"));// We obtain the patient instance
 		OWLAnnotationProperty ann_relevant_for = factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#relevant_for"));
@@ -319,6 +370,7 @@ public class MedicineSafetyProfileOptimized {
 						break;
 					}
 				}
+				
 				if (!drug_name.isEmpty()) {
 					String cds_message = "";
 					for (OWLAnnotation annotation : type.getAnnotations(reasoner_ontology, ann_cds_message)) {
@@ -417,6 +469,7 @@ public class MedicineSafetyProfileOptimized {
 				}
 			}
 		}
+		
 		return list_recommendations;
 	}
 

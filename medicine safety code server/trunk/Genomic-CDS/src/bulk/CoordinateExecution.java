@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import safetycode.MedicineSafetyProfile;
+import safetycode.MedicineSafetyProfileOptimized;
 
 
 /**
@@ -37,7 +37,7 @@ public class CoordinateExecution {
 		this.ontology=ontology;
 		
 		//MedicineSafetyProfileOWLAPI msp = new MedicineSafetyProfileOWLAPI(ontology); //Replaced because of a new version of MedicineSafetyProfile
-		MedicineSafetyProfile msp = new MedicineSafetyProfile(ontology); 
+		MedicineSafetyProfileOptimized msp = new MedicineSafetyProfileOptimized(ontology); 
 		sortedSNP	= msp.getSimplifiedListRsids();
 		sortedPoly	= msp.getSimplifiedListPolymorphisms();
 		sortedRule	= msp.getSimplifiedListRules();

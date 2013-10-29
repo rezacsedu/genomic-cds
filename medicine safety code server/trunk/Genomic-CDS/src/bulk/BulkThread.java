@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import safetycode.FileParserFactory;
-import safetycode.MedicineSafetyProfile;
+import safetycode.MedicineSafetyProfileOptimized;
 
 public class BulkThread extends Thread {
 	
@@ -76,7 +76,7 @@ public class BulkThread extends Thread {
 		try{
 			
 			while(fileInput!=null){
-				MedicineSafetyProfile msp = new MedicineSafetyProfile(ontology);
+				MedicineSafetyProfileOptimized msp = new MedicineSafetyProfileOptimized(ontology);
 				msp.setDesc(" Thread "+index+" with file "+fileInput.getName()+" ");
 				InputStream input = new FileInputStream(fileInput);
 				String report = "";

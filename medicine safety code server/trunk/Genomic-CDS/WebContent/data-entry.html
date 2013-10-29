@@ -17,7 +17,6 @@
 <body>
 
 	<div data-role="page" class="jqm-demos">
-
 		<div data-role="header" class="jqm-header" style="text-align: center; padding: 3px">
 			<img src="images/safety-code-logo.png" width="209" height="30" alt="safety-code.org" />
 		</div>
@@ -34,7 +33,7 @@
 					<p>The enzyme thiopurine S-methyltransferase (TPMT) is responsible for various activation
 						and deactivation steps in azathioprine's mechanism of action. Please enter the TPMT alleles of
 						a patient to receive recommendations for dosing oral azathioprine.</p>
-					<form method="get" action="results-from-manual-data-entry-demo.html">
+					<form name="manual_data" method="get" action="AlleleSafetyCodeInterpreter">
 						<input type="hidden" name="drug" value="azathioprine" />
 						<fieldset style="max-width: 300px">
 							<legend>TPMT alleles</legend>
@@ -110,7 +109,7 @@
 		<div data-role="footer" style="text-align: center; padding: 5px;">
 			<div>
 				This service is provided for research purposes only and comes without any warranty.
-				(C)&nbsp;2013&nbsp;<a href="http://safety-code.org/" data-ajax="false">safety-code.org</a>
+				(C)&nbsp;2013&nbsp; <a href="http://owl.msi.meduniwien.ac.at:8080/Genomic-CDS" data-ajax="false">safety-code.org</a>
 			</div>
 		</div>
 	</div>
