@@ -77,7 +77,48 @@ AnnotationProperty: CDS_message
         rdfs:label "CDS message",
         rdfs:comment "A clinical decision support message relevant for a patient belonging to this class."
 
-    
+
+AnnotationProperty: source
+    Annotations: 
+        rdfs:label "Database source",
+        rdfs:comment "A generic property that indicates a source database."
+
+AnnotationProperty: textual_genetic_description
+    Annotations: 
+        rdfs:label "Textual genetic description",
+        rdfs:comment "A generic property that provides a textual description of genetic logical statements."
+		
+AnnotationProperty: phenotype_description
+    Annotations: 
+        rdfs:label "Phenotype description",
+        rdfs:comment "Textual description of a phenotype associated to a CDS rule."
+		
+AnnotationProperty: date_of_evidence
+    Annotations: 
+        rdfs:label "Date of evidence",
+        rdfs:comment "The date when the information was published in the source database."
+		
+AnnotationProperty: date_of_addition
+    Annotations: 
+        rdfs:label "Date of addition",
+        rdfs:comment "The date when the information was firstly added to the ontology."
+
+AnnotationProperty: date_last_validation
+    Annotations: 
+        rdfs:label "Date of last validation",
+        rdfs:comment "The date when the last update of the information."
+
+AnnotationProperty: author_last_validation
+    Annotations: 
+        rdfs:label "Author of the last change in the information",
+        rdfs:comment "The author of the last validation update."
+
+AnnotationProperty: author_addition
+    Annotations: 
+        rdfs:label "Author of the first addition of the information",
+        rdfs:comment "The author who first added the rule."
+
+
 Datatype: rdf:PlainLiteral
 
     
