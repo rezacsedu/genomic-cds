@@ -27,7 +27,7 @@
 		<div data-role="footer" style="text-align: center; padding: 5px;">
 			<div>
 				This service is provided for research purposes only and comes without any warranty. (C)&nbsp;2012&nbsp;
-				<a href="http://owl.msi.meduniwien.ac.at:8080/Genomic-CDS" data-ajax="false">safety-code.org</a>
+				<a href="http://safety-code.org" data-ajax="false">safety-code.org</a>
 			</div>
 		</div>
 	</div>

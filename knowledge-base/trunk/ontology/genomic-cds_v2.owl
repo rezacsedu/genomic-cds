@@ -257,7 +257,7 @@ DisjointClasses:
 
 
 Ontology: <http://www.genomic-cds.org/ont/genomic-cds.owl>
-    Annotations: owl:versionInfo "2013/11/25"
+    Annotations: owl:versionInfo "2013/11/26"
 
 
 #
@@ -15958,18 +15958,6 @@ Class: CYP2D6_star_33
     Annotations: rdfs:label "CYP2D6 *33"
     SubClassOf: CYP2D6
 
-Class: human_with_CYP2D6_star_33
-SubClassOf: human_with_genetic_polymorphism
-Annotations: rdfs:label "human with CYP2D6 *33"
-SubClassOf:
-has some CYP2D6_star_33
-
-Class: human_with_homozygous_CYP2D6_star_33
-SubClassOf: human_with_genetic_polymorphism
-Annotations: rdfs:label "human with homozygous CYP2D6 *33" 
-SubClassOf:
-has exactly 2 CYP2D6_star_33
-
 Class: CYP2D6_star_35
     Annotations: rdfs:label "CYP2D6 *35"
     SubClassOf: CYP2D6
@@ -16345,7 +16333,7 @@ CYP2D6_star_1,CYP2D6_star_2,CYP2D6_star_3,CYP2D6_star_4,CYP2D6_star_5,CYP2D6_sta
 # homozygous human disjoints
 Class: human_with_homozygous_CYP2D6_star_1
 DisjointClasses:
-human_with_homozygous_CYP2D6_star_1,human_with_homozygous_CYP2D6_star_2,human_with_homozygous_CYP2D6_star_4,human_with_homozygous_CYP2D6_star_10,human_with_homozygous_CYP2D6_star_17,human_with_homozygous_CYP2D6_star_29,human_with_homozygous_CYP2D6_star_41,human_with_homozygous_CYP2D6_star_7,human_with_homozygous_CYP2D6_star_8,human_with_homozygous_CYP2D6_star_11,human_with_homozygous_CYP2D6_star_12,human_with_homozygous_CYP2D6_star_13,human_with_homozygous_CYP2D6_star_14,human_with_homozygous_CYP2D6_star_15,human_with_homozygous_CYP2D6_star_16,human_with_homozygous_CYP2D6_star_18,human_with_homozygous_CYP2D6_star_19,human_with_homozygous_CYP2D6_star_20,human_with_homozygous_CYP2D6_star_21,human_with_homozygous_CYP2D6_star_27,human_with_homozygous_CYP2D6_star_31,human_with_homozygous_CYP2D6_star_33,human_with_homozygous_CYP2D6_star_35,human_with_homozygous_CYP2D6_star_36,human_with_homozygous_CYP2D6_star_38,human_with_homozygous_CYP2D6_star_39,human_with_homozygous_CYP2D6_star_40,human_with_homozygous_CYP2D6_star_42,human_with_homozygous_CYP2D6_star_44,human_with_homozygous_CYP2D6_star_45,human_with_homozygous_CYP2D6_star_46,human_with_homozygous_CYP2D6_star_47,human_with_homozygous_CYP2D6_star_48,human_with_homozygous_CYP2D6_star_49,human_with_homozygous_CYP2D6_star_50,human_with_homozygous_CYP2D6_star_51,human_with_homozygous_CYP2D6_star_53,human_with_homozygous_CYP2D6_star_54,human_with_homozygous_CYP2D6_star_55,human_with_homozygous_CYP2D6_star_56,human_with_homozygous_CYP2D6_star_57,human_with_homozygous_CYP2D6_star_59,human_with_homozygous_CYP2D6_star_62,human_with_homozygous_CYP2D6_star_69,human_with_homozygous_CYP2D6_star_72
+human_with_homozygous_CYP2D6_star_1,human_with_homozygous_CYP2D6_star_2,human_with_homozygous_CYP2D6_star_4,human_with_homozygous_CYP2D6_star_10,human_with_homozygous_CYP2D6_star_17,human_with_homozygous_CYP2D6_star_29,human_with_homozygous_CYP2D6_star_41,human_with_homozygous_CYP2D6_star_7,human_with_homozygous_CYP2D6_star_8,human_with_homozygous_CYP2D6_star_11,human_with_homozygous_CYP2D6_star_12,human_with_homozygous_CYP2D6_star_13,human_with_homozygous_CYP2D6_star_14,human_with_homozygous_CYP2D6_star_15,human_with_homozygous_CYP2D6_star_16,human_with_homozygous_CYP2D6_star_18,human_with_homozygous_CYP2D6_star_19,human_with_homozygous_CYP2D6_star_20,human_with_homozygous_CYP2D6_star_21,human_with_homozygous_CYP2D6_star_27,human_with_homozygous_CYP2D6_star_31,human_with_homozygous_CYP2D6_star_35,human_with_homozygous_CYP2D6_star_36,human_with_homozygous_CYP2D6_star_38,human_with_homozygous_CYP2D6_star_39,human_with_homozygous_CYP2D6_star_40,human_with_homozygous_CYP2D6_star_42,human_with_homozygous_CYP2D6_star_44,human_with_homozygous_CYP2D6_star_45,human_with_homozygous_CYP2D6_star_46,human_with_homozygous_CYP2D6_star_47,human_with_homozygous_CYP2D6_star_48,human_with_homozygous_CYP2D6_star_49,human_with_homozygous_CYP2D6_star_50,human_with_homozygous_CYP2D6_star_51,human_with_homozygous_CYP2D6_star_53,human_with_homozygous_CYP2D6_star_54,human_with_homozygous_CYP2D6_star_55,human_with_homozygous_CYP2D6_star_56,human_with_homozygous_CYP2D6_star_57,human_with_homozygous_CYP2D6_star_59,human_with_homozygous_CYP2D6_star_62,human_with_homozygous_CYP2D6_star_69,human_with_homozygous_CYP2D6_star_72
 
 Class: CYP3A4_star_1
     Annotations: rdfs:label "CYP3A4 *1"
@@ -18272,7 +18260,6 @@ Class: human_with_homozygous_HLA-B_star_44
 DisjointClasses:
 human_with_homozygous_HLA-B_star_44,human_with_homozygous_HLA-B_star_5701,human_with_homozygous_HLA-B_star_5801,human_with_homozygous_HLA-B_star_1502
 
-
 Class: HLA-B
 SubClassOf: allele
 Annotations: rdfs:label "HLA-B"
@@ -18292,7 +18279,6 @@ Class: rs2297595
     Annotations: relevant_for DPYD
     Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2297595> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
-
 
 #
 # Pharmacogenomics decision support table data
@@ -18572,7 +18558,7 @@ Class: human_triggering_CDS_rule_19
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 19"
     Annotations: relevant_for Clopidogrel
-	EquivalentTo: has some CPIC_CYP2C19_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer (UM): An individual carrying two increased activity alleles (*17) or one functional allele (*1) plus one increased activity allele (*17)"
 Annotations: rdfs:seeAlso <http://pharmgkb.org/drug/PA449053#tabClinical>
@@ -18589,7 +18575,7 @@ Class: human_triggering_CDS_rule_20
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 20"
     Annotations: relevant_for Clopidogrel
-	EquivalentTo: has some CPIC_CYP2C19_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Extensive metabolizer (EM): An individual carrying two functional (*1) alleles"
 Annotations: rdfs:seeAlso <http://pharmgkb.org/drug/PA449053#tabClinical>
@@ -18606,7 +18592,7 @@ Class: human_triggering_CDS_rule_21
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 21"
     Annotations: relevant_for Clopidogrel
-	EquivalentTo: has some CPIC_CYP2C19_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Intermediate metabolizer (IM): An individual carrying one functional allele (*1) plus one loss-of-function allele (*2-*8) or one loss-of-function allele (*2-*8) plus one increased activity allele (*17)"
 Annotations: rdfs:seeAlso <http://pharmgkb.org/drug/PA449053#tabClinical>
@@ -18623,7 +18609,7 @@ Class: human_triggering_CDS_rule_22
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 22"
     Annotations: relevant_for Clopidogrel
-	EquivalentTo: has some CPIC_CYP2C19_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Poor metabolizer (PM): An individual carrying two loss-of-function alleles (*2-*8)"
 Annotations: rdfs:seeAlso <http://pharmgkb.org/drug/PA449053#tabClinical>
@@ -18849,7 +18835,7 @@ Class: human_triggering_CDS_rule_35
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 35"
     Annotations: relevant_for Azathioprine
-	EquivalentTo: has some DPWG_TPMT_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_TPMT_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "TPMT: IM (one inactive allele: *2, *3, *4-*18) "
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18866,7 +18852,7 @@ Class: human_triggering_CDS_rule_36
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 36"
     Annotations: relevant_for Azathioprine
-	EquivalentTo: has some DPWG_TPMT_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_TPMT_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "TPMT: PM (two inactive alleles: *2, *3, *4-*18)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -18883,7 +18869,7 @@ Class: human_triggering_CDS_rule_37
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 37"
     Annotations: relevant_for Mercaptopurine
-	EquivalentTo: has some DPWG_TPMT_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_TPMT_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "TPMT: IM (one inactive allele: *2, *3, *4-*18) "
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18900,7 +18886,7 @@ Class: human_triggering_CDS_rule_38
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 38"
     Annotations: relevant_for Mercaptopurine
-	EquivalentTo: has some DPWG_TPMT_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_TPMT_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "TPMT: PM (two inactive alleles: *2, *3, *4-*18)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -18917,7 +18903,7 @@ Class: human_triggering_CDS_rule_39
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 39"
     Annotations: relevant_for Thioguanine
-	EquivalentTo: has some DPWG_TPMT_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_TPMT_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "TPMT: IM (one inactive allele: *2, *3, *4-*18) "
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18934,7 +18920,7 @@ Class: human_triggering_CDS_rule_40
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 40"
     Annotations: relevant_for Thioguanine
-	EquivalentTo: has some DPWG_TPMT_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_TPMT_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "TPMT: PM (two inactive alleles: *2, *3, *4-*18)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -18951,7 +18937,7 @@ Class: human_triggering_CDS_rule_41
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 41"
     Annotations: relevant_for Codeine
-	EquivalentTo: has some CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Ultrarapid metabolizer: An individual carrying more than two copies of functional alleles"
    Annotations: phenotype_description "Ultrarapid metabolizer: Increased formation of morphine following codeine administration, leading to higher risk of toxicity"
@@ -18968,7 +18954,7 @@ Class: human_triggering_CDS_rule_42
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 42"
     Annotations: relevant_for Codeine
-	EquivalentTo: has some CPIC_CYP2D6_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Extensive metabolizer: An individual carrying two alleles encoding full or reduced function or one full function allele together with either one nonfunctional or one reduced-function allele"
    Annotations: phenotype_description "Extensive metabolizer: Normal morphine formation"
@@ -18985,7 +18971,7 @@ Class: human_triggering_CDS_rule_43
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 43"
     Annotations: relevant_for Codeine
-	EquivalentTo: has some CPIC_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Intermediate metabolizer: An individual carrying one reduced and one nonfunctional allele"
    Annotations: phenotype_description "Intermediate metabolizer: Reduced morphine formation"
@@ -19002,7 +18988,7 @@ Class: human_triggering_CDS_rule_44
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 44"
     Annotations: relevant_for Codeine
-	EquivalentTo: has some CPIC_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Poor metabolizer: An individual carrying no functional alleles"
    Annotations: phenotype_description "Poor metabolizer: Greatly reduced morphine formation following codeine administration, leading to insufficient pain relief"
@@ -19019,7 +19005,7 @@ Class: human_triggering_CDS_rule_45
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 45"
     Annotations: relevant_for Codeine
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (two inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -19036,7 +19022,7 @@ Class: human_triggering_CDS_rule_46
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 46"
     Annotations: relevant_for Codeine
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) allele and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -19053,7 +19039,7 @@ Class: human_triggering_CDS_rule_47
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 47"
     Annotations: relevant_for Codeine
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (a gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased-activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -19115,7 +19101,7 @@ Class: human_triggering_CDS_rule_51
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 51"
     Annotations: relevant_for Mirtazapine
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (2 inactive alleles: *3-*8, *11-*16, *19-*21, *38, *40, *42)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -19131,7 +19117,7 @@ Class: human_triggering_CDS_rule_52
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 52"
     Annotations: relevant_for Mirtazapine
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased activity alleles (*9, *10, *17, *29, *36, *41) or 1 active (*1, *2, *33, *35) and 1 inactive allele (*3-*8, *11-*16, *19-*21, *38, *40, *42) or 1 decreased activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -19147,7 +19133,7 @@ Class: human_triggering_CDS_rule_53
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 53"
     Annotations: relevant_for Mirtazapine
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (gene duplication in absence of inactive or decreased activity alleles"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -19163,7 +19149,7 @@ Class: human_triggering_CDS_rule_54
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 54"
     Annotations: relevant_for Zuclopenthixol
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (two inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -19179,7 +19165,7 @@ Class: human_triggering_CDS_rule_55
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 55"
     Annotations: relevant_for Zuclopenthixol
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) allele and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -19195,7 +19181,7 @@ Class: human_triggering_CDS_rule_56
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 56"
     Annotations: relevant_for Zuclopenthixol
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (a gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased-activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -19259,7 +19245,7 @@ Class: human_triggering_CDS_rule_60
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 60"
     Annotations: relevant_for Venlafaxine
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (two inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -19275,7 +19261,7 @@ Class: human_triggering_CDS_rule_61
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 61"
     Annotations: relevant_for Venlafaxine
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) allele and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -19291,7 +19277,7 @@ Class: human_triggering_CDS_rule_62
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 62"
     Annotations: relevant_for Venlafaxine
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (a gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased-activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -19307,7 +19293,7 @@ Class: human_triggering_CDS_rule_63
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 63"
     Annotations: relevant_for Tramadol
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (two inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -19323,7 +19309,7 @@ Class: human_triggering_CDS_rule_64
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 64"
     Annotations: relevant_for Tramadol
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) allele and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -19339,7 +19325,7 @@ Class: human_triggering_CDS_rule_65
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 65"
     Annotations: relevant_for Tramadol
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (a gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased-activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -19430,7 +19416,7 @@ Class: human_triggering_CDS_rule_71
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 71"
     Annotations: relevant_for Tegafur
-	EquivalentTo: has some DPWG_DPYD_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_DPYD_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "DPYD: PM (2 inactive alleles (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T), 2 decreased activity alleles (*9B, *10), or one inactive (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T) and one decreased activity allele (*9B, *10))"
    Annotations: phenotype_description "Poor metabolizer"
@@ -19447,7 +19433,7 @@ Class: human_triggering_CDS_rule_72
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 72"
     Annotations: relevant_for Tegafur
-	EquivalentTo: has some DPWG_DPYD_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_DPYD_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "DPYD: IM (1 active allele (*1, *4, *5, *6, *9A) and 1 inactive (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T) or decreased activity allele (*9B, *10))"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -19464,7 +19450,7 @@ Class: human_triggering_CDS_rule_73
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 73"
     Annotations: relevant_for Tamoxifen
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (two inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -19480,7 +19466,7 @@ Class: human_triggering_CDS_rule_74
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 74"
     Annotations: relevant_for Tamoxifen
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) allele and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -19496,7 +19482,7 @@ Class: human_triggering_CDS_rule_75
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 75"
     Annotations: relevant_for Tamoxifen
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (a gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased-activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -19590,7 +19576,7 @@ Class: human_triggering_CDS_rule_81
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 81"
     Annotations: relevant_for Risperidone
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (two inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -19606,7 +19592,7 @@ Class: human_triggering_CDS_rule_82
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 82"
     Annotations: relevant_for Risperidone
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) allele and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -19622,7 +19608,7 @@ Class: human_triggering_CDS_rule_83
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 83"
     Annotations: relevant_for Risperidone
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (a gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased-activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -19803,7 +19789,7 @@ Class: human_triggering_CDS_rule_95
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 95"
     Annotations: relevant_for Fluorouracil
-	EquivalentTo: has some DPWG_DPYD_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_DPYD_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "DPYD: PM (2 inactive alleles (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T), 2 decreased activity alleles (*9B, *10), or one inactive (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T) and one decreased activity allele (*9B, *10))"
    Annotations: phenotype_description "Poor metabolizer"
@@ -19819,7 +19805,7 @@ Class: human_triggering_CDS_rule_96
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 96"
     Annotations: relevant_for Fluorouracil
-	EquivalentTo: has some DPWG_DPYD_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_DPYD_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "DPYD: IM (1 active allele (*1, *4, *5, *6, *9A) and 1 inactive (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T) or decreased activity allele (*9B, *10))"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -19884,7 +19870,7 @@ Class: human_triggering_CDS_rule_100
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 100"
     Annotations: relevant_for Capecitabine
-	EquivalentTo: has some DPWG_DPYD_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_DPYD_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "DPYD: PM (2 inactive alleles (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T), 2 decreased activity alleles (*9B, *10), or one inactive (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T) and one decreased activity allele (*9B, *10))"
    Annotations: phenotype_description "Poor metabolizer"
@@ -19900,7 +19886,7 @@ Class: human_triggering_CDS_rule_101
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 101"
     Annotations: relevant_for Capecitabine
-	EquivalentTo: has some DPWG_DPYD_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_DPYD_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "DPYD: IM (1 active allele (*1, *4, *5, *6, *9A) and 1 inactive (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T) or decreased activity allele (*9B, *10))"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -19916,7 +19902,7 @@ Class: human_triggering_CDS_rule_102
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 102"
     Annotations: relevant_for Doxepin
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (two inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -19932,7 +19918,7 @@ Class: human_triggering_CDS_rule_103
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 103"
     Annotations: relevant_for Doxepin
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) allele and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -19948,7 +19934,7 @@ Class: human_triggering_CDS_rule_104
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 104"
     Annotations: relevant_for Doxepin
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (a gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased-activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -20484,7 +20470,7 @@ Class: human_triggering_CDS_rule_138
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 138"
     Annotations: relevant_for Flecainide
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (two inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -20500,7 +20486,7 @@ Class: human_triggering_CDS_rule_139
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 139"
     Annotations: relevant_for Flecainide
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) allele and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -20516,7 +20502,7 @@ Class: human_triggering_CDS_rule_140
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 140"
     Annotations: relevant_for Flecainide
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (a gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased-activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -20532,7 +20518,7 @@ Class: human_triggering_CDS_rule_141
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 141"
     Annotations: relevant_for Propafenone
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (2 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -20548,7 +20534,7 @@ Class: human_triggering_CDS_rule_142
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 142"
     Annotations: relevant_for Propafenone
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased-activity (*9, *10, *17, *29, *36, *41) alleles or 1 active (*1, *2, *33, *35) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or 1 decreased-activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -20564,7 +20550,7 @@ Class: human_triggering_CDS_rule_143
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 143"
     Annotations: relevant_for Propafenone
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased-activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -20580,7 +20566,7 @@ Class: human_triggering_CDS_rule_144
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 144"
     Annotations: relevant_for Paroxetine
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (2 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -20596,7 +20582,7 @@ Class: human_triggering_CDS_rule_145
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 145"
     Annotations: relevant_for Paroxetine
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased-activity (*9, *10, *17, *29, *36, *41) alleles or 1 active (*1, *2, *33, *35) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or 1 decreased-activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -20612,7 +20598,7 @@ Class: human_triggering_CDS_rule_146
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 146"
     Annotations: relevant_for Paroxetine
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased-activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -20628,7 +20614,7 @@ Class: human_triggering_CDS_rule_147
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 147"
     Annotations: relevant_for Oxycodone
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (2 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -20644,7 +20630,7 @@ Class: human_triggering_CDS_rule_148
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 148"
     Annotations: relevant_for Oxycodone
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased-activity (*9, *10, *17, *29, *36, *41) alleles or 1 active (*1, *2, *33, *35) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or 1 decreased-activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -20660,7 +20646,7 @@ Class: human_triggering_CDS_rule_149
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 149"
     Annotations: relevant_for Oxycodone
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased-activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -20676,7 +20662,7 @@ Class: human_triggering_CDS_rule_150
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 150"
     Annotations: relevant_for Olanzapine
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (2 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -20692,7 +20678,7 @@ Class: human_triggering_CDS_rule_151
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 151"
     Annotations: relevant_for Olanzapine
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased-activity (*9, *10, *17, *29, *36, *41) alleles or 1 active (*1, *2, *33, *35) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or 1 decreased-activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -20708,7 +20694,7 @@ Class: human_triggering_CDS_rule_152
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 152"
     Annotations: relevant_for Olanzapine
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased-activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -20724,7 +20710,7 @@ Class: human_triggering_CDS_rule_153
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 153"
     Annotations: relevant_for Nortriptyline
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (2 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -20740,7 +20726,7 @@ Class: human_triggering_CDS_rule_154
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 154"
     Annotations: relevant_for Nortriptyline
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased-activity (*9, *10, *17, *29, *36, *41) alleles or 1 active (*1, *2, *33, *35) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or 1 decreased-activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -20756,7 +20742,7 @@ Class: human_triggering_CDS_rule_155
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 155"
     Annotations: relevant_for Nortriptyline
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased-activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -20772,7 +20758,7 @@ Class: human_triggering_CDS_rule_156
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 156"
     Annotations: relevant_for Metoprolol
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (2 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -20788,7 +20774,7 @@ Class: human_triggering_CDS_rule_157
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 157"
     Annotations: relevant_for Metoprolol
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased-activity (*9, *10, *17, *29, *36, *41) alleles or 1 active (*1, *2, *33, *35) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or 1 decreased-activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -20804,7 +20790,7 @@ Class: human_triggering_CDS_rule_158
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 158"
     Annotations: relevant_for Metoprolol
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -20820,7 +20806,7 @@ Class: human_triggering_CDS_rule_159
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 159"
     Annotations: relevant_for Haloperidol
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (2 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -20836,7 +20822,7 @@ Class: human_triggering_CDS_rule_160
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 160"
     Annotations: relevant_for Haloperidol
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased-activity (*9, *10, *17, *29, *36, *41) alleles or 1 active (*1, *2, *33, *35) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or 1 decreased-activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -20852,7 +20838,7 @@ Class: human_triggering_CDS_rule_161
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 161"
     Annotations: relevant_for Haloperidol
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -20868,7 +20854,7 @@ Class: human_triggering_CDS_rule_162
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 162"
     Annotations: relevant_for Flupenthixol
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (2 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -20884,7 +20870,7 @@ Class: human_triggering_CDS_rule_163
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 163"
     Annotations: relevant_for Flupenthixol
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased-activity (*9, *10, *17, *29, *36, *41) alleles or 1 active (*1, *2, *33, *35) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or 1 decreased-activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -20900,7 +20886,7 @@ Class: human_triggering_CDS_rule_164
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 164"
     Annotations: relevant_for Flupenthixol
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -20931,7 +20917,7 @@ Class: human_triggering_CDS_rule_166
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 166"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (two inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -20947,7 +20933,7 @@ Class: human_triggering_CDS_rule_167
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 167"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -20963,7 +20949,7 @@ Class: human_triggering_CDS_rule_168
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 168"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -20979,7 +20965,7 @@ Class: human_triggering_CDS_rule_169
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 169"
     Annotations: relevant_for Aripiprazole
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (two inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -20995,7 +20981,7 @@ Class: human_triggering_CDS_rule_170
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 170"
     Annotations: relevant_for Aripiprazole
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -21011,7 +20997,7 @@ Class: human_triggering_CDS_rule_171
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 171"
     Annotations: relevant_for Aripiprazole
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -21027,7 +21013,7 @@ Class: human_triggering_CDS_rule_172
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 172"
     Annotations: relevant_for Atomoxetine
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (two inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -21043,7 +21029,7 @@ Class: human_triggering_CDS_rule_173
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 173"
     Annotations: relevant_for Atomoxetine
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -21059,7 +21045,7 @@ Class: human_triggering_CDS_rule_174
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 174"
     Annotations: relevant_for Atomoxetine
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -21075,7 +21061,7 @@ Class: human_triggering_CDS_rule_175
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 175"
     Annotations: relevant_for Carvedilol
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (two inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -21091,7 +21077,7 @@ Class: human_triggering_CDS_rule_176
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 176"
     Annotations: relevant_for Carvedilol
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -21107,7 +21093,7 @@ Class: human_triggering_CDS_rule_177
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 177"
     Annotations: relevant_for Carvedilol
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -21123,7 +21109,7 @@ Class: human_triggering_CDS_rule_178
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 178"
     Annotations: relevant_for Clomipramine
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (two inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -21139,7 +21125,7 @@ Class: human_triggering_CDS_rule_179
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 179"
     Annotations: relevant_for Clomipramine
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -21155,7 +21141,7 @@ Class: human_triggering_CDS_rule_180
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 180"
     Annotations: relevant_for Clomipramine
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -21171,7 +21157,7 @@ Class: human_triggering_CDS_rule_181
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 181"
     Annotations: relevant_for Clozapine
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (two inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -21187,7 +21173,7 @@ Class: human_triggering_CDS_rule_182
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 182"
     Annotations: relevant_for Clozapine
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -21203,7 +21189,7 @@ Class: human_triggering_CDS_rule_183
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 183"
     Annotations: relevant_for Clozapine
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (a gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -21219,7 +21205,7 @@ Class: human_triggering_CDS_rule_184
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 184"
     Annotations: relevant_for Duloxetine
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (two inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -21235,7 +21221,7 @@ Class: human_triggering_CDS_rule_185
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 185"
     Annotations: relevant_for Duloxetine
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -21251,7 +21237,7 @@ Class: human_triggering_CDS_rule_186
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 186"
     Annotations: relevant_for Duloxetine
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (a gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -21267,7 +21253,7 @@ Class: human_triggering_CDS_rule_187
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 187"
     Annotations: relevant_for Imipramine
-	EquivalentTo: has some DPWG_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: PM (2 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles)"
    Annotations: phenotype_description "Poor metabolizer"
@@ -21283,7 +21269,7 @@ Class: human_triggering_CDS_rule_188
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 188"
     Annotations: relevant_for Imipramine
-	EquivalentTo: has some DPWG_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased-activity (*9, *10, *17, *29, *36, *41) alleles or 1 active (*1, *2, *33, *35) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or 1 decreased-activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -21299,7 +21285,7 @@ Class: human_triggering_CDS_rule_189
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 189"
     Annotations: relevant_for Imipramine
-	EquivalentTo: has some DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: UM (gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased activity (*9, *10, *17, *29, *36, *41) alleles)"
    Annotations: phenotype_description "Ultrarapid metabolizer"
@@ -21844,7 +21830,7 @@ Class: human_triggering_CDS_rule_224
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 224"
     Annotations: relevant_for Nortriptyline
-	EquivalentTo: has some CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Ultrarapid metabolizer: An individual carrying more than two copies of functional alleles"
    Annotations: phenotype_description "Ultrarapid metabolizer: Increased metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Lower plasma concentrations will increase probability of pharmacotherapy failure."
@@ -21861,7 +21847,7 @@ Class: human_triggering_CDS_rule_225
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 225"
     Annotations: relevant_for Nortriptyline
-	EquivalentTo: has some CPIC_CYP2D6_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Extensive metabolizer: An individual carrying two alleles encoding full or reduced function or one full function allele together with either one nonfunctional or one reduced-function allele"
    Annotations: phenotype_description "Extensive metabolizer: Normal metabolism of tricyclics."
@@ -21878,7 +21864,7 @@ Class: human_triggering_CDS_rule_226
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 226"
     Annotations: relevant_for Nortriptyline
-	EquivalentTo: has some CPIC_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Intermediate metabolizer: An individual carrying one reduced and one nonfunctional allele"
    Annotations: phenotype_description "Intermediate metabolizer: Reduced metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Higher plasma concentrations will increase the probability of side effects."
@@ -21895,7 +21881,7 @@ Class: human_triggering_CDS_rule_227
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 227"
     Annotations: relevant_for Nortriptyline
-	EquivalentTo: has some CPIC_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Poor metabolizer: An individual carrying no functional alleles"
    Annotations: phenotype_description "Poor metabolizer: Greatly reduced metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Higher plasma concentrations will increase the probability of side effects."
@@ -21912,7 +21898,7 @@ Class: human_triggering_CDS_rule_228
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 228"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Ultrarapid metabolizer: An individual carrying more than two copies of functional alleles"
    Annotations: phenotype_description "Ultrarapid metabolizer: Increased metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Lower plasma concentrations will increase probability of pharmacotherapy failure."
@@ -21929,7 +21915,7 @@ Class: human_triggering_CDS_rule_229
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 229"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2D6_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Extensive metabolizer: An individual carrying two alleles encoding full or reduced function or one full function allele together with either one nonfunctional or one reduced-function allele"
    Annotations: phenotype_description "Extensive metabolizer: Normal metabolism of tricyclics."
@@ -21946,7 +21932,7 @@ Class: human_triggering_CDS_rule_230
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 230"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Intermediate metabolizer: An individual carrying one reduced and one nonfunctional allele"
    Annotations: phenotype_description "Intermediate metabolizer: Reduced metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Higher plasma concentrations will increase the probability of side effects."
@@ -21963,7 +21949,7 @@ Class: human_triggering_CDS_rule_231
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 231"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Poor metabolizer: An individual carrying no functional alleles"
    Annotations: phenotype_description "Poor metabolizer: Greatly reduced metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Higher plasma concentrations will increase the probability of side effects."
@@ -21980,7 +21966,7 @@ Class: human_triggering_CDS_rule_232
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 232"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer (UM): An individual carrying two gain-of-function alleles or one functional allele and one gain-of-function allele"
    Annotations: phenotype_description "Ultrarapid metabolizer: Increased metabolism of amitriptyline when compared to extensive metabolizers"
@@ -21998,7 +21984,7 @@ Class: human_triggering_CDS_rule_233
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 233"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Extensive metabolizer (EM): An individual carrying two functional alleles"
    Annotations: phenotype_description "Extensive metabolizer: Normal metabolism of amitriptyline"
@@ -22015,7 +22001,7 @@ Class: human_triggering_CDS_rule_234
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 234"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Intermediate metabolizer (IM): An individual carrying one functional allele and one loss-of-function allele"
    Annotations: phenotype_description "Intermediate metabolizer: Reduced metabolism of amitriptyline when compared to extensive metabolizers"
@@ -22032,7 +22018,7 @@ Class: human_triggering_CDS_rule_235
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 235"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Poor metabolizer (PM): An individual carrying two loss-of-function alleles"
    Annotations: phenotype_description "Poor metabolizer: Greatly reduced metabolism of amitriptyline when compared to extensive metabolizers 
@@ -22164,7 +22150,7 @@ Class: human_triggering_CDS_rule_242
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 242"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_ultrarapid_metabolizer_phenotype and has some CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_ultrarapid_metabolizer_phenotype and human_with_CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer + CYP2D6 Ultrarapid metabolizer"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105006>
@@ -22180,7 +22166,7 @@ Class: human_triggering_CDS_rule_243
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 243"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_extensive_metabolizer_phenotype and has some CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_extensive_metabolizer_phenotype and human_with_CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Extensive metabolizer + CYP2D6 Ultrarapid metabolizer"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105006>
@@ -22196,7 +22182,7 @@ Class: human_triggering_CDS_rule_244
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 244"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_intermediate_metabolizer_phenotype and has some CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_intermediate_metabolizer_phenotype and human_with_CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Intermediate metabolizer + CYP2D6 Ultrarapid metabolizer"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105006>
@@ -22212,7 +22198,7 @@ Class: human_triggering_CDS_rule_245
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 245"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_poor_metabolizer_phenotype and has some CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_poor_metabolizer_phenotype and human_with_CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Poor metabolizer + CYP2D6 Ultrarapid metabolizer"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105006>
@@ -22228,7 +22214,7 @@ Class: human_triggering_CDS_rule_246
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 246"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_ultrarapid_metabolizer_phenotype and has some CPIC_CYP2D6_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_ultrarapid_metabolizer_phenotype and human_with_CPIC_CYP2D6_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer + CYP2D6 Extensive metabolizer"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105006>
@@ -22244,7 +22230,7 @@ Class: human_triggering_CDS_rule_247
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 247"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_extensive_metabolizer_phenotype and has some CPIC_CYP2D6_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_extensive_metabolizer_phenotype and human_with_CPIC_CYP2D6_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Extensive metabolizer + CYP2D6 Extensive metabolizer"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105006>
@@ -22260,7 +22246,7 @@ Class: human_triggering_CDS_rule_248
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 248"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_intermediate_metabolizer_phenotype and has some CPIC_CYP2D6_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_intermediate_metabolizer_phenotype and human_with_CPIC_CYP2D6_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Intermediate metabolizer + CYP2D6 Extensive metabolizer"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105006>
@@ -22276,7 +22262,7 @@ Class: human_triggering_CDS_rule_249
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 249"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_poor_metabolizer_phenotype and has some CPIC_CYP2D6_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_poor_metabolizer_phenotype and human_with_CPIC_CYP2D6_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Poor metabolizer + CYP2D6 Extensive metabolizer"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105006>
@@ -22292,7 +22278,7 @@ Class: human_triggering_CDS_rule_250
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 250"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_ultrarapid_metabolizer_phenotype and has some CPIC_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_ultrarapid_metabolizer_phenotype and human_with_CPIC_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer + CYP2D6 Intermediate metabolizer"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105006>
@@ -22308,7 +22294,7 @@ Class: human_triggering_CDS_rule_251
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 251"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_extensive_metabolizer_phenotype and has some CPIC_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_extensive_metabolizer_phenotype and human_with_CPIC_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Extensive metabolizer + CYP2D6 Intermediate metabolizer"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105006>
@@ -22324,7 +22310,7 @@ Class: human_triggering_CDS_rule_252
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 252"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_intermediate_metabolizer_phenotype and has some CPIC_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_intermediate_metabolizer_phenotype and human_with_CPIC_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Intermediate metabolizer + CYP2D6 Intermediate metabolizer"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105006>
@@ -22340,7 +22326,7 @@ Class: human_triggering_CDS_rule_253
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 253"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_poor_metabolizer_phenotype and has some CPIC_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_poor_metabolizer_phenotype and human_with_CPIC_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Poor metabolizer + CYP2D6 Intermediate metabolizer"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105006>
@@ -22356,7 +22342,7 @@ Class: human_triggering_CDS_rule_254
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 254"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_ultrarapid_metabolizer_phenotype and has some CPIC_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_ultrarapid_metabolizer_phenotype and human_with_CPIC_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer + CYP2D6 Poor metabolizer"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105006>
@@ -22372,7 +22358,7 @@ Class: human_triggering_CDS_rule_255
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 255"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_extensive_metabolizer_phenotype and has some CPIC_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_extensive_metabolizer_phenotype and human_with_CPIC_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Extensive metabolizer + CYP2D6 Poor metabolizer"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105006>
@@ -22388,7 +22374,7 @@ Class: human_triggering_CDS_rule_256
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 256"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_intermediate_metabolizer_phenotype and has some CPIC_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_intermediate_metabolizer_phenotype and human_with_CPIC_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Intermediate metabolizer + CYP2D6 Poor metabolizer"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105006>
@@ -22404,7 +22390,7 @@ Class: human_triggering_CDS_rule_257
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 257"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has some CPIC_CYP2C19_poor_metabolizer_phenotype and has some CPIC_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_poor_metabolizer_phenotype and human_with_CPIC_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Poor metabolizer + CYP2D6 Poor metabolizer"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105006>
@@ -22420,7 +22406,7 @@ Class: human_triggering_CDS_rule_258
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 258"
     Annotations: relevant_for Clomipramine
-	EquivalentTo: has some CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Ultrarapid metabolizer: An individual carrying more than two copies of functional alleles"
    Annotations: phenotype_description "Ultrarapid metabolizer: Increased metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Lower plasma concentrations will increase probability of pharmacotherapy failure."
@@ -22437,7 +22423,7 @@ Class: human_triggering_CDS_rule_259
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 259"
     Annotations: relevant_for Clomipramine
-	EquivalentTo: has some CPIC_CYP2D6_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Extensive metabolizer: An individual carrying two alleles encoding full or reduced function or one full function allele together with either one nonfunctional or one reduced-function allele"
    Annotations: phenotype_description "Extensive metabolizer: Normal metabolism of tricyclics."
@@ -22454,7 +22440,7 @@ Class: human_triggering_CDS_rule_260
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 260"
     Annotations: relevant_for Clomipramine
-	EquivalentTo: has some CPIC_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Intermediate metabolizer: An individual carrying one reduced and one nonfunctional allele"
    Annotations: phenotype_description "Intermediate metabolizer: Reduced metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Higher plasma concentrations will increase the probability of side effects."
@@ -22471,7 +22457,7 @@ Class: human_triggering_CDS_rule_261
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 261"
     Annotations: relevant_for Clomipramine
-	EquivalentTo: has some CPIC_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Poor metabolizer: An individual carrying no functional alleles"
    Annotations: phenotype_description "Poor metabolizer: Greatly reduced metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Higher plasma concentrations will increase the probability of side effects."
@@ -22488,7 +22474,7 @@ Class: human_triggering_CDS_rule_262
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 262"
     Annotations: relevant_for Clomipramine
-	EquivalentTo: has some CPIC_CYP2C19_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer (UM): An individual carrying two gain-of-function alleles or one functional allele and one gain-of-function allele"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105007>
@@ -22505,7 +22491,7 @@ Class: human_triggering_CDS_rule_263
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 263"
     Annotations: relevant_for Clomipramine
-	EquivalentTo: has some CPIC_CYP2C19_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Extensive metabolizer (EM): An individual carrying two functional alleles"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105007>
@@ -22521,7 +22507,7 @@ Class: human_triggering_CDS_rule_264
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 264"
     Annotations: relevant_for Clomipramine
-	EquivalentTo: has some CPIC_CYP2C19_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Intermediate metabolizer (IM): An individual carrying one functional allele and one loss-of-function allele"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105007>
@@ -22537,7 +22523,7 @@ Class: human_triggering_CDS_rule_265
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 265"
     Annotations: relevant_for Clomipramine
-	EquivalentTo: has some CPIC_CYP2C19_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Poor metabolizer (PM): An individual carrying two loss-of-function alleles"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105007>
@@ -22553,7 +22539,7 @@ Class: human_triggering_CDS_rule_266
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 266"
     Annotations: relevant_for Desipramine
-	EquivalentTo: has some CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Ultrarapid metabolizer: An individual carrying more than two copies of functional alleles"
    Annotations: phenotype_description "Ultrarapid metabolizer: Increased metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Lower plasma concentrations will increase probability of pharmacotherapy failure."
@@ -22570,7 +22556,7 @@ Class: human_triggering_CDS_rule_267
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 267"
     Annotations: relevant_for Desipramine
-	EquivalentTo: has some CPIC_CYP2D6_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Extensive metabolizer: An individual carrying two alleles encoding full or reduced function or one full function allele together with either one nonfunctional or one reduced-function allele"
    Annotations: phenotype_description "Extensive metabolizer: Normal metabolism of tricyclics."
@@ -22587,7 +22573,7 @@ Class: human_triggering_CDS_rule_268
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 268"
     Annotations: relevant_for Desipramine
-	EquivalentTo: has some CPIC_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Intermediate metabolizer: An individual carrying one reduced and one nonfunctional allele"
    Annotations: phenotype_description "Intermediate metabolizer: Reduced metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Higher plasma concentrations will increase the probability of side effects."
@@ -22604,7 +22590,7 @@ Class: human_triggering_CDS_rule_269
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 269"
     Annotations: relevant_for Desipramine
-	EquivalentTo: has some CPIC_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Poor metabolizer: An individual carrying no functional alleles"
    Annotations: phenotype_description "Poor metabolizer: Greatly reduced metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Higher plasma concentrations will increase the probability of side effects."
@@ -22621,7 +22607,7 @@ Class: human_triggering_CDS_rule_270
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 270"
     Annotations: relevant_for Desipramine
-	EquivalentTo: has some CPIC_CYP2C19_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer (UM): An individual carrying two gain-of-function alleles or one functional allele and one gain-of-function allele"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105002>
@@ -22638,7 +22624,7 @@ Class: human_triggering_CDS_rule_271
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 271"
     Annotations: relevant_for Desipramine
-	EquivalentTo: has some CPIC_CYP2C19_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Extensive metabolizer (EM): An individual carrying two functional alleles"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105002>
@@ -22654,7 +22640,7 @@ Class: human_triggering_CDS_rule_272
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 272"
     Annotations: relevant_for Desipramine
-	EquivalentTo: has some CPIC_CYP2C19_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Intermediate metabolizer (IM): An individual carrying one functional allele and one loss-of-function allele"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105002>
@@ -22670,7 +22656,7 @@ Class: human_triggering_CDS_rule_273
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 273"
     Annotations: relevant_for Desipramine
-	EquivalentTo: has some CPIC_CYP2C19_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Poor metabolizer (PM): An individual carrying two loss-of-function alleles"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105002>
@@ -22686,7 +22672,7 @@ Class: human_triggering_CDS_rule_274
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 274"
     Annotations: relevant_for Doxepin
-	EquivalentTo: has some CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Ultrarapid metabolizer: An individual carrying more than two copies of functional alleles"
    Annotations: phenotype_description "Ultrarapid metabolizer: Increased metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Lower plasma concentrations will increase probability of pharmacotherapy failure."
@@ -22703,7 +22689,7 @@ Class: human_triggering_CDS_rule_275
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 275"
     Annotations: relevant_for Doxepin
-	EquivalentTo: has some CPIC_CYP2D6_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Extensive metabolizer: An individual carrying two alleles encoding full or reduced function or one full function allele together with either one nonfunctional or one reduced-function allele"
    Annotations: phenotype_description "Extensive metabolizer: Normal metabolism of tricyclics."
@@ -22720,7 +22706,7 @@ Class: human_triggering_CDS_rule_276
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 276"
     Annotations: relevant_for Doxepin
-	EquivalentTo: has some CPIC_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Intermediate metabolizer: An individual carrying one reduced and one nonfunctional allele"
    Annotations: phenotype_description "Intermediate metabolizer: Reduced metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Higher plasma concentrations will increase the probability of side effects."
@@ -22737,7 +22723,7 @@ Class: human_triggering_CDS_rule_277
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 277"
     Annotations: relevant_for Doxepin
-	EquivalentTo: has some CPIC_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Poor metabolizer: An individual carrying no functional alleles"
    Annotations: phenotype_description "Poor metabolizer: Greatly reduced metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Higher plasma concentrations will increase the probability of side effects."
@@ -22754,7 +22740,7 @@ Class: human_triggering_CDS_rule_278
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 278"
     Annotations: relevant_for Doxepin
-	EquivalentTo: has some CPIC_CYP2C19_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer (UM): An individual carrying two gain-of-function alleles or one functional allele and one gain-of-function allele"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105000>
@@ -22771,7 +22757,7 @@ Class: human_triggering_CDS_rule_279
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 279"
     Annotations: relevant_for Doxepin
-	EquivalentTo: has some CPIC_CYP2C19_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Extensive metabolizer (EM): An individual carrying two functional alleles"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105000>
@@ -22787,7 +22773,7 @@ Class: human_triggering_CDS_rule_280
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 280"
     Annotations: relevant_for Doxepin
-	EquivalentTo: has some CPIC_CYP2C19_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Intermediate metabolizer (IM): An individual carrying one functional allele and one loss-of-function allele"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105000>
@@ -22803,7 +22789,7 @@ Class: human_triggering_CDS_rule_281
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 281"
     Annotations: relevant_for Doxepin
-	EquivalentTo: has some CPIC_CYP2C19_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Poor metabolizer (PM): An individual carrying two loss-of-function alleles"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105000>
@@ -22819,7 +22805,7 @@ Class: human_triggering_CDS_rule_282
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 282"
     Annotations: relevant_for Imipramine
-	EquivalentTo: has some CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Ultrarapid metabolizer: An individual carrying more than two copies of functional alleles"
    Annotations: phenotype_description "Ultrarapid metabolizer: Increased metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Lower plasma concentrations will increase probability of pharmacotherapy failure."
@@ -22836,7 +22822,7 @@ Class: human_triggering_CDS_rule_283
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 283"
     Annotations: relevant_for Imipramine
-	EquivalentTo: has some CPIC_CYP2D6_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Extensive metabolizer: An individual carrying two alleles encoding full or reduced function or one full function allele together with either one nonfunctional or one reduced-function allele"
    Annotations: phenotype_description "Extensive metabolizer: Normal metabolism of tricyclics."
@@ -22853,7 +22839,7 @@ Class: human_triggering_CDS_rule_284
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 284"
     Annotations: relevant_for Imipramine
-	EquivalentTo: has some CPIC_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Intermediate metabolizer: An individual carrying one reduced and one nonfunctional allele"
    Annotations: phenotype_description "Intermediate metabolizer: Reduced metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Higher plasma concentrations will increase the probability of side effects."
@@ -22870,7 +22856,7 @@ Class: human_triggering_CDS_rule_285
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 285"
     Annotations: relevant_for Imipramine
-	EquivalentTo: has some CPIC_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Poor metabolizer: An individual carrying no functional alleles"
    Annotations: phenotype_description "Poor metabolizer: Greatly reduced metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Higher plasma concentrations will increase the probability of side effects."
@@ -22887,7 +22873,7 @@ Class: human_triggering_CDS_rule_286
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 286"
     Annotations: relevant_for Imipramine
-	EquivalentTo: has some CPIC_CYP2C19_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer (UM): An individual carrying two gain-of-function alleles or one functional allele and one gain-of-function allele"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166104999>
@@ -22904,7 +22890,7 @@ Class: human_triggering_CDS_rule_287
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 287"
     Annotations: relevant_for Imipramine
-	EquivalentTo: has some CPIC_CYP2C19_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Extensive metabolizer (EM): An individual carrying two functional alleles"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166104999>
@@ -22920,7 +22906,7 @@ Class: human_triggering_CDS_rule_288
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 288"
     Annotations: relevant_for Imipramine
-	EquivalentTo: has some CPIC_CYP2C19_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Intermediate metabolizer (IM): An individual carrying one functional allele and one loss-of-function allele"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166104999>
@@ -22936,7 +22922,7 @@ Class: human_triggering_CDS_rule_289
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 289"
     Annotations: relevant_for Imipramine
-	EquivalentTo: has some CPIC_CYP2C19_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Poor metabolizer (PM): An individual carrying two loss-of-function alleles"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166104999>
@@ -22952,7 +22938,7 @@ Class: human_triggering_CDS_rule_290
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 290"
     Annotations: relevant_for Trimipramine
-	EquivalentTo: has some CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Ultrarapid metabolizer: An individual carrying more than two copies of functional alleles"
    Annotations: phenotype_description "Ultrarapid metabolizer: Increased metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Lower plasma concentrations will increase probability of pharmacotherapy failure."
@@ -22969,7 +22955,7 @@ Class: human_triggering_CDS_rule_291
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 291"
     Annotations: relevant_for Trimipramine
-	EquivalentTo: has some CPIC_CYP2D6_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Extensive metabolizer: An individual carrying two alleles encoding full or reduced function or one full function allele together with either one nonfunctional or one reduced-function allele"
    Annotations: phenotype_description "Extensive metabolizer: Normal metabolism of tricyclics."
@@ -22986,7 +22972,7 @@ Class: human_triggering_CDS_rule_292
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 292"
     Annotations: relevant_for Trimipramine
-	EquivalentTo: has some CPIC_CYP2D6_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Intermediate metabolizer: An individual carrying one reduced and one nonfunctional allele"
    Annotations: phenotype_description "Intermediate metabolizer: Reduced metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Higher plasma concentrations will increase the probability of side effects."
@@ -23003,7 +22989,7 @@ Class: human_triggering_CDS_rule_293
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 293"
     Annotations: relevant_for Trimipramine
-	EquivalentTo: has some CPIC_CYP2D6_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2D6_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2D6 Poor metabolizer: An individual carrying no functional alleles"
    Annotations: phenotype_description "Poor metabolizer: Greatly reduced metabolism of tricyclics to less active compounds when compared to extensive metabolizers. Higher plasma concentrations will increase the probability of side effects."
@@ -23020,7 +23006,7 @@ Class: human_triggering_CDS_rule_294
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 294"
     Annotations: relevant_for Trimipramine
-	EquivalentTo: has some CPIC_CYP2C19_ultrarapid_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_ultrarapid_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer (UM): An individual carrying two gain-of-function alleles or one functional allele and one gain-of-function allele"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105001>
@@ -23037,7 +23023,7 @@ Class: human_triggering_CDS_rule_295
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 295"
     Annotations: relevant_for Trimipramine
-	EquivalentTo: has some CPIC_CYP2C19_extensive_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_extensive_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Extensive metabolizer (EM): An individual carrying two functional alleles"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105001>
@@ -23053,7 +23039,7 @@ Class: human_triggering_CDS_rule_296
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 296"
     Annotations: relevant_for Trimipramine
-	EquivalentTo: has some CPIC_CYP2C19_intermediate_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_intermediate_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Intermediate metabolizer (IM): An individual carrying one functional allele and one loss-of-function allele"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105001>
@@ -23069,7 +23055,7 @@ Class: human_triggering_CDS_rule_297
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 297"
     Annotations: relevant_for Trimipramine
-	EquivalentTo: has some CPIC_CYP2C19_poor_metabolizer_phenotype
+ SubClassOf: human_with_CPIC_CYP2C19_poor_metabolizer_phenotype
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Poor metabolizer (PM): An individual carrying two loss-of-function alleles"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/guideline/PA166105001>
@@ -23648,171 +23634,171 @@ Class: Trimipramine
 Annotations: rdfs:seeAlso <http://bio2rdf.org/drugbank:DB00726>
     Annotations: rdfs:comment "Tricyclic antidepressant similar to imipramine, but with more antihistaminic and sedative properties. [Adapted from PubChem]"
 
-Class: CPIC_CYP2C19_ultrarapid_metabolizer_phenotype
-	SubClassOf: phenotype
+Class: human_with_CPIC_CYP2C19_ultrarapid_metabolizer_phenotype
+	SubClassOf: human_triggering_phenotype_inference_rule 
 	EquivalentTo: has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1
-	Annotations: rdfs:label "CPIC_CYP2C19_ultrarapid_metabolizer_phenotype"
+	Annotations: rdfs:label "human with CPIC CYP2C19 ultrarapid metabolizer phenotype"
 	Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_TCAguideline2012.pdf>
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_TCAsupplement2012.pdf>
    Annotations: author_last_validation ""
 	Annotations: textual_genetic_description "An individual carrying two gain-of-function alleles or one functional allele and one gain-of-function allele"
 
-Class: CPIC_CYP2C19_extensive_metabolizer_phenotype
-	SubClassOf: phenotype
+Class: human_with_CPIC_CYP2C19_extensive_metabolizer_phenotype
+	SubClassOf: human_triggering_phenotype_inference_rule 
 	EquivalentTo: has exactly 2 CYP2C19_star_1
-	Annotations: rdfs:label "CPIC_CYP2C19_extensive_metabolizer_phenotype"
+	Annotations: rdfs:label "human with CPIC CYP2C19 extensive metabolizer phenotype"
 	Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_TCAguideline2012.pdf>
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_TCAsupplement2012.pdf>
    Annotations: author_last_validation ""
 	Annotations: textual_genetic_description "An individual carrying two functional alleles"
 
-Class: CPIC_CYP2C19_intermediate_metabolizer_phenotype
-	SubClassOf: phenotype
+Class: human_with_CPIC_CYP2C19_intermediate_metabolizer_phenotype
+	SubClassOf: human_triggering_phenotype_inference_rule 
 	EquivalentTo: has some CYP2C19_star_1 and has some (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)
-	Annotations: rdfs:label "CPIC_CYP2C19_intermediate_metabolizer_phenotype"
+	Annotations: rdfs:label "human with CPIC CYP2C19 intermediate metabolizer phenotype"
 	Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_TCAguideline2012.pdf>
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_TCAsupplement2012.pdf>
    Annotations: author_last_validation ""
 	Annotations: textual_genetic_description "An individual carrying one functional allele and one loss-of-function allele"
 
-Class: CPIC_CYP2C19_poor_metabolizer_phenotype
-	SubClassOf: phenotype
+Class: human_with_CPIC_CYP2C19_poor_metabolizer_phenotype
+	SubClassOf: human_triggering_phenotype_inference_rule 
 	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)
-	Annotations: rdfs:label "CPIC_CYP2C19_poor_metabolizer_phenotype"
+	Annotations: rdfs:label "human with CPIC CYP2C19 poor metabolizer phenotype"
 	Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_TCAguideline2012.pdf>
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_TCAsupplement2012.pdf>
    Annotations: author_last_validation ""
 	Annotations: textual_genetic_description "An individual carrying two loss-of-function alleles"
 
-Class: CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
-	SubClassOf: phenotype
+Class: human_with_CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
+	SubClassOf: human_triggering_phenotype_inference_rule 
 	EquivalentTo: has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53)
-	Annotations: rdfs:label "CPIC_CYP2D6_ultrarapid_metabolizer_phenotype"
+	Annotations: rdfs:label "human with CPIC CYP2D6 ultrarapid metabolizer phenotype"
 	Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_TCAguideline2012.pdf>
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_TCAsupplement2012.pdf>
    Annotations: author_last_validation ""
 	Annotations: textual_genetic_description "An individual carrying duplications of functional alleles"
 
-Class: CPIC_CYP2D6_extensive_metabolizer_phenotype
-	SubClassOf: phenotype
+Class: human_with_CPIC_CYP2D6_extensive_metabolizer_phenotype
+	SubClassOf: human_triggering_phenotype_inference_rule 
 	EquivalentTo: has exactly 2 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62))
-	Annotations: rdfs:label "CPIC_CYP2D6_extensive_metabolizer_phenotype"
+	Annotations: rdfs:label "human with CPIC CYP2D6 extensive metabolizer phenotype"
 	Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_TCAguideline2012.pdf>
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_TCAsupplement2012.pdf>
    Annotations: author_last_validation ""
-	Annotations: textual_genetic_description "An individual carrying two functional alleles or two reduced function alleles or one functional and nonfunctional allele or one functional and reduced function allele"
+	Annotations: textual_genetic_description "An individual carrying two functional alleles or two reduced function alleles or one functional and nonfunctional allele or one functional and reduced function allele. *1/*1,*2/*2,*9/*9,*10/*10,*17/*17,*27/*27,*29/*29,*33/*33,*35/*35,*39/*39,*41/*41,*45/*45,*46/*46,*48/*48,*49/*49,*50/*50,*53/*53,*54/*54,*55/*55,*59/*59,*69/*69,*72/*72,*1/*3,*1/*4,*1/*5,*1/*6,*1/*7,*1/*8,*1/*11,*1/*12,*1/*13,*1/*14,*1/*15,*1/*16,*1/*18,*1/*19,*1/*20,*1/*21,*1/*31,*1/*36,*1/*38,*1/*40,*1/*42,*1/*44,*1/*47,*1/*51,*1/*56,*1/*57,*1/*62,*2/*3,*2/*4,*2/*5,*2/*6,*2/*7,*2/*8,*2/*11,*2/*12,*2/*13,*2/*14,*2/*15,*2/*16,*2/*18,*2/*19,*2/*20,*2/*21,*2/*31,*2/*36,*2/*38,*2/*40,*2/*42,*2/*44,*2/*47,*2/*51,*2/*56,*2/*57,*2/*62,*27/*3,*27/*4,*27/*5,*27/*6,*27/*7,*27/*8,*27/*11,*27/*12,*27/*13,*27/*14,*27/*15,*27/*16,*27/*18,*27/*19,*27/*20,*27/*21,*27/*31,*27/*36,*27/*38,*27/*40,*27/*42,*27/*44,*27/*47,*27/*51,*27/*56,*27/*57,*27/*62,*33/*3,*33/*4,*33/*5,*33/*6,*33/*7,*33/*8,*33/*11,*33/*12,*33/*13,*33/*14,*33/*15,*33/*16,*33/*18,*33/*19,*33/*20,*33/*21,*33/*31,*33/*36,*33/*38,*33/*40,*33/*42,*33/*44,*33/*47,*33/*51,*33/*56,*33/*57,*33/*62,*35/*3,*35/*4,*35/*5,*35/*6,*35/*7,*35/*8,*35/*11,*35/*12,*35/*13,*35/*14,*35/*15,*35/*16,*35/*18,*35/*19,*35/*20,*35/*21,*35/*31,*35/*36,*35/*38,*35/*40,*35/*42,*35/*44,*35/*47,*35/*51,*35/*56,*35/*57,*35/*62,*39/*3,*39/*4,*39/*5,*39/*6,*39/*7,*39/*8,*39/*11,*39/*12,*39/*13,*39/*14,*39/*15,*39/*16,*39/*18,*39/*19,*39/*20,*39/*21,*39/*31,*39/*36,*39/*38,*39/*40,*39/*42,*39/*44,*39/*47,*39/*51,*39/*56,*39/*57,*39/*62,*45/*3,*45/*4,*45/*5,*45/*6,*45/*7,*45/*8,*45/*11,*45/*12,*45/*13,*45/*14,*45/*15,*45/*16,*45/*18,*45/*19,*45/*20,*45/*21,*45/*31,*45/*36,*45/*38,*45/*40,*45/*42,*45/*44,*45/*47,*45/*51,*45/*56,*45/*57,*45/*62,*46/*3,*46/*4,*46/*5,*46/*6,*46/*7,*46/*8,*46/*11,*46/*12,*46/*13,*46/*14,*46/*15,*46/*16,*46/*18,*46/*19,*46/*20,*46/*21,*46/*31,*46/*36,*46/*38,*46/*40,*46/*42,*46/*44,*46/*47,*46/*51,*46/*56,*46/*57,*46/*62,*48/*3,*48/*4,*48/*5,*48/*6,*48/*7,*48/*8,*48/*11,*48/*12,*48/*13,*48/*14,*48/*15,*48/*16,*48/*18,*48/*19,*48/*20,*48/*21,*48/*31,*48/*36,*48/*38,*48/*40,*48/*42,*48/*44,*48/*47,*48/*51,*48/*56,*48/*57,*48/*62,*53/*3,*53/*4,*53/*5,*53/*6,*53/*7,*53/*8,*53/*11,*53/*12,*53/*13,*53/*14,*53/*15,*53/*16,*53/*18,*53/*19,*53/*20,*53/*21,*53/*31,*53/*36,*53/*38,*53/*40,*53/*42,*53/*44,*53/*47,*53/*51,*53/*56,*53/*57,*53/*62"
 
-Class: CPIC_CYP2D6_intermediate_metabolizer_phenotype
-	SubClassOf: phenotype
+Class: human_with_CPIC_CYP2D6_intermediate_metabolizer_phenotype
+	SubClassOf: human_triggering_phenotype_inference_rule 
 	EquivalentTo: has some (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
-	Annotations: rdfs:label "CPIC_CYP2D6_intermediate_metabolizer_phenotype"
+	Annotations: rdfs:label "human with CPIC CYP2D6 intermediate metabolizer phenotype"
 	Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_TCAguideline2012.pdf>
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_TCAsupplement2012.pdf>
    Annotations: author_last_validation ""
 	Annotations: textual_genetic_description "An individual carrying one reduced function and one nonfunctional allele"
 
-Class: CPIC_CYP2D6_poor_metabolizer_phenotype
-	SubClassOf: phenotype
+Class: human_with_CPIC_CYP2D6_poor_metabolizer_phenotype
+	SubClassOf: human_triggering_phenotype_inference_rule 
 	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
-	Annotations: rdfs:label "CPIC_CYP2D6_poor_metabolizer_phenotype"
+	Annotations: rdfs:label "human with CPIC CYP2D6 poor metabolizer phenotype"
 	Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_TCAguideline2012.pdf>
 Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_TCAsupplement2012.pdf>
    Annotations: author_last_validation ""
 	Annotations: textual_genetic_description "An individual carrying only nonfunctional alleles"
 
-Class: DPWG_CYP2C19_intermediate_metabolizer_phenotype
-	SubClassOf: phenotype
+Class: human_with_DPWG_CYP2C19_intermediate_metabolizer_phenotype
+	SubClassOf: human_triggering_phenotype_inference_rule 
 	EquivalentTo: has some (CYP2C19_star_1 or CYP2C19_star_17) and has some (CYP2C19_star_2 or CYP2C19_star_3)
-	Annotations: rdfs:label "DPWG_CYP2C19_intermediate_metabolizer_phenotype"
+	Annotations: rdfs:label "human with DPWG CYP2C19 intermediate metabolizer phenotype"
 	Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
 Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
    Annotations: author_last_validation ""
 	Annotations: textual_genetic_description "*1/*2, *1/*3, *17/*2, *17/*3"
 
-Class: DPWG_CYP2C19_poor_metabolizer_phenotype
-	SubClassOf: phenotype
+Class: human_with_DPWG_CYP2C19_poor_metabolizer_phenotype
+	SubClassOf: human_triggering_phenotype_inference_rule 
 	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3)
-	Annotations: rdfs:label "DPWG_CYP2C19_poor_metabolizer_phenotype"
+	Annotations: rdfs:label "human with DPWG CYP2C19 poor metabolizer phenotype"
 	Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
 Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
    Annotations: author_last_validation ""
 	Annotations: textual_genetic_description "*2/*2, *2/*3, *3/*3"
 
-Class: DPWG_CYP2C19_ultrarapid_metabolizer_phenotype
-	SubClassOf: phenotype
+Class: human_with_DPWG_CYP2C19_ultrarapid_metabolizer_phenotype
+	SubClassOf: human_triggering_phenotype_inference_rule 
 	EquivalentTo: has exactly 2 CYP2C19_star_17
-	Annotations: rdfs:label "DPWG_CYP2C19_ultrarapid_metabolizer_phenotype"
+	Annotations: rdfs:label "human with DPWG CYP2C19 ultrarapid metabolizer phenotype"
 	Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
 Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
    Annotations: author_last_validation ""
 	Annotations: textual_genetic_description "*17/*17"
 
-Class: DPWG_CYP2D6_intermediate_metabolizer_phenotype
-	SubClassOf: phenotype
+Class: human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
+	SubClassOf: human_triggering_phenotype_inference_rule 
 	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
-	Annotations: rdfs:label "DPWG_CYP2D6_intermediate_metabolizer_phenotype"
+	Annotations: rdfs:label "human with DPWG CYP2D6 intermediate metabolizer phenotype"
 	Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
 Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
    Annotations: author_last_validation ""
 	Annotations: textual_genetic_description "Two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele"
 
-Class: DPWG_CYP2D6_poor_metabolizer_phenotype
-	SubClassOf: phenotype
+Class: human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
+	SubClassOf: human_triggering_phenotype_inference_rule 
 	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
-	Annotations: rdfs:label "DPWG_CYP2D6_poor_metabolizer_phenotype"
+	Annotations: rdfs:label "human with DPWG CYP2D6 poor metabolizer phenotype"
 	Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
 Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
    Annotations: author_last_validation ""
 	Annotations: textual_genetic_description "Two inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) alleles"
 
-Class: DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
-	SubClassOf: phenotype
+Class: human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+	SubClassOf: human_triggering_phenotype_inference_rule 
 	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
-	Annotations: rdfs:label "DPWG_CYP2D6_ultrarapid_metabolizer_phenotype"
+	Annotations: rdfs:label "human with DPWG CYP2D6 ultrarapid metabolizer phenotype"
 	Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
 Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
    Annotations: author_last_validation ""
 	Annotations: textual_genetic_description "Gene duplication in absence of inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) or decreased activity (*9, *10, *17, *29, *36, *41) alleles"
 
-Class: DPWG_TPMT_intermediate_metabolizer_phenotype
-	SubClassOf: phenotype
+Class: human_with_DPWG_TPMT_intermediate_metabolizer_phenotype
+	SubClassOf: human_triggering_phenotype_inference_rule 
 	EquivalentTo: has some (TPMT_star_1 or TPMT_star_1S or TPMT_star_1A) and has some (TPMT_star_2 or TPMT_star_3A or TPMT_star_3B or TPMT_star_3C or TPMT_star_3D or TPMT_star_4 or TPMT_star_5 or TPMT_star_6 or TPMT_star_7 or TPMT_star_8 or TPMT_star_9 or TPMT_star_10 or TPMT_star_11 or TPMT_star_12 or TPMT_star_13 or TPMT_star_14 or TPMT_star_15 or TPMT_star_16 or TPMT_star_17 or TPMT_star_18)
-	Annotations: rdfs:label "DPWG_TPMT_intermediate_metabolizer_phenotype"
+	Annotations: rdfs:label "human with DPWG TPMT intermediate metabolizer phenotype"
 	Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
 Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
    Annotations: author_last_validation ""
 	Annotations: textual_genetic_description "Patients carrying one active (*1, *1S, *1A) and one inactive (*2, *3A-*3D, *4-*18) allele"
 
-Class: DPWG_TPMT_poor_metabolizer_phenotype
-	SubClassOf: phenotype
+Class: human_with_DPWG_TPMT_poor_metabolizer_phenotype
+	SubClassOf: human_triggering_phenotype_inference_rule 
 	EquivalentTo: has exactly 2 (TPMT_star_2 or TPMT_star_3A or TPMT_star_3B or TPMT_star_3C or TPMT_star_3D or TPMT_star_4 or TPMT_star_5 or TPMT_star_6 or TPMT_star_7 or TPMT_star_8 or TPMT_star_9 or TPMT_star_10 or TPMT_star_11 or TPMT_star_12 or TPMT_star_13 or TPMT_star_14 or TPMT_star_15 or TPMT_star_16 or TPMT_star_17 or TPMT_star_18)
-	Annotations: rdfs:label "DPWG_TPMT_poor_metabolizer_phenotype"
+	Annotations: rdfs:label "human with DPWG TPMT poor metabolizer phenotype"
 	Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
 Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
    Annotations: author_last_validation ""
 	Annotations: textual_genetic_description "Patients carrying two inactive (*2, *3A-*3D, *4-*18) alleles"
 
-Class: DPWG_DPYD_poor_metabolizer_phenotype
-	SubClassOf: phenotype
+Class: human_with_DPWG_DPYD_poor_metabolizer_phenotype
+	SubClassOf: human_triggering_phenotype_inference_rule 
 	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)
-	Annotations: rdfs:label "DPWG_DPYD_poor_metabolizer_phenotype"
+	Annotations: rdfs:label "human with DPWG DPYD poor metabolizer phenotype"
 	Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
 Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
    Annotations: author_last_validation ""
 	Annotations: textual_genetic_description "2 inactive alleles (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T), 2 decreased activity alleles (*9B, *10), or one inactive (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T) and one decreased activity allele (*9B, *10)"
 
-Class: DPWG_DPYD_intermediate_metabolizer_phenotype
-	SubClassOf: phenotype
+Class: human_with_DPWG_DPYD_intermediate_metabolizer_phenotype
+	SubClassOf: human_triggering_phenotype_inference_rule 
 	EquivalentTo: has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)
-	Annotations: rdfs:label "DPWG_DPYD_intermediate_metabolizer_phenotype"
+	Annotations: rdfs:label "human with DPWG DPYD intermediate metabolizer phenotype"
 	Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
 Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
    Annotations: author_last_validation ""

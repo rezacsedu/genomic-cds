@@ -820,8 +820,12 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 		$owl .= "    Annotations: relevant_for " . make_valid_id($drug_label) . "\n";
 		$drug_labels[] = $drug_label;
 	}
-	
-	$owl .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($logical_description_of_genetic_attributes)) . "\n";
+	if(strpos($logical_description_of_genetic_attributes,'has') !== false){
+		$owl .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($logical_description_of_genetic_attributes)) . "\n";
+	}else{
+		//print("equivalent->".$logical_description_of_genetic_attributes."\n");
+		$owl .= " SubClassOf: " . preg_replace('/\s+/', ' ', trim($logical_description_of_genetic_attributes)) . "\n";
+	}
 	$owl .= "   Annotations: source \"" . $source_repository . "\"\n";
 	
 	if(isset($textual_description_of_genetic_attributes) && $textual_description_of_genetic_attributes != ""){
@@ -923,7 +927,7 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	if(!isset($row_array['A']) || $row_array['A'] == ""){
 		continue;		
 	}
-	$phenotype_label = $row_array["A"];
+	$phenotype_label = "human with ".$row_array["A"];
 	
 	if(isset($row_array["B"])){
 		$phenotype_source = $row_array["B"];
@@ -979,12 +983,11 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	}
 	
 	$owl .= "Class: " . make_valid_id($phenotype_label) . "\n";
-	$owl .= "	SubClassOf: phenotype" . "\n";
+	$owl .= "	SubClassOf: human_triggering_phenotype_inference_rule " . "\n";
 	$owl .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($phenotype_logical_statements)) . "\n";
 	$owl .= "	Annotations: rdfs:label \"" . $phenotype_label . "\"\n";
 	$owl .= "	Annotations: source \"" . $phenotype_source . "\"\n";
 	$owl .= parse_multiple_URLs($phenotype_URL);
-	//$owl .= "	Annotations: rdfs:seeAlso <" . $phenotype_URL . ">\n";
 	
 	if(isset($date_of_evidence) && $date_of_evidence == ""){
 		$owl .= "   Annotations: date_of_evidence \"" . $date_of_evidence . "\"\n";
@@ -1001,8 +1004,6 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	if(isset($author_addition) && $author_addition == ""){
 		$owl .= "   Annotations: author_addition \"" . $author_addition . "\"\n";
 	}
-	//print("Phenotype description ".$phenotype_textual_description."\n");
-	//print("Clean phenotype description ".clean_comment_string($phenotype_textual_description)."\n");
 	$owl .= "	Annotations: textual_genetic_description \"" . clean_comment_string($phenotype_textual_description) . "\"\n\n";
 }
 

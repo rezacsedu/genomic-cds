@@ -156,8 +156,7 @@ WARNING: No polymorphism variants found at all for CYP2D6_star_27
 INFO: No tagging polymorphism variants found for CYP2D6_star_27
 WARNING: No polymorphism variants found at all for CYP2D6_star_31
 INFO: No tagging polymorphism variants found for CYP2D6_star_31
-WARNING: No polymorphism variants found at all for CYP2D6_star_33
-INFO: No tagging polymorphism variants found for CYP2D6_star_33
+ERROR: Polymorphism variant "rs1065852_" in allele CYP2D6 *33 does not match dbSNP. Skipping conversion for the entire allele.
 WARNING: No polymorphism variants found at all for CYP2D6_star_35
 INFO: No tagging polymorphism variants found for CYP2D6_star_35
 WARNING: No polymorphism variants found at all for CYP2D6_star_36

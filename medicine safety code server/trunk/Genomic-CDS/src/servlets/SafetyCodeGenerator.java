@@ -85,10 +85,9 @@ public class SafetyCodeGenerator extends HttpServlet {
 	        	         
 	        MedicineSafetyProfileOptimized myProfile = new MedicineSafetyProfileOptimized(path+"MSC_classes.owl");
 	        String processingReport = myProfile.parseFileStream(file2Parse.getInputStream(), strandOrientationOfInputData,fileformat);
-        	String encodedProfileURL = URLEncoder.encode(Common.ROOT_URL+"/"+Common.VERSION+"?code="+myProfile.getBase64ProfileString(), "UTF-8");
+        	String encodedProfileURL = URLEncoder.encode(Common.ROOT_URL+"/"+Common.VERSION+"/"+myProfile.getBase64ProfileString(), "UTF-8");
         	contentHTML.append("<p align='center'><img src='"+Common.ROOT_URL+"/MSCImageGenerator?url=" + encodedProfileURL + "' alt='Medicine Safety Code' /></p>");
         	contentHTML.append("<p>You can visit the generated profile <a href='" + Common.ROOT_URL+"/"+Common.VERSION+"/"+myProfile.getBase64ProfileString()+ "'> here</a>.</p>");
-        	//contentHTML.append("<p>You can visit the generated profile <a href='" + Common.ROOT_URL+"/"+Common.VERSION+"?code="+myProfile.getBase64ProfileString()+ "'> here</a>.</p>");
         	contentHTML.append("<h3>Processing report</h3><p>\n" + processingReport + "\n</p>");
         	
 	    } catch (FileUploadException e) {
