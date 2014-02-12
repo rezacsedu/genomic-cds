@@ -93,6 +93,11 @@ AnnotationProperty: phenotype_description
         rdfs:label "Phenotype description",
         rdfs:comment "Textual description of a phenotype associated to a CDS rule."
 		
+AnnotationProperty: recommendation_importance
+    Annotations: 
+        rdfs:label "recommendation_importance",
+        rdfs:comment "Textual description of the importance of a CDS rule. The rules with 'Standard treatment' as value are treated like normal drug recommendation."
+		
 AnnotationProperty: date_of_evidence
     Annotations: 
         rdfs:label "Date of evidence",
