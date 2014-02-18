@@ -761,6 +761,12 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 		$recommendation_in_english = "";
 	}
 	
+	if(isset($row_array['J'])){
+		$recommendation_importance = $row_array['J'];
+	}else{
+		$recommendation_importance = "";
+	}
+	
 	if(isset($row_array['L'])){
 		$recommendation_URL = $row_array['L'];
 	}else{
@@ -825,6 +831,10 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	
 	if(isset($phenotype_description) && $phenotype_description != ""){
 		$owl .= "   Annotations: phenotype_description \"" . clean_comment_string($phenotype_description) . "\"\n";
+	}
+	
+	if(isset($recommendation_importance) && $recommendation_importance != ""){
+		$owl .= "   Annotations: recommendation_importance \"" . $recommendation_importance . "\"\n";
 	}
 	
 	if(isset($recommendation_URL) && $recommendation_URL != ""){
