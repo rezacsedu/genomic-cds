@@ -262,7 +262,7 @@ DisjointClasses:
 
 
 Ontology: <http://www.genomic-cds.org/ont/genomic-cds.owl>
-    Annotations: owl:versionInfo "2014/03/14"
+    Annotations: owl:versionInfo "2014/03/18"
 
 
 #
@@ -5376,9 +5376,9 @@ Class: rs8175347
 Class: human 
     SubClassOf: has exactly 2 rs8175347
 
-Class: rs8175347__TA_5
+Class: rs8175347_TA_5
     SubClassOf: rs8175347
-    Annotations: rdfs:label "rs8175347__TA_5" 
+    Annotations: rdfs:label "rs8175347_TA_5" 
 
 Class: rs8175347_6
     SubClassOf: rs8175347
@@ -5392,9 +5392,9 @@ Class: rs8175347_8
     SubClassOf: rs8175347
     Annotations: rdfs:label "rs8175347_8" 
 
-Class: rs8175347__TA_5
+Class: rs8175347_TA_5
 DisjointClasses:
-rs8175347__TA_5,rs8175347_6,rs8175347_7,rs8175347_8
+rs8175347_TA_5,rs8175347_6,rs8175347_7,rs8175347_8
 
 Class: rs8176318
     SubClassOf: polymorphism
@@ -7774,9 +7774,9 @@ Class: rs34743033
 Class: human 
     SubClassOf: has exactly 2 rs34743033
 
-Class: rs34743033__CCGCGCCACTTCGCCTGCCTCCGTCCCG_2
+Class: rs34743033_CCGCGCCACTTCGCCTGCCTCCGTCCCG_2
     SubClassOf: rs34743033
-    Annotations: rdfs:label "rs34743033__CCGCGCCACTTCGCCTGCCTCCGTCCCG_2" 
+    Annotations: rdfs:label "rs34743033_CCGCGCCACTTCGCCTGCCTCCGTCCCG_2" 
 
 Class: rs34743033_3
     SubClassOf: rs34743033
@@ -7786,9 +7786,9 @@ Class: rs34743033_4
     SubClassOf: rs34743033
     Annotations: rdfs:label "rs34743033_4" 
 
-Class: rs34743033__CCGCGCCACTTCGCCTGCCTCCGTCCCG_2
+Class: rs34743033_CCGCGCCACTTCGCCTGCCTCCGTCCCG_2
 DisjointClasses:
-rs34743033__CCGCGCCACTTCGCCTGCCTCCGTCCCG_2,rs34743033_3,rs34743033_4
+rs34743033_CCGCGCCACTTCGCCTGCCTCCGTCCCG_2,rs34743033_3,rs34743033_4
 
 Class: rs34826503
     SubClassOf: polymorphism
@@ -10723,21 +10723,21 @@ Class: ABCB1_star_1
     Annotations: rdfs:label "ABCB1 *1"
     SubClassOf: ABCB1
 
-Class: ABCB1_star_2__PMID__11503014_
+Class: ABCB1_star_2_PMID_11503014
     Annotations: rdfs:label "ABCB1 *2 (PMID: 11503014)"
     SubClassOf: ABCB1
 
-Class: ABCB1_star_2__PMID__12893986_
+Class: ABCB1_star_2_PMID_12893986
     Annotations: rdfs:label "ABCB1 *2 (PMID: 12893986)"
     SubClassOf: ABCB1
 
-Class: ABCB1_star_13__PMID__12893986_
+Class: ABCB1_star_13_PMID_12893986
     Annotations: rdfs:label "ABCB1 *13 (PMID: 12893986)"
     SubClassOf: ABCB1
 
 Class: ABCB1_star_1
 DisjointClasses:
-ABCB1_star_1,ABCB1_star_2__PMID__11503014_,ABCB1_star_2__PMID__12893986_,ABCB1_star_13__PMID__12893986_
+ABCB1_star_1,ABCB1_star_2_PMID_11503014,ABCB1_star_2_PMID_12893986,ABCB1_star_13_PMID_12893986
 
 # homozygous human disjoints
 Class: ADRB1_H1
@@ -10862,29 +10862,29 @@ Class: BRCA1_Ancestral_Sequence
     Annotations: rdfs:label "BRCA1 Ancestral Sequence"
     SubClassOf: BRCA1
 
-Class: BRCA1__hash1
+Class: BRCA1_hash1
     Annotations: rdfs:label "BRCA1 #1"
     SubClassOf: BRCA1
 
-Class: BRCA1__hash2
+Class: BRCA1_hash2
     Annotations: rdfs:label "BRCA1 #2"
     SubClassOf: BRCA1
 
-Class: BRCA1__hash3
+Class: BRCA1_hash3
     Annotations: rdfs:label "BRCA1 #3"
     SubClassOf: BRCA1
 
-Class: BRCA1__hash4
+Class: BRCA1_hash4
     Annotations: rdfs:label "BRCA1 #4"
     SubClassOf: BRCA1
 
-Class: BRCA1__hash5
+Class: BRCA1_hash5
     Annotations: rdfs:label "BRCA1 #5"
     SubClassOf: BRCA1
 
 Class: BRCA1_1
 DisjointClasses:
-BRCA1_1,BRCA1_2,BRCA1_3,BRCA1_4,BRCA1_5,BRCA1_6,BRCA1_7,BRCA1_8,BRCA1_9,BRCA1_10,BRCA1_Ancestral_Sequence,BRCA1__hash1,BRCA1__hash2,BRCA1__hash3,BRCA1__hash4,BRCA1__hash5
+BRCA1_1,BRCA1_2,BRCA1_3,BRCA1_4,BRCA1_5,BRCA1_6,BRCA1_7,BRCA1_8,BRCA1_9,BRCA1_10,BRCA1_Ancestral_Sequence,BRCA1_hash1,BRCA1_hash2,BRCA1_hash3,BRCA1_hash4,BRCA1_hash5
 
 # homozygous human disjoints
 Class: COMT_Haplotype_high_activity
@@ -12381,10 +12381,6 @@ DisjointClasses:
 CYP2C9_star_1,CYP2C9_star_2,CYP2C9_star_3,CYP2C9_star_4,CYP2C9_star_5,CYP2C9_star_6,CYP2C9_star_7,CYP2C9_star_8,CYP2C9_star_9,CYP2C9_star_10,CYP2C9_star_11,CYP2C9_star_12,CYP2C9_star_13,CYP2C9_star_14,CYP2C9_star_15,CYP2C9_star_16,CYP2C9_star_18,CYP2C9_star_25,CYP2C9_star_31,CYP2C9_star_33,CYP2C9_star_17,CYP2C9_star_19,CYP2C9_star_20,CYP2C9_star_21,CYP2C9_star_22,CYP2C9_star_23,CYP2C9_star_24,CYP2C9_star_26,CYP2C9_star_27,CYP2C9_star_28,CYP2C9_star_29,CYP2C9_star_30,CYP2C9_star_32,CYP2C9_star_34
 
 # homozygous human disjoints
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
-    SubClassOf: CYP2C19
-
 Class: CYP2C19_star_1
     Annotations: rdfs:label "CYP2C19 *1"
     SubClassOf: CYP2C19
@@ -12412,10 +12408,6 @@ Class: CYP2C19_star_1
 Class: CYP2C19_star_1C
     Annotations: rdfs:label "CYP2C19 *1C"
     SubClassOf: CYP2C19_star_1
-
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
-    SubClassOf: CYP2C19
 
 Class: CYP2C19_star_2
     Annotations: rdfs:label "CYP2C19 *2"
@@ -12453,10 +12445,6 @@ Class: CYP2C19_star_2D
     Annotations: rdfs:label "CYP2C19 *2D"
     SubClassOf: CYP2C19_star_2
 
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
-    SubClassOf: CYP2C19
-
 Class: CYP2C19_star_3
     Annotations: rdfs:label "CYP2C19 *3"
     SubClassOf: CYP2C19
@@ -12476,10 +12464,6 @@ Class: CYP2C19_star_3
 Class: CYP2C19_star_3B
     Annotations: rdfs:label "CYP2C19 *3B"
     SubClassOf: CYP2C19_star_3
-
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
-    SubClassOf: CYP2C19
 
 Class: CYP2C19_star_4
     Annotations: rdfs:label "CYP2C19 *4"
@@ -12501,10 +12485,6 @@ Class: CYP2C19_star_4B
     Annotations: rdfs:label "CYP2C19 *4B"
     SubClassOf: CYP2C19_star_4
 
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
-    SubClassOf: CYP2C19
-
 Class: CYP2C19_star_5
     Annotations: rdfs:label "CYP2C19 *5"
     SubClassOf: CYP2C19
@@ -12525,160 +12505,80 @@ Class: CYP2C19_star_5B
     Annotations: rdfs:label "CYP2C19 *5B"
     SubClassOf: CYP2C19_star_5
 
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
-    SubClassOf: CYP2C19
-
 Class: CYP2C19_star_6
     Annotations: rdfs:label "CYP2C19 *6"
-    SubClassOf: CYP2C19
-
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
     SubClassOf: CYP2C19
 
 Class: CYP2C19_star_7
     Annotations: rdfs:label "CYP2C19 *7"
     SubClassOf: CYP2C19
 
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
-    SubClassOf: CYP2C19
-
 Class: CYP2C19_star_8
     Annotations: rdfs:label "CYP2C19 *8"
-    SubClassOf: CYP2C19
-
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
     SubClassOf: CYP2C19
 
 Class: CYP2C19_star_9
     Annotations: rdfs:label "CYP2C19 *9"
     SubClassOf: CYP2C19
 
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
-    SubClassOf: CYP2C19
-
 Class: CYP2C19_star_10
     Annotations: rdfs:label "CYP2C19 *10"
-    SubClassOf: CYP2C19
-
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
     SubClassOf: CYP2C19
 
 Class: CYP2C19_star_11
     Annotations: rdfs:label "CYP2C19 *11"
     SubClassOf: CYP2C19
 
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
-    SubClassOf: CYP2C19
-
 Class: CYP2C19_star_12
     Annotations: rdfs:label "CYP2C19 *12"
-    SubClassOf: CYP2C19
-
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
     SubClassOf: CYP2C19
 
 Class: CYP2C19_star_13
     Annotations: rdfs:label "CYP2C19 *13"
     SubClassOf: CYP2C19
 
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
-    SubClassOf: CYP2C19
-
 Class: CYP2C19_star_14
     Annotations: rdfs:label "CYP2C19 *14"
-    SubClassOf: CYP2C19
-
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
     SubClassOf: CYP2C19
 
 Class: CYP2C19_star_15
     Annotations: rdfs:label "CYP2C19 *15"
     SubClassOf: CYP2C19
 
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
-    SubClassOf: CYP2C19
-
 Class: CYP2C19_star_16
     Annotations: rdfs:label "CYP2C19 *16"
-    SubClassOf: CYP2C19
-
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
     SubClassOf: CYP2C19
 
 Class: CYP2C19_star_17
     Annotations: rdfs:label "CYP2C19 *17"
     SubClassOf: CYP2C19
 
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
-    SubClassOf: CYP2C19
-
 Class: CYP2C19_star_18
     Annotations: rdfs:label "CYP2C19 *18"
-    SubClassOf: CYP2C19
-
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
     SubClassOf: CYP2C19
 
 Class: CYP2C19_star_19
     Annotations: rdfs:label "CYP2C19 *19"
     SubClassOf: CYP2C19
 
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
-    SubClassOf: CYP2C19
-
 Class: CYP2C19_star_22
     Annotations: rdfs:label "CYP2C19 *22"
-    SubClassOf: CYP2C19
-
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
     SubClassOf: CYP2C19
 
 Class: CYP2C19_star_23
     Annotations: rdfs:label "CYP2C19 *23"
     SubClassOf: CYP2C19
 
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
-    SubClassOf: CYP2C19
-
 Class: CYP2C19_star_24
     Annotations: rdfs:label "CYP2C19 *24"
-    SubClassOf: CYP2C19
-
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
     SubClassOf: CYP2C19
 
 Class: CYP2C19_star_25
     Annotations: rdfs:label "CYP2C19 *25"
     SubClassOf: CYP2C19
 
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
-    SubClassOf: CYP2C19
-
 Class: CYP2C19_star_26
     Annotations: rdfs:label "CYP2C19 *26"
-    SubClassOf: CYP2C19
-
-Class: CYP2C19
-    Annotations: rdfs:label "CYP2C19 "
     SubClassOf: CYP2C19
 
 Class: CYP2C19_star_27
@@ -12687,11 +12587,7 @@ Class: CYP2C19_star_27
 
 Class: CYP2C19_star_1
 DisjointClasses:
-CYP2C19_star_1,CYP2C19_star_2,CYP2C19_star_3,CYP2C19_star_4,CYP2C19_star_5,CYP2C19_star_6,CYP2C19_star_7,CYP2C19_star_8,CYP2C19_star_9,CYP2C19_star_10,CYP2C19_star_11,CYP2C19_star_12,CYP2C19_star_13,CYP2C19_star_14,CYP2C19_star_15,CYP2C19_star_16,CYP2C19_star_17,CYP2C19_star_18,CYP2C19_star_19,CYP2C19_star_22,CYP2C19_star_23,CYP2C19_star_24,CYP2C19_star_25,CYP2C19_star_26,CYP2C19_star_27
-
-Class: CYP2C19
-DisjointClasses:
-CYP2C19,CYP2C19_star_1,CYP2C19_star_1,CYP2C19_star_1,CYP2C19,CYP2C19_star_2,CYP2C19_star_2,CYP2C19_star_2,CYP2C19_star_2,CYP2C19,CYP2C19_star_3,CYP2C19_star_3,CYP2C19,CYP2C19_star_4,CYP2C19_star_4,CYP2C19,CYP2C19_star_5,CYP2C19_star_5,CYP2C19,CYP2C19,CYP2C19,CYP2C19,CYP2C19,CYP2C19,CYP2C19,CYP2C19,CYP2C19,CYP2C19,CYP2C19,CYP2C19,CYP2C19,CYP2C19,CYP2C19,CYP2C19,CYP2C19,CYP2C19,CYP2C19,CYP2C19
+CYP2C19_star_1,CYP2C19_star_1,CYP2C19_star_1,CYP2C19_star_1,CYP2C19_star_2,CYP2C19_star_2,CYP2C19_star_2,CYP2C19_star_2,CYP2C19_star_2,CYP2C19_star_3,CYP2C19_star_3,CYP2C19_star_3,CYP2C19_star_4,CYP2C19_star_4,CYP2C19_star_4,CYP2C19_star_5,CYP2C19_star_5,CYP2C19_star_5,CYP2C19_star_6,CYP2C19_star_7,CYP2C19_star_8,CYP2C19_star_9,CYP2C19_star_10,CYP2C19_star_11,CYP2C19_star_12,CYP2C19_star_13,CYP2C19_star_14,CYP2C19_star_15,CYP2C19_star_16,CYP2C19_star_17,CYP2C19_star_18,CYP2C19_star_19,CYP2C19_star_22,CYP2C19_star_23,CYP2C19_star_24,CYP2C19_star_25,CYP2C19_star_26,CYP2C19_star_27
 
 Class: CYP2C19_star_1A
 DisjointClasses:
@@ -13519,10 +13415,6 @@ DisjointClasses:
 CYP2D6_star_56A,CYP2D6_star_56B
 
 # homozygous human disjoints
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
-    SubClassOf: CYP3A4
-
 Class: CYP3A4_star_1
     Annotations: rdfs:label "CYP3A4 *1"
     SubClassOf: CYP3A4
@@ -13671,112 +13563,56 @@ Class: CYP3A4_star_1T
     Annotations: rdfs:label "CYP3A4 *1T"
     SubClassOf: CYP3A4_star_1
 
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
-    SubClassOf: CYP3A4
-
 Class: CYP3A4_star_2
     Annotations: rdfs:label "CYP3A4 *2"
-    SubClassOf: CYP3A4
-
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
     SubClassOf: CYP3A4
 
 Class: CYP3A4_star_3
     Annotations: rdfs:label "CYP3A4 *3"
     SubClassOf: CYP3A4
 
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
-    SubClassOf: CYP3A4
-
 Class: CYP3A4_star_4
     Annotations: rdfs:label "CYP3A4 *4"
-    SubClassOf: CYP3A4
-
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
     SubClassOf: CYP3A4
 
 Class: CYP3A4_star_5
     Annotations: rdfs:label "CYP3A4 *5"
     SubClassOf: CYP3A4
 
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
-    SubClassOf: CYP3A4
-
 Class: CYP3A4_star_6
     Annotations: rdfs:label "CYP3A4 *6"
-    SubClassOf: CYP3A4
-
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
     SubClassOf: CYP3A4
 
 Class: CYP3A4_star_7
     Annotations: rdfs:label "CYP3A4 *7"
     SubClassOf: CYP3A4
 
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
-    SubClassOf: CYP3A4
-
 Class: CYP3A4_star_8
     Annotations: rdfs:label "CYP3A4 *8"
-    SubClassOf: CYP3A4
-
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
     SubClassOf: CYP3A4
 
 Class: CYP3A4_star_9
     Annotations: rdfs:label "CYP3A4 *9"
     SubClassOf: CYP3A4
 
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
-    SubClassOf: CYP3A4
-
 Class: CYP3A4_star_10
     Annotations: rdfs:label "CYP3A4 *10"
-    SubClassOf: CYP3A4
-
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
     SubClassOf: CYP3A4
 
 Class: CYP3A4_star_11
     Annotations: rdfs:label "CYP3A4 *11"
     SubClassOf: CYP3A4
 
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
-    SubClassOf: CYP3A4
-
 Class: CYP3A4_star_12
     Annotations: rdfs:label "CYP3A4 *12"
-    SubClassOf: CYP3A4
-
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
     SubClassOf: CYP3A4
 
 Class: CYP3A4_star_13
     Annotations: rdfs:label "CYP3A4 *13"
     SubClassOf: CYP3A4
 
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
-    SubClassOf: CYP3A4
-
 Class: CYP3A4_star_14
     Annotations: rdfs:label "CYP3A4 *14"
-    SubClassOf: CYP3A4
-
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
     SubClassOf: CYP3A4
 
 Class: CYP3A4_star_15
@@ -13799,10 +13635,6 @@ Class: CYP3A4_star_15B
     Annotations: rdfs:label "CYP3A4 *15B"
     SubClassOf: CYP3A4_star_15
 
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
-    SubClassOf: CYP3A4
-
 Class: CYP3A4_star_16
     Annotations: rdfs:label "CYP3A4 *16"
     SubClassOf: CYP3A4
@@ -13823,16 +13655,8 @@ Class: CYP3A4_star_16B
     Annotations: rdfs:label "CYP3A4 *16B"
     SubClassOf: CYP3A4_star_16
 
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
-    SubClassOf: CYP3A4
-
 Class: CYP3A4_star_17
     Annotations: rdfs:label "CYP3A4 *17"
-    SubClassOf: CYP3A4
-
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
     SubClassOf: CYP3A4
 
 Class: CYP3A4_star_18
@@ -13855,24 +13679,12 @@ Class: CYP3A4_star_18B
     Annotations: rdfs:label "CYP3A4 *18B"
     SubClassOf: CYP3A4_star_18
 
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
-    SubClassOf: CYP3A4
-
 Class: CYP3A4_star_19
     Annotations: rdfs:label "CYP3A4 *19"
     SubClassOf: CYP3A4
 
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
-    SubClassOf: CYP3A4
-
 Class: CYP3A4_star_20
     Annotations: rdfs:label "CYP3A4 *20"
-    SubClassOf: CYP3A4
-
-Class: CYP3A4
-    Annotations: rdfs:label "CYP3A4 "
     SubClassOf: CYP3A4
 
 Class: CYP3A4_star_22
@@ -13881,11 +13693,7 @@ Class: CYP3A4_star_22
 
 Class: CYP3A4_star_1
 DisjointClasses:
-CYP3A4_star_1,CYP3A4_star_2,CYP3A4_star_3,CYP3A4_star_4,CYP3A4_star_5,CYP3A4_star_6,CYP3A4_star_7,CYP3A4_star_8,CYP3A4_star_9,CYP3A4_star_10,CYP3A4_star_11,CYP3A4_star_12,CYP3A4_star_13,CYP3A4_star_14,CYP3A4_star_15,CYP3A4_star_16,CYP3A4_star_17,CYP3A4_star_18,CYP3A4_star_19,CYP3A4_star_20,CYP3A4_star_22
-
-Class: CYP3A4
-DisjointClasses:
-CYP3A4,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4,CYP3A4,CYP3A4,CYP3A4,CYP3A4,CYP3A4,CYP3A4,CYP3A4,CYP3A4,CYP3A4,CYP3A4,CYP3A4,CYP3A4,CYP3A4,CYP3A4_star_15,CYP3A4_star_15,CYP3A4,CYP3A4_star_16,CYP3A4_star_16,CYP3A4,CYP3A4,CYP3A4_star_18,CYP3A4_star_18,CYP3A4,CYP3A4,CYP3A4
+CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_1,CYP3A4_star_2,CYP3A4_star_3,CYP3A4_star_4,CYP3A4_star_5,CYP3A4_star_6,CYP3A4_star_7,CYP3A4_star_8,CYP3A4_star_9,CYP3A4_star_10,CYP3A4_star_11,CYP3A4_star_12,CYP3A4_star_13,CYP3A4_star_14,CYP3A4_star_15,CYP3A4_star_15,CYP3A4_star_15,CYP3A4_star_16,CYP3A4_star_16,CYP3A4_star_16,CYP3A4_star_17,CYP3A4_star_18,CYP3A4_star_18,CYP3A4_star_18,CYP3A4_star_19,CYP3A4_star_20,CYP3A4_star_22
 
 Class: CYP3A4_star_1A
 DisjointClasses:
@@ -13943,10 +13751,6 @@ Class: CYP3A5_star_1
 Class: CYP3A5_star_1E
     Annotations: rdfs:label "CYP3A5 *1E"
     SubClassOf: CYP3A5_star_1
-
-Class: CYP3A5
-    Annotations: rdfs:label "CYP3A5 "
-    SubClassOf: CYP3A5
 
 Class: CYP3A5_star_2
     Annotations: rdfs:label "CYP3A5 *2"
@@ -14048,48 +13852,24 @@ Class: CYP3A5_star_3L
     Annotations: rdfs:label "CYP3A5 *3L"
     SubClassOf: CYP3A5_star_3
 
-Class: CYP3A5
-    Annotations: rdfs:label "CYP3A5 "
-    SubClassOf: CYP3A5
-
 Class: CYP3A5_star_4
     Annotations: rdfs:label "CYP3A5 *4"
-    SubClassOf: CYP3A5
-
-Class: CYP3A5
-    Annotations: rdfs:label "CYP3A5 "
     SubClassOf: CYP3A5
 
 Class: CYP3A5_star_5
     Annotations: rdfs:label "CYP3A5 *5"
     SubClassOf: CYP3A5
 
-Class: CYP3A5
-    Annotations: rdfs:label "CYP3A5 "
-    SubClassOf: CYP3A5
-
 Class: CYP3A5_star_6
     Annotations: rdfs:label "CYP3A5 *6"
-    SubClassOf: CYP3A5
-
-Class: CYP3A5
-    Annotations: rdfs:label "CYP3A5 "
     SubClassOf: CYP3A5
 
 Class: CYP3A5_star_7
     Annotations: rdfs:label "CYP3A5 *7"
     SubClassOf: CYP3A5
 
-Class: CYP3A5
-    Annotations: rdfs:label "CYP3A5 "
-    SubClassOf: CYP3A5
-
 Class: CYP3A5_star_8
     Annotations: rdfs:label "CYP3A5 *8"
-    SubClassOf: CYP3A5
-
-Class: CYP3A5
-    Annotations: rdfs:label "CYP3A5 "
     SubClassOf: CYP3A5
 
 Class: CYP3A5_star_9
@@ -14102,11 +13882,7 @@ CYP3A5_star_1A,CYP3A5_star_1B,CYP3A5_star_1C,CYP3A5_star_1D,CYP3A5_star_1E
 
 Class: CYP3A5_star_1
 DisjointClasses:
-CYP3A5_star_1,CYP3A5_star_1,CYP3A5_star_1,CYP3A5_star_1,CYP3A5_star_1,CYP3A5,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5,CYP3A5,CYP3A5,CYP3A5,CYP3A5,CYP3A5
-
-Class: CYP3A5_star_2
-DisjointClasses:
-CYP3A5_star_2,CYP3A5_star_4,CYP3A5_star_5,CYP3A5_star_6,CYP3A5_star_7,CYP3A5_star_8,CYP3A5_star_9
+CYP3A5_star_1,CYP3A5_star_1,CYP3A5_star_1,CYP3A5_star_1,CYP3A5_star_1,CYP3A5_star_2,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_3,CYP3A5_star_4,CYP3A5_star_5,CYP3A5_star_6,CYP3A5_star_7,CYP3A5_star_8,CYP3A5_star_9
 
 Class: CYP3A5_star_3A
 DisjointClasses:
@@ -14202,24 +13978,24 @@ DisjointClasses:
 DPYD_star_9A,DPYD_star_9B
 
 # homozygous human disjoints
-Class: G6PD_B__wildtype_
+Class: G6PD_B_wildtype
     Annotations: rdfs:label "G6PD B (wildtype)"
     SubClassOf: G6PD
 
-Class: human_with_G6PD_B__wildtype_
+Class: human_with_G6PD_B_wildtype
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with G6PD B (wildtype)"
 SubClassOf:
 has some rs1050828_C and has some rs1050829_T and has some rs5030868_G and has some rs137852328_C and has some rs76723693_A and has some rs2230037_G
 
 SubClassOf:
-has some G6PD_B__wildtype_
+has some G6PD_B_wildtype
 
-Class: human_with_homozygous_G6PD_B__wildtype_
+Class: human_with_homozygous_G6PD_B_wildtype
 SubClassOf: human_with_genetic_polymorphism
 Annotations: rdfs:label "human with homozygous G6PD B (wildtype)" 
 SubClassOf:
-has exactly 2 G6PD_B__wildtype_
+has exactly 2 G6PD_B_wildtype
 
 Class: G6PD_A-202A_376G
     Annotations: rdfs:label "G6PD A-202A_376G "
@@ -14321,14 +14097,14 @@ has exactly 2 rs5030868_A and has exactly 2 rs2230037_A
 SubClassOf:
 has exactly 2 G6PD_Mediterranean_Haplotype
 
-Class: G6PD_B__wildtype_
+Class: G6PD_B_wildtype
 DisjointClasses:
-G6PD_B__wildtype_,G6PD_A-202A_376G,G6PD_A-_680T_376G,G6PD_A-968C_376G,G6PD_Mediterranean_Haplotype
+G6PD_B_wildtype,G6PD_A-202A_376G,G6PD_A-_680T_376G,G6PD_A-968C_376G,G6PD_Mediterranean_Haplotype
 
 # homozygous human disjoints
-Class: human_with_homozygous_G6PD_B__wildtype_
+Class: human_with_homozygous_G6PD_B_wildtype
 DisjointClasses:
-human_with_homozygous_G6PD_B__wildtype_,human_with_homozygous_G6PD_A-202A_376G,human_with_homozygous_G6PD_A-_680T_376G,human_with_homozygous_G6PD_A-968C_376G,human_with_homozygous_G6PD_Mediterranean_Haplotype
+human_with_homozygous_G6PD_B_wildtype,human_with_homozygous_G6PD_A-202A_376G,human_with_homozygous_G6PD_A-_680T_376G,human_with_homozygous_G6PD_A-968C_376G,human_with_homozygous_G6PD_Mediterranean_Haplotype
 
 Class: HMGCR_H2
     Annotations: rdfs:label "HMGCR H2 "
@@ -14374,10 +14150,6 @@ Class: P2RY12_H2
 
 Class: P2RY12_A
     Annotations: rdfs:label "P2RY12 A"
-    SubClassOf: P2RY12
-
-Class: P2RY12
-    Annotations: rdfs:label "P2RY12 "
     SubClassOf: P2RY12
 
 Class: P2RY12_B
@@ -14426,7 +14198,7 @@ Class: P2RY12_F-1
 
 Class: P2RY12_H1
 DisjointClasses:
-P2RY12_H1,P2RY12_H2,P2RY12_A,P2RY12,P2RY12_C,P2RY12_D,P2RY12_E,P2RY12_F,P2RY12_A-1,P2RY12_B-1,P2RY12_C-1,P2RY12_D-1,P2RY12_E-1,P2RY12_F-1
+P2RY12_H1,P2RY12_H2,P2RY12_A,P2RY12_B,P2RY12_C,P2RY12_D,P2RY12_E,P2RY12_F,P2RY12_A-1,P2RY12_B-1,P2RY12_C-1,P2RY12_D-1,P2RY12_E-1,P2RY12_F-1
 
 # homozygous human disjoints
 Class: SLCO1B1_star_1
@@ -14923,7 +14695,7 @@ Class: UGT1A1_star_1
     SubClassOf: UGT1A1
 
 Class: UGT1A1_star_1a
-    Annotations: rdfs:label "UGT1A1 *1a "
+    Annotations: rdfs:label "UGT1A1 *1a"
     SubClassOf: UGT1A1_star_1
 
 Class: UGT1A1_star_1
@@ -15094,10 +14866,6 @@ Class: UGT1A1_star_1L_IA
     Annotations: rdfs:label "UGT1A1 *1L IA"
     SubClassOf: UGT1A1_star_1
 
-Class: UGT1A1
-    Annotations: rdfs:label "UGT1A1 "
-    SubClassOf: UGT1A1
-
 Class: UGT1A1_star_364L_IA
     Annotations: rdfs:label "UGT1A1 *364L IA"
     SubClassOf: UGT1A1
@@ -15107,7 +14875,7 @@ Class: UGT1A1_star_1
     SubClassOf: UGT1A1
 
 Class: UGT1A1_star_1b_IB
-    Annotations: rdfs:label "UGT1A1 *1b IB "
+    Annotations: rdfs:label "UGT1A1 *1b IB"
     SubClassOf: UGT1A1_star_1
 
 Class: UGT1A1_star_1
@@ -15115,7 +14883,7 @@ Class: UGT1A1_star_1
     SubClassOf: UGT1A1
 
 Class: UGT1A1_star_1c_IB
-    Annotations: rdfs:label "UGT1A1 *1c IB "
+    Annotations: rdfs:label "UGT1A1 *1c IB"
     SubClassOf: UGT1A1_star_1
 
 Class: UGT1A1_star_1
@@ -15123,7 +14891,7 @@ Class: UGT1A1_star_1
     SubClassOf: UGT1A1
 
 Class: UGT1A1_star_1j_IB
-    Annotations: rdfs:label "UGT1A1 *1j IB "
+    Annotations: rdfs:label "UGT1A1 *1j IB"
     SubClassOf: UGT1A1_star_1
 
 Class: UGT1A1_star_1
@@ -15131,11 +14899,11 @@ Class: UGT1A1_star_1
     SubClassOf: UGT1A1
 
 Class: UGT1A1_star_1k_IB
-    Annotations: rdfs:label "UGT1A1 *1k IB "
+    Annotations: rdfs:label "UGT1A1 *1k IB"
     SubClassOf: UGT1A1_star_1
 
 Class: UGT1A1_star_533P_IB
-    Annotations: rdfs:label "UGT1A1 *533P IB "
+    Annotations: rdfs:label "UGT1A1 *533P IB"
     SubClassOf: UGT1A1
 
 Class: UGT1A1_star_I
@@ -15184,7 +14952,7 @@ UGT1A1_star_1a,UGT1A1_star_1b,UGT1A1_star_1a_IA,UGT1A1_star_1d_IA,UGT1A1_star_1e
 
 Class: UGT1A1_star_1
 DisjointClasses:
-UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_6,UGT1A1_star_6,UGT1A1_star_6,UGT1A1_star_6,UGT1A1_star_28,UGT1A1_star_28,UGT1A1_star_28,UGT1A1_star_60,UGT1A1_star_60,UGT1A1_star_60,UGT1A1_star_36,UGT1A1_star_37,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_1,UGT1A1,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_533P_IB,UGT1A1_star_I,UGT1A1_star_II,UGT1A1_star_III,UGT1A1_star_IV,UGT1A1_star_V,UGT1A1_star_VI,UGT1A1_star_VII,UGT1A1_star_VIII,UGT1A1_star_IX,UGT1A1_star_X
+UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_6,UGT1A1_star_6,UGT1A1_star_6,UGT1A1_star_6,UGT1A1_star_28,UGT1A1_star_28,UGT1A1_star_28,UGT1A1_star_60,UGT1A1_star_60,UGT1A1_star_60,UGT1A1_star_36,UGT1A1_star_37,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_364L_IA,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_1,UGT1A1_star_533P_IB,UGT1A1_star_I,UGT1A1_star_II,UGT1A1_star_III,UGT1A1_star_IV,UGT1A1_star_V,UGT1A1_star_VI,UGT1A1_star_VII,UGT1A1_star_VIII,UGT1A1_star_IX,UGT1A1_star_X
 
 Class: UGT1A1_star_6a
 DisjointClasses:
@@ -16320,9 +16088,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_46
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 46"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Codeine
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) allele and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -16427,9 +16195,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_52
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 52"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Mirtazapine
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased activity alleles (*9, *10, *17, *29, *36, *41) or 1 active (*1, *2, *33, *35) and 1 inactive allele (*3-*8, *11-*16, *19-*21, *38, *40, *42) or 1 decreased activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -16481,9 +16249,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_55
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 55"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Zuclopenthixol
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) allele and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -16589,9 +16357,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_61
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 61"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Venlafaxine
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) allele and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -16643,9 +16411,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_64
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 64"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Tramadol
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) allele and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -16764,9 +16532,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_71
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 71"
-	 Annotations: rdfs:comment "has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or DPYD_star_9B or DPYD_star_10)"
+	 Annotations: rdfs:comment "has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)"
     Annotations: relevant_for Tegafur
-	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or DPYD_star_9B or DPYD_star_10)
+	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "DPYD: PM (2 inactive alleles (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T), 2 decreased activity alleles (*9B, *10), or one inactive (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T) and one decreased activity allele (*9B, *10))"
    Annotations: phenotype_description "Poor metabolizer"
@@ -16783,9 +16551,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_72
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 72"
-	 Annotations: rdfs:comment "has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or DPYD_star_9B or DPYD_star_10)"
+	 Annotations: rdfs:comment "has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)"
     Annotations: relevant_for Tegafur
-	EquivalentTo: has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or DPYD_star_9B or DPYD_star_10)
+	EquivalentTo: has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "DPYD: IM (1 active allele (*1, *4, *5, *6, *9A) and 1 inactive (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T) or decreased activity allele (*9B, *10))"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -16820,9 +16588,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_74
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 74"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Tamoxifen
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) allele and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -16962,9 +16730,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_82
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 82"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Risperidone
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) allele and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -17185,9 +16953,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_95
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 95"
-	 Annotations: rdfs:comment "has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or DPYD_star_9B or DPYD_star_10)"
+	 Annotations: rdfs:comment "has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)"
     Annotations: relevant_for Fluorouracil
-	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or DPYD_star_9B or DPYD_star_10)
+	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "DPYD: PM (2 inactive alleles (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T), 2 decreased activity alleles (*9B, *10), or one inactive (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T) and one decreased activity allele (*9B, *10))"
    Annotations: phenotype_description "Poor metabolizer"
@@ -17203,9 +16971,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_96
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 96"
-	 Annotations: rdfs:comment "has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or DPYD_star_9B or DPYD_star_10)"
+	 Annotations: rdfs:comment "has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)"
     Annotations: relevant_for Fluorouracil
-	EquivalentTo: has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or DPYD_star_9B or DPYD_star_10)
+	EquivalentTo: has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "DPYD: IM (1 active allele (*1, *4, *5, *6, *9A) and 1 inactive (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T) or decreased activity allele (*9B, *10))"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -17276,9 +17044,9 @@ Other: be extra alert to insufficient response. Consider dose increase by 50-100
 Class: human_triggering_CDS_rule_100
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 100"
-	 Annotations: rdfs:comment "has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or DPYD_star_9B or DPYD_star_10)"
+	 Annotations: rdfs:comment "has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)"
     Annotations: relevant_for Capecitabine
-	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or DPYD_star_9B or DPYD_star_10)
+	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "DPYD: PM (2 inactive alleles (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T), 2 decreased activity alleles (*9B, *10), or one inactive (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T) and one decreased activity allele (*9B, *10))"
    Annotations: phenotype_description "Poor metabolizer"
@@ -17294,9 +17062,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_101
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 101"
-	 Annotations: rdfs:comment "has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or DPYD_star_9B or DPYD_star_10)"
+	 Annotations: rdfs:comment "has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)"
     Annotations: relevant_for Capecitabine
-	EquivalentTo: has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or DPYD_star_9B or DPYD_star_10)
+	EquivalentTo: has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "DPYD: IM (1 active allele (*1, *4, *5, *6, *9A) and 1 inactive (*2A, *3, *7, *8, *11, *12, *13, 496A>G, IVS10-15T>C, 1156G>T, 1845G>T) or decreased activity allele (*9B, *10))"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -17330,9 +17098,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_103
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 103"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Doxepin
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) allele and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -17970,9 +17738,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_139
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 139"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Flecainide
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) allele and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18024,9 +17792,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_142
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 142"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Propafenone
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased-activity (*9, *10, *17, *29, *36, *41) alleles or 1 active (*1, *2, *33, *35) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or 1 decreased-activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18078,9 +17846,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_145
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 145"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Paroxetine
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased-activity (*9, *10, *17, *29, *36, *41) alleles or 1 active (*1, *2, *33, *35) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or 1 decreased-activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18132,9 +17900,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_148
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 148"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Oxycodone
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased-activity (*9, *10, *17, *29, *36, *41) alleles or 1 active (*1, *2, *33, *35) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or 1 decreased-activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18186,9 +17954,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_151
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 151"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Olanzapine
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased-activity (*9, *10, *17, *29, *36, *41) alleles or 1 active (*1, *2, *33, *35) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or 1 decreased-activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18240,9 +18008,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_154
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 154"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Nortriptyline
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased-activity (*9, *10, *17, *29, *36, *41) alleles or 1 active (*1, *2, *33, *35) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or 1 decreased-activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18294,9 +18062,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_157
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 157"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Metoprolol
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased-activity (*9, *10, *17, *29, *36, *41) alleles or 1 active (*1, *2, *33, *35) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or 1 decreased-activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18348,9 +18116,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_160
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 160"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Haloperidol
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased-activity (*9, *10, *17, *29, *36, *41) alleles or 1 active (*1, *2, *33, *35) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or 1 decreased-activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18402,9 +18170,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_163
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 163"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Flupenthixol
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased-activity (*9, *10, *17, *29, *36, *41) alleles or 1 active (*1, *2, *33, *35) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or 1 decreased-activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18473,9 +18241,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_167
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 167"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18527,9 +18295,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_170
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 170"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Aripiprazole
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18581,9 +18349,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_173
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 173"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Atomoxetine
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18635,9 +18403,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_176
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 176"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Carvedilol
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18689,9 +18457,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_179
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 179"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Clomipramine
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18743,9 +18511,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_182
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 182"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Clozapine
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18797,9 +18565,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_185
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 185"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Duloxetine
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (two decreased-activity (*9, *10, *17, *29, *36, *41) alleles or carrying one active (*1, *2, *33, *35) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or carrying one decreased-activity (*9, *10, *17, *29, *36, *41) and one inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -18851,9 +18619,9 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 Class: human_triggering_CDS_rule_188
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 188"
-	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)"
+	 Annotations: rdfs:comment "has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))"
     Annotations: relevant_for Imipramine
-	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
    Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
    Annotations: textual_genetic_description "CYP2D6: IM (2 decreased-activity (*9, *10, *17, *29, *36, *41) alleles or 1 active (*1, *2, *33, *35) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele, or 1 decreased-activity (*9, *10, *17, *29, *36, *41) and 1 inactive (*3-*8, *11-*16, *19-*21, *38, *40, *42) allele)"
    Annotations: phenotype_description "Intermediate metabolizer"
@@ -19303,9 +19071,9 @@ Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment
 Class: human_triggering_CDS_rule_214
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 214"
-	 Annotations: rdfs:comment "has some DPYD_star_1 and has some (DPYD_star_2A or DPYD_star_13)"
+	 Annotations: rdfs:comment "has some DPYD_star_1 and has some (DPYD_star_2A or DPYD_star_13 or rs67376798)"
     Annotations: relevant_for Capecitabine
-	EquivalentTo: has some DPYD_star_1 and has some (DPYD_star_2A or DPYD_star_13)
+	EquivalentTo: has some DPYD_star_1 and has some (DPYD_star_2A or DPYD_star_13 or rs67376798)
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "Heterozygous or intermediate activity, may have partial DPD deficiency, at risk for toxicity with drug exposure (one functional allele *1, plus one nonfunctional allele - *2A, *13 or rs67376798)"
    Annotations: phenotype_description "Decreased DPD activity (leukocyte DPD activity at 30% to 70% that of the normal population) and increased risk for severe or even fatal drug toxicity when treated with fluoropyrimidine drugs"
@@ -19321,9 +19089,9 @@ Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment
 Class: human_triggering_CDS_rule_215
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 215"
-	 Annotations: rdfs:comment "has exactly 2 (DPYD_star_2A or DPYD_star_13)"
+	 Annotations: rdfs:comment "has exactly 2 (DPYD_star_2A or DPYD_star_13 or rs67376798)"
     Annotations: relevant_for Capecitabine
-	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_13)
+	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_13 or rs67376798)
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "Homozygous variant, DPD deficiency, at risk for toxicity with drug exposure (2 nonfunctional alleles - *2A, *13 or rs67376798)"
    Annotations: phenotype_description "Complete DPD deficiency and increased risk for severe or even fatal drug toxicity when treated with fluoropyrimidine drugs"
@@ -19357,9 +19125,9 @@ Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment
 Class: human_triggering_CDS_rule_217
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 217"
-	 Annotations: rdfs:comment "has some DPYD_star_1 and has some (DPYD_star_2A or DPYD_star_13)"
+	 Annotations: rdfs:comment "has some DPYD_star_1 and has some (DPYD_star_2A or DPYD_star_13 or rs67376798)"
     Annotations: relevant_for Fluorouracil
-	EquivalentTo: has some DPYD_star_1 and has some (DPYD_star_2A or DPYD_star_13)
+	EquivalentTo: has some DPYD_star_1 and has some (DPYD_star_2A or DPYD_star_13 or rs67376798)
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "Heterozygous or intermediate activity, may have partial DPD deficiency, at risk for toxicity with drug exposure (one functional allele *1, plus one nonfunctional allele - *2A, *13 or rs67376798)"
    Annotations: phenotype_description "Decreased DPD activity (leukocyte DPD activity at 30% to 70% that of the normal population) and increased risk for severe or even fatal drug toxicity when treated with fluoropyrimidine drugs"
@@ -19375,9 +19143,9 @@ Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment
 Class: human_triggering_CDS_rule_218
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 218"
-	 Annotations: rdfs:comment "has exactly 2 (DPYD_star_2A or DPYD_star_13)"
+	 Annotations: rdfs:comment "has exactly 2 (DPYD_star_2A or DPYD_star_13 or rs67376798)"
     Annotations: relevant_for Fluorouracil
-	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_13)
+	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_13 or rs67376798)
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "Homozygous variant, DPD deficiency, at risk for toxicity with drug exposure (2 nonfunctional alleles - *2A, *13 or rs67376798)"
    Annotations: phenotype_description "Complete DPD deficiency and increased risk for severe or even fatal drug toxicity when treated with fluoropyrimidine drugs"
@@ -19411,9 +19179,9 @@ Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment
 Class: human_triggering_CDS_rule_220
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 220"
-	 Annotations: rdfs:comment "has some DPYD_star_1 and has some (DPYD_star_2A or DPYD_star_13)"
+	 Annotations: rdfs:comment "has some DPYD_star_1 and has some (DPYD_star_2A or DPYD_star_13 or rs67376798)"
     Annotations: relevant_for Tegafur
-	EquivalentTo: has some DPYD_star_1 and has some (DPYD_star_2A or DPYD_star_13)
+	EquivalentTo: has some DPYD_star_1 and has some (DPYD_star_2A or DPYD_star_13 or rs67376798)
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "Heterozygous or intermediate activity, may have partial DPD deficiency, at risk for toxicity with drug exposure (one functional allele *1, plus one nonfunctional allele - *2A, *13 or rs67376798)"
    Annotations: phenotype_description "Decreased DPD activity (leukocyte DPD activity at 30% to 70% that of the normal population) and increased risk for severe or even fatal drug toxicity when treated with fluoropyrimidine drugs"
@@ -19429,9 +19197,9 @@ Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment
 Class: human_triggering_CDS_rule_221
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 221"
-	 Annotations: rdfs:comment "has exactly 2 (DPYD_star_2A or DPYD_star_13)"
+	 Annotations: rdfs:comment "has exactly 2 (DPYD_star_2A or DPYD_star_13 or rs67376798)"
     Annotations: relevant_for Tegafur
-	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_13)
+	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_13 or rs67376798)
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "Homozygous variant, DPD deficiency, at risk for toxicity with drug exposure (2 nonfunctional alleles - *2A, *13 or rs67376798)"
    Annotations: phenotype_description "Complete DPD deficiency and increased risk for severe or even fatal drug toxicity when treated with fluoropyrimidine drugs"
@@ -19636,9 +19404,9 @@ Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment
 Class: human_triggering_CDS_rule_232
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 232"
-	 Annotations: rdfs:comment "has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1"
+	 Annotations: rdfs:comment "has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1
+	EquivalentTo: has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer (UM): An individual carrying two gain-of-function alleles or one functional allele and one gain-of-function allele"
    Annotations: phenotype_description "Ultrarapid metabolizer: Increased metabolism of amitriptyline when compared to extensive metabolizers"
@@ -19840,9 +19608,9 @@ SVR; sustained virologic response (defined by undetectable serum viral RNA 12-24
 Class: human_triggering_CDS_rule_242
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 242"
-	 Annotations: rdfs:comment "(has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1) and (has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53))"
+	 Annotations: rdfs:comment "(has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)) and (has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53))"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: (has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1) and (has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53))
+	EquivalentTo: (has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)) and (has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53))
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer + CYP2D6 Ultrarapid metabolizer"
    Annotations: recommendation_importance "Important modification"
@@ -19912,9 +19680,9 @@ Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment
 Class: human_triggering_CDS_rule_246
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 246"
-	 Annotations: rdfs:comment "(has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1) and (has exactly 2 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)))"
+	 Annotations: rdfs:comment "(has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)) and (has exactly 2 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)))"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: (has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1) and (has exactly 2 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)))
+	EquivalentTo: (has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)) and (has exactly 2 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)))
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer + CYP2D6 Extensive metabolizer"
    Annotations: recommendation_importance "Important modification"
@@ -19984,9 +19752,9 @@ Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment
 Class: human_triggering_CDS_rule_250
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 250"
-	 Annotations: rdfs:comment "(has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1) and (has some (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62))"
+	 Annotations: rdfs:comment "(has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)) and (has some (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62))"
     Annotations: relevant_for Amitriptyline
-	EquivalentTo: (has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1) and (has some (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62))
+	EquivalentTo: (has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)) and (has some (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62))
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer + CYP2D6 Intermediate metabolizer"
    Annotations: recommendation_importance "Important modification"
@@ -20204,9 +19972,9 @@ Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment
 Class: human_triggering_CDS_rule_262
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 262"
-	 Annotations: rdfs:comment "has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1"
+	 Annotations: rdfs:comment "has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)"
     Annotations: relevant_for Clomipramine
-	EquivalentTo: has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1
+	EquivalentTo: has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer (UM): An individual carrying two gain-of-function alleles or one functional allele and one gain-of-function allele"
    Annotations: recommendation_importance "Important modification"
@@ -20353,9 +20121,9 @@ Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment
 Class: human_triggering_CDS_rule_270
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 270"
-	 Annotations: rdfs:comment "has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1"
+	 Annotations: rdfs:comment "has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)"
     Annotations: relevant_for Desipramine
-	EquivalentTo: has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1
+	EquivalentTo: has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer (UM): An individual carrying two gain-of-function alleles or one functional allele and one gain-of-function allele"
    Annotations: recommendation_importance "Important modification"
@@ -20502,9 +20270,9 @@ Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment
 Class: human_triggering_CDS_rule_278
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 278"
-	 Annotations: rdfs:comment "has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1"
+	 Annotations: rdfs:comment "has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)"
     Annotations: relevant_for Doxepin
-	EquivalentTo: has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1
+	EquivalentTo: has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer (UM): An individual carrying two gain-of-function alleles or one functional allele and one gain-of-function allele"
    Annotations: recommendation_importance "Important modification"
@@ -20651,9 +20419,9 @@ Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment
 Class: human_triggering_CDS_rule_286
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 286"
-	 Annotations: rdfs:comment "has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1"
+	 Annotations: rdfs:comment "has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)"
     Annotations: relevant_for Imipramine
-	EquivalentTo: has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1
+	EquivalentTo: has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer (UM): An individual carrying two gain-of-function alleles or one functional allele and one gain-of-function allele"
    Annotations: recommendation_importance "Important modification"
@@ -20800,9 +20568,9 @@ Annotations: rdfs:seeAlso <http://www.pharmgkb.org/download.do?objCls=Attachment
 Class: human_triggering_CDS_rule_294
     SubClassOf: human_triggering_CDS_rule
     Annotations: rdfs:label "human triggering CDS rule 294"
-	 Annotations: rdfs:comment "has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1"
+	 Annotations: rdfs:comment "has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)"
     Annotations: relevant_for Trimipramine
-	EquivalentTo: has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1
+	EquivalentTo: has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)
    Annotations: source "Clinical Pharmacogenetics Implementation Consortium (CPIC)"
    Annotations: textual_genetic_description "CYP2C19 Ultrarapid metabolizer (UM): An individual carrying two gain-of-function alleles or one functional allele and one gain-of-function allele"
    Annotations: recommendation_importance "Important modification"
@@ -21595,7 +21363,7 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 
 Class: human_with_DPWG_DPYD_poor_metabolizer_phenotype
 	SubClassOf: human_triggering_phenotype_inference_rule 
-	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or DPYD_star_9B or DPYD_star_10)
+	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)
 	Annotations: rdfs:label "human with DPWG DPYD poor metabolizer phenotype"
 	Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
 Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
@@ -21604,7 +21372,7 @@ Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
 
 Class: human_with_DPWG_DPYD_intermediate_metabolizer_phenotype
 	SubClassOf: human_triggering_phenotype_inference_rule 
-	EquivalentTo: has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or DPYD_star_9B or DPYD_star_10)
+	EquivalentTo: has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)
 	Annotations: rdfs:label "human with DPWG DPYD intermediate metabolizer phenotype"
 	Annotations: source "Royal Dutch Pharmacists Association - Pharmacogenetics Working Group"
 Annotations: rdfs:seeAlso <http://www.ncbi.nlm.nih.gov/pubmed/21412232>
