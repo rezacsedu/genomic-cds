@@ -50,6 +50,13 @@ AnnotationProperty: can_be_tested_with
         rdfs:label "can be tested with",
         rdfs:comment "A property connecting a genetic marker with a genetic assay that can be used to test for that marker."
 
+		
+
+AnnotationProperty: vcf_format_reference
+    Annotations: 
+        rdfs:label "Reference polymorphism in VCF format",
+        rdfs:comment "It indicates which SNP variant is the reference when parsing VCF file format."
+
 
 AnnotationProperty: rsid
     Annotations: 
@@ -182,7 +189,18 @@ Class: human
     Annotations: 
         rdfs:label "Human"
     
-    
+Class: rule
+	
+	Annotations: 
+		rdfs:label "CDS rule",
+		rdfs:comment "A rule is a logical description of a drug recommendation based on human genotype."
+  
+Class: phenotype_rule
+	
+	Annotations: 
+		rdfs:label "Phenotype rule",
+		rdfs:comment "A phenotype rule is a logical description of a patient phenotype based on its genotype."
+  
 Class: human_triggering_CDS_rule
 
     Annotations: 
