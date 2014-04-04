@@ -342,6 +342,7 @@ foreach ($xml->Rs as $Rs) {
 		$variant_class_id = $class_id . "_" . make_valid_id($observed_allele);
 		$owl .= "Class: " . $variant_class_id . "\n";
 		$owl .= "    SubClassOf: " . $class_id . "\n";
+		
 		$owl .= "    Annotations: rdfs:label \"" . $variant_class_id . "\" \n\n";
 		$polymorphism_variant_disjoint_list[] = $variant_class_id;
 		 
