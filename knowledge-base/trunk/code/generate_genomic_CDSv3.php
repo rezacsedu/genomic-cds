@@ -15,7 +15,8 @@ $pharmacogenomics_decision_support_spreadsheet_file_location = "..\\data\\decisi
 
 $pharmacogenomic_CDS_base_file_location = "..\\ontology\\genomic-cds_base_new_v2.owl";//Base file of the ontology that conceptualizes the pharmacogenomics domain.
 $MSC_classes_base_file_location = "..\\ontology\\MSC_classes_base_new_v2.owl";//Base file of the ontology that will be used in MSC server and contains all descriptions of the human subclasses.
-$pharmacogenomic_CDS_demo_additions_file_location = "..\\ontology\\genomic-cds_demo_additions.owl";//Base file of the ontology with patient's genotype used for prototyping. 
+$pharmacogenomic_CDS_demo_additions_file_location = "..\\ontology\\genomic-cds_demo_additions_new_v2.owl";//Base file of the ontology with patient's genotype used for prototyping. 
+$CDS_rule_additions_file_location = "..\\ontology\\genomic-cds_rules.owl";//Base file of the ontology with patient's genotype used for prototyping. 
 
 $snpCoveredBy23andMe_v2_file_location = "..\\data\\assay-information\\SNPs covered by 23andMe v2.txt";//List of SNPs that are recognized by 23andMe v2 format.
 $snpCoveredBy23andMe_v3_file_location = "..\\data\\assay-information\\SNPs covered by 23andMe v3.txt";//List of SNPs that are recognized by 23andMe v3 format.
@@ -39,6 +40,8 @@ $report_file_location = "..\\ontology\\generate_genomic_CDS.report_new_v2.txt";/
  **************************************************/
 $owl = file_get_contents($pharmacogenomic_CDS_base_file_location) . "\n\n\n"; // Read the content of base ontology.
 $msc_owl = file_get_contents($MSC_classes_base_file_location) . "\n\n\n"; // Read the content of base ontology for encoding/decoding Medicine Safety Codes (MSC server).
+$rule_owl = "\n\n";
+
 $report = "-- Report -- \n\n"; // Start with the content of the script report and error log.
 $valid_polymorphism_variants = array(); // List of valid polymorphism variants from dbSNP (used to find errors and orientation mismatches).
 
@@ -517,7 +520,9 @@ foreach ($gene_ids as $gene_id) {
 
 $owl .= "Class: human" . "\n";
 foreach ($gene_ids as $gene_id) {
-	$owl .= "    SubClassOf: has exactly 2 " . $gene_id . "\n";
+	if($gene_id != "CYP2D6"){
+		$owl .= "    SubClassOf: has exactly 2 " . $gene_id . "\n";
+	}
 }
 
 /************************************************************
@@ -704,7 +709,7 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 			$owl .= "SubClassOf: human_with_genetic_polymorphism" . "\n";
 			$owl .= "SubClassOf:" . "\n";
 			$owl .= "has some " . $duplicated_allele_id . "\n";
-			$owl .= "Annotations: rdfs:label \"human with duplicated " . $duplicated_allele_label . "\" \n\n";
+			$owl .= "Annotations: rdfs:label \"human with " . $duplicated_allele_label . "\" \n\n";
 		}
 		
 		// Rules for (at least) heterozygous polymorphisms
@@ -751,7 +756,7 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 			$owl .= "SubClassOf: human_with_genetic_polymorphism" . "\n";
 			$owl .= "SubClassOf:" . "\n";
 			$owl .= "has exactly 2 " . $duplicated_allele_id . "\n";
-			$owl .= "Annotations: rdfs:label \"human with homozygous duplicated " . $duplicated_allele_label . "\" \n\n";
+			$owl .= "Annotations: rdfs:label \"human with homozygous " . $duplicated_allele_label . "\" \n\n";
 		}	
 		
 		// Rules for homozygous polymorphisms and alleles
@@ -909,7 +914,10 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 		$report .= "NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row " . $row->getRowIndex() . ", skipping conversion of this row.\n";
 		continue;
 	}
-			
+	
+	
+	
+	
 	$owl .= "Class: " . make_valid_id($human_class_label) . "\n";
 	$owl .= "   SubClassOf: rule" . "\n";
 	$owl .= "   Annotations: rdfs:label \"" . $human_class_label . "\"\n";
@@ -961,6 +969,16 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 		$owl .= "   Annotations: author_addition \"" . $author_addition . "\"\n";
 	}
 	$owl .= "   Annotations: CDS_message \"" . addslashes($recommendation_in_english) . "\"\n\n";	
+	
+	
+	$humantriggeringrule = "Class: test_" . make_valid_id($human_class_label) . "\n";
+	$humantriggeringrule .= "   SubClassOf: human_triggering_CDS_rule" . "\n";
+	$humantriggeringrule .= "   Annotations: rdfs:label \"test_" . $human_class_label . "\"\n";
+	$owl .= "   Annotations: relevant_for " . make_valid_id($human_class_label) . "\n";
+	if(strpos($logical_description_of_genetic_attributes,'has') !== false){
+		$humantriggeringrule .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($logical_description_of_genetic_attributes)) . "\n";
+	}
+	$rule_owl .= $humantriggeringrule ."\n\n";
 }
 
 $drug_labels = array_unique($drug_labels);
@@ -1110,6 +1128,16 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 		$owl .= "   Annotations: author_addition \"" . $author_addition . "\"\n";
 	}
 	$owl .= "	Annotations: textual_genetic_description \"" . clean_comment_string($phenotype_textual_description) . "\"\n\n";
+	
+	
+	$humantriggeringrule = "Class: test_" . make_valid_id($phenotype_label) . "\n";
+	$humantriggeringrule .= "   SubClassOf: human_triggering_phenotype_inference_rule" . "\n";
+	$humantriggeringrule .= "   Annotations: rdfs:label \"test_" . $phenotype_label . "\"\n";
+	$owl .= "   Annotations: relevant_for " . make_valid_id($phenotype_label) . "\n";
+	if(strpos($phenotype_logical_statements,'has') !== false){
+		$humantriggeringrule .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($phenotype_logical_statements)) . "\n";
+	}
+	$rule_owl .= $humantriggeringrule ."\n\n";
 }
 
 /**********************************
@@ -1135,7 +1163,8 @@ foreach($snp_list as $snp_element){
 //file_put_contents("..\\data\\dbSNP\\list_snps.txt",$results);
 file_put_contents($pharmacogenomic_CDS_file_location, $owl);
 file_put_contents($MSC_classes_file_location, $owl . $msc_owl); // $owl and $msc_owl are merged
-file_put_contents($pharmacogenomic_CDS_demo_file_location, $owl . file_get_contents($pharmacogenomic_CDS_demo_additions_file_location));
+file_put_contents($pharmacogenomic_CDS_demo_file_location, $owl . $rule_owl . file_get_contents($pharmacogenomic_CDS_demo_additions_file_location));
+file_put_contents($CDS_rule_additions_file_location, $owl . $rule_owl); // 
 file_put_contents($report_file_location, $report);
 
 beep(2);

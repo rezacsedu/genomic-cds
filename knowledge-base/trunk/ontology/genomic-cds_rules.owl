@@ -31185,3 +31185,1901 @@ Class: COMT
 DisjointClasses:
 COMT,MIR4761,F5,VKORC1,BRCA1,CYP1A2,CYP2D6,CYP3A5,UGT1A8,UGT1A7,UGT1A6,UGT1A10,UGT1A5,UGT1A9,UGT1A4,UGT1A3,UGT1A1,ABCB1,G6PD,CYP2C9,SULT1A1,DPYD,DPYD-AS1,ADRB1,CYP2A6,P2RY12,MED12L,CYP2B6,SLCO1B1,TPMT,CYP3A4,ZMIZ1-AS1,CYP2C19,HMGCR,LOC100286922,NBR1,IFNL4,HLA-B
 
+
+
+Class: test_human_triggering_CDS_rule_1
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 1"
+	EquivalentTo: has exactly 2 CYP2C9_star_1 and has exactly 2 rs9923231_C
+
+
+Class: test_human_triggering_CDS_rule_2
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 2"
+	EquivalentTo: has exactly 2 CYP2C9_star_1 and has some rs9923231_T and has some rs9923231_C
+
+
+Class: test_human_triggering_CDS_rule_3
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 3"
+	EquivalentTo: has exactly 2 CYP2C9_star_1 and has exactly 2 rs9923231_T
+
+
+Class: test_human_triggering_CDS_rule_4
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 4"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_2 and has exactly 2 rs9923231_C
+
+
+Class: test_human_triggering_CDS_rule_5
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 5"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_2 and has some rs9923231_T and has some rs9923231_C
+
+
+Class: test_human_triggering_CDS_rule_6
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 6"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_2 and has exactly 2 rs9923231_T
+
+
+Class: test_human_triggering_CDS_rule_7
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 7"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_3 and has exactly 2 rs9923231_C
+
+
+Class: test_human_triggering_CDS_rule_8
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 8"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_3 and has some rs9923231_T and has some rs9923231_C
+
+
+Class: test_human_triggering_CDS_rule_9
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 9"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_3 and has exactly 2 rs9923231_T
+
+
+Class: test_human_triggering_CDS_rule_10
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 10"
+	EquivalentTo: has exactly 2 CYP2C9_star_2 and has exactly 2 rs9923231_C
+
+
+Class: test_human_triggering_CDS_rule_11
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 11"
+	EquivalentTo: has exactly 2 CYP2C9_star_2 and has some rs9923231_T and has some rs9923231_C
+
+
+Class: test_human_triggering_CDS_rule_12
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 12"
+	EquivalentTo: has exactly 2 CYP2C9_star_2 and has exactly 2 rs9923231_T
+
+
+Class: test_human_triggering_CDS_rule_13
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 13"
+	EquivalentTo: has some CYP2C9_star_2 and has some CYP2C9_star_3 and has exactly 2 rs9923231_C
+
+
+Class: test_human_triggering_CDS_rule_14
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 14"
+	EquivalentTo: has some CYP2C9_star_2 and has some CYP2C9_star_3 and has some rs9923231_T and has some rs9923231_C
+
+
+Class: test_human_triggering_CDS_rule_15
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 15"
+	EquivalentTo: has some CYP2C9_star_2 and has some CYP2C9_star_3 and has exactly 2 rs9923231_T
+
+
+Class: test_human_triggering_CDS_rule_16
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 16"
+	EquivalentTo: has exactly 2 CYP2C9_star_3 and has exactly 2 rs9923231_C
+
+
+Class: test_human_triggering_CDS_rule_17
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 17"
+	EquivalentTo: has exactly 2 CYP2C9_star_3 and has some rs9923231_T and has some rs9923231_C
+
+
+Class: test_human_triggering_CDS_rule_18
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 18"
+	EquivalentTo: has exactly 2 CYP2C9_star_3 and has exactly 2 rs9923231_T
+
+
+Class: test_human_triggering_CDS_rule_19
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 19"
+	EquivalentTo: (has exactly 2 CYP2C19_star_17) or ((has some CYP2C19_star_17) and (has some CYP2C19_star_1))
+
+
+Class: test_human_triggering_CDS_rule_20
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 20"
+	EquivalentTo: has exactly 2 CYP2C19_star_1
+
+
+Class: test_human_triggering_CDS_rule_21
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 21"
+	EquivalentTo: (has some CYP2C19_star_1) and (has some (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8))
+
+
+Class: test_human_triggering_CDS_rule_22
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 22"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)
+
+
+Class: test_human_triggering_CDS_rule_23
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 23"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_24
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 24"
+	EquivalentTo: has some (CYP2C19_star_1 or CYP2C19_star_17) and has some (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_25
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 25"
+	EquivalentTo: has exactly 2 CYP2C19_star_17
+
+
+Class: test_human_triggering_CDS_rule_26
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 26"
+	EquivalentTo: has exactly 2 TPMT_star_1
+
+
+Class: test_human_triggering_CDS_rule_27
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 27"
+	EquivalentTo: has some TPMT_star_1 and has some (TPMT_star_2 or TPMT_star_3A or TPMT_star_3B or TPMT_star_3C or TPMT_star_4)
+
+
+Class: test_human_triggering_CDS_rule_28
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 28"
+	EquivalentTo: has exactly 2 (TPMT_star_2 or TPMT_star_3A or TPMT_star_3B or TPMT_star_3C or TPMT_star_4)
+
+
+Class: test_human_triggering_CDS_rule_29
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 29"
+	EquivalentTo: has exactly 2 TPMT_star_1
+
+
+Class: test_human_triggering_CDS_rule_30
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 30"
+	EquivalentTo: has some TPMT_star_1 and has some (TPMT_star_2 or TPMT_star_3A or TPMT_star_3B or TPMT_star_3C or TPMT_star_4)
+
+
+Class: test_human_triggering_CDS_rule_31
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 31"
+	EquivalentTo: has exactly 2 (TPMT_star_2 or TPMT_star_3A or TPMT_star_3B or TPMT_star_3C or TPMT_star_4)
+
+
+Class: test_human_triggering_CDS_rule_32
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 32"
+	EquivalentTo: has exactly 2 TPMT_star_1
+
+
+Class: test_human_triggering_CDS_rule_33
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 33"
+	EquivalentTo: has some TPMT_star_1 and has some (TPMT_star_2 or TPMT_star_3A or TPMT_star_3B or TPMT_star_3C or TPMT_star_4)
+
+
+Class: test_human_triggering_CDS_rule_34
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 34"
+	EquivalentTo: has exactly 2 (TPMT_star_2 or TPMT_star_3A or TPMT_star_3B or TPMT_star_3C or TPMT_star_4)
+
+
+Class: test_human_triggering_CDS_rule_35
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 35"
+	EquivalentTo: has some (TPMT_star_1 or TPMT_star_1S or TPMT_star_1A) and has some (TPMT_star_2 or TPMT_star_3A or TPMT_star_3B or TPMT_star_3C or TPMT_star_3D or TPMT_star_4 or TPMT_star_5 or TPMT_star_6 or TPMT_star_7 or TPMT_star_8 or TPMT_star_9 or TPMT_star_10 or TPMT_star_11 or TPMT_star_12 or TPMT_star_13 or TPMT_star_14 or TPMT_star_15 or TPMT_star_16 or TPMT_star_17 or TPMT_star_18)
+
+
+Class: test_human_triggering_CDS_rule_36
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 36"
+	EquivalentTo: has exactly 2 (TPMT_star_2 or TPMT_star_3A or TPMT_star_3B or TPMT_star_3C or TPMT_star_3D or TPMT_star_4 or TPMT_star_5 or TPMT_star_6 or TPMT_star_7 or TPMT_star_8 or TPMT_star_9 or TPMT_star_10 or TPMT_star_11 or TPMT_star_12 or TPMT_star_13 or TPMT_star_14 or TPMT_star_15 or TPMT_star_16 or TPMT_star_17 or TPMT_star_18)
+
+
+Class: test_human_triggering_CDS_rule_37
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 37"
+	EquivalentTo: has some (TPMT_star_1 or TPMT_star_1S or TPMT_star_1A) and has some (TPMT_star_2 or TPMT_star_3A or TPMT_star_3B or TPMT_star_3C or TPMT_star_3D or TPMT_star_4 or TPMT_star_5 or TPMT_star_6 or TPMT_star_7 or TPMT_star_8 or TPMT_star_9 or TPMT_star_10 or TPMT_star_11 or TPMT_star_12 or TPMT_star_13 or TPMT_star_14 or TPMT_star_15 or TPMT_star_16 or TPMT_star_17 or TPMT_star_18)
+
+
+Class: test_human_triggering_CDS_rule_38
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 38"
+	EquivalentTo: has exactly 2 (TPMT_star_2 or TPMT_star_3A or TPMT_star_3B or TPMT_star_3C or TPMT_star_3D or TPMT_star_4 or TPMT_star_5 or TPMT_star_6 or TPMT_star_7 or TPMT_star_8 or TPMT_star_9 or TPMT_star_10 or TPMT_star_11 or TPMT_star_12 or TPMT_star_13 or TPMT_star_14 or TPMT_star_15 or TPMT_star_16 or TPMT_star_17 or TPMT_star_18)
+
+
+Class: test_human_triggering_CDS_rule_39
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 39"
+	EquivalentTo: has some (TPMT_star_1 or TPMT_star_1S or TPMT_star_1A) and has some (TPMT_star_2 or TPMT_star_3A or TPMT_star_3B or TPMT_star_3C or TPMT_star_3D or TPMT_star_4 or TPMT_star_5 or TPMT_star_6 or TPMT_star_7 or TPMT_star_8 or TPMT_star_9 or TPMT_star_10 or TPMT_star_11 or TPMT_star_12 or TPMT_star_13 or TPMT_star_14 or TPMT_star_15 or TPMT_star_16 or TPMT_star_17 or TPMT_star_18)
+
+
+Class: test_human_triggering_CDS_rule_40
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 40"
+	EquivalentTo: has exactly 2 (TPMT_star_2 or TPMT_star_3A or TPMT_star_3B or TPMT_star_3C or TPMT_star_3D or TPMT_star_4 or TPMT_star_5 or TPMT_star_6 or TPMT_star_7 or TPMT_star_8 or TPMT_star_9 or TPMT_star_10 or TPMT_star_11 or TPMT_star_12 or TPMT_star_13 or TPMT_star_14 or TPMT_star_15 or TPMT_star_16 or TPMT_star_17 or TPMT_star_18)
+
+
+Class: test_human_triggering_CDS_rule_41
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 41"
+	EquivalentTo: has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53)
+
+
+Class: test_human_triggering_CDS_rule_42
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 42"
+	EquivalentTo: (has exactly 2 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72)) or ((has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53)) and (has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)))
+
+
+Class: test_human_triggering_CDS_rule_43
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 43"
+	EquivalentTo: has some (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
+
+
+Class: test_human_triggering_CDS_rule_44
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 44"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
+
+
+Class: test_human_triggering_CDS_rule_45
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 45"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_46
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 46"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_47
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 47"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_48
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 48"
+	EquivalentTo: has exactly 2 rs4149056_T
+
+
+Class: test_human_triggering_CDS_rule_49
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 49"
+	EquivalentTo: has some rs4149056_C and has some rs4149056_T
+
+
+Class: test_human_triggering_CDS_rule_50
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 50"
+	EquivalentTo: has exactly 2 rs4149056_C
+
+
+Class: test_human_triggering_CDS_rule_51
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 51"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_52
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 52"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_53
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 53"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_54
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 54"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_55
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 55"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_56
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 56"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_57
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 57"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_58
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 58"
+	EquivalentTo: has some (CYP2C19_star_1 or CYP2C19_star_17) and has some (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_59
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 59"
+	EquivalentTo: has exactly 2 CYP2C19_star_17
+
+
+Class: test_human_triggering_CDS_rule_60
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 60"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_61
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 61"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_62
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 62"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_63
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 63"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_64
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 64"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_65
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 65"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_66
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 66"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_2
+
+
+Class: test_human_triggering_CDS_rule_67
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 67"
+	EquivalentTo: has exactly 2 CYP2C9_star_2
+
+
+Class: test_human_triggering_CDS_rule_68
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 68"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_69
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 69"
+	EquivalentTo: has some CYP2C9_star_2 and has some CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_70
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 70"
+	EquivalentTo: has exactly 2 CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_71
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 71"
+	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)
+
+
+Class: test_human_triggering_CDS_rule_72
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 72"
+	EquivalentTo: has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)
+
+
+Class: test_human_triggering_CDS_rule_73
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 73"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_74
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 74"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_75
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 75"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_76
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 76"
+	EquivalentTo: has exactly 2 CYP3A5_star_1
+
+
+Class: test_human_triggering_CDS_rule_77
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 77"
+	EquivalentTo: has some CYP3A5_star_1 and has some CYP3A5_star_3
+
+
+Class: test_human_triggering_CDS_rule_78
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 78"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_79
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 79"
+	EquivalentTo: has some (CYP2C19_star_1 or CYP2C19_star_17) and has some (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_80
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 80"
+	EquivalentTo: has exactly 2 CYP2C19_star_17
+
+
+Class: test_human_triggering_CDS_rule_81
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 81"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_82
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 82"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_83
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 83"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_84
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 84"
+	EquivalentTo: has exactly 0 HLA-B_star_44
+
+
+Class: test_human_triggering_CDS_rule_85
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 85"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_2
+
+
+Class: test_human_triggering_CDS_rule_86
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 86"
+	EquivalentTo: has exactly 2 CYP2C9_star_2
+
+
+Class: test_human_triggering_CDS_rule_87
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 87"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_88
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 88"
+	EquivalentTo: has some CYP2C9_star_2 and has some CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_89
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 89"
+	EquivalentTo: has exactly 2 CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_90
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 90"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_2
+
+
+Class: test_human_triggering_CDS_rule_91
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 91"
+	EquivalentTo: has exactly 2 CYP2C9_star_2
+
+
+Class: test_human_triggering_CDS_rule_92
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 92"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_93
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 93"
+	EquivalentTo: has some CYP2C9_star_2 and has some CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_94
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 94"
+	EquivalentTo: has exactly 2 CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_95
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 95"
+	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)
+
+
+Class: test_human_triggering_CDS_rule_96
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 96"
+	EquivalentTo: has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)
+
+
+Class: test_human_triggering_CDS_rule_97
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 97"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_98
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 98"
+	EquivalentTo: has some (CYP2C19_star_1 or CYP2C19_star_17) and has some (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_99
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 99"
+	EquivalentTo: has exactly 2 CYP2C19_star_17
+
+
+Class: test_human_triggering_CDS_rule_100
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 100"
+	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)
+
+
+Class: test_human_triggering_CDS_rule_101
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 101"
+	EquivalentTo: has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)
+
+
+Class: test_human_triggering_CDS_rule_102
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 102"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_103
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 103"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_104
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 104"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_105
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 105"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_106
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 106"
+	EquivalentTo: has some (CYP2C19_star_1 or CYP2C19_star_17) and has some (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_107
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 107"
+	EquivalentTo: has exactly 2 CYP2C19_star_17
+
+
+Class: test_human_triggering_CDS_rule_108
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 108"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_109
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 109"
+	EquivalentTo: has some (CYP2C19_star_1 or CYP2C19_star_17) and has some (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_110
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 110"
+	EquivalentTo: has exactly 2 CYP2C19_star_17
+
+
+Class: test_human_triggering_CDS_rule_111
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 111"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_2
+
+
+Class: test_human_triggering_CDS_rule_112
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 112"
+	EquivalentTo: has exactly 2 CYP2C9_star_2
+
+
+Class: test_human_triggering_CDS_rule_113
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 113"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_114
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 114"
+	EquivalentTo: has some CYP2C9_star_2 and has some CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_115
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 115"
+	EquivalentTo: has exactly 2 CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_116
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 116"
+	EquivalentTo: has some UGT1A1_star_1 and has some UGT1A1_star_28
+
+
+Class: test_human_triggering_CDS_rule_117
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 117"
+	EquivalentTo: has exactly 2 UGT1A1_star_28
+
+
+Class: test_human_triggering_CDS_rule_118
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 118"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_119
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 119"
+	EquivalentTo: has some (CYP2C19_star_1 or CYP2C19_star_17) and has some (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_120
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 120"
+	EquivalentTo: has exactly 2 CYP2C19_star_17
+
+
+Class: test_human_triggering_CDS_rule_121
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 121"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_122
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 122"
+	EquivalentTo: has some (CYP2C19_star_1 or CYP2C19_star_17) and has some (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_123
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 123"
+	EquivalentTo: has exactly 2 CYP2C19_star_17
+
+
+Class: test_human_triggering_CDS_rule_124
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 124"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_125
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 125"
+	EquivalentTo: has some (CYP2C19_star_1 or CYP2C19_star_17) and has some (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_126
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 126"
+	EquivalentTo: has exactly 2 CYP2C19_star_17
+
+
+Class: test_human_triggering_CDS_rule_127
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 127"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_128
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 128"
+	EquivalentTo: has some (CYP2C19_star_1 or CYP2C19_star_17) and has some (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_129
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 129"
+	EquivalentTo: has exactly 2 CYP2C19_star_17
+
+
+Class: test_human_triggering_CDS_rule_130
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 130"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_2
+
+
+Class: test_human_triggering_CDS_rule_131
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 131"
+	EquivalentTo: has exactly 2 CYP2C9_star_2
+
+
+Class: test_human_triggering_CDS_rule_132
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 132"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_133
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 133"
+	EquivalentTo: has some CYP2C9_star_2 and has some CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_134
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 134"
+	EquivalentTo: has exactly 2 CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_135
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 135"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_136
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 136"
+	EquivalentTo: has some (CYP2C19_star_1 or CYP2C19_star_17) and has some (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_137
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 137"
+	EquivalentTo: has exactly 2 CYP2C19_star_17
+
+
+Class: test_human_triggering_CDS_rule_138
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 138"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_139
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 139"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_140
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 140"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_141
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 141"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_142
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 142"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_143
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 143"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_144
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 144"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_145
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 145"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_146
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 146"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_147
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 147"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_148
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 148"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_149
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 149"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_150
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 150"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_151
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 151"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_152
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 152"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_153
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 153"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_154
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 154"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_155
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 155"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_156
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 156"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_157
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 157"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_158
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 158"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_159
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 159"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_160
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 160"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_161
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 161"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_162
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 162"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_163
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 163"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_164
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 164"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_165
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 165"
+	EquivalentTo: has some HLA-B_star_5701
+
+
+Class: test_human_triggering_CDS_rule_166
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 166"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_167
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 167"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_168
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 168"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_169
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 169"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_170
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 170"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_171
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 171"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_172
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 172"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_173
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 173"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_174
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 174"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_175
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 175"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_176
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 176"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_177
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 177"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_178
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 178"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_179
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 179"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_180
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 180"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_181
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 181"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_182
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 182"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_183
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 183"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_184
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 184"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_185
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 185"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_186
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 186"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_187
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 187"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_triggering_CDS_rule_188
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 188"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42))
+
+
+Class: test_human_triggering_CDS_rule_189
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 189"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_triggering_CDS_rule_190
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 190"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_191
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 191"
+	EquivalentTo: has some (CYP2C19_star_1 or CYP2C19_star_17) and has some (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_triggering_CDS_rule_192
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 192"
+	EquivalentTo: has exactly 2 CYP2C19_star_17
+
+
+Class: test_human_triggering_CDS_rule_193
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 193"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_2
+
+
+Class: test_human_triggering_CDS_rule_194
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 194"
+	EquivalentTo: has exactly 2 CYP2C9_star_2
+
+
+Class: test_human_triggering_CDS_rule_195
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 195"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_196
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 196"
+	EquivalentTo: has some CYP2C9_star_2 and has some CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_197
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 197"
+	EquivalentTo: has exactly 2 CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_198
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 198"
+	EquivalentTo: has some rs9934438_A and has some rs9934438_G
+
+
+Class: test_human_triggering_CDS_rule_199
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 199"
+	EquivalentTo: has exactly 2 rs9934438_A
+
+
+Class: test_human_triggering_CDS_rule_200
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 200"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_2
+
+
+Class: test_human_triggering_CDS_rule_201
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 201"
+	EquivalentTo: has exactly 2 CYP2C9_star_2
+
+
+Class: test_human_triggering_CDS_rule_202
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 202"
+	EquivalentTo: has some CYP2C9_star_1 and has some CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_203
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 203"
+	EquivalentTo: has some CYP2C9_star_2 and has some CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_204
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 204"
+	EquivalentTo: has exactly 2 CYP2C9_star_3
+
+
+Class: test_human_triggering_CDS_rule_205
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 205"
+	EquivalentTo: has some rs9934438_A and has some rs9934438_G
+
+
+Class: test_human_triggering_CDS_rule_206
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 206"
+	EquivalentTo: has exactly 2 rs9934438_A
+
+
+Class: test_human_triggering_CDS_rule_207
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 207"
+	EquivalentTo: has exactly 2 rs6025_T
+
+
+Class: test_human_triggering_CDS_rule_208
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 208"
+	EquivalentTo: has some rs6025_C and has some rs6025_T
+
+
+Class: test_human_triggering_CDS_rule_209
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 209"
+	EquivalentTo: has exactly 0 HLA-B_star_5701
+
+
+Class: test_human_triggering_CDS_rule_210
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 210"
+	EquivalentTo: has some HLA-B_star_5701
+
+
+Class: test_human_triggering_CDS_rule_211
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 211"
+	EquivalentTo: has exactly 0 HLA-B_star_5801
+
+
+Class: test_human_triggering_CDS_rule_212
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 212"
+	EquivalentTo: has some HLA-B_star_5801
+
+
+Class: test_human_triggering_CDS_rule_213
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 213"
+	EquivalentTo: has min 2 DPYD_star_1
+
+
+Class: test_human_triggering_CDS_rule_214
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 214"
+	EquivalentTo: has some DPYD_star_1 and has some (DPYD_star_2A or DPYD_star_13 or rs67376798)
+
+
+Class: test_human_triggering_CDS_rule_215
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 215"
+	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_13 or rs67376798)
+
+
+Class: test_human_triggering_CDS_rule_216
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 216"
+	EquivalentTo: has min 2 DPYD_star_1
+
+
+Class: test_human_triggering_CDS_rule_217
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 217"
+	EquivalentTo: has some DPYD_star_1 and has some (DPYD_star_2A or DPYD_star_13 or rs67376798)
+
+
+Class: test_human_triggering_CDS_rule_218
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 218"
+	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_13 or rs67376798)
+
+
+Class: test_human_triggering_CDS_rule_219
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 219"
+	EquivalentTo: has min 2 DPYD_star_1
+
+
+Class: test_human_triggering_CDS_rule_220
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 220"
+	EquivalentTo: has some DPYD_star_1 and has some (DPYD_star_2A or DPYD_star_13 or rs67376798)
+
+
+Class: test_human_triggering_CDS_rule_221
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 221"
+	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_13 or rs67376798)
+
+
+Class: test_human_triggering_CDS_rule_222
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 222"
+	EquivalentTo: has exactly 0 HLA-B_star_1502
+
+
+Class: test_human_triggering_CDS_rule_223
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 223"
+	EquivalentTo: has some HLA-B_star_1502
+
+
+Class: test_human_triggering_CDS_rule_224
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 224"
+	EquivalentTo: has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53)
+
+
+Class: test_human_triggering_CDS_rule_225
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 225"
+	EquivalentTo: has exactly 2 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62))
+
+
+Class: test_human_triggering_CDS_rule_226
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 226"
+	EquivalentTo: has some (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
+
+
+Class: test_human_triggering_CDS_rule_227
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 227"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
+
+
+Class: test_human_triggering_CDS_rule_228
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 228"
+	EquivalentTo: has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53)
+
+
+Class: test_human_triggering_CDS_rule_229
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 229"
+	EquivalentTo: has exactly 2 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62))
+
+
+Class: test_human_triggering_CDS_rule_230
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 230"
+	EquivalentTo: has some (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
+
+
+Class: test_human_triggering_CDS_rule_231
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 231"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
+
+
+Class: test_human_triggering_CDS_rule_232
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 232"
+	EquivalentTo: has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)
+
+
+Class: test_human_triggering_CDS_rule_233
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 233"
+	EquivalentTo: has exactly 2 CYP2C19_star_1
+
+
+Class: test_human_triggering_CDS_rule_234
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 234"
+	EquivalentTo: has some CYP2C19_star_1 and has some (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)
+
+
+Class: test_human_triggering_CDS_rule_235
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 235"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)
+
+
+Class: test_human_triggering_CDS_rule_236
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 236"
+	EquivalentTo: has exactly 2 rs12979860_C
+
+
+Class: test_human_triggering_CDS_rule_237
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 237"
+	EquivalentTo: has some rs12979860_T and has some (rs12979860_T or rs12979860_C)
+
+
+Class: test_human_triggering_CDS_rule_238
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 238"
+	EquivalentTo: has exactly 2 rs12979860_C
+
+
+Class: test_human_triggering_CDS_rule_239
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 239"
+	EquivalentTo: has some rs12979860_T and has some (rs12979860_T or rs12979860_C)
+
+
+Class: test_human_triggering_CDS_rule_240
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 240"
+	EquivalentTo: has exactly 2 rs12979860_C
+
+
+Class: test_human_triggering_CDS_rule_241
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 241"
+	EquivalentTo: has some rs12979860_T and has some (rs12979860_T or rs12979860_C)
+
+
+Class: test_human_triggering_CDS_rule_242
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 242"
+	EquivalentTo: (has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)) and (has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53))
+
+
+Class: test_human_triggering_CDS_rule_243
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 243"
+	EquivalentTo: (has exactly 2 CYP2C19_star_1) and (has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53))
+
+
+Class: test_human_triggering_CDS_rule_244
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 244"
+	EquivalentTo: (has some CYP2C19_star_1 and has some (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)) and (has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53))
+
+
+Class: test_human_triggering_CDS_rule_245
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 245"
+	EquivalentTo: (has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)) and (has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53))
+
+
+Class: test_human_triggering_CDS_rule_246
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 246"
+	EquivalentTo: (has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)) and (has exactly 2 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)))
+
+
+Class: test_human_triggering_CDS_rule_247
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 247"
+	EquivalentTo: (has exactly 2 CYP2C19_star_1) and (has exactly 2 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)))
+
+
+Class: test_human_triggering_CDS_rule_248
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 248"
+	EquivalentTo: (has some CYP2C19_star_1 and has some (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)) and (has exactly 2 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)))
+
+
+Class: test_human_triggering_CDS_rule_249
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 249"
+	EquivalentTo: (has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)) and (has exactly 2 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)))
+
+
+Class: test_human_triggering_CDS_rule_250
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 250"
+	EquivalentTo: (has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)) and (has some (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62))
+
+
+Class: test_human_triggering_CDS_rule_251
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 251"
+	EquivalentTo: (has exactly 2 CYP2C19_star_1) and (has some (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62))
+
+
+Class: test_human_triggering_CDS_rule_252
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 252"
+	EquivalentTo: (has some CYP2C19_star_1 and has some (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)) and (has some (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62))
+
+
+Class: test_human_triggering_CDS_rule_253
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 253"
+	EquivalentTo: (has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)) and (has some (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62))
+
+
+Class: test_human_triggering_CDS_rule_254
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 254"
+	EquivalentTo: (has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)) and (has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53))
+
+
+Class: test_human_triggering_CDS_rule_255
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 255"
+	EquivalentTo: (has exactly 2 CYP2C19_star_1) and (has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53))
+
+
+Class: test_human_triggering_CDS_rule_256
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 256"
+	EquivalentTo: (has some CYP2C19_star_1 and has some (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)) and(has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53))
+
+
+Class: test_human_triggering_CDS_rule_257
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 257"
+	EquivalentTo: (has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)) and (has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53))
+
+
+Class: test_human_triggering_CDS_rule_258
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 258"
+	EquivalentTo: has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53)
+
+
+Class: test_human_triggering_CDS_rule_259
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 259"
+	EquivalentTo: has exactly 2 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62))
+
+
+Class: test_human_triggering_CDS_rule_260
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 260"
+	EquivalentTo: has some (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
+
+
+Class: test_human_triggering_CDS_rule_261
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 261"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
+
+
+Class: test_human_triggering_CDS_rule_262
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 262"
+	EquivalentTo: has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)
+
+
+Class: test_human_triggering_CDS_rule_263
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 263"
+	EquivalentTo: has exactly 2 CYP2C19_star_1
+
+
+Class: test_human_triggering_CDS_rule_264
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 264"
+	EquivalentTo: has some CYP2C19_star_1 and has some (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)
+
+
+Class: test_human_triggering_CDS_rule_265
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 265"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)
+
+
+Class: test_human_triggering_CDS_rule_266
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 266"
+	EquivalentTo: has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53)
+
+
+Class: test_human_triggering_CDS_rule_267
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 267"
+	EquivalentTo: has exactly 2 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62))
+
+
+Class: test_human_triggering_CDS_rule_268
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 268"
+	EquivalentTo: has some (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
+
+
+Class: test_human_triggering_CDS_rule_269
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 269"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
+
+
+Class: test_human_triggering_CDS_rule_270
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 270"
+	EquivalentTo: has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)
+
+
+Class: test_human_triggering_CDS_rule_271
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 271"
+	EquivalentTo: has exactly 2 CYP2C19_star_1
+
+
+Class: test_human_triggering_CDS_rule_272
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 272"
+	EquivalentTo: has some CYP2C19_star_1 and has some (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)
+
+
+Class: test_human_triggering_CDS_rule_273
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 273"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)
+
+
+Class: test_human_triggering_CDS_rule_274
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 274"
+	EquivalentTo: has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53)
+
+
+Class: test_human_triggering_CDS_rule_275
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 275"
+	EquivalentTo: has exactly 2 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62))
+
+
+Class: test_human_triggering_CDS_rule_276
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 276"
+	EquivalentTo: has some (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
+
+
+Class: test_human_triggering_CDS_rule_277
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 277"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
+
+
+Class: test_human_triggering_CDS_rule_278
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 278"
+	EquivalentTo: has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)
+
+
+Class: test_human_triggering_CDS_rule_279
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 279"
+	EquivalentTo: has exactly 2 CYP2C19_star_1
+
+
+Class: test_human_triggering_CDS_rule_280
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 280"
+	EquivalentTo: has some CYP2C19_star_1 and has some (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)
+
+
+Class: test_human_triggering_CDS_rule_281
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 281"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)
+
+
+Class: test_human_triggering_CDS_rule_282
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 282"
+	EquivalentTo: has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53)
+
+
+Class: test_human_triggering_CDS_rule_283
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 283"
+	EquivalentTo: has exactly 2 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62))
+
+
+Class: test_human_triggering_CDS_rule_284
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 284"
+	EquivalentTo: has some (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
+
+
+Class: test_human_triggering_CDS_rule_285
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 285"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
+
+
+Class: test_human_triggering_CDS_rule_286
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 286"
+	EquivalentTo: has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)
+
+
+Class: test_human_triggering_CDS_rule_287
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 287"
+	EquivalentTo: has exactly 2 CYP2C19_star_1
+
+
+Class: test_human_triggering_CDS_rule_288
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 288"
+	EquivalentTo: has some CYP2C19_star_1 and has some (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)
+
+
+Class: test_human_triggering_CDS_rule_289
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 289"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)
+
+
+Class: test_human_triggering_CDS_rule_290
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 290"
+	EquivalentTo: has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53)
+
+
+Class: test_human_triggering_CDS_rule_291
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 291"
+	EquivalentTo: has exactly 2 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62))
+
+
+Class: test_human_triggering_CDS_rule_292
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 292"
+	EquivalentTo: has some (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
+
+
+Class: test_human_triggering_CDS_rule_293
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 293"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
+
+
+Class: test_human_triggering_CDS_rule_294
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 294"
+	EquivalentTo: has exactly 2 CYP2C19_star_17 or (has some CYP2C19_star_17 and has some CYP2C19_star_1)
+
+
+Class: test_human_triggering_CDS_rule_295
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 295"
+	EquivalentTo: has exactly 2 CYP2C19_star_1
+
+
+Class: test_human_triggering_CDS_rule_296
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 296"
+	EquivalentTo: has some CYP2C19_star_1 and has some (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)
+
+
+Class: test_human_triggering_CDS_rule_297
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 297"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)
+
+
+Class: test_human_triggering_CDS_rule_298
+   SubClassOf: human_triggering_CDS_rule
+   Annotations: rdfs:label "test_human triggering CDS rule 298"
+	EquivalentTo: has some HLA-B_star_5801
+
+
+Class: test_human_with_CPIC_CYP2C19_ultrarapid_metabolizer_phenotype
+   SubClassOf: human_triggering_phenotype_inference_rule
+   Annotations: rdfs:label "test_human with CPIC CYP2C19 ultrarapid metabolizer phenotype"
+	EquivalentTo: has exactly 2 CYP2C19_star_17 or has some CYP2C19_star_17 and has some CYP2C19_star_1
+
+
+Class: test_human_with_CPIC_CYP2C19_extensive_metabolizer_phenotype
+   SubClassOf: human_triggering_phenotype_inference_rule
+   Annotations: rdfs:label "test_human with CPIC CYP2C19 extensive metabolizer phenotype"
+	EquivalentTo: has exactly 2 CYP2C19_star_1
+
+
+Class: test_human_with_CPIC_CYP2C19_intermediate_metabolizer_phenotype
+   SubClassOf: human_triggering_phenotype_inference_rule
+   Annotations: rdfs:label "test_human with CPIC CYP2C19 intermediate metabolizer phenotype"
+	EquivalentTo: has some CYP2C19_star_1 and has some (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)
+
+
+Class: test_human_with_CPIC_CYP2C19_poor_metabolizer_phenotype
+   SubClassOf: human_triggering_phenotype_inference_rule
+   Annotations: rdfs:label "test_human with CPIC CYP2C19 poor metabolizer phenotype"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3 or CYP2C19_star_4 or CYP2C19_star_5 or CYP2C19_star_6 or CYP2C19_star_7 or CYP2C19_star_8)
+
+
+Class: test_human_with_CPIC_CYP2D6_ultrarapid_metabolizer_phenotype
+   SubClassOf: human_triggering_phenotype_inference_rule
+   Annotations: rdfs:label "test_human with CPIC CYP2D6 ultrarapid metabolizer phenotype"
+	EquivalentTo: has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53)
+
+
+Class: test_human_with_CPIC_CYP2D6_extensive_metabolizer_phenotype
+   SubClassOf: human_triggering_phenotype_inference_rule
+   Annotations: rdfs:label "test_human with CPIC CYP2D6 extensive metabolizer phenotype"
+	EquivalentTo: has exactly 2 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) or (has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_27 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_45 or CYP2D6_star_46 or CYP2D6_star_39 or CYP2D6_star_48 or CYP2D6_star_53) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62))
+
+
+Class: test_human_with_CPIC_CYP2D6_intermediate_metabolizer_phenotype
+   SubClassOf: human_triggering_phenotype_inference_rule
+   Annotations: rdfs:label "test_human with CPIC CYP2D6 intermediate metabolizer phenotype"
+	EquivalentTo: has some (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_41 or CYP2D6_star_49 or CYP2D6_star_50 or CYP2D6_star_54 or CYP2D6_star_55 or CYP2D6_star_59 or CYP2D6_star_69 or CYP2D6_star_72) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
+
+
+Class: test_human_with_CPIC_CYP2D6_poor_metabolizer_phenotype
+   SubClassOf: human_triggering_phenotype_inference_rule
+   Annotations: rdfs:label "test_human with CPIC CYP2D6 poor metabolizer phenotype"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_18 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_31 or CYP2D6_star_36 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_44 or CYP2D6_star_47 or CYP2D6_star_51 or CYP2D6_star_56 or CYP2D6_star_57 or CYP2D6_star_62)
+
+
+Class: test_human_with_DPWG_CYP2C19_intermediate_metabolizer_phenotype
+   SubClassOf: human_triggering_phenotype_inference_rule
+   Annotations: rdfs:label "test_human with DPWG CYP2C19 intermediate metabolizer phenotype"
+	EquivalentTo: has some (CYP2C19_star_1 or CYP2C19_star_17) and has some (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_with_DPWG_CYP2C19_poor_metabolizer_phenotype
+   SubClassOf: human_triggering_phenotype_inference_rule
+   Annotations: rdfs:label "test_human with DPWG CYP2C19 poor metabolizer phenotype"
+	EquivalentTo: has exactly 2 (CYP2C19_star_2 or CYP2C19_star_3)
+
+
+Class: test_human_with_DPWG_CYP2C19_ultrarapid_metabolizer_phenotype
+   SubClassOf: human_triggering_phenotype_inference_rule
+   Annotations: rdfs:label "test_human with DPWG CYP2C19 ultrarapid metabolizer phenotype"
+	EquivalentTo: has exactly 2 CYP2C19_star_17
+
+
+Class: test_human_with_DPWG_CYP2D6_intermediate_metabolizer_phenotype
+   SubClassOf: human_triggering_phenotype_inference_rule
+   Annotations: rdfs:label "test_human with DPWG CYP2D6 intermediate metabolizer phenotype"
+	EquivalentTo: has exactly 2 (CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) or has some (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has some (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_with_DPWG_CYP2D6_poor_metabolizer_phenotype
+   SubClassOf: human_triggering_phenotype_inference_rule
+   Annotations: rdfs:label "test_human with DPWG CYP2D6 poor metabolizer phenotype"
+	EquivalentTo: has exactly 2 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42)
+
+
+Class: test_human_with_DPWG_CYP2D6_ultrarapid_metabolizer_phenotype
+   SubClassOf: human_triggering_phenotype_inference_rule
+   Annotations: rdfs:label "test_human with DPWG CYP2D6 ultrarapid metabolizer phenotype"
+	EquivalentTo: has exactly 0 (CYP2D6_star_3 or CYP2D6_star_4 or CYP2D6_star_5 or CYP2D6_star_6 or CYP2D6_star_7 or CYP2D6_star_8 or CYP2D6_star_11 or CYP2D6_star_12 or CYP2D6_star_13 or CYP2D6_star_14 or CYP2D6_star_15 or CYP2D6_star_16 or CYP2D6_star_19 or CYP2D6_star_20 or CYP2D6_star_21 or CYP2D6_star_38 or CYP2D6_star_40 or CYP2D6_star_42 or CYP2D6_star_9 or CYP2D6_star_10 or CYP2D6_star_17 or CYP2D6_star_29 or CYP2D6_star_36 or CYP2D6_star_41) and has min 3 (CYP2D6_star_1 or CYP2D6_star_2 or CYP2D6_star_33 or CYP2D6_star_35)
+
+
+Class: test_human_with_DPWG_TPMT_intermediate_metabolizer_phenotype
+   SubClassOf: human_triggering_phenotype_inference_rule
+   Annotations: rdfs:label "test_human with DPWG TPMT intermediate metabolizer phenotype"
+	EquivalentTo: has some (TPMT_star_1 or TPMT_star_1S or TPMT_star_1A) and has some (TPMT_star_2 or TPMT_star_3A or TPMT_star_3B or TPMT_star_3C or TPMT_star_3D or TPMT_star_4 or TPMT_star_5 or TPMT_star_6 or TPMT_star_7 or TPMT_star_8 or TPMT_star_9 or TPMT_star_10 or TPMT_star_11 or TPMT_star_12 or TPMT_star_13 or TPMT_star_14 or TPMT_star_15 or TPMT_star_16 or TPMT_star_17 or TPMT_star_18)
+
+
+Class: test_human_with_DPWG_TPMT_poor_metabolizer_phenotype
+   SubClassOf: human_triggering_phenotype_inference_rule
+   Annotations: rdfs:label "test_human with DPWG TPMT poor metabolizer phenotype"
+	EquivalentTo: has exactly 2 (TPMT_star_2 or TPMT_star_3A or TPMT_star_3B or TPMT_star_3C or TPMT_star_3D or TPMT_star_4 or TPMT_star_5 or TPMT_star_6 or TPMT_star_7 or TPMT_star_8 or TPMT_star_9 or TPMT_star_10 or TPMT_star_11 or TPMT_star_12 or TPMT_star_13 or TPMT_star_14 or TPMT_star_15 or TPMT_star_16 or TPMT_star_17 or TPMT_star_18)
+
+
+Class: test_human_with_DPWG_DPYD_poor_metabolizer_phenotype
+   SubClassOf: human_triggering_phenotype_inference_rule
+   Annotations: rdfs:label "test_human with DPWG DPYD poor metabolizer phenotype"
+	EquivalentTo: has exactly 2 (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)
+
+
+Class: test_human_with_DPWG_DPYD_intermediate_metabolizer_phenotype
+   SubClassOf: human_triggering_phenotype_inference_rule
+   Annotations: rdfs:label "test_human with DPWG DPYD intermediate metabolizer phenotype"
+	EquivalentTo: has some (DPYD_star_1 or DPYD_star_4 or DPYD_star_5 or DPYD_star_6 or DPYD_star_9A) and has some (DPYD_star_2A or DPYD_star_3 or DPYD_star_7 or DPYD_star_8 or DPYD_star_11 or DPYD_star_12 or DPYD_star_13 or rs2297595 or DPYD_star_9B or DPYD_star_10)
+
+
