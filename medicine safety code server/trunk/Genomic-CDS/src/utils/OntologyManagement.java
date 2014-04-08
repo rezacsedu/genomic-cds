@@ -2,8 +2,9 @@ package utils;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.Iterator;
+import java.util.Set;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
@@ -13,17 +14,24 @@ import org.semanticweb.owlapi.model.OWLClass;
 import org.semanticweb.owlapi.model.OWLClassExpression;
 import org.semanticweb.owlapi.model.OWLDataFactory;
 import org.semanticweb.owlapi.model.OWLLiteral;
+import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
+import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 
-import eu.trowl.owlapi3.rel.reasoner.dl.RELReasoner;
-import eu.trowl.owlapi3.rel.reasoner.dl.RELReasonerFactory;
+import exception.VariantDoesNotMatchAnAllowedVariantException;
 
+import safetycode.AlleleGroup;
+import safetycode.DrugRecommendation;
+import safetycode.Genetic_Marker_Group;
+import safetycode.GenotypeElement;
+import safetycode.SNPElement;
+import safetycode.SNPsGroup;
 
 /**
  * This class keeps a single instance of the base ontology in order to use it without having to load in memory one for every request.
  * @author Jose Antonio Miñarro Giménez
- * @version 1.0
+ * @version 2.0
  * */
 public class OntologyManagement {
 	/**	Singleton instance of this class */
@@ -34,13 +42,14 @@ public class OntologyManagement {
 	private OWLOntologyManager manager = null;
 	/** Source file where base ontology is stored */
 	private static String ontFile=null;
-	/** List of base variants when parsing a VCF file */
-	private ArrayList<String[]> vcfListRsids = null;
-	/** List of base variants (null;null) when parsing a 23andme file */
-	private ArrayList<String[]> meListRsids = null;
-	/** Map of the correspondences between criteria syntax and bit codes */
-	private HashMap<String,String> criteria2Bitcode = null;
-	
+	/** List of base Genetic markers groups */
+	private ArrayList<Genetic_Marker_Group> listGeneticMarkers = null;
+	/** List of allele groups */
+	private ArrayList<AlleleGroup> listAlleleGroups = null;
+	/** List of SNP groups */
+	private ArrayList<SNPsGroup> listSNPsGroups = null;
+	/** List of defined Drug recommendations rules */
+	private ArrayList<DrugRecommendation> listDrugRecommendations = null;
 	
 	/**
 	 * Static method to obtain the singleton instance of this class.
@@ -48,7 +57,7 @@ public class OntologyManagement {
 	 * @return		A static reference to the singleton instance of OntologyManagement class.
 	 * */
 	public static OntologyManagement getOntologyManagement(String ontologyFile){
-		if(ontologyFile!=null && ontologyFile.equalsIgnoreCase(ontFile)||singleton==null){
+		if(ontologyFile!=null && (!ontologyFile.equalsIgnoreCase(ontFile)||singleton==null)){
 			ontFile=ontologyFile;
 			singleton = new OntologyManagement(ontFile);
 		}
@@ -65,11 +74,24 @@ public class OntologyManagement {
 		try {
 			manager = OWLManager.createOWLOntologyManager();
 			File file = new File(ontologyFile);
-			ontology = manager.loadOntologyFromOntologyDocument(file);	
-						
-			criteria2Bitcode	= initializedMapCriteria2Bitcode();
-			vcfListRsids		= initializedVCFRefListRsids();
-			meListRsids			= initializedListRsids();
+			ontology = manager.loadOntologyFromOntologyDocument(file);
+			
+			initializeAlleleGroups();
+			/*for(AlleleGroup ag: listAlleleGroups){
+				System.out.println("AlleleGroup["+ag.getRank()+"]="+ag.getGeneticMarkerName());
+			}*/
+			initializeSNPsGroups();
+			/*for(SNPsGroup sg: listSNPsGroups){
+				System.out.println("SNPsGroup["+sg.getRank()+"]="+sg.getGeneticMarkerName());
+			}*/
+			initializeGenotypeElements();
+			/*for(Genetic_Marker_Group gmg: listGeneticMarkers){
+				System.out.println("GeneticMarkerGroup["+gmg.getRank()+"]="+gmg.getGeneticMarkerName());
+			}*/
+			initializeDrugRules();
+			/*for(DrugRecommendation dr: listDrugRecommendations){
+				System.out.println("Drug recommendation "+dr.getDrugName()+" = "+dr.toString());
+			}*/
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -78,23 +100,27 @@ public class OntologyManagement {
 	}
 	
 	
+	public ArrayList<DrugRecommendation> getListDrugRecommendation(){
+		return listDrugRecommendations;
+	}
+	
 	/**
 	 * Get method to obtain the instance of the ontology model.
 	 * 
 	 * @return		The corresponding OWL ontology of the base ontological model.
 	 * */
-	public OWLOntology getOntology(){		
+	/*public OWLOntology getOntology(){		
 		return singleton.ontology;
-	}
+	}*/
 	
 	
 	/**Get method to obtain the ontology manager of the corresponding base ontological model.
 	 * 
 	 * @return		The ontology manager of the base ontological model.
 	 * */
-	public OWLOntologyManager getManager(){
+	/*public OWLOntologyManager getManager(){
 		return singleton.manager;
-	}
+	}*/
 	
 	
 	/**
@@ -119,7 +145,7 @@ public class OntologyManagement {
 	 * 
 	 * @return		A TrOWL reasoner without precomputed inferences.
 	 * */
-	public RELReasoner getRELReasoner(){
+	/*public RELReasoner getRELReasoner(){
 		RELReasoner local_reasoner = null;
 		try{
 			OWLOntologyManager mang = OWLManager.createOWLOntologyManager();
@@ -129,38 +155,20 @@ public class OntologyManagement {
 			e.printStackTrace();
 		}
 		return local_reasoner;
-	}
-	
-	
-	/**
-	 * Get Method to obtain the map between criteria syntax and bit codes.
-	 * 
-	 * @return		A map that indicates the links between each criteria syntax and its bit code.
-	 * */
-	public HashMap<String,String> getMapCriteria2Bitcode(){
-		return criteria2Bitcode;
-	}
+	}*/
 	
 	
 	/**
 	 * Get method to obtain the list of base variants when parsing a VCF file.
 	 * 
-	 * @return		List of base SNPs, its annotations and reference criteria syntax and bitcode. 
+	 * @return		List of base SNPs for reference VCF format. 
 	 * */
-	public ArrayList<String[]> getVCFRefListRsids(){
-		ArrayList<String[]> listRsids = new ArrayList<String[]>();
+	public ArrayList<SNPElement> getVCFRefListRsids(){
+		ArrayList<SNPElement> listRsids = new ArrayList<SNPElement>();
 
-		// Each String array of the list contains:
-		// [0] -> rsid
-		// [1] -> bit_length
-		// [2] -> orientation
-		// [3] -> criteria_syntax
-		// [4] -> bit_code
-		
-		for(int i=0;i<vcfListRsids.size();i++){
-			String[] node = vcfListRsids.get(i);
-			String[] new_node = {node[0],node[1],node[2],node[3],node[4]};
-			listRsids.add(new_node);
+		for(SNPsGroup snpg: listSNPsGroups){
+			//System.out.println(snpg.getGeneticMarkerName()+" -> VCFref="+snpg.getVCFReference());
+			listRsids.add(new SNPElement(snpg.getGeneticMarkerName(),snpg.getVCFReference(),snpg.getVCFReference()));
 		}
 		
 		return listRsids;
@@ -170,321 +178,565 @@ public class OntologyManagement {
 	/**
 	 * Get method to obtain the list of base variants when parsing a 23andme file.
 	 * 
-	 * @return		List of base SNPs, its annotations and the criteria syntax and bitcode of (null;null) variants.
+	 * @return		List of base SNPs of (null;null) variants.
 	 * */
-	public ArrayList<String[]> getListRsids(){
-		ArrayList<String[]> listRsids = new ArrayList<String[]>();
+	public ArrayList<SNPElement> getList23andMeRsids(){
+		ArrayList<SNPElement> listRsids = new ArrayList<SNPElement>();
 
-		// Each String array of the list contains:
-		// [0] -> rsid
-		// [1] -> bit_length
-		// [2] -> orientation
-		// [3] -> criteria_syntax
-		// [4] -> bit_code
-		
-		for(int i=0;i<meListRsids.size();i++){
-			String[] node =meListRsids.get(i);
-			String[] new_node = {node[0],node[1],node[2],node[3],node[4]};
-			listRsids.add(new_node);
+		for(SNPsGroup snpg: listSNPsGroups){
+			listRsids.add(new SNPElement(snpg.getGeneticMarkerName(),null,null));
 		}
-		
+				
 		return listRsids;
 	}
 	
 	
 	/**
-	 * Method to initialize the map of criteria syntax and corresponding bit codes of each variant in the ontology.
+	 * Get the list of genetic marker groups.
 	 * 
-	 * @return	A Map that relates each criteria syntax with their bit code representation in the patient profile.
+	 * @return List of genetic marker groups.
 	 * */
-	private HashMap<String,String> initializedMapCriteria2Bitcode(){
-		HashMap<String,String> map = new HashMap<String,String>();
-		
-		OWLDataFactory factory = manager.getOWLDataFactory();
-		OWLClass human_with_genotype_marker = factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#human_with_genotype_marker"));
-		OWLAnnotationProperty ann_bit_code	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#bit_code"));
-		OWLAnnotationProperty ann_criteria	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#criteria_syntax"));
-		
-		Iterator<OWLClassExpression> list_marker = human_with_genotype_marker.getSubClasses(ontology).iterator();
-		while(list_marker.hasNext()){
-			OWLClass clase = list_marker.next().asOWLClass();
-			Iterator<OWLClassExpression> list_variants = clase.getSubClasses(ontology).iterator();
-			while(list_variants.hasNext()){
-				OWLClass subClass = list_variants.next().asOWLClass();
-				String criteria = "";
-				for (OWLAnnotation annotation : subClass.getAnnotations(ontology, ann_criteria)) {
-					if (annotation.getValue() instanceof OWLLiteral) {
-						OWLLiteral val = (OWLLiteral) annotation.getValue();
-						criteria = val.getLiteral();
-						break;
-					}
-				}
-				if (criteria == null || criteria.isEmpty()) continue;
-				
-				String bit_code = "";
-				for (OWLAnnotation annotation : subClass.getAnnotations(ontology, ann_bit_code)) {
-					if (annotation.getValue() instanceof OWLLiteral) {
-						OWLLiteral val = (OWLLiteral) annotation.getValue();
-						bit_code = val.getLiteral();
-						break;
-					}
-				}
-				if (bit_code == null || bit_code.isEmpty()) continue;
-				
-				map.put(criteria, bit_code);
-			}
-		}
-		
-		return map;
+	public ArrayList<Genetic_Marker_Group> getListGeneticMarkerGroups(){
+		return listGeneticMarkers;
 	}
 	
 	
 	/**
-	 * Method to initialize the sorted list of markers defined in the model with its associated annotations bit_lenth, orientation and the associated annotations of its VCF reference variant for criteria syntax and bit code.
+	 * Get method to obtain the list of base allele variants.
 	 * 
-	 * @return Sorted list of the genetics markers that consists of an string array with element {rsid,bit_length,orientation,criteria_syntax,bit_code}
+	 * @return		List of base Alleles, its annotations and the criteria syntax.
+	 * @throws VariantDoesNotMatchAnAllowedVariantException 
 	 * */
-	private ArrayList<String[]> initializedVCFRefListRsids(){
-		ArrayList<String[]> listRsids = new ArrayList<String[]>();
-		// Each String array of the list contains:
-		// [0] -> rsid
-		// [1] -> bit_length
-		// [2] -> orientation
-		// [3] -> criteria_syntax
-		// [4] -> bit_code
+	public ArrayList<GenotypeElement> getListGenotypeElements() throws VariantDoesNotMatchAnAllowedVariantException{
+		ArrayList<GenotypeElement> listGenotypeElements = new ArrayList<GenotypeElement>();
+	
+		for(int i=0;i<listGeneticMarkers.size();i++){
+			Genetic_Marker_Group gmg = listGeneticMarkers.get(i);
+			GenotypeElement new_node = gmg.getGenotypeElement(0);
+			listGenotypeElements.add(new_node);
+		}
 		
-		HashMap<Integer, String[]> results = new HashMap<Integer, String[]>();
-		OWLDataFactory factory = manager.getOWLDataFactory();
-		OWLClass human_with_genotype_marker = factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#human_with_genotype_marker"));
-		OWLAnnotationProperty ann_rank = factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#rank"));
+		return listGenotypeElements;
+	}
+	
+	public ArrayList<GenotypeElement> getDefaultGenotypeElement() throws VariantDoesNotMatchAnAllowedVariantException{
 		
-		Iterator<OWLClassExpression> list_marker = human_with_genotype_marker.getSubClasses(ontology).iterator();
-		while(list_marker.hasNext()){
-			OWLClass clase = list_marker.next().asOWLClass();
-			String rank = "";
-			for (OWLAnnotation annotation : clase.getAnnotations(ontology, ann_rank)) {
-				if (annotation.getValue() instanceof OWLLiteral) {
-					OWLLiteral val = (OWLLiteral) annotation.getValue();
-					rank = val.getLiteral();
-					break;
-				}
-			}
-			if (rank == null || rank.isEmpty()){
-				continue;
-			}
-			int rank_int = -1;
-			try {
-				rank_int = Integer.parseInt(rank);
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
-				continue;
-			}
+		ArrayList<GenotypeElement> listGenotypeElements = new ArrayList<GenotypeElement>();
+		for(int i=0;i<listGeneticMarkers.size();i++){
+			Genetic_Marker_Group gmg = listGeneticMarkers.get(i);
 					
-			String bit_length = "";
-			OWLAnnotationProperty ann_bit_length = factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#bit_length"));
-			for (OWLAnnotation annotation : clase.getAnnotations(ontology, ann_bit_length)) {
-				if (annotation.getValue() instanceof OWLLiteral) {
-					OWLLiteral val = (OWLLiteral) annotation.getValue();
-					bit_length = val.getLiteral();
-					break;
-				}
+			GenotypeElement ge = null;
+			
+			switch(i){
+			case 0://[rs6025]->{[0]=null;null;[1]=C;C;[2]=C;T;[3]=T;T}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("C;C"));
+				break;
+			case 1://[rs2297595]->{[0]=null;null;[1]=C;C;[2]=C;T;[3]=T;T}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("C;C"));
+				break;
+			case 2://[rs4149056]->{[0]=null;null;[1]=C;C;[2]=C;T;[3]=T;T}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("C;C"));
+				break;
+			case 3://[rs9923231]->{[0]=null;null;[1]=A;A;[2]=A;C;[3]=A;G;[4]=A;T;[5]=C;C;[6]=C;G;[7]=C;T;[8]=G;G;[9]=G;T;[10]=T;T}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("C;C"));
+				break;
+			case 4://[rs9934438]->{[0]=null;null;[1]=A;A;[2]=A;G;[3]=G;G}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("A;A"));
+				break;
+			case 5://[rs12979860]->{[0]=null;null;[1]=C;C;[2]=C;T;[3]=T;T}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("C;T"));
+				break;
+			case 6://[rs67376798]->{[0]=null;null;[1]=A;A;[2]=A;T;[3]=T;T}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("A;A"));
+				break;
+			case 7://[COMT]->{[0]=null;null;[1]=Haplotype_high_activity;Haplotype_high_activity;[2]=Haplotype_high_activity;Haplotype_intermediate_activity;[3]=Haplotype_high_activity;Haplotype_low_activity;[4]=Haplotype_intermediate_activity;Haplotype_intermediate_activity;[5]=Haplotype_intermediate_activity;Haplotype_low_activity;[6]=Haplotype_low_activity;Haplotype_low_activity}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("Haplotype_high_activity;Haplotype_high_activity"));
+				break;
+			case 8://[MIR4761]->{[0]=null;null}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("null;null"));
+				break;
+			case 9://[F5]->{[0]=null;null}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("null;null"));
+				break;
+			case 10://[VKORC1]->{[0]=null;null;[1]=H1;H1;[2]=H1;H2;[3]=H1;H3;[4]=H1;H4;[5]=H1;H5;[6]=H1;H6;[7]=H1;H7;[8]=H1;H8;[9]=H1;H9;[10]=H1;star_1;[11]=H1;star_2;[12]=H1;star_3;[13]=H1;star_4;[14]=H2;H2;[15]=H2;H3;[16]=H2;H4;[17]=H2;H5;[18]=H2;H6;[19]=H2;H7;[20]=H2;H8;[21]=H2;H9;[22]=H2;star_1;[23]=H2;star_2;[24]=H2;star_3;[25]=H2;star_4;[26]=H3;H3;[27]=H3;H4;[28]=H3;H5;[29]=H3;H6;[30]=H3;H7;[31]=H3;H8;[32]=H3;H9;[33]=H3;star_1;[34]=H3;star_2;[35]=H3;star_3;[36]=H3;star_4;[37]=H4;H4;[38]=H4;H5;[39]=H4;H6;[40]=H4;H7;[41]=H4;H8;[42]=H4;H9;[43]=H4;star_1;[44]=H4;star_2;[45]=H4;star_3;[46]=H4;star_4;[47]=H5;H5;[48]=H5;H6;[49]=H5;H7;[50]=H5;H8;[51]=H5;H9;[52]=H5;star_1;[53]=H5;star_2;[54]=H5;star_3;[55]=H5;star_4;[56]=H6;H6;[57]=H6;H7;[58]=H6;H8;[59]=H6;H9;[60]=H6;star_1;[61]=H6;star_2;[62]=H6;star_3;[63]=H6;star_4;[64]=H7;H7;[65]=H7;H8;[66]=H7;H9;[67]=H7;star_1;[68]=H7;star_2;[69]=H7;star_3;[70]=H7;star_4;[71]=H8;H8;[72]=H8;H9;[73]=H8;star_1;[74]=H8;star_2;[75]=H8;star_3;[76]=H8;star_4;[77]=H9;H9;[78]=H9;star_1;[79]=H9;star_2;[80]=H9;star_3;[81]=H9;star_4;[82]=star_1;star_1;[83]=star_1;star_2;[84]=star_1;star_3;[85]=star_1;star_4;[86]=star_2;star_2;[87]=star_2;star_3;[88]=star_2;star_4;[89]=star_3;star_3;[90]=star_3;star_4;[91]=star_4;star_4}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("H1;H1"));
+				break;
+			case 11://[BRCA1]->{[0]=null;null;[1]=1;1;[2]=1;10;[3]=1;2;[4]=1;3;[5]=1;4;[6]=1;5;[7]=1;6;[8]=1;7;[9]=1;8;[10]=1;9;[11]=1;Ancestral_Sequence;[12]=1;hash1;[13]=1;hash2;[14]=1;hash3;[15]=1;hash4;[16]=1;hash5;[17]=10;10;[18]=10;2;[19]=10;3;[20]=10;4;[21]=10;5;[22]=10;6;[23]=10;7;[24]=10;8;[25]=10;9;[26]=10;Ancestral_Sequence;[27]=10;hash1;[28]=10;hash2;[29]=10;hash3;[30]=10;hash4;[31]=10;hash5;[32]=2;2;[33]=2;3;[34]=2;4;[35]=2;5;[36]=2;6;[37]=2;7;[38]=2;8;[39]=2;9;[40]=2;Ancestral_Sequence;[41]=2;hash1;[42]=2;hash2;[43]=2;hash3;[44]=2;hash4;[45]=2;hash5;[46]=3;3;[47]=3;4;[48]=3;5;[49]=3;6;[50]=3;7;[51]=3;8;[52]=3;9;[53]=3;Ancestral_Sequence;[54]=3;hash1;[55]=3;hash2;[56]=3;hash3;[57]=3;hash4;[58]=3;hash5;[59]=4;4;[60]=4;5;[61]=4;6;[62]=4;7;[63]=4;8;[64]=4;9;[65]=4;Ancestral_Sequence;[66]=4;hash1;[67]=4;hash2;[68]=4;hash3;[69]=4;hash4;[70]=4;hash5;[71]=5;5;[72]=5;6;[73]=5;7;[74]=5;8;[75]=5;9;[76]=5;Ancestral_Sequence;[77]=5;hash1;[78]=5;hash2;[79]=5;hash3;[80]=5;hash4;[81]=5;hash5;[82]=6;6;[83]=6;7;[84]=6;8;[85]=6;9;[86]=6;Ancestral_Sequence;[87]=6;hash1;[88]=6;hash2;[89]=6;hash3;[90]=6;hash4;[91]=6;hash5;[92]=7;7;[93]=7;8;[94]=7;9;[95]=7;Ancestral_Sequence;[96]=7;hash1;[97]=7;hash2;[98]=7;hash3;[99]=7;hash4;[100]=7;hash5;[101]=8;8;[102]=8;9;[103]=8;Ancestral_Sequence;[104]=8;hash1;[105]=8;hash2;[106]=8;hash3;[107]=8;hash4;[108]=8;hash5;[109]=9;9;[110]=9;Ancestral_Sequence;[111]=9;hash1;[112]=9;hash2;[113]=9;hash3;[114]=9;hash4;[115]=9;hash5;[116]=Ancestral_Sequence;Ancestral_Sequence;[117]=Ancestral_Sequence;hash1;[118]=Ancestral_Sequence;hash2;[119]=Ancestral_Sequence;hash3;[120]=Ancestral_Sequence;hash4;[121]=Ancestral_Sequence;hash5;[122]=hash1;hash1;[123]=hash1;hash2;[124]=hash1;hash3;[125]=hash1;hash4;[126]=hash1;hash5;[127]=hash2;hash2;[128]=hash2;hash3;[129]=hash2;hash4;[130]=hash2;hash5;[131]=hash3;hash3;[132]=hash3;hash4;[133]=hash3;hash5;[134]=hash4;hash4;[135]=hash4;hash5;[136]=hash5;hash5}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("1;1"));
+				break;
+			case 12://[CYP1A2]->{[0]=null;null;[1]=star_1;star_1;[2]=star_1;star_10;[3]=star_1;star_11;[4]=star_1;star_12;[5]=star_1;star_13;[6]=star_1;star_14;[7]=star_1;star_15;[8]=star_1;star_16;[9]=star_1;star_17;[10]=star_1;star_18;[11]=star_1;star_19;[12]=star_1;star_2;[13]=star_1;star_20;[14]=star_1;star_21;[15]=star_1;star_3;[16]=star_1;star_4;[17]=star_1;star_5;[18]=star_1;star_6;[19]=star_1;star_7;[20]=star_1;star_8;[21]=star_1;star_9;[22]=star_10;star_10;[23]=star_10;star_11;[24]=star_10;star_12;[25]=star_10;star_13;[26]=star_10;star_14;[27]=star_10;star_15;[28]=star_10;star_16;[29]=star_10;star_17;[30]=star_10;star_18;[31]=star_10;star_19;[32]=star_10;star_2;[33]=star_10;star_20;[34]=star_10;star_21;[35]=star_10;star_3;[36]=star_10;star_4;[37]=star_10;star_5;[38]=star_10;star_6;[39]=star_10;star_7;[40]=star_10;star_8;[41]=star_10;star_9;[42]=star_11;star_11;[43]=star_11;star_12;[44]=star_11;star_13;[45]=star_11;star_14;[46]=star_11;star_15;[47]=star_11;star_16;[48]=star_11;star_17;[49]=star_11;star_18;[50]=star_11;star_19;[51]=star_11;star_2;[52]=star_11;star_20;[53]=star_11;star_21;[54]=star_11;star_3;[55]=star_11;star_4;[56]=star_11;star_5;[57]=star_11;star_6;[58]=star_11;star_7;[59]=star_11;star_8;[60]=star_11;star_9;[61]=star_12;star_12;[62]=star_12;star_13;[63]=star_12;star_14;[64]=star_12;star_15;[65]=star_12;star_16;[66]=star_12;star_17;[67]=star_12;star_18;[68]=star_12;star_19;[69]=star_12;star_2;[70]=star_12;star_20;[71]=star_12;star_21;[72]=star_12;star_3;[73]=star_12;star_4;[74]=star_12;star_5;[75]=star_12;star_6;[76]=star_12;star_7;[77]=star_12;star_8;[78]=star_12;star_9;[79]=star_13;star_13;[80]=star_13;star_14;[81]=star_13;star_15;[82]=star_13;star_16;[83]=star_13;star_17;[84]=star_13;star_18;[85]=star_13;star_19;[86]=star_13;star_2;[87]=star_13;star_20;[88]=star_13;star_21;[89]=star_13;star_3;[90]=star_13;star_4;[91]=star_13;star_5;[92]=star_13;star_6;[93]=star_13;star_7;[94]=star_13;star_8;[95]=star_13;star_9;[96]=star_14;star_14;[97]=star_14;star_15;[98]=star_14;star_16;[99]=star_14;star_17;[100]=star_14;star_18;[101]=star_14;star_19;[102]=star_14;star_2;[103]=star_14;star_20;[104]=star_14;star_21;[105]=star_14;star_3;[106]=star_14;star_4;[107]=star_14;star_5;[108]=star_14;star_6;[109]=star_14;star_7;[110]=star_14;star_8;[111]=star_14;star_9;[112]=star_15;star_15;[113]=star_15;star_16;[114]=star_15;star_17;[115]=star_15;star_18;[116]=star_15;star_19;[117]=star_15;star_2;[118]=star_15;star_20;[119]=star_15;star_21;[120]=star_15;star_3;[121]=star_15;star_4;[122]=star_15;star_5;[123]=star_15;star_6;[124]=star_15;star_7;[125]=star_15;star_8;[126]=star_15;star_9;[127]=star_16;star_16;[128]=star_16;star_17;[129]=star_16;star_18;[130]=star_16;star_19;[131]=star_16;star_2;[132]=star_16;star_20;[133]=star_16;star_21;[134]=star_16;star_3;[135]=star_16;star_4;[136]=star_16;star_5;[137]=star_16;star_6;[138]=star_16;star_7;[139]=star_16;star_8;[140]=star_16;star_9;[141]=star_17;star_17;[142]=star_17;star_18;[143]=star_17;star_19;[144]=star_17;star_2;[145]=star_17;star_20;[146]=star_17;star_21;[147]=star_17;star_3;[148]=star_17;star_4;[149]=star_17;star_5;[150]=star_17;star_6;[151]=star_17;star_7;[152]=star_17;star_8;[153]=star_17;star_9;[154]=star_18;star_18;[155]=star_18;star_19;[156]=star_18;star_2;[157]=star_18;star_20;[158]=star_18;star_21;[159]=star_18;star_3;[160]=star_18;star_4;[161]=star_18;star_5;[162]=star_18;star_6;[163]=star_18;star_7;[164]=star_18;star_8;[165]=star_18;star_9;[166]=star_19;star_19;[167]=star_19;star_2;[168]=star_19;star_20;[169]=star_19;star_21;[170]=star_19;star_3;[171]=star_19;star_4;[172]=star_19;star_5;[173]=star_19;star_6;[174]=star_19;star_7;[175]=star_19;star_8;[176]=star_19;star_9;[177]=star_2;star_2;[178]=star_2;star_20;[179]=star_2;star_21;[180]=star_2;star_3;[181]=star_2;star_4;[182]=star_2;star_5;[183]=star_2;star_6;[184]=star_2;star_7;[185]=star_2;star_8;[186]=star_2;star_9;[187]=star_20;star_20;[188]=star_20;star_21;[189]=star_20;star_3;[190]=star_20;star_4;[191]=star_20;star_5;[192]=star_20;star_6;[193]=star_20;star_7;[194]=star_20;star_8;[195]=star_20;star_9;[196]=star_21;star_21;[197]=star_21;star_3;[198]=star_21;star_4;[199]=star_21;star_5;[200]=star_21;star_6;[201]=star_21;star_7;[202]=star_21;star_8;[203]=star_21;star_9;[204]=star_3;star_3;[205]=star_3;star_4;[206]=star_3;star_5;[207]=star_3;star_6;[208]=star_3;star_7;[209]=star_3;star_8;[210]=star_3;star_9;[211]=star_4;star_4;[212]=star_4;star_5;[213]=star_4;star_6;[214]=star_4;star_7;[215]=star_4;star_8;[216]=star_4;star_9;[217]=star_5;star_5;[218]=star_5;star_6;[219]=star_5;star_7;[220]=star_5;star_8;[221]=star_5;star_9;[222]=star_6;star_6;[223]=star_6;star_7;[224]=star_6;star_8;[225]=star_6;star_9;[226]=star_7;star_7;[227]=star_7;star_8;[228]=star_7;star_9;[229]=star_8;star_8;[230]=star_8;star_9;[231]=star_9;star_9}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("star_1;star_1"));
+				break;
+			case 13://[CYP2D6]->{[0]=null;null;[1]=star_1;star_1;[2]=star_1;star_10;[3]=star_1;star_11;[4]=star_1;star_12;[5]=star_1;star_13;[6]=star_1;star_14;[7]=star_1;star_15;[8]=star_1;star_16;[9]=star_1;star_17;[10]=star_1;star_18;[11]=star_1;star_19;[12]=star_1;star_2;[13]=star_1;star_20;[14]=star_1;star_21;[15]=star_1;star_21A;[16]=star_1;star_21B;[17]=star_1;star_22;[18]=star_1;star_23;[19]=star_1;star_24;[20]=star_1;star_25;[21]=star_1;star_26;[22]=star_1;star_27;[23]=star_1;star_28;[24]=star_1;star_29;[25]=star_1;star_3;[26]=star_1;star_30;[27]=star_1;star_31;[28]=star_1;star_32;[29]=star_1;star_33;[30]=star_1;star_34;[31]=star_1;star_35;[32]=star_1;star_36;[33]=star_1;star_37;[34]=star_1;star_38;[35]=star_1;star_39;[36]=star_1;star_39XN;[37]=star_1;star_4;[38]=star_1;star_40;[39]=star_1;star_41;[40]=star_1;star_42;[41]=star_1;star_43;[42]=star_1;star_44;[43]=star_1;star_45;[44]=star_1;star_46;[45]=star_1;star_47;[46]=star_1;star_48;[47]=star_1;star_49;[48]=star_1;star_5;[49]=star_1;star_50;[50]=star_1;star_51;[51]=star_1;star_52;[52]=star_1;star_53;[53]=star_1;star_54;[54]=star_1;star_55;[55]=star_1;star_56;[56]=star_1;star_57;[57]=star_1;star_58;[58]=star_1;star_59;[59]=star_1;star_6;[60]=star_1;star_60;[61]=star_1;star_61;[62]=star_1;star_62;[63]=star_1;star_63;[64]=star_1;star_64;[65]=star_1;star_65;[66]=star_1;star_69;[67]=star_1;star_7;[68]=star_1;star_70;[69]=star_1;star_71;[70]=star_1;star_72;[71]=star_1;star_73;[72]=star_1;star_74;[73]=star_1;star_75;[74]=star_1;star_8;[75]=star_1;star_9;[76]=star_10;star_10;[77]=star_10;star_11;[78]=star_10;star_12;[79]=star_10;star_13;[80]=star_10;star_14;[81]=star_10;star_15;[82]=star_10;star_16;[83]=star_10;star_17;[84]=star_10;star_18;[85]=star_10;star_19;[86]=star_10;star_2;[87]=star_10;star_20;[88]=star_10;star_21;[89]=star_10;star_21A;[90]=star_10;star_21B;[91]=star_10;star_22;[92]=star_10;star_23;[93]=star_10;star_24;[94]=star_10;star_25;[95]=star_10;star_26;[96]=star_10;star_27;[97]=star_10;star_28;[98]=star_10;star_29;[99]=star_10;star_3;[100]=star_10;star_30;[101]=star_10;star_31;[102]=star_10;star_32;[103]=star_10;star_33;[104]=star_10;star_34;[105]=star_10;star_35;[106]=star_10;star_36;[107]=star_10;star_37;[108]=star_10;star_38;[109]=star_10;star_39;[110]=star_10;star_39XN;[111]=star_10;star_4;[112]=star_10;star_40;[113]=star_10;star_41;[114]=star_10;star_42;[115]=star_10;star_43;[116]=star_10;star_44;[117]=star_10;star_45;[118]=star_10;star_46;[119]=star_10;star_47;[120]=star_10;star_48;[121]=star_10;star_49;[122]=star_10;star_5;[123]=star_10;star_50;[124]=star_10;star_51;[125]=star_10;star_52;[126]=star_10;star_53;[127]=star_10;star_54;[128]=star_10;star_55;[129]=star_10;star_56;[130]=star_10;star_57;[131]=star_10;star_58;[132]=star_10;star_59;[133]=star_10;star_6;[134]=star_10;star_60;[135]=star_10;star_61;[136]=star_10;star_62;[137]=star_10;star_63;[138]=star_10;star_64;[139]=star_10;star_65;[140]=star_10;star_69;[141]=star_10;star_7;[142]=star_10;star_70;[143]=star_10;star_71;[144]=star_10;star_72;[145]=star_10;star_73;[146]=star_10;star_74;[147]=star_10;star_75;[148]=star_10;star_8;[149]=star_10;star_9;[150]=star_11;star_11;[151]=star_11;star_12;[152]=star_11;star_13;[153]=star_11;star_14;[154]=star_11;star_15;[155]=star_11;star_16;[156]=star_11;star_17;[157]=star_11;star_18;[158]=star_11;star_19;[159]=star_11;star_2;[160]=star_11;star_20;[161]=star_11;star_21;[162]=star_11;star_21A;[163]=star_11;star_21B;[164]=star_11;star_22;[165]=star_11;star_23;[166]=star_11;star_24;[167]=star_11;star_25;[168]=star_11;star_26;[169]=star_11;star_27;[170]=star_11;star_28;[171]=star_11;star_29;[172]=star_11;star_3;[173]=star_11;star_30;[174]=star_11;star_31;[175]=star_11;star_32;[176]=star_11;star_33;[177]=star_11;star_34;[178]=star_11;star_35;[179]=star_11;star_36;[180]=star_11;star_37;[181]=star_11;star_38;[182]=star_11;star_39;[183]=star_11;star_39XN;[184]=star_11;star_4;[185]=star_11;star_40;[186]=star_11;star_41;[187]=star_11;star_42;[188]=star_11;star_43;[189]=star_11;star_44;[190]=star_11;star_45;[191]=star_11;star_46;[192]=star_11;star_47;[193]=star_11;star_48;[194]=star_11;star_49;[195]=star_11;star_5;[196]=star_11;star_50;[197]=star_11;star_51;[198]=star_11;star_52;[199]=star_11;star_53;[200]=star_11;star_54;[201]=star_11;star_55;[202]=star_11;star_56;[203]=star_11;star_57;[204]=star_11;star_58;[205]=star_11;star_59;[206]=star_11;star_6;[207]=star_11;star_60;[208]=star_11;star_61;[209]=star_11;star_62;[210]=star_11;star_63;[211]=star_11;star_64;[212]=star_11;star_65;[213]=star_11;star_69;[214]=star_11;star_7;[215]=star_11;star_70;[216]=star_11;star_71;[217]=star_11;star_72;[218]=star_11;star_73;[219]=star_11;star_74;[220]=star_11;star_75;[221]=star_11;star_8;[222]=star_11;star_9;[223]=star_12;star_12;[224]=star_12;star_13;[225]=star_12;star_14;[226]=star_12;star_15;[227]=star_12;star_16;[228]=star_12;star_17;[229]=star_12;star_18;[230]=star_12;star_19;[231]=star_12;star_2;[232]=star_12;star_20;[233]=star_12;star_21;[234]=star_12;star_21A;[235]=star_12;star_21B;[236]=star_12;star_22;[237]=star_12;star_23;[238]=star_12;star_24;[239]=star_12;star_25;[240]=star_12;star_26;[241]=star_12;star_27;[242]=star_12;star_28;[243]=star_12;star_29;[244]=star_12;star_3;[245]=star_12;star_30;[246]=star_12;star_31;[247]=star_12;star_32;[248]=star_12;star_33;[249]=star_12;star_34;[250]=star_12;star_35;[251]=star_12;star_36;[252]=star_12;star_37;[253]=star_12;star_38;[254]=star_12;star_39;[255]=star_12;star_39XN;[256]=star_12;star_4;[257]=star_12;star_40;[258]=star_12;star_41;[259]=star_12;star_42;[260]=star_12;star_43;[261]=star_12;star_44;[262]=star_12;star_45;[263]=star_12;star_46;[264]=star_12;star_47;[265]=star_12;star_48;[266]=star_12;star_49;[267]=star_12;star_5;[268]=star_12;star_50;[269]=star_12;star_51;[270]=star_12;star_52;[271]=star_12;star_53;[272]=star_12;star_54;[273]=star_12;star_55;[274]=star_12;star_56;[275]=star_12;star_57;[276]=star_12;star_58;[277]=star_12;star_59;[278]=star_12;star_6;[279]=star_12;star_60;[280]=star_12;star_61;[281]=star_12;star_62;[282]=star_12;star_63;[283]=star_12;star_64;[284]=star_12;star_65;[285]=star_12;star_69;[286]=star_12;star_7;[287]=star_12;star_70;[288]=star_12;star_71;[289]=star_12;star_72;[290]=star_12;star_73;[291]=star_12;star_74;[292]=star_12;star_75;[293]=star_12;star_8;[294]=star_12;star_9;[295]=star_13;star_13;[296]=star_13;star_14;[297]=star_13;star_15;[298]=star_13;star_16;[299]=star_13;star_17;[300]=star_13;star_18;[301]=star_13;star_19;[302]=star_13;star_2;[303]=star_13;star_20;[304]=star_13;star_21;[305]=star_13;star_21A;[306]=star_13;star_21B;[307]=star_13;star_22;[308]=star_13;star_23;[309]=star_13;star_24;[310]=star_13;star_25;[311]=star_13;star_26;[312]=star_13;star_27;[313]=star_13;star_28;[314]=star_13;star_29;[315]=star_13;star_3;[316]=star_13;star_30;[317]=star_13;star_31;[318]=star_13;star_32;[319]=star_13;star_33;[320]=star_13;star_34;[321]=star_13;star_35;[322]=star_13;star_36;[323]=star_13;star_37;[324]=star_13;star_38;[325]=star_13;star_39;[326]=star_13;star_39XN;[327]=star_13;star_4;[328]=star_13;star_40;[329]=star_13;star_41;[330]=star_13;star_42;[331]=star_13;star_43;[332]=star_13;star_44;[333]=star_13;star_45;[334]=star_13;star_46;[335]=star_13;star_47;[336]=star_13;star_48;[337]=star_13;star_49;[338]=star_13;star_5;[339]=star_13;star_50;[340]=star_13;star_51;[341]=star_13;star_52;[342]=star_13;star_53;[343]=star_13;star_54;[344]=star_13;star_55;[345]=star_13;star_56;[346]=star_13;star_57;[347]=star_13;star_58;[348]=star_13;star_59;[349]=star_13;star_6;[350]=star_13;star_60;[351]=star_13;star_61;[352]=star_13;star_62;[353]=star_13;star_63;[354]=star_13;star_64;[355]=star_13;star_65;[356]=star_13;star_69;[357]=star_13;star_7;[358]=star_13;star_70;[359]=star_13;star_71;[360]=star_13;star_72;[361]=star_13;star_73;[362]=star_13;star_74;[363]=star_13;star_75;[364]=star_13;star_8;[365]=star_13;star_9;[366]=star_14;star_14;[367]=star_14;star_15;[368]=star_14;star_16;[369]=star_14;star_17;[370]=star_14;star_18;[371]=star_14;star_19;[372]=star_14;star_2;[373]=star_14;star_20;[374]=star_14;star_21;[375]=star_14;star_21A;[376]=star_14;star_21B;[377]=star_14;star_22;[378]=star_14;star_23;[379]=star_14;star_24;[380]=star_14;star_25;[381]=star_14;star_26;[382]=star_14;star_27;[383]=star_14;star_28;[384]=star_14;star_29;[385]=star_14;star_3;[386]=star_14;star_30;[387]=star_14;star_31;[388]=star_14;star_32;[389]=star_14;star_33;[390]=star_14;star_34;[391]=star_14;star_35;[392]=star_14;star_36;[393]=star_14;star_37;[394]=star_14;star_38;[395]=star_14;star_39;[396]=star_14;star_39XN;[397]=star_14;star_4;[398]=star_14;star_40;[399]=star_14;star_41;[400]=star_14;star_42;[401]=star_14;star_43;[402]=star_14;star_44;[403]=star_14;star_45;[404]=star_14;star_46;[405]=star_14;star_47;[406]=star_14;star_48;[407]=star_14;star_49;[408]=star_14;star_5;[409]=star_14;star_50;[410]=star_14;star_51;[411]=star_14;star_52;[412]=star_14;star_53;[413]=star_14;star_54;[414]=star_14;star_55;[415]=star_14;star_56;[416]=star_14;star_57;[417]=star_14;star_58;[418]=star_14;star_59;[419]=star_14;star_6;[420]=star_14;star_60;[421]=star_14;star_61;[422]=star_14;star_62;[423]=star_14;star_63;[424]=star_14;star_64;[425]=star_14;star_65;[426]=star_14;star_69;[427]=star_14;star_7;[428]=star_14;star_70;[429]=star_14;star_71;[430]=star_14;star_72;[431]=star_14;star_73;[432]=star_14;star_74;[433]=star_14;star_75;[434]=star_14;star_8;[435]=star_14;star_9;[436]=star_15;star_15;[437]=star_15;star_16;[438]=star_15;star_17;[439]=star_15;star_18;[440]=star_15;star_19;[441]=star_15;star_2;[442]=star_15;star_20;[443]=star_15;star_21;[444]=star_15;star_21A;[445]=star_15;star_21B;[446]=star_15;star_22;[447]=star_15;star_23;[448]=star_15;star_24;[449]=star_15;star_25;[450]=star_15;star_26;[451]=star_15;star_27;[452]=star_15;star_28;[453]=star_15;star_29;[454]=star_15;star_3;[455]=star_15;star_30;[456]=star_15;star_31;[457]=star_15;star_32;[458]=star_15;star_33;[459]=star_15;star_34;[460]=star_15;star_35;[461]=star_15;star_36;[462]=star_15;star_37;[463]=star_15;star_38;[464]=star_15;star_39;[465]=star_15;star_39XN;[466]=star_15;star_4;[467]=star_15;star_40;[468]=star_15;star_41;[469]=star_15;star_42;[470]=star_15;star_43;[471]=star_15;star_44;[472]=star_15;star_45;[473]=star_15;star_46;[474]=star_15;star_47;[475]=star_15;star_48;[476]=star_15;star_49;[477]=star_15;star_5;[478]=star_15;star_50;[479]=star_15;star_51;[480]=star_15;star_52;[481]=star_15;star_53;[482]=star_15;star_54;[483]=star_15;star_55;[484]=star_15;star_56;[485]=star_15;star_57;[486]=star_15;star_58;[487]=star_15;star_59;[488]=star_15;star_6;[489]=star_15;star_60;[490]=star_15;star_61;[491]=star_15;star_62;[492]=star_15;star_63;[493]=star_15;star_64;[494]=star_15;star_65;[495]=star_15;star_69;[496]=star_15;star_7;[497]=star_15;star_70;[498]=star_15;star_71;[499]=star_15;star_72;[500]=star_15;star_73;[501]=star_15;star_74;[502]=star_15;star_75;[503]=star_15;star_8;[504]=star_15;star_9;[505]=star_16;star_16;[506]=star_16;star_17;[507]=star_16;star_18;[508]=star_16;star_19;[509]=star_16;star_2;[510]=star_16;star_20;[511]=star_16;star_21;[512]=star_16;star_21A;[513]=star_16;star_21B;[514]=star_16;star_22;[515]=star_16;star_23;[516]=star_16;star_24;[517]=star_16;star_25;[518]=star_16;star_26;[519]=star_16;star_27;[520]=star_16;star_28;[521]=star_16;star_29;[522]=star_16;star_3;[523]=star_16;star_30;[524]=star_16;star_31;[525]=star_16;star_32;[526]=star_16;star_33;[527]=star_16;star_34;[528]=star_16;star_35;[529]=star_16;star_36;[530]=star_16;star_37;[531]=star_16;star_38;[532]=star_16;star_39;[533]=star_16;star_39XN;[534]=star_16;star_4;[535]=star_16;star_40;[536]=star_16;star_41;[537]=star_16;star_42;[538]=star_16;star_43;[539]=star_16;star_44;[540]=star_16;star_45;[541]=star_16;star_46;[542]=star_16;star_47;[543]=star_16;star_48;[544]=star_16;star_49;[545]=star_16;star_5;[546]=star_16;star_50;[547]=star_16;star_51;[548]=star_16;star_52;[549]=star_16;star_53;[550]=star_16;star_54;[551]=star_16;star_55;[552]=star_16;star_56;[553]=star_16;star_57;[554]=star_16;star_58;[555]=star_16;star_59;[556]=star_16;star_6;[557]=star_16;star_60;[558]=star_16;star_61;[559]=star_16;star_62;[560]=star_16;star_63;[561]=star_16;star_64;[562]=star_16;star_65;[563]=star_16;star_69;[564]=star_16;star_7;[565]=star_16;star_70;[566]=star_16;star_71;[567]=star_16;star_72;[568]=star_16;star_73;[569]=star_16;star_74;[570]=star_16;star_75;[571]=star_16;star_8;[572]=star_16;star_9;[573]=star_17;star_17;[574]=star_17;star_18;[575]=star_17;star_19;[576]=star_17;star_2;[577]=star_17;star_20;[578]=star_17;star_21;[579]=star_17;star_21A;[580]=star_17;star_21B;[581]=star_17;star_22;[582]=star_17;star_23;[583]=star_17;star_24;[584]=star_17;star_25;[585]=star_17;star_26;[586]=star_17;star_27;[587]=star_17;star_28;[588]=star_17;star_29;[589]=star_17;star_3;[590]=star_17;star_30;[591]=star_17;star_31;[592]=star_17;star_32;[593]=star_17;star_33;[594]=star_17;star_34;[595]=star_17;star_35;[596]=star_17;star_36;[597]=star_17;star_37;[598]=star_17;star_38;[599]=star_17;star_39;[600]=star_17;star_39XN;[601]=star_17;star_4;[602]=star_17;star_40;[603]=star_17;star_41;[604]=star_17;star_42;[605]=star_17;star_43;[606]=star_17;star_44;[607]=star_17;star_45;[608]=star_17;star_46;[609]=star_17;star_47;[610]=star_17;star_48;[611]=star_17;star_49;[612]=star_17;star_5;[613]=star_17;star_50;[614]=star_17;star_51;[615]=star_17;star_52;[616]=star_17;star_53;[617]=star_17;star_54;[618]=star_17;star_55;[619]=star_17;star_56;[620]=star_17;star_57;[621]=star_17;star_58;[622]=star_17;star_59;[623]=star_17;star_6;[624]=star_17;star_60;[625]=star_17;star_61;[626]=star_17;star_62;[627]=star_17;star_63;[628]=star_17;star_64;[629]=star_17;star_65;[630]=star_17;star_69;[631]=star_17;star_7;[632]=star_17;star_70;[633]=star_17;star_71;[634]=star_17;star_72;[635]=star_17;star_73;[636]=star_17;star_74;[637]=star_17;star_75;[638]=star_17;star_8;[639]=star_17;star_9;[640]=star_18;star_18;[641]=star_18;star_19;[642]=star_18;star_2;[643]=star_18;star_20;[644]=star_18;star_21;[645]=star_18;star_21A;[646]=star_18;star_21B;[647]=star_18;star_22;[648]=star_18;star_23;[649]=star_18;star_24;[650]=star_18;star_25;[651]=star_18;star_26;[652]=star_18;star_27;[653]=star_18;star_28;[654]=star_18;star_29;[655]=star_18;star_3;[656]=star_18;star_30;[657]=star_18;star_31;[658]=star_18;star_32;[659]=star_18;star_33;[660]=star_18;star_34;[661]=star_18;star_35;[662]=star_18;star_36;[663]=star_18;star_37;[664]=star_18;star_38;[665]=star_18;star_39;[666]=star_18;star_39XN;[667]=star_18;star_4;[668]=star_18;star_40;[669]=star_18;star_41;[670]=star_18;star_42;[671]=star_18;star_43;[672]=star_18;star_44;[673]=star_18;star_45;[674]=star_18;star_46;[675]=star_18;star_47;[676]=star_18;star_48;[677]=star_18;star_49;[678]=star_18;star_5;[679]=star_18;star_50;[680]=star_18;star_51;[681]=star_18;star_52;[682]=star_18;star_53;[683]=star_18;star_54;[684]=star_18;star_55;[685]=star_18;star_56;[686]=star_18;star_57;[687]=star_18;star_58;[688]=star_18;star_59;[689]=star_18;star_6;[690]=star_18;star_60;[691]=star_18;star_61;[692]=star_18;star_62;[693]=star_18;star_63;[694]=star_18;star_64;[695]=star_18;star_65;[696]=star_18;star_69;[697]=star_18;star_7;[698]=star_18;star_70;[699]=star_18;star_71;[700]=star_18;star_72;[701]=star_18;star_73;[702]=star_18;star_74;[703]=star_18;star_75;[704]=star_18;star_8;[705]=star_18;star_9;[706]=star_19;star_19;[707]=star_19;star_2;[708]=star_19;star_20;[709]=star_19;star_21;[710]=star_19;star_21A;[711]=star_19;star_21B;[712]=star_19;star_22;[713]=star_19;star_23;[714]=star_19;star_24;[715]=star_19;star_25;[716]=star_19;star_26;[717]=star_19;star_27;[718]=star_19;star_28;[719]=star_19;star_29;[720]=star_19;star_3;[721]=star_19;star_30;[722]=star_19;star_31;[723]=star_19;star_32;[724]=star_19;star_33;[725]=star_19;star_34;[726]=star_19;star_35;[727]=star_19;star_36;[728]=star_19;star_37;[729]=star_19;star_38;[730]=star_19;star_39;[731]=star_19;star_39XN;[732]=star_19;star_4;[733]=star_19;star_40;[734]=star_19;star_41;[735]=star_19;star_42;[736]=star_19;star_43;[737]=star_19;star_44;[738]=star_19;star_45;[739]=star_19;star_46;[740]=star_19;star_47;[741]=star_19;star_48;[742]=star_19;star_49;[743]=star_19;star_5;[744]=star_19;star_50;[745]=star_19;star_51;[746]=star_19;star_52;[747]=star_19;star_53;[748]=star_19;star_54;[749]=star_19;star_55;[750]=star_19;star_56;[751]=star_19;star_57;[752]=star_19;star_58;[753]=star_19;star_59;[754]=star_19;star_6;[755]=star_19;star_60;[756]=star_19;star_61;[757]=star_19;star_62;[758]=star_19;star_63;[759]=star_19;star_64;[760]=star_19;star_65;[761]=star_19;star_69;[762]=star_19;star_7;[763]=star_19;star_70;[764]=star_19;star_71;[765]=star_19;star_72;[766]=star_19;star_73;[767]=star_19;star_74;[768]=star_19;star_75;[769]=star_19;star_8;[770]=star_19;star_9;[771]=star_2;star_2;[772]=star_2;star_20;[773]=star_2;star_21;[774]=star_2;star_21A;[775]=star_2;star_21B;[776]=star_2;star_22;[777]=star_2;star_23;[778]=star_2;star_24;[779]=star_2;star_25;[780]=star_2;star_26;[781]=star_2;star_27;[782]=star_2;star_28;[783]=star_2;star_29;[784]=star_2;star_3;[785]=star_2;star_30;[786]=star_2;star_31;[787]=star_2;star_32;[788]=star_2;star_33;[789]=star_2;star_34;[790]=star_2;star_35;[791]=star_2;star_36;[792]=star_2;star_37;[793]=star_2;star_38;[794]=star_2;star_39;[795]=star_2;star_39XN;[796]=star_2;star_4;[797]=star_2;star_40;[798]=star_2;star_41;[799]=star_2;star_42;[800]=star_2;star_43;[801]=star_2;star_44;[802]=star_2;star_45;[803]=star_2;star_46;[804]=star_2;star_47;[805]=star_2;star_48;[806]=star_2;star_49;[807]=star_2;star_5;[808]=star_2;star_50;[809]=star_2;star_51;[810]=star_2;star_52;[811]=star_2;star_53;[812]=star_2;star_54;[813]=star_2;star_55;[814]=star_2;star_56;[815]=star_2;star_57;[816]=star_2;star_58;[817]=star_2;star_59;[818]=star_2;star_6;[819]=star_2;star_60;[820]=star_2;star_61;[821]=star_2;star_62;[822]=star_2;star_63;[823]=star_2;star_64;[824]=star_2;star_65;[825]=star_2;star_69;[826]=star_2;star_7;[827]=star_2;star_70;[828]=star_2;star_71;[829]=star_2;star_72;[830]=star_2;star_73;[831]=star_2;star_74;[832]=star_2;star_75;[833]=star_2;star_8;[834]=star_2;star_9;[835]=star_20;star_20;[836]=star_20;star_21;[837]=star_20;star_21A;[838]=star_20;star_21B;[839]=star_20;star_22;[840]=star_20;star_23;[841]=star_20;star_24;[842]=star_20;star_25;[843]=star_20;star_26;[844]=star_20;star_27;[845]=star_20;star_28;[846]=star_20;star_29;[847]=star_20;star_3;[848]=star_20;star_30;[849]=star_20;star_31;[850]=star_20;star_32;[851]=star_20;star_33;[852]=star_20;star_34;[853]=star_20;star_35;[854]=star_20;star_36;[855]=star_20;star_37;[856]=star_20;star_38;[857]=star_20;star_39;[858]=star_20;star_39XN;[859]=star_20;star_4;[860]=star_20;star_40;[861]=star_20;star_41;[862]=star_20;star_42;[863]=star_20;star_43;[864]=star_20;star_44;[865]=star_20;star_45;[866]=star_20;star_46;[867]=star_20;star_47;[868]=star_20;star_48;[869]=star_20;star_49;[870]=star_20;star_5;[871]=star_20;star_50;[872]=star_20;star_51;[873]=star_20;star_52;[874]=star_20;star_53;[875]=star_20;star_54;[876]=star_20;star_55;[877]=star_20;star_56;[878]=star_20;star_57;[879]=star_20;star_58;[880]=star_20;star_59;[881]=star_20;star_6;[882]=star_20;star_60;[883]=star_20;star_61;[884]=star_20;star_62;[885]=star_20;star_63;[886]=star_20;star_64;[887]=star_20;star_65;[888]=star_20;star_69;[889]=star_20;star_7;[890]=star_20;star_70;[891]=star_20;star_71;[892]=star_20;star_72;[893]=star_20;star_73;[894]=star_20;star_74;[895]=star_20;star_75;[896]=star_20;star_8;[897]=star_20;star_9;[898]=star_21;star_21;[899]=star_21;star_21A;[900]=star_21;star_21B;[901]=star_21;star_22;[902]=star_21;star_23;[903]=star_21;star_24;[904]=star_21;star_25;[905]=star_21;star_26;[906]=star_21;star_27;[907]=star_21;star_28;[908]=star_21;star_29;[909]=star_21;star_3;[910]=star_21;star_30;[911]=star_21;star_31;[912]=star_21;star_32;[913]=star_21;star_33;[914]=star_21;star_34;[915]=star_21;star_35;[916]=star_21;star_36;[917]=star_21;star_37;[918]=star_21;star_38;[919]=star_21;star_39;[920]=star_21;star_39XN;[921]=star_21;star_4;[922]=star_21;star_40;[923]=star_21;star_41;[924]=star_21;star_42;[925]=star_21;star_43;[926]=star_21;star_44;[927]=star_21;star_45;[928]=star_21;star_46;[929]=star_21;star_47;[930]=star_21;star_48;[931]=star_21;star_49;[932]=star_21;star_5;[933]=star_21;star_50;[934]=star_21;star_51;[935]=star_21;star_52;[936]=star_21;star_53;[937]=star_21;star_54;[938]=star_21;star_55;[939]=star_21;star_56;[940]=star_21;star_57;[941]=star_21;star_58;[942]=star_21;star_59;[943]=star_21;star_6;[944]=star_21;star_60;[945]=star_21;star_61;[946]=star_21;star_62;[947]=star_21;star_63;[948]=star_21;star_64;[949]=star_21;star_65;[950]=star_21;star_69;[951]=star_21;star_7;[952]=star_21;star_70;[953]=star_21;star_71;[954]=star_21;star_72;[955]=star_21;star_73;[956]=star_21;star_74;[957]=star_21;star_75;[958]=star_21;star_8;[959]=star_21;star_9;[960]=star_21A;star_21A;[961]=star_21A;star_21B;[962]=star_21A;star_22;[963]=star_21A;star_23;[964]=star_21A;star_24;[965]=star_21A;star_25;[966]=star_21A;star_26;[967]=star_21A;star_27;[968]=star_21A;star_28;[969]=star_21A;star_29;[970]=star_21A;star_3;[971]=star_21A;star_30;[972]=star_21A;star_31;[973]=star_21A;star_32;[974]=star_21A;star_33;[975]=star_21A;star_34;[976]=star_21A;star_35;[977]=star_21A;star_36;[978]=star_21A;star_37;[979]=star_21A;star_38;[980]=star_21A;star_39;[981]=star_21A;star_39XN;[982]=star_21A;star_4;[983]=star_21A;star_40;[984]=star_21A;star_41;[985]=star_21A;star_42;[986]=star_21A;star_43;[987]=star_21A;star_44;[988]=star_21A;star_45;[989]=star_21A;star_46;[990]=star_21A;star_47;[991]=star_21A;star_48;[992]=star_21A;star_49;[993]=star_21A;star_5;[994]=star_21A;star_50;[995]=star_21A;star_51;[996]=star_21A;star_52;[997]=star_21A;star_53;[998]=star_21A;star_54;[999]=star_21A;star_55;[1000]=star_21A;star_56;[1001]=star_21A;star_57;[1002]=star_21A;star_58;[1003]=star_21A;star_59;[1004]=star_21A;star_6;[1005]=star_21A;star_60;[1006]=star_21A;star_61;[1007]=star_21A;star_62;[1008]=star_21A;star_63;[1009]=star_21A;star_64;[1010]=star_21A;star_65;[1011]=star_21A;star_69;[1012]=star_21A;star_7;[1013]=star_21A;star_70;[1014]=star_21A;star_71;[1015]=star_21A;star_72;[1016]=star_21A;star_73;[1017]=star_21A;star_74;[1018]=star_21A;star_75;[1019]=star_21A;star_8;[1020]=star_21A;star_9;[1021]=star_21B;star_21B;[1022]=star_21B;star_22;[1023]=star_21B;star_23;[1024]=star_21B;star_24;[1025]=star_21B;star_25;[1026]=star_21B;star_26;[1027]=star_21B;star_27;[1028]=star_21B;star_28;[1029]=star_21B;star_29;[1030]=star_21B;star_3;[1031]=star_21B;star_30;[1032]=star_21B;star_31;[1033]=star_21B;star_32;[1034]=star_21B;star_33;[1035]=star_21B;star_34;[1036]=star_21B;star_35;[1037]=star_21B;star_36;[1038]=star_21B;star_37;[1039]=star_21B;star_38;[1040]=star_21B;star_39;[1041]=star_21B;star_39XN;[1042]=star_21B;star_4;[1043]=star_21B;star_40;[1044]=star_21B;star_41;[1045]=star_21B;star_42;[1046]=star_21B;star_43;[1047]=star_21B;star_44;[1048]=star_21B;star_45;[1049]=star_21B;star_46;[1050]=star_21B;star_47;[1051]=star_21B;star_48;[1052]=star_21B;star_49;[1053]=star_21B;star_5;[1054]=star_21B;star_50;[1055]=star_21B;star_51;[1056]=star_21B;star_52;[1057]=star_21B;star_53;[1058]=star_21B;star_54;[1059]=star_21B;star_55;[1060]=star_21B;star_56;[1061]=star_21B;star_57;[1062]=star_21B;star_58;[1063]=star_21B;star_59;[1064]=star_21B;star_6;[1065]=star_21B;star_60;[1066]=star_21B;star_61;[1067]=star_21B;star_62;[1068]=star_21B;star_63;[1069]=star_21B;star_64;[1070]=star_21B;star_65;[1071]=star_21B;star_69;[1072]=star_21B;star_7;[1073]=star_21B;star_70;[1074]=star_21B;star_71;[1075]=star_21B;star_72;[1076]=star_21B;star_73;[1077]=star_21B;star_74;[1078]=star_21B;star_75;[1079]=star_21B;star_8;[1080]=star_21B;star_9;[1081]=star_22;star_22;[1082]=star_22;star_23;[1083]=star_22;star_24;[1084]=star_22;star_25;[1085]=star_22;star_26;[1086]=star_22;star_27;[1087]=star_22;star_28;[1088]=star_22;star_29;[1089]=star_22;star_3;[1090]=star_22;star_30;[1091]=star_22;star_31;[1092]=star_22;star_32;[1093]=star_22;star_33;[1094]=star_22;star_34;[1095]=star_22;star_35;[1096]=star_22;star_36;[1097]=star_22;star_37;[1098]=star_22;star_38;[1099]=star_22;star_39;[1100]=star_22;star_39XN;[1101]=star_22;star_4;[1102]=star_22;star_40;[1103]=star_22;star_41;[1104]=star_22;star_42;[1105]=star_22;star_43;[1106]=star_22;star_44;[1107]=star_22;star_45;[1108]=star_22;star_46;[1109]=star_22;star_47;[1110]=star_22;star_48;[1111]=star_22;star_49;[1112]=star_22;star_5;[1113]=star_22;star_50;[1114]=star_22;star_51;[1115]=star_22;star_52;[1116]=star_22;star_53;[1117]=star_22;star_54;[1118]=star_22;star_55;[1119]=star_22;star_56;[1120]=star_22;star_57;[1121]=star_22;star_58;[1122]=star_22;star_59;[1123]=star_22;star_6;[1124]=star_22;star_60;[1125]=star_22;star_61;[1126]=star_22;star_62;[1127]=star_22;star_63;[1128]=star_22;star_64;[1129]=star_22;star_65;[1130]=star_22;star_69;[1131]=star_22;star_7;[1132]=star_22;star_70;[1133]=star_22;star_71;[1134]=star_22;star_72;[1135]=star_22;star_73;[1136]=star_22;star_74;[1137]=star_22;star_75;[1138]=star_22;star_8;[1139]=star_22;star_9;[1140]=star_23;star_23;[1141]=star_23;star_24;[1142]=star_23;star_25;[1143]=star_23;star_26;[1144]=star_23;star_27;[1145]=star_23;star_28;[1146]=star_23;star_29;[1147]=star_23;star_3;[1148]=star_23;star_30;[1149]=star_23;star_31;[1150]=star_23;star_32;[1151]=star_23;star_33;[1152]=star_23;star_34;[1153]=star_23;star_35;[1154]=star_23;star_36;[1155]=star_23;star_37;[1156]=star_23;star_38;[1157]=star_23;star_39;[1158]=star_23;star_39XN;[1159]=star_23;star_4;[1160]=star_23;star_40;[1161]=star_23;star_41;[1162]=star_23;star_42;[1163]=star_23;star_43;[1164]=star_23;star_44;[1165]=star_23;star_45;[1166]=star_23;star_46;[1167]=star_23;star_47;[1168]=star_23;star_48;[1169]=star_23;star_49;[1170]=star_23;star_5;[1171]=star_23;star_50;[1172]=star_23;star_51;[1173]=star_23;star_52;[1174]=star_23;star_53;[1175]=star_23;star_54;[1176]=star_23;star_55;[1177]=star_23;star_56;[1178]=star_23;star_57;[1179]=star_23;star_58;[1180]=star_23;star_59;[1181]=star_23;star_6;[1182]=star_23;star_60;[1183]=star_23;star_61;[1184]=star_23;star_62;[1185]=star_23;star_63;[1186]=star_23;star_64;[1187]=star_23;star_65;[1188]=star_23;star_69;[1189]=star_23;star_7;[1190]=star_23;star_70;[1191]=star_23;star_71;[1192]=star_23;star_72;[1193]=star_23;star_73;[1194]=star_23;star_74;[1195]=star_23;star_75;[1196]=star_23;star_8;[1197]=star_23;star_9;[1198]=star_24;star_24;[1199]=star_24;star_25;[1200]=star_24;star_26;[1201]=star_24;star_27;[1202]=star_24;star_28;[1203]=star_24;star_29;[1204]=star_24;star_3;[1205]=star_24;star_30;[1206]=star_24;star_31;[1207]=star_24;star_32;[1208]=star_24;star_33;[1209]=star_24;star_34;[1210]=star_24;star_35;[1211]=star_24;star_36;[1212]=star_24;star_37;[1213]=star_24;star_38;[1214]=star_24;star_39;[1215]=star_24;star_39XN;[1216]=star_24;star_4;[1217]=star_24;star_40;[1218]=star_24;star_41;[1219]=star_24;star_42;[1220]=star_24;star_43;[1221]=star_24;star_44;[1222]=star_24;star_45;[1223]=star_24;star_46;[1224]=star_24;star_47;[1225]=star_24;star_48;[1226]=star_24;star_49;[1227]=star_24;star_5;[1228]=star_24;star_50;[1229]=star_24;star_51;[1230]=star_24;star_52;[1231]=star_24;star_53;[1232]=star_24;star_54;[1233]=star_24;star_55;[1234]=star_24;star_56;[1235]=star_24;star_57;[1236]=star_24;star_58;[1237]=star_24;star_59;[1238]=star_24;star_6;[1239]=star_24;star_60;[1240]=star_24;star_61;[1241]=star_24;star_62;[1242]=star_24;star_63;[1243]=star_24;star_64;[1244]=star_24;star_65;[1245]=star_24;star_69;[1246]=star_24;star_7;[1247]=star_24;star_70;[1248]=star_24;star_71;[1249]=star_24;star_72;[1250]=star_24;star_73;[1251]=star_24;star_74;[1252]=star_24;star_75;[1253]=star_24;star_8;[1254]=star_24;star_9;[1255]=star_25;star_25;[1256]=star_25;star_26;[1257]=star_25;star_27;[1258]=star_25;star_28;[1259]=star_25;star_29;[1260]=star_25;star_3;[1261]=star_25;star_30;[1262]=star_25;star_31;[1263]=star_25;star_32;[1264]=star_25;star_33;[1265]=star_25;star_34;[1266]=star_25;star_35;[1267]=star_25;star_36;[1268]=star_25;star_37;[1269]=star_25;star_38;[1270]=star_25;star_39;[1271]=star_25;star_39XN;[1272]=star_25;star_4;[1273]=star_25;star_40;[1274]=star_25;star_41;[1275]=star_25;star_42;[1276]=star_25;star_43;[1277]=star_25;star_44;[1278]=star_25;star_45;[1279]=star_25;star_46;[1280]=star_25;star_47;[1281]=star_25;star_48;[1282]=star_25;star_49;[1283]=star_25;star_5;[1284]=star_25;star_50;[1285]=star_25;star_51;[1286]=star_25;star_52;[1287]=star_25;star_53;[1288]=star_25;star_54;[1289]=star_25;star_55;[1290]=star_25;star_56;[1291]=star_25;star_57;[1292]=star_25;star_58;[1293]=star_25;star_59;[1294]=star_25;star_6;[1295]=star_25;star_60;[1296]=star_25;star_61;[1297]=star_25;star_62;[1298]=star_25;star_63;[1299]=star_25;star_64;[1300]=star_25;star_65;[1301]=star_25;star_69;[1302]=star_25;star_7;[1303]=star_25;star_70;[1304]=star_25;star_71;[1305]=star_25;star_72;[1306]=star_25;star_73;[1307]=star_25;star_74;[1308]=star_25;star_75;[1309]=star_25;star_8;[1310]=star_25;star_9;[1311]=star_26;star_26;[1312]=star_26;star_27;[1313]=star_26;star_28;[1314]=star_26;star_29;[1315]=star_26;star_3;[1316]=star_26;star_30;[1317]=star_26;star_31;[1318]=star_26;star_32;[1319]=star_26;star_33;[1320]=star_26;star_34;[1321]=star_26;star_35;[1322]=star_26;star_36;[1323]=star_26;star_37;[1324]=star_26;star_38;[1325]=star_26;star_39;[1326]=star_26;star_39XN;[1327]=star_26;star_4;[1328]=star_26;star_40;[1329]=star_26;star_41;[1330]=star_26;star_42;[1331]=star_26;star_43;[1332]=star_26;star_44;[1333]=star_26;star_45;[1334]=star_26;star_46;[1335]=star_26;star_47;[1336]=star_26;star_48;[1337]=star_26;star_49;[1338]=star_26;star_5;[1339]=star_26;star_50;[1340]=star_26;star_51;[1341]=star_26;star_52;[1342]=star_26;star_53;[1343]=star_26;star_54;[1344]=star_26;star_55;[1345]=star_26;star_56;[1346]=star_26;star_57;[1347]=star_26;star_58;[1348]=star_26;star_59;[1349]=star_26;star_6;[1350]=star_26;star_60;[1351]=star_26;star_61;[1352]=star_26;star_62;[1353]=star_26;star_63;[1354]=star_26;star_64;[1355]=star_26;star_65;[1356]=star_26;star_69;[1357]=star_26;star_7;[1358]=star_26;star_70;[1359]=star_26;star_71;[1360]=star_26;star_72;[1361]=star_26;star_73;[1362]=star_26;star_74;[1363]=star_26;star_75;[1364]=star_26;star_8;[1365]=star_26;star_9;[1366]=star_27;star_27;[1367]=star_27;star_28;[1368]=star_27;star_29;[1369]=star_27;star_3;[1370]=star_27;star_30;[1371]=star_27;star_31;[1372]=star_27;star_32;[1373]=star_27;star_33;[1374]=star_27;star_34;[1375]=star_27;star_35;[1376]=star_27;star_36;[1377]=star_27;star_37;[1378]=star_27;star_38;[1379]=star_27;star_39;[1380]=star_27;star_39XN;[1381]=star_27;star_4;[1382]=star_27;star_40;[1383]=star_27;star_41;[1384]=star_27;star_42;[1385]=star_27;star_43;[1386]=star_27;star_44;[1387]=star_27;star_45;[1388]=star_27;star_46;[1389]=star_27;star_47;[1390]=star_27;star_48;[1391]=star_27;star_49;[1392]=star_27;star_5;[1393]=star_27;star_50;[1394]=star_27;star_51;[1395]=star_27;star_52;[1396]=star_27;star_53;[1397]=star_27;star_54;[1398]=star_27;star_55;[1399]=star_27;star_56;[1400]=star_27;star_57;[1401]=star_27;star_58;[1402]=star_27;star_59;[1403]=star_27;star_6;[1404]=star_27;star_60;[1405]=star_27;star_61;[1406]=star_27;star_62;[1407]=star_27;star_63;[1408]=star_27;star_64;[1409]=star_27;star_65;[1410]=star_27;star_69;[1411]=star_27;star_7;[1412]=star_27;star_70;[1413]=star_27;star_71;[1414]=star_27;star_72;[1415]=star_27;star_73;[1416]=star_27;star_74;[1417]=star_27;star_75;[1418]=star_27;star_8;[1419]=star_27;star_9;[1420]=star_28;star_28;[1421]=star_28;star_29;[1422]=star_28;star_3;[1423]=star_28;star_30;[1424]=star_28;star_31;[1425]=star_28;star_32;[1426]=star_28;star_33;[1427]=star_28;star_34;[1428]=star_28;star_35;[1429]=star_28;star_36;[1430]=star_28;star_37;[1431]=star_28;star_38;[1432]=star_28;star_39;[1433]=star_28;star_39XN;[1434]=star_28;star_4;[1435]=star_28;star_40;[1436]=star_28;star_41;[1437]=star_28;star_42;[1438]=star_28;star_43;[1439]=star_28;star_44;[1440]=star_28;star_45;[1441]=star_28;star_46;[1442]=star_28;star_47;[1443]=star_28;star_48;[1444]=star_28;star_49;[1445]=star_28;star_5;[1446]=star_28;star_50;[1447]=star_28;star_51;[1448]=star_28;star_52;[1449]=star_28;star_53;[1450]=star_28;star_54;[1451]=star_28;star_55;[1452]=star_28;star_56;[1453]=star_28;star_57;[1454]=star_28;star_58;[1455]=star_28;star_59;[1456]=star_28;star_6;[1457]=star_28;star_60;[1458]=star_28;star_61;[1459]=star_28;star_62;[1460]=star_28;star_63;[1461]=star_28;star_64;[1462]=star_28;star_65;[1463]=star_28;star_69;[1464]=star_28;star_7;[1465]=star_28;star_70;[1466]=star_28;star_71;[1467]=star_28;star_72;[1468]=star_28;star_73;[1469]=star_28;star_74;[1470]=star_28;star_75;[1471]=star_28;star_8;[1472]=star_28;star_9;[1473]=star_29;star_29;[1474]=star_29;star_3;[1475]=star_29;star_30;[1476]=star_29;star_31;[1477]=star_29;star_32;[1478]=star_29;star_33;[1479]=star_29;star_34;[1480]=star_29;star_35;[1481]=star_29;star_36;[1482]=star_29;star_37;[1483]=star_29;star_38;[1484]=star_29;star_39;[1485]=star_29;star_39XN;[1486]=star_29;star_4;[1487]=star_29;star_40;[1488]=star_29;star_41;[1489]=star_29;star_42;[1490]=star_29;star_43;[1491]=star_29;star_44;[1492]=star_29;star_45;[1493]=star_29;star_46;[1494]=star_29;star_47;[1495]=star_29;star_48;[1496]=star_29;star_49;[1497]=star_29;star_5;[1498]=star_29;star_50;[1499]=star_29;star_51;[1500]=star_29;star_52;[1501]=star_29;star_53;[1502]=star_29;star_54;[1503]=star_29;star_55;[1504]=star_29;star_56;[1505]=star_29;star_57;[1506]=star_29;star_58;[1507]=star_29;star_59;[1508]=star_29;star_6;[1509]=star_29;star_60;[1510]=star_29;star_61;[1511]=star_29;star_62;[1512]=star_29;star_63;[1513]=star_29;star_64;[1514]=star_29;star_65;[1515]=star_29;star_69;[1516]=star_29;star_7;[1517]=star_29;star_70;[1518]=star_29;star_71;[1519]=star_29;star_72;[1520]=star_29;star_73;[1521]=star_29;star_74;[1522]=star_29;star_75;[1523]=star_29;star_8;[1524]=star_29;star_9;[1525]=star_3;star_3;[1526]=star_3;star_30;[1527]=star_3;star_31;[1528]=star_3;star_32;[1529]=star_3;star_33;[1530]=star_3;star_34;[1531]=star_3;star_35;[1532]=star_3;star_36;[1533]=star_3;star_37;[1534]=star_3;star_38;[1535]=star_3;star_39;[1536]=star_3;star_39XN;[1537]=star_3;star_4;[1538]=star_3;star_40;[1539]=star_3;star_41;[1540]=star_3;star_42;[1541]=star_3;star_43;[1542]=star_3;star_44;[1543]=star_3;star_45;[1544]=star_3;star_46;[1545]=star_3;star_47;[1546]=star_3;star_48;[1547]=star_3;star_49;[1548]=star_3;star_5;[1549]=star_3;star_50;[1550]=star_3;star_51;[1551]=star_3;star_52;[1552]=star_3;star_53;[1553]=star_3;star_54;[1554]=star_3;star_55;[1555]=star_3;star_56;[1556]=star_3;star_57;[1557]=star_3;star_58;[1558]=star_3;star_59;[1559]=star_3;star_6;[1560]=star_3;star_60;[1561]=star_3;star_61;[1562]=star_3;star_62;[1563]=star_3;star_63;[1564]=star_3;star_64;[1565]=star_3;star_65;[1566]=star_3;star_69;[1567]=star_3;star_7;[1568]=star_3;star_70;[1569]=star_3;star_71;[1570]=star_3;star_72;[1571]=star_3;star_73;[1572]=star_3;star_74;[1573]=star_3;star_75;[1574]=star_3;star_8;[1575]=star_3;star_9;[1576]=star_30;star_30;[1577]=star_30;star_31;[1578]=star_30;star_32;[1579]=star_30;star_33;[1580]=star_30;star_34;[1581]=star_30;star_35;[1582]=star_30;star_36;[1583]=star_30;star_37;[1584]=star_30;star_38;[1585]=star_30;star_39;[1586]=star_30;star_39XN;[1587]=star_30;star_4;[1588]=star_30;star_40;[1589]=star_30;star_41;[1590]=star_30;star_42;[1591]=star_30;star_43;[1592]=star_30;star_44;[1593]=star_30;star_45;[1594]=star_30;star_46;[1595]=star_30;star_47;[1596]=star_30;star_48;[1597]=star_30;star_49;[1598]=star_30;star_5;[1599]=star_30;star_50;[1600]=star_30;star_51;[1601]=star_30;star_52;[1602]=star_30;star_53;[1603]=star_30;star_54;[1604]=star_30;star_55;[1605]=star_30;star_56;[1606]=star_30;star_57;[1607]=star_30;star_58;[1608]=star_30;star_59;[1609]=star_30;star_6;[1610]=star_30;star_60;[1611]=star_30;star_61;[1612]=star_30;star_62;[1613]=star_30;star_63;[1614]=star_30;star_64;[1615]=star_30;star_65;[1616]=star_30;star_69;[1617]=star_30;star_7;[1618]=star_30;star_70;[1619]=star_30;star_71;[1620]=star_30;star_72;[1621]=star_30;star_73;[1622]=star_30;star_74;[1623]=star_30;star_75;[1624]=star_30;star_8;[1625]=star_30;star_9;[1626]=star_31;star_31;[1627]=star_31;star_32;[1628]=star_31;star_33;[1629]=star_31;star_34;[1630]=star_31;star_35;[1631]=star_31;star_36;[1632]=star_31;star_37;[1633]=star_31;star_38;[1634]=star_31;star_39;[1635]=star_31;star_39XN;[1636]=star_31;star_4;[1637]=star_31;star_40;[1638]=star_31;star_41;[1639]=star_31;star_42;[1640]=star_31;star_43;[1641]=star_31;star_44;[1642]=star_31;star_45;[1643]=star_31;star_46;[1644]=star_31;star_47;[1645]=star_31;star_48;[1646]=star_31;star_49;[1647]=star_31;star_5;[1648]=star_31;star_50;[1649]=star_31;star_51;[1650]=star_31;star_52;[1651]=star_31;star_53;[1652]=star_31;star_54;[1653]=star_31;star_55;[1654]=star_31;star_56;[1655]=star_31;star_57;[1656]=star_31;star_58;[1657]=star_31;star_59;[1658]=star_31;star_6;[1659]=star_31;star_60;[1660]=star_31;star_61;[1661]=star_31;star_62;[1662]=star_31;star_63;[1663]=star_31;star_64;[1664]=star_31;star_65;[1665]=star_31;star_69;[1666]=star_31;star_7;[1667]=star_31;star_70;[1668]=star_31;star_71;[1669]=star_31;star_72;[1670]=star_31;star_73;[1671]=star_31;star_74;[1672]=star_31;star_75;[1673]=star_31;star_8;[1674]=star_31;star_9;[1675]=star_32;star_32;[1676]=star_32;star_33;[1677]=star_32;star_34;[1678]=star_32;star_35;[1679]=star_32;star_36;[1680]=star_32;star_37;[1681]=star_32;star_38;[1682]=star_32;star_39;[1683]=star_32;star_39XN;[1684]=star_32;star_4;[1685]=star_32;star_40;[1686]=star_32;star_41;[1687]=star_32;star_42;[1688]=star_32;star_43;[1689]=star_32;star_44;[1690]=star_32;star_45;[1691]=star_32;star_46;[1692]=star_32;star_47;[1693]=star_32;star_48;[1694]=star_32;star_49;[1695]=star_32;star_5;[1696]=star_32;star_50;[1697]=star_32;star_51;[1698]=star_32;star_52;[1699]=star_32;star_53;[1700]=star_32;star_54;[1701]=star_32;star_55;[1702]=star_32;star_56;[1703]=star_32;star_57;[1704]=star_32;star_58;[1705]=star_32;star_59;[1706]=star_32;star_6;[1707]=star_32;star_60;[1708]=star_32;star_61;[1709]=star_32;star_62;[1710]=star_32;star_63;[1711]=star_32;star_64;[1712]=star_32;star_65;[1713]=star_32;star_69;[1714]=star_32;star_7;[1715]=star_32;star_70;[1716]=star_32;star_71;[1717]=star_32;star_72;[1718]=star_32;star_73;[1719]=star_32;star_74;[1720]=star_32;star_75;[1721]=star_32;star_8;[1722]=star_32;star_9;[1723]=star_33;star_33;[1724]=star_33;star_34;[1725]=star_33;star_35;[1726]=star_33;star_36;[1727]=star_33;star_37;[1728]=star_33;star_38;[1729]=star_33;star_39;[1730]=star_33;star_39XN;[1731]=star_33;star_4;[1732]=star_33;star_40;[1733]=star_33;star_41;[1734]=star_33;star_42;[1735]=star_33;star_43;[1736]=star_33;star_44;[1737]=star_33;star_45;[1738]=star_33;star_46;[1739]=star_33;star_47;[1740]=star_33;star_48;[1741]=star_33;star_49;[1742]=star_33;star_5;[1743]=star_33;star_50;[1744]=star_33;star_51;[1745]=star_33;star_52;[1746]=star_33;star_53;[1747]=star_33;star_54;[1748]=star_33;star_55;[1749]=star_33;star_56;[1750]=star_33;star_57;[1751]=star_33;star_58;[1752]=star_33;star_59;[1753]=star_33;star_6;[1754]=star_33;star_60;[1755]=star_33;star_61;[1756]=star_33;star_62;[1757]=star_33;star_63;[1758]=star_33;star_64;[1759]=star_33;star_65;[1760]=star_33;star_69;[1761]=star_33;star_7;[1762]=star_33;star_70;[1763]=star_33;star_71;[1764]=star_33;star_72;[1765]=star_33;star_73;[1766]=star_33;star_74;[1767]=star_33;star_75;[1768]=star_33;star_8;[1769]=star_33;star_9;[1770]=star_34;star_34;[1771]=star_34;star_35;[1772]=star_34;star_36;[1773]=star_34;star_37;[1774]=star_34;star_38;[1775]=star_34;star_39;[1776]=star_34;star_39XN;[1777]=star_34;star_4;[1778]=star_34;star_40;[1779]=star_34;star_41;[1780]=star_34;star_42;[1781]=star_34;star_43;[1782]=star_34;star_44;[1783]=star_34;star_45;[1784]=star_34;star_46;[1785]=star_34;star_47;[1786]=star_34;star_48;[1787]=star_34;star_49;[1788]=star_34;star_5;[1789]=star_34;star_50;[1790]=star_34;star_51;[1791]=star_34;star_52;[1792]=star_34;star_53;[1793]=star_34;star_54;[1794]=star_34;star_55;[1795]=star_34;star_56;[1796]=star_34;star_57;[1797]=star_34;star_58;[1798]=star_34;star_59;[1799]=star_34;star_6;[1800]=star_34;star_60;[1801]=star_34;star_61;[1802]=star_34;star_62;[1803]=star_34;star_63;[1804]=star_34;star_64;[1805]=star_34;star_65;[1806]=star_34;star_69;[1807]=star_34;star_7;[1808]=star_34;star_70;[1809]=star_34;star_71;[1810]=star_34;star_72;[1811]=star_34;star_73;[1812]=star_34;star_74;[1813]=star_34;star_75;[1814]=star_34;star_8;[1815]=star_34;star_9;[1816]=star_35;star_35;[1817]=star_35;star_36;[1818]=star_35;star_37;[1819]=star_35;star_38;[1820]=star_35;star_39;[1821]=star_35;star_39XN;[1822]=star_35;star_4;[1823]=star_35;star_40;[1824]=star_35;star_41;[1825]=star_35;star_42;[1826]=star_35;star_43;[1827]=star_35;star_44;[1828]=star_35;star_45;[1829]=star_35;star_46;[1830]=star_35;star_47;[1831]=star_35;star_48;[1832]=star_35;star_49;[1833]=star_35;star_5;[1834]=star_35;star_50;[1835]=star_35;star_51;[1836]=star_35;star_52;[1837]=star_35;star_53;[1838]=star_35;star_54;[1839]=star_35;star_55;[1840]=star_35;star_56;[1841]=star_35;star_57;[1842]=star_35;star_58;[1843]=star_35;star_59;[1844]=star_35;star_6;[1845]=star_35;star_60;[1846]=star_35;star_61;[1847]=star_35;star_62;[1848]=star_35;star_63;[1849]=star_35;star_64;[1850]=star_35;star_65;[1851]=star_35;star_69;[1852]=star_35;star_7;[1853]=star_35;star_70;[1854]=star_35;star_71;[1855]=star_35;star_72;[1856]=star_35;star_73;[1857]=star_35;star_74;[1858]=star_35;star_75;[1859]=star_35;star_8;[1860]=star_35;star_9;[1861]=star_36;star_36;[1862]=star_36;star_37;[1863]=star_36;star_38;[1864]=star_36;star_39;[1865]=star_36;star_39XN;[1866]=star_36;star_4;[1867]=star_36;star_40;[1868]=star_36;star_41;[1869]=star_36;star_42;[1870]=star_36;star_43;[1871]=star_36;star_44;[1872]=star_36;star_45;[1873]=star_36;star_46;[1874]=star_36;star_47;[1875]=star_36;star_48;[1876]=star_36;star_49;[1877]=star_36;star_5;[1878]=star_36;star_50;[1879]=star_36;star_51;[1880]=star_36;star_52;[1881]=star_36;star_53;[1882]=star_36;star_54;[1883]=star_36;star_55;[1884]=star_36;star_56;[1885]=star_36;star_57;[1886]=star_36;star_58;[1887]=star_36;star_59;[1888]=star_36;star_6;[1889]=star_36;star_60;[1890]=star_36;star_61;[1891]=star_36;star_62;[1892]=star_36;star_63;[1893]=star_36;star_64;[1894]=star_36;star_65;[1895]=star_36;star_69;[1896]=star_36;star_7;[1897]=star_36;star_70;[1898]=star_36;star_71;[1899]=star_36;star_72;[1900]=star_36;star_73;[1901]=star_36;star_74;[1902]=star_36;star_75;[1903]=star_36;star_8;[1904]=star_36;star_9;[1905]=star_37;star_37;[1906]=star_37;star_38;[1907]=star_37;star_39;[1908]=star_37;star_39XN;[1909]=star_37;star_4;[1910]=star_37;star_40;[1911]=star_37;star_41;[1912]=star_37;star_42;[1913]=star_37;star_43;[1914]=star_37;star_44;[1915]=star_37;star_45;[1916]=star_37;star_46;[1917]=star_37;star_47;[1918]=star_37;star_48;[1919]=star_37;star_49;[1920]=star_37;star_5;[1921]=star_37;star_50;[1922]=star_37;star_51;[1923]=star_37;star_52;[1924]=star_37;star_53;[1925]=star_37;star_54;[1926]=star_37;star_55;[1927]=star_37;star_56;[1928]=star_37;star_57;[1929]=star_37;star_58;[1930]=star_37;star_59;[1931]=star_37;star_6;[1932]=star_37;star_60;[1933]=star_37;star_61;[1934]=star_37;star_62;[1935]=star_37;star_63;[1936]=star_37;star_64;[1937]=star_37;star_65;[1938]=star_37;star_69;[1939]=star_37;star_7;[1940]=star_37;star_70;[1941]=star_37;star_71;[1942]=star_37;star_72;[1943]=star_37;star_73;[1944]=star_37;star_74;[1945]=star_37;star_75;[1946]=star_37;star_8;[1947]=star_37;star_9;[1948]=star_38;star_38;[1949]=star_38;star_39;[1950]=star_38;star_39XN;[1951]=star_38;star_4;[1952]=star_38;star_40;[1953]=star_38;star_41;[1954]=star_38;star_42;[1955]=star_38;star_43;[1956]=star_38;star_44;[1957]=star_38;star_45;[1958]=star_38;star_46;[1959]=star_38;star_47;[1960]=star_38;star_48;[1961]=star_38;star_49;[1962]=star_38;star_5;[1963]=star_38;star_50;[1964]=star_38;star_51;[1965]=star_38;star_52;[1966]=star_38;star_53;[1967]=star_38;star_54;[1968]=star_38;star_55;[1969]=star_38;star_56;[1970]=star_38;star_57;[1971]=star_38;star_58;[1972]=star_38;star_59;[1973]=star_38;star_6;[1974]=star_38;star_60;[1975]=star_38;star_61;[1976]=star_38;star_62;[1977]=star_38;star_63;[1978]=star_38;star_64;[1979]=star_38;star_65;[1980]=star_38;star_69;[1981]=star_38;star_7;[1982]=star_38;star_70;[1983]=star_38;star_71;[1984]=star_38;star_72;[1985]=star_38;star_73;[1986]=star_38;star_74;[1987]=star_38;star_75;[1988]=star_38;star_8;[1989]=star_38;star_9;[1990]=star_39;star_39;[1991]=star_39;star_39XN;[1992]=star_39;star_4;[1993]=star_39;star_40;[1994]=star_39;star_41;[1995]=star_39;star_42;[1996]=star_39;star_43;[1997]=star_39;star_44;[1998]=star_39;star_45;[1999]=star_39;star_46;[2000]=star_39;star_47;[2001]=star_39;star_48;[2002]=star_39;star_49;[2003]=star_39;star_5;[2004]=star_39;star_50;[2005]=star_39;star_51;[2006]=star_39;star_52;[2007]=star_39;star_53;[2008]=star_39;star_54;[2009]=star_39;star_55;[2010]=star_39;star_56;[2011]=star_39;star_57;[2012]=star_39;star_58;[2013]=star_39;star_59;[2014]=star_39;star_6;[2015]=star_39;star_60;[2016]=star_39;star_61;[2017]=star_39;star_62;[2018]=star_39;star_63;[2019]=star_39;star_64;[2020]=star_39;star_65;[2021]=star_39;star_69;[2022]=star_39;star_7;[2023]=star_39;star_70;[2024]=star_39;star_71;[2025]=star_39;star_72;[2026]=star_39;star_73;[2027]=star_39;star_74;[2028]=star_39;star_75;[2029]=star_39;star_8;[2030]=star_39;star_9;[2031]=star_39XN;star_39XN;[2032]=star_39XN;star_4;[2033]=star_39XN;star_40;[2034]=star_39XN;star_41;[2035]=star_39XN;star_42;[2036]=star_39XN;star_43;[2037]=star_39XN;star_44;[2038]=star_39XN;star_45;[2039]=star_39XN;star_46;[2040]=star_39XN;star_47;[2041]=star_39XN;star_48;[2042]=star_39XN;star_49;[2043]=star_39XN;star_5;[2044]=star_39XN;star_50;[2045]=star_39XN;star_51;[2046]=star_39XN;star_52;[2047]=star_39XN;star_53;[2048]=star_39XN;star_54;[2049]=star_39XN;star_55;[2050]=star_39XN;star_56;[2051]=star_39XN;star_57;[2052]=star_39XN;star_58;[2053]=star_39XN;star_59;[2054]=star_39XN;star_6;[2055]=star_39XN;star_60;[2056]=star_39XN;star_61;[2057]=star_39XN;star_62;[2058]=star_39XN;star_63;[2059]=star_39XN;star_64;[2060]=star_39XN;star_65;[2061]=star_39XN;star_69;[2062]=star_39XN;star_7;[2063]=star_39XN;star_70;[2064]=star_39XN;star_71;[2065]=star_39XN;star_72;[2066]=star_39XN;star_73;[2067]=star_39XN;star_74;[2068]=star_39XN;star_75;[2069]=star_39XN;star_8;[2070]=star_39XN;star_9;[2071]=star_4;star_4;[2072]=star_4;star_40;[2073]=star_4;star_41;[2074]=star_4;star_42;[2075]=star_4;star_43;[2076]=star_4;star_44;[2077]=star_4;star_45;[2078]=star_4;star_46;[2079]=star_4;star_47;[2080]=star_4;star_48;[2081]=star_4;star_49;[2082]=star_4;star_5;[2083]=star_4;star_50;[2084]=star_4;star_51;[2085]=star_4;star_52;[2086]=star_4;star_53;[2087]=star_4;star_54;[2088]=star_4;star_55;[2089]=star_4;star_56;[2090]=star_4;star_57;[2091]=star_4;star_58;[2092]=star_4;star_59;[2093]=star_4;star_6;[2094]=star_4;star_60;[2095]=star_4;star_61;[2096]=star_4;star_62;[2097]=star_4;star_63;[2098]=star_4;star_64;[2099]=star_4;star_65;[2100]=star_4;star_69;[2101]=star_4;star_7;[2102]=star_4;star_70;[2103]=star_4;star_71;[2104]=star_4;star_72;[2105]=star_4;star_73;[2106]=star_4;star_74;[2107]=star_4;star_75;[2108]=star_4;star_8;[2109]=star_4;star_9;[2110]=star_40;star_40;[2111]=star_40;star_41;[2112]=star_40;star_42;[2113]=star_40;star_43;[2114]=star_40;star_44;[2115]=star_40;star_45;[2116]=star_40;star_46;[2117]=star_40;star_47;[2118]=star_40;star_48;[2119]=star_40;star_49;[2120]=star_40;star_5;[2121]=star_40;star_50;[2122]=star_40;star_51;[2123]=star_40;star_52;[2124]=star_40;star_53;[2125]=star_40;star_54;[2126]=star_40;star_55;[2127]=star_40;star_56;[2128]=star_40;star_57;[2129]=star_40;star_58;[2130]=star_40;star_59;[2131]=star_40;star_6;[2132]=star_40;star_60;[2133]=star_40;star_61;[2134]=star_40;star_62;[2135]=star_40;star_63;[2136]=star_40;star_64;[2137]=star_40;star_65;[2138]=star_40;star_69;[2139]=star_40;star_7;[2140]=star_40;star_70;[2141]=star_40;star_71;[2142]=star_40;star_72;[2143]=star_40;star_73;[2144]=star_40;star_74;[2145]=star_40;star_75;[2146]=star_40;star_8;[2147]=star_40;star_9;[2148]=star_41;star_41;[2149]=star_41;star_42;[2150]=star_41;star_43;[2151]=star_41;star_44;[2152]=star_41;star_45;[2153]=star_41;star_46;[2154]=star_41;star_47;[2155]=star_41;star_48;[2156]=star_41;star_49;[2157]=star_41;star_5;[2158]=star_41;star_50;[2159]=star_41;star_51;[2160]=star_41;star_52;[2161]=star_41;star_53;[2162]=star_41;star_54;[2163]=star_41;star_55;[2164]=star_41;star_56;[2165]=star_41;star_57;[2166]=star_41;star_58;[2167]=star_41;star_59;[2168]=star_41;star_6;[2169]=star_41;star_60;[2170]=star_41;star_61;[2171]=star_41;star_62;[2172]=star_41;star_63;[2173]=star_41;star_64;[2174]=star_41;star_65;[2175]=star_41;star_69;[2176]=star_41;star_7;[2177]=star_41;star_70;[2178]=star_41;star_71;[2179]=star_41;star_72;[2180]=star_41;star_73;[2181]=star_41;star_74;[2182]=star_41;star_75;[2183]=star_41;star_8;[2184]=star_41;star_9;[2185]=star_42;star_42;[2186]=star_42;star_43;[2187]=star_42;star_44;[2188]=star_42;star_45;[2189]=star_42;star_46;[2190]=star_42;star_47;[2191]=star_42;star_48;[2192]=star_42;star_49;[2193]=star_42;star_5;[2194]=star_42;star_50;[2195]=star_42;star_51;[2196]=star_42;star_52;[2197]=star_42;star_53;[2198]=star_42;star_54;[2199]=star_42;star_55;[2200]=star_42;star_56;[2201]=star_42;star_57;[2202]=star_42;star_58;[2203]=star_42;star_59;[2204]=star_42;star_6;[2205]=star_42;star_60;[2206]=star_42;star_61;[2207]=star_42;star_62;[2208]=star_42;star_63;[2209]=star_42;star_64;[2210]=star_42;star_65;[2211]=star_42;star_69;[2212]=star_42;star_7;[2213]=star_42;star_70;[2214]=star_42;star_71;[2215]=star_42;star_72;[2216]=star_42;star_73;[2217]=star_42;star_74;[2218]=star_42;star_75;[2219]=star_42;star_8;[2220]=star_42;star_9;[2221]=star_43;star_43;[2222]=star_43;star_44;[2223]=star_43;star_45;[2224]=star_43;star_46;[2225]=star_43;star_47;[2226]=star_43;star_48;[2227]=star_43;star_49;[2228]=star_43;star_5;[2229]=star_43;star_50;[2230]=star_43;star_51;[2231]=star_43;star_52;[2232]=star_43;star_53;[2233]=star_43;star_54;[2234]=star_43;star_55;[2235]=star_43;star_56;[2236]=star_43;star_57;[2237]=star_43;star_58;[2238]=star_43;star_59;[2239]=star_43;star_6;[2240]=star_43;star_60;[2241]=star_43;star_61;[2242]=star_43;star_62;[2243]=star_43;star_63;[2244]=star_43;star_64;[2245]=star_43;star_65;[2246]=star_43;star_69;[2247]=star_43;star_7;[2248]=star_43;star_70;[2249]=star_43;star_71;[2250]=star_43;star_72;[2251]=star_43;star_73;[2252]=star_43;star_74;[2253]=star_43;star_75;[2254]=star_43;star_8;[2255]=star_43;star_9;[2256]=star_44;star_44;[2257]=star_44;star_45;[2258]=star_44;star_46;[2259]=star_44;star_47;[2260]=star_44;star_48;[2261]=star_44;star_49;[2262]=star_44;star_5;[2263]=star_44;star_50;[2264]=star_44;star_51;[2265]=star_44;star_52;[2266]=star_44;star_53;[2267]=star_44;star_54;[2268]=star_44;star_55;[2269]=star_44;star_56;[2270]=star_44;star_57;[2271]=star_44;star_58;[2272]=star_44;star_59;[2273]=star_44;star_6;[2274]=star_44;star_60;[2275]=star_44;star_61;[2276]=star_44;star_62;[2277]=star_44;star_63;[2278]=star_44;star_64;[2279]=star_44;star_65;[2280]=star_44;star_69;[2281]=star_44;star_7;[2282]=star_44;star_70;[2283]=star_44;star_71;[2284]=star_44;star_72;[2285]=star_44;star_73;[2286]=star_44;star_74;[2287]=star_44;star_75;[2288]=star_44;star_8;[2289]=star_44;star_9;[2290]=star_45;star_45;[2291]=star_45;star_46;[2292]=star_45;star_47;[2293]=star_45;star_48;[2294]=star_45;star_49;[2295]=star_45;star_5;[2296]=star_45;star_50;[2297]=star_45;star_51;[2298]=star_45;star_52;[2299]=star_45;star_53;[2300]=star_45;star_54;[2301]=star_45;star_55;[2302]=star_45;star_56;[2303]=star_45;star_57;[2304]=star_45;star_58;[2305]=star_45;star_59;[2306]=star_45;star_6;[2307]=star_45;star_60;[2308]=star_45;star_61;[2309]=star_45;star_62;[2310]=star_45;star_63;[2311]=star_45;star_64;[2312]=star_45;star_65;[2313]=star_45;star_69;[2314]=star_45;star_7;[2315]=star_45;star_70;[2316]=star_45;star_71;[2317]=star_45;star_72;[2318]=star_45;star_73;[2319]=star_45;star_74;[2320]=star_45;star_75;[2321]=star_45;star_8;[2322]=star_45;star_9;[2323]=star_46;star_46;[2324]=star_46;star_47;[2325]=star_46;star_48;[2326]=star_46;star_49;[2327]=star_46;star_5;[2328]=star_46;star_50;[2329]=star_46;star_51;[2330]=star_46;star_52;[2331]=star_46;star_53;[2332]=star_46;star_54;[2333]=star_46;star_55;[2334]=star_46;star_56;[2335]=star_46;star_57;[2336]=star_46;star_58;[2337]=star_46;star_59;[2338]=star_46;star_6;[2339]=star_46;star_60;[2340]=star_46;star_61;[2341]=star_46;star_62;[2342]=star_46;star_63;[2343]=star_46;star_64;[2344]=star_46;star_65;[2345]=star_46;star_69;[2346]=star_46;star_7;[2347]=star_46;star_70;[2348]=star_46;star_71;[2349]=star_46;star_72;[2350]=star_46;star_73;[2351]=star_46;star_74;[2352]=star_46;star_75;[2353]=star_46;star_8;[2354]=star_46;star_9;[2355]=star_47;star_47;[2356]=star_47;star_48;[2357]=star_47;star_49;[2358]=star_47;star_5;[2359]=star_47;star_50;[2360]=star_47;star_51;[2361]=star_47;star_52;[2362]=star_47;star_53;[2363]=star_47;star_54;[2364]=star_47;star_55;[2365]=star_47;star_56;[2366]=star_47;star_57;[2367]=star_47;star_58;[2368]=star_47;star_59;[2369]=star_47;star_6;[2370]=star_47;star_60;[2371]=star_47;star_61;[2372]=star_47;star_62;[2373]=star_47;star_63;[2374]=star_47;star_64;[2375]=star_47;star_65;[2376]=star_47;star_69;[2377]=star_47;star_7;[2378]=star_47;star_70;[2379]=star_47;star_71;[2380]=star_47;star_72;[2381]=star_47;star_73;[2382]=star_47;star_74;[2383]=star_47;star_75;[2384]=star_47;star_8;[2385]=star_47;star_9;[2386]=star_48;star_48;[2387]=star_48;star_49;[2388]=star_48;star_5;[2389]=star_48;star_50;[2390]=star_48;star_51;[2391]=star_48;star_52;[2392]=star_48;star_53;[2393]=star_48;star_54;[2394]=star_48;star_55;[2395]=star_48;star_56;[2396]=star_48;star_57;[2397]=star_48;star_58;[2398]=star_48;star_59;[2399]=star_48;star_6;[2400]=star_48;star_60;[2401]=star_48;star_61;[2402]=star_48;star_62;[2403]=star_48;star_63;[2404]=star_48;star_64;[2405]=star_48;star_65;[2406]=star_48;star_69;[2407]=star_48;star_7;[2408]=star_48;star_70;[2409]=star_48;star_71;[2410]=star_48;star_72;[2411]=star_48;star_73;[2412]=star_48;star_74;[2413]=star_48;star_75;[2414]=star_48;star_8;[2415]=star_48;star_9;[2416]=star_49;star_49;[2417]=star_49;star_5;[2418]=star_49;star_50;[2419]=star_49;star_51;[2420]=star_49;star_52;[2421]=star_49;star_53;[2422]=star_49;star_54;[2423]=star_49;star_55;[2424]=star_49;star_56;[2425]=star_49;star_57;[2426]=star_49;star_58;[2427]=star_49;star_59;[2428]=star_49;star_6;[2429]=star_49;star_60;[2430]=star_49;star_61;[2431]=star_49;star_62;[2432]=star_49;star_63;[2433]=star_49;star_64;[2434]=star_49;star_65;[2435]=star_49;star_69;[2436]=star_49;star_7;[2437]=star_49;star_70;[2438]=star_49;star_71;[2439]=star_49;star_72;[2440]=star_49;star_73;[2441]=star_49;star_74;[2442]=star_49;star_75;[2443]=star_49;star_8;[2444]=star_49;star_9;[2445]=star_5;star_5;[2446]=star_5;star_50;[2447]=star_5;star_51;[2448]=star_5;star_52;[2449]=star_5;star_53;[2450]=star_5;star_54;[2451]=star_5;star_55;[2452]=star_5;star_56;[2453]=star_5;star_57;[2454]=star_5;star_58;[2455]=star_5;star_59;[2456]=star_5;star_6;[2457]=star_5;star_60;[2458]=star_5;star_61;[2459]=star_5;star_62;[2460]=star_5;star_63;[2461]=star_5;star_64;[2462]=star_5;star_65;[2463]=star_5;star_69;[2464]=star_5;star_7;[2465]=star_5;star_70;[2466]=star_5;star_71;[2467]=star_5;star_72;[2468]=star_5;star_73;[2469]=star_5;star_74;[2470]=star_5;star_75;[2471]=star_5;star_8;[2472]=star_5;star_9;[2473]=star_50;star_50;[2474]=star_50;star_51;[2475]=star_50;star_52;[2476]=star_50;star_53;[2477]=star_50;star_54;[2478]=star_50;star_55;[2479]=star_50;star_56;[2480]=star_50;star_57;[2481]=star_50;star_58;[2482]=star_50;star_59;[2483]=star_50;star_6;[2484]=star_50;star_60;[2485]=star_50;star_61;[2486]=star_50;star_62;[2487]=star_50;star_63;[2488]=star_50;star_64;[2489]=star_50;star_65;[2490]=star_50;star_69;[2491]=star_50;star_7;[2492]=star_50;star_70;[2493]=star_50;star_71;[2494]=star_50;star_72;[2495]=star_50;star_73;[2496]=star_50;star_74;[2497]=star_50;star_75;[2498]=star_50;star_8;[2499]=star_50;star_9;[2500]=star_51;star_51;[2501]=star_51;star_52;[2502]=star_51;star_53;[2503]=star_51;star_54;[2504]=star_51;star_55;[2505]=star_51;star_56;[2506]=star_51;star_57;[2507]=star_51;star_58;[2508]=star_51;star_59;[2509]=star_51;star_6;[2510]=star_51;star_60;[2511]=star_51;star_61;[2512]=star_51;star_62;[2513]=star_51;star_63;[2514]=star_51;star_64;[2515]=star_51;star_65;[2516]=star_51;star_69;[2517]=star_51;star_7;[2518]=star_51;star_70;[2519]=star_51;star_71;[2520]=star_51;star_72;[2521]=star_51;star_73;[2522]=star_51;star_74;[2523]=star_51;star_75;[2524]=star_51;star_8;[2525]=star_51;star_9;[2526]=star_52;star_52;[2527]=star_52;star_53;[2528]=star_52;star_54;[2529]=star_52;star_55;[2530]=star_52;star_56;[2531]=star_52;star_57;[2532]=star_52;star_58;[2533]=star_52;star_59;[2534]=star_52;star_6;[2535]=star_52;star_60;[2536]=star_52;star_61;[2537]=star_52;star_62;[2538]=star_52;star_63;[2539]=star_52;star_64;[2540]=star_52;star_65;[2541]=star_52;star_69;[2542]=star_52;star_7;[2543]=star_52;star_70;[2544]=star_52;star_71;[2545]=star_52;star_72;[2546]=star_52;star_73;[2547]=star_52;star_74;[2548]=star_52;star_75;[2549]=star_52;star_8;[2550]=star_52;star_9;[2551]=star_53;star_53;[2552]=star_53;star_54;[2553]=star_53;star_55;[2554]=star_53;star_56;[2555]=star_53;star_57;[2556]=star_53;star_58;[2557]=star_53;star_59;[2558]=star_53;star_6;[2559]=star_53;star_60;[2560]=star_53;star_61;[2561]=star_53;star_62;[2562]=star_53;star_63;[2563]=star_53;star_64;[2564]=star_53;star_65;[2565]=star_53;star_69;[2566]=star_53;star_7;[2567]=star_53;star_70;[2568]=star_53;star_71;[2569]=star_53;star_72;[2570]=star_53;star_73;[2571]=star_53;star_74;[2572]=star_53;star_75;[2573]=star_53;star_8;[2574]=star_53;star_9;[2575]=star_54;star_54;[2576]=star_54;star_55;[2577]=star_54;star_56;[2578]=star_54;star_57;[2579]=star_54;star_58;[2580]=star_54;star_59;[2581]=star_54;star_6;[2582]=star_54;star_60;[2583]=star_54;star_61;[2584]=star_54;star_62;[2585]=star_54;star_63;[2586]=star_54;star_64;[2587]=star_54;star_65;[2588]=star_54;star_69;[2589]=star_54;star_7;[2590]=star_54;star_70;[2591]=star_54;star_71;[2592]=star_54;star_72;[2593]=star_54;star_73;[2594]=star_54;star_74;[2595]=star_54;star_75;[2596]=star_54;star_8;[2597]=star_54;star_9;[2598]=star_55;star_55;[2599]=star_55;star_56;[2600]=star_55;star_57;[2601]=star_55;star_58;[2602]=star_55;star_59;[2603]=star_55;star_6;[2604]=star_55;star_60;[2605]=star_55;star_61;[2606]=star_55;star_62;[2607]=star_55;star_63;[2608]=star_55;star_64;[2609]=star_55;star_65;[2610]=star_55;star_69;[2611]=star_55;star_7;[2612]=star_55;star_70;[2613]=star_55;star_71;[2614]=star_55;star_72;[2615]=star_55;star_73;[2616]=star_55;star_74;[2617]=star_55;star_75;[2618]=star_55;star_8;[2619]=star_55;star_9;[2620]=star_56;star_56;[2621]=star_56;star_57;[2622]=star_56;star_58;[2623]=star_56;star_59;[2624]=star_56;star_6;[2625]=star_56;star_60;[2626]=star_56;star_61;[2627]=star_56;star_62;[2628]=star_56;star_63;[2629]=star_56;star_64;[2630]=star_56;star_65;[2631]=star_56;star_69;[2632]=star_56;star_7;[2633]=star_56;star_70;[2634]=star_56;star_71;[2635]=star_56;star_72;[2636]=star_56;star_73;[2637]=star_56;star_74;[2638]=star_56;star_75;[2639]=star_56;star_8;[2640]=star_56;star_9;[2641]=star_57;star_57;[2642]=star_57;star_58;[2643]=star_57;star_59;[2644]=star_57;star_6;[2645]=star_57;star_60;[2646]=star_57;star_61;[2647]=star_57;star_62;[2648]=star_57;star_63;[2649]=star_57;star_64;[2650]=star_57;star_65;[2651]=star_57;star_69;[2652]=star_57;star_7;[2653]=star_57;star_70;[2654]=star_57;star_71;[2655]=star_57;star_72;[2656]=star_57;star_73;[2657]=star_57;star_74;[2658]=star_57;star_75;[2659]=star_57;star_8;[2660]=star_57;star_9;[2661]=star_58;star_58;[2662]=star_58;star_59;[2663]=star_58;star_6;[2664]=star_58;star_60;[2665]=star_58;star_61;[2666]=star_58;star_62;[2667]=star_58;star_63;[2668]=star_58;star_64;[2669]=star_58;star_65;[2670]=star_58;star_69;[2671]=star_58;star_7;[2672]=star_58;star_70;[2673]=star_58;star_71;[2674]=star_58;star_72;[2675]=star_58;star_73;[2676]=star_58;star_74;[2677]=star_58;star_75;[2678]=star_58;star_8;[2679]=star_58;star_9;[2680]=star_59;star_59;[2681]=star_59;star_6;[2682]=star_59;star_60;[2683]=star_59;star_61;[2684]=star_59;star_62;[2685]=star_59;star_63;[2686]=star_59;star_64;[2687]=star_59;star_65;[2688]=star_59;star_69;[2689]=star_59;star_7;[2690]=star_59;star_70;[2691]=star_59;star_71;[2692]=star_59;star_72;[2693]=star_59;star_73;[2694]=star_59;star_74;[2695]=star_59;star_75;[2696]=star_59;star_8;[2697]=star_59;star_9;[2698]=star_6;star_6;[2699]=star_6;star_60;[2700]=star_6;star_61;[2701]=star_6;star_62;[2702]=star_6;star_63;[2703]=star_6;star_64;[2704]=star_6;star_65;[2705]=star_6;star_69;[2706]=star_6;star_7;[2707]=star_6;star_70;[2708]=star_6;star_71;[2709]=star_6;star_72;[2710]=star_6;star_73;[2711]=star_6;star_74;[2712]=star_6;star_75;[2713]=star_6;star_8;[2714]=star_6;star_9;[2715]=star_60;star_60;[2716]=star_60;star_61;[2717]=star_60;star_62;[2718]=star_60;star_63;[2719]=star_60;star_64;[2720]=star_60;star_65;[2721]=star_60;star_69;[2722]=star_60;star_7;[2723]=star_60;star_70;[2724]=star_60;star_71;[2725]=star_60;star_72;[2726]=star_60;star_73;[2727]=star_60;star_74;[2728]=star_60;star_75;[2729]=star_60;star_8;[2730]=star_60;star_9;[2731]=star_61;star_61;[2732]=star_61;star_62;[2733]=star_61;star_63;[2734]=star_61;star_64;[2735]=star_61;star_65;[2736]=star_61;star_69;[2737]=star_61;star_7;[2738]=star_61;star_70;[2739]=star_61;star_71;[2740]=star_61;star_72;[2741]=star_61;star_73;[2742]=star_61;star_74;[2743]=star_61;star_75;[2744]=star_61;star_8;[2745]=star_61;star_9;[2746]=star_62;star_62;[2747]=star_62;star_63;[2748]=star_62;star_64;[2749]=star_62;star_65;[2750]=star_62;star_69;[2751]=star_62;star_7;[2752]=star_62;star_70;[2753]=star_62;star_71;[2754]=star_62;star_72;[2755]=star_62;star_73;[2756]=star_62;star_74;[2757]=star_62;star_75;[2758]=star_62;star_8;[2759]=star_62;star_9;[2760]=star_63;star_63;[2761]=star_63;star_64;[2762]=star_63;star_65;[2763]=star_63;star_69;[2764]=star_63;star_7;[2765]=star_63;star_70;[2766]=star_63;star_71;[2767]=star_63;star_72;[2768]=star_63;star_73;[2769]=star_63;star_74;[2770]=star_63;star_75;[2771]=star_63;star_8;[2772]=star_63;star_9;[2773]=star_64;star_64;[2774]=star_64;star_65;[2775]=star_64;star_69;[2776]=star_64;star_7;[2777]=star_64;star_70;[2778]=star_64;star_71;[2779]=star_64;star_72;[2780]=star_64;star_73;[2781]=star_64;star_74;[2782]=star_64;star_75;[2783]=star_64;star_8;[2784]=star_64;star_9;[2785]=star_65;star_65;[2786]=star_65;star_69;[2787]=star_65;star_7;[2788]=star_65;star_70;[2789]=star_65;star_71;[2790]=star_65;star_72;[2791]=star_65;star_73;[2792]=star_65;star_74;[2793]=star_65;star_75;[2794]=star_65;star_8;[2795]=star_65;star_9;[2796]=star_69;star_69;[2797]=star_69;star_7;[2798]=star_69;star_70;[2799]=star_69;star_71;[2800]=star_69;star_72;[2801]=star_69;star_73;[2802]=star_69;star_74;[2803]=star_69;star_75;[2804]=star_69;star_8;[2805]=star_69;star_9;[2806]=star_7;star_7;[2807]=star_7;star_70;[2808]=star_7;star_71;[2809]=star_7;star_72;[2810]=star_7;star_73;[2811]=star_7;star_74;[2812]=star_7;star_75;[2813]=star_7;star_8;[2814]=star_7;star_9;[2815]=star_70;star_70;[2816]=star_70;star_71;[2817]=star_70;star_72;[2818]=star_70;star_73;[2819]=star_70;star_74;[2820]=star_70;star_75;[2821]=star_70;star_8;[2822]=star_70;star_9;[2823]=star_71;star_71;[2824]=star_71;star_72;[2825]=star_71;star_73;[2826]=star_71;star_74;[2827]=star_71;star_75;[2828]=star_71;star_8;[2829]=star_71;star_9;[2830]=star_72;star_72;[2831]=star_72;star_73;[2832]=star_72;star_74;[2833]=star_72;star_75;[2834]=star_72;star_8;[2835]=star_72;star_9;[2836]=star_73;star_73;[2837]=star_73;star_74;[2838]=star_73;star_75;[2839]=star_73;star_8;[2840]=star_73;star_9;[2841]=star_74;star_74;[2842]=star_74;star_75;[2843]=star_74;star_8;[2844]=star_74;star_9;[2845]=star_75;star_75;[2846]=star_75;star_8;[2847]=star_75;star_9;[2848]=star_8;star_8;[2849]=star_8;star_9;[2850]=star_9;star_9}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("star_1;star_1"));
+				break;
+			case 14://[CYP3A5]->{[0]=null;null;[1]=star_1;star_1;[2]=star_1;star_2;[3]=star_1;star_3;[4]=star_1;star_4;[5]=star_1;star_5;[6]=star_1;star_6;[7]=star_1;star_7;[8]=star_1;star_8;[9]=star_1;star_9;[10]=star_2;star_2;[11]=star_2;star_3;[12]=star_2;star_4;[13]=star_2;star_5;[14]=star_2;star_6;[15]=star_2;star_7;[16]=star_2;star_8;[17]=star_2;star_9;[18]=star_3;star_3;[19]=star_3;star_4;[20]=star_3;star_5;[21]=star_3;star_6;[22]=star_3;star_7;[23]=star_3;star_8;[24]=star_3;star_9;[25]=star_4;star_4;[26]=star_4;star_5;[27]=star_4;star_6;[28]=star_4;star_7;[29]=star_4;star_8;[30]=star_4;star_9;[31]=star_5;star_5;[32]=star_5;star_6;[33]=star_5;star_7;[34]=star_5;star_8;[35]=star_5;star_9;[36]=star_6;star_6;[37]=star_6;star_7;[38]=star_6;star_8;[39]=star_6;star_9;[40]=star_7;star_7;[41]=star_7;star_8;[42]=star_7;star_9;[43]=star_8;star_8;[44]=star_8;star_9;[45]=star_9;star_9}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("star_1;star_1"));
+				break;
+			case 15://[UGT1A8]->{[0]=null;null}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("null;null"));
+				break;
+			case 16://[UGT1A7]->{[0]=null;null}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("null;null"));
+				break;
+			case 17://[UGT1A6]->{[0]=null;null}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("null;null"));
+				break;
+			case 18://[UGT1A10]->{[0]=null;null}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("null;null"));
+				break;
+			case 19://[UGT1A5]->{[0]=null;null}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("null;null"));
+				break;
+			case 20://[UGT1A9]->{[0]=null;null}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("null;null"));
+				break;
+			case 21://[UGT1A4]->{[0]=null;null}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("null;null"));
+				break;
+			case 22://[UGT1A3]->{[0]=null;null}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("null;null"));
+				break;
+			case 23://[UGT1A1]->{[0]=null;null;[1]=star_1;star_1;[2]=star_1;star_28;[3]=star_1;star_36;[4]=star_1;star_364L_IA;[5]=star_1;star_37;[6]=star_1;star_533P_IB;[7]=star_1;star_6;[8]=star_1;star_60;[9]=star_1;star_I;[10]=star_1;star_II;[11]=star_1;star_III;[12]=star_1;star_IV;[13]=star_1;star_IX;[14]=star_1;star_V;[15]=star_1;star_VI;[16]=star_1;star_VII;[17]=star_1;star_VIII;[18]=star_1;star_X;[19]=star_28;star_28;[20]=star_28;star_36;[21]=star_28;star_364L_IA;[22]=star_28;star_37;[23]=star_28;star_533P_IB;[24]=star_28;star_6;[25]=star_28;star_60;[26]=star_28;star_I;[27]=star_28;star_II;[28]=star_28;star_III;[29]=star_28;star_IV;[30]=star_28;star_IX;[31]=star_28;star_V;[32]=star_28;star_VI;[33]=star_28;star_VII;[34]=star_28;star_VIII;[35]=star_28;star_X;[36]=star_36;star_36;[37]=star_36;star_364L_IA;[38]=star_36;star_37;[39]=star_36;star_533P_IB;[40]=star_36;star_6;[41]=star_36;star_60;[42]=star_36;star_I;[43]=star_36;star_II;[44]=star_36;star_III;[45]=star_36;star_IV;[46]=star_36;star_IX;[47]=star_36;star_V;[48]=star_36;star_VI;[49]=star_36;star_VII;[50]=star_36;star_VIII;[51]=star_36;star_X;[52]=star_364L_IA;star_364L_IA;[53]=star_364L_IA;star_37;[54]=star_364L_IA;star_533P_IB;[55]=star_364L_IA;star_6;[56]=star_364L_IA;star_60;[57]=star_364L_IA;star_I;[58]=star_364L_IA;star_II;[59]=star_364L_IA;star_III;[60]=star_364L_IA;star_IV;[61]=star_364L_IA;star_IX;[62]=star_364L_IA;star_V;[63]=star_364L_IA;star_VI;[64]=star_364L_IA;star_VII;[65]=star_364L_IA;star_VIII;[66]=star_364L_IA;star_X;[67]=star_37;star_37;[68]=star_37;star_533P_IB;[69]=star_37;star_6;[70]=star_37;star_60;[71]=star_37;star_I;[72]=star_37;star_II;[73]=star_37;star_III;[74]=star_37;star_IV;[75]=star_37;star_IX;[76]=star_37;star_V;[77]=star_37;star_VI;[78]=star_37;star_VII;[79]=star_37;star_VIII;[80]=star_37;star_X;[81]=star_533P_IB;star_533P_IB;[82]=star_533P_IB;star_6;[83]=star_533P_IB;star_60;[84]=star_533P_IB;star_I;[85]=star_533P_IB;star_II;[86]=star_533P_IB;star_III;[87]=star_533P_IB;star_IV;[88]=star_533P_IB;star_IX;[89]=star_533P_IB;star_V;[90]=star_533P_IB;star_VI;[91]=star_533P_IB;star_VII;[92]=star_533P_IB;star_VIII;[93]=star_533P_IB;star_X;[94]=star_6;star_6;[95]=star_6;star_60;[96]=star_6;star_I;[97]=star_6;star_II;[98]=star_6;star_III;[99]=star_6;star_IV;[100]=star_6;star_IX;[101]=star_6;star_V;[102]=star_6;star_VI;[103]=star_6;star_VII;[104]=star_6;star_VIII;[105]=star_6;star_X;[106]=star_60;star_60;[107]=star_60;star_I;[108]=star_60;star_II;[109]=star_60;star_III;[110]=star_60;star_IV;[111]=star_60;star_IX;[112]=star_60;star_V;[113]=star_60;star_VI;[114]=star_60;star_VII;[115]=star_60;star_VIII;[116]=star_60;star_X;[117]=star_I;star_I;[118]=star_I;star_II;[119]=star_I;star_III;[120]=star_I;star_IV;[121]=star_I;star_IX;[122]=star_I;star_V;[123]=star_I;star_VI;[124]=star_I;star_VII;[125]=star_I;star_VIII;[126]=star_I;star_X;[127]=star_II;star_II;[128]=star_II;star_III;[129]=star_II;star_IV;[130]=star_II;star_IX;[131]=star_II;star_V;[132]=star_II;star_VI;[133]=star_II;star_VII;[134]=star_II;star_VIII;[135]=star_II;star_X;[136]=star_III;star_III;[137]=star_III;star_IV;[138]=star_III;star_IX;[139]=star_III;star_V;[140]=star_III;star_VI;[141]=star_III;star_VII;[142]=star_III;star_VIII;[143]=star_III;star_X;[144]=star_IV;star_IV;[145]=star_IV;star_IX;[146]=star_IV;star_V;[147]=star_IV;star_VI;[148]=star_IV;star_VII;[149]=star_IV;star_VIII;[150]=star_IV;star_X;[151]=star_IX;star_IX;[152]=star_IX;star_V;[153]=star_IX;star_VI;[154]=star_IX;star_VII;[155]=star_IX;star_VIII;[156]=star_IX;star_X;[157]=star_V;star_V;[158]=star_V;star_VI;[159]=star_V;star_VII;[160]=star_V;star_VIII;[161]=star_V;star_X;[162]=star_VI;star_VI;[163]=star_VI;star_VII;[164]=star_VI;star_VIII;[165]=star_VI;star_X;[166]=star_VII;star_VII;[167]=star_VII;star_VIII;[168]=star_VII;star_X;[169]=star_VIII;star_VIII;[170]=star_VIII;star_X;[171]=star_X;star_X}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("star_1;star_1"));
+				break;
+			case 24://[ABCB1]->{[0]=null;null;[1]=star_1;star_1;[2]=star_1;star_13_PMID_12893986;[3]=star_1;star_2_PMID_11503014;[4]=star_1;star_2_PMID_12893986;[5]=star_13_PMID_12893986;star_13_PMID_12893986;[6]=star_13_PMID_12893986;star_2_PMID_11503014;[7]=star_13_PMID_12893986;star_2_PMID_12893986;[8]=star_2_PMID_11503014;star_2_PMID_11503014;[9]=star_2_PMID_11503014;star_2_PMID_12893986;[10]=star_2_PMID_12893986;star_2_PMID_12893986}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("star_1;star_1"));
+				break;
+			case 25://[G6PD]->{[0]=null;null;[1]=A-202A_376G;A-202A_376G;[2]=A-202A_376G;A-968C_376G;[3]=A-202A_376G;A-_680T_376G;[4]=A-202A_376G;B_wildtype;[5]=A-202A_376G;Mediterranean_Haplotype;[6]=A-968C_376G;A-968C_376G;[7]=A-968C_376G;A-_680T_376G;[8]=A-968C_376G;B_wildtype;[9]=A-968C_376G;Mediterranean_Haplotype;[10]=A-_680T_376G;A-_680T_376G;[11]=A-_680T_376G;B_wildtype;[12]=A-_680T_376G;Mediterranean_Haplotype;[13]=B_wildtype;B_wildtype;[14]=B_wildtype;Mediterranean_Haplotype;[15]=Mediterranean_Haplotype;Mediterranean_Haplotype}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("A-202A_376G;A-202A_376G"));
+				break;
+			case 26://[CYP2C9]->{[0]=null;null;[1]=star_1;star_1;[2]=star_1;star_10;[3]=star_1;star_11;[4]=star_1;star_12;[5]=star_1;star_13;[6]=star_1;star_14;[7]=star_1;star_15;[8]=star_1;star_16;[9]=star_1;star_17;[10]=star_1;star_18;[11]=star_1;star_19;[12]=star_1;star_2;[13]=star_1;star_20;[14]=star_1;star_21;[15]=star_1;star_22;[16]=star_1;star_23;[17]=star_1;star_24;[18]=star_1;star_25;[19]=star_1;star_26;[20]=star_1;star_27;[21]=star_1;star_28;[22]=star_1;star_29;[23]=star_1;star_3;[24]=star_1;star_30;[25]=star_1;star_31;[26]=star_1;star_32;[27]=star_1;star_33;[28]=star_1;star_34;[29]=star_1;star_4;[30]=star_1;star_5;[31]=star_1;star_6;[32]=star_1;star_7;[33]=star_1;star_8;[34]=star_1;star_9;[35]=star_10;star_10;[36]=star_10;star_11;[37]=star_10;star_12;[38]=star_10;star_13;[39]=star_10;star_14;[40]=star_10;star_15;[41]=star_10;star_16;[42]=star_10;star_17;[43]=star_10;star_18;[44]=star_10;star_19;[45]=star_10;star_2;[46]=star_10;star_20;[47]=star_10;star_21;[48]=star_10;star_22;[49]=star_10;star_23;[50]=star_10;star_24;[51]=star_10;star_25;[52]=star_10;star_26;[53]=star_10;star_27;[54]=star_10;star_28;[55]=star_10;star_29;[56]=star_10;star_3;[57]=star_10;star_30;[58]=star_10;star_31;[59]=star_10;star_32;[60]=star_10;star_33;[61]=star_10;star_34;[62]=star_10;star_4;[63]=star_10;star_5;[64]=star_10;star_6;[65]=star_10;star_7;[66]=star_10;star_8;[67]=star_10;star_9;[68]=star_11;star_11;[69]=star_11;star_12;[70]=star_11;star_13;[71]=star_11;star_14;[72]=star_11;star_15;[73]=star_11;star_16;[74]=star_11;star_17;[75]=star_11;star_18;[76]=star_11;star_19;[77]=star_11;star_2;[78]=star_11;star_20;[79]=star_11;star_21;[80]=star_11;star_22;[81]=star_11;star_23;[82]=star_11;star_24;[83]=star_11;star_25;[84]=star_11;star_26;[85]=star_11;star_27;[86]=star_11;star_28;[87]=star_11;star_29;[88]=star_11;star_3;[89]=star_11;star_30;[90]=star_11;star_31;[91]=star_11;star_32;[92]=star_11;star_33;[93]=star_11;star_34;[94]=star_11;star_4;[95]=star_11;star_5;[96]=star_11;star_6;[97]=star_11;star_7;[98]=star_11;star_8;[99]=star_11;star_9;[100]=star_12;star_12;[101]=star_12;star_13;[102]=star_12;star_14;[103]=star_12;star_15;[104]=star_12;star_16;[105]=star_12;star_17;[106]=star_12;star_18;[107]=star_12;star_19;[108]=star_12;star_2;[109]=star_12;star_20;[110]=star_12;star_21;[111]=star_12;star_22;[112]=star_12;star_23;[113]=star_12;star_24;[114]=star_12;star_25;[115]=star_12;star_26;[116]=star_12;star_27;[117]=star_12;star_28;[118]=star_12;star_29;[119]=star_12;star_3;[120]=star_12;star_30;[121]=star_12;star_31;[122]=star_12;star_32;[123]=star_12;star_33;[124]=star_12;star_34;[125]=star_12;star_4;[126]=star_12;star_5;[127]=star_12;star_6;[128]=star_12;star_7;[129]=star_12;star_8;[130]=star_12;star_9;[131]=star_13;star_13;[132]=star_13;star_14;[133]=star_13;star_15;[134]=star_13;star_16;[135]=star_13;star_17;[136]=star_13;star_18;[137]=star_13;star_19;[138]=star_13;star_2;[139]=star_13;star_20;[140]=star_13;star_21;[141]=star_13;star_22;[142]=star_13;star_23;[143]=star_13;star_24;[144]=star_13;star_25;[145]=star_13;star_26;[146]=star_13;star_27;[147]=star_13;star_28;[148]=star_13;star_29;[149]=star_13;star_3;[150]=star_13;star_30;[151]=star_13;star_31;[152]=star_13;star_32;[153]=star_13;star_33;[154]=star_13;star_34;[155]=star_13;star_4;[156]=star_13;star_5;[157]=star_13;star_6;[158]=star_13;star_7;[159]=star_13;star_8;[160]=star_13;star_9;[161]=star_14;star_14;[162]=star_14;star_15;[163]=star_14;star_16;[164]=star_14;star_17;[165]=star_14;star_18;[166]=star_14;star_19;[167]=star_14;star_2;[168]=star_14;star_20;[169]=star_14;star_21;[170]=star_14;star_22;[171]=star_14;star_23;[172]=star_14;star_24;[173]=star_14;star_25;[174]=star_14;star_26;[175]=star_14;star_27;[176]=star_14;star_28;[177]=star_14;star_29;[178]=star_14;star_3;[179]=star_14;star_30;[180]=star_14;star_31;[181]=star_14;star_32;[182]=star_14;star_33;[183]=star_14;star_34;[184]=star_14;star_4;[185]=star_14;star_5;[186]=star_14;star_6;[187]=star_14;star_7;[188]=star_14;star_8;[189]=star_14;star_9;[190]=star_15;star_15;[191]=star_15;star_16;[192]=star_15;star_17;[193]=star_15;star_18;[194]=star_15;star_19;[195]=star_15;star_2;[196]=star_15;star_20;[197]=star_15;star_21;[198]=star_15;star_22;[199]=star_15;star_23;[200]=star_15;star_24;[201]=star_15;star_25;[202]=star_15;star_26;[203]=star_15;star_27;[204]=star_15;star_28;[205]=star_15;star_29;[206]=star_15;star_3;[207]=star_15;star_30;[208]=star_15;star_31;[209]=star_15;star_32;[210]=star_15;star_33;[211]=star_15;star_34;[212]=star_15;star_4;[213]=star_15;star_5;[214]=star_15;star_6;[215]=star_15;star_7;[216]=star_15;star_8;[217]=star_15;star_9;[218]=star_16;star_16;[219]=star_16;star_17;[220]=star_16;star_18;[221]=star_16;star_19;[222]=star_16;star_2;[223]=star_16;star_20;[224]=star_16;star_21;[225]=star_16;star_22;[226]=star_16;star_23;[227]=star_16;star_24;[228]=star_16;star_25;[229]=star_16;star_26;[230]=star_16;star_27;[231]=star_16;star_28;[232]=star_16;star_29;[233]=star_16;star_3;[234]=star_16;star_30;[235]=star_16;star_31;[236]=star_16;star_32;[237]=star_16;star_33;[238]=star_16;star_34;[239]=star_16;star_4;[240]=star_16;star_5;[241]=star_16;star_6;[242]=star_16;star_7;[243]=star_16;star_8;[244]=star_16;star_9;[245]=star_17;star_17;[246]=star_17;star_18;[247]=star_17;star_19;[248]=star_17;star_2;[249]=star_17;star_20;[250]=star_17;star_21;[251]=star_17;star_22;[252]=star_17;star_23;[253]=star_17;star_24;[254]=star_17;star_25;[255]=star_17;star_26;[256]=star_17;star_27;[257]=star_17;star_28;[258]=star_17;star_29;[259]=star_17;star_3;[260]=star_17;star_30;[261]=star_17;star_31;[262]=star_17;star_32;[263]=star_17;star_33;[264]=star_17;star_34;[265]=star_17;star_4;[266]=star_17;star_5;[267]=star_17;star_6;[268]=star_17;star_7;[269]=star_17;star_8;[270]=star_17;star_9;[271]=star_18;star_18;[272]=star_18;star_19;[273]=star_18;star_2;[274]=star_18;star_20;[275]=star_18;star_21;[276]=star_18;star_22;[277]=star_18;star_23;[278]=star_18;star_24;[279]=star_18;star_25;[280]=star_18;star_26;[281]=star_18;star_27;[282]=star_18;star_28;[283]=star_18;star_29;[284]=star_18;star_3;[285]=star_18;star_30;[286]=star_18;star_31;[287]=star_18;star_32;[288]=star_18;star_33;[289]=star_18;star_34;[290]=star_18;star_4;[291]=star_18;star_5;[292]=star_18;star_6;[293]=star_18;star_7;[294]=star_18;star_8;[295]=star_18;star_9;[296]=star_19;star_19;[297]=star_19;star_2;[298]=star_19;star_20;[299]=star_19;star_21;[300]=star_19;star_22;[301]=star_19;star_23;[302]=star_19;star_24;[303]=star_19;star_25;[304]=star_19;star_26;[305]=star_19;star_27;[306]=star_19;star_28;[307]=star_19;star_29;[308]=star_19;star_3;[309]=star_19;star_30;[310]=star_19;star_31;[311]=star_19;star_32;[312]=star_19;star_33;[313]=star_19;star_34;[314]=star_19;star_4;[315]=star_19;star_5;[316]=star_19;star_6;[317]=star_19;star_7;[318]=star_19;star_8;[319]=star_19;star_9;[320]=star_2;star_2;[321]=star_2;star_20;[322]=star_2;star_21;[323]=star_2;star_22;[324]=star_2;star_23;[325]=star_2;star_24;[326]=star_2;star_25;[327]=star_2;star_26;[328]=star_2;star_27;[329]=star_2;star_28;[330]=star_2;star_29;[331]=star_2;star_3;[332]=star_2;star_30;[333]=star_2;star_31;[334]=star_2;star_32;[335]=star_2;star_33;[336]=star_2;star_34;[337]=star_2;star_4;[338]=star_2;star_5;[339]=star_2;star_6;[340]=star_2;star_7;[341]=star_2;star_8;[342]=star_2;star_9;[343]=star_20;star_20;[344]=star_20;star_21;[345]=star_20;star_22;[346]=star_20;star_23;[347]=star_20;star_24;[348]=star_20;star_25;[349]=star_20;star_26;[350]=star_20;star_27;[351]=star_20;star_28;[352]=star_20;star_29;[353]=star_20;star_3;[354]=star_20;star_30;[355]=star_20;star_31;[356]=star_20;star_32;[357]=star_20;star_33;[358]=star_20;star_34;[359]=star_20;star_4;[360]=star_20;star_5;[361]=star_20;star_6;[362]=star_20;star_7;[363]=star_20;star_8;[364]=star_20;star_9;[365]=star_21;star_21;[366]=star_21;star_22;[367]=star_21;star_23;[368]=star_21;star_24;[369]=star_21;star_25;[370]=star_21;star_26;[371]=star_21;star_27;[372]=star_21;star_28;[373]=star_21;star_29;[374]=star_21;star_3;[375]=star_21;star_30;[376]=star_21;star_31;[377]=star_21;star_32;[378]=star_21;star_33;[379]=star_21;star_34;[380]=star_21;star_4;[381]=star_21;star_5;[382]=star_21;star_6;[383]=star_21;star_7;[384]=star_21;star_8;[385]=star_21;star_9;[386]=star_22;star_22;[387]=star_22;star_23;[388]=star_22;star_24;[389]=star_22;star_25;[390]=star_22;star_26;[391]=star_22;star_27;[392]=star_22;star_28;[393]=star_22;star_29;[394]=star_22;star_3;[395]=star_22;star_30;[396]=star_22;star_31;[397]=star_22;star_32;[398]=star_22;star_33;[399]=star_22;star_34;[400]=star_22;star_4;[401]=star_22;star_5;[402]=star_22;star_6;[403]=star_22;star_7;[404]=star_22;star_8;[405]=star_22;star_9;[406]=star_23;star_23;[407]=star_23;star_24;[408]=star_23;star_25;[409]=star_23;star_26;[410]=star_23;star_27;[411]=star_23;star_28;[412]=star_23;star_29;[413]=star_23;star_3;[414]=star_23;star_30;[415]=star_23;star_31;[416]=star_23;star_32;[417]=star_23;star_33;[418]=star_23;star_34;[419]=star_23;star_4;[420]=star_23;star_5;[421]=star_23;star_6;[422]=star_23;star_7;[423]=star_23;star_8;[424]=star_23;star_9;[425]=star_24;star_24;[426]=star_24;star_25;[427]=star_24;star_26;[428]=star_24;star_27;[429]=star_24;star_28;[430]=star_24;star_29;[431]=star_24;star_3;[432]=star_24;star_30;[433]=star_24;star_31;[434]=star_24;star_32;[435]=star_24;star_33;[436]=star_24;star_34;[437]=star_24;star_4;[438]=star_24;star_5;[439]=star_24;star_6;[440]=star_24;star_7;[441]=star_24;star_8;[442]=star_24;star_9;[443]=star_25;star_25;[444]=star_25;star_26;[445]=star_25;star_27;[446]=star_25;star_28;[447]=star_25;star_29;[448]=star_25;star_3;[449]=star_25;star_30;[450]=star_25;star_31;[451]=star_25;star_32;[452]=star_25;star_33;[453]=star_25;star_34;[454]=star_25;star_4;[455]=star_25;star_5;[456]=star_25;star_6;[457]=star_25;star_7;[458]=star_25;star_8;[459]=star_25;star_9;[460]=star_26;star_26;[461]=star_26;star_27;[462]=star_26;star_28;[463]=star_26;star_29;[464]=star_26;star_3;[465]=star_26;star_30;[466]=star_26;star_31;[467]=star_26;star_32;[468]=star_26;star_33;[469]=star_26;star_34;[470]=star_26;star_4;[471]=star_26;star_5;[472]=star_26;star_6;[473]=star_26;star_7;[474]=star_26;star_8;[475]=star_26;star_9;[476]=star_27;star_27;[477]=star_27;star_28;[478]=star_27;star_29;[479]=star_27;star_3;[480]=star_27;star_30;[481]=star_27;star_31;[482]=star_27;star_32;[483]=star_27;star_33;[484]=star_27;star_34;[485]=star_27;star_4;[486]=star_27;star_5;[487]=star_27;star_6;[488]=star_27;star_7;[489]=star_27;star_8;[490]=star_27;star_9;[491]=star_28;star_28;[492]=star_28;star_29;[493]=star_28;star_3;[494]=star_28;star_30;[495]=star_28;star_31;[496]=star_28;star_32;[497]=star_28;star_33;[498]=star_28;star_34;[499]=star_28;star_4;[500]=star_28;star_5;[501]=star_28;star_6;[502]=star_28;star_7;[503]=star_28;star_8;[504]=star_28;star_9;[505]=star_29;star_29;[506]=star_29;star_3;[507]=star_29;star_30;[508]=star_29;star_31;[509]=star_29;star_32;[510]=star_29;star_33;[511]=star_29;star_34;[512]=star_29;star_4;[513]=star_29;star_5;[514]=star_29;star_6;[515]=star_29;star_7;[516]=star_29;star_8;[517]=star_29;star_9;[518]=star_3;star_3;[519]=star_3;star_30;[520]=star_3;star_31;[521]=star_3;star_32;[522]=star_3;star_33;[523]=star_3;star_34;[524]=star_3;star_4;[525]=star_3;star_5;[526]=star_3;star_6;[527]=star_3;star_7;[528]=star_3;star_8;[529]=star_3;star_9;[530]=star_30;star_30;[531]=star_30;star_31;[532]=star_30;star_32;[533]=star_30;star_33;[534]=star_30;star_34;[535]=star_30;star_4;[536]=star_30;star_5;[537]=star_30;star_6;[538]=star_30;star_7;[539]=star_30;star_8;[540]=star_30;star_9;[541]=star_31;star_31;[542]=star_31;star_32;[543]=star_31;star_33;[544]=star_31;star_34;[545]=star_31;star_4;[546]=star_31;star_5;[547]=star_31;star_6;[548]=star_31;star_7;[549]=star_31;star_8;[550]=star_31;star_9;[551]=star_32;star_32;[552]=star_32;star_33;[553]=star_32;star_34;[554]=star_32;star_4;[555]=star_32;star_5;[556]=star_32;star_6;[557]=star_32;star_7;[558]=star_32;star_8;[559]=star_32;star_9;[560]=star_33;star_33;[561]=star_33;star_34;[562]=star_33;star_4;[563]=star_33;star_5;[564]=star_33;star_6;[565]=star_33;star_7;[566]=star_33;star_8;[567]=star_33;star_9;[568]=star_34;star_34;[569]=star_34;star_4;[570]=star_34;star_5;[571]=star_34;star_6;[572]=star_34;star_7;[573]=star_34;star_8;[574]=star_34;star_9;[575]=star_4;star_4;[576]=star_4;star_5;[577]=star_4;star_6;[578]=star_4;star_7;[579]=star_4;star_8;[580]=star_4;star_9;[581]=star_5;star_5;[582]=star_5;star_6;[583]=star_5;star_7;[584]=star_5;star_8;[585]=star_5;star_9;[586]=star_6;star_6;[587]=star_6;star_7;[588]=star_6;star_8;[589]=star_6;star_9;[590]=star_7;star_7;[591]=star_7;star_8;[592]=star_7;star_9;[593]=star_8;star_8;[594]=star_8;star_9;[595]=star_9;star_9}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("star_1;star_1"));
+				break;
+			case 27://[SULT1A1]->{[0]=null;null;[1]=star_1;star_1;[2]=star_1;star_2;[3]=star_1;star_3;[4]=star_1;star_5;[5]=star_2;star_2;[6]=star_2;star_3;[7]=star_2;star_5;[8]=star_3;star_3;[9]=star_3;star_5;[10]=star_5;star_5}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("star_1;star_1"));
+				break;
+			case 28://[DPYD]->{[0]=null;null;[1]=star_1;star_1;[2]=star_1;star_10;[3]=star_1;star_11;[4]=star_1;star_12;[5]=star_1;star_13;[6]=star_1;star_2;[7]=star_1;star_3;[8]=star_1;star_4;[9]=star_1;star_5;[10]=star_1;star_6;[11]=star_1;star_7;[12]=star_1;star_8;[13]=star_1;star_9;[14]=star_10;star_10;[15]=star_10;star_11;[16]=star_10;star_12;[17]=star_10;star_13;[18]=star_10;star_2;[19]=star_10;star_3;[20]=star_10;star_4;[21]=star_10;star_5;[22]=star_10;star_6;[23]=star_10;star_7;[24]=star_10;star_8;[25]=star_10;star_9;[26]=star_11;star_11;[27]=star_11;star_12;[28]=star_11;star_13;[29]=star_11;star_2;[30]=star_11;star_3;[31]=star_11;star_4;[32]=star_11;star_5;[33]=star_11;star_6;[34]=star_11;star_7;[35]=star_11;star_8;[36]=star_11;star_9;[37]=star_12;star_12;[38]=star_12;star_13;[39]=star_12;star_2;[40]=star_12;star_3;[41]=star_12;star_4;[42]=star_12;star_5;[43]=star_12;star_6;[44]=star_12;star_7;[45]=star_12;star_8;[46]=star_12;star_9;[47]=star_13;star_13;[48]=star_13;star_2;[49]=star_13;star_3;[50]=star_13;star_4;[51]=star_13;star_5;[52]=star_13;star_6;[53]=star_13;star_7;[54]=star_13;star_8;[55]=star_13;star_9;[56]=star_2;star_2;[57]=star_2;star_3;[58]=star_2;star_4;[59]=star_2;star_5;[60]=star_2;star_6;[61]=star_2;star_7;[62]=star_2;star_8;[63]=star_2;star_9;[64]=star_3;star_3;[65]=star_3;star_4;[66]=star_3;star_5;[67]=star_3;star_6;[68]=star_3;star_7;[69]=star_3;star_8;[70]=star_3;star_9;[71]=star_4;star_4;[72]=star_4;star_5;[73]=star_4;star_6;[74]=star_4;star_7;[75]=star_4;star_8;[76]=star_4;star_9;[77]=star_5;star_5;[78]=star_5;star_6;[79]=star_5;star_7;[80]=star_5;star_8;[81]=star_5;star_9;[82]=star_6;star_6;[83]=star_6;star_7;[84]=star_6;star_8;[85]=star_6;star_9;[86]=star_7;star_7;[87]=star_7;star_8;[88]=star_7;star_9;[89]=star_8;star_8;[90]=star_8;star_9;[91]=star_9;star_9}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("star_1;star_1"));
+				break;
+			case 29://[DPYD-AS1]->{[0]=null;null}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("null;null"));
+				break;
+			case 30://[ADRB1]->{[0]=null;null;[1]=H1;H1;[2]=H1;H2;[3]=H1;H3;[4]=H2;H2;[5]=H2;H3;[6]=H3;H3}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("H1;H1"));
+				break;
+			case 31://[CYP2A6]->{[0]=null;null;[1]=star_1;star_1;[2]=star_1;star_10;[3]=star_1;star_11;[4]=star_1;star_12;[5]=star_1;star_13;[6]=star_1;star_14;[7]=star_1;star_15;[8]=star_1;star_16;[9]=star_1;star_17;[10]=star_1;star_18;[11]=star_1;star_19;[12]=star_1;star_2;[13]=star_1;star_20;[14]=star_1;star_21;[15]=star_1;star_22;[16]=star_1;star_23;[17]=star_1;star_24;[18]=star_1;star_25;[19]=star_1;star_26;[20]=star_1;star_27;[21]=star_1;star_28;[22]=star_1;star_3;[23]=star_1;star_31;[24]=star_1;star_34;[25]=star_1;star_35;[26]=star_1;star_36;[27]=star_1;star_37;[28]=star_1;star_4;[29]=star_1;star_5;[30]=star_1;star_6;[31]=star_1;star_7;[32]=star_1;star_8;[33]=star_1;star_9;[34]=star_10;star_10;[35]=star_10;star_11;[36]=star_10;star_12;[37]=star_10;star_13;[38]=star_10;star_14;[39]=star_10;star_15;[40]=star_10;star_16;[41]=star_10;star_17;[42]=star_10;star_18;[43]=star_10;star_19;[44]=star_10;star_2;[45]=star_10;star_20;[46]=star_10;star_21;[47]=star_10;star_22;[48]=star_10;star_23;[49]=star_10;star_24;[50]=star_10;star_25;[51]=star_10;star_26;[52]=star_10;star_27;[53]=star_10;star_28;[54]=star_10;star_3;[55]=star_10;star_31;[56]=star_10;star_34;[57]=star_10;star_35;[58]=star_10;star_36;[59]=star_10;star_37;[60]=star_10;star_4;[61]=star_10;star_5;[62]=star_10;star_6;[63]=star_10;star_7;[64]=star_10;star_8;[65]=star_10;star_9;[66]=star_11;star_11;[67]=star_11;star_12;[68]=star_11;star_13;[69]=star_11;star_14;[70]=star_11;star_15;[71]=star_11;star_16;[72]=star_11;star_17;[73]=star_11;star_18;[74]=star_11;star_19;[75]=star_11;star_2;[76]=star_11;star_20;[77]=star_11;star_21;[78]=star_11;star_22;[79]=star_11;star_23;[80]=star_11;star_24;[81]=star_11;star_25;[82]=star_11;star_26;[83]=star_11;star_27;[84]=star_11;star_28;[85]=star_11;star_3;[86]=star_11;star_31;[87]=star_11;star_34;[88]=star_11;star_35;[89]=star_11;star_36;[90]=star_11;star_37;[91]=star_11;star_4;[92]=star_11;star_5;[93]=star_11;star_6;[94]=star_11;star_7;[95]=star_11;star_8;[96]=star_11;star_9;[97]=star_12;star_12;[98]=star_12;star_13;[99]=star_12;star_14;[100]=star_12;star_15;[101]=star_12;star_16;[102]=star_12;star_17;[103]=star_12;star_18;[104]=star_12;star_19;[105]=star_12;star_2;[106]=star_12;star_20;[107]=star_12;star_21;[108]=star_12;star_22;[109]=star_12;star_23;[110]=star_12;star_24;[111]=star_12;star_25;[112]=star_12;star_26;[113]=star_12;star_27;[114]=star_12;star_28;[115]=star_12;star_3;[116]=star_12;star_31;[117]=star_12;star_34;[118]=star_12;star_35;[119]=star_12;star_36;[120]=star_12;star_37;[121]=star_12;star_4;[122]=star_12;star_5;[123]=star_12;star_6;[124]=star_12;star_7;[125]=star_12;star_8;[126]=star_12;star_9;[127]=star_13;star_13;[128]=star_13;star_14;[129]=star_13;star_15;[130]=star_13;star_16;[131]=star_13;star_17;[132]=star_13;star_18;[133]=star_13;star_19;[134]=star_13;star_2;[135]=star_13;star_20;[136]=star_13;star_21;[137]=star_13;star_22;[138]=star_13;star_23;[139]=star_13;star_24;[140]=star_13;star_25;[141]=star_13;star_26;[142]=star_13;star_27;[143]=star_13;star_28;[144]=star_13;star_3;[145]=star_13;star_31;[146]=star_13;star_34;[147]=star_13;star_35;[148]=star_13;star_36;[149]=star_13;star_37;[150]=star_13;star_4;[151]=star_13;star_5;[152]=star_13;star_6;[153]=star_13;star_7;[154]=star_13;star_8;[155]=star_13;star_9;[156]=star_14;star_14;[157]=star_14;star_15;[158]=star_14;star_16;[159]=star_14;star_17;[160]=star_14;star_18;[161]=star_14;star_19;[162]=star_14;star_2;[163]=star_14;star_20;[164]=star_14;star_21;[165]=star_14;star_22;[166]=star_14;star_23;[167]=star_14;star_24;[168]=star_14;star_25;[169]=star_14;star_26;[170]=star_14;star_27;[171]=star_14;star_28;[172]=star_14;star_3;[173]=star_14;star_31;[174]=star_14;star_34;[175]=star_14;star_35;[176]=star_14;star_36;[177]=star_14;star_37;[178]=star_14;star_4;[179]=star_14;star_5;[180]=star_14;star_6;[181]=star_14;star_7;[182]=star_14;star_8;[183]=star_14;star_9;[184]=star_15;star_15;[185]=star_15;star_16;[186]=star_15;star_17;[187]=star_15;star_18;[188]=star_15;star_19;[189]=star_15;star_2;[190]=star_15;star_20;[191]=star_15;star_21;[192]=star_15;star_22;[193]=star_15;star_23;[194]=star_15;star_24;[195]=star_15;star_25;[196]=star_15;star_26;[197]=star_15;star_27;[198]=star_15;star_28;[199]=star_15;star_3;[200]=star_15;star_31;[201]=star_15;star_34;[202]=star_15;star_35;[203]=star_15;star_36;[204]=star_15;star_37;[205]=star_15;star_4;[206]=star_15;star_5;[207]=star_15;star_6;[208]=star_15;star_7;[209]=star_15;star_8;[210]=star_15;star_9;[211]=star_16;star_16;[212]=star_16;star_17;[213]=star_16;star_18;[214]=star_16;star_19;[215]=star_16;star_2;[216]=star_16;star_20;[217]=star_16;star_21;[218]=star_16;star_22;[219]=star_16;star_23;[220]=star_16;star_24;[221]=star_16;star_25;[222]=star_16;star_26;[223]=star_16;star_27;[224]=star_16;star_28;[225]=star_16;star_3;[226]=star_16;star_31;[227]=star_16;star_34;[228]=star_16;star_35;[229]=star_16;star_36;[230]=star_16;star_37;[231]=star_16;star_4;[232]=star_16;star_5;[233]=star_16;star_6;[234]=star_16;star_7;[235]=star_16;star_8;[236]=star_16;star_9;[237]=star_17;star_17;[238]=star_17;star_18;[239]=star_17;star_19;[240]=star_17;star_2;[241]=star_17;star_20;[242]=star_17;star_21;[243]=star_17;star_22;[244]=star_17;star_23;[245]=star_17;star_24;[246]=star_17;star_25;[247]=star_17;star_26;[248]=star_17;star_27;[249]=star_17;star_28;[250]=star_17;star_3;[251]=star_17;star_31;[252]=star_17;star_34;[253]=star_17;star_35;[254]=star_17;star_36;[255]=star_17;star_37;[256]=star_17;star_4;[257]=star_17;star_5;[258]=star_17;star_6;[259]=star_17;star_7;[260]=star_17;star_8;[261]=star_17;star_9;[262]=star_18;star_18;[263]=star_18;star_19;[264]=star_18;star_2;[265]=star_18;star_20;[266]=star_18;star_21;[267]=star_18;star_22;[268]=star_18;star_23;[269]=star_18;star_24;[270]=star_18;star_25;[271]=star_18;star_26;[272]=star_18;star_27;[273]=star_18;star_28;[274]=star_18;star_3;[275]=star_18;star_31;[276]=star_18;star_34;[277]=star_18;star_35;[278]=star_18;star_36;[279]=star_18;star_37;[280]=star_18;star_4;[281]=star_18;star_5;[282]=star_18;star_6;[283]=star_18;star_7;[284]=star_18;star_8;[285]=star_18;star_9;[286]=star_19;star_19;[287]=star_19;star_2;[288]=star_19;star_20;[289]=star_19;star_21;[290]=star_19;star_22;[291]=star_19;star_23;[292]=star_19;star_24;[293]=star_19;star_25;[294]=star_19;star_26;[295]=star_19;star_27;[296]=star_19;star_28;[297]=star_19;star_3;[298]=star_19;star_31;[299]=star_19;star_34;[300]=star_19;star_35;[301]=star_19;star_36;[302]=star_19;star_37;[303]=star_19;star_4;[304]=star_19;star_5;[305]=star_19;star_6;[306]=star_19;star_7;[307]=star_19;star_8;[308]=star_19;star_9;[309]=star_2;star_2;[310]=star_2;star_20;[311]=star_2;star_21;[312]=star_2;star_22;[313]=star_2;star_23;[314]=star_2;star_24;[315]=star_2;star_25;[316]=star_2;star_26;[317]=star_2;star_27;[318]=star_2;star_28;[319]=star_2;star_3;[320]=star_2;star_31;[321]=star_2;star_34;[322]=star_2;star_35;[323]=star_2;star_36;[324]=star_2;star_37;[325]=star_2;star_4;[326]=star_2;star_5;[327]=star_2;star_6;[328]=star_2;star_7;[329]=star_2;star_8;[330]=star_2;star_9;[331]=star_20;star_20;[332]=star_20;star_21;[333]=star_20;star_22;[334]=star_20;star_23;[335]=star_20;star_24;[336]=star_20;star_25;[337]=star_20;star_26;[338]=star_20;star_27;[339]=star_20;star_28;[340]=star_20;star_3;[341]=star_20;star_31;[342]=star_20;star_34;[343]=star_20;star_35;[344]=star_20;star_36;[345]=star_20;star_37;[346]=star_20;star_4;[347]=star_20;star_5;[348]=star_20;star_6;[349]=star_20;star_7;[350]=star_20;star_8;[351]=star_20;star_9;[352]=star_21;star_21;[353]=star_21;star_22;[354]=star_21;star_23;[355]=star_21;star_24;[356]=star_21;star_25;[357]=star_21;star_26;[358]=star_21;star_27;[359]=star_21;star_28;[360]=star_21;star_3;[361]=star_21;star_31;[362]=star_21;star_34;[363]=star_21;star_35;[364]=star_21;star_36;[365]=star_21;star_37;[366]=star_21;star_4;[367]=star_21;star_5;[368]=star_21;star_6;[369]=star_21;star_7;[370]=star_21;star_8;[371]=star_21;star_9;[372]=star_22;star_22;[373]=star_22;star_23;[374]=star_22;star_24;[375]=star_22;star_25;[376]=star_22;star_26;[377]=star_22;star_27;[378]=star_22;star_28;[379]=star_22;star_3;[380]=star_22;star_31;[381]=star_22;star_34;[382]=star_22;star_35;[383]=star_22;star_36;[384]=star_22;star_37;[385]=star_22;star_4;[386]=star_22;star_5;[387]=star_22;star_6;[388]=star_22;star_7;[389]=star_22;star_8;[390]=star_22;star_9;[391]=star_23;star_23;[392]=star_23;star_24;[393]=star_23;star_25;[394]=star_23;star_26;[395]=star_23;star_27;[396]=star_23;star_28;[397]=star_23;star_3;[398]=star_23;star_31;[399]=star_23;star_34;[400]=star_23;star_35;[401]=star_23;star_36;[402]=star_23;star_37;[403]=star_23;star_4;[404]=star_23;star_5;[405]=star_23;star_6;[406]=star_23;star_7;[407]=star_23;star_8;[408]=star_23;star_9;[409]=star_24;star_24;[410]=star_24;star_25;[411]=star_24;star_26;[412]=star_24;star_27;[413]=star_24;star_28;[414]=star_24;star_3;[415]=star_24;star_31;[416]=star_24;star_34;[417]=star_24;star_35;[418]=star_24;star_36;[419]=star_24;star_37;[420]=star_24;star_4;[421]=star_24;star_5;[422]=star_24;star_6;[423]=star_24;star_7;[424]=star_24;star_8;[425]=star_24;star_9;[426]=star_25;star_25;[427]=star_25;star_26;[428]=star_25;star_27;[429]=star_25;star_28;[430]=star_25;star_3;[431]=star_25;star_31;[432]=star_25;star_34;[433]=star_25;star_35;[434]=star_25;star_36;[435]=star_25;star_37;[436]=star_25;star_4;[437]=star_25;star_5;[438]=star_25;star_6;[439]=star_25;star_7;[440]=star_25;star_8;[441]=star_25;star_9;[442]=star_26;star_26;[443]=star_26;star_27;[444]=star_26;star_28;[445]=star_26;star_3;[446]=star_26;star_31;[447]=star_26;star_34;[448]=star_26;star_35;[449]=star_26;star_36;[450]=star_26;star_37;[451]=star_26;star_4;[452]=star_26;star_5;[453]=star_26;star_6;[454]=star_26;star_7;[455]=star_26;star_8;[456]=star_26;star_9;[457]=star_27;star_27;[458]=star_27;star_28;[459]=star_27;star_3;[460]=star_27;star_31;[461]=star_27;star_34;[462]=star_27;star_35;[463]=star_27;star_36;[464]=star_27;star_37;[465]=star_27;star_4;[466]=star_27;star_5;[467]=star_27;star_6;[468]=star_27;star_7;[469]=star_27;star_8;[470]=star_27;star_9;[471]=star_28;star_28;[472]=star_28;star_3;[473]=star_28;star_31;[474]=star_28;star_34;[475]=star_28;star_35;[476]=star_28;star_36;[477]=star_28;star_37;[478]=star_28;star_4;[479]=star_28;star_5;[480]=star_28;star_6;[481]=star_28;star_7;[482]=star_28;star_8;[483]=star_28;star_9;[484]=star_3;star_3;[485]=star_3;star_31;[486]=star_3;star_34;[487]=star_3;star_35;[488]=star_3;star_36;[489]=star_3;star_37;[490]=star_3;star_4;[491]=star_3;star_5;[492]=star_3;star_6;[493]=star_3;star_7;[494]=star_3;star_8;[495]=star_3;star_9;[496]=star_31;star_31;[497]=star_31;star_34;[498]=star_31;star_35;[499]=star_31;star_36;[500]=star_31;star_37;[501]=star_31;star_4;[502]=star_31;star_5;[503]=star_31;star_6;[504]=star_31;star_7;[505]=star_31;star_8;[506]=star_31;star_9;[507]=star_34;star_34;[508]=star_34;star_35;[509]=star_34;star_36;[510]=star_34;star_37;[511]=star_34;star_4;[512]=star_34;star_5;[513]=star_34;star_6;[514]=star_34;star_7;[515]=star_34;star_8;[516]=star_34;star_9;[517]=star_35;star_35;[518]=star_35;star_36;[519]=star_35;star_37;[520]=star_35;star_4;[521]=star_35;star_5;[522]=star_35;star_6;[523]=star_35;star_7;[524]=star_35;star_8;[525]=star_35;star_9;[526]=star_36;star_36;[527]=star_36;star_37;[528]=star_36;star_4;[529]=star_36;star_5;[530]=star_36;star_6;[531]=star_36;star_7;[532]=star_36;star_8;[533]=star_36;star_9;[534]=star_37;star_37;[535]=star_37;star_4;[536]=star_37;star_5;[537]=star_37;star_6;[538]=star_37;star_7;[539]=star_37;star_8;[540]=star_37;star_9;[541]=star_4;star_4;[542]=star_4;star_5;[543]=star_4;star_6;[544]=star_4;star_7;[545]=star_4;star_8;[546]=star_4;star_9;[547]=star_5;star_5;[548]=star_5;star_6;[549]=star_5;star_7;[550]=star_5;star_8;[551]=star_5;star_9;[552]=star_6;star_6;[553]=star_6;star_7;[554]=star_6;star_8;[555]=star_6;star_9;[556]=star_7;star_7;[557]=star_7;star_8;[558]=star_7;star_9;[559]=star_8;star_8;[560]=star_8;star_9;[561]=star_9;star_9}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("star_1;star_1"));
+				break;
+			case 32://[P2RY12]->{[0]=null;null;[1]=A;A;[2]=A;A-1;[3]=A;B;[4]=A;B-1;[5]=A;C;[6]=A;C-1;[7]=A;D;[8]=A;D-1;[9]=A;E;[10]=A;E-1;[11]=A;F;[12]=A;F-1;[13]=A;H1;[14]=A;H2;[15]=A-1;A-1;[16]=A-1;B;[17]=A-1;B-1;[18]=A-1;C;[19]=A-1;C-1;[20]=A-1;D;[21]=A-1;D-1;[22]=A-1;E;[23]=A-1;E-1;[24]=A-1;F;[25]=A-1;F-1;[26]=A-1;H1;[27]=A-1;H2;[28]=B;B;[29]=B;B-1;[30]=B;C;[31]=B;C-1;[32]=B;D;[33]=B;D-1;[34]=B;E;[35]=B;E-1;[36]=B;F;[37]=B;F-1;[38]=B;H1;[39]=B;H2;[40]=B-1;B-1;[41]=B-1;C;[42]=B-1;C-1;[43]=B-1;D;[44]=B-1;D-1;[45]=B-1;E;[46]=B-1;E-1;[47]=B-1;F;[48]=B-1;F-1;[49]=B-1;H1;[50]=B-1;H2;[51]=C;C;[52]=C;C-1;[53]=C;D;[54]=C;D-1;[55]=C;E;[56]=C;E-1;[57]=C;F;[58]=C;F-1;[59]=C;H1;[60]=C;H2;[61]=C-1;C-1;[62]=C-1;D;[63]=C-1;D-1;[64]=C-1;E;[65]=C-1;E-1;[66]=C-1;F;[67]=C-1;F-1;[68]=C-1;H1;[69]=C-1;H2;[70]=D;D;[71]=D;D-1;[72]=D;E;[73]=D;E-1;[74]=D;F;[75]=D;F-1;[76]=D;H1;[77]=D;H2;[78]=D-1;D-1;[79]=D-1;E;[80]=D-1;E-1;[81]=D-1;F;[82]=D-1;F-1;[83]=D-1;H1;[84]=D-1;H2;[85]=E;E;[86]=E;E-1;[87]=E;F;[88]=E;F-1;[89]=E;H1;[90]=E;H2;[91]=E-1;E-1;[92]=E-1;F;[93]=E-1;F-1;[94]=E-1;H1;[95]=E-1;H2;[96]=F;F;[97]=F;F-1;[98]=F;H1;[99]=F;H2;[100]=F-1;F-1;[101]=F-1;H1;[102]=F-1;H2;[103]=H1;H1;[104]=H1;H2;[105]=H2;H2}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("A;A"));
+				break;
+			case 33://[MED12L]->{[0]=null;null}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("null;null"));
+				break;
+			case 34://[CYP2B6]->{[0]=null;null;[1]=star_1;star_1;[2]=star_1;star_10;[3]=star_1;star_11;[4]=star_1;star_12;[5]=star_1;star_13;[6]=star_1;star_14;[7]=star_1;star_15;[8]=star_1;star_16;[9]=star_1;star_17;[10]=star_1;star_18;[11]=star_1;star_19;[12]=star_1;star_2;[13]=star_1;star_20;[14]=star_1;star_21;[15]=star_1;star_22;[16]=star_1;star_23;[17]=star_1;star_24;[18]=star_1;star_25;[19]=star_1;star_26;[20]=star_1;star_27;[21]=star_1;star_28;[22]=star_1;star_29;[23]=star_1;star_3;[24]=star_1;star_4;[25]=star_1;star_5;[26]=star_1;star_6;[27]=star_1;star_7;[28]=star_1;star_8;[29]=star_1;star_9;[30]=star_10;star_10;[31]=star_10;star_11;[32]=star_10;star_12;[33]=star_10;star_13;[34]=star_10;star_14;[35]=star_10;star_15;[36]=star_10;star_16;[37]=star_10;star_17;[38]=star_10;star_18;[39]=star_10;star_19;[40]=star_10;star_2;[41]=star_10;star_20;[42]=star_10;star_21;[43]=star_10;star_22;[44]=star_10;star_23;[45]=star_10;star_24;[46]=star_10;star_25;[47]=star_10;star_26;[48]=star_10;star_27;[49]=star_10;star_28;[50]=star_10;star_29;[51]=star_10;star_3;[52]=star_10;star_4;[53]=star_10;star_5;[54]=star_10;star_6;[55]=star_10;star_7;[56]=star_10;star_8;[57]=star_10;star_9;[58]=star_11;star_11;[59]=star_11;star_12;[60]=star_11;star_13;[61]=star_11;star_14;[62]=star_11;star_15;[63]=star_11;star_16;[64]=star_11;star_17;[65]=star_11;star_18;[66]=star_11;star_19;[67]=star_11;star_2;[68]=star_11;star_20;[69]=star_11;star_21;[70]=star_11;star_22;[71]=star_11;star_23;[72]=star_11;star_24;[73]=star_11;star_25;[74]=star_11;star_26;[75]=star_11;star_27;[76]=star_11;star_28;[77]=star_11;star_29;[78]=star_11;star_3;[79]=star_11;star_4;[80]=star_11;star_5;[81]=star_11;star_6;[82]=star_11;star_7;[83]=star_11;star_8;[84]=star_11;star_9;[85]=star_12;star_12;[86]=star_12;star_13;[87]=star_12;star_14;[88]=star_12;star_15;[89]=star_12;star_16;[90]=star_12;star_17;[91]=star_12;star_18;[92]=star_12;star_19;[93]=star_12;star_2;[94]=star_12;star_20;[95]=star_12;star_21;[96]=star_12;star_22;[97]=star_12;star_23;[98]=star_12;star_24;[99]=star_12;star_25;[100]=star_12;star_26;[101]=star_12;star_27;[102]=star_12;star_28;[103]=star_12;star_29;[104]=star_12;star_3;[105]=star_12;star_4;[106]=star_12;star_5;[107]=star_12;star_6;[108]=star_12;star_7;[109]=star_12;star_8;[110]=star_12;star_9;[111]=star_13;star_13;[112]=star_13;star_14;[113]=star_13;star_15;[114]=star_13;star_16;[115]=star_13;star_17;[116]=star_13;star_18;[117]=star_13;star_19;[118]=star_13;star_2;[119]=star_13;star_20;[120]=star_13;star_21;[121]=star_13;star_22;[122]=star_13;star_23;[123]=star_13;star_24;[124]=star_13;star_25;[125]=star_13;star_26;[126]=star_13;star_27;[127]=star_13;star_28;[128]=star_13;star_29;[129]=star_13;star_3;[130]=star_13;star_4;[131]=star_13;star_5;[132]=star_13;star_6;[133]=star_13;star_7;[134]=star_13;star_8;[135]=star_13;star_9;[136]=star_14;star_14;[137]=star_14;star_15;[138]=star_14;star_16;[139]=star_14;star_17;[140]=star_14;star_18;[141]=star_14;star_19;[142]=star_14;star_2;[143]=star_14;star_20;[144]=star_14;star_21;[145]=star_14;star_22;[146]=star_14;star_23;[147]=star_14;star_24;[148]=star_14;star_25;[149]=star_14;star_26;[150]=star_14;star_27;[151]=star_14;star_28;[152]=star_14;star_29;[153]=star_14;star_3;[154]=star_14;star_4;[155]=star_14;star_5;[156]=star_14;star_6;[157]=star_14;star_7;[158]=star_14;star_8;[159]=star_14;star_9;[160]=star_15;star_15;[161]=star_15;star_16;[162]=star_15;star_17;[163]=star_15;star_18;[164]=star_15;star_19;[165]=star_15;star_2;[166]=star_15;star_20;[167]=star_15;star_21;[168]=star_15;star_22;[169]=star_15;star_23;[170]=star_15;star_24;[171]=star_15;star_25;[172]=star_15;star_26;[173]=star_15;star_27;[174]=star_15;star_28;[175]=star_15;star_29;[176]=star_15;star_3;[177]=star_15;star_4;[178]=star_15;star_5;[179]=star_15;star_6;[180]=star_15;star_7;[181]=star_15;star_8;[182]=star_15;star_9;[183]=star_16;star_16;[184]=star_16;star_17;[185]=star_16;star_18;[186]=star_16;star_19;[187]=star_16;star_2;[188]=star_16;star_20;[189]=star_16;star_21;[190]=star_16;star_22;[191]=star_16;star_23;[192]=star_16;star_24;[193]=star_16;star_25;[194]=star_16;star_26;[195]=star_16;star_27;[196]=star_16;star_28;[197]=star_16;star_29;[198]=star_16;star_3;[199]=star_16;star_4;[200]=star_16;star_5;[201]=star_16;star_6;[202]=star_16;star_7;[203]=star_16;star_8;[204]=star_16;star_9;[205]=star_17;star_17;[206]=star_17;star_18;[207]=star_17;star_19;[208]=star_17;star_2;[209]=star_17;star_20;[210]=star_17;star_21;[211]=star_17;star_22;[212]=star_17;star_23;[213]=star_17;star_24;[214]=star_17;star_25;[215]=star_17;star_26;[216]=star_17;star_27;[217]=star_17;star_28;[218]=star_17;star_29;[219]=star_17;star_3;[220]=star_17;star_4;[221]=star_17;star_5;[222]=star_17;star_6;[223]=star_17;star_7;[224]=star_17;star_8;[225]=star_17;star_9;[226]=star_18;star_18;[227]=star_18;star_19;[228]=star_18;star_2;[229]=star_18;star_20;[230]=star_18;star_21;[231]=star_18;star_22;[232]=star_18;star_23;[233]=star_18;star_24;[234]=star_18;star_25;[235]=star_18;star_26;[236]=star_18;star_27;[237]=star_18;star_28;[238]=star_18;star_29;[239]=star_18;star_3;[240]=star_18;star_4;[241]=star_18;star_5;[242]=star_18;star_6;[243]=star_18;star_7;[244]=star_18;star_8;[245]=star_18;star_9;[246]=star_19;star_19;[247]=star_19;star_2;[248]=star_19;star_20;[249]=star_19;star_21;[250]=star_19;star_22;[251]=star_19;star_23;[252]=star_19;star_24;[253]=star_19;star_25;[254]=star_19;star_26;[255]=star_19;star_27;[256]=star_19;star_28;[257]=star_19;star_29;[258]=star_19;star_3;[259]=star_19;star_4;[260]=star_19;star_5;[261]=star_19;star_6;[262]=star_19;star_7;[263]=star_19;star_8;[264]=star_19;star_9;[265]=star_2;star_2;[266]=star_2;star_20;[267]=star_2;star_21;[268]=star_2;star_22;[269]=star_2;star_23;[270]=star_2;star_24;[271]=star_2;star_25;[272]=star_2;star_26;[273]=star_2;star_27;[274]=star_2;star_28;[275]=star_2;star_29;[276]=star_2;star_3;[277]=star_2;star_4;[278]=star_2;star_5;[279]=star_2;star_6;[280]=star_2;star_7;[281]=star_2;star_8;[282]=star_2;star_9;[283]=star_20;star_20;[284]=star_20;star_21;[285]=star_20;star_22;[286]=star_20;star_23;[287]=star_20;star_24;[288]=star_20;star_25;[289]=star_20;star_26;[290]=star_20;star_27;[291]=star_20;star_28;[292]=star_20;star_29;[293]=star_20;star_3;[294]=star_20;star_4;[295]=star_20;star_5;[296]=star_20;star_6;[297]=star_20;star_7;[298]=star_20;star_8;[299]=star_20;star_9;[300]=star_21;star_21;[301]=star_21;star_22;[302]=star_21;star_23;[303]=star_21;star_24;[304]=star_21;star_25;[305]=star_21;star_26;[306]=star_21;star_27;[307]=star_21;star_28;[308]=star_21;star_29;[309]=star_21;star_3;[310]=star_21;star_4;[311]=star_21;star_5;[312]=star_21;star_6;[313]=star_21;star_7;[314]=star_21;star_8;[315]=star_21;star_9;[316]=star_22;star_22;[317]=star_22;star_23;[318]=star_22;star_24;[319]=star_22;star_25;[320]=star_22;star_26;[321]=star_22;star_27;[322]=star_22;star_28;[323]=star_22;star_29;[324]=star_22;star_3;[325]=star_22;star_4;[326]=star_22;star_5;[327]=star_22;star_6;[328]=star_22;star_7;[329]=star_22;star_8;[330]=star_22;star_9;[331]=star_23;star_23;[332]=star_23;star_24;[333]=star_23;star_25;[334]=star_23;star_26;[335]=star_23;star_27;[336]=star_23;star_28;[337]=star_23;star_29;[338]=star_23;star_3;[339]=star_23;star_4;[340]=star_23;star_5;[341]=star_23;star_6;[342]=star_23;star_7;[343]=star_23;star_8;[344]=star_23;star_9;[345]=star_24;star_24;[346]=star_24;star_25;[347]=star_24;star_26;[348]=star_24;star_27;[349]=star_24;star_28;[350]=star_24;star_29;[351]=star_24;star_3;[352]=star_24;star_4;[353]=star_24;star_5;[354]=star_24;star_6;[355]=star_24;star_7;[356]=star_24;star_8;[357]=star_24;star_9;[358]=star_25;star_25;[359]=star_25;star_26;[360]=star_25;star_27;[361]=star_25;star_28;[362]=star_25;star_29;[363]=star_25;star_3;[364]=star_25;star_4;[365]=star_25;star_5;[366]=star_25;star_6;[367]=star_25;star_7;[368]=star_25;star_8;[369]=star_25;star_9;[370]=star_26;star_26;[371]=star_26;star_27;[372]=star_26;star_28;[373]=star_26;star_29;[374]=star_26;star_3;[375]=star_26;star_4;[376]=star_26;star_5;[377]=star_26;star_6;[378]=star_26;star_7;[379]=star_26;star_8;[380]=star_26;star_9;[381]=star_27;star_27;[382]=star_27;star_28;[383]=star_27;star_29;[384]=star_27;star_3;[385]=star_27;star_4;[386]=star_27;star_5;[387]=star_27;star_6;[388]=star_27;star_7;[389]=star_27;star_8;[390]=star_27;star_9;[391]=star_28;star_28;[392]=star_28;star_29;[393]=star_28;star_3;[394]=star_28;star_4;[395]=star_28;star_5;[396]=star_28;star_6;[397]=star_28;star_7;[398]=star_28;star_8;[399]=star_28;star_9;[400]=star_29;star_29;[401]=star_29;star_3;[402]=star_29;star_4;[403]=star_29;star_5;[404]=star_29;star_6;[405]=star_29;star_7;[406]=star_29;star_8;[407]=star_29;star_9;[408]=star_3;star_3;[409]=star_3;star_4;[410]=star_3;star_5;[411]=star_3;star_6;[412]=star_3;star_7;[413]=star_3;star_8;[414]=star_3;star_9;[415]=star_4;star_4;[416]=star_4;star_5;[417]=star_4;star_6;[418]=star_4;star_7;[419]=star_4;star_8;[420]=star_4;star_9;[421]=star_5;star_5;[422]=star_5;star_6;[423]=star_5;star_7;[424]=star_5;star_8;[425]=star_5;star_9;[426]=star_6;star_6;[427]=star_6;star_7;[428]=star_6;star_8;[429]=star_6;star_9;[430]=star_7;star_7;[431]=star_7;star_8;[432]=star_7;star_9;[433]=star_8;star_8;[434]=star_8;star_9;[435]=star_9;star_9}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("star_1;star_1"));
+				break;
+			case 35://[SLCO1B1]->{[0]=null;null;[1]=star_1;star_1;[2]=star_1;star_10;[3]=star_1;star_11;[4]=star_1;star_12;[5]=star_1;star_13;[6]=star_1;star_14;[7]=star_1;star_15;[8]=star_1;star_16;[9]=star_1;star_17;[10]=star_1;star_18;[11]=star_1;star_19;[12]=star_1;star_2;[13]=star_1;star_20;[14]=star_1;star_21;[15]=star_1;star_22;[16]=star_1;star_23;[17]=star_1;star_24;[18]=star_1;star_25;[19]=star_1;star_26;[20]=star_1;star_27;[21]=star_1;star_28;[22]=star_1;star_29;[23]=star_1;star_3;[24]=star_1;star_30;[25]=star_1;star_31;[26]=star_1;star_32;[27]=star_1;star_33;[28]=star_1;star_34;[29]=star_1;star_35;[30]=star_1;star_36;[31]=star_1;star_4;[32]=star_1;star_5;[33]=star_1;star_6;[34]=star_1;star_7;[35]=star_1;star_8;[36]=star_1;star_9;[37]=star_10;star_10;[38]=star_10;star_11;[39]=star_10;star_12;[40]=star_10;star_13;[41]=star_10;star_14;[42]=star_10;star_15;[43]=star_10;star_16;[44]=star_10;star_17;[45]=star_10;star_18;[46]=star_10;star_19;[47]=star_10;star_2;[48]=star_10;star_20;[49]=star_10;star_21;[50]=star_10;star_22;[51]=star_10;star_23;[52]=star_10;star_24;[53]=star_10;star_25;[54]=star_10;star_26;[55]=star_10;star_27;[56]=star_10;star_28;[57]=star_10;star_29;[58]=star_10;star_3;[59]=star_10;star_30;[60]=star_10;star_31;[61]=star_10;star_32;[62]=star_10;star_33;[63]=star_10;star_34;[64]=star_10;star_35;[65]=star_10;star_36;[66]=star_10;star_4;[67]=star_10;star_5;[68]=star_10;star_6;[69]=star_10;star_7;[70]=star_10;star_8;[71]=star_10;star_9;[72]=star_11;star_11;[73]=star_11;star_12;[74]=star_11;star_13;[75]=star_11;star_14;[76]=star_11;star_15;[77]=star_11;star_16;[78]=star_11;star_17;[79]=star_11;star_18;[80]=star_11;star_19;[81]=star_11;star_2;[82]=star_11;star_20;[83]=star_11;star_21;[84]=star_11;star_22;[85]=star_11;star_23;[86]=star_11;star_24;[87]=star_11;star_25;[88]=star_11;star_26;[89]=star_11;star_27;[90]=star_11;star_28;[91]=star_11;star_29;[92]=star_11;star_3;[93]=star_11;star_30;[94]=star_11;star_31;[95]=star_11;star_32;[96]=star_11;star_33;[97]=star_11;star_34;[98]=star_11;star_35;[99]=star_11;star_36;[100]=star_11;star_4;[101]=star_11;star_5;[102]=star_11;star_6;[103]=star_11;star_7;[104]=star_11;star_8;[105]=star_11;star_9;[106]=star_12;star_12;[107]=star_12;star_13;[108]=star_12;star_14;[109]=star_12;star_15;[110]=star_12;star_16;[111]=star_12;star_17;[112]=star_12;star_18;[113]=star_12;star_19;[114]=star_12;star_2;[115]=star_12;star_20;[116]=star_12;star_21;[117]=star_12;star_22;[118]=star_12;star_23;[119]=star_12;star_24;[120]=star_12;star_25;[121]=star_12;star_26;[122]=star_12;star_27;[123]=star_12;star_28;[124]=star_12;star_29;[125]=star_12;star_3;[126]=star_12;star_30;[127]=star_12;star_31;[128]=star_12;star_32;[129]=star_12;star_33;[130]=star_12;star_34;[131]=star_12;star_35;[132]=star_12;star_36;[133]=star_12;star_4;[134]=star_12;star_5;[135]=star_12;star_6;[136]=star_12;star_7;[137]=star_12;star_8;[138]=star_12;star_9;[139]=star_13;star_13;[140]=star_13;star_14;[141]=star_13;star_15;[142]=star_13;star_16;[143]=star_13;star_17;[144]=star_13;star_18;[145]=star_13;star_19;[146]=star_13;star_2;[147]=star_13;star_20;[148]=star_13;star_21;[149]=star_13;star_22;[150]=star_13;star_23;[151]=star_13;star_24;[152]=star_13;star_25;[153]=star_13;star_26;[154]=star_13;star_27;[155]=star_13;star_28;[156]=star_13;star_29;[157]=star_13;star_3;[158]=star_13;star_30;[159]=star_13;star_31;[160]=star_13;star_32;[161]=star_13;star_33;[162]=star_13;star_34;[163]=star_13;star_35;[164]=star_13;star_36;[165]=star_13;star_4;[166]=star_13;star_5;[167]=star_13;star_6;[168]=star_13;star_7;[169]=star_13;star_8;[170]=star_13;star_9;[171]=star_14;star_14;[172]=star_14;star_15;[173]=star_14;star_16;[174]=star_14;star_17;[175]=star_14;star_18;[176]=star_14;star_19;[177]=star_14;star_2;[178]=star_14;star_20;[179]=star_14;star_21;[180]=star_14;star_22;[181]=star_14;star_23;[182]=star_14;star_24;[183]=star_14;star_25;[184]=star_14;star_26;[185]=star_14;star_27;[186]=star_14;star_28;[187]=star_14;star_29;[188]=star_14;star_3;[189]=star_14;star_30;[190]=star_14;star_31;[191]=star_14;star_32;[192]=star_14;star_33;[193]=star_14;star_34;[194]=star_14;star_35;[195]=star_14;star_36;[196]=star_14;star_4;[197]=star_14;star_5;[198]=star_14;star_6;[199]=star_14;star_7;[200]=star_14;star_8;[201]=star_14;star_9;[202]=star_15;star_15;[203]=star_15;star_16;[204]=star_15;star_17;[205]=star_15;star_18;[206]=star_15;star_19;[207]=star_15;star_2;[208]=star_15;star_20;[209]=star_15;star_21;[210]=star_15;star_22;[211]=star_15;star_23;[212]=star_15;star_24;[213]=star_15;star_25;[214]=star_15;star_26;[215]=star_15;star_27;[216]=star_15;star_28;[217]=star_15;star_29;[218]=star_15;star_3;[219]=star_15;star_30;[220]=star_15;star_31;[221]=star_15;star_32;[222]=star_15;star_33;[223]=star_15;star_34;[224]=star_15;star_35;[225]=star_15;star_36;[226]=star_15;star_4;[227]=star_15;star_5;[228]=star_15;star_6;[229]=star_15;star_7;[230]=star_15;star_8;[231]=star_15;star_9;[232]=star_16;star_16;[233]=star_16;star_17;[234]=star_16;star_18;[235]=star_16;star_19;[236]=star_16;star_2;[237]=star_16;star_20;[238]=star_16;star_21;[239]=star_16;star_22;[240]=star_16;star_23;[241]=star_16;star_24;[242]=star_16;star_25;[243]=star_16;star_26;[244]=star_16;star_27;[245]=star_16;star_28;[246]=star_16;star_29;[247]=star_16;star_3;[248]=star_16;star_30;[249]=star_16;star_31;[250]=star_16;star_32;[251]=star_16;star_33;[252]=star_16;star_34;[253]=star_16;star_35;[254]=star_16;star_36;[255]=star_16;star_4;[256]=star_16;star_5;[257]=star_16;star_6;[258]=star_16;star_7;[259]=star_16;star_8;[260]=star_16;star_9;[261]=star_17;star_17;[262]=star_17;star_18;[263]=star_17;star_19;[264]=star_17;star_2;[265]=star_17;star_20;[266]=star_17;star_21;[267]=star_17;star_22;[268]=star_17;star_23;[269]=star_17;star_24;[270]=star_17;star_25;[271]=star_17;star_26;[272]=star_17;star_27;[273]=star_17;star_28;[274]=star_17;star_29;[275]=star_17;star_3;[276]=star_17;star_30;[277]=star_17;star_31;[278]=star_17;star_32;[279]=star_17;star_33;[280]=star_17;star_34;[281]=star_17;star_35;[282]=star_17;star_36;[283]=star_17;star_4;[284]=star_17;star_5;[285]=star_17;star_6;[286]=star_17;star_7;[287]=star_17;star_8;[288]=star_17;star_9;[289]=star_18;star_18;[290]=star_18;star_19;[291]=star_18;star_2;[292]=star_18;star_20;[293]=star_18;star_21;[294]=star_18;star_22;[295]=star_18;star_23;[296]=star_18;star_24;[297]=star_18;star_25;[298]=star_18;star_26;[299]=star_18;star_27;[300]=star_18;star_28;[301]=star_18;star_29;[302]=star_18;star_3;[303]=star_18;star_30;[304]=star_18;star_31;[305]=star_18;star_32;[306]=star_18;star_33;[307]=star_18;star_34;[308]=star_18;star_35;[309]=star_18;star_36;[310]=star_18;star_4;[311]=star_18;star_5;[312]=star_18;star_6;[313]=star_18;star_7;[314]=star_18;star_8;[315]=star_18;star_9;[316]=star_19;star_19;[317]=star_19;star_2;[318]=star_19;star_20;[319]=star_19;star_21;[320]=star_19;star_22;[321]=star_19;star_23;[322]=star_19;star_24;[323]=star_19;star_25;[324]=star_19;star_26;[325]=star_19;star_27;[326]=star_19;star_28;[327]=star_19;star_29;[328]=star_19;star_3;[329]=star_19;star_30;[330]=star_19;star_31;[331]=star_19;star_32;[332]=star_19;star_33;[333]=star_19;star_34;[334]=star_19;star_35;[335]=star_19;star_36;[336]=star_19;star_4;[337]=star_19;star_5;[338]=star_19;star_6;[339]=star_19;star_7;[340]=star_19;star_8;[341]=star_19;star_9;[342]=star_2;star_2;[343]=star_2;star_20;[344]=star_2;star_21;[345]=star_2;star_22;[346]=star_2;star_23;[347]=star_2;star_24;[348]=star_2;star_25;[349]=star_2;star_26;[350]=star_2;star_27;[351]=star_2;star_28;[352]=star_2;star_29;[353]=star_2;star_3;[354]=star_2;star_30;[355]=star_2;star_31;[356]=star_2;star_32;[357]=star_2;star_33;[358]=star_2;star_34;[359]=star_2;star_35;[360]=star_2;star_36;[361]=star_2;star_4;[362]=star_2;star_5;[363]=star_2;star_6;[364]=star_2;star_7;[365]=star_2;star_8;[366]=star_2;star_9;[367]=star_20;star_20;[368]=star_20;star_21;[369]=star_20;star_22;[370]=star_20;star_23;[371]=star_20;star_24;[372]=star_20;star_25;[373]=star_20;star_26;[374]=star_20;star_27;[375]=star_20;star_28;[376]=star_20;star_29;[377]=star_20;star_3;[378]=star_20;star_30;[379]=star_20;star_31;[380]=star_20;star_32;[381]=star_20;star_33;[382]=star_20;star_34;[383]=star_20;star_35;[384]=star_20;star_36;[385]=star_20;star_4;[386]=star_20;star_5;[387]=star_20;star_6;[388]=star_20;star_7;[389]=star_20;star_8;[390]=star_20;star_9;[391]=star_21;star_21;[392]=star_21;star_22;[393]=star_21;star_23;[394]=star_21;star_24;[395]=star_21;star_25;[396]=star_21;star_26;[397]=star_21;star_27;[398]=star_21;star_28;[399]=star_21;star_29;[400]=star_21;star_3;[401]=star_21;star_30;[402]=star_21;star_31;[403]=star_21;star_32;[404]=star_21;star_33;[405]=star_21;star_34;[406]=star_21;star_35;[407]=star_21;star_36;[408]=star_21;star_4;[409]=star_21;star_5;[410]=star_21;star_6;[411]=star_21;star_7;[412]=star_21;star_8;[413]=star_21;star_9;[414]=star_22;star_22;[415]=star_22;star_23;[416]=star_22;star_24;[417]=star_22;star_25;[418]=star_22;star_26;[419]=star_22;star_27;[420]=star_22;star_28;[421]=star_22;star_29;[422]=star_22;star_3;[423]=star_22;star_30;[424]=star_22;star_31;[425]=star_22;star_32;[426]=star_22;star_33;[427]=star_22;star_34;[428]=star_22;star_35;[429]=star_22;star_36;[430]=star_22;star_4;[431]=star_22;star_5;[432]=star_22;star_6;[433]=star_22;star_7;[434]=star_22;star_8;[435]=star_22;star_9;[436]=star_23;star_23;[437]=star_23;star_24;[438]=star_23;star_25;[439]=star_23;star_26;[440]=star_23;star_27;[441]=star_23;star_28;[442]=star_23;star_29;[443]=star_23;star_3;[444]=star_23;star_30;[445]=star_23;star_31;[446]=star_23;star_32;[447]=star_23;star_33;[448]=star_23;star_34;[449]=star_23;star_35;[450]=star_23;star_36;[451]=star_23;star_4;[452]=star_23;star_5;[453]=star_23;star_6;[454]=star_23;star_7;[455]=star_23;star_8;[456]=star_23;star_9;[457]=star_24;star_24;[458]=star_24;star_25;[459]=star_24;star_26;[460]=star_24;star_27;[461]=star_24;star_28;[462]=star_24;star_29;[463]=star_24;star_3;[464]=star_24;star_30;[465]=star_24;star_31;[466]=star_24;star_32;[467]=star_24;star_33;[468]=star_24;star_34;[469]=star_24;star_35;[470]=star_24;star_36;[471]=star_24;star_4;[472]=star_24;star_5;[473]=star_24;star_6;[474]=star_24;star_7;[475]=star_24;star_8;[476]=star_24;star_9;[477]=star_25;star_25;[478]=star_25;star_26;[479]=star_25;star_27;[480]=star_25;star_28;[481]=star_25;star_29;[482]=star_25;star_3;[483]=star_25;star_30;[484]=star_25;star_31;[485]=star_25;star_32;[486]=star_25;star_33;[487]=star_25;star_34;[488]=star_25;star_35;[489]=star_25;star_36;[490]=star_25;star_4;[491]=star_25;star_5;[492]=star_25;star_6;[493]=star_25;star_7;[494]=star_25;star_8;[495]=star_25;star_9;[496]=star_26;star_26;[497]=star_26;star_27;[498]=star_26;star_28;[499]=star_26;star_29;[500]=star_26;star_3;[501]=star_26;star_30;[502]=star_26;star_31;[503]=star_26;star_32;[504]=star_26;star_33;[505]=star_26;star_34;[506]=star_26;star_35;[507]=star_26;star_36;[508]=star_26;star_4;[509]=star_26;star_5;[510]=star_26;star_6;[511]=star_26;star_7;[512]=star_26;star_8;[513]=star_26;star_9;[514]=star_27;star_27;[515]=star_27;star_28;[516]=star_27;star_29;[517]=star_27;star_3;[518]=star_27;star_30;[519]=star_27;star_31;[520]=star_27;star_32;[521]=star_27;star_33;[522]=star_27;star_34;[523]=star_27;star_35;[524]=star_27;star_36;[525]=star_27;star_4;[526]=star_27;star_5;[527]=star_27;star_6;[528]=star_27;star_7;[529]=star_27;star_8;[530]=star_27;star_9;[531]=star_28;star_28;[532]=star_28;star_29;[533]=star_28;star_3;[534]=star_28;star_30;[535]=star_28;star_31;[536]=star_28;star_32;[537]=star_28;star_33;[538]=star_28;star_34;[539]=star_28;star_35;[540]=star_28;star_36;[541]=star_28;star_4;[542]=star_28;star_5;[543]=star_28;star_6;[544]=star_28;star_7;[545]=star_28;star_8;[546]=star_28;star_9;[547]=star_29;star_29;[548]=star_29;star_3;[549]=star_29;star_30;[550]=star_29;star_31;[551]=star_29;star_32;[552]=star_29;star_33;[553]=star_29;star_34;[554]=star_29;star_35;[555]=star_29;star_36;[556]=star_29;star_4;[557]=star_29;star_5;[558]=star_29;star_6;[559]=star_29;star_7;[560]=star_29;star_8;[561]=star_29;star_9;[562]=star_3;star_3;[563]=star_3;star_30;[564]=star_3;star_31;[565]=star_3;star_32;[566]=star_3;star_33;[567]=star_3;star_34;[568]=star_3;star_35;[569]=star_3;star_36;[570]=star_3;star_4;[571]=star_3;star_5;[572]=star_3;star_6;[573]=star_3;star_7;[574]=star_3;star_8;[575]=star_3;star_9;[576]=star_30;star_30;[577]=star_30;star_31;[578]=star_30;star_32;[579]=star_30;star_33;[580]=star_30;star_34;[581]=star_30;star_35;[582]=star_30;star_36;[583]=star_30;star_4;[584]=star_30;star_5;[585]=star_30;star_6;[586]=star_30;star_7;[587]=star_30;star_8;[588]=star_30;star_9;[589]=star_31;star_31;[590]=star_31;star_32;[591]=star_31;star_33;[592]=star_31;star_34;[593]=star_31;star_35;[594]=star_31;star_36;[595]=star_31;star_4;[596]=star_31;star_5;[597]=star_31;star_6;[598]=star_31;star_7;[599]=star_31;star_8;[600]=star_31;star_9;[601]=star_32;star_32;[602]=star_32;star_33;[603]=star_32;star_34;[604]=star_32;star_35;[605]=star_32;star_36;[606]=star_32;star_4;[607]=star_32;star_5;[608]=star_32;star_6;[609]=star_32;star_7;[610]=star_32;star_8;[611]=star_32;star_9;[612]=star_33;star_33;[613]=star_33;star_34;[614]=star_33;star_35;[615]=star_33;star_36;[616]=star_33;star_4;[617]=star_33;star_5;[618]=star_33;star_6;[619]=star_33;star_7;[620]=star_33;star_8;[621]=star_33;star_9;[622]=star_34;star_34;[623]=star_34;star_35;[624]=star_34;star_36;[625]=star_34;star_4;[626]=star_34;star_5;[627]=star_34;star_6;[628]=star_34;star_7;[629]=star_34;star_8;[630]=star_34;star_9;[631]=star_35;star_35;[632]=star_35;star_36;[633]=star_35;star_4;[634]=star_35;star_5;[635]=star_35;star_6;[636]=star_35;star_7;[637]=star_35;star_8;[638]=star_35;star_9;[639]=star_36;star_36;[640]=star_36;star_4;[641]=star_36;star_5;[642]=star_36;star_6;[643]=star_36;star_7;[644]=star_36;star_8;[645]=star_36;star_9;[646]=star_4;star_4;[647]=star_4;star_5;[648]=star_4;star_6;[649]=star_4;star_7;[650]=star_4;star_8;[651]=star_4;star_9;[652]=star_5;star_5;[653]=star_5;star_6;[654]=star_5;star_7;[655]=star_5;star_8;[656]=star_5;star_9;[657]=star_6;star_6;[658]=star_6;star_7;[659]=star_6;star_8;[660]=star_6;star_9;[661]=star_7;star_7;[662]=star_7;star_8;[663]=star_7;star_9;[664]=star_8;star_8;[665]=star_8;star_9;[666]=star_9;star_9}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("star_1;star_1"));
+				break;
+			case 36://[TPMT]->{[0]=null;null;[1]=star_1;star_1;[2]=star_1;star_10;[3]=star_1;star_11;[4]=star_1;star_12;[5]=star_1;star_13;[6]=star_1;star_14;[7]=star_1;star_15;[8]=star_1;star_16;[9]=star_1;star_17;[10]=star_1;star_18;[11]=star_1;star_19;[12]=star_1;star_2;[13]=star_1;star_20;[14]=star_1;star_21;[15]=star_1;star_22;[16]=star_1;star_23;[17]=star_1;star_24;[18]=star_1;star_25;[19]=star_1;star_26;[20]=star_1;star_27;[21]=star_1;star_28;[22]=star_1;star_29;[23]=star_1;star_3;[24]=star_1;star_30;[25]=star_1;star_31;[26]=star_1;star_32;[27]=star_1;star_33;[28]=star_1;star_34;[29]=star_1;star_35;[30]=star_1;star_36;[31]=star_1;star_4;[32]=star_1;star_5;[33]=star_1;star_6;[34]=star_1;star_7;[35]=star_1;star_8;[36]=star_1;star_9;[37]=star_10;star_10;[38]=star_10;star_11;[39]=star_10;star_12;[40]=star_10;star_13;[41]=star_10;star_14;[42]=star_10;star_15;[43]=star_10;star_16;[44]=star_10;star_17;[45]=star_10;star_18;[46]=star_10;star_19;[47]=star_10;star_2;[48]=star_10;star_20;[49]=star_10;star_21;[50]=star_10;star_22;[51]=star_10;star_23;[52]=star_10;star_24;[53]=star_10;star_25;[54]=star_10;star_26;[55]=star_10;star_27;[56]=star_10;star_28;[57]=star_10;star_29;[58]=star_10;star_3;[59]=star_10;star_30;[60]=star_10;star_31;[61]=star_10;star_32;[62]=star_10;star_33;[63]=star_10;star_34;[64]=star_10;star_35;[65]=star_10;star_36;[66]=star_10;star_4;[67]=star_10;star_5;[68]=star_10;star_6;[69]=star_10;star_7;[70]=star_10;star_8;[71]=star_10;star_9;[72]=star_11;star_11;[73]=star_11;star_12;[74]=star_11;star_13;[75]=star_11;star_14;[76]=star_11;star_15;[77]=star_11;star_16;[78]=star_11;star_17;[79]=star_11;star_18;[80]=star_11;star_19;[81]=star_11;star_2;[82]=star_11;star_20;[83]=star_11;star_21;[84]=star_11;star_22;[85]=star_11;star_23;[86]=star_11;star_24;[87]=star_11;star_25;[88]=star_11;star_26;[89]=star_11;star_27;[90]=star_11;star_28;[91]=star_11;star_29;[92]=star_11;star_3;[93]=star_11;star_30;[94]=star_11;star_31;[95]=star_11;star_32;[96]=star_11;star_33;[97]=star_11;star_34;[98]=star_11;star_35;[99]=star_11;star_36;[100]=star_11;star_4;[101]=star_11;star_5;[102]=star_11;star_6;[103]=star_11;star_7;[104]=star_11;star_8;[105]=star_11;star_9;[106]=star_12;star_12;[107]=star_12;star_13;[108]=star_12;star_14;[109]=star_12;star_15;[110]=star_12;star_16;[111]=star_12;star_17;[112]=star_12;star_18;[113]=star_12;star_19;[114]=star_12;star_2;[115]=star_12;star_20;[116]=star_12;star_21;[117]=star_12;star_22;[118]=star_12;star_23;[119]=star_12;star_24;[120]=star_12;star_25;[121]=star_12;star_26;[122]=star_12;star_27;[123]=star_12;star_28;[124]=star_12;star_29;[125]=star_12;star_3;[126]=star_12;star_30;[127]=star_12;star_31;[128]=star_12;star_32;[129]=star_12;star_33;[130]=star_12;star_34;[131]=star_12;star_35;[132]=star_12;star_36;[133]=star_12;star_4;[134]=star_12;star_5;[135]=star_12;star_6;[136]=star_12;star_7;[137]=star_12;star_8;[138]=star_12;star_9;[139]=star_13;star_13;[140]=star_13;star_14;[141]=star_13;star_15;[142]=star_13;star_16;[143]=star_13;star_17;[144]=star_13;star_18;[145]=star_13;star_19;[146]=star_13;star_2;[147]=star_13;star_20;[148]=star_13;star_21;[149]=star_13;star_22;[150]=star_13;star_23;[151]=star_13;star_24;[152]=star_13;star_25;[153]=star_13;star_26;[154]=star_13;star_27;[155]=star_13;star_28;[156]=star_13;star_29;[157]=star_13;star_3;[158]=star_13;star_30;[159]=star_13;star_31;[160]=star_13;star_32;[161]=star_13;star_33;[162]=star_13;star_34;[163]=star_13;star_35;[164]=star_13;star_36;[165]=star_13;star_4;[166]=star_13;star_5;[167]=star_13;star_6;[168]=star_13;star_7;[169]=star_13;star_8;[170]=star_13;star_9;[171]=star_14;star_14;[172]=star_14;star_15;[173]=star_14;star_16;[174]=star_14;star_17;[175]=star_14;star_18;[176]=star_14;star_19;[177]=star_14;star_2;[178]=star_14;star_20;[179]=star_14;star_21;[180]=star_14;star_22;[181]=star_14;star_23;[182]=star_14;star_24;[183]=star_14;star_25;[184]=star_14;star_26;[185]=star_14;star_27;[186]=star_14;star_28;[187]=star_14;star_29;[188]=star_14;star_3;[189]=star_14;star_30;[190]=star_14;star_31;[191]=star_14;star_32;[192]=star_14;star_33;[193]=star_14;star_34;[194]=star_14;star_35;[195]=star_14;star_36;[196]=star_14;star_4;[197]=star_14;star_5;[198]=star_14;star_6;[199]=star_14;star_7;[200]=star_14;star_8;[201]=star_14;star_9;[202]=star_15;star_15;[203]=star_15;star_16;[204]=star_15;star_17;[205]=star_15;star_18;[206]=star_15;star_19;[207]=star_15;star_2;[208]=star_15;star_20;[209]=star_15;star_21;[210]=star_15;star_22;[211]=star_15;star_23;[212]=star_15;star_24;[213]=star_15;star_25;[214]=star_15;star_26;[215]=star_15;star_27;[216]=star_15;star_28;[217]=star_15;star_29;[218]=star_15;star_3;[219]=star_15;star_30;[220]=star_15;star_31;[221]=star_15;star_32;[222]=star_15;star_33;[223]=star_15;star_34;[224]=star_15;star_35;[225]=star_15;star_36;[226]=star_15;star_4;[227]=star_15;star_5;[228]=star_15;star_6;[229]=star_15;star_7;[230]=star_15;star_8;[231]=star_15;star_9;[232]=star_16;star_16;[233]=star_16;star_17;[234]=star_16;star_18;[235]=star_16;star_19;[236]=star_16;star_2;[237]=star_16;star_20;[238]=star_16;star_21;[239]=star_16;star_22;[240]=star_16;star_23;[241]=star_16;star_24;[242]=star_16;star_25;[243]=star_16;star_26;[244]=star_16;star_27;[245]=star_16;star_28;[246]=star_16;star_29;[247]=star_16;star_3;[248]=star_16;star_30;[249]=star_16;star_31;[250]=star_16;star_32;[251]=star_16;star_33;[252]=star_16;star_34;[253]=star_16;star_35;[254]=star_16;star_36;[255]=star_16;star_4;[256]=star_16;star_5;[257]=star_16;star_6;[258]=star_16;star_7;[259]=star_16;star_8;[260]=star_16;star_9;[261]=star_17;star_17;[262]=star_17;star_18;[263]=star_17;star_19;[264]=star_17;star_2;[265]=star_17;star_20;[266]=star_17;star_21;[267]=star_17;star_22;[268]=star_17;star_23;[269]=star_17;star_24;[270]=star_17;star_25;[271]=star_17;star_26;[272]=star_17;star_27;[273]=star_17;star_28;[274]=star_17;star_29;[275]=star_17;star_3;[276]=star_17;star_30;[277]=star_17;star_31;[278]=star_17;star_32;[279]=star_17;star_33;[280]=star_17;star_34;[281]=star_17;star_35;[282]=star_17;star_36;[283]=star_17;star_4;[284]=star_17;star_5;[285]=star_17;star_6;[286]=star_17;star_7;[287]=star_17;star_8;[288]=star_17;star_9;[289]=star_18;star_18;[290]=star_18;star_19;[291]=star_18;star_2;[292]=star_18;star_20;[293]=star_18;star_21;[294]=star_18;star_22;[295]=star_18;star_23;[296]=star_18;star_24;[297]=star_18;star_25;[298]=star_18;star_26;[299]=star_18;star_27;[300]=star_18;star_28;[301]=star_18;star_29;[302]=star_18;star_3;[303]=star_18;star_30;[304]=star_18;star_31;[305]=star_18;star_32;[306]=star_18;star_33;[307]=star_18;star_34;[308]=star_18;star_35;[309]=star_18;star_36;[310]=star_18;star_4;[311]=star_18;star_5;[312]=star_18;star_6;[313]=star_18;star_7;[314]=star_18;star_8;[315]=star_18;star_9;[316]=star_19;star_19;[317]=star_19;star_2;[318]=star_19;star_20;[319]=star_19;star_21;[320]=star_19;star_22;[321]=star_19;star_23;[322]=star_19;star_24;[323]=star_19;star_25;[324]=star_19;star_26;[325]=star_19;star_27;[326]=star_19;star_28;[327]=star_19;star_29;[328]=star_19;star_3;[329]=star_19;star_30;[330]=star_19;star_31;[331]=star_19;star_32;[332]=star_19;star_33;[333]=star_19;star_34;[334]=star_19;star_35;[335]=star_19;star_36;[336]=star_19;star_4;[337]=star_19;star_5;[338]=star_19;star_6;[339]=star_19;star_7;[340]=star_19;star_8;[341]=star_19;star_9;[342]=star_2;star_2;[343]=star_2;star_20;[344]=star_2;star_21;[345]=star_2;star_22;[346]=star_2;star_23;[347]=star_2;star_24;[348]=star_2;star_25;[349]=star_2;star_26;[350]=star_2;star_27;[351]=star_2;star_28;[352]=star_2;star_29;[353]=star_2;star_3;[354]=star_2;star_30;[355]=star_2;star_31;[356]=star_2;star_32;[357]=star_2;star_33;[358]=star_2;star_34;[359]=star_2;star_35;[360]=star_2;star_36;[361]=star_2;star_4;[362]=star_2;star_5;[363]=star_2;star_6;[364]=star_2;star_7;[365]=star_2;star_8;[366]=star_2;star_9;[367]=star_20;star_20;[368]=star_20;star_21;[369]=star_20;star_22;[370]=star_20;star_23;[371]=star_20;star_24;[372]=star_20;star_25;[373]=star_20;star_26;[374]=star_20;star_27;[375]=star_20;star_28;[376]=star_20;star_29;[377]=star_20;star_3;[378]=star_20;star_30;[379]=star_20;star_31;[380]=star_20;star_32;[381]=star_20;star_33;[382]=star_20;star_34;[383]=star_20;star_35;[384]=star_20;star_36;[385]=star_20;star_4;[386]=star_20;star_5;[387]=star_20;star_6;[388]=star_20;star_7;[389]=star_20;star_8;[390]=star_20;star_9;[391]=star_21;star_21;[392]=star_21;star_22;[393]=star_21;star_23;[394]=star_21;star_24;[395]=star_21;star_25;[396]=star_21;star_26;[397]=star_21;star_27;[398]=star_21;star_28;[399]=star_21;star_29;[400]=star_21;star_3;[401]=star_21;star_30;[402]=star_21;star_31;[403]=star_21;star_32;[404]=star_21;star_33;[405]=star_21;star_34;[406]=star_21;star_35;[407]=star_21;star_36;[408]=star_21;star_4;[409]=star_21;star_5;[410]=star_21;star_6;[411]=star_21;star_7;[412]=star_21;star_8;[413]=star_21;star_9;[414]=star_22;star_22;[415]=star_22;star_23;[416]=star_22;star_24;[417]=star_22;star_25;[418]=star_22;star_26;[419]=star_22;star_27;[420]=star_22;star_28;[421]=star_22;star_29;[422]=star_22;star_3;[423]=star_22;star_30;[424]=star_22;star_31;[425]=star_22;star_32;[426]=star_22;star_33;[427]=star_22;star_34;[428]=star_22;star_35;[429]=star_22;star_36;[430]=star_22;star_4;[431]=star_22;star_5;[432]=star_22;star_6;[433]=star_22;star_7;[434]=star_22;star_8;[435]=star_22;star_9;[436]=star_23;star_23;[437]=star_23;star_24;[438]=star_23;star_25;[439]=star_23;star_26;[440]=star_23;star_27;[441]=star_23;star_28;[442]=star_23;star_29;[443]=star_23;star_3;[444]=star_23;star_30;[445]=star_23;star_31;[446]=star_23;star_32;[447]=star_23;star_33;[448]=star_23;star_34;[449]=star_23;star_35;[450]=star_23;star_36;[451]=star_23;star_4;[452]=star_23;star_5;[453]=star_23;star_6;[454]=star_23;star_7;[455]=star_23;star_8;[456]=star_23;star_9;[457]=star_24;star_24;[458]=star_24;star_25;[459]=star_24;star_26;[460]=star_24;star_27;[461]=star_24;star_28;[462]=star_24;star_29;[463]=star_24;star_3;[464]=star_24;star_30;[465]=star_24;star_31;[466]=star_24;star_32;[467]=star_24;star_33;[468]=star_24;star_34;[469]=star_24;star_35;[470]=star_24;star_36;[471]=star_24;star_4;[472]=star_24;star_5;[473]=star_24;star_6;[474]=star_24;star_7;[475]=star_24;star_8;[476]=star_24;star_9;[477]=star_25;star_25;[478]=star_25;star_26;[479]=star_25;star_27;[480]=star_25;star_28;[481]=star_25;star_29;[482]=star_25;star_3;[483]=star_25;star_30;[484]=star_25;star_31;[485]=star_25;star_32;[486]=star_25;star_33;[487]=star_25;star_34;[488]=star_25;star_35;[489]=star_25;star_36;[490]=star_25;star_4;[491]=star_25;star_5;[492]=star_25;star_6;[493]=star_25;star_7;[494]=star_25;star_8;[495]=star_25;star_9;[496]=star_26;star_26;[497]=star_26;star_27;[498]=star_26;star_28;[499]=star_26;star_29;[500]=star_26;star_3;[501]=star_26;star_30;[502]=star_26;star_31;[503]=star_26;star_32;[504]=star_26;star_33;[505]=star_26;star_34;[506]=star_26;star_35;[507]=star_26;star_36;[508]=star_26;star_4;[509]=star_26;star_5;[510]=star_26;star_6;[511]=star_26;star_7;[512]=star_26;star_8;[513]=star_26;star_9;[514]=star_27;star_27;[515]=star_27;star_28;[516]=star_27;star_29;[517]=star_27;star_3;[518]=star_27;star_30;[519]=star_27;star_31;[520]=star_27;star_32;[521]=star_27;star_33;[522]=star_27;star_34;[523]=star_27;star_35;[524]=star_27;star_36;[525]=star_27;star_4;[526]=star_27;star_5;[527]=star_27;star_6;[528]=star_27;star_7;[529]=star_27;star_8;[530]=star_27;star_9;[531]=star_28;star_28;[532]=star_28;star_29;[533]=star_28;star_3;[534]=star_28;star_30;[535]=star_28;star_31;[536]=star_28;star_32;[537]=star_28;star_33;[538]=star_28;star_34;[539]=star_28;star_35;[540]=star_28;star_36;[541]=star_28;star_4;[542]=star_28;star_5;[543]=star_28;star_6;[544]=star_28;star_7;[545]=star_28;star_8;[546]=star_28;star_9;[547]=star_29;star_29;[548]=star_29;star_3;[549]=star_29;star_30;[550]=star_29;star_31;[551]=star_29;star_32;[552]=star_29;star_33;[553]=star_29;star_34;[554]=star_29;star_35;[555]=star_29;star_36;[556]=star_29;star_4;[557]=star_29;star_5;[558]=star_29;star_6;[559]=star_29;star_7;[560]=star_29;star_8;[561]=star_29;star_9;[562]=star_3;star_3;[563]=star_3;star_30;[564]=star_3;star_31;[565]=star_3;star_32;[566]=star_3;star_33;[567]=star_3;star_34;[568]=star_3;star_35;[569]=star_3;star_36;[570]=star_3;star_4;[571]=star_3;star_5;[572]=star_3;star_6;[573]=star_3;star_7;[574]=star_3;star_8;[575]=star_3;star_9;[576]=star_30;star_30;[577]=star_30;star_31;[578]=star_30;star_32;[579]=star_30;star_33;[580]=star_30;star_34;[581]=star_30;star_35;[582]=star_30;star_36;[583]=star_30;star_4;[584]=star_30;star_5;[585]=star_30;star_6;[586]=star_30;star_7;[587]=star_30;star_8;[588]=star_30;star_9;[589]=star_31;star_31;[590]=star_31;star_32;[591]=star_31;star_33;[592]=star_31;star_34;[593]=star_31;star_35;[594]=star_31;star_36;[595]=star_31;star_4;[596]=star_31;star_5;[597]=star_31;star_6;[598]=star_31;star_7;[599]=star_31;star_8;[600]=star_31;star_9;[601]=star_32;star_32;[602]=star_32;star_33;[603]=star_32;star_34;[604]=star_32;star_35;[605]=star_32;star_36;[606]=star_32;star_4;[607]=star_32;star_5;[608]=star_32;star_6;[609]=star_32;star_7;[610]=star_32;star_8;[611]=star_32;star_9;[612]=star_33;star_33;[613]=star_33;star_34;[614]=star_33;star_35;[615]=star_33;star_36;[616]=star_33;star_4;[617]=star_33;star_5;[618]=star_33;star_6;[619]=star_33;star_7;[620]=star_33;star_8;[621]=star_33;star_9;[622]=star_34;star_34;[623]=star_34;star_35;[624]=star_34;star_36;[625]=star_34;star_4;[626]=star_34;star_5;[627]=star_34;star_6;[628]=star_34;star_7;[629]=star_34;star_8;[630]=star_34;star_9;[631]=star_35;star_35;[632]=star_35;star_36;[633]=star_35;star_4;[634]=star_35;star_5;[635]=star_35;star_6;[636]=star_35;star_7;[637]=star_35;star_8;[638]=star_35;star_9;[639]=star_36;star_36;[640]=star_36;star_4;[641]=star_36;star_5;[642]=star_36;star_6;[643]=star_36;star_7;[644]=star_36;star_8;[645]=star_36;star_9;[646]=star_4;star_4;[647]=star_4;star_5;[648]=star_4;star_6;[649]=star_4;star_7;[650]=star_4;star_8;[651]=star_4;star_9;[652]=star_5;star_5;[653]=star_5;star_6;[654]=star_5;star_7;[655]=star_5;star_8;[656]=star_5;star_9;[657]=star_6;star_6;[658]=star_6;star_7;[659]=star_6;star_8;[660]=star_6;star_9;[661]=star_7;star_7;[662]=star_7;star_8;[663]=star_7;star_9;[664]=star_8;star_8;[665]=star_8;star_9;[666]=star_9;star_9}
+				ge=gmg.getGenotypeElement(gmg.getPositionGeneticMarker("star_2;star_2"));
+				break;
+			case 37://[CYP3A4]->{[0]=null;null;[1]=star_1;star_1;[2]=star_1;star_10;[3]=star_1;star_11;[4]=star_1;star_12;[5]=star_1;star_13;[6]=star_1;star_14;[7]=star_1;star_15;[8]=star_1;star_16;[9]=star_1;star_17;[10]=star_1;star_18;[11]=star_1;star_19;[12]=star_1;star_2;[13]=star_1;star_20;[14]=star_1;star_22;[15]=star_1;star_3;[16]=star_1;star_4;[17]=star_1;star_5;[18]=star_1;star_6;[19]=star_1;star_7;[20]=star_1;star_8;[21]=star_1;star_9;[22]=star_10;star_10;[23]=star_10;star_11;[24]=star_10;star_12;[25]=star_10;star_13;[26]=star_10;star_14;[27]=star_10;star_15;[28]=star_10;star_16;[29]=star_10;star_17;[30]=star_10;star_18;[31]=star_10;star_19;[32]=star_10;star_2;[33]=star_10;star_20;[34]=star_10;star_22;[35]=star_10;star_3;[36]=star_10;star_4;[37]=star_10;star_5;[38]=star_10;star_6;[39]=star_10;star_7;[40]=star_10;star_8;[41]=star_10;star_9;[42]=star_11;star_11;[43]=star_11;star_12;[44]=star_11;star_13;[45]=star_11;star_14;[46]=star_11;star_15;[47]=star_11;star_16;[48]=star_11;star_17;[49]=star_11;star_18;[50]=star_11;star_19;[51]=star_11;star_2;[52]=star_11;star_20;[53]=star_11;star_22;[54]=star_11;star_3;[55]=star_11;star_4;[56]=star_11;star_5;[57]=star_11;star_6;[58]=star_11;star_7;[59]=star_11;star_8;[60]=star_11;star_9;[61]=star_12;star_12;[62]=star_12;star_13;[63]=star_12;star_14;[64]=star_12;star_15;[65]=star_12;star_16;[66]=star_12;star_17;[67]=star_12;star_18;[68]=star_12;star_19;[69]=star_12;star_2;[70]=star_12;star_20;[71]=star_12;star_22;[72]=star_12;star_3;[73]=star_12;star_4;[74]=star_12;star_5;[75]=star_12;star_6;[76]=star_12;star_7;[77]=star_12;star_8;[78]=star_12;star_9;[79]=star_13;star_13;[80]=star_13;star_14;[81]=star_13;star_15;[82]=star_13;star_16;[83]=star_13;star_17;[84]=star_13;star_18;[85]=star_13;star_19;[86]=star_13;star_2;[87]=star_13;star_20;[88]=star_13;star_22;[89]=star_13;star_3;[90]=star_13;star_4;[91]=star_13;star_5;[92]=star_13;star_6;[93]=star_13;star_7;[94]=star_13;star_8;[95]=star_13;star_9;[96]=star_14;star_14;[97]=star_14;star_15;[98]=star_14;star_16;[99]=star_14;star_17;[100]=star_14;star_18;[101]=star_14;star_19;[102]=star_14;star_2;[103]=star_14;star_20;[104]=star_14;star_22;[105]=star_14;star_3;[106]=star_14;star_4;[107]=star_14;star_5;[108]=star_14;star_6;[109]=star_14;star_7;[110]=star_14;star_8;[111]=star_14;star_9;[112]=star_15;star_15;[113]=star_15;star_16;[114]=star_15;star_17;[115]=star_15;star_18;[116]=star_15;star_19;[117]=star_15;star_2;[118]=star_15;star_20;[119]=star_15;star_22;[120]=star_15;star_3;[121]=star_15;star_4;[122]=star_15;star_5;[123]=star_15;star_6;[124]=star_15;star_7;[125]=star_15;star_8;[126]=star_15;star_9;[127]=star_16;star_16;[128]=star_16;star_17;[129]=star_16;star_18;[130]=star_16;star_19;[131]=star_16;star_2;[132]=star_16;star_20;[133]=star_16;star_22;[134]=star_16;star_3;[135]=star_16;star_4;[136]=star_16;star_5;[137]=star_16;star_6;[138]=star_16;star_7;[139]=star_16;star_8;[140]=star_16;star_9;[141]=star_17;star_17;[142]=star_17;star_18;[143]=star_17;star_19;[144]=star_17;star_2;[145]=star_17;star_20;[146]=star_17;star_22;[147]=star_17;star_3;[148]=star_17;star_4;[149]=star_17;star_5;[150]=star_17;star_6;[151]=star_17;star_7;[152]=star_17;star_8;[153]=star_17;star_9;[154]=star_18;star_18;[155]=star_18;star_19;[156]=star_18;star_2;[157]=star_18;star_20;[158]=star_18;star_22;[159]=star_18;star_3;[160]=star_18;star_4;[161]=star_18;star_5;[162]=star_18;star_6;[163]=star_18;star_7;[164]=star_18;star_8;[165]=star_18;star_9;[166]=star_19;star_19;[167]=star_19;star_2;[168]=star_19;star_20;[169]=star_19;star_22;[170]=star_19;star_3;[171]=star_19;star_4;[172]=star_19;star_5;[173]=star_19;star_6;[174]=star_19;star_7;[175]=star_19;star_8;[176]=star_19;star_9;[177]=star_2;star_2;[178]=star_2;star_20;[179]=star_2;star_22;[180]=star_2;star_3;[181]=star_2;star_4;[182]=star_2;star_5;[183]=star_2;star_6;[184]=star_2;star_7;[185]=star_2;star_8;[186]=star_2;star_9;[187]=star_20;star_20;[188]=star_20;star_22;[189]=star_20;star_3;[190]=star_20;star_4;[191]=star_20;star_5;[192]=star_20;star_6;[193]=star_20;star_7;[194]=star_20;star_8;[195]=star_20;star_9;[196]=star_22;star_22;[197]=star_22;star_3;[198]=star_22;star_4;[199]=star_22;star_5;[200]=star_22;star_6;[201]=star_22;star_7;[202]=star_22;star_8;[203]=star_22;star_9;[204]=star_3;star_3;[205]=star_3;star_4;[206]=star_3;star_5;[207]=star_3;star_6;[208]=star_3;star_7;[209]=star_3;star_8;[210]=star_3;star_9;[211]=star_4;star_4;[212]=star_4;star_5;[213]=star_4;star_6;[214]=star_4;star_7;[215]=star_4;star_8;[216]=star_4;star_9;[217]=star_5;star_5;[218]=star_5;star_6;[219]=star_5;star_7;[220]=star_5;star_8;[221]=star_5;star_9;[222]=star_6;star_6;[223]=star_6;star_7;[224]=star_6;star_8;[225]=star_6;star_9;[226]=star_7;star_7;[227]=star_7;star_8;[228]=star_7;star_9;[229]=star_8;star_8;[230]=star_8;star_9;[231]=star_9;star_9}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("star_1;star_1"));
+				break;
+			case 38://[ZMIZ1-AS1]->{[0]=null;null}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("null;null"));
+				break;
+			case 39://[CYP2C19]->{[0]=null;null;[1]=star_1;star_1;[2]=star_1;star_10;[3]=star_1;star_11;[4]=star_1;star_12;[5]=star_1;star_13;[6]=star_1;star_14;[7]=star_1;star_15;[8]=star_1;star_16;[9]=star_1;star_17;[10]=star_1;star_18;[11]=star_1;star_19;[12]=star_1;star_2;[13]=star_1;star_22;[14]=star_1;star_23;[15]=star_1;star_24;[16]=star_1;star_25;[17]=star_1;star_26;[18]=star_1;star_27;[19]=star_1;star_3;[20]=star_1;star_4;[21]=star_1;star_5;[22]=star_1;star_6;[23]=star_1;star_7;[24]=star_1;star_8;[25]=star_1;star_9;[26]=star_10;star_10;[27]=star_10;star_11;[28]=star_10;star_12;[29]=star_10;star_13;[30]=star_10;star_14;[31]=star_10;star_15;[32]=star_10;star_16;[33]=star_10;star_17;[34]=star_10;star_18;[35]=star_10;star_19;[36]=star_10;star_2;[37]=star_10;star_22;[38]=star_10;star_23;[39]=star_10;star_24;[40]=star_10;star_25;[41]=star_10;star_26;[42]=star_10;star_27;[43]=star_10;star_3;[44]=star_10;star_4;[45]=star_10;star_5;[46]=star_10;star_6;[47]=star_10;star_7;[48]=star_10;star_8;[49]=star_10;star_9;[50]=star_11;star_11;[51]=star_11;star_12;[52]=star_11;star_13;[53]=star_11;star_14;[54]=star_11;star_15;[55]=star_11;star_16;[56]=star_11;star_17;[57]=star_11;star_18;[58]=star_11;star_19;[59]=star_11;star_2;[60]=star_11;star_22;[61]=star_11;star_23;[62]=star_11;star_24;[63]=star_11;star_25;[64]=star_11;star_26;[65]=star_11;star_27;[66]=star_11;star_3;[67]=star_11;star_4;[68]=star_11;star_5;[69]=star_11;star_6;[70]=star_11;star_7;[71]=star_11;star_8;[72]=star_11;star_9;[73]=star_12;star_12;[74]=star_12;star_13;[75]=star_12;star_14;[76]=star_12;star_15;[77]=star_12;star_16;[78]=star_12;star_17;[79]=star_12;star_18;[80]=star_12;star_19;[81]=star_12;star_2;[82]=star_12;star_22;[83]=star_12;star_23;[84]=star_12;star_24;[85]=star_12;star_25;[86]=star_12;star_26;[87]=star_12;star_27;[88]=star_12;star_3;[89]=star_12;star_4;[90]=star_12;star_5;[91]=star_12;star_6;[92]=star_12;star_7;[93]=star_12;star_8;[94]=star_12;star_9;[95]=star_13;star_13;[96]=star_13;star_14;[97]=star_13;star_15;[98]=star_13;star_16;[99]=star_13;star_17;[100]=star_13;star_18;[101]=star_13;star_19;[102]=star_13;star_2;[103]=star_13;star_22;[104]=star_13;star_23;[105]=star_13;star_24;[106]=star_13;star_25;[107]=star_13;star_26;[108]=star_13;star_27;[109]=star_13;star_3;[110]=star_13;star_4;[111]=star_13;star_5;[112]=star_13;star_6;[113]=star_13;star_7;[114]=star_13;star_8;[115]=star_13;star_9;[116]=star_14;star_14;[117]=star_14;star_15;[118]=star_14;star_16;[119]=star_14;star_17;[120]=star_14;star_18;[121]=star_14;star_19;[122]=star_14;star_2;[123]=star_14;star_22;[124]=star_14;star_23;[125]=star_14;star_24;[126]=star_14;star_25;[127]=star_14;star_26;[128]=star_14;star_27;[129]=star_14;star_3;[130]=star_14;star_4;[131]=star_14;star_5;[132]=star_14;star_6;[133]=star_14;star_7;[134]=star_14;star_8;[135]=star_14;star_9;[136]=star_15;star_15;[137]=star_15;star_16;[138]=star_15;star_17;[139]=star_15;star_18;[140]=star_15;star_19;[141]=star_15;star_2;[142]=star_15;star_22;[143]=star_15;star_23;[144]=star_15;star_24;[145]=star_15;star_25;[146]=star_15;star_26;[147]=star_15;star_27;[148]=star_15;star_3;[149]=star_15;star_4;[150]=star_15;star_5;[151]=star_15;star_6;[152]=star_15;star_7;[153]=star_15;star_8;[154]=star_15;star_9;[155]=star_16;star_16;[156]=star_16;star_17;[157]=star_16;star_18;[158]=star_16;star_19;[159]=star_16;star_2;[160]=star_16;star_22;[161]=star_16;star_23;[162]=star_16;star_24;[163]=star_16;star_25;[164]=star_16;star_26;[165]=star_16;star_27;[166]=star_16;star_3;[167]=star_16;star_4;[168]=star_16;star_5;[169]=star_16;star_6;[170]=star_16;star_7;[171]=star_16;star_8;[172]=star_16;star_9;[173]=star_17;star_17;[174]=star_17;star_18;[175]=star_17;star_19;[176]=star_17;star_2;[177]=star_17;star_22;[178]=star_17;star_23;[179]=star_17;star_24;[180]=star_17;star_25;[181]=star_17;star_26;[182]=star_17;star_27;[183]=star_17;star_3;[184]=star_17;star_4;[185]=star_17;star_5;[186]=star_17;star_6;[187]=star_17;star_7;[188]=star_17;star_8;[189]=star_17;star_9;[190]=star_18;star_18;[191]=star_18;star_19;[192]=star_18;star_2;[193]=star_18;star_22;[194]=star_18;star_23;[195]=star_18;star_24;[196]=star_18;star_25;[197]=star_18;star_26;[198]=star_18;star_27;[199]=star_18;star_3;[200]=star_18;star_4;[201]=star_18;star_5;[202]=star_18;star_6;[203]=star_18;star_7;[204]=star_18;star_8;[205]=star_18;star_9;[206]=star_19;star_19;[207]=star_19;star_2;[208]=star_19;star_22;[209]=star_19;star_23;[210]=star_19;star_24;[211]=star_19;star_25;[212]=star_19;star_26;[213]=star_19;star_27;[214]=star_19;star_3;[215]=star_19;star_4;[216]=star_19;star_5;[217]=star_19;star_6;[218]=star_19;star_7;[219]=star_19;star_8;[220]=star_19;star_9;[221]=star_2;star_2;[222]=star_2;star_22;[223]=star_2;star_23;[224]=star_2;star_24;[225]=star_2;star_25;[226]=star_2;star_26;[227]=star_2;star_27;[228]=star_2;star_3;[229]=star_2;star_4;[230]=star_2;star_5;[231]=star_2;star_6;[232]=star_2;star_7;[233]=star_2;star_8;[234]=star_2;star_9;[235]=star_22;star_22;[236]=star_22;star_23;[237]=star_22;star_24;[238]=star_22;star_25;[239]=star_22;star_26;[240]=star_22;star_27;[241]=star_22;star_3;[242]=star_22;star_4;[243]=star_22;star_5;[244]=star_22;star_6;[245]=star_22;star_7;[246]=star_22;star_8;[247]=star_22;star_9;[248]=star_23;star_23;[249]=star_23;star_24;[250]=star_23;star_25;[251]=star_23;star_26;[252]=star_23;star_27;[253]=star_23;star_3;[254]=star_23;star_4;[255]=star_23;star_5;[256]=star_23;star_6;[257]=star_23;star_7;[258]=star_23;star_8;[259]=star_23;star_9;[260]=star_24;star_24;[261]=star_24;star_25;[262]=star_24;star_26;[263]=star_24;star_27;[264]=star_24;star_3;[265]=star_24;star_4;[266]=star_24;star_5;[267]=star_24;star_6;[268]=star_24;star_7;[269]=star_24;star_8;[270]=star_24;star_9;[271]=star_25;star_25;[272]=star_25;star_26;[273]=star_25;star_27;[274]=star_25;star_3;[275]=star_25;star_4;[276]=star_25;star_5;[277]=star_25;star_6;[278]=star_25;star_7;[279]=star_25;star_8;[280]=star_25;star_9;[281]=star_26;star_26;[282]=star_26;star_27;[283]=star_26;star_3;[284]=star_26;star_4;[285]=star_26;star_5;[286]=star_26;star_6;[287]=star_26;star_7;[288]=star_26;star_8;[289]=star_26;star_9;[290]=star_27;star_27;[291]=star_27;star_3;[292]=star_27;star_4;[293]=star_27;star_5;[294]=star_27;star_6;[295]=star_27;star_7;[296]=star_27;star_8;[297]=star_27;star_9;[298]=star_3;star_3;[299]=star_3;star_4;[300]=star_3;star_5;[301]=star_3;star_6;[302]=star_3;star_7;[303]=star_3;star_8;[304]=star_3;star_9;[305]=star_4;star_4;[306]=star_4;star_5;[307]=star_4;star_6;[308]=star_4;star_7;[309]=star_4;star_8;[310]=star_4;star_9;[311]=star_5;star_5;[312]=star_5;star_6;[313]=star_5;star_7;[314]=star_5;star_8;[315]=star_5;star_9;[316]=star_6;star_6;[317]=star_6;star_7;[318]=star_6;star_8;[319]=star_6;star_9;[320]=star_7;star_7;[321]=star_7;star_8;[322]=star_7;star_9;[323]=star_8;star_8;[324]=star_8;star_9;[325]=star_9;star_9}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("star_1;star_1"));
+				break;
+			case 40://[HMGCR]->{[0]=null;null;[1]=H2;H2;[2]=H2;H7;[3]=H7;H7}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("H2;H2"));
+				break;
+			case 41://[LOC100286922]->{[0]=null;null}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("null;null"));
+				break;
+			case 42://[NBR1]->{[0]=null;null}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("null;null"));
+				break;
+			case 43://[IFNL4]->{[0]=null;null}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("null;null"));
+				break;
+			case 44://[HLA-B]->{[0]=null;null;[1]=star_1502;star_1502;[2]=star_1502;star_44;[3]=star_1502;star_5701;[4]=star_1502;star_5801;[5]=star_44;star_44;[6]=star_44;star_5701;[7]=star_44;star_5801;[8]=star_5701;star_5701;[9]=star_5701;star_5801;[10]=star_5801;star_5801}
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("star_1502;star_1502"));
+				break;
+			default:
+				ge = gmg.getGenotypeElement(gmg.getPositionGeneticMarker("null;null"));
 			}
-			if (bit_length == null || bit_length.isEmpty()){
-				continue;
+			
+			
+			if(ge==null){
+				ge = gmg.getGenotypeElement(0); //null;null
 			}
+			listGenotypeElements.add(ge);
+		}
+		
+		return listGenotypeElements;
+	}
+	
+	
+	/**
+	 * Get the list of SNPs groups information from the ontology.
+	 * 
+	 * @return	List of SNPs groups.
+	 * */	
+	public ArrayList<SNPsGroup> getListSNPsGroups(){
+		return listSNPsGroups;
+	}
+	
+	/**
+	 * Initialize the sorted list of alleles and SNPs groups defined in the model. These groups formed the inferred patient's genotype.  
+	 * */
+	private void initializeGenotypeElements(){
+		listGeneticMarkers	= new ArrayList<Genetic_Marker_Group>();
+		ArrayList<Genetic_Marker_Group> list_gmg = new ArrayList<Genetic_Marker_Group>();
+		list_gmg.addAll(listAlleleGroups);
+		list_gmg.addAll(listSNPsGroups);
+		Collections.sort(list_gmg);
+		for(Genetic_Marker_Group gmg: list_gmg){
+			if(gmg.getRank()>=0) listGeneticMarkers.add(gmg);
+		}
+	}
+	
+	/**
+	 * Initialize the list of SNP groups that are defined in the ontology model.
+	 * */
+	private void initializeSNPsGroups(){
+		listSNPsGroups = new ArrayList<SNPsGroup>();
+		
+		OWLDataFactory factory					= manager.getOWLDataFactory();
+		OWLClass polymorphismClass				= factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#polymorphism"));
+		OWLAnnotationProperty ann_rsid			= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#rsid"));
+		OWLAnnotationProperty ann_testedWith	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#can_be_tested_with"));
+		OWLAnnotationProperty ann_orientation	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#dbsnp_orientation_on_reference_genome"));
+		OWLAnnotationProperty ann_rank			= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#rank"));
+		OWLAnnotationProperty ann_vcf_reference	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#vcf_format_reference"));
+		
+		Iterator<OWLClassExpression> list_polymorphisms = polymorphismClass.getSubClasses(ontology).iterator();
+		while(list_polymorphisms.hasNext()){
+			OWLClass snpClass = list_polymorphisms.next().asOWLClass();
+			
+			//rsid
 			String rsid = "";
-			OWLAnnotationProperty ann_rsid = factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#rsid"));
-			for (OWLAnnotation annotation : clase.getAnnotations(ontology, ann_rsid)) {
+			for (OWLAnnotation annotation : snpClass.getAnnotations(ontology, ann_rsid)) {
 				if (annotation.getValue() instanceof OWLLiteral) {
 					OWLLiteral val = (OWLLiteral) annotation.getValue();
 					rsid = val.getLiteral();
 					break;
 				}
 			}
-			if (rsid == null || rsid.isEmpty()){
-				continue;
+			if (rsid == null || rsid.isEmpty())	continue;
+			
+			//can_be_tested_with
+			ArrayList<String> listTestedWith = new ArrayList<String>();
+			for (OWLAnnotation annotation : snpClass.getAnnotations(ontology, ann_testedWith)) {
+				IRI assay_IRI = IRI.create(annotation.getValue().toString());
+				OWLNamedIndividual assay_instance = factory.getOWLNamedIndividual(assay_IRI);
+				if (assay_instance != null) {
+					Set<OWLAnnotation> listLabels = assay_instance.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
+					for (OWLAnnotation labelAnn : listLabels) {
+						if (labelAnn.getValue() instanceof OWLLiteral) {
+							OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
+							listTestedWith.add(literal.getLiteral().trim().toLowerCase());
+							break;
+						}
+					}
+				}
 			}
-			String orientation = "";
-			OWLAnnotationProperty ann_orientation = factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#dbsnp_orientation_on_reference_genome"));
-			for (OWLAnnotation annotation : clase.getAnnotations(ontology, ann_orientation)) {
+			
+			//orientation
+			String strandOrientation = "";
+			for (OWLAnnotation annotation : snpClass.getAnnotations(ontology, ann_orientation)) {
 				if (annotation.getValue() instanceof OWLLiteral) {
 					OWLLiteral val = (OWLLiteral) annotation.getValue();
-					orientation = val.getLiteral();
+					strandOrientation = val.getLiteral();
 					break;
 				}
 			}
-			if (orientation == null || orientation.isEmpty()){
-				continue;
-			}
+			if (strandOrientation == null || strandOrientation.isEmpty())	continue;
 			
-			String criteria_syntax	= "";
-			String bit_code			= "";
-						
-			//Set VCF reference variant criteria_syntax and bit_code
-			Iterator<OWLClassExpression> list_variants = clase.getSubClasses(ontology).iterator();
-			while(list_variants.hasNext()){
-				OWLClass variant_class = list_variants.next().asOWLClass();
-				String isVCFReference="";
-				OWLAnnotationProperty ann_vcf_reference = factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#vcf_format_reference"));
-				for (OWLAnnotation annotation : variant_class.getAnnotations(ontology, ann_vcf_reference)) {
-					if (annotation.getValue() instanceof OWLLiteral) {
-						OWLLiteral val = (OWLLiteral) annotation.getValue();
-						isVCFReference = val.getLiteral();
+			//List allowed nucleotides in the SNP
+			String vcf_format_reference = "";
+			ArrayList<String> list_SNP_names = new ArrayList<String>();
+			Iterator<OWLClassExpression> snpsIterator = snpClass.getSubClasses(ontology).iterator();
+			while(snpsIterator.hasNext()){
+				OWLClass snpVariantClass = snpsIterator.next().asOWLClass();
+				String snpVariant_name = "";
+				
+				Set<OWLAnnotation> listAlleleLabels = snpVariantClass.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
+				for (OWLAnnotation labelAnn : listAlleleLabels) {
+					if (labelAnn.getValue() instanceof OWLLiteral) {
+						OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
+						snpVariant_name = literal.getLiteral().trim();
+					}
+				}
+				if (snpVariant_name == null || snpVariant_name.isEmpty())	continue;
+				list_SNP_names.add(snpVariant_name);
+				
+				//vcf_format_reference
+				for (OWLAnnotation annotation_ref : snpVariantClass.getAnnotations(ontology, ann_vcf_reference)) {
+					if (annotation_ref.getValue() instanceof OWLLiteral) {
+						OWLLiteral val = (OWLLiteral) annotation_ref.getValue();
+						if(val.getLiteral().equalsIgnoreCase("true")){
+							if(snpVariant_name.contains("_")){
+								vcf_format_reference = snpVariant_name.substring(snpVariant_name.indexOf("_")+1);
+							}else{
+								vcf_format_reference = snpVariant_name;
+							}
+						}
 						break;
 					}
 				}
-				if(isVCFReference.equals("true")){
-					OWLAnnotationProperty ann_criteria_syntax = factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#criteria_syntax"));
-					for (OWLAnnotation annotation : variant_class.getAnnotations(ontology, ann_criteria_syntax)) {
-						if (annotation.getValue() instanceof OWLLiteral) {
-							OWLLiteral val = (OWLLiteral) annotation.getValue();
-							criteria_syntax = val.getLiteral();
-							break;
-						}
-					}
-					
-					OWLAnnotationProperty ann_bit_code = factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#bit_code"));
-					for (OWLAnnotation annotation : variant_class.getAnnotations(ontology, ann_bit_code)) {
-						if (annotation.getValue() instanceof OWLLiteral) {
-							OWLLiteral val = (OWLLiteral) annotation.getValue();
-							bit_code = val.getLiteral();
-							break;
-						}
-					}
+			}
+			
+			//rank
+			int rank=-1;
+			String rank_label = null;
+			for (OWLAnnotation annotation : snpClass.getAnnotations(ontology, ann_rank)) {
+				if (annotation.getValue() instanceof OWLLiteral) {
+					OWLLiteral val = (OWLLiteral) annotation.getValue();
+					rank_label = val.getLiteral();
 					break;
 				}
 			}
-			
-			//Set null;null criteria_syntax and bit_code
-			if(criteria_syntax.isEmpty() || bit_code.isEmpty()){
-				criteria_syntax = rsid + "(null;null)"; // Generate the criteria syntax of "null;null" variant of this marker
-				bit_code = ""; // Generate the bit code of "null;null" variant of this marker
-				int length = 2;
+			if (rank_label != null && !rank_label.isEmpty()){
 				try {
-					length = Integer.parseInt(bit_length);
+					rank = Integer.parseInt(rank_label);
 				} catch (NumberFormatException e) {
-					e.printStackTrace();
-				}
-				for (int i = 0; i < length; i++) {
-					bit_code += "0";
+					continue;
 				}
 			}
-			String[] genotype = { rsid, bit_length, orientation, criteria_syntax, bit_code }; // create the corresponding string array of these markers
-			results.put(rank_int, genotype);
-		}
-		
-		// Sort the list of markers by their rank number.
-		for (int key = 0; !results.isEmpty(); key++) {
-			if (results.containsKey(key)) {
-				String[] genotype = results.get(key);
-				listRsids.add(genotype);
-				results.remove(key);
-			}
-		}
-		return listRsids;
-	}
+			
+			/*//vcf_format_reference
+			
+			for (OWLAnnotation annotation : snpClass.getAnnotations(ontology, ann_vcf_reference)) {
+				if (annotation.getValue() instanceof OWLLiteral) {
+					OWLLiteral val = (OWLLiteral) annotation.getValue();
+					vcf_format_reference = val.getLiteral();
+					break;
+				}
+			}*/
 
+			SNPsGroup sg = new SNPsGroup(rsid, list_SNP_names, rank, strandOrientation, vcf_format_reference, listTestedWith); // create the corresponding string array of these markers
+			listSNPsGroups.add(sg);
+		}
+		Collections.sort(listSNPsGroups);
+	}
 	
 	/**
-	 * Method to initialize the sorted list of markers defined in the model with its associated annotations bit_lenth, orientation and the associated annotations of its null;null variant for criteria syntax and bit code.
-	 * 
-	 * @return Sorted list of the genetics markers that consists of an string array with element {rsid,bit_length,orientation,criteria_syntax,bit_code}
+	 * Initialize the list of allele groups defined in the ontology.
 	 * */
-	private ArrayList<String[]> initializedListRsids() {
-		ArrayList<String[]> listRsids = new ArrayList<String[]>();
-
-		// Each String array of the list contains:
-		// [0] -> rsid
-		// [1] -> bit_length
-		// [2] -> orientation
-		// [3] -> criteria_syntax
-		// [4] -> bit_code
-
-		HashMap<Integer, String[]> results = new HashMap<Integer, String[]>();
-
+	private void initializeAlleleGroups(){
+		listAlleleGroups	= new ArrayList<AlleleGroup>();
 		OWLDataFactory factory = manager.getOWLDataFactory();
-		OWLClass human_with_genotype_marker = factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#human_with_genotype_marker"));
-		OWLAnnotationProperty ann_rank = factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#rank"));
+		OWLClass alleleClass = factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#allele"));
+		OWLAnnotationProperty ann_rank = factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#rank"));
 		
-		Iterator<OWLClassExpression> list_marker = human_with_genotype_marker.getSubClasses(ontology).iterator();
-		while(list_marker.hasNext()){
-			OWLClass clase = list_marker.next().asOWLClass();
+		Iterator<OWLClassExpression> list_allele_genes = alleleClass.getSubClasses(ontology).iterator();
+		
+		while(list_allele_genes.hasNext()){
+			OWLClass gene_class = list_allele_genes.next().asOWLClass();
+			
+			//rank
 			String rank = "";
-			for (OWLAnnotation annotation : clase.getAnnotations(ontology, ann_rank)) {
+			for (OWLAnnotation annotation : gene_class.getAnnotations(ontology, ann_rank)) {
 				if (annotation.getValue() instanceof OWLLiteral) {
 					OWLLiteral val = (OWLLiteral) annotation.getValue();
 					rank = val.getLiteral();
 					break;
 				}
 			}
+			
 			if (rank == null || rank.isEmpty())	continue;
 			int rank_int = -1;
 			try {
 				rank_int = Integer.parseInt(rank);
 			} catch (NumberFormatException e) {
-				e.printStackTrace();
+				continue;
+			}
+			
+			//gene_name
+			String gene_name = "";
+			Set<OWLAnnotation> listLabels = gene_class.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
+			for (OWLAnnotation labelAnn : listLabels) {
+				if (labelAnn.getValue() instanceof OWLLiteral) {
+					OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
+					gene_name = literal.getLiteral().trim();
+				}
+			}
+			if (gene_name == null || gene_name.isEmpty())	continue;
+			
+			//Allele variants
+			OWLAnnotationProperty ann_label = factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI());
+			ArrayList<String> list_allele_names = new ArrayList<String>();
+			list_allele_names.addAll(getSubAlleles(gene_class,ann_label));
+			AlleleGroup ag = new AlleleGroup(gene_name,list_allele_names,rank_int); // create the corresponding string array of these markers
+			listAlleleGroups.add(ag);
+		}
+		Collections.sort(listAlleleGroups);
+	}
+	
+	private ArrayList<String> getSubAlleles(OWLClass root_allele,OWLAnnotationProperty ann_label){
+		ArrayList<String> listSubAlleles = new ArrayList<String>();
+		Iterator<OWLClassExpression> allelesIterator = root_allele.getSubClasses(ontology).iterator();
+		while(allelesIterator.hasNext()){
+			OWLClass allele_class = allelesIterator.next().asOWLClass();
+			String allele_name = "";
+			Set<OWLAnnotation> listAlleleLabels = allele_class.getAnnotations(ontology, ann_label);
+			for (OWLAnnotation labelAnn : listAlleleLabels) {
+				if (labelAnn.getValue() instanceof OWLLiteral) {
+					OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
+					allele_name = literal.getLiteral().trim();
+				}
+			}
+			if (allele_name == null || allele_name.isEmpty())	continue;
+			listSubAlleles.addAll(getSubAlleles(allele_class,ann_label));
+			listSubAlleles.add(allele_name);
+		}
+		return listSubAlleles;
+	}
+	
+	
+	private void initializeDrugRules(){
+		
+		listDrugRecommendations	= new ArrayList<DrugRecommendation>();
+		OWLDataFactory factory					= manager.getOWLDataFactory();
+		OWLClass rootRecommendationClass		= factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#rule"));
+		OWLAnnotationProperty ann_cds_message	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#CDS_message"));
+		OWLAnnotationProperty ann_source		= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#source"));
+		OWLAnnotationProperty ann_relevant_for	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#relevant_for"));
+		OWLAnnotationProperty ann_importance	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#recommendation_importance"));
+		OWLAnnotationProperty ann_lastUpdate	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#date_last_validation"));
+		OWLAnnotationProperty ann_phenotype		= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#phenotype_description"));
+		
+		Iterator<OWLClassExpression> list_recommendations = rootRecommendationClass.getSubClasses(ontology).iterator();
+		while(list_recommendations.hasNext()){
+			OWLClass recommendation = list_recommendations.next().asOWLClass();
+						
+			//cds_message
+			String cds_message = "";
+			for (OWLAnnotation annotation : recommendation.getAnnotations(ontology, ann_cds_message)) {
+				if (annotation.getValue() instanceof OWLLiteral) {
+					OWLLiteral val = (OWLLiteral) annotation.getValue();
+					cds_message = val.getLiteral();
+					break;
+				}
+			}
+			if (cds_message == null || cds_message.isEmpty()){
+				cds_message = "None.";
+				//continue;
+			}
+			
+			//source
+			String source = "";
+			for (OWLAnnotation annotation : recommendation.getAnnotations(ontology, ann_source)) {
+				if (annotation.getValue() instanceof OWLLiteral) {
+					OWLLiteral val = (OWLLiteral) annotation.getValue();
+					source = val.getLiteral();
+					break;
+				}
+			}
+			if (source == null || source.isEmpty()){
 				continue;
 			}
 
-			String bit_length = "";
-			OWLAnnotationProperty ann_bit_length = factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/MSC_classes.owl#bit_length"));
-			for (OWLAnnotation annotation : clase.getAnnotations(ontology, ann_bit_length)) {
+			//phenotype description
+			String phenotype = "";
+			for (OWLAnnotation annotation : recommendation.getAnnotations(ontology, ann_phenotype)) {
 				if (annotation.getValue() instanceof OWLLiteral) {
 					OWLLiteral val = (OWLLiteral) annotation.getValue();
-					bit_length = val.getLiteral();
+					phenotype = val.getLiteral();
 					break;
 				}
 			}
-			if (bit_length == null || bit_length.isEmpty()) continue;
-
-			String rsid = "";
-			OWLAnnotationProperty ann_rsid = factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#rsid"));
-			for (OWLAnnotation annotation : clase.getAnnotations(ontology, ann_rsid)) {
+			
+			//importance
+			String importance = "";
+			for (OWLAnnotation annotation : recommendation.getAnnotations(ontology, ann_importance)) {
 				if (annotation.getValue() instanceof OWLLiteral) {
 					OWLLiteral val = (OWLLiteral) annotation.getValue();
-					rsid = val.getLiteral();
+					importance = val.getLiteral();
 					break;
 				}
 			}
-			if (rsid == null || rsid.isEmpty()) continue;
+			if (importance == null || importance.isEmpty()){
+				importance = "Standard treatment";
+			}
 
-			String orientation = "";
-			OWLAnnotationProperty ann_orientation = factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#dbsnp_orientation_on_reference_genome"));
-			for (OWLAnnotation annotation : clase.getAnnotations(ontology, ann_orientation)) {
+			//last update
+			String lastUpdate = "";
+			for (OWLAnnotation annotation : recommendation.getAnnotations(ontology, ann_lastUpdate)) {
 				if (annotation.getValue() instanceof OWLLiteral) {
 					OWLLiteral val = (OWLLiteral) annotation.getValue();
-					orientation = val.getLiteral();
+					lastUpdate = val.getLiteral();
 					break;
 				}
 			}
-			if (orientation == null || orientation.isEmpty()) continue;
-
-			String criteria_syntax = rsid + "(null;null)"; // Generate the criteria syntax of "null;null" variant of this marker
-
-			String bit_code = ""; // Generate the bit code of "null;null" variant of this marker
-			int length = 2;
-			try {
-				length = Integer.parseInt(bit_length);
-			} catch (NumberFormatException e) {
-				e.printStackTrace();
+			if (lastUpdate == null || lastUpdate.isEmpty()){
+				continue;
 			}
-			for (int i = 0; i < length; i++) {
-				bit_code += "0";
+			
+			//recommendation_comment
+			String recommendation_comment = "";
+			Set<OWLAnnotation> listComments = recommendation.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_COMMENT.getIRI()));
+			for (OWLAnnotation commentAnn : listComments) {
+				if (commentAnn.getValue() instanceof OWLLiteral) {
+					OWLLiteral literal = (OWLLiteral) commentAnn.getValue();
+					recommendation_comment = literal.getLiteral().trim();
+				}
 			}
-
-			String[] genotype = { rsid, bit_length, orientation, criteria_syntax, bit_code }; // create the corresponding string array of these markers
-			results.put(rank_int, genotype);
+			if (recommendation_comment == null || recommendation_comment.isEmpty()){
+				continue;
+			}
+			
+			//recommendation_label
+			String recommendation_label = "";
+			Set<OWLAnnotation> listLabels = recommendation.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
+			for (OWLAnnotation labelAnn : listLabels) {
+				if (labelAnn.getValue() instanceof OWLLiteral) {
+					OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
+					recommendation_label = literal.getLiteral().trim();
+				}
+			}
+			if (recommendation_label == null || recommendation_label.isEmpty()){
+				continue;
+			}
+			
+			//seeAlso
+			ArrayList<String> seeAlsoList = new ArrayList<String>();
+			
+			Set<OWLAnnotation> listSeeAlso = recommendation.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_SEE_ALSO.getIRI()));
+			for (OWLAnnotation seeAlsoAnn : listSeeAlso) {
+				seeAlsoList.add(seeAlsoAnn.getValue().toString());
+			}
+			
+			//relevant_for
+			String relevant_for = "";
+			for (OWLAnnotation annotation : recommendation.getAnnotations(ontology, ann_relevant_for)) {
+				IRI assay_IRI = IRI.create(annotation.getValue().toString());
+				OWLClass drug_class = factory.getOWLClass(assay_IRI);
+				if (drug_class != null) {
+					Set<OWLAnnotation> listDrugLabels = drug_class.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
+					for (OWLAnnotation labelAnn : listDrugLabels) {
+						if (labelAnn.getValue() instanceof OWLLiteral) {
+							OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
+							relevant_for= literal.getLiteral().trim();
+							break;
+						}
+					}
+				}
+			}
+			if (relevant_for == null || relevant_for.isEmpty()){
+				continue;
+			}
+			
+			DrugRecommendation dr = new DrugRecommendation(recommendation_label, cds_message, importance, source, relevant_for, seeAlsoList, lastUpdate,phenotype);
+			
+			dr.setRule(recommendation_comment);
+			listDrugRecommendations.add(dr);
 		}
-
-		// Sort the list of markers by their rank number.
-		for (int key = 0; !results.isEmpty(); key++) {
-			if (results.containsKey(key)) {
-				String[] genotype = results.get(key);
-				listRsids.add(genotype);
-				results.remove(key);
-			}
-		}
-
-		return listRsids;
 	}
 }

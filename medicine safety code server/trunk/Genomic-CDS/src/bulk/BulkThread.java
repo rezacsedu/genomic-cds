@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 import safetycode.FileParserFactory;
-import safetycode.MedicineSafetyProfileOptimized;
+import safetycode.MedicineSafetyProfile_v2;
 
 public class BulkThread extends Thread {
 	
@@ -76,8 +76,8 @@ public class BulkThread extends Thread {
 		try{
 			
 			while(fileInput!=null){
-				MedicineSafetyProfileOptimized msp = new MedicineSafetyProfileOptimized(ontology);
-				msp.setDesc(" Thread "+index+" with file "+fileInput.getName()+" ");
+				MedicineSafetyProfile_v2 msp = new MedicineSafetyProfile_v2(ontology);
+				//msp.setDesc(" Thread "+index+" with file "+fileInput.getName()+" ");
 				InputStream input = new FileInputStream(fileInput);
 				String report = "";
 				if(fileInput.getName().contains("exome-vcf.txt")){
@@ -90,7 +90,7 @@ public class BulkThread extends Thread {
 				ArrayList<String> reportStatistics = parseReportFile(report);
 				Integer nLinesProcessed = Integer.parseInt(reportStatistics.get(0));
 				if(reportStatistics.get(1)!="0" && nLinesProcessed>90000){
-					results = msp.getStatistics(sortedSNP,sortedPoly, sortedRule);
+					//results = msp.getStatistics(sortedSNP,sortedPoly, sortedRule);
 					results.addAll(reportStatistics);
 					ce.compoundResults(fileInput.getName(), results, true);
 				}else{

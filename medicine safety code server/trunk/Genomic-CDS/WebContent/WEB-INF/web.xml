@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>Medicine Safety Code Server</display-name>
-  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
   </welcome-file-list>
-  
   <servlet>
     <servlet-name>SafetyCodeGenerator</servlet-name>
     <servlet-class>servlets.SafetyCodeGenerator</servlet-class>
@@ -14,7 +12,6 @@
     <servlet-name>SafetyCodeGenerator</servlet-name>
     <url-pattern>/SafetyCodeGenerator</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>MSCImageGenerator</servlet-name>
     <servlet-class>servlets.MSCImageGenerator</servlet-class>
@@ -23,21 +20,18 @@
     <servlet-name>MSCImageGenerator</servlet-name>
     <url-pattern>/MSCImageGenerator</url-pattern>
   </servlet-mapping>
-  
-  <servlet>
+  <!-- servlet>
     <servlet-name>PatientOWLGenerator</servlet-name>
     <servlet-class>servlets.PatientOWLGenerator</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>PatientOWLGenerator</servlet-name>
     <url-pattern>/PatientOWLGenerator</url-pattern>
-  </servlet-mapping>
-  
+  </servlet-mapping -->
   <error-page>
     <exception-type>java.lang.Throwable</exception-type>
     <location>/errorPage.jsp</location>
   </error-page>
-  
   <servlet>
     <description></description>
     <display-name>AlleleSafetyCodeInterpreter</display-name>
@@ -48,7 +42,6 @@
     <servlet-name>AlleleSafetyCodeInterpreter</servlet-name>
     <url-pattern>/AlleleSafetyCodeInterpreter</url-pattern>
   </servlet-mapping>
-  
   <servlet>
     <servlet-name>SafetyCodeInterpreter</servlet-name>
     <servlet-class>servlets.SafetyCodeInterpreter</servlet-class>
@@ -57,5 +50,24 @@
     <servlet-name>SafetyCodeInterpreter</servlet-name>
     <url-pattern>/v0.2/*</url-pattern>
   </servlet-mapping>
-  
+  <servlet>
+    <description></description>
+    <display-name>GenotypeElementDefinitions</display-name>
+    <servlet-name>GenotypeElementDefinitions</servlet-name>
+    <servlet-class>servlets.GenotypeElementDefinitions</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GenotypeElementDefinitions</servlet-name>
+    <url-pattern>/GenotypeElementDefinitions</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AlleleGeneralInterpreter</display-name>
+    <servlet-name>AlleleGeneralInterpreter</servlet-name>
+    <servlet-class>servlets.AlleleGeneralInterpreter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AlleleGeneralInterpreter</servlet-name>
+    <url-pattern>/AlleleGeneralInterpreter</url-pattern>
+  </servlet-mapping>
 </web-app>

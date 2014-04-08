@@ -14,9 +14,9 @@ public class FileParserFactory {
 	public static FileParser getFileParser(int typeParser, OntologyManagement om){
 		switch(typeParser){
 		case FORMAT_23ANDME_FILE:
-			return new FileParser_23andme(om.getListRsids(),om.getMapCriteria2Bitcode());
+			return new FileParser_23andme_Format(om.getList23andMeRsids(),om.getListSNPsGroups());
 		case FORMAT_VCF_FILE:
-			return new FileParser_VCF(om.getVCFRefListRsids(),om.getMapCriteria2Bitcode());
+			return new FileParser_VCF_Format(om.getVCFRefListRsids(),om.getListSNPsGroups());
 		}
 		return null;
 	}

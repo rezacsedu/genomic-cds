@@ -19,7 +19,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.lang.text.StrSubstitutor;
 
 import safetycode.FileParserFactory;
-import safetycode.MedicineSafetyProfileOptimized;
+import safetycode.MedicineSafetyProfile_v2;
 import utils.Common;
 import utils.StringReader;
 
@@ -63,7 +63,7 @@ public class SafetyCodeGenerator extends HttpServlet {
 		FileItem file2Parse = null;
 		String path =  this.getServletContext().getRealPath("/");
 		path=path.replaceAll("\\\\", "/");
-		//System.out.println("Path="+path);
+
 		try {
 			@SuppressWarnings("unchecked")
 			List<FileItem> items = new ServletFileUpload(new DiskFileItemFactory()).parseRequest(request);
@@ -83,18 +83,19 @@ public class SafetyCodeGenerator extends HttpServlet {
 	        	throw new ServletException("File is missing.");
 	        }
 	        	         
-	        MedicineSafetyProfileOptimized myProfile = new MedicineSafetyProfileOptimized(path+"MSC_classes.owl");
+	        MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path+Common.ONT_NAME);
 	        String processingReport = myProfile.parseFileStream(file2Parse.getInputStream(), strandOrientationOfInputData,fileformat);
-        	String encodedProfileURL = URLEncoder.encode(Common.ROOT_URL+"/"+Common.VERSION+"/"+myProfile.getBase64ProfileString(), "UTF-8");
+        	String code = myProfile.getBase64ProfileString();
+	        String encodedProfileURL = URLEncoder.encode(Common.ROOT_URL+"/"+Common.VERSION+"/"+code, "UTF-8");
         	contentHTML.append("<p align='center'><img src='"+Common.ROOT_URL+"/MSCImageGenerator?url=" + encodedProfileURL + "' alt='Medicine Safety Code' /></p>");
-        	contentHTML.append("<p>You can visit the generated profile <a href='" + Common.ROOT_URL+"/"+Common.VERSION+"/"+myProfile.getBase64ProfileString()+ "'> here</a>.</p>");
+        	contentHTML.append("<p>You can visit the generated profile <a href='" + Common.ROOT_URL+"/"+Common.VERSION+"/"+code+ "'> here</a>.</p>");
         	contentHTML.append("<h3>Processing report</h3><p>\n" + processingReport + "\n</p>");
         	
 	    } catch (FileUploadException e) {
 	        throw new ServletException("Cannot parse multipart request.");
 	    } catch (Exception e) {
 	    	e.printStackTrace();
-	    	throw new ServletException("Unexpected error has occurred. Ontology="+path+"MSC_classes.ttl");
+	    	throw new ServletException("Unexpected error has occurred.");
 		}
 		
 		// Below, the Apache StrSubstitutor class is used as a very simple templating engine

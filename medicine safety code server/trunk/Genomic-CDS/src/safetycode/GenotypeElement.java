@@ -1,0 +1,56 @@
+package safetycode;
+
+import java.util.ArrayList;
+
+public interface GenotypeElement {
+
+	/**
+	 * Get method that provides the genotype marker name.
+	 * 
+	 * @return		The name of the genotype marker.
+	 * */
+	public String getGeneticMarkerName();
+	
+	/**
+	 * Get method that provides the name of the first variant in the combination.
+	 * 
+	 * @return		Name of the first variant that is related to the combination.
+	 * */
+	public String getVariant1();
+	
+	/**
+	 * Get method that provides the name of the second variant in the combination.
+	 * 
+	 * @return		Name of the second variant that is related to the combination.
+	 * */
+	public String getVariant2();
+	
+	/**
+	 * Updates the information regarding the combination of genotype variant.
+	 * 
+	 * @param variant1	Name of the first genotype variation in the combination.
+	 * @param variant2	Name of the second genotype variation in the combination.
+	 * */
+	public void setVariants(String variant1, String variant2);
+	
+	/**
+	 * Get method that provides the string that represents the combination of variants in alphabetical order.
+	 * 
+	 * @return		String of the variatians in alphabetical order.
+	 * */
+	public String getCriteriaSyntax();
+	
+	/**
+	 * It clones the information of the instance into another instance.
+	 * 
+	 * @return	It produces an exactly copy of the instance.
+	 * */
+	public GenotypeElement clone();
+	
+	/**
+	 * Get the list of URIs of the related classes in the ontology that corresponds to the Genotype variant.
+	 * 
+	 * @return It returns the list with a ontology class URIs related to the combination. The list can only contains 0, 1 or 2 URIs.
+	 * */
+	public ArrayList<String> getOntologyClassURIs();
+}

@@ -319,7 +319,7 @@ foreach ($xml->Rs as $Rs) {
 			$observed_alleles[$j] = flipOrientationOfStringRepresentation($observed_alleles[$j]);
 		}
 	}*/
-	//sort($observed_alleles, SORT_STRING);
+	sort($observed_alleles, SORT_STRING);
 	
 	
 	/*WARNING: If it is not correct -> delete
@@ -375,8 +375,11 @@ foreach ($xml->Rs as $Rs) {
 		$variant_class_id = $class_id . "_" . make_valid_id($observed_allele);
 		$owl .= "Class: " . $variant_class_id . "\n";
 		$owl .= "    SubClassOf: " . $class_id . "\n";
-		if($observed_allele == $ref_allele){
+		
+		if(strpos($observed_allele,trim($ref_allele)) !== false || $observed_allele == $ref_allele){
 			$owl .= "    Annotations: vcf_format_reference \"true\" \n";
+		}else{
+		
 		}
 		$owl .= "    Annotations: rdfs:label \"" . $variant_class_id . "\" \n\n";
 		$polymorphism_variant_disjoint_list[] = $variant_class_id;
@@ -690,7 +693,7 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 				$duplicated_allele_id = str_replace("CYP2D6","CYP2D6_duplicated",$allele_id);
 				$duplicated_allele_label = str_replace("CYP2D6","CYP2D6 duplicated",$allele_label);
 				$owl .= "Class: " . $duplicated_allele_id . "\n";
-				$owl .= "    Annotations: rdfs:label \"Duplicated " . $duplicated_allele_label . "\"\n";
+				$owl .= "    Annotations: rdfs:label \"" . $duplicated_allele_label . "\"\n";
 				$owl .= "    SubClassOf: " . $superclass_id . "\n\n";
 			}
 		}
@@ -974,7 +977,7 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	$humantriggeringrule = "Class: test_" . make_valid_id($human_class_label) . "\n";
 	$humantriggeringrule .= "   SubClassOf: human_triggering_CDS_rule" . "\n";
 	$humantriggeringrule .= "   Annotations: rdfs:label \"test_" . $human_class_label . "\"\n";
-	$owl .= "   Annotations: relevant_for " . make_valid_id($human_class_label) . "\n";
+	$humantriggeringrule .= "   Annotations: relevant_for " . make_valid_id($drug_label) . "\n";
 	if(strpos($logical_description_of_genetic_attributes,'has') !== false){
 		$humantriggeringrule .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($logical_description_of_genetic_attributes)) . "\n";
 	}
@@ -1133,7 +1136,6 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	$humantriggeringrule = "Class: test_" . make_valid_id($phenotype_label) . "\n";
 	$humantriggeringrule .= "   SubClassOf: human_triggering_phenotype_inference_rule" . "\n";
 	$humantriggeringrule .= "   Annotations: rdfs:label \"test_" . $phenotype_label . "\"\n";
-	$owl .= "   Annotations: relevant_for " . make_valid_id($phenotype_label) . "\n";
 	if(strpos($phenotype_logical_statements,'has') !== false){
 		$humantriggeringrule .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($phenotype_logical_statements)) . "\n";
 	}

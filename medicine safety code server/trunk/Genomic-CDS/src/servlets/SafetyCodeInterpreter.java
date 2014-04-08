@@ -9,7 +9,6 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -23,13 +22,16 @@ import net.sf.ehcache.Element;
 
 import org.apache.commons.lang.text.StrSubstitutor;
 
-import safetycode.MedicineSafetyProfileOptimized;
+import safetycode.DrugRecommendation;
+import safetycode.Genotype;
+import safetycode.GenotypeElement;
+import safetycode.MedicineSafetyProfile_v2;
 import utils.StringReader;
 
 import exception.BadFormedBase64NumberException;
 import exception.NotInitializedPatientsGenomicDataException;
 import exception.VariantDoesNotMatchAnAllowedVariantException;
-
+import utils.Common;
 
 /**
  * Servlet implementation class SafetyCodeInterpreter
@@ -37,7 +39,7 @@ import exception.VariantDoesNotMatchAnAllowedVariantException;
 
 public class SafetyCodeInterpreter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -50,7 +52,7 @@ public class SafetyCodeInterpreter extends HttpServlet {
 		}
 
 		if ((base64ProfileString == null) || (base64ProfileString.equals(""))) 	throw (new ServletException("Error: Submitted code is invalid or missing."));
-		
+				
 		String path = this.getServletContext().getRealPath("/");
 		path=path.replaceAll("\\\\", "/");
 		
@@ -59,12 +61,11 @@ public class SafetyCodeInterpreter extends HttpServlet {
 		CacheManager manager = null;
 		Cache cache = null;
 		try{
-			InputStream fis = new FileInputStream(new File(path+"ehcache.xml").getAbsolutePath());//We obtain the configuration file of the cache manager.
+			InputStream fis = new FileInputStream(new File(path+Common.CACHE_FILE).getAbsolutePath());//We obtain the configuration file of the cache manager.
 			manager = CacheManager.create(fis);//Singleton mode, avoid multiple manager with the same configuration.
 			fis.close();
-			cache = manager.getCache("safetycodecache1"); //Obtain the instance of the configured cache.
+			cache = manager.getCache(Common.CACHE_NAME); //Obtain the instance of the configured cache.
 		}catch(Exception e){
-			//System.out.println("Cache was not initialized with the configuration file = "+path+"ehcache.xml");
 			cache=null;
 			throw (new ServletException("The cache could not be initialized."));
 		}
@@ -75,87 +76,89 @@ public class SafetyCodeInterpreter extends HttpServlet {
 			if(String.class.isInstance(object)){
 				out.println((String) object);
 			}
-			//System.out.println("Cache: hit! -> CODE="+base64ProfileString);
+			
 			//manager.shutdown();		//Close the cache manager to reduce the memory use of the application.
 		}else{	//If there is a cache miss or the cache is not initialized
 			// initialize patient profile
-			//System.out.println("Cache: miss! -> CODE="+base64ProfileString);
-			MedicineSafetyProfileOptimized myProfile = new MedicineSafetyProfileOptimized(path+"MSC_classes.owl");
+			MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path+Common.ONT_NAME);
 			try {
 				myProfile.readBase64ProfileString(base64ProfileString);
 			} catch (VariantDoesNotMatchAnAllowedVariantException e) {
-				throw (new ServletException( e.getMessage()));
+				throw (new ServletException("variant "+ e.getMessage()));
 			} catch (BadFormedBase64NumberException e) {
-				throw (new ServletException( e.getMessage()));
+				throw (new ServletException("number "+ e.getMessage()));
+			}
+			
+			HashMap<String, ArrayList<DrugRecommendation>> list_recommendations=null;
+			try {
+				list_recommendations = myProfile.obtainDrugRecommendations();
 			} catch (NotInitializedPatientsGenomicDataException e) {
-				throw (new ServletException( e.getMessage()));
+				e.printStackTrace();
+				return;
 			}
-			
-			HashMap<String,ArrayList<String>> list_recommendations = myProfile.obtainDrugRecommendations();
 			Map<String,StringBuffer> valuesMap = new HashMap<String, StringBuffer>();
-			
-			// Output raw data
-			StringBuffer rawDataHTML = new StringBuffer("");
-			if(list_recommendations.containsKey("raw_data")){
-				rawDataHTML.append("<ul data-inset='true'>");
-				ArrayList<String> list_data = list_recommendations.get("raw_data");
-				Collections.sort(list_data);
-				
-				Iterator<String> it_data = list_data.iterator();
-				while(it_data.hasNext()){
-					rawDataHTML.append("<li>"+it_data.next()+"</li>");
-				}
-				rawDataHTML.append("</ul>");
-				list_recommendations.remove("raw_data");
-			}
-			valuesMap.put("raw_data", rawDataHTML);
-			
+						
 			// Output inferred alleles
 			StringBuffer allelesHTML = new StringBuffer("");
-			if(list_recommendations.containsKey("inferred_alleles")){
-				allelesHTML.append("<ul data-inset='true'>");
-				Iterator<String> it_data = list_recommendations.get("inferred_alleles").iterator();
-				while(it_data.hasNext()){
-					allelesHTML.append("<li>"+it_data.next()+"</li>");
+			Genotype genotype = myProfile.getGenotype();
+			ArrayList<GenotypeElement> listGenotypeElements = genotype.getListGenotypeElements();
+			for(GenotypeElement ge: listGenotypeElements){
+				if(!ge.getCriteriaSyntax().contains("null;null")){
+					allelesHTML.append("<li>"+ge.getGeneticMarkerName()+" "+revert_label(ge.getCriteriaSyntax(),ge.getGeneticMarkerName())+"</li>");
 				}
-				allelesHTML.append("</ul>");
-				list_recommendations.remove("inferred_alleles");
 			}
 			valuesMap.put("inferred_alleles", allelesHTML);
-					
 			
 			// Output recommendations
 			StringBuffer recommendationsHTML = new StringBuffer("");
-			
+			StringBuffer criticalRecommendationsHTML = new StringBuffer("");
 			if(!list_recommendations.isEmpty()){
-				recommendationsHTML.append("<ul data-role='listview' data-inset='true' data-filter-placeholder='Type medication name...' data-filter='true'>");
-				Iterator<String> it_keys = list_recommendations.keySet().iterator();
-				while(it_keys.hasNext()){
-					String key = it_keys.next();
-					String drug_recommendations = "";
-					Iterator<String> list_data = list_recommendations.get(key).iterator();
-					while(list_data.hasNext()){
-						drug_recommendations+="<fieldset style='margin-bottom:20px'><legend>Recommendation</legend><div class='ui-bar ui-bar-e'>"+list_data.next()+"</div></fieldset>\n";
+				ArrayList<String> list_sorted_keys = new ArrayList<String>();
+				list_sorted_keys.addAll(list_recommendations.keySet());
+				Collections.sort(list_sorted_keys);
+				for(String key : list_sorted_keys){
+					boolean importance = false;
+					String recommendation_html = "";
+					recommendation_html += "<li>\n\t<div data-filtertext=\""+key+"\" data-role=\"collapsible\">\n";
+					String recommendation_html_header ="";
+					ArrayList<DrugRecommendation> list_data = list_recommendations.get(key);
+					String recommendation_html_body = "";
+					for(DrugRecommendation dr: list_data){
+						if(dr.getImportance().contains("Important")){
+							importance = true;
+						}
+						
+						String drug_reason=dr.getReason();
+						String drug_url="";
+						ArrayList<String> list_urls = dr.getSeeAlsoList();
+						if(list_urls!=null && !list_urls.isEmpty()){
+							drug_url = list_urls.get(0);
+						}
+						recommendation_html_body += "\t\t<fieldset style=\"margin-bottom:20px\">\n\t\t\t<legend>"+dr.getSource()+"</legend>\n\t\t\t<div class=\"ui-bar ui-bar-e\">\n\t\t\t\t<div class=\"recommendation-small-text\">Reason: "+drug_reason+"</div>\n\t\t\t\t"+dr.getCDSMessage()+"\n\t\t\t\t<div class=\"recommendation-small-text\">Last guideline update: "+dr.getLastUpdate()+"</div>\n\t\t\t</div>\n\t\t\t<div><a href=\""+drug_url+"\" data-role=\"button\" data-mini=\"true\" data-inline=\"true\" data-icon=\"info\" target=\"_blank\">Show guideline website</a></div>\n\t\t</fieldset>\n\n";
 					}
-					String new_drug = "<li><div data-filtertext=\""+key+"\" data-role=\"collapsible\"><h3>"+key+"</h3>"+drug_recommendations+"</div></li>";
-					recommendationsHTML.append(new_drug);
+					if(importance){
+						recommendation_html_header = "\t\t<h3>"+key+" (!)</h3>\n";
+						recommendation_html +=recommendation_html_header+"\n"+recommendation_html_body+"\t</div>\n</li>\n";
+						criticalRecommendationsHTML.append(recommendation_html);
+						recommendationsHTML.append(recommendation_html);
+					}else{
+						recommendation_html_header = "\t\t<h3>"+key+"</h3>\n";
+						recommendation_html +=recommendation_html_header+"\n"+recommendation_html_body+"\t</div>\n</li>\n";
+						recommendationsHTML.append(recommendation_html);
+					}
 				}
-				recommendationsHTML.append("</ul>");
 			}
-			
-			valuesMap.put("recommendations", recommendationsHTML);
+			valuesMap.put("critical_recommendations", criticalRecommendationsHTML);
+			valuesMap.put("all_recommendations", recommendationsHTML);
 			list_recommendations.clear();
 						
-			// Below, the Apache StrSubstitutor class is used as a very simple
-			// templating engine		
 			StringReader myStringReader = new StringReader();
-			String templateString = myStringReader.readFile(path+"interpretation-template.html");
+			String templateString = myStringReader.readFile(path+"interpretation-template_v2.html");
 			StrSubstitutor sub = new StrSubstitutor(valuesMap);
 			String resolvedString = sub.replace(templateString);
 
 			out.println(resolvedString);
 			if(cache!=null){
-				//System.out.println("Cache: insert -> CODE="+base64ProfileString);
 				cache.put(new Element(base64ProfileString,resolvedString)); //Add the new element into the cache.
 				cache.flush(); //We flush the cache to make all element persistent on disk. This avoid the wrong insert of an element due to application errors. We can avoid this here if the performance of the application is penalized.
 				//manager.shutdown();
@@ -170,5 +173,38 @@ public class SafetyCodeInterpreter extends HttpServlet {
 	protected void doPost(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
+	
+	
+	private String revert_label(String label,String id){
+		//System.out.print("\tid="+id+" with label = "+label);
+		if(id.matches("rs[0-9]+")){
+			label = "("+label+")";
+		}else{
+			if(label.contains("star_")){
+				label = label.replace("star_", "*").trim();
+			}
+			if(label.contains("hash_")){
+				label = label.replace("hash_", "#").trim();
+			}
+			if(label.contains("duplicated_")){
+				if(label.lastIndexOf("duplicated_")>=0 && label.indexOf(";")>=0 && label.lastIndexOf("duplicated_")>label.indexOf(";")){
+					String repeat = label.substring(label.lastIndexOf("duplicated_")+11);
+					label = label.substring(0,label.lastIndexOf("duplicated_"))+" "+repeat+" / "+repeat;
+				}
+				if(label.indexOf("duplicated_")>=0 && label.indexOf(";")>=0 && label.indexOf("duplicated_")<label.indexOf(";")){
+					String repeat = label.substring(label.indexOf("duplicated_")+11,label.indexOf(";"));
+					label = repeat+" / "+repeat+" "+label.substring(label.indexOf(";"));
+				}
+				label += " (note: copy number variation)";
+			}
+			if(label.contains("_")){
+				label = label.replace("_", " ").trim();
+			}
+			if(label.contains(";")){
+				label = label.replace(";"," / ");
+			}
+		}
+		//System.out.println(" produces label = "+label);
+		return label;
+	}
 }
