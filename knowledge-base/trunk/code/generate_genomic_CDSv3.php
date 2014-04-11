@@ -244,14 +244,15 @@ $xml = simplexml_load_file($db_snp_xml_input_file_location); // Parse xml file.
 
 $polymorphism_disjoint_list = array();
 $i = 0;
-	
+$nsnpsvariants = 0;
+$nsnps = 0;
 // For each SNP we obtain: (1) rsid; (2) class, "snp" or "in-del"; (3) Assembly element with reference = true (described below); 
 foreach ($xml->Rs as $Rs) {
 	$rs_id =  $Rs['rsId'];
 	$human_with_genotype_at_locus = "human_with_genotype_at_rs" . $rs_id;
 	$snp_class = $Rs['snpClass'];  //TODO: implement "in-del" snp class functionalities
 	$observed_alleles = $Rs->Sequence->Observed;//Max length = 4;
-	
+	$nsnps = $nsnps+1;
 	//** Get the right Assembly element with reference=true **//
 	$fxn_sets = null; //$Rs->Assembly->Component->MapLoc->FxnSet;
 	$assembly_genome_build = null; //$Rs->Assembly['genomeBuild'];
@@ -313,6 +314,7 @@ foreach ($xml->Rs as $Rs) {
 		if ($orient == "reverse") {
 			$observed_alleles[$j] = flipOrientationOfStringRepresentation($observed_alleles[$j]);
 		}
+		$nsnpsvariants = $nsnpsvariants+1;
 	}	
 	/*if ($orient == "reverse") {
 		for($j=0;$j<count($observed_alleles);$j++){
@@ -510,9 +512,13 @@ foreach ($xml->Rs as $Rs) {
 	$i = $i + 1;
 }
 
+$report .= ("We have defined $nsnps SNPs with $nsnpsvariants variants in the ontology.\n");
+
 //Generate description of genes related to allele definitions.
 $gene_ids[] = "HLA-B"; //We manually add this gene_id because it is used in haplotype definitions but it is not related to any SNPs 
 $gene_ids = array_unique($gene_ids);
+$ngenes = count($gene_ids);
+$report .= ("We have defined $ngenes genes in the ontology.\n");
 foreach ($gene_ids as $gene_id) {
 	$owl .= "Class: " . $gene_id . "\n";
 	$owl .= "    SubClassOf: allele \n";
@@ -537,7 +543,7 @@ $owl .= "\n\n#\n# Data from haplotype spreadsheet\n#\n\n";
 $objPHPExcel = PHPExcel_IOFactory::load($haplotype_spreadsheet_file_location);
 $snp_list = array(); //Needed to know which SNPs are used in the haplotype definitions and to search into DBSNP.
 $allele_id_array = array(); // Needed for creating disjoints later on
-
+$nalleles = 0;
 foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze every haplotype in the document.
 	
 	$homozygous_human_id_array = array(); // Needed for creating disjoints later on
@@ -786,7 +792,9 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 			$owl .= "SubClassOf:" . "\n";
 			$owl .= "has exactly 2 " . $allele_id . "\n\n";
 		}
+		$nalleles = $nalleles+1;
 	}
+	
 	
 	
 	// Produce disjoints between alleles variants
@@ -803,9 +811,11 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 	// NOTE: Disjoints between underdefined/overlapping alleles produce unsatisfiable homozygous humans.
 	$owl .= "# homozygous human disjoints\n";
 	$owl .= generateDisjointClassesOWL($homozygous_human_id_array);
+	
+	
 }
 
-
+$report .= ("We have defined $nalleles alleles variants in the ontology.\n");
 /*********************************************
  ***** Processing CDS rules information ******
  *********************************************/
@@ -818,7 +828,7 @@ $objPHPExcel = PHPExcel_IOFactory::load($pharmacogenomics_decision_support_sprea
 $objWorksheet = $objPHPExcel->getSheetByName("CDS rules");
 
 $drug_ids = array();
-
+$nrules = 0;
 foreach ($objWorksheet->getRowIterator() as $row) {	
 	$row_array = array();	
 	// Skip first row
@@ -918,7 +928,7 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 		continue;
 	}
 	
-	
+	$nrules = $nrules+1;
 	
 	
 	$owl .= "Class: " . make_valid_id($human_class_label) . "\n";
@@ -990,7 +1000,9 @@ foreach ($drug_labels as $drug_label) {
 	$owl .= "    Annotations: rdfs:label \"" . $drug_label . "\"\n";
 	$owl .= "    SubClassOf: drug" . "\n\n";
 }
-
+$ndrugs = count($drug_labels);
+$report .= ("We have defined $ndrugs drugs in the ontology.\n");
+$report .= ("We have defined $nrules rules in the ontology.\n");
 /******************************
  ****** Processing drugs ******
  ******************************/
@@ -1026,7 +1038,7 @@ foreach ($objWorksheet->getRowIterator() as $row) {
  ****** Processing phenotype information ******
  **********************************************/
 $objWorksheet = $objPHPExcel->getSheetByName("Phenotypes");
-
+$nrules = 0;
 foreach ($objWorksheet->getRowIterator() as $row) {
 	$row_array = array();
 	
@@ -1105,7 +1117,7 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	}else{
 		$author_addition = "";
 	}
-	
+	$nrules = $nrules + 1;
 	$owl .= "Class: " . make_valid_id($phenotype_label) . "\n";
 	$owl .= "	SubClassOf: phenotype_rule " . "\n";
 	//$owl .= "	SubClassOf: human_triggering_phenotype_inference_rule " . "\n";
@@ -1141,7 +1153,7 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	}
 	$rule_owl .= $humantriggeringrule ."\n\n";
 }
-
+$report .= ("We have defined $nrules phenotype rules in the ontology.\n");
 /**********************************
  ******* Generate disjoints *******
  **********************************/
