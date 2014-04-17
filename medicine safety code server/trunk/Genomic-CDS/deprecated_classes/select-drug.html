@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Medicine Safety Code</title>
+<meta charset="utf-8">
+<meta name="author" content="Matthias Samwald">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="css/themes/default/jquery.mobile-1.3.2.min.css">
+<link rel="stylesheet" href="_assets/css/jqm-demos.css">
+<link rel="shortcut icon" href="images/favicon.ico">
+<link rel="stylesheet"
+	href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,700">
+<script src="js/jquery.js"></script>
+<script src="_assets/js/index.js"></script>
+<script src="js/jquery.mobile-1.3.2.min.js"></script>
+</head>
+<body>
+
+	<div data-role="page" class="jqm-demos">
+
+		<div data-role="header" class="jqm-header"
+			style="text-align: center; padding: 3px">
+			<img src="images/safety-code-logo.png" width="209" height="30"
+				alt="safety-code.org" />
+		</div>
+		
+		<div data-role="content" class="jqm-content">
+			<form name="manual_data" method="post" action="SelectedDrugInterpreter">
+				<div class="ui-hidden-accesible">
+					<fieldset data-role="controlgroup">
+						<legend>Choose the drugs you are interested in:</legend>
+						<p/>
+						<ul data-role='listview' data-inset='true' data-filter-placeholder='Filter substance list...' data-filter='true'>
+						<li>
+						<input data-filtertext="Abacavir" type="checkbox" name="drugName" id="Abacavir" value="Abacavir" class="custom">
+						<label for="Abacavir">Abacavir</label>
+						</li>
+						<li>
+						<input data-filtertext="Acenocoumarol" type="checkbox" name="drugName" id="Acenocoumarol" value="Acenocoumarol" class="custom">
+						<label for="Acenocoumarol">Acenocoumarol</label>
+						</li>
+						<li>
+						<input data-filtertext="Allopurinol" type="checkbox" name="drugName" id="Allopurinol" value="Allopurinol" class="custom">
+						<label for="Allopurinol">Allopurinol</label>
+						</li>
+						<li>
+						<input data-filtertext="Amitriptyline" type="checkbox" name="drugName" id="Amitriptyline" value="Amitriptyline" class="custom">
+						<label for="Amitriptyline">Amitriptyline</label>
+						</li>
+						<li>
+						<input data-filtertext="Aripiprazole" type="checkbox" name="drugName" id="Aripiprazole" value="Aripiprazole" class="custom">
+						<label for="Aripiprazole">Aripiprazole</label>
+						</li>
+						<li>
+						<input data-filtertext="Atomoxetine" type="checkbox" name="drugName" id="Atomoxetine" value="Atomoxetine" class="custom">
+						<label for="Atomoxetine">Atomoxetine</label>
+						</li>
+						<li>
+						<input data-filtertext="Azathioprine" type="checkbox" name="drugName" id="Azathioprine" value="Azathioprine" class="custom">
+						<label for="Azathioprine">Azathioprine</label>
+						</li>
+						<li>
+						<input data-filtertext="Capecitabine" type="checkbox" name="drugName" id="Capecitabine" value="Capecitabine" class="custom">
+						<label for="Capecitabine">Capecitabine</label>
+						</li>
+						<li>
+						<input data-filtertext="Carbamazepine" type="checkbox" name="drugName" id="Carbamazepine" value="Carbamazepine" class="custom">
+						<label for="Carbamazepine">Carbamazepine</label>
+						</li>
+						<li>
+						<input data-filtertext="Carvedilol" type="checkbox" name="drugName" id="Carvedilol" value="Carvedilol" class="custom">
+						<label for="Carvedilol">Carvedilol</label>
+						</li>
+						<li>
+						<input data-filtertext="Citalopram" type="checkbox" name="drugName" id="Citalopram" value="Citalopram" class="custom">
+						<label for="Citalopram">Citalopram</label>
+						</li>
+						<li>
+						<input data-filtertext="Clomipramine" type="checkbox" name="drugName" id="Clomipramine" value="Clomipramine" class="custom">
+						<label for="Clomipramine">Clomipramine</label>
+						</li>
+						<li>
+						<input data-filtertext="Clopidogrel" type="checkbox" name="drugName" id="Clopidogrel" value="Clopidogrel" class="custom">
+						<label for="Clopidogrel">Clopidogrel</label>
+						</li>
+						<li>
+						<input data-filtertext="Clozapine" type="checkbox" name="drugName" id="Clozapine" value="Clozapine" class="custom">
+						<label for="Clozapine">Clozapine</label>
+						</li>
+						<li>
+						<input data-filtertext="Codeine" type="checkbox" name="drugName" id="Codeine" value="Codeine" class="custom">
+						<label for="Codeine">Codeine</label>
+						</li>
+						<li>
+						<input data-filtertext="Desipramine" type="checkbox" name="drugName" id="Desipramine" value="Desipramine" class="custom">
+						<label for="Desipramine">Desipramine</label>
+						</li>
+						<li>
+						<input data-filtertext="Doxepin" type="checkbox" name="drugName" id="Doxepin" value="Doxepin" class="custom">
+						<label for="Doxepin">Doxepin</label>
+						</li>
+						<li>
+						<input data-filtertext="Duloxetine" type="checkbox" name="drugName" id="Duloxetine" value="Duloxetine" class="custom">
+						<label for="Duloxetine">Duloxetine</label>
+						</li>
+						<li>
+						<input data-filtertext="Escitalopram" type="checkbox" name="drugName" id="Escitalopram" value="Escitalopram" class="custom">
+						<label for="Escitalopram">Escitalopram</label>
+						</li>
+						<li>
+						<input data-filtertext="Esomeprazole" type="checkbox" name="drugName" id="Esomeprazole" value="Esomeprazole" class="custom">
+						<label for="Esomeprazole">Esomeprazole</label>
+						</li>
+						<li>
+						<input data-filtertext="Flecainide" type="checkbox" name="drugName" id="Flecainide" value="Flecainide" class="custom">
+						<label for="Flecainide">Flecainide</label>
+						</li>
+						<li>
+						<input data-filtertext="Fluorouracil" type="checkbox" name="drugName" id="Fluorouracil" value="Fluorouracil" class="custom">
+						<label for="Fluorouracil">Fluorouracil</label>
+						</li>
+						<li>
+						<input data-filtertext="Flupenthixol" type="checkbox" name="drugName" id="Flupenthixol" value="Flupenthixol" class="custom">
+						<label for="Flupenthixol">Flupenthixol</label>
+						</li>
+						<li>
+						<input data-filtertext="Glibenclamide" type="checkbox" name="drugName" id="Glibenclamide" value="Glibenclamide" class="custom">
+						<label for="Glibenclamide">Glibenclamide</label>
+						</li>
+						<li>
+						<input data-filtertext="Gliclazide" type="checkbox" name="drugName" id="Gliclazide" value="Gliclazide" class="custom">
+						<label for="Gliclazide">Gliclazide</label>
+						</li>
+						<li>
+						<input data-filtertext="Glimepiride" type="checkbox" name="drugName" id="Glimepiride" value="Glimepiride" class="custom">
+						<label for="Glimepiride">Glimepiride</label>
+						</li>
+						<li>
+						<input data-filtertext="Haloperidol" type="checkbox" name="drugName" id="Haloperidol" value="Haloperidol" class="custom">
+						<label for="Haloperidol">Haloperidol</label>
+						</li>
+						<li>
+						<input data-filtertext="Hormonal contraceptives for systemic use" type="checkbox" name="drugName" id="Hormonal contraceptives for systemic use" value="Hormonal contraceptives for systemic use" class="custom">
+						<label for="Hormonal contraceptives for systemic use">Hormonal contraceptives for systemic use</label>
+						</li>
+						<li>
+						<input data-filtertext="Imipramine" type="checkbox" name="drugName" id="Imipramine" value="Imipramine" class="custom">
+						<label for="Imipramine">Imipramine</label>
+						</li>
+						<li>
+						<input data-filtertext="Irinotecan" type="checkbox" name="drugName" id="Irinotecan" value="Irinotecan" class="custom">
+						<label for="Irinotecan">Irinotecan</label>
+						</li>
+						<li>
+						<input data-filtertext="Lansoprazole" type="checkbox" name="drugName" id="Lansoprazole" value="Lansoprazole" class="custom">
+						<label for="Lansoprazole">Lansoprazole</label>
+						</li>
+						<li>
+						<input data-filtertext="Mercaptopurine" type="checkbox" name="drugName" id="Mercaptopurine" value="Mercaptopurine" class="custom">
+						<label for="Mercaptopurine">Mercaptopurine</label>
+						</li>
+						<li>
+						<input data-filtertext="Metoprolol" type="checkbox" name="drugName" id="Metoprolol" value="Metoprolol" class="custom">
+						<label for="Metoprolol">Metoprolol</label>
+						</li>
+						<li>
+						<input data-filtertext="Mirtazapine" type="checkbox" name="drugName" id="Mirtazapine" value="Mirtazapine" class="custom">
+						<label for="Mirtazapine">Mirtazapine</label>
+						</li>
+						<li>
+						<input data-filtertext="Moclobemide" type="checkbox" name="drugName" id="Moclobemide" value="Moclobemide" class="custom">
+						<label for="Moclobemide">Moclobemide</label>
+						</li>
+						<li>
+						<input data-filtertext="Nortriptyline" type="checkbox" name="drugName" id="Nortriptyline" value="Nortriptyline" class="custom">
+						<label for="Nortriptyline">Nortriptyline</label>
+						</li>
+						<li>
+						<input data-filtertext="Olanzapine" type="checkbox" name="drugName" id="Olanzapine" value="Olanzapine" class="custom">
+						<label for="Olanzapine">Olanzapine</label>
+						</li>
+						<li>
+						<input data-filtertext="Omeprazole" type="checkbox" name="drugName" id="Omeprazole" value="Omeprazole" class="custom">
+						<label for="Omeprazole">Omeprazole</label>
+						</li>
+						<li>
+						<input data-filtertext="Oxycodone" type="checkbox" name="drugName" id="Oxycodone" value="Oxycodone" class="custom">
+						<label for="Oxycodone">Oxycodone</label>
+						</li>
+						<li>
+						<input data-filtertext="Pantoprazole" type="checkbox" name="drugName" id="Pantoprazole" value="Pantoprazole" class="custom">
+						<label for="Pantoprazole">Pantoprazole</label>
+						</li>
+						<li>
+						<input data-filtertext="Paroxetine" type="checkbox" name="drugName" id="Paroxetine" value="Paroxetine" class="custom">
+						<label for="Paroxetine">Paroxetine</label>
+						</li>
+						<li>
+						<input data-filtertext="Peginterferon alfa-2a" type="checkbox" name="drugName" id="Peginterferon alfa-2a" value="Peginterferon alfa-2a" class="custom">
+						<label for="Peginterferon alfa-2a">Peginterferon alfa-2a</label>
+						</li>
+						<li>
+						<input data-filtertext="Peginterferon alfa-2b" type="checkbox" name="drugName" id="Peginterferon alfa-2b" value="Peginterferon alfa-2b" class="custom">
+						<label for="Peginterferon alfa-2b">Peginterferon alfa-2b</label>
+						</li>
+						<li>
+						<input data-filtertext="Phenprocoumon" type="checkbox" name="drugName" id="Phenprocoumon" value="Phenprocoumon" class="custom">
+						<label for="Phenprocoumon">Phenprocoumon</label>
+						</li>
+						<li>
+						<input data-filtertext="Phenytoin" type="checkbox" name="drugName" id="Phenytoin" value="Phenytoin" class="custom">
+						<label for="Phenytoin">Phenytoin</label>
+						</li>
+						<li>
+						<input data-filtertext="Propafenone" type="checkbox" name="drugName" id="Propafenone" value="Propafenone" class="custom">
+						<label for="Propafenone">Propafenone</label>
+						</li>
+						<li>
+						<input data-filtertext="Rabeprazole" type="checkbox" name="drugName" id="Rabeprazole" value="Rabeprazole" class="custom">
+						<label for="Rabeprazole">Rabeprazole</label>
+						</li>
+						<li>
+						<input data-filtertext="Ribavirin" type="checkbox" name="drugName" id="Ribavirin" value="Ribavirin" class="custom">
+						<label for="Ribavirin">Ribavirin</label>
+						</li>
+						<li>
+						<input data-filtertext="Risperidone" type="checkbox" name="drugName" id="Risperidone" value="Risperidone" class="custom">
+						<label for="Risperidone">Risperidone</label>
+						</li>
+						<li>
+						<input data-filtertext="Sertraline" type="checkbox" name="drugName" id="Sertraline" value="Sertraline" class="custom">
+						<label for="Sertraline">Sertraline</label>
+						</li>
+						<li>
+						<input data-filtertext="Simvastatin" type="checkbox" name="drugName" id="Simvastatin" value="Simvastatin" class="custom">
+						<label for="Simvastatin">Simvastatin</label>
+						</li>
+						<li>
+						<input data-filtertext="Tacrolimus" type="checkbox" name="drugName" id="Tacrolimus" value="Tacrolimus" class="custom">
+						<label for="Tacrolimus">Tacrolimus</label>
+						</li>
+						<li>
+						<input data-filtertext="Tamoxifen" type="checkbox" name="drugName" id="Tamoxifen" value="Tamoxifen" class="custom">
+						<label for="Tamoxifen">Tamoxifen</label>
+						</li>
+						<li>
+						<input data-filtertext="Tegafur" type="checkbox" name="drugName" id="Tegafur" value="Tegafur" class="custom">
+						<label for="Tegafur">Tegafur</label>
+						</li>
+						<li>
+						<input data-filtertext="Thioguanine" type="checkbox" name="drugName" id="Thioguanine" value="Thioguanine" class="custom">
+						<label for="Thioguanine">Thioguanine</label>
+						</li>
+						<li>
+						<input data-filtertext="Tolbutamide" type="checkbox" name="drugName" id="Tolbutamide" value="Tolbutamide" class="custom">
+						<label for="Tolbutamide">Tolbutamide</label>
+						</li>
+						<li>
+						<input data-filtertext="Tramadol" type="checkbox" name="drugName" id="Tramadol" value="Tramadol" class="custom">
+						<label for="Tramadol">Tramadol</label>
+						</li>
+						<li>
+						<input data-filtertext="Trimipramine" type="checkbox" name="drugName" id="Trimipramine" value="Trimipramine" class="custom">
+						<label for="Trimipramine">Trimipramine</label>
+						</li>
+						<li>
+						<input data-filtertext="Venlafaxine" type="checkbox" name="drugName" id="Venlafaxine" value="Venlafaxine" class="custom">
+						<label for="Venlafaxine">Venlafaxine</label>
+						</li>
+						<li>
+						<input data-filtertext="Voriconazole" type="checkbox" name="drugName" id="Voriconazole" value="Voriconazole" class="custom">
+						<label for="Voriconazole">Voriconazole</label>
+						</li>
+						<li>
+						<input data-filtertext="Warfarin" type="checkbox" name="drugName" id="Warfarin" value="Warfarin" class="custom">
+						<label for="Warfarin">Warfarin</label>
+						</li>
+						<li>
+						<input data-filtertext="Zuclopenthixol" type="checkbox" name="drugName" id="Zuclopenthixol" value="Zuclopenthixol" class="custom">
+						<label for="Zuclopenthixol">Zuclopenthixol</label>
+						</li>
+						</ul>
+					</fieldset>
+				</div>
+				<div>
+					<input type="submit" value="Display recommendations" />
+				</div>
+			</form>
+		</div>
+		
+		<div data-role="footer" style="text-align: center; padding: 5px;">
+			<div>
+				This service is provided for research purposes only and comes
+				without any warranty. (C)&nbsp;2012&nbsp;<a
+					href="http://safety-code.org" data-ajax="false">safety-code.org</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<!-- END: main -->

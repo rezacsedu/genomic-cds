@@ -87,12 +87,12 @@ public class GenotypeElementDefinitions extends HttpServlet {
 				HashSet<String> listUniqueElements = new HashSet<String>(); 
 				ArrayList<String> listElements = gmg.getListElements();
 				for(String element: listElements){
-					if(element.contains(";")){
+					/*if(element.contains(";")){
 						listUniqueElements.add(element.substring(0,element.indexOf(";")));
 						listUniqueElements.add(element.substring(element.indexOf(";")+1));
-					}else{
+					}else{*/
 						listUniqueElements.add(element);
-					}
+					//}
 				}
 				
 				if(listUniqueElements.size()<=1){

@@ -21,9 +21,9 @@ public class Common {
 	public final static String DBSNP_ORIENTATION = "dbsnp-orientation";
 	public final static String FORWARD_ORIENTATION = "forward-orientation";
 	//public final static String ROOT_URL = "http://safety-code.org/Genomic-CDS";
-	public final static String ROOT_URL = "http://owl.msi.meduniwien.ac.at:8080/Genomic-CDS";
+	//public final static String ROOT_URL = "http://owl.msi.meduniwien.ac.at:8080/Genomic-CDS";
 	//public final static String ROOT_URL = "http://localhost:8080/Genomic-CDS";//URL for testing in my local server
-	//public final static String ROOT_URL = "http://safety-code.org";
+	public final static String ROOT_URL = "http://safety-code.org";
 	public final static String VERSION = "v0.2";
 	public final static int HAS_IMPORTANT_RECOMMENDATION = 1;
 	public final static int HAS_STANDARD_RECOMMENDATION = 2;

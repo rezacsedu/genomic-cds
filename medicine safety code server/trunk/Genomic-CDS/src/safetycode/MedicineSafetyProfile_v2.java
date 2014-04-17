@@ -3,7 +3,6 @@ package safetycode;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import exception.BadFormedBase64NumberException;
 import exception.BadFormedBinaryNumberException;
 import exception.NotInitializedPatientsGenomicDataException;
@@ -185,4 +184,34 @@ public class MedicineSafetyProfile_v2 {
 		}
 		return mapDrugRecommendations;
 	}
+	
+	/**
+	 * Get the list of genetic markers involved in the treatment recommendations rules related to the list of drugs provided.
+	 * 
+	 * @param listDrugs		List of drug terms which will be used to find their related genetic markers.
+	 * @return				List of genetic markers related to the provided list of drugs.
+	 * */
+	public ArrayList<Genetic_Marker_Group> getGenotypeGroupsRelatedToDrugs(String[] listDrugs){
+		ArrayList<Genetic_Marker_Group> display_groups = new ArrayList<Genetic_Marker_Group>();
+		ArrayList<Genetic_Marker_Group> list_groups = om.getListGeneticMarkerGroups();
+		for(Genetic_Marker_Group gmg: list_groups){
+			ArrayList<DrugRecommendation> list_recommendations = om.getListDrugRecommendation();
+			for(DrugRecommendation dr: list_recommendations){
+				boolean next_gmg = false;
+				for(int i=0;i<listDrugs.length;i++){
+					if(dr.getDrugName().equals(listDrugs[i])){
+						String rule = dr.getRuleDescription();
+						if(rule.contains(gmg.getGeneticMarkerName())){
+							display_groups.add(gmg);
+							next_gmg = true;
+							break;
+						}
+					}
+				}
+				if(next_gmg) break;
+			}
+		}
+		return display_groups;
+	}
+	
 }

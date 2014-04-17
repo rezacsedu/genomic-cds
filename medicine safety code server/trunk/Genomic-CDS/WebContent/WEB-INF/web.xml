@@ -20,14 +20,6 @@
     <servlet-name>MSCImageGenerator</servlet-name>
     <url-pattern>/MSCImageGenerator</url-pattern>
   </servlet-mapping>
-  <!-- servlet>
-    <servlet-name>PatientOWLGenerator</servlet-name>
-    <servlet-class>servlets.PatientOWLGenerator</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>PatientOWLGenerator</servlet-name>
-    <url-pattern>/PatientOWLGenerator</url-pattern>
-  </servlet-mapping -->
   <error-page>
     <exception-type>java.lang.Throwable</exception-type>
     <location>/errorPage.jsp</location>
@@ -69,5 +61,25 @@
   <servlet-mapping>
     <servlet-name>AlleleGeneralInterpreter</servlet-name>
     <url-pattern>/AlleleGeneralInterpreter</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectedDrugInterpreter</display-name>
+    <servlet-name>SelectedDrugInterpreter</servlet-name>
+    <servlet-class>servlets.SelectedDrugInterpreter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectedDrugInterpreter</servlet-name>
+    <url-pattern>/SelectedDrugInterpreter</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>SelectedDrugsAlleleInterpreter</display-name>
+    <servlet-name>SelectedDrugsAlleleInterpreter</servlet-name>
+    <servlet-class>servlets.SelectedDrugsAlleleInterpreter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SelectedDrugsAlleleInterpreter</servlet-name>
+    <url-pattern>/SelectedDrugsAlleleInterpreter</url-pattern>
   </servlet-mapping>
 </web-app>

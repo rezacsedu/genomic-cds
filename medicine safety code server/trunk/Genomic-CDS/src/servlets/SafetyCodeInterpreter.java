@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,7 +46,7 @@ public class SafetyCodeInterpreter extends HttpServlet {
 	 *      response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+			
 		String base64ProfileString = request.getRequestURI();
 		if(base64ProfileString.contains("/")){
 			base64ProfileString = base64ProfileString.substring(base64ProfileString.lastIndexOf("/")+1);			
@@ -113,6 +114,12 @@ public class SafetyCodeInterpreter extends HttpServlet {
 			StringBuffer recommendationsHTML = new StringBuffer("");
 			StringBuffer criticalRecommendationsHTML = new StringBuffer("");
 			if(!list_recommendations.isEmpty()){
+				Comparator<DrugRecommendation> comparator = new Comparator<DrugRecommendation>(){
+					public int compare(DrugRecommendation dr1,DrugRecommendation dr2){
+						return dr1.getSource().compareTo(dr2.getSource());
+					}
+				};
+				
 				ArrayList<String> list_sorted_keys = new ArrayList<String>();
 				list_sorted_keys.addAll(list_recommendations.keySet());
 				Collections.sort(list_sorted_keys);
@@ -123,6 +130,8 @@ public class SafetyCodeInterpreter extends HttpServlet {
 					String recommendation_html_header ="";
 					ArrayList<DrugRecommendation> list_data = list_recommendations.get(key);
 					String recommendation_html_body = "";
+					
+					Collections.sort(list_data,comparator);
 					for(DrugRecommendation dr: list_data){
 						if(dr.getImportance().contains("Important")){
 							importance = true;
@@ -137,17 +146,38 @@ public class SafetyCodeInterpreter extends HttpServlet {
 						recommendation_html_body += "\t\t<fieldset style=\"margin-bottom:20px\">\n\t\t\t<legend>"+dr.getSource()+"</legend>\n\t\t\t<div class=\"ui-bar ui-bar-e\">\n\t\t\t\t<div class=\"recommendation-small-text\">Reason: "+drug_reason+"</div>\n\t\t\t\t"+dr.getCDSMessage()+"\n\t\t\t\t<div class=\"recommendation-small-text\">Last guideline update: "+dr.getLastUpdate()+"</div>\n\t\t\t</div>\n\t\t\t<div><a href=\""+drug_url+"\" data-role=\"button\" data-mini=\"true\" data-inline=\"true\" data-icon=\"info\" target=\"_blank\">Show guideline website</a></div>\n\t\t</fieldset>\n\n";
 					}
 					if(importance){
+						if(criticalRecommendationsHTML.length() == 0){
+							criticalRecommendationsHTML.append("<li data-role=\"list-divider\">Critical</li>\n");
+						}
+						if(recommendationsHTML.length()==0){
+							recommendationsHTML.append("<li data-role=\"list-divider\">All</li>");
+						}
 						recommendation_html_header = "\t\t<h3>"+key+" (!)</h3>\n";
 						recommendation_html +=recommendation_html_header+"\n"+recommendation_html_body+"\t</div>\n</li>\n";
 						criticalRecommendationsHTML.append(recommendation_html);
 						recommendationsHTML.append(recommendation_html);
 					}else{
+						if(recommendationsHTML.length()==0){
+							recommendationsHTML.append("<li data-role=\"list-divider\">All</li>");
+						}
 						recommendation_html_header = "\t\t<h3>"+key+"</h3>\n";
 						recommendation_html +=recommendation_html_header+"\n"+recommendation_html_body+"\t</div>\n</li>\n";
 						recommendationsHTML.append(recommendation_html);
 					}
 				}
+				if(criticalRecommendationsHTML.length() == 0){
+					criticalRecommendationsHTML.append("<li data-role=\"list-divider\">Critical</li>\n");
+					String recommendation_html = "";
+					recommendation_html += "<li>\n\t<fieldset style=\"margin-bottom:20px\"><div class=\"ui-bar ui-bar-e\"><label>There is not any matched rule related to a critical drug recommendation with the current genomic data.</label></div></fieldset>\n";
+					criticalRecommendationsHTML.append(recommendation_html);
+				}
+			}else{
+				recommendationsHTML.append("<li data-role=\"list-divider\">All</li>\n");
+				String recommendation_html = "";
+				recommendation_html += "<li>\n\t<fieldset style=\"margin-bottom:20px\"><div class=\"ui-bar ui-bar-e\"><label>There is not any matched rule related to a drug recommendation with the current genomic data.</label></div></fieldset>\n";
+				recommendationsHTML.append(recommendation_html);
 			}
+			
 			valuesMap.put("critical_recommendations", criticalRecommendationsHTML);
 			valuesMap.put("all_recommendations", recommendationsHTML);
 			list_recommendations.clear();

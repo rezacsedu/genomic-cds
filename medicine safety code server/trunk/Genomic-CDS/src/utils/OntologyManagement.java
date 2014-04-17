@@ -612,6 +612,8 @@ public class OntologyManagement {
 		OWLAnnotationProperty ann_lastUpdate	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#date_last_validation"));
 		OWLAnnotationProperty ann_phenotype		= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#phenotype_description"));
 		
+		//java.util.HashSet<String> list_drugs= new java.util.HashSet<String>();
+		
 		Iterator<OWLClassExpression> list_recommendations = rootRecommendationClass.getSubClasses(ontology).iterator();
 		while(list_recommendations.hasNext()){
 			OWLClass recommendation = list_recommendations.next().asOWLClass();
@@ -734,9 +736,15 @@ public class OntologyManagement {
 			}
 			
 			DrugRecommendation dr = new DrugRecommendation(recommendation_label, cds_message, importance, source, relevant_for, seeAlsoList, lastUpdate,phenotype);
-			
+			//list_drugs.add(relevant_for);
 			dr.setRule(recommendation_comment);
 			listDrugRecommendations.add(dr);
 		}
+		/*ArrayList<String> sorted_drugs = new ArrayList<String>();
+		sorted_drugs.addAll(list_drugs);
+		Collections.sort(sorted_drugs);
+		for(String drug: sorted_drugs){
+			System.out.println("<input type=\"checkbox\" name=\"drugName\" id=\""+drug+"\" value=\""+drug+"\" class=\"custom\">\n<label for=\""+drug+"\">"+drug+"</label>");
+		}*/
 	}
 }
