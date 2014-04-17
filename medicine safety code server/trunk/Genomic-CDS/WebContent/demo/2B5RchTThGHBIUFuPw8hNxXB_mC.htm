@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Medicine Safety Code</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="css/themes/default/jquery.mobile-1.3.2.min.css">
+<link rel="stylesheet" href="_assets/css/jqm-demos.css">
+<link rel="shortcut icon" href="images/favicon.png">
+<link rel="stylesheet" href="css/safety-code.css">
+<script src="js/jquery.js"></script>
+<script src="/_assets/js/index.js"></script>
+<script src="js/jquery.mobile-1.3.2.min.js"></script>
+</head>
+<body>
+<div data-role="page" class="jqm-demos">
+  <div data-role="header" class="jqm-header"
+			style="text-align: center; padding: 3px"> <img src="images/safety-code-logo-2014-without-slogan.png" width="200" height="37"
+				alt="safety-code.org" /> </div>
+  <div data-role="content" class="jqm-content">
+    <div data-role="collapsible-set">
+      <ul data-role='listview' data-inset='true' data-filter-placeholder='Filter substance list...' data-filter='true'>
+        <li data-role="list-divider">Critical</li>
+        <li>
+          <div data-filtertext="azathioprine azamun azanin azasan imuran imurek imurel muran" data-role="collapsible">
+            <h3>Azathioprine (!)</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Clinical Pharmacogenetics Implementation Consortium guideline</legend>
+              <div class='ui-bar ui-bar-e'>
+                <div class="recommendation-small-text">Reason: TPMT poor metabolizer</div>
+                Consider alternative agents. If using azathioprine start with drastically reduced doses (reduce daily dose by 10-fold and dose thrice weekly instead of daily) and adjust doses of azathioprine based on degree of myelosuppression and disease-specific guidelines. Allow 4-6 weeks to reach steady state after each dose adjustment. Azathioprine is the likely cause of myelosuppression.
+                <div class="recommendation-small-text">Last guideline update: January 26, 2011</div>
+              </div>
+              <div><a href="http://www.pharmgkb.org/guideline/PA166104934" data-role="button" data-mini="true" data-inline="true" data-icon="info" target="_blank">Show guideline website</a></div>
+            </fieldset>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Dutch Pharmacogenetics Working Group guideline</legend>
+              <div class='ui-bar ui-bar-e'>
+                <div class="recommendation-small-text">Reason: TPMT poor metabolizer</div>
+                Select alternative drug or reduce dose by 90%. Increase dose in response of hematologic monitoring and efficacy.
+                <div class="recommendation-small-text">Last guideline update: March 16, 2011</div>
+              </div>
+              <div><a href="http://www.pharmgkb.org/guideline/PA166104934" data-role="button" data-mini="true" data-inline="true" data-icon="info" target="_blank">Show guideline website</a></div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="codeine" data-role="collapsible">
+            <h3>Codeine (!)</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Clinical Pharmacogenetics Implementation Consortium  guideline</legend>
+              <div class='ui-bar ui-bar-e'>
+                <div class="recommendation-small-text">Reason: CYP2D6 ultrarapid metabolizer </div>
+                <strong>Avoid codeine use due to potential for toxicity. Consider alternative analgesics such as morphine or a nonopioid. Consider avoiding tramadol.</strong><br>
+                <div class="recommendation-small-text">Last guideline update: December 28, 2011</div>
+              </div>
+              <div><a href="http://www.pharmgkb.org/guideline/PA166104996" data-role="button" data-mini="true" data-inline="true" data-icon="info" target="_blank">Show guideline website</a></div>
+            </fieldset>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Dutch Pharmacogenetics Working Group guideline</legend>
+              <div class='ui-bar ui-bar-e'>
+                <div class="recommendation-small-text">Reason: CYP2D6 ultrarapid metabolizer</div>
+                <strong>Analgesia: select alternative drug (e.g., acetaminophen,          NSAID, morphine - not tramadol or oxycodone) or be alert to ADE.          Cough: be extra alert to ADEs due to increased morphine plasma          concentration.</strong>
+                <div class="recommendation-small-text">Last guideline update: August 10, 2011</div>
+              </div>
+              <div><a href="http://www.pharmgkb.org/guideline/PA166104970" data-role="button" data-mini="true" data-inline="true" data-icon="info" target="_blank">Show guideline website</a></div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="mercaptopurine" data-role="collapsible">
+            <h3>Mercaptopurine (!)</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Clinical Pharmacogenetics Implementation Consortium guideline</legend>
+              <div class='ui-bar ui-bar-e'>
+                <div class="recommendation-small-text">Reason: TPMT poor metabolizer</div>
+                <strong></strong>For malignancy, start with drastically reduced doses (reduce daily dose by 10-fold and reduce frequency to thrice weekly instead of daily, e.g., 10 mg/m2/d given just 3 days/week) and adjust doses of MP based on degree of myelosuppression and disease-specific guidelines. Allow 4-6 weeks to reach steady state after each dose adjustment. In setting of myelosuppression, emphasis should be on reducing mercaptopurine over other agents. For nonmalignant conditions, consider alternative nonthiopurine immunosuppressant therapy.
+                <div class="recommendation-small-text">Last guideline update: December 28, 2011</div>
+              </div>
+              <div><a href="http://www.pharmgkb.org/guideline/PA166104945" data-role="button" data-mini="true" data-inline="true" data-icon="info" target="_blank">Show guideline website</a></div>
+            </fieldset>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Dutch Pharmacogenetics Working Group guideline</legend>
+              <div class='ui-bar ui-bar-e'>
+                <div class="recommendation-small-text">Reason: TPMT poor metabolizer</div>
+                <strong></strong>Select alternative drug or reduce dose by 90%. Increase dose in response of hematologic monitoring and efficacy.
+                <div class="recommendation-small-text"> Last guideline update: March 16, 2011</div>
+              </div>
+              <div><a href="http://www.pharmgkb.org/guideline/PA166104952" data-role="button" data-mini="true" data-inline="true" data-icon="info" target="_blank">Show guideline website</a></div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="thioguanine lanvis" data-role="collapsible">
+            <h3>Thioguanine (!)</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Dutch Pharmacogenetics Working Group guideline</legend>
+              <div class='ui-bar ui-bar-e'>
+                <div class="recommendation-small-text">Reason: TPMT poor metabolizer</div>
+                <strong></strong>Select alternative drug.  Insufficient data to allow calculation of dose adjustment.
+                <div class="recommendation-small-text">Last guideline update:  March 16, 2011</div>
+              </div>
+              <div><a href="http://www.pharmgkb.org/guideline/PA166104960" data-role="button" data-mini="true" data-inline="true" data-icon="info" target="_blank">Show guideline website</a></div>
+            </fieldset>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Clinical Pharmacogenetics Implementation Consortium guideline</legend>
+              <div class='ui-bar ui-bar-e'>
+                <div class="recommendation-small-text">Reason: TPMT poor metabolizer</div>
+                <strong></strong>Start with drastically reduced doses (reduce daily dose by 10-fold and dose thrice weekly instead of daily) and adjust doses of thioguanine based on degree of myelosuppression and disease-specific guidelines. Allow 4-6 weeks to reach steady state after each dose adjustment. In setting of myelosuppression, emphasis should be on reducing thioguanine over other agents. For nonmalignant conditions, consider alternative nonthiopurine immunosuppressant therapy.
+                <div class="recommendation-small-text">Last guideline update: January 26, 2011</div>
+              </div>
+              <div><a href="http://www.pharmgkb.org/guideline/PA166104952" data-role="button" data-mini="true" data-inline="true" data-icon="info" target="_blank">Show guideline website</a></div>
+            </fieldset>
+          </div>
+        </li>
+        <li data-role="list-divider">All</li>
+        <li>
+          <div data-filtertext="Abacavir" data-role="collapsible">
+            <h3>Abacavir</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Acenocoumarol" data-role="collapsible">
+            <h3>Acenocoumarol</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Allopurinol" data-role="collapsible">
+            <h3>Allopurinol</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Amitriptyline" data-role="collapsible">
+            <h3>Amitriptyline</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Aripiprazole" data-role="collapsible">
+            <h3>Aripiprazole</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Atomoxetine" data-role="collapsible">
+            <h3>Atomoxetine</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="azathioprine azamun azanin azasan imuran imurek imurel muran" data-role="collapsible">
+            <h3>Azathioprine (!)</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Clinical Pharmacogenetics Implementation Consortium guideline</legend>
+              <div class='ui-bar ui-bar-e'>
+                <div class="recommendation-small-text">Reason: TPMT poor metabolizer</div>
+                Consider alternative agents. If using azathioprine start with drastically reduced doses (reduce daily dose by 10-fold and dose thrice weekly instead of daily) and adjust doses of azathioprine based on degree of myelosuppression and disease-specific guidelines. Allow 4-6 weeks to reach steady state after each dose adjustment. Azathioprine is the likely cause of myelosuppression.
+                <div class="recommendation-small-text">Last guideline update: January 26, 2011</div>
+              </div>
+              <div><a href="http://www.pharmgkb.org/guideline/PA166104934" data-role="button" data-mini="true" data-inline="true" data-icon="info" target="_blank">Show guideline website</a></div>
+            </fieldset>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Dutch Pharmacogenetics Working Group guideline</legend>
+              <div class='ui-bar ui-bar-e'>
+                <div class="recommendation-small-text">Reason: TPMT poor metabolizer</div>
+                Select alternative drug or reduce dose by 90%. Increase dose in response of hematologic monitoring and efficacy.
+                <div class="recommendation-small-text">Last guideline update: March 16, 2011</div>
+              </div>
+              <div><a href="http://www.pharmgkb.org/guideline/PA166104934" data-role="button" data-mini="true" data-inline="true" data-icon="info" target="_blank">Show guideline website</a></div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Capecitabine" data-role="collapsible">
+            <h3>Capecitabine</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Carbamazepine" data-role="collapsible">
+            <h3>Carbamazepine</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Carvedilol" data-role="collapsible">
+            <h3>Carvedilol</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Citalopram" data-role="collapsible">
+            <h3>Citalopram</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Clomipramine" data-role="collapsible">
+            <h3>Clomipramine</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Clopidogrel" data-role="collapsible">
+            <h3>Clopidogrel</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Clozapine" data-role="collapsible">
+            <h3>Clozapine</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="codeine" data-role="collapsible">
+            <h3>Codeine (!)</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Clinical Pharmacogenetics Implementation Consortium  guideline</legend>
+              <div class='ui-bar ui-bar-e'>
+                <div class="recommendation-small-text">Reason: CYP2D6 ultrarapid metabolizer </div>
+                <strong>Avoid codeine use due to potential for toxicity. Consider alternative analgesics such as morphine or a nonopioid. Consider avoiding tramadol.</strong><br>
+                <div class="recommendation-small-text">Last guideline update: December 28, 2011</div>
+              </div>
+              <div><a href="http://www.pharmgkb.org/guideline/PA166104996" data-role="button" data-mini="true" data-inline="true" data-icon="info" target="_blank">Show guideline website</a></div>
+            </fieldset>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Dutch Pharmacogenetics Working Group guideline</legend>
+              <div class='ui-bar ui-bar-e'>
+                <div class="recommendation-small-text">Reason: CYP2D6 ultrarapid metabolizer</div>
+                <strong>Analgesia: select alternative drug (e.g., acetaminophen,          NSAID, morphine - not tramadol or oxycodone) or be alert to ADE.          Cough: be extra alert to ADEs due to increased morphine plasma          concentration.</strong>
+                <div class="recommendation-small-text">Last guideline update: August 10, 2011</div>
+              </div>
+              <div><a href="http://www.pharmgkb.org/guideline/PA166104970" data-role="button" data-mini="true" data-inline="true" data-icon="info" target="_blank">Show guideline website</a></div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Desipramine" data-role="collapsible">
+            <h3>Desipramine</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Doxepin" data-role="collapsible">
+            <h3>Doxepin</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Duloxetine" data-role="collapsible">
+            <h3>Duloxetine</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Escitalopram" data-role="collapsible">
+            <h3>Escitalopram</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Esomeprazole" data-role="collapsible">
+            <h3>Esomeprazole</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Flecainide" data-role="collapsible">
+            <h3>Flecainide</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Fluorouracil" data-role="collapsible">
+            <h3>Fluorouracil</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Flupenthixol" data-role="collapsible">
+            <h3>Flupenthixol</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Glibenclamide" data-role="collapsible">
+            <h3>Glibenclamide</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Gliclazide" data-role="collapsible">
+            <h3>Gliclazide</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Glimepiride" data-role="collapsible">
+            <h3>Glimepiride</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Haloperidol" data-role="collapsible">
+            <h3>Haloperidol</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Hormonal contraceptive for systemic use" data-role="collapsible">
+            <h3>Hormonal contraceptive for systemic use</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Imipramine" data-role="collapsible">
+            <h3>Imipramine</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Irinotecan" data-role="collapsible">
+            <h3>Irinotecan</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Lansoprazole" data-role="collapsible">
+            <h3>Lansoprazole</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="mercaptopurine" data-role="collapsible">
+            <h3>Mercaptopurine (!)</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Clinical Pharmacogenetics Implementation Consortium guideline</legend>
+              <div class='ui-bar ui-bar-e'>
+                <div class="recommendation-small-text">Reason: TPMT poor metabolizer</div>
+                <strong></strong>For malignancy, start with drastically reduced doses (reduce daily dose by 10-fold and reduce frequency to thrice weekly instead of daily, e.g., 10 mg/m2/d given just 3 days/week) and adjust doses of MP based on degree of myelosuppression and disease-specific guidelines. Allow 4-6 weeks to reach steady state after each dose adjustment. In setting of myelosuppression, emphasis should be on reducing mercaptopurine over other agents. For nonmalignant conditions, consider alternative nonthiopurine immunosuppressant therapy.
+                <div class="recommendation-small-text">Last guideline update: December 28, 2011</div>
+              </div>
+              <div><a href="http://www.pharmgkb.org/guideline/PA166104945" data-role="button" data-mini="true" data-inline="true" data-icon="info" target="_blank">Show guideline website</a></div>
+            </fieldset>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Dutch Pharmacogenetics Working Group guideline</legend>
+              <div class='ui-bar ui-bar-e'>
+                <div class="recommendation-small-text">Reason: TPMT poor metabolizer</div>
+                <strong></strong>Select alternative drug or reduce dose by 90%. Increase dose in response of hematologic monitoring and efficacy.
+                <div class="recommendation-small-text"> Last guideline update: March 16, 2011</div>
+              </div>
+              <div><a href="http://www.pharmgkb.org/guideline/PA166104952" data-role="button" data-mini="true" data-inline="true" data-icon="info" target="_blank">Show guideline website</a></div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Metoprolol" data-role="collapsible">
+            <h3>Metoprolol</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Mirtazapine" data-role="collapsible">
+            <h3>Mirtazapine</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Moclobemide" data-role="collapsible">
+            <h3>Moclobemide</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Nortriptyline" data-role="collapsible">
+            <h3>Nortriptyline</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Olanzapine" data-role="collapsible">
+            <h3>Olanzapine</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Omeprazole" data-role="collapsible">
+            <h3>Omeprazole</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Oxycodone" data-role="collapsible">
+            <h3>Oxycodone</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Pantoprazole" data-role="collapsible">
+            <h3>Pantoprazole</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Paroxetine" data-role="collapsible">
+            <h3>Paroxetine</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Peginterferon alfa-2a" data-role="collapsible">
+            <h3>Peginterferon alfa-2a</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Phenprocoumon" data-role="collapsible">
+            <h3>Phenprocoumon</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Phenytoin" data-role="collapsible">
+            <h3>Phenytoin</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Propafenone" data-role="collapsible">
+            <h3>Propafenone</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Rabeprazole" data-role="collapsible">
+            <h3>Rabeprazole</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Ribavirin" data-role="collapsible">
+            <h3>Ribavirin</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Risperidone" data-role="collapsible">
+            <h3>Risperidone</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Sertraline" data-role="collapsible">
+            <h3>Sertraline</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="simvastatin" data-role="collapsible">
+            <h3>Simvastatin</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Clinical Pharmacogenetics Implementation Consortium guideline</legend>
+              <div class='ui-bar ui-bar-c'>
+                <div class="recommendation-small-text">Reason: SLCO1B1 normal activity</div>
+                Normal myopathy risk. FDA recommends against 80 mg (unless already tolerated 12 months). Prescribe desired starting dose and adjust doses of simvastatin based on disease-specific guidelines.
+                <div class="recommendation-small-text">Last guideline update: May 23, 2012 </div>
+              </div>
+              <div><a href="http://www.pharmgkb.org/guideline/PA166105005" data-role="button" data-mini="true" data-inline="true" data-icon="info" target="_blank">Show guideline website</a></div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Tacrolimus" data-role="collapsible">
+            <h3>Tacrolimus</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Tamoxifen" data-role="collapsible">
+            <h3>Tamoxifen</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Tegafur" data-role="collapsible">
+            <h3>Tegafur</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="thioguanine lanvis" data-role="collapsible">
+            <h3>Thioguanine (!)</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Dutch Pharmacogenetics Working Group guideline</legend>
+              <div class='ui-bar ui-bar-e'>
+                <div class="recommendation-small-text">Reason: TPMT poor metabolizer</div>
+                <strong></strong>Select alternative drug.  Insufficient data to allow calculation of dose adjustment.
+                <div class="recommendation-small-text">Last guideline update:  March 16, 2011</div>
+              </div>
+              <div><a href="http://www.pharmgkb.org/guideline/PA166104960" data-role="button" data-mini="true" data-inline="true" data-icon="info" target="_blank">Show guideline website</a></div>
+            </fieldset>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Clinical Pharmacogenetics Implementation Consortium guideline</legend>
+              <div class='ui-bar ui-bar-e'>
+                <div class="recommendation-small-text">Reason: TPMT poor metabolizer</div>
+                <strong></strong>Start with drastically reduced doses (reduce daily dose by 10-fold and dose thrice weekly instead of daily) and adjust doses of thioguanine based on degree of myelosuppression and disease-specific guidelines. Allow 4-6 weeks to reach steady state after each dose adjustment. In setting of myelosuppression, emphasis should be on reducing thioguanine over other agents. For nonmalignant conditions, consider alternative nonthiopurine immunosuppressant therapy.
+                <div class="recommendation-small-text">Last guideline update: January 26, 2011</div>
+              </div>
+              <div><a href="http://www.pharmgkb.org/guideline/PA166104952" data-role="button" data-mini="true" data-inline="true" data-icon="info" target="_blank">Show guideline website</a></div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Tolbutamide" data-role="collapsible">
+            <h3>Tolbutamide</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Tramadol" data-role="collapsible">
+            <h3>Tramadol</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Trimipramine" data-role="collapsible">
+            <h3>Trimipramine</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'>
+                <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                  contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+              </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Venlafaxine" data-role="collapsible">
+            <h3>Venlafaxine</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Voriconazole" data-role="collapsible">
+            <h3>Voriconazole</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Warfarin" data-role="collapsible">
+            <h3>Warfarin</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+        <li>
+          <div data-filtertext="Zuclopenthixol" data-role="collapsible">
+            <h3>Zuclopenthixol</h3>
+            <fieldset style='margin-bottom:20px'>
+              <legend>Not shown in this demo</legend>
+              <div class='ui-bar ui-bar-c'> Guideline not shown in this demo. In total the system currently 
+                contains more than 400 guidelines for more than 60 pharmaceutical compounds. </div>
+            </fieldset>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div data-role="collapsible" data-mini="true">
+      <h4>Show pharmacogenomic data</h4>
+      <ul data-inset='true'>
+        <li>ABCB1 *1 / *1</li>
+        <li>ADRB H1 / H1</li>
+        <li>BRCA1 1 / 1</li>
+        <li>COMT Haplotype high activity / Haplotype high activity</li>
+        <li>CYP1A2 *1 / *1</li>
+        <li>CYP2A6 *1 / *1</li>
+        <li>CYP2B6 *1 / *1</li>
+        <li>CYP2C9 *1 / *1</li>
+        <li>CYP2C19 *1 / *1</li>
+        <li>CYP2D6 *1 / * 2 / * 2 <em>(note: copy number variation)</em></li>
+        <li>CYP3A4 *1 / *1</li>
+        <li>CYP3A5 *1 / *1</li>
+        <li>DPYD *1 / *1</li>
+        <li>HMGCR H2 / H7</li>
+        <li>P2RY12 H1 / H1</li>
+        <li>G6PD B (wildtype) / B (wildtype)</li>
+        <li>SULT1A1 *1 / *2</li>
+        <li>TPMT *2 / *3</li>
+        <li>UGT1A1 *1 / *1</li>
+        <li>VKORC *1 / *2</li>
+        <li>rs4149056(T;T)</li>
+        <li>rs9923231(C;T)</li>
+      </ul>
+    </div>
+  </div>
+  <div data-role="footer" style="text-align: center; padding: 5px;">
+    <div> This service is provided for research purposes only and comes
+      without any warranty. Visit <a	href="http://safety-code.org" data-ajax="false">safety-code.org</a> for more information. </div>
+  </div>
+</div>
+</body>
+</html>
