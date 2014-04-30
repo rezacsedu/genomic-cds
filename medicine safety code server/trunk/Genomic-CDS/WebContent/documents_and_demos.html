@@ -57,7 +57,7 @@
         <div id="mainmenu">
           <ul class="sf-menu">
             <li><a href="index.html"><span class="home"><img src="images/home.png" alt="" /></span>Home</a></li>
-            <li><a href="persons.html"><span class="home"><img src="images/about.png" alt="" /></span>PERSONS</a></li>
+            <li><a href="people.html"><span class="home"><img src="images/about.png" alt="" /></span>PEOPLE</a></li>
             <li><a href="documents_and_demos.html" id="visited"><span class="home"><img src="images/portfolio.png" alt="" /></span>DOCUMENTS &amp; DEMOS</a>
             </li>
             <li><a href="contact.html"><span class="home"><img src="images/blog.png" alt="" /></span>JOIN / CONTACT</a>
@@ -71,7 +71,7 @@
           <select>
             <option value="">Navigation</option>
             <option value="index.html">Home</option>
-            <option value="persons.html">Persons</option>
+            <option value="people.html">People</option>
             <option value="documents_and_demos.html">Documents &amp; demos</option>
             <option value="contact.html">Join / Contact</option>
           </select>
@@ -91,17 +91,26 @@
 <div class="container">
   <h2>Demo</h2>
   <p>A typical Medicine Safety Code can look like this:</p>
-  <p style="text-align:center"><img src="images/demo/safetyCodeDemo_v0.2_January2014.png" alt="Example of a Medicine Safety Code QR code" ></p>
+  <p style="text-align:center"><img src="images/demo/safetyCodeDemo_demo_April2014.png" alt="Example of a Medicine Safety Code QR code" ></p>
  <p>Medicine Safety Codes are special kinds of Quick Response codes (QR codes). You might have already seen such QR codes on advertisments or in magazines. 
  
   They can be decoded with any common QR code   reader app. In many cases, such apps come pre-installed on mobile   devices. For example, many Android devices come pre-installed with an   application called <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.unveil">Google Goggles</a>. Simply activate the app and point   the camera of your mobile phone towards the MSC QR code. Another Android app would be <a href="https://play.google.com/store/apps/details?id=la.droid.qr">QR Droid</a>.
  iPhone/iPad users can try the <a href="https://itunes.apple.com/en/app/qr-reader-for-iphone/id368494609?mt=8">QR Reader</a> app.
  <p>If you use such a QR code reader, you can decipher the QR code, yielding a string of characters looking  like this:
- <p style="text-align:center"><a href="http://safety-code.org/v0.2/QXGqnLF2h8xuqzIyCGJE2hzPzVzqND_q0vtKk2Erxy0gQgD6lxWI0dzPwTq41w2UACs2nwZlF3QPxkv3uuuQtj4S55rDHGVU26ma2Z203z-RCqhavsFv0a5uY1q770Su7_dg80000" target="_blank">http://safety-code.org/v0.2/QXGqnLF2h8xuqzIyCGJE2hzPzVzqND_q0vtKk2Erxy0gQgD6lxWI0dzPwTq41w ...</a></p>
+ <p style="text-align:center"><a href="http://safety-code.org/demo/2B5RchTThGHBIUFuPw8hNxXB_mC" target="_blank">http://safety-code.org/demo/2B5RchTThGHBIUFuPw8hNxXB_mC</a></p>
  <p>This puzzling string of characters contains the compressed data about the  essential pharmacogenes of an individual person. These data can help you predict how a person will react when given certain medications, and can be used to make medical treatment safer and more effective. </p>
  <p>But how can you make sense of this? If you look closer, you can see that the Medicine Safety Code does not only contain compressed genetic data, but also double-acts as a URL that leads you to a service for decoding and interpreting these data! You can try this out either by using your smartphone app on the QR code or by directly visiting the link above. This will lead you to an interactive decision support service looking like this:</p>
    <p style="text-align:center"><img src="images/demo/CDS_recommendation.png" alt="Example of a Medicine Safety Code QR code" style="margin-top:20px"></p>
  <p>All pharmacogenomic treatment recommendations matching the specific genetic makeup of the individual are shown. The recommendations are based on clinical guidelines from expert committees, such as the <a href="http://www.pharmgkb.org/page/cpic">Clinical Pharmacogenomics Implementation Consortium (CPIC)</a> and the<a href="https://www.pharmgkb.org/page/dpwg"> Dutch Pharmacogenetics Working Group</a>.</p>
+  <div class="sepContainer1"></div>
+ <h2 id="try-it-yourself">Try it yourself</h2>
+ 
+ <p>Trying the system yourself is easy. You have two options: 
+ <ul class="contactsidebarList">
+ <li><a href="generate.html">Generate your own Safety Code</a> by uploading genetic data in VCF or 23andMe format.</li> 
+ <li>Alternatively, cou can <a href="select-drug.html">choose which medications you are interested in and manually enter pharmacogenomic data</a> to see matching clinical guidelines without generating a Safety Code.</li>
+ </ul>
+ </p>
 </div>
 <!-- econtainer ends here --> 
 <!-- About Content Part - Box Two ==================================================
