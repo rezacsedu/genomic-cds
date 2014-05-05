@@ -16,13 +16,13 @@
 </head>
 <body class="ui-mobile-viewport ui-overlay-c">
   <div data-role="page" class="jqm-demos">
-    <div data-role="header" class="jqm-header" style="text-align: center; padding: 3px"> <img src="../images/safety-code-logo-2014-without-slogan.png" width="200" height="37" alt="safety-code.org"/> </div>
+    <div data-role="header" class="jqm-header" style="text-align: center; padding: 3px">
+      <img src="../images/safety-code-logo-2014-without-slogan.png" width="200" height="37" alt="safety-code.org"/>
+    </div>
     <div data-role="content" class="jqm-content">
       <div data-role="collapsible-set">
         <ul data-role='listview' data-inset='true' data-filter-placeholder='Filter substance list...' data-filter='true'>
-          <!--li data-role="list-divider">Critical</li-->
-		  ${critical_recommendations}
-          <!--li class="ui-li ui-li-divider ui-bar-b" role="heading" data-role="list-divider">All</li-->
+          ${critical_recommendations}
 		  ${all_recommendations}
         </ul>
       </div>
@@ -33,9 +33,13 @@
         </ul>
       </div>
     </div>
-    <div role="contentinfo" class="ui-footer ui-bar-a" data-role="footer" style="text-align: center; padding: 5px;">
-      <div> This service is provided for research purposes only and comes without any warranty. Visit <a class="ui-link" href="http://safety-code.org/" data-ajax="false">safety-code.org</a> for more information. </div>
-    </div>
+    <div data-role="footer" style="text-align: center; padding: 5px;">
+	  <div>
+		This service is provided for research purposes only and comes
+		without any warranty. (C)&nbsp;2012&nbsp;<a
+		href="http://safety-code.org" data-ajax="false">safety-code.org</a>
+	  </div>
+	</div>
   </div>
 </body>
 </html>
