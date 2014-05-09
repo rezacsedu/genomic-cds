@@ -11,13 +11,12 @@ ini_set("memory_limit","3072M");
  ***************************************/
 $db_snp_xml_input_file_location = "..\\data\\dbSNP\\core_rsid_data_from_dbsnp_25_3_2014.xml";//Source file of SNP descriptions gathered from dbSNP.
 $haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet_new_v2.xlsx";//Source file of haplotype descriptions, such as CYP2C19*1 or DPYD*2A.
-$pharmacogenomics_decision_support_spreadsheet_file_location = "..\\data\\decision-support-rules\\Pharmacogenomics decision support spreadsheet_new_v2.xlsx";//Source file of pharmacogenomics rule descriptions.
+$pharmacogenomics_decision_support_spreadsheet_file_location = "..\\data\\decision-support-rules\\Pharmacogenomics decision support spreadsheet_v2.xlsx";//Source file of pharmacogenomics rule descriptions.
 
-$pharmacogenomic_CDS_base_file_location = "..\\ontology\\genomic-cds_base_new_v2.owl";//Base file of the ontology that conceptualizes the pharmacogenomics domain.
-$MSC_classes_base_file_location = "..\\ontology\\MSC_classes_base_new_v2.owl";//Base file of the ontology that will be used in MSC server and contains all descriptions of the human subclasses.
-$pharmacogenomic_CDS_demo_additions_file_location = "..\\ontology\\genomic-cds_demo_additions_new_v2.owl";//Base file of the ontology with patient's genotype used for prototyping. 
-$CDS_rule_additions_file_location = "..\\ontology\\genomic-cds_rules.owl";//Base file of the ontology with patient's genotype used for prototyping. 
-
+$pharmacogenomic_CDS_base_file_location = "..\\ontology\\genomic-cds_base.owl";//Base file of the ontology that conceptualizes the pharmacogenomics domain.
+$MSC_classes_base_file_location = "..\\ontology\\MSC_classes_base.owl";//Base file of the ontology that will be used in MSC server and contains all descriptions of the human subclasses.
+$pharmacogenomic_CDS_demo_additions_file_location = "..\\ontology\\genomic-cds_demo_additions.owl";//Base file of the ontology with patient's genotype used for prototyping. 
+$CDS_rule_demo_additions_file_location = "..\\ontology\\genomic-cds_rule_demo_additions.owl";
 $snpCoveredBy23andMe_v2_file_location = "..\\data\\assay-information\\SNPs covered by 23andMe v2.txt";//List of SNPs that are recognized by 23andMe v2 format.
 $snpCoveredBy23andMe_v3_file_location = "..\\data\\assay-information\\SNPs covered by 23andMe v3.txt";//List of SNPs that are recognized by 23andMe v3 format.
 $snpCoveredByAffimetrix_file_location = "..\\data\\assay-information\\SNPs covered by Affymetrix DMET chip - PMID 20217574.txt";//List of SNPs that are recognized by Affymetrix DMET chip - 20217574.
@@ -28,12 +27,15 @@ $snpCoveredByUniOfFloridaAndStandford_file_location = "..\\data\\assay-informati
 /******************************************
  *******   Output file locations   ********
  ******************************************/
-$pharmacogenomic_CDS_file_location = "..\\ontology\\genomic-cds_new_v2.owl";//Final ontology file with the conceptualization of the pharmacogenomics domain.
-$MSC_classes_file_location = "..\\ontology\\MSC_classes_new_v2.owl";//Final ontology file that will be used in MSC server.
-$pharmacogenomic_CDS_demo_file_location = "..\\ontology\\genomic-cds-demo_new_v2.owl";//Final ontology file with a demo patient's genotype.
-$report_file_location = "..\\ontology\\generate_genomic_CDS.report_new_v2.txt";//Output report about problems that may happen during the execution of this script.
+$pharmacogenomic_CDS_file_location = "..\\ontology\\genomic-cds.owl";//Final ontology with the conceptualization of haplotypes and the textual descriptions of CDS and phenotype rules.
+$MSC_classes_file_location = "..\\ontology\\MSC_classes.owl";//Final ontology with the conceptualization of human SNP variant classes, human haplotype classes and the textual descriptions of CDS and phenotype rules. It is the one used in MSC server.
+$MSC_classes_demo_file_location = "..\\ontology\\MSC_classes_demo.owl";//Final ontology with a demo patient's genotype based on human SNP variants and the MSC_classes ontology.
+$report_file_location = "..\\ontology\\generate_genomic_CDS_report.txt";//Output report about problems that may happen during the execution of this script.
 
-
+$CDS_rule_file_location = "..\\ontology\\genomic-cds_rules.owl";//Final ontology with the conceptualization of human haplotype classes and the textual and logical descriptions of CDS and phenotype rules. 
+$CDS_rule_demo_file_location = "..\\ontology\\genomic-cds_rules_demo.owl";//Final ontology with demo patient's genotype based on direct association of user with SNPs variant classes and the genomic-cds_rules ontology. 
+$CDS_rule_full_file_location = "..\\ontology\\genomic-cds_rules_full.owl";//Final ontology with the conceptualization of human haplotype classes, human SNP variant classes and the textual and logical descriptions of CDS and phenotype rules. 
+$CDS_rule_full_demo_file_location = "..\\ontology\\genomic-cds_rules_full_demo.owl";//Final ontology with demo patient's genotype based on human SNP variants and the genomic-cds_rules_full ontology.
 
 /**************************************************
  *******  Initializing important variables  *******
@@ -988,9 +990,9 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	$humantriggeringrule .= "   SubClassOf: human_triggering_CDS_rule" . "\n";
 	$humantriggeringrule .= "   Annotations: rdfs:label \"test_" . $human_class_label . "\"\n";
 	$humantriggeringrule .= "   Annotations: relevant_for " . make_valid_id($drug_label) . "\n";
-	if(strpos($logical_description_of_genetic_attributes,'has') !== false){
+	//if(strpos($logical_description_of_genetic_attributes,'has') !== false){
 		$humantriggeringrule .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($logical_description_of_genetic_attributes)) . "\n";
-	}
+	//}
 	$rule_owl .= $humantriggeringrule ."\n\n";
 }
 
@@ -1148,9 +1150,9 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	$humantriggeringrule = "Class: test_" . make_valid_id($phenotype_label) . "\n";
 	$humantriggeringrule .= "   SubClassOf: human_triggering_phenotype_inference_rule" . "\n";
 	$humantriggeringrule .= "   Annotations: rdfs:label \"test_" . $phenotype_label . "\"\n";
-	if(strpos($phenotype_logical_statements,'has') !== false){
+	//if(strpos($phenotype_logical_statements,'has') !== false){
 		$humantriggeringrule .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($phenotype_logical_statements)) . "\n";
-	}
+	//}
 	$rule_owl .= $humantriggeringrule ."\n\n";
 }
 $report .= ("We have defined $nrules phenotype rules in the ontology.\n");
@@ -1177,9 +1179,17 @@ foreach($snp_list as $snp_element){
 //file_put_contents("..\\data\\dbSNP\\list_snps.txt",$results);
 file_put_contents($pharmacogenomic_CDS_file_location, $owl);
 file_put_contents($MSC_classes_file_location, $owl . $msc_owl); // $owl and $msc_owl are merged
-file_put_contents($pharmacogenomic_CDS_demo_file_location, $owl . $rule_owl . file_get_contents($pharmacogenomic_CDS_demo_additions_file_location));
-file_put_contents($CDS_rule_additions_file_location, $owl . $rule_owl); // 
+file_put_contents($MSC_classes_demo_file_location, $owl . $msc_owl . file_get_contents($CDS_rule_demo_additions_file_location));
+file_put_contents($CDS_rule_file_location, $owl . $rule_owl); // Ontology with the logical expression of cds and phenotype rules defined.
+file_put_contents($CDS_rule_demo_file_location, $owl . $rule_owl . file_get_contents($pharmacogenomic_CDS_demo_additions_file_location)); // Ontology with the logical expression of cds and phenotype rules defined and a demo example.
+file_put_contents($CDS_rule_full_file_location, $owl . $msc_owl . $rule_owl); // Ontology with the logical expression of cds and phenotype rules defined.
+file_put_contents($CDS_rule_full_demo_file_location, $owl . $msc_owl . $rule_owl . file_get_contents($CDS_rule_demo_additions_file_location)); // Ontology with the logical expression of cds and phenotype rules defined and a demo example.
+
+
 file_put_contents($report_file_location, $report);
+
+
+
 
 beep(2);
 ?> 
