@@ -27,15 +27,17 @@ $snpCoveredByUniOfFloridaAndStandford_file_location = "..\\data\\assay-informati
 /******************************************
  *******   Output file locations   ********
  ******************************************/
-$pharmacogenomic_CDS_file_location = "..\\ontology\\genomic-cds.owl";//Final ontology with the conceptualization of haplotypes and the textual descriptions of CDS and phenotype rules.
-$MSC_classes_file_location = "..\\ontology\\MSC_classes.owl";//Final ontology with the conceptualization of human SNP variant classes, human haplotype classes and the textual descriptions of CDS and phenotype rules. It is the one used in MSC server.
-$MSC_classes_demo_file_location = "..\\ontology\\MSC_classes_demo.owl";//Final ontology with a demo patient's genotype based on human SNP variants and the MSC_classes ontology.
+$light_rule_file_location = "..\\ontology\\genomic-cds.owl";//Light ontology version with the conceptualization of haplotypes and the CDS and phenotype rules.
+$light_rule_demo_file_location = "..\\ontology\\genomic-cds_demo.owl";//Light ontology version with demo patient's genotype based on direct association of user with SNPs variant classes and the genomic-cds_rules ontology. 
+
+$full_rule_file_location = "..\\ontology\\MSC_classes.owl";//Full ontology version with the conceptualization of human SNP variant classes, human haplotype classes and the CDS and phenotype rules.
+$full_rule_demo_file_location = "..\\ontology\\MSC_classes_demo.owl";//Full ontology version with a demo patient's genotype based on human SNP variants and the MSC_classes ontology.
+
+$CDS_server_file_location = "..\\ontology\\MSC_textual_rules.owl";// Full ontology version but with only the textual description of CDS and phenotype rules. It is the one used in MSC server.
+$CDS_server_demo_file_location = "..\\ontology\\MSC_textual_rules_demo.owl";// Full ontology version with a demo patient's genotype based on human SNP variants and the MSC_textual_rules ontology.
+
 $report_file_location = "..\\ontology\\generate_genomic_CDS_report.txt";//Output report about problems that may happen during the execution of this script.
 
-$CDS_rule_file_location = "..\\ontology\\genomic-cds_rules.owl";//Final ontology with the conceptualization of human haplotype classes and the textual and logical descriptions of CDS and phenotype rules. 
-$CDS_rule_demo_file_location = "..\\ontology\\genomic-cds_rules_demo.owl";//Final ontology with demo patient's genotype based on direct association of user with SNPs variant classes and the genomic-cds_rules ontology. 
-$CDS_rule_full_file_location = "..\\ontology\\genomic-cds_rules_full.owl";//Final ontology with the conceptualization of human haplotype classes, human SNP variant classes and the textual and logical descriptions of CDS and phenotype rules. 
-$CDS_rule_full_demo_file_location = "..\\ontology\\genomic-cds_rules_full_demo.owl";//Final ontology with demo patient's genotype based on human SNP variants and the genomic-cds_rules_full ontology.
 
 /**************************************************
  *******  Initializing important variables  *******
@@ -43,6 +45,7 @@ $CDS_rule_full_demo_file_location = "..\\ontology\\genomic-cds_rules_full_demo.o
 $owl = file_get_contents($pharmacogenomic_CDS_base_file_location) . "\n\n\n"; // Read the content of base ontology.
 $msc_owl = file_get_contents($MSC_classes_base_file_location) . "\n\n\n"; // Read the content of base ontology for encoding/decoding Medicine Safety Codes (MSC server).
 $rule_owl = "\n\n";
+$textual_rule = "\nClass: rule\n\tAnnotations:\n\t\trdfs:label \"CDS rule\",\n\t\trdfs:comment \"A rule is a logical description of a drug recommendation based on human genotype.\"\n\nClass: phenotype_rule\n\tAnnotations:\n\t\trdfs:label \"Phenotype rule\",\n\t\trdfs:comment \"A phenotype rule is a logical description of a patient phenotype based on its genotype.\"\n\n";
 
 $report = "-- Report -- \n\n"; // Start with the content of the script report and error log.
 $valid_polymorphism_variants = array(); // List of valid polymorphism variants from dbSNP (used to find errors and orientation mismatches).
@@ -931,14 +934,13 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	}
 	
 	$nrules = $nrules+1;
-	
-	
-	$owl .= "Class: " . make_valid_id($human_class_label) . "\n";
-	$owl .= "   SubClassOf: rule" . "\n";
-	$owl .= "   Annotations: rdfs:label \"" . $human_class_label . "\"\n";
-	$owl .= "   Annotations: rdfs:comment \"" . preg_replace('/\s+/', ' ', trim($logical_description_of_genetic_attributes)) . "\"\n";
+		
+	$textualtriggeringrule = "Class: " . make_valid_id($human_class_label) . "\n";
+	$textualtriggeringrule .= "   SubClassOf: rule" . "\n";
+	$textualtriggeringrule .= "   Annotations: rdfs:label \"" . $human_class_label . "\"\n";
+	$textualtriggeringrule .= "   Annotations: rdfs:comment \"" . preg_replace('/\s+/', ' ', trim($logical_description_of_genetic_attributes)) . "\"\n";
 	if ($drug_label ==! "") {
-		$owl .= "   Annotations: relevant_for " . make_valid_id($drug_label) . "\n";
+		$textualtriggeringrule .= "   Annotations: relevant_for " . make_valid_id($drug_label) . "\n";
 		$drug_labels[] = $drug_label;
 	}
 	//if(strpos($logical_description_of_genetic_attributes,'has') !== false){
@@ -946,49 +948,50 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	//}else{
 	//	$owl .= " SubClassOf: " . preg_replace('/\s+/', ' ', trim($logical_description_of_genetic_attributes)) . "\n";
 	//}
-	$owl .= "   Annotations: source \"" . $source_repository . "\"\n";
+	$textualtriggeringrule .= "   Annotations: source \"" . $source_repository . "\"\n";
 	
 	if(isset($textual_description_of_genetic_attributes) && $textual_description_of_genetic_attributes != ""){
-		$owl .= "   Annotations: textual_genetic_description \"" . clean_comment_string($textual_description_of_genetic_attributes) . "\"\n";
+		$textualtriggeringrule .= "   Annotations: textual_genetic_description \"" . clean_comment_string($textual_description_of_genetic_attributes) . "\"\n";
 	}
 	
 	if(isset($phenotype_description) && $phenotype_description != ""){
-		$owl .= "   Annotations: phenotype_description \"" . clean_comment_string($phenotype_description) . "\"\n";
+		$textualtriggeringrule .= "   Annotations: phenotype_description \"" . clean_comment_string($phenotype_description) . "\"\n";
 	}
 	
 	if(isset($recommendation_importance) && $recommendation_importance != ""){
-		$owl .= "   Annotations: recommendation_importance \"" . $recommendation_importance . "\"\n";
+		$textualtriggeringrule .= "   Annotations: recommendation_importance \"" . $recommendation_importance . "\"\n";
 	}
 	
 	if(isset($recommendation_URL) && $recommendation_URL != ""){
-		$owl .= parse_multiple_URLs($recommendation_URL);
+		$textualtriggeringrule .= parse_multiple_URLs($recommendation_URL);
 	}
 	
 	if(isset($date_of_evidence) && $date_of_evidence != ""){
-		$owl .= "   Annotations: date_of_evidence \"" . $date_of_evidence . "\"\n";
+		$textualtriggeringrule .= "   Annotations: date_of_evidence \"" . $date_of_evidence . "\"\n";
 	}
 	
 	if(isset($date_of_addition) && $date_of_addition != ""){
-		$owl .= "   Annotations: date_of_addition \"" . $date_of_addition . "\"\n";
+		$textualtriggeringrule .= "   Annotations: date_of_addition \"" . $date_of_addition . "\"\n";
 	}
 	
 	if(isset($date_last_validation) && $date_last_validation != ""){
-		$owl .= "   Annotations: date_last_validation \"" . $date_last_validation . "\"\n";
+		$textualtriggeringrule .= "   Annotations: date_last_validation \"" . $date_last_validation . "\"\n";
 	}
 	
 	if(isset($author_last_validation) && $author_last_validation != ""){
-		$owl .= "   Annotations: author_last_validation \"" . $author_last_validation . "\"\n";
+		$textualtriggeringrule .= "   Annotations: author_last_validation \"" . $author_last_validation . "\"\n";
 	}
 	
 	if(isset($author_addition) && $author_addition != ""){
-		$owl .= "   Annotations: author_addition \"" . $author_addition . "\"\n";
+		$textualtriggeringrule .= "   Annotations: author_addition \"" . $author_addition . "\"\n";
 	}
-	$owl .= "   Annotations: CDS_message \"" . addslashes($recommendation_in_english) . "\"\n\n";	
+	$textualtriggeringrule .= "   Annotations: CDS_message \"" . addslashes($recommendation_in_english) . "\"\n\n";	
 	
+	$textual_rule .= $textualtriggeringrule . "\n\n";
 	
-	$humantriggeringrule = "Class: test_" . make_valid_id($human_class_label) . "\n";
+	$humantriggeringrule = "Class: human_triggering_" . make_valid_id($human_class_label) . "\n";
 	$humantriggeringrule .= "   SubClassOf: human_triggering_CDS_rule" . "\n";
-	$humantriggeringrule .= "   Annotations: rdfs:label \"test_" . $human_class_label . "\"\n";
+	$humantriggeringrule .= "   Annotations: rdfs:label \"human triggering " . $human_class_label . "\"\n";
 	$humantriggeringrule .= "   Annotations: relevant_for " . make_valid_id($drug_label) . "\n";
 	//if(strpos($logical_description_of_genetic_attributes,'has') !== false){
 		$humantriggeringrule .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($logical_description_of_genetic_attributes)) . "\n";
@@ -1059,7 +1062,7 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	if(!isset($row_array['A']) || $row_array['A'] == ""){
 		continue;		
 	}
-	$phenotype_label = "human with ".$row_array["A"];
+	$phenotype_label = $row_array["A"];
 	
 	if(isset($row_array["B"])){
 		$phenotype_source = $row_array["B"];
@@ -1120,36 +1123,38 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 		$author_addition = "";
 	}
 	$nrules = $nrules + 1;
-	$owl .= "Class: " . make_valid_id($phenotype_label) . "\n";
-	$owl .= "	SubClassOf: phenotype_rule " . "\n";
+	
+	$textualtriggeringrule = "Class: " . make_valid_id($phenotype_label) . "\n";
+	$textualtriggeringrule .= "	SubClassOf: phenotype_rule " . "\n";
 	//$owl .= "	SubClassOf: human_triggering_phenotype_inference_rule " . "\n";
 	//$owl .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($phenotype_logical_statements)) . "\n";
-	$owl .= "	Annotations: rdfs:comment \"" . preg_replace('/\s+/', ' ', trim($phenotype_logical_statements)) . "\"\n";
-	$owl .= "	Annotations: rdfs:label \"" . $phenotype_label . "\"\n";
-	$owl .= "   Annotations: source \"" . $phenotype_source . "\"\n";
-	$owl .= parse_multiple_URLs($phenotype_URL);
+	$textualtriggeringrule .= "	Annotations: rdfs:comment \"" . preg_replace('/\s+/', ' ', trim($phenotype_logical_statements)) . "\"\n";
+	$textualtriggeringrule .= "	Annotations: rdfs:label \"" . $phenotype_label . "\"\n";
+	$textualtriggeringrule .= "   Annotations: source \"" . $phenotype_source . "\"\n";
+	$textualtriggeringrule .= parse_multiple_URLs($phenotype_URL);
 	
 	if(isset($date_of_evidence) && $date_of_evidence != ""){
-		$owl .= "   Annotations: date_of_evidence \"" . $date_of_evidence . "\"\n";
+		$textualtriggeringrule .= "   Annotations: date_of_evidence \"" . $date_of_evidence . "\"\n";
 	}	
 	if(isset($date_of_addition) && $date_of_addition != ""){
-		$owl .= "   Annotations: date_of_addition \"" . $date_of_addition . "\"\n";
+		$textualtriggeringrule .= "   Annotations: date_of_addition \"" . $date_of_addition . "\"\n";
 	}	
 	if(isset($date_last_validation) && $date_last_validation != ""){
-		$owl .= "   Annotations: date_last_validation \"" . $date_last_validation . "\"\n";
+		$textualtriggeringrule .= "   Annotations: date_last_validation \"" . $date_last_validation . "\"\n";
 	}	
 	if(isset($author_last_validation) && $author_last_validation != ""){
-		$owl .= "   Annotations: author_last_validation \"" . $author_last_validation . "\"\n";
+		$textualtriggeringrule .= "   Annotations: author_last_validation \"" . $author_last_validation . "\"\n";
 	}	
 	if(isset($author_addition) && $author_addition != ""){
-		$owl .= "   Annotations: author_addition \"" . $author_addition . "\"\n";
+		$textualtriggeringrule .= "   Annotations: author_addition \"" . $author_addition . "\"\n";
 	}
-	$owl .= "	Annotations: textual_genetic_description \"" . clean_comment_string($phenotype_textual_description) . "\"\n\n";
+	$textualtriggeringrule .= "	Annotations: textual_genetic_description \"" . clean_comment_string($phenotype_textual_description) . "\"\n\n";
 	
+	$textual_rule .= $textualtriggeringrule . "\n\n";
 	
-	$humantriggeringrule = "Class: test_" . make_valid_id($phenotype_label) . "\n";
+	$humantriggeringrule = "Class: human_with_" . make_valid_id($phenotype_label) . "\n";
 	$humantriggeringrule .= "   SubClassOf: human_triggering_phenotype_inference_rule" . "\n";
-	$humantriggeringrule .= "   Annotations: rdfs:label \"test_" . $phenotype_label . "\"\n";
+	$humantriggeringrule .= "   Annotations: rdfs:label \"human with " . $phenotype_label . "\"\n";
 	//if(strpos($phenotype_logical_statements,'has') !== false){
 		$humantriggeringrule .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($phenotype_logical_statements)) . "\n";
 	//}
@@ -1177,13 +1182,16 @@ foreach($snp_list as $snp_element){
 
  
 //file_put_contents("..\\data\\dbSNP\\list_snps.txt",$results);
-file_put_contents($pharmacogenomic_CDS_file_location, $owl);
-file_put_contents($MSC_classes_file_location, $owl . $msc_owl); // $owl and $msc_owl are merged
-file_put_contents($MSC_classes_demo_file_location, $owl . $msc_owl . file_get_contents($CDS_rule_demo_additions_file_location));
-file_put_contents($CDS_rule_file_location, $owl . $rule_owl); // Ontology with the logical expression of cds and phenotype rules defined.
-file_put_contents($CDS_rule_demo_file_location, $owl . $rule_owl . file_get_contents($pharmacogenomic_CDS_demo_additions_file_location)); // Ontology with the logical expression of cds and phenotype rules defined and a demo example.
-file_put_contents($CDS_rule_full_file_location, $owl . $msc_owl . $rule_owl); // Ontology with the logical expression of cds and phenotype rules defined.
-file_put_contents($CDS_rule_full_demo_file_location, $owl . $msc_owl . $rule_owl . file_get_contents($CDS_rule_demo_additions_file_location)); // Ontology with the logical expression of cds and phenotype rules defined and a demo example.
+
+file_put_contents($light_rule_file_location, $owl . $rule_owl); //light version of the ontology without subclasses of genotype marker variation.
+file_put_contents($light_rule_demo_file_location, $owl . $rule_owl . file_get_contents($pharmacogenomic_CDS_demo_additions_file_location)); //light version of the ontology with the demo example.
+
+file_put_contents($full_rule_file_location, $owl . $msc_owl . $rule_owl); // Full version of the ontology without textual description of the genomic and phenotype rules.
+file_put_contents($full_rule_demo_file_location, $owl . $msc_owl . $rule_owl . file_get_contents($CDS_rule_demo_additions_file_location)); // Full version of the ontology without textual description of the genomic and phenotype rules, and with a the demo example.
+
+
+file_put_contents($CDS_server_file_location, $owl . $msc_owl . $textual_rule); // Full version of the ontology but with only the textual description of the genomic and phenotype rules.
+file_put_contents($CDS_server_demo_file_location, $owl . $msc_owl . $textual_rule . file_get_contents($CDS_rule_demo_additions_file_location)); // Full version of the ontology with only textual description of rules and the demo example.
 
 
 file_put_contents($report_file_location, $report);

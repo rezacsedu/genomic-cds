@@ -176,30 +176,12 @@ Class: drug
     Annotations: 
         rdfs:label "Drug"
     
-    
-Class: phenotype
 
-    Annotations: 
-        rdfs:label "Phenotype",
-        rdfs:comment "A phenotype is an observable characteristic of an organism. For example: characteristics of drug metabolism and response."
-        
-    
 Class: human
 
     Annotations: 
         rdfs:label "Human"
     
-Class: rule
-	
-	Annotations: 
-		rdfs:label "CDS rule",
-		rdfs:comment "A rule is a logical description of a drug recommendation based on human genotype."
-  
-Class: phenotype_rule
-	
-	Annotations: 
-		rdfs:label "Phenotype rule",
-		rdfs:comment "A phenotype rule is a logical description of a patient phenotype based on its genotype."
   
 Class: human_triggering_CDS_rule
 
@@ -272,5 +254,5 @@ Individual: Affymetrix_DMET_chip
     
 Class: allele    
 DisjointClasses: 
-    allele,human,phenotype,polymorphism,drug,assay
+    allele,human,polymorphism,drug,assay
 
