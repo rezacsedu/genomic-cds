@@ -943,59 +943,65 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 		$textualtriggeringrule .= "   Annotations: relevant_for " . make_valid_id($drug_label) . "\n";
 		$drug_labels[] = $drug_label;
 	}
-	//if(strpos($logical_description_of_genetic_attributes,'has') !== false){
-		//$owl .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($logical_description_of_genetic_attributes)) . "\n";
-	//}else{
-	//	$owl .= " SubClassOf: " . preg_replace('/\s+/', ' ', trim($logical_description_of_genetic_attributes)) . "\n";
-	//}
-	$textualtriggeringrule .= "   Annotations: source \"" . $source_repository . "\"\n";
-	
-	if(isset($textual_description_of_genetic_attributes) && $textual_description_of_genetic_attributes != ""){
-		$textualtriggeringrule .= "   Annotations: textual_genetic_description \"" . clean_comment_string($textual_description_of_genetic_attributes) . "\"\n";
-	}
-	
-	if(isset($phenotype_description) && $phenotype_description != ""){
-		$textualtriggeringrule .= "   Annotations: phenotype_description \"" . clean_comment_string($phenotype_description) . "\"\n";
-	}
-	
-	if(isset($recommendation_importance) && $recommendation_importance != ""){
-		$textualtriggeringrule .= "   Annotations: recommendation_importance \"" . $recommendation_importance . "\"\n";
-	}
-	
-	if(isset($recommendation_URL) && $recommendation_URL != ""){
-		$textualtriggeringrule .= parse_multiple_URLs($recommendation_URL);
-	}
-	
-	if(isset($date_of_evidence) && $date_of_evidence != ""){
-		$textualtriggeringrule .= "   Annotations: date_of_evidence \"" . $date_of_evidence . "\"\n";
-	}
-	
-	if(isset($date_of_addition) && $date_of_addition != ""){
-		$textualtriggeringrule .= "   Annotations: date_of_addition \"" . $date_of_addition . "\"\n";
-	}
-	
-	if(isset($date_last_validation) && $date_last_validation != ""){
-		$textualtriggeringrule .= "   Annotations: date_last_validation \"" . $date_last_validation . "\"\n";
-	}
-	
-	if(isset($author_last_validation) && $author_last_validation != ""){
-		$textualtriggeringrule .= "   Annotations: author_last_validation \"" . $author_last_validation . "\"\n";
-	}
-	
-	if(isset($author_addition) && $author_addition != ""){
-		$textualtriggeringrule .= "   Annotations: author_addition \"" . $author_addition . "\"\n";
-	}
-	$textualtriggeringrule .= "   Annotations: CDS_message \"" . addslashes($recommendation_in_english) . "\"\n\n";	
-	
-	$textual_rule .= $textualtriggeringrule . "\n\n";
 	
 	$humantriggeringrule = "Class: human_triggering_" . make_valid_id($human_class_label) . "\n";
 	$humantriggeringrule .= "   SubClassOf: human_triggering_CDS_rule" . "\n";
 	$humantriggeringrule .= "   Annotations: rdfs:label \"human triggering " . $human_class_label . "\"\n";
 	$humantriggeringrule .= "   Annotations: relevant_for " . make_valid_id($drug_label) . "\n";
-	//if(strpos($logical_description_of_genetic_attributes,'has') !== false){
-		$humantriggeringrule .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($logical_description_of_genetic_attributes)) . "\n";
-	//}
+	$humantriggeringrule .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($logical_description_of_genetic_attributes)) . "\n";
+
+	$textualtriggeringrule	.= "   Annotations: source \"" . $source_repository . "\"\n";
+	$humantriggeringrule	.= "   Annotations: source \"" . $source_repository . "\"\n";
+	
+	if(isset($textual_description_of_genetic_attributes) && $textual_description_of_genetic_attributes != ""){
+		$textualtriggeringrule	.= "   Annotations: textual_genetic_description \"" . clean_comment_string($textual_description_of_genetic_attributes) . "\"\n";
+		$humantriggeringrule	.= "   Annotations: textual_genetic_description \"" . clean_comment_string($textual_description_of_genetic_attributes) . "\"\n";
+	}
+	
+	if(isset($phenotype_description) && $phenotype_description != ""){
+		$textualtriggeringrule	.= "   Annotations: phenotype_description \"" . clean_comment_string($phenotype_description) . "\"\n";
+		$humantriggeringrule	.= "   Annotations: phenotype_description \"" . clean_comment_string($phenotype_description) . "\"\n";
+	}
+	
+	if(isset($recommendation_importance) && $recommendation_importance != ""){
+		$textualtriggeringrule	.= "   Annotations: recommendation_importance \"" . $recommendation_importance . "\"\n";
+		$humantriggeringrule	.= "   Annotations: recommendation_importance \"" . $recommendation_importance . "\"\n";
+	}
+	
+	if(isset($recommendation_URL) && $recommendation_URL != ""){
+		$textualtriggeringrule	.= parse_multiple_URLs($recommendation_URL);
+		$humantriggeringrule	.= parse_multiple_URLs($recommendation_URL);
+	}
+	
+	if(isset($date_of_evidence) && $date_of_evidence != ""){
+		$textualtriggeringrule	.= "   Annotations: date_of_evidence \"" . $date_of_evidence . "\"\n";
+		$humantriggeringrule	.= "   Annotations: date_of_evidence \"" . $date_of_evidence . "\"\n";
+	}
+	
+	if(isset($date_of_addition) && $date_of_addition != ""){
+		$textualtriggeringrule	.= "   Annotations: date_of_addition \"" . $date_of_addition . "\"\n";
+		$humantriggeringrule	.= "   Annotations: date_of_addition \"" . $date_of_addition . "\"\n";
+	}
+	
+	if(isset($date_last_validation) && $date_last_validation != ""){
+		$textualtriggeringrule	.= "   Annotations: date_last_validation \"" . $date_last_validation . "\"\n";
+		$humantriggeringrule	.= "   Annotations: date_last_validation \"" . $date_last_validation . "\"\n";
+	}
+	
+	if(isset($author_last_validation) && $author_last_validation != ""){
+		$textualtriggeringrule	.= "   Annotations: author_last_validation \"" . $author_last_validation . "\"\n";
+		$humantriggeringrule	.= "   Annotations: author_last_validation \"" . $author_last_validation . "\"\n";
+	}
+	
+	if(isset($author_addition) && $author_addition != ""){
+		$textualtriggeringrule	.= "   Annotations: author_addition \"" . $author_addition . "\"\n";
+		$humantriggeringrule	.= "   Annotations: author_addition \"" . $author_addition . "\"\n";
+	}
+	
+	$textualtriggeringrule	.= "   Annotations: CDS_message \"" . addslashes($recommendation_in_english) . "\"\n\n";
+	$humantriggeringrule	.= "   Annotations: CDS_message \"" . addslashes($recommendation_in_english) . "\"\n\n";
+	
+	$textual_rule .= $textualtriggeringrule . "\n\n";
 	$rule_owl .= $humantriggeringrule ."\n\n";
 }
 
@@ -1124,43 +1130,51 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	}
 	$nrules = $nrules + 1;
 	
-	$textualtriggeringrule = "Class: " . make_valid_id($phenotype_label) . "\n";
-	$textualtriggeringrule .= "	SubClassOf: phenotype_rule " . "\n";
+	$textualtriggeringrule	= "Class: " . make_valid_id($phenotype_label) . "\n";
+	$textualtriggeringrule	.= "	SubClassOf: phenotype_rule " . "\n";
 	//$owl .= "	SubClassOf: human_triggering_phenotype_inference_rule " . "\n";
 	//$owl .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($phenotype_logical_statements)) . "\n";
-	$textualtriggeringrule .= "	Annotations: rdfs:comment \"" . preg_replace('/\s+/', ' ', trim($phenotype_logical_statements)) . "\"\n";
-	$textualtriggeringrule .= "	Annotations: rdfs:label \"" . $phenotype_label . "\"\n";
-	$textualtriggeringrule .= "   Annotations: source \"" . $phenotype_source . "\"\n";
-	$textualtriggeringrule .= parse_multiple_URLs($phenotype_URL);
+	$textualtriggeringrule	.= "	Annotations: rdfs:comment \"" . preg_replace('/\s+/', ' ', trim($phenotype_logical_statements)) . "\"\n";
+	$textualtriggeringrule	.= "	Annotations: rdfs:label \"" . $phenotype_label . "\"\n";
+	
+	$humantriggeringrule	= "Class: human_with_" . make_valid_id($phenotype_label) . "\n";
+	$humantriggeringrule	.= "   SubClassOf: human_triggering_phenotype_inference_rule" . "\n";
+	$humantriggeringrule	.= "   Annotations: rdfs:label \"human with " . $phenotype_label . "\"\n";
+	$humantriggeringrule	.= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($phenotype_logical_statements)) . "\n";
+
+	$textualtriggeringrule	.= "   Annotations: source \"" . $phenotype_source . "\"\n";
+	$humantriggeringrule	.= "   Annotations: source \"" . $phenotype_source . "\"\n";
+	$textualtriggeringrule	.= parse_multiple_URLs($phenotype_URL);
+	$humantriggeringrule	.= parse_multiple_URLs($phenotype_URL);
 	
 	if(isset($date_of_evidence) && $date_of_evidence != ""){
-		$textualtriggeringrule .= "   Annotations: date_of_evidence \"" . $date_of_evidence . "\"\n";
+		$textualtriggeringrule	.= "   Annotations: date_of_evidence \"" . $date_of_evidence . "\"\n";
+		$humantriggeringrule	.= "   Annotations: date_of_evidence \"" . $date_of_evidence . "\"\n";
 	}	
 	if(isset($date_of_addition) && $date_of_addition != ""){
-		$textualtriggeringrule .= "   Annotations: date_of_addition \"" . $date_of_addition . "\"\n";
+		$textualtriggeringrule	.= "   Annotations: date_of_addition \"" . $date_of_addition . "\"\n";
+		$humantriggeringrule	.= "   Annotations: date_of_addition \"" . $date_of_addition . "\"\n";
 	}	
 	if(isset($date_last_validation) && $date_last_validation != ""){
-		$textualtriggeringrule .= "   Annotations: date_last_validation \"" . $date_last_validation . "\"\n";
+		$textualtriggeringrule	.= "   Annotations: date_last_validation \"" . $date_last_validation . "\"\n";
+		$humantriggeringrule	.= "   Annotations: date_last_validation \"" . $date_last_validation . "\"\n";
 	}	
 	if(isset($author_last_validation) && $author_last_validation != ""){
-		$textualtriggeringrule .= "   Annotations: author_last_validation \"" . $author_last_validation . "\"\n";
+		$textualtriggeringrule	.= "   Annotations: author_last_validation \"" . $author_last_validation . "\"\n";
+		$humantriggeringrule	.= "   Annotations: author_last_validation \"" . $author_last_validation . "\"\n";
 	}	
 	if(isset($author_addition) && $author_addition != ""){
-		$textualtriggeringrule .= "   Annotations: author_addition \"" . $author_addition . "\"\n";
+		$textualtriggeringrule	.= "   Annotations: author_addition \"" . $author_addition . "\"\n";
+		$humantriggeringrule	.= "   Annotations: author_addition \"" . $author_addition . "\"\n";
 	}
-	$textualtriggeringrule .= "	Annotations: textual_genetic_description \"" . clean_comment_string($phenotype_textual_description) . "\"\n\n";
+	$textualtriggeringrule	.= "	Annotations: textual_genetic_description \"" . clean_comment_string($phenotype_textual_description) . "\"\n\n";
+	$humantriggeringrule	.= "	Annotations: textual_genetic_description \"" . clean_comment_string($phenotype_textual_description) . "\"\n\n";
 	
 	$textual_rule .= $textualtriggeringrule . "\n\n";
-	
-	$humantriggeringrule = "Class: human_with_" . make_valid_id($phenotype_label) . "\n";
-	$humantriggeringrule .= "   SubClassOf: human_triggering_phenotype_inference_rule" . "\n";
-	$humantriggeringrule .= "   Annotations: rdfs:label \"human with " . $phenotype_label . "\"\n";
-	//if(strpos($phenotype_logical_statements,'has') !== false){
-		$humantriggeringrule .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($phenotype_logical_statements)) . "\n";
-	//}
 	$rule_owl .= $humantriggeringrule ."\n\n";
 }
 $report .= ("We have defined $nrules phenotype rules in the ontology.\n");
+
 /**********************************
  ******* Generate disjoints *******
  **********************************/

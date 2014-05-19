@@ -149,13 +149,16 @@ ObjectProperty: has
     Annotations: 
         rdfs:label "has",
         rdfs:comment "A generic property. For example, it can be used to relate a patient with specific attributes and features, such as genetic polymorphisms, alleles and phenotypes."
-    
+
+Class: human
+    Annotations: 
+        rdfs:label	"Human"
     
 Class: human_with_genetic_polymorphism
     Annotations: 
-        rdfs:label "Human with genetic polymorphism"
-    
-    SubClassOf: 
+        rdfs:label	"Human with genetic polymorphism",
+		rdfs:comment	"This is the root class of all haplotypes defined in the ontology based on a set of SNPs which are associated statistically."
+	SubClassOf:
         human
     
     
@@ -172,21 +175,15 @@ Class: polymorphism
     
         
 Class: drug
-
     Annotations: 
-        rdfs:label "Drug"
-    
-
-Class: human
-
-    Annotations: 
-        rdfs:label "Human"
-    
+        rdfs:label "Drug", 
+		rdfs:comment "The root class of the drugs the ontology contains treatment recommendations based on a patient's genotype."
   
 Class: human_triggering_CDS_rule
-
     Annotations: 
         rdfs:label "Human triggering CDS rule"
+	Annotations: 
+		rdfs:comment "The root class of all clinical guidelines conceptualized as classes in the ontology."
     
     SubClassOf: 
         human
@@ -195,7 +192,8 @@ Class: human_triggering_CDS_rule
 Class: human_triggering_phenotype_inference_rule
 
     Annotations: 
-        rdfs:label "Human triggering phenotype inference rule"
+        rdfs:label "Human triggering phenotype inference rule",
+		rdfs:comment "The root class of conceptualized phenotype variations."
     
     SubClassOf: 
         human
@@ -204,7 +202,8 @@ Class: human_triggering_phenotype_inference_rule
 Class: human_with_genotype_marker
 
     Annotations: 
-        rdfs:label "Human with a genotype marker variation"
+        rdfs:label "Human with a genotype marker variation",
+		rdfs:comment "The root class of all SNP variations that are recognized in the ontology."
     
     SubClassOf: 
         human
@@ -213,7 +212,8 @@ Class: human_with_genotype_marker
 Class: assay
 
     Annotations: 
-        rdfs:label "Assay"
+        rdfs:label "Assay",
+		rdfs:comment "It represents the different genetic analysis formats used to represent the patient's genotype information."
         
  
 Individual: 23andMe_v2
