@@ -3,6 +3,7 @@ package utils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
 
@@ -601,10 +602,38 @@ public class OntologyManagement {
 	
 	
 	private void initializeDrugRules(){
+		HashMap<String, String> listPhenotypeRules	= new HashMap<String,String>();
+		OWLDataFactory factory						= manager.getOWLDataFactory();
+		OWLClass rootPhenotypeRuleClass				= factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#phenotype_rule"));
+		Iterator<OWLClassExpression> list_rules		= rootPhenotypeRuleClass.getSubClasses(ontology).iterator();
+		while(list_rules.hasNext()){
+			OWLClass phenotype = list_rules.next().asOWLClass();
+			
+			String phenotype_comment = "";
+			Set<OWLAnnotation> listComments = phenotype.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_COMMENT.getIRI()));
+			for (OWLAnnotation commentAnn : listComments) {
+				if (commentAnn.getValue() instanceof OWLLiteral) {
+					OWLLiteral literal = (OWLLiteral) commentAnn.getValue();
+					phenotype_comment = literal.getLiteral().trim();
+					break;
+				}
+			}
+			if (phenotype_comment == null || phenotype_comment.isEmpty()){
+				continue;
+			}
+			
+			String uri = phenotype.getIRI().toString();
+			if(uri.indexOf("#")>=0){
+				uri = uri.substring(uri.indexOf("#")+1);
+			}
+			uri = "human_with_"+uri;
+			listPhenotypeRules.put(uri, phenotype_comment);
+		}
+		
+		
 		
 		listDrugRecommendations	= new ArrayList<DrugRecommendation>();
-		OWLDataFactory factory					= manager.getOWLDataFactory();
-		OWLClass rootRecommendationClass		= factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#rule"));
+		OWLClass rootRuleClass		= factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#rule"));
 		OWLAnnotationProperty ann_cds_message	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#CDS_message"));
 		OWLAnnotationProperty ann_source		= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#source"));
 		OWLAnnotationProperty ann_relevant_for	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#relevant_for"));
@@ -614,7 +643,7 @@ public class OntologyManagement {
 		
 		//java.util.HashSet<String> list_drugs= new java.util.HashSet<String>();
 		
-		Iterator<OWLClassExpression> list_recommendations = rootRecommendationClass.getSubClasses(ontology).iterator();
+		Iterator<OWLClassExpression> list_recommendations = rootRuleClass.getSubClasses(ontology).iterator();
 		while(list_recommendations.hasNext()){
 			OWLClass recommendation = list_recommendations.next().asOWLClass();
 						
@@ -694,6 +723,14 @@ public class OntologyManagement {
 				continue;
 			}
 			
+			for(String key: listPhenotypeRules.keySet()){
+				if(recommendation_comment.contains(key)){
+					recommendation_comment = recommendation_comment.replaceAll(key, "("+listPhenotypeRules.get(key)+")");
+				}
+			}
+			
+			
+			
 			//recommendation_label
 			String recommendation_label = "";
 			Set<OWLAnnotation> listLabels = recommendation.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
@@ -706,6 +743,8 @@ public class OntologyManagement {
 			if (recommendation_label == null || recommendation_label.isEmpty()){
 				continue;
 			}
+			
+			
 			
 			//seeAlso
 			ArrayList<String> seeAlsoList = new ArrayList<String>();

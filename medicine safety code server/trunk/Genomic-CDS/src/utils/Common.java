@@ -27,7 +27,7 @@ public class Common {
 	public final static String VERSION = "v0.2";
 	public final static int HAS_IMPORTANT_RECOMMENDATION = 1;
 	public final static int HAS_STANDARD_RECOMMENDATION = 2;
-	public final static String ONT_NAME="MSC_classes_new_v2.owl";
+	public final static String ONT_NAME="MSC_textual_rules.owl";
 	public final static String CACHE_NAME="safetycodecache1";
 	public final static String CACHE_FILE="ehcache.xml";
 	/**
