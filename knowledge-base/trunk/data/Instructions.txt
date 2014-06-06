@@ -1,0 +1,11 @@
+Instructions to generate the cds ontology.
+
+1. Update the list of cds rules and gather the corresponding genes.
+2. Update the haplotype spreadsheet of PharmGKB content with the gathered genes.
+3. Use the script 'gather_snp_in_haplotype_and_rules_files.php' to obtain the SNPs in the haplotypes definitions and in the rules files.
+4. Use the collected list of SNPs to download the updated xml file with the description of SNPs from dbSNP source.
+5. Indicate in the file "list_snps_not_in_dbSNP.txt" the SNP ids of the collected SNPs that were not found in dbSNP. If other SNPs must be avoided for generating the CDS ontology, indicate their rsid in the file.
+6. Execute the script 'disable_overlapping_haplotypes.php' to detect overlapping definition in the haplotype tables. 
+7. Use the resulting haplotype tables with the disabled rows to generate the genomic cds ontolgies with the last version of the script 'generate_genomic_CDS.php'.
+8. Check the report file of the generation of the ontologies to find errors in the data. Fix the errors, document them into the change_log file and repeat steps 5-8 until no more errors are found.
+9. Check the consistency of the ontologies.

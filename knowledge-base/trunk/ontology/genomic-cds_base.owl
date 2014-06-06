@@ -216,42 +216,46 @@ Class: assay
 		rdfs:comment "It represents the different genetic analysis formats used to represent the patient's genotype information."
         
  
-Individual: 23andMe_v2
+Class: 23andMe_v2
 
     Annotations: 
         rdfs:label "23andMe v2"
         
-    Types:
+    SubClassOf:
     	assay
     	
 
-Individual: 23andMe_v3
+Class: 23andMe_v3
 
     Annotations: 
         rdfs:label "23andMe v3"
         
-    Types:
+    SubClassOf:
     	assay
     	
     	
-Individual: University_of_Florida_and_Stanford_University_chip
+Class: University_of_Florida_and_Stanford_University_chip
 
     Annotations: 
         rdfs:label "University of Florida and Stanford University chip"
         
-    Types:
+    SubClassOf:
     	assay
     	
     	
-Individual: Affymetrix_DMET_chip
+Class: Affymetrix_DMET_chip
 
     Annotations: 
         rdfs:label "Affymetrix DMET chip"
         
-    Types:
+    SubClassOf:
     	assay
         
-    
+Class: 23andMe_v2    
+DisjointClasses: 
+    23andMe_v2,23andMe_v3,University_of_Florida_and_Stanford_University_chip,Affymetrix_DMET_chip
+
+		
 Class: allele    
 DisjointClasses: 
     allele,human,polymorphism,drug,assay

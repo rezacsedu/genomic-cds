@@ -9,8 +9,12 @@ ini_set("memory_limit","3072M");
 /***************************************
  *******  Input file locations   *******
  ***************************************/
-$db_snp_xml_input_file_location = "..\\data\\dbSNP\\core_rsid_data_from_dbsnp_25_3_2014.xml";//Source file of SNP descriptions gathered from dbSNP.
-$haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet_new_v2.xlsx";//Source file of haplotype descriptions, such as CYP2C19*1 or DPYD*2A.
+//$db_snp_xml_input_file_location = "..\\data\\dbSNP\\core_rsid_data_from_dbsnp_25_3_2014.xml";//Source file of SNP descriptions gathered from dbSNP.
+$db_snp_xml_input_file_location = "..\\data\\dbSNP\\140602093523_XMF.xml";
+$snps_not_in_dbSNP_file_location = "..\\data\\dbSNP\\list_snps_not_in_dbSNP.txt";
+
+$haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet_disabled_overlappings.xlsx";//Source file of haplotype descriptions, such as CYP2C19*1 or DPYD*2A.
+
 $pharmacogenomics_decision_support_spreadsheet_file_location = "..\\data\\decision-support-rules\\Pharmacogenomics decision support spreadsheet_v2.xlsx";//Source file of pharmacogenomics rule descriptions.
 
 $pharmacogenomic_CDS_base_file_location = "..\\ontology\\genomic-cds_base.owl";//Base file of the ontology that conceptualizes the pharmacogenomics domain.
@@ -21,6 +25,7 @@ $snpCoveredBy23andMe_v2_file_location = "..\\data\\assay-information\\SNPs cover
 $snpCoveredBy23andMe_v3_file_location = "..\\data\\assay-information\\SNPs covered by 23andMe v3.txt";//List of SNPs that are recognized by 23andMe v3 format.
 $snpCoveredByAffimetrix_file_location = "..\\data\\assay-information\\SNPs covered by Affymetrix DMET chip - PMID 20217574.txt";//List of SNPs that are recognized by Affymetrix DMET chip - 20217574.
 $snpCoveredByUniOfFloridaAndStandford_file_location = "..\\data\\assay-information\\SNPs covered by University of Florida and Stanford University chip - PMID 22910441.txt";//List of SNPs that are recognized by the University of Florida and Stanford chip - PMID 22910441.txt.
+
 
 
 
@@ -54,13 +59,12 @@ $snps_covered_by_23andMe_v2 = read_file_into_array($snpCoveredBy23andMe_v2_file_
 $snps_covered_by_23andMe_v3 = read_file_into_array($snpCoveredBy23andMe_v3_file_location); // Read the content of SNPs in 23andMe v3 format.
 $snps_covered_by_Affimetrix_DMET_chip = read_file_into_array($snpCoveredByAffimetrix_file_location); // Read the content of SNPs in Affimetrix format.
 $snps_covered_by_University_of_Florida_and_Standford_chip = read_file_into_array($snpCoveredByUniOfFloridaAndStandford_file_location); // Read the content of the University of Florida and Standford format.
-
-
+$snps_not_in_dbSNP = read_file_into_array($snps_not_in_dbSNP_file_location); //Read the file that contains the SNPs to skip during the processing of dbSNP file.
 
 /***************************
  *******  Functions  *******
  ***************************/
-
+//This function indicates if a SNP is part of the genotype of a patient in the ontology. This is needed because a patient's genotype is not only described using haplotypes, such as BRCA1*1, but also with SNPs, such as rs2297595.
 function rankSNPInGenotype($rsid){
 	$rank_snps = array("rs9923231","rs4149056","rs9934438","rs6025","rs12979860","rs67376798","rs2297595");
 	foreach ($rank_snps as $element){
@@ -70,8 +74,28 @@ function rankSNPInGenotype($rsid){
 	}
 	return false;
 }
- 
- 
+
+//Find if the orientation of a SNPs description in the dbSNP xml file is incosnistent with the observed alleles and the reference allele. 
+function is_ref_allele_inconsistent($list_variants,$ref_variant,$rsid){
+	$orient = "reverse";
+	for($i=0;$i<count($list_variants);$i++){
+		if(preg_match("/".$ref_variant."/",$list_variants[$i])){
+			$orient="forward";
+			break;
+		}
+	}
+	return ($orient=="reverse");
+}
+
+//Function that indicates if the variant belongs to a SNP column that was disabled in the file snps_not_in_dbSNP_file_location.
+function in_array_skip_snps($variant,$list_skip_variants){
+	for($i=0;$i<count($list_skip_variants);$i++){
+		if(strpos($variant,$list_skip_variants[$i]."_")!==false){
+			return true;
+		}
+	}
+}
+
 // Read file and transform it into an array of lines.
 function read_file_into_array($file){
 	$search = array("\r\n", "\n");
@@ -212,8 +236,6 @@ function make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 
 		$owl_fragment .= "    SubClassOf: has some  $allele_1_id and has some $allele_2_id \n";
 	}
 	$owl_fragment .= 
-//			"    Annotations: sc:decimal_code \"$decimal_code\"^^xsd:integer \n" . 
-//			"    Annotations: sc:bit_code \"$binary_code\" \n" .
 			"    Annotations: rdfs:label \"human with rs" . $rs_id . "(" . $allele_1 . ";" . $allele_2 . ")\"  \n" .
 			"    Annotations: sc:criteria_syntax \"rs" . $rs_id . "(" . $allele_1 . ";" . $allele_2 . ")\"  \n";
 	return $owl_fragment;
@@ -309,42 +331,37 @@ foreach ($xml->Rs as $Rs) {
 			$gene_ids[] = make_valid_id($fxn_set["symbol"]);
 		}
 	}
-
+	
+	
+	if(!(strpos($observed_alleles, "(") === false)){
+		$snp_string = substr($observed_alleles,strpos($observed_alleles,"("),(strpos($observed_alleles,")")-strpos($observed_alleles,"("))+1);
+		$sub_alleles = substr($observed_alleles,strpos($observed_alleles,")")+1);
+		$new_list_alleles = preg_split("/\//", $sub_alleles);
+		$observed_alleles = "";
+		for($j=0;$j<count($new_list_alleles);$j++){
+			if($new_list_alleles[$j] == "-"){
+				$new_list_alleles[$j] = "D";
+			}
+			if(!empty($observed_alleles)) $observed_alleles.="/";
+			$observed_alleles .= $snp_string . $new_list_alleles[$j];
+		}
+	}
 	$observed_alleles = preg_split("/\//", $observed_alleles);
 	// Normalize orientation to the plus strand.
 	for($j=0;$j<count($observed_alleles);$j++){
 		if($observed_alleles[$j] == "-"){
 			$observed_alleles[$j] = "D";
 		}
-		if ($orient == "reverse") {
-			$observed_alleles[$j] = flipOrientationOfStringRepresentation($observed_alleles[$j]);
-		}
-		$nsnpsvariants = $nsnpsvariants+1;
+		$nsnpsvariants++;
 	}	
-	/*if ($orient == "reverse") {
+	if ($orient == "reverse" || is_ref_allele_inconsistent($observed_alleles,$ref_allele,$rs_id)){
+		
 		for($j=0;$j<count($observed_alleles);$j++){
 			$observed_alleles[$j] = flipOrientationOfStringRepresentation($observed_alleles[$j]);
 		}
-	}*/
+	}
 	sort($observed_alleles, SORT_STRING);
-	
-	
-	/*WARNING: If it is not correct -> delete
-	$flip=true;
-	if(!isset($ref_allele)){
-		print("Not initialized ref_allele in rs".$rs_id."\n");
-		$flip=false;
-	}else{
-		foreach($observed_alleles as $observed_allele){
-			if($observed_allele == $ref_allele) $flip = false;
-		}
-	}
-	if($flip){
-		print("rs".$rs_id." do not match reference allele.\n");
-		//$ref_allele = flipOrientationOfStringRepresentation($ref_allele);
-	}
-	/*END WARNING*/
-	
+		
 	// Create OWL classes for all possible genotype variants
 	$class_id = "rs" . $rs_id;		
 	$owl .= "Class: " . $class_id . "\n";// Create subclasses of Polymorphism->(1)rsid; (2)rdfs:label; (3)can_be_tested_with; (4)relevant_for; (5)rdfs:seeAlso; (6)dbsnp_orientation_on_reference_genome;
@@ -374,8 +391,8 @@ foreach ($xml->Rs as $Rs) {
 	$owl .= "    Annotations: dbsnp_orientation_on_reference_genome \"" . $orient . "\" \n\n";
 	$polymorphism_disjoint_list [] = $class_id;
 	
-	$owl .= "Class: human \n";
-	$owl .= "    SubClassOf: has exactly 2 " . $class_id . "\n\n";
+	/*$owl .= "Class: human \n";
+	$owl .= "    SubClassOf: has exactly 2 " . $class_id . "\n\n";*/
 	
 	$polymorphism_variant_disjoint_list = array();
 	foreach ($observed_alleles as $observed_allele) {
@@ -400,7 +417,6 @@ foreach ($xml->Rs as $Rs) {
 	$msc_owl .= "Class: sc:$human_with_genotype_at_locus \n";// Create subclasses of human_with_genotype_marker-> (1)rsid; (2)sc:rank; (3)dbsnp_orientation_on_reference_genome; (4)symbol_of_associated_gene; (5)sc:bit_length; (6)sc:position_in_base_2_string;
 	$msc_owl .= "    SubClassOf: human_with_genotype_marker \n";
 	$msc_owl .= "    Annotations: rsid \"rs" . $rs_id . "\" \n";
-	//$msc_owl .= "    Annotations: sc:rank \"" . $i . "\"^^xsd:integer \n";
 	$msc_owl .= "    Annotations: dbsnp_orientation_on_reference_genome \"" . $orient . "\" \n";
 	
 	$gene_symbols = array();
@@ -415,101 +431,78 @@ foreach ($xml->Rs as $Rs) {
 		$msc_owl .= "    Annotations: symbol_of_associated_gene \"" . $gene_symbol . "\" \n";
 	}
 	
-	switch (count($observed_alleles)) {//Define the corresponding subclasses of the human_with_genotype_marker class -> (1)sc:bit_code; (2)rdfs:label; (3)sc:criteria_syntax
+	switch (count($observed_alleles)) {//Define the corresponding subclasses of the human_with_genotype_marker class -> (1)rdfs:label; (2)sc:criteria_syntax
 		case 2:
-			//$bit_length = 2;
-			//$msc_owl .= "    Annotations: sc:bit_length \"" . $bit_length . "\"^^xsd:integer \n";
-			//$msc_owl .= "    Annotations: sc:position_in_base_2_string \"" . $position_in_base_2_string . "\"^^xsd:integer \n\n";
-	
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 0, "00", "null", "null", $rs_id);
 			$msc_owl .= "\n";
-			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 1, "01", $observed_alleles[0],  $observed_alleles[0], $rs_id);
-			if($observed_alleles[0] == $ref_allele){
-				//$msc_owl .= "	Annotations: sc:vcf_format_reference \"true\" \n\n" ;
-			}
+			
+			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 1, "01", $observed_alleles[0],  $observed_alleles[0], $rs_id);			
 			$msc_owl .= "\n";
+			
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 2, "10", $observed_alleles[0],  $observed_alleles[1], $rs_id);
 			$msc_owl .= "\n";
-			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 3, "11", $observed_alleles[1],  $observed_alleles[1], $rs_id);
-			if($observed_alleles[1] == $ref_allele){
-				//$msc_owl .= "	Annotations: sc:vcf_format_reference \"true\" \n\n" ;
-			}
-			$msc_owl .= "\n";
 			
-			//$position_in_base_2_string = $position_in_base_2_string + $bit_length;
+			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 3, "11", $observed_alleles[1],  $observed_alleles[1], $rs_id);			
+			$msc_owl .= "\n";
+						
 			break;
 		case 3:
-			//$bit_length = 3;
-			//$msc_owl .= "    Annotations: sc:bit_length \"" . $bit_length . "\"^^xsd:integer \n";
-			//$msc_owl .= "    Annotations: sc:position_in_base_2_string \"" . $position_in_base_2_string . "\"^^xsd:integer \n\n";
-	
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 0, "000", "null", "null", $rs_id);
 			$msc_owl .= "\n";
+			
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 1, "001", $observed_alleles[0], $observed_alleles[0], $rs_id);
-			if($observed_alleles[0] == $ref_allele){
-				//$msc_owl .= "	Annotations: sc:vcf_format_reference \"true\" \n\n" ;
-			}
 			$msc_owl .= "\n";
+			
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 2, "010", $observed_alleles[0], $observed_alleles[1], $rs_id);
 			$msc_owl .= "\n";
+			
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 3, "011", $observed_alleles[0], $observed_alleles[2], $rs_id);
 			$msc_owl .= "\n";
+			
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 4, "100", $observed_alleles[1], $observed_alleles[1], $rs_id);
-			if($observed_alleles[1] == $ref_allele){
-				//$msc_owl .= "	Annotations: sc:vcf_format_reference \"true\" \n\n" ;
-			}
 			$msc_owl .= "\n";
+			
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 5, "101", $observed_alleles[1], $observed_alleles[2], $rs_id);
 			$msc_owl .= "\n";
+			
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 6, "110", $observed_alleles[2], $observed_alleles[2], $rs_id);
-			if($observed_alleles[2] == $ref_allele){
-				//$msc_owl .= "	Annotations: sc:vcf_format_reference \"true\" \n\n" ;
-			}
 			$msc_owl .= "\n";
 			
-			//$position_in_base_2_string += $bit_length;
 			break;
 		case 4:
-			//$bit_length = 4;
-			//$msc_owl .= "    Annotations: sc:bit_length \"" . $bit_length . "\"^^xsd:integer \n";
-			//$msc_owl .= "    Annotations: sc:position_in_base_2_string \"" . $position_in_base_2_string . "\"^^xsd:integer \n\n";
-	
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 0, "0000", "null", "null", $rs_id);
 			$msc_owl .= "\n";
+			
 			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 1, "0001", $observed_alleles[0], $observed_alleles[0], $rs_id);
-			if($observed_alleles[0] == $ref_allele){
-				//$msc_owl .= "	Annotations: sc:vcf_format_reference \"true\" \n\n" ;
-			}
-			$msc_owl .= "\n";
-			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 2, "0010", $observed_alleles[0], $observed_alleles[1], $rs_id);
-			$msc_owl .= "\n";
-			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 3, "0011", $observed_alleles[0], $observed_alleles[2], $rs_id);
-			$msc_owl .= "\n";
-			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 4, "0100", $observed_alleles[0], $observed_alleles[3], $rs_id);
-			$msc_owl .= "\n";
-			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 5, "0101", $observed_alleles[1], $observed_alleles[1], $rs_id);
-			if($observed_alleles[1] == $ref_allele){
-				//$msc_owl .= "	Annotations: sc:vcf_format_reference \"true\" \n\n" ;
-			}
-			$msc_owl .= "\n";
-			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 6, "0110", $observed_alleles[1], $observed_alleles[2], $rs_id);
-			$msc_owl .= "\n";
-			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 7, "0111", $observed_alleles[1], $observed_alleles[3], $rs_id);
-			$msc_owl .= "\n";
-			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 8, "1000", $observed_alleles[2], $observed_alleles[2], $rs_id);
-			if($observed_alleles[2] == $ref_allele){
-				//$msc_owl .= "	Annotations: sc:vcf_format_reference \"true\" \n\n" ;
-			}
-			$msc_owl .= "\n";
-			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 9, "1001", $observed_alleles[2], $observed_alleles[3], $rs_id);
-			$msc_owl .= "\n";
-			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 10, "1010", $observed_alleles[3], $observed_alleles[3], $rs_id);
-			if($observed_alleles[3] == $ref_allele){
-				//$msc_owl .= "	Annotations: sc:vcf_format_reference \"true\" \n\n" ;
-			}
 			$msc_owl .= "\n";
 			
-			//$position_in_base_2_string += $bit_length;
+			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 2, "0010", $observed_alleles[0], $observed_alleles[1], $rs_id);
+			$msc_owl .= "\n";
+			
+			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 3, "0011", $observed_alleles[0], $observed_alleles[2], $rs_id);
+			$msc_owl .= "\n";
+			
+			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 4, "0100", $observed_alleles[0], $observed_alleles[3], $rs_id);
+			$msc_owl .= "\n";
+			
+			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 5, "0101", $observed_alleles[1], $observed_alleles[1], $rs_id);
+			$msc_owl .= "\n";
+			
+			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 6, "0110", $observed_alleles[1], $observed_alleles[2], $rs_id);
+			$msc_owl .= "\n";
+			
+			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 7, "0111", $observed_alleles[1], $observed_alleles[3], $rs_id);
+			$msc_owl .= "\n";
+			
+			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 8, "1000", $observed_alleles[2], $observed_alleles[2], $rs_id);
+			$msc_owl .= "\n";
+			
+			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 9, "1001", $observed_alleles[2], $observed_alleles[3], $rs_id);
+			$msc_owl .= "\n";
+			
+			$msc_owl .= make_safety_code_allele_combination_owl($human_with_genotype_at_locus, 10, "1010", $observed_alleles[3], $observed_alleles[3], $rs_id);
+			$msc_owl .= "\n";
+			
 			break;
 		default://ERROR if there a greater size of observed alleles
 			$report .= ("WARNING: There  are less than 2 or more than 4 alleles for $class_id -- Medicine Safety Code class was not generated.\n");
@@ -532,12 +525,12 @@ foreach ($gene_ids as $gene_id) {
 	$genotype_rank++;
 }
 
-$owl .= "Class: human" . "\n";
+/*$owl .= "Class: human" . "\n";
 foreach ($gene_ids as $gene_id) {
 	if($gene_id != "CYP2D6"){
 		$owl .= "    SubClassOf: has exactly 2 " . $gene_id . "\n";
 	}
-}
+}*/
 
 /************************************************************
  ***** Read and convert data from haplotype spreadsheet *****
@@ -591,7 +584,7 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 		}else{
 			$allele_status = "enabled";
 		}
-		if(!isset($row_array['B'])||($row_array['B']=="")||!isset($row_array['D'])||($row_array['D'] == "")) continue;
+		if(!isset($row_array['B'])||(trim($row_array['B'])=="")||!isset($row_array['D'])||(trim($row_array['D']) == "")) continue;
 		
 		
 		
@@ -601,17 +594,13 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 		$allele_label = trim($row_array['B'] . " " . $row_array['D']);
 		$allele_id = make_valid_id($allele_label);
 		
-		
-		
 		$human_label = "human with " . $allele_label;
 		$human_id = make_valid_id($human_label);
 		$human_homozygous_label = "human with homozygous " . $allele_label;
 		$human_homozygous_id = make_valid_id($human_homozygous_label);
 		
 		$allele_polymorphism_variants = array();
-		$allele_tag_polymorphism_variants = array();
 		
-	
 		foreach($row_array as $key=>$value) {
 			// Skip first four columns 
 			if (($key == "A") or ($key == "B") or ($key == "C") or ($key == "D")) continue; 
@@ -621,23 +610,29 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 				continue;
 			}
 			
-			$snp_value = trim(str_replace("[tag]","",$row_array[$key]));
-			$snp_value = trim(str_replace("del","D",$snp_value));
+			$snp_value = trim(str_replace("[tag]","",$row_array[$key])); //We should have done this replacement but we repeat it just in case of an error.
+			$snp_value = trim(str_replace("del","D",$snp_value));//We should have done this replacement but we repeat it just in case of an error.
+			
+			if($snp_value == "*") continue;
 			
 			$allele_polymorphism_variant = make_valid_id($header_array[$key] . "_" . $snp_value); // e.g. "rs12345_A"
 			if(strpos($header_array[$key],'rs') !== false && strpos($header_array[$key],' ') === false){
 				$snp_list[] = $header_array[$key];
 			}
-			// Report an error if the allele polymorphism variant was not already generated during the dbSNP conversion (we want to make sure everything matches dbSNP. If it does not, this is an indication of an error in the data).
-			if (in_array($allele_polymorphism_variant, $valid_polymorphism_variants) == false) {
-				$report .= "ERROR: Polymorphism variant \"" . $allele_polymorphism_variant . "\" in allele " . $allele_label . " does not match dbSNP. Skipping conversion for the entire allele." . "\n";
-				$error_during_processing = true;
-			}else{
-				// Add id of polymorphism to array
-				$allele_polymorphism_variants[] = $allele_polymorphism_variant;
-				if (strpos($value,'[tag]') !== false) {
-					// Add id of tagging polymorphism to tag array
-					$allele_tag_polymorphism_variants[] = $allele_polymorphism_variant;
+			
+			//Do not process the SNP of an allele variant if it matchs one of following conditions:
+			//1) The whole allele definition is disabled.
+			//2) The SNP value is '*' that means it is not defined in the table.
+			//3) The SNP column was disabled in the file: snps_not_in_dbSNP_file_location 
+			//4) The SNP column does not contains a valid rs number id. i.e. -2808A>Cstar_A
+			if($allele_status != "disabled" && $snp_value != "*" && (!in_array_skip_snps($allele_polymorphism_variant, $snps_not_in_dbSNP)) && preg_match_all("/^rs/",$allele_polymorphism_variant)){ //Skip the variants that are not recognized by dbSNP, and parse the variants that starts with a rs number.
+				// Report an error if the allele polymorphism variant was not already generated during the dbSNP conversion (we want to make sure everything matches dbSNP. If it does not, this is an indication of an error in the data).
+				if (in_array($allele_polymorphism_variant, $valid_polymorphism_variants) == false) {
+					$report .= "ERROR: Polymorphism variant \"" . $allele_polymorphism_variant . "\" in allele " . $allele_label . " does not match dbSNP. Skipping conversion for the entire allele." . "\n";
+					$error_during_processing = true;
+				}else{
+					// Add id of polymorphism to array
+					$allele_polymorphism_variants[] = $allele_polymorphism_variant;
 				}
 			}
 		}
@@ -710,7 +705,7 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 		}
 		
 		if ($error_during_processing) { // CONTINUE if error occured (i.e., don't add any OWL expressions at all for this row)
-			//print("Error when processing the allele ". $allele_id ."\n");
+			print("Error when processing the allele ". $allele_id ."\n");
 			//continue; 
 		}
 		
@@ -732,14 +727,11 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 		$owl .= "Annotations: rdfs:label \"" . $human_label . "\"\n";
 		
 		
-		if (!isset($row_array['A']) || $row_array['A'] ==! "disabled") {
+		if (!isset($row_array['A']) || $row_array['A'] != "disabled") {
 		
 			// If there are polymorphism variants...
 			if (empty($allele_polymorphism_variants) == false) {
 				$owl .= "EquivalentTo:" . "\n";
-				//$owl .= "SubClassOf:" . "\n";
-				// TODO: Introduce logic for phasing (if it ever works...)
-				//$owl .= "has some (" . implode(" that (taken_by some " . $allele_id . ")) and has some (", $allele_polymorphism_variants) . " that (taken_by some " . $allele_id . "))";
 				$owl .= "has some " . implode(" and has some ", $allele_polymorphism_variants);
 				$owl .= "\n\n";
 			}
@@ -748,16 +740,7 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 			}
 
 			$owl .= "SubClassOf:" . "\n";
-			$owl .= "has some " . $allele_id . "\n\n";
-			
-			// If there are tagging polymorphism variants...
-			/*if (empty($allele_tag_polymorphism_variants) == false) {
-				$owl .= "EquivalentTo:" . "\n";
-				$owl .= "has some " . implode(" and has some ", $allele_tag_polymorphism_variants);
-				$owl .= "\n\n";
-			}else {
-				$report .= "INFO: No tagging polymorphism variants found for " . $allele_id . "\n";
-			}*/
+			$owl .= "has some " . $allele_id . "\n\n";			
 		}else{
 			$owl .= "SubClassOf:" . "\n";
 			$owl .= "has some " . $allele_id . "\n\n";
@@ -784,15 +767,12 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 			// If there are tagging polymorphism variants...
 			if (empty($allele_polymorphism_variants) == false) {
 				$owl .= "EquivalentTo:" . "\n";
-				//$owl .= "has exactly 2 " . implode(" and has exactly 2 ", $allele_tag_polymorphism_variants);
 				$owl .= "has exactly 2 " . implode(" and has exactly 2 ", $allele_polymorphism_variants);
 				$owl .= "\n\n";
 			}
 			$owl .= "SubClassOf:" . "\n";
 			$owl .= "has exactly 2 " . $allele_id . "\n\n";
-			
-			//$owl .= "EquivalentTo:" . "\n";
-			//$owl .= "has exactly 2 " . $allele_id . "\n\n";
+
 		}else{
 			$owl .= "SubClassOf:" . "\n";
 			$owl .= "has exactly 2 " . $allele_id . "\n\n";
@@ -800,27 +780,18 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 		$nalleles = $nalleles+1;
 	}
 	
-	
-	
 	// Produce disjoints between alleles variants
 	foreach($haplotypes_disjoints as $group_alleles_disjoints){
-		/*print("disjoints->");
-		foreach($group_alleles_disjoints as $allele_disjoint){
-			print($allele_disjoint." ");
-		}
-		print("\n");*/
 		$owl .=	generateDisjointClassesOWL($group_alleles_disjoints);
 	}
-	
 	
 	// NOTE: Disjoints between underdefined/overlapping alleles produce unsatisfiable homozygous humans.
 	$owl .= "# homozygous human disjoints\n";
 	$owl .= generateDisjointClassesOWL($homozygous_human_id_array);
-	
-	
 }
 
 $report .= ("We have defined $nalleles alleles variants in the ontology.\n");
+
 /*********************************************
  ***** Processing CDS rules information ******
  *********************************************/
@@ -895,21 +866,18 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	
 	if(isset($row_array['P'])){
 		$date_of_evidence = date('d-M-Y',PHPExcel_Shared_Date::ExcelToPHP($row_array['P']));
-		//$date_of_evidence = $row_array['P'];
 	}else{
 		$date_of_evidence = "";
 	}
 	
 	if(isset($row_array['Q'])){
 		$date_of_addition = date('d-M-Y',PHPExcel_Shared_Date::ExcelToPHP($row_array['Q']));
-		//$date_of_addition = $row_array['Q'];
 	}else{
 		$date_of_addition = "";
 	}
 	
 	if(isset($row_array['R'])){
 		$date_last_validation = date('d-M-Y',PHPExcel_Shared_Date::ExcelToPHP($row_array['R']));
-		//$date_last_validation = $row_array['R'];
 	}else{
 		$date_last_validation = "";
 	}
@@ -933,7 +901,7 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 		continue;
 	}
 	
-	$nrules = $nrules+1;
+	$nrules++;
 		
 	$textualtriggeringrule = "Class: " . make_valid_id($human_class_label) . "\n";
 	$textualtriggeringrule .= "   SubClassOf: rule" . "\n";
@@ -1014,6 +982,7 @@ foreach ($drug_labels as $drug_label) {
 $ndrugs = count($drug_labels);
 $report .= ("We have defined $ndrugs drugs in the ontology.\n");
 $report .= ("We have defined $nrules rules in the ontology.\n");
+
 /******************************
  ****** Processing drugs ******
  ******************************/
@@ -1095,24 +1064,18 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	
 	if(isset($row_array["G"])){
 		$date_of_evidence = date('d-M-Y',PHPExcel_Shared_Date::ExcelToPHP($row_array['G']));
-		//print(date('d-M-Y',PHPExcel_Shared_Date::ExcelToPHP($row_array['G'])). "\n");
-		//$date_of_evidence = $row_array["G"];
 	}else{
 		$date_of_evidence = "";
 	}
 	
 	if(isset($row_array["H"])){
-		//$date_of_addition = $row_array["H"];
 		$date_of_addition = date('d-M-Y',PHPExcel_Shared_Date::ExcelToPHP($row_array['H']));
-		//print(date('d-M-Y',PHPExcel_Shared_Date::ExcelToPHP($row_array['H'])). "\n");
 	}else{
 		$date_of_addition = "";
 	}
 	
 	if(isset($row_array["I"])){
 		$date_last_validation = date('d-M-Y',PHPExcel_Shared_Date::ExcelToPHP($row_array['I']));
-		//print(date('d-M-Y',PHPExcel_Shared_Date::ExcelToPHP($row_array['I'])). "\n");
-		//$date_last_validation = $row_array['I'];
 	}else{
 		$date_last_validation = "";
 	}
@@ -1132,8 +1095,6 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	
 	$textualtriggeringrule	= "Class: " . make_valid_id($phenotype_label) . "\n";
 	$textualtriggeringrule	.= "	SubClassOf: phenotype_rule " . "\n";
-	//$owl .= "	SubClassOf: human_triggering_phenotype_inference_rule " . "\n";
-	//$owl .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($phenotype_logical_statements)) . "\n";
 	$textualtriggeringrule	.= "	Annotations: rdfs:comment \"" . preg_replace('/\s+/', ' ', trim($phenotype_logical_statements)) . "\"\n";
 	$textualtriggeringrule	.= "	Annotations: rdfs:label \"" . $phenotype_label . "\"\n";
 	
@@ -1194,9 +1155,6 @@ foreach($snp_list as $snp_element){
 	$results .= $snp_element."\n";
 }
 
- 
-//file_put_contents("..\\data\\dbSNP\\list_snps.txt",$results);
-
 file_put_contents($light_rule_file_location, $owl . $rule_owl); //light version of the ontology without subclasses of genotype marker variation.
 file_put_contents($light_rule_demo_file_location, $owl . $rule_owl . file_get_contents($pharmacogenomic_CDS_demo_additions_file_location)); //light version of the ontology with the demo example.
 
@@ -1207,11 +1165,6 @@ file_put_contents($full_rule_demo_file_location, $owl . $msc_owl . $rule_owl . f
 file_put_contents($CDS_server_file_location, $owl . $msc_owl . $textual_rule); // Full version of the ontology but with only the textual description of the genomic and phenotype rules.
 file_put_contents($CDS_server_demo_file_location, $owl . $msc_owl . $textual_rule . file_get_contents($CDS_rule_demo_additions_file_location)); // Full version of the ontology with only textual description of rules and the demo example.
 
-
 file_put_contents($report_file_location, $report);
-
-
-
-
 beep(2);
 ?> 
