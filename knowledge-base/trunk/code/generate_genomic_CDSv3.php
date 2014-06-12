@@ -10,7 +10,8 @@ ini_set("memory_limit","3072M");
  *******  Input file locations   *******
  ***************************************/
 //$db_snp_xml_input_file_location = "..\\data\\dbSNP\\core_rsid_data_from_dbsnp_25_3_2014.xml";//Source file of SNP descriptions gathered from dbSNP.
-$db_snp_xml_input_file_location = "..\\data\\dbSNP\\140602093523_XMF.xml";
+//$db_snp_xml_input_file_location = "..\\data\\dbSNP\\140602093523_XMF.xml";
+$db_snp_xml_input_file_location = "..\\data\\dbSNP\\140611100354_XMF.xml";
 $snps_not_in_dbSNP_file_location = "..\\data\\dbSNP\\list_snps_not_in_dbSNP.txt";
 
 $haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet_disabled_overlappings.xlsx";//Source file of haplotype descriptions, such as CYP2C19*1 or DPYD*2A.
@@ -321,6 +322,7 @@ foreach ($xml->Rs as $Rs) {
 		}
 	}
 	if(!isset($fxn_sets) || !isset($assembly_genome_build) || !isset($assembly_group_label) || !isset($orient)){
+		$report .= "\n	ERROR: We have found that the $rs_id content from dbSNP is not complete. We skip processing it.\n";
 		print($i." Not processed rsid = ".$rs_id."\n");
 		continue;
 	}
@@ -355,7 +357,10 @@ foreach ($xml->Rs as $Rs) {
 		$nsnpsvariants++;
 	}	
 	if ($orient == "reverse" || is_ref_allele_inconsistent($observed_alleles,$ref_allele,$rs_id)){
-		
+		if($orient!= "reverse"){
+			$report .= "\n	ERROR: We have found that the $rs_id from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.\n";
+		}
+	
 		for($j=0;$j<count($observed_alleles);$j++){
 			$observed_alleles[$j] = flipOrientationOfStringRepresentation($observed_alleles[$j]);
 		}
@@ -391,8 +396,10 @@ foreach ($xml->Rs as $Rs) {
 	$owl .= "    Annotations: dbsnp_orientation_on_reference_genome \"" . $orient . "\" \n\n";
 	$polymorphism_disjoint_list [] = $class_id;
 	
-	/*$owl .= "Class: human \n";
-	$owl .= "    SubClassOf: has exactly 2 " . $class_id . "\n\n";*/
+	/*
+	$owl .= "Class: human \n";
+	$owl .= "    SubClassOf: has exactly 2 " . $class_id . "\n\n";
+	*/
 	
 	$polymorphism_variant_disjoint_list = array();
 	foreach ($observed_alleles as $observed_allele) {
@@ -513,7 +520,8 @@ foreach ($xml->Rs as $Rs) {
 $report .= ("We have defined $nsnps SNPs with $nsnpsvariants variants in the ontology.\n");
 
 //Generate description of genes related to allele definitions.
-$gene_ids[] = "HLA-B"; //We manually add this gene_id because it is used in haplotype definitions but it is not related to any SNPs 
+$gene_ids[] = "HLA-B"; //We manually add this gene_id because it is used in haplotype definitions but it is not related to any SNPs
+$gene_ids[] = "HLA-A"; //We manually add this gene_id because it is used in haplotype definitions but it is not related to any SNPs
 $gene_ids = array_unique($gene_ids);
 $ngenes = count($gene_ids);
 $report .= ("We have defined $ngenes genes in the ontology.\n");
@@ -551,7 +559,8 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 	
 	$haplotypes_disjoints = array();// Array to record the disjoints haplotypes
 	if (strpos($worksheet_title,"_") === 0) {// Skip sheets starting with "_" (can be used for sheets that need more work etc.)
-		print("Skip ". $worksheet_title ."\n");
+		$report .= "\n	We skip processing the haplotypes definitions of gene ".$worksheet_title."\n";
+		//print("Skip ". $worksheet_title ."\n");
 		continue; 
 	};
 	
@@ -584,9 +593,10 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 		}else{
 			$allele_status = "enabled";
 		}
-		if(!isset($row_array['B'])||(trim($row_array['B'])=="")||!isset($row_array['D'])||(trim($row_array['D']) == "")) continue;
-		
-		
+		if(!isset($row_array['B'])||(trim($row_array['B'])=="")||!isset($row_array['D'])||(trim($row_array['D']) == "")){
+			$report .= "\n	ERROR: We have found a haplotype definition from ".$worksheet_title." without gene or haplotype id defined. We skip processing it.\n";
+			continue;
+		}		
 		
 		$gene_label = trim($row_array['B']);
 		$gene_id = make_valid_id($gene_label);
@@ -606,14 +616,18 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 			if (($key == "A") or ($key == "B") or ($key == "C") or ($key == "D")) continue; 
 			
 			if(!isset($header_array[$key])){
-				print($worksheet_title." in column $key is not defined.\n");
+				$report .= "\n	ERROR: The header column in $key position is not defined for $worksheet_title. We skip processing the column values (if there are any).\n";
+				//print($worksheet_title." in column $key is not defined.\n");
 				continue;
 			}
 			
 			$snp_value = trim(str_replace("[tag]","",$row_array[$key])); //We should have done this replacement but we repeat it just in case of an error.
 			$snp_value = trim(str_replace("del","D",$snp_value));//We should have done this replacement but we repeat it just in case of an error.
 			
-			if($snp_value == "*") continue;
+			if($snp_value == "*"){
+				//$report .= "\n	The value of the column in '$key' is not valid in $allele_id of $worksheet_title gene. We skip processing the column value.\n";
+				continue;
+			}
 			
 			$allele_polymorphism_variant = make_valid_id($header_array[$key] . "_" . $snp_value); // e.g. "rs12345_A"
 			if(strpos($header_array[$key],'rs') !== false && strpos($header_array[$key],' ') === false){
@@ -705,7 +719,8 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 		}
 		
 		if ($error_during_processing) { // CONTINUE if error occured (i.e., don't add any OWL expressions at all for this row)
-			print("Error when processing the allele ". $allele_id ."\n");
+			$report .= "\n	ERROR: In $allele_id of $worksheet_title gene.\n";
+			//print("Error when processing the allele ". $allele_id ."\n");
 			//continue; 
 		}
 		
@@ -803,7 +818,6 @@ $objPHPExcel = PHPExcel_IOFactory::load($pharmacogenomics_decision_support_sprea
 
 $objWorksheet = $objPHPExcel->getSheetByName("CDS rules");
 
-$drug_ids = array();
 $nrules = 0;
 foreach ($objWorksheet->getRowIterator() as $row) {	
 	$row_array = array();	
@@ -817,28 +831,28 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 		$row_array[$cell->getColumn()] = $cell->getCalculatedValue();
 	}
 	if (!isset($row_array['B']) || $row_array['B'] == "disabled"){
+		$report .= "\n	We skip processing cds rule ".$row_array['A']." because it was disabled.\n";
 		continue;
 	}
 	$rule_status = $row_array['B'];
 	
 	if(!isset($row_array['A'])){
+		$report .= "\n	ERROR: We have found a cds rule without name. We skip processing it.\n";
 		continue;		
 	}
-	$human_class_label = $row_array['A'];
-				
+	$human_class_label = trim($row_array['A']);
+	
 	if(!isset($row_array['C'])){
-		continue;		
+		$report .= "\n	ERROR: We skip processing cds rule ".$row_array['A']." because it has not any drug related.\n";
+		continue;
 	}
 	$drug_label = $row_array['C'];
 		
 	$source_repository = $row_array['D'];
 	
 	$textual_description_of_genetic_attributes = $row_array['E'];
-	
-	if(!isset($row_array['F'])){
-		continue;		
-	}
-	$logical_description_of_genetic_attributes = $row_array['F'];
+
+	$logical_description_of_genetic_attributes = trim($row_array['F']);
 	
 	if(isset($row_array['G'])){
 		$phenotype_description = $row_array['G'];
@@ -894,9 +908,7 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 		$author_addition = "";
 	}	
 	// Skip processing if not all required data items are present
-	if ($human_class_label == ""
-			or $logical_description_of_genetic_attributes == ""
-			or $recommendation_in_english == "") {
+	if ($human_class_label == "" or $recommendation_in_english == "") {
 		$report .= "NOTE: Not all required values were found in the pharmacogenomics decision support spreadsheet row " . $row->getRowIndex() . ", skipping conversion of this row.\n";
 		continue;
 	}
@@ -909,14 +921,16 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	$textualtriggeringrule .= "   Annotations: rdfs:comment \"" . preg_replace('/\s+/', ' ', trim($logical_description_of_genetic_attributes)) . "\"\n";
 	if ($drug_label ==! "") {
 		$textualtriggeringrule .= "   Annotations: relevant_for " . make_valid_id($drug_label) . "\n";
-		$drug_labels[] = $drug_label;
+		$drug_labels[] = make_valid_id($drug_label);
 	}
 	
 	$humantriggeringrule = "Class: human_triggering_" . make_valid_id($human_class_label) . "\n";
 	$humantriggeringrule .= "   SubClassOf: human_triggering_CDS_rule" . "\n";
 	$humantriggeringrule .= "   Annotations: rdfs:label \"human triggering " . $human_class_label . "\"\n";
 	$humantriggeringrule .= "   Annotations: relevant_for " . make_valid_id($drug_label) . "\n";
-	$humantriggeringrule .= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($logical_description_of_genetic_attributes)) . "\n";
+	if(strlen($logical_description_of_genetic_attributes)!=0){
+		$humantriggeringrule .= "	EquivalentTo: human and (" . preg_replace('/\s+/', ' ', trim($logical_description_of_genetic_attributes)) . ")\n";
+	}
 
 	$textualtriggeringrule	.= "   Annotations: source \"" . $source_repository . "\"\n";
 	$humantriggeringrule	.= "   Annotations: source \"" . $source_repository . "\"\n";
@@ -979,6 +993,10 @@ foreach ($drug_labels as $drug_label) {
 	$owl .= "    Annotations: rdfs:label \"" . $drug_label . "\"\n";
 	$owl .= "    SubClassOf: drug" . "\n\n";
 }
+
+$owl .= "# drug disjoints\n";
+$owl .= generateDisjointClassesOWL($drug_labels);
+
 $ndrugs = count($drug_labels);
 $report .= ("We have defined $ndrugs drugs in the ontology.\n");
 $report .= ("We have defined $nrules rules in the ontology.\n");
@@ -1035,7 +1053,8 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	}
 	
 	if(!isset($row_array['A']) || $row_array['A'] == ""){
-		continue;		
+		$report .= "\n	ERROR: We have found a phenotype rule without name. We skip processing it.\n";
+		continue;
 	}
 	$phenotype_label = $row_array["A"];
 	
@@ -1051,10 +1070,7 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 		$phenotype_textual_description = "";
 	}
 	
-	if(!isset($row_array['D'])){
-		continue;
-	}
-	$phenotype_logical_statements = $row_array["D"];
+	$phenotype_logical_statements = trim($row_array["D"]);
 	
 	if(isset($row_array["F"])){
 		$phenotype_URL = $row_array["F"];
@@ -1101,8 +1117,9 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 	$humantriggeringrule	= "Class: human_with_" . make_valid_id($phenotype_label) . "\n";
 	$humantriggeringrule	.= "   SubClassOf: human_triggering_phenotype_inference_rule" . "\n";
 	$humantriggeringrule	.= "   Annotations: rdfs:label \"human with " . $phenotype_label . "\"\n";
-	$humantriggeringrule	.= "	EquivalentTo: " . preg_replace('/\s+/', ' ', trim($phenotype_logical_statements)) . "\n";
-
+	if(strlen($phenotype_logical_statements) != 0){
+		$humantriggeringrule	.= "	EquivalentTo: human and (" . preg_replace('/\s+/', ' ', trim($phenotype_logical_statements)) . ")\n";
+	}
 	$textualtriggeringrule	.= "   Annotations: source \"" . $phenotype_source . "\"\n";
 	$humantriggeringrule	.= "   Annotations: source \"" . $phenotype_source . "\"\n";
 	$textualtriggeringrule	.= parse_multiple_URLs($phenotype_URL);

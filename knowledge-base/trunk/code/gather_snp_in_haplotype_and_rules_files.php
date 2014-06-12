@@ -4,7 +4,7 @@ error_reporting(E_ALL);
 date_default_timezone_set('Europe/London');
 
 /***** INPUT FILES ******/
-$haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet_new_v2.xlsx";
+$haplotype_spreadsheet_file_location = "..\\data\\PharmGKB\\haplotype_spreadsheet.xlsx";
 $pharmacogenomics_decision_support_spreadsheet_file_location = "..\\data\\decision-support-rules\\Pharmacogenomics decision support spreadsheet_v2.xlsx";
 
 /***** OUTPUT FILES ******/
@@ -59,13 +59,16 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 		$row_array[$cell->getColumn()] = $cell->getCalculatedValue();
 	}
 	
-	if(!isset($row_array['F'])){
+	if(!isset($row_array['F']) || strlen(trim($row_array['F'])) == 0){
 		continue;		
 	}
-	$logical_description_of_genetic_attributes = $row_array['F'];
-	if(preg_match("/rs\d+/",$logical_description_of_genetic_attributes,$tokens)){
+	$logical_description_of_genetic_attributes = trim($row_array['F']);
+
+	if(preg_match_all("/rs\d+/",$logical_description_of_genetic_attributes,$tokens)){
 		for($i=0;$i<count($tokens);$i++){
-			$list_rs[] = $tokens[$i];
+			for($j=0;$j<count($tokens[$i]);$j++){
+				$list_rs[] = $tokens[$i][$j];
+			}
 		}
 	}
 }
@@ -89,29 +92,33 @@ foreach ($objWorksheet->getRowIterator() as $row) {
 		$row_array[$cell->getColumn()] = $cell->getCalculatedValue();
 	}
 	
-	if(!isset($row_array['A']) || $row_array['A'] == ""){
+	if(!isset($row_array['A']) || strlen(trim($row_array['A'])) == 0){
 		continue;		
 	}
 	
-	if(!isset($row_array['D'])){
+	if(!isset($row_array['D']) || strlen(trim($row_array['D'])) == 0){
 		continue;
 	}
-	$phenotype_logical_statements = $row_array["D"];
-	if(preg_match("/rs\d+/",$phenotype_logical_statements,$tokens)){
+	$phenotype_logical_statements = trim($row_array["D"]);
+	
+	if(preg_match_all("/rs\d+/",$phenotype_logical_statements,$tokens)){
 		for($i=0;$i<count($tokens);$i++){
-			$list_rs[] = $tokens[$i];
+			for($j=0;$j<count($tokens[$i]);$j++){
+				$list_rs[] = $tokens[$i][$j];
+			}
 		}
 	}
 	
 }
 
 $report = "";
-$list_rs = array_unique($list_rs);
-for($i=0;$i<count($list_rs);$i++){
-	$report .= $list_rs[$i]."\n";
-}
 
-/*$list_snp = array();
+/*$list_snp = array_unique($list_rs);
+for($i=0;$i<count($list_snp);$i++){
+	$report .= "$list_snp[$i]\n";
+}*/
+
+$list_snp = array();
 for($i=0;$i<count($list_rs);$i++){
 	$contains = false;
 	for($j=0;$j<count($list_snp);$j++){
@@ -122,10 +129,9 @@ for($i=0;$i<count($list_rs);$i++){
 	}
 	if(!$contains){
 		$list_snp[] = $list_rs[$i];
-		$report =$report . $list_rs[$i]."\n";
+		$report .= $list_rs[$i]."\n";
 	}
-}*/
-
+}
 
 file_put_contents($list_snps_file, $report);
 

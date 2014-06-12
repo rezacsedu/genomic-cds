@@ -8,8 +8,6 @@ The information of rs72558184 from dbSNP is incomplete. The information of the '
 
 The information of rs5030866 from dbSNP is incomplete. The information of the 'Assembly' is missing. This information was added into the dbSNP file. The orientation was set to reverse and the reference allele was set to 'C' to match CYP2D6*1 haplotype.
 
-The haplotype CYP2D6*5 has been disabled due to inconsistency in the definition. It should be a gene deletion but it doesn't have all SNPs defined to deletions.
-
 The information of rs28371733 from dbSNP is incomplete. The information of the 'Assembly' is missing. This information was added into the dbSNP file. The orientation was set to reverse and the reference allele was set to 'C' to match CYP2D6*1 haplotype.
 
 rs72549309 is inconsistent between dbSNP and PharmGKB. The allowed variants in dbSNP are '-/ATGA', whereas the content of DPYD haplotypes from PharmaGKB uses only 'del' and 'A'. This column was disabled for generating the CDS ontology.
@@ -18,9 +16,10 @@ rs139257324 is inconsistent between dbSNP and PharmGKB. The allowed varianst in 
 
 rs13404099 is inconsistent between dbSNP and PharmGKB. The allowed varianst in dbSNP are 'A/G', whereas the content of UGT1A1 haplotypes from PharmGKB uses only 'C' and 'G'. This column was disabled for generating the CDS ontology.
 
-We have manually added in the script for generating the genomic cds ontology the duplicated allele definitions of CYP2D6. If they are not longer needed, remove it.
+The haplotype CYP2D6*5 has been disabled due to inconsistency in the definition. It should be a gene deletion but it doesn't have all SNPs defined to deletions.
+
+We have manually added in the script for generating the genomic cds ontology the duplicated allele definitions of CYP2D6. If they are not longer needed, remove it!
 
 We have manually added in the script for generating the genomic cds ontology the SNPs that are in the defined rules for drug treatment and phenotype. In particular, these SNPs are: rs9923231, rs4149056, rs9934438, rs6025, rs12979860, rs67376798 and rs2297595.
 
-We have manualy added in the script the HLA-B gene because its corresponding haplotype table does not provide any SNP column and, therefore, there are not any SNP related to HLA-B in the dbSNP file.
-
+We have manualy added in the script the HLA-B and HLA-A genes because their corresponding haplotype tables do not provide any SNP columns and, therefore, there are not any SNP related to HLA-B or HLA-A in the dbSNP file.
