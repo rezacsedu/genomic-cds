@@ -392,7 +392,7 @@ foreach ($xml->Rs as $Rs) {
 			$owl .= "   Annotations: relevant_for " .$fxn_symbol. "\n";
 		}
 	}
-	$owl .= "    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs" . $rs_id . "> \n"; 
+	$owl .= "    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs" . $rs_id . "> \n"; 
 	$owl .= "    Annotations: dbsnp_orientation_on_reference_genome \"" . $orient . "\" \n\n";
 	$polymorphism_disjoint_list [] = $class_id;
 	

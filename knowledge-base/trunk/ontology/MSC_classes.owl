@@ -282,7 +282,7 @@ Class: rs4633
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for COMT
    Annotations: relevant_for MIR4761
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4633> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4633> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4633_C
@@ -308,7 +308,7 @@ Class: rs4680
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for COMT
    Annotations: relevant_for MIR4761
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4680> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4680> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4680_A
@@ -330,7 +330,7 @@ Class: rs4818
     Annotations: rdfs:label "rs4818"
    Annotations: relevant_for COMT
    Annotations: relevant_for MIR4761
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4818> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4818> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4818_C
@@ -358,7 +358,7 @@ Class: rs6025
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for F5
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs6025> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs6025> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs6025_C
@@ -382,7 +382,7 @@ Class: rs6269
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for COMT
    Annotations: relevant_for MIR4761
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs6269> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs6269> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs6269_A
@@ -407,7 +407,7 @@ Class: rs7294
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for VKORC1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs7294> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs7294> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs7294_C
@@ -429,7 +429,7 @@ Class: rs12516
     Annotations: rdfs:label "rs12516"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for BRCA1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs12516> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs12516> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs12516_A
@@ -452,7 +452,7 @@ Class: rs16940
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for BRCA1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs16940> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs16940> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs16940_A
@@ -475,7 +475,7 @@ Class: rs16941
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for BRCA1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs16941> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs16941> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs16941_C
@@ -498,7 +498,7 @@ Class: rs16942
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for BRCA1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs16942> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs16942> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs16942_C
@@ -522,7 +522,7 @@ Class: rs16947
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs16947> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs16947> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs16947_A
@@ -547,7 +547,7 @@ Class: rs762551
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs762551> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs762551> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs762551_A
@@ -568,7 +568,7 @@ Class: rs769258
     Annotations: rsid "rs769258"
     Annotations: rdfs:label "rs769258"
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs769258> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs769258> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs769258_C
@@ -594,7 +594,7 @@ Class: rs776746
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP3A5
    Annotations: relevant_for ZSCAN25
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs776746> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs776746> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs776746_C
@@ -617,7 +617,7 @@ Class: rs799912
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for BRCA1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs799912> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs799912> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs799912_C
@@ -640,7 +640,7 @@ Class: rs799917
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for BRCA1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs799917> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs799917> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs799917_A
@@ -677,7 +677,7 @@ Class: rs873478
    Annotations: relevant_for UGT1A5
    Annotations: relevant_for UGT1A3
    Annotations: relevant_for UGT1A9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs873478> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs873478> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs873478_C
@@ -709,7 +709,7 @@ Class: rs887829
    Annotations: relevant_for UGT1A5
    Annotations: relevant_for UGT1A3
    Annotations: relevant_for UGT1A9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs887829> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs887829> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs887829_C
@@ -734,7 +734,7 @@ Class: rs1045642
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for ABCB1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1045642> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1045642> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs1045642_A
@@ -762,7 +762,7 @@ Class: rs1050828
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for G6PD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1050828> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1050828> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs1050828_C
@@ -786,7 +786,7 @@ Class: rs1050829
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for G6PD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1050829> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1050829> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs1050829_C
@@ -811,7 +811,7 @@ Class: rs1057910
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1057910> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1057910> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs1057910_A
@@ -835,7 +835,7 @@ Class: rs1057911
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1057911> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1057911> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs1057911_A
@@ -858,7 +858,7 @@ Class: rs1060915
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for BRCA1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1060915> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1060915> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs1060915_A
@@ -883,7 +883,7 @@ Class: rs1065852
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1065852> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1065852> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs1065852_A
@@ -908,7 +908,7 @@ Class: rs1128503
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for ABCB1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1128503> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1128503> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs1128503_A
@@ -929,7 +929,7 @@ Class: rs1135822
     Annotations: rsid "rs1135822"
     Annotations: rdfs:label "rs1135822"
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1135822> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1135822> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs1135822_A
@@ -951,7 +951,7 @@ Class: rs1135823
     Annotations: rdfs:label "rs1135823"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1135823> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1135823> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs1135823_A
@@ -974,7 +974,7 @@ Class: rs1135824
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1135824> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1135824> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs1135824_C
@@ -997,7 +997,7 @@ Class: rs1135840
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1135840> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1135840> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs1135840_C
@@ -1022,7 +1022,7 @@ Class: rs1799853
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1799853> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1799853> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs1799853_C
@@ -1044,7 +1044,7 @@ Class: rs1799949
     Annotations: rdfs:label "rs1799949"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for BRCA1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1799949> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1799949> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs1799949_A
@@ -1067,7 +1067,7 @@ Class: rs1799966
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for BRCA1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1799966> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1799966> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs1799966_A
@@ -1094,7 +1094,7 @@ Class: rs1801030
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for SULT1A1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1801030> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1801030> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs1801030_C
@@ -1118,7 +1118,7 @@ Class: rs1801158
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for DPYD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1801158> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1801158> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs1801158_C
@@ -1141,7 +1141,7 @@ Class: rs1801159
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for DPYD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1801159> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1801159> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs1801159_C
@@ -1165,7 +1165,7 @@ Class: rs1801160
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for DPYD
    Annotations: relevant_for DPYD-AS1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1801160> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1801160> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs1801160_C
@@ -1189,7 +1189,7 @@ Class: rs1801252
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for ADRB1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1801252> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1801252> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs1801252_A
@@ -1213,7 +1213,7 @@ Class: rs1801253
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for ADRB1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1801253> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1801253> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs1801253_C
@@ -1237,7 +1237,7 @@ Class: rs1801265
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for DPYD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1801265> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1801265> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs1801265_A
@@ -1261,7 +1261,7 @@ Class: rs1801266
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for DPYD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1801266> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1801266> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs1801266_A
@@ -1284,7 +1284,7 @@ Class: rs1801267
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for DPYD
    Annotations: relevant_for DPYD-AS1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1801267> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1801267> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs1801267_C
@@ -1308,7 +1308,7 @@ Class: rs1801268
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for DPYD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1801268> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1801268> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs1801268_A
@@ -1333,7 +1333,7 @@ Class: rs1801272
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2A6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1801272> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1801272> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs1801272_A
@@ -1353,7 +1353,7 @@ Class: rs1809810
     SubClassOf: polymorphism
     Annotations: rsid "rs1809810"
     Annotations: rdfs:label "rs1809810"
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs1809810> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs1809810> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs1809810_A
@@ -1376,7 +1376,7 @@ Class: rs2032582
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for ABCB1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2032582> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2032582> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs2032582_A
@@ -1404,7 +1404,7 @@ Class: rs2046934
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for P2RY12
    Annotations: relevant_for MED12L
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2046934> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2046934> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs2046934_A
@@ -1427,7 +1427,7 @@ Class: rs2069514
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2069514> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2069514> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs2069514_A
@@ -1451,7 +1451,7 @@ Class: rs2069526
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2069526> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2069526> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs2069526_G
@@ -1473,7 +1473,7 @@ Class: rs2230037
     Annotations: rdfs:label "rs2230037"
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2230037> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2230037> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs2230037_A
@@ -1497,7 +1497,7 @@ Class: rs2235013
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for ABCB1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2235013> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2235013> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs2235013_A
@@ -1521,7 +1521,7 @@ Class: rs2235033
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for ABCB1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2235033> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2235033> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs2235033_C
@@ -1545,7 +1545,7 @@ Class: rs2256871
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2256871> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2256871> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs2256871_A
@@ -1569,7 +1569,7 @@ Class: rs2279341
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2279341> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2279341> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs2279341_C
@@ -1592,7 +1592,7 @@ Class: rs2279342
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2279342> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2279342> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs2279342_A
@@ -1617,7 +1617,7 @@ Class: rs2279343
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2279343> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2279343> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs2279343_A
@@ -1641,7 +1641,7 @@ Class: rs2279344
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2279344> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2279344> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs2279344_A
@@ -1664,7 +1664,7 @@ Class: rs2291075
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2291075> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2291075> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs2291075_C
@@ -1689,7 +1689,7 @@ Class: rs2297595
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for DPYD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2297595> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2297595> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs2297595_C
@@ -1713,7 +1713,7 @@ Class: rs2306282
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2306282> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2306282> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs2306282_A
@@ -1738,7 +1738,7 @@ Class: rs2306283
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2306283> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2306283> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs2306283_A
@@ -1762,7 +1762,7 @@ Class: rs2359612
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for VKORC1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2359612> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2359612> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs2359612_A
@@ -1785,7 +1785,7 @@ Class: rs2470890
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2470890> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2470890> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs2470890_C
@@ -1808,7 +1808,7 @@ Class: rs2472304
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2472304> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2472304> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs2472304_A
@@ -1829,7 +1829,7 @@ Class: rs2518463
     Annotations: rsid "rs2518463"
     Annotations: rdfs:label "rs2518463"
    Annotations: relevant_for TPMT
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2518463> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2518463> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs2518463_A
@@ -1853,7 +1853,7 @@ Class: rs2740574
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP3A4
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2740574> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2740574> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs2740574_C
@@ -1874,7 +1874,7 @@ Class: rs2839940
     Annotations: rsid "rs2839940"
     Annotations: rdfs:label "rs2839940"
    Annotations: relevant_for ZMIZ1-AS1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2839940> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2839940> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs2839940_A
@@ -1898,7 +1898,7 @@ Class: rs2842934
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for TPMT
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2842934> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2842934> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs2842934_A
@@ -1922,7 +1922,7 @@ Class: rs2884737
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for VKORC1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs2884737> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs2884737> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs2884737_A
@@ -1943,7 +1943,7 @@ Class: rs3092995
     Annotations: rsid "rs3092995"
     Annotations: rdfs:label "rs3092995"
    Annotations: relevant_for BRCA1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs3092995> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs3092995> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs3092995_C
@@ -1964,7 +1964,7 @@ Class: rs3211369
     Annotations: rsid "rs3211369"
     Annotations: rdfs:label "rs3211369"
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs3211369> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs3211369> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs3211369_A
@@ -1989,7 +1989,7 @@ Class: rs3211371
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs3211371> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs3211371> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs3211371_C
@@ -2014,7 +2014,7 @@ Class: rs3745274
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs3745274> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs3745274> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs3745274_G
@@ -2036,7 +2036,7 @@ Class: rs3758580
     Annotations: rdfs:label "rs3758580"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs3758580> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs3758580> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs3758580_C
@@ -2059,7 +2059,7 @@ Class: rs3758581
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs3758581> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs3758581> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs3758581_A
@@ -2082,7 +2082,7 @@ Class: rs3761738
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for HMGCR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs3761738> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs3761738> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs3761738_C
@@ -2105,7 +2105,7 @@ Class: rs3761739
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for HMGCR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs3761739> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs3761739> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs3761739_C
@@ -2129,7 +2129,7 @@ Class: rs3826711
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs3826711> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs3826711> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs3826711_C
@@ -2153,7 +2153,7 @@ Class: rs3846662
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for HMGCR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs3846662> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs3846662> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs3846662_A
@@ -2175,7 +2175,7 @@ Class: rs3846663
     Annotations: rdfs:label "rs3846663"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for HMGCR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs3846663> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs3846663> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs3846663_C
@@ -2199,7 +2199,7 @@ Class: rs3892097
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs3892097> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs3892097> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs3892097_C
@@ -2224,7 +2224,7 @@ Class: rs3918290
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for DPYD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs3918290> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs3918290> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs3918290_C
@@ -2245,7 +2245,7 @@ Class: rs3931660
     Annotations: rsid "rs3931660"
     Annotations: rdfs:label "rs3931660"
    Annotations: relevant_for TPMT
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs3931660> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs3931660> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs3931660_A
@@ -2279,7 +2279,7 @@ Class: rs4124874
    Annotations: relevant_for UGT1A9
    Annotations: relevant_for LOC100286922
    Annotations: relevant_for LOC101927831
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4124874> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4124874> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs4124874_G
@@ -2312,7 +2312,7 @@ Class: rs4148323
    Annotations: relevant_for UGT1A5
    Annotations: relevant_for UGT1A3
    Annotations: relevant_for UGT1A9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4148323> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4148323> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4148323_A
@@ -2338,7 +2338,7 @@ Class: rs4149056
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4149056> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4149056> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4149056_C
@@ -2362,7 +2362,7 @@ Class: rs4149057
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4149057> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4149057> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4149057_C
@@ -2387,7 +2387,7 @@ Class: rs4244285
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4244285> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4244285> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4244285_A
@@ -2412,7 +2412,7 @@ Class: rs4417205
     Annotations: rsid "rs4417205"
     Annotations: rdfs:label "rs4417205"
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4417205> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4417205> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4417205_C
@@ -2433,7 +2433,7 @@ Class: rs4629571
     Annotations: rsid "rs4629571"
     Annotations: rdfs:label "rs4629571"
    Annotations: relevant_for HMGCR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4629571> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4629571> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4629571_A
@@ -2455,7 +2455,7 @@ Class: rs4646438
     Annotations: rdfs:label "rs4646438"
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP3A4
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4646438> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4646438> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs4646438_D
@@ -2475,7 +2475,7 @@ Class: rs4704209
     Annotations: rsid "rs4704209"
     Annotations: rdfs:label "rs4704209"
    Annotations: relevant_for HMGCR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4704209> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4704209> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4704209_A
@@ -2496,7 +2496,7 @@ Class: rs4802101
     Annotations: rsid "rs4802101"
     Annotations: rdfs:label "rs4802101"
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4802101> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4802101> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4802101_C
@@ -2519,7 +2519,7 @@ Class: rs4803418
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4803418> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4803418> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4803418_C
@@ -2543,7 +2543,7 @@ Class: rs4803419
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4803419> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4803419> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4803419_C
@@ -2566,7 +2566,7 @@ Class: rs4917623
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4917623> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4917623> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4917623_C
@@ -2589,7 +2589,7 @@ Class: rs4986850
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for BRCA1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4986850> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4986850> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4986850_A
@@ -2616,7 +2616,7 @@ Class: rs4986852
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for BRCA1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4986852> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4986852> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4986852_C
@@ -2640,7 +2640,7 @@ Class: rs4986891
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2A6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4986891> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4986891> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs4986891_A
@@ -2669,7 +2669,7 @@ Class: rs4986893
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4986893> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4986893> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4986893_A
@@ -2692,7 +2692,7 @@ Class: rs4986894
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4986894> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4986894> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4986894_C
@@ -2716,7 +2716,7 @@ Class: rs4986907
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP3A4
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4986907> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4986907> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4986907_C
@@ -2740,7 +2740,7 @@ Class: rs4986908
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP3A4
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4986908> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4986908> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs4986908_C
@@ -2768,7 +2768,7 @@ Class: rs4986909
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP3A4
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4986909> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4986909> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4986909_A
@@ -2792,7 +2792,7 @@ Class: rs4986910
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP3A4
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4986910> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4986910> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs4986910_A
@@ -2816,7 +2816,7 @@ Class: rs4986913
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP3A4
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4986913> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4986913> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs4986913_A
@@ -2840,7 +2840,7 @@ Class: rs4987161
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP3A4
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs4987161> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs4987161> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs4987161_A
@@ -2864,7 +2864,7 @@ Class: rs5030655
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs5030655> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs5030655> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs5030655_A
@@ -2887,7 +2887,7 @@ Class: rs5030656
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs5030656> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs5030656> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs5030656_CTT
@@ -2912,7 +2912,7 @@ Class: rs5030862
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs5030862> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs5030862> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs5030862_C
@@ -2936,7 +2936,7 @@ Class: rs5030865
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs5030865> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs5030865> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs5030865_A
@@ -2963,7 +2963,7 @@ Class: rs5030866
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs5030866> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs5030866> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs5030866_C
@@ -2988,7 +2988,7 @@ Class: rs5030867
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs5030867> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs5030867> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs5030867_G
@@ -3012,7 +3012,7 @@ Class: rs5030868
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for G6PD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs5030868> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs5030868> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs5030868_A
@@ -3037,7 +3037,7 @@ Class: rs5031016
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2A6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs5031016> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs5031016> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs5031016_A
@@ -3060,7 +3060,7 @@ Class: rs5031017
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2A6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs5031017> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs5031017> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs5031017_A
@@ -3083,7 +3083,7 @@ Class: rs5853517
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for P2RY12
    Annotations: relevant_for MED12L
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs5853517> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs5853517> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs5853517_D
@@ -3107,7 +3107,7 @@ Class: rs6413438
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs6413438> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs6413438> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs6413438_C
@@ -3130,7 +3130,7 @@ Class: rs6413474
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2A6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs6413474> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs6413474> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs6413474_C
@@ -3151,7 +3151,7 @@ Class: rs6453131
     Annotations: rsid "rs6453131"
     Annotations: rdfs:label "rs6453131"
    Annotations: relevant_for HMGCR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs6453131> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs6453131> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs6453131_G
@@ -3173,7 +3173,7 @@ Class: rs6787801
     Annotations: rdfs:label "rs6787801"
    Annotations: relevant_for P2RY12
    Annotations: relevant_for MED12L
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs6787801> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs6787801> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs6787801_A
@@ -3194,7 +3194,7 @@ Class: rs6798347
     Annotations: rsid "rs6798347"
     Annotations: rdfs:label "rs6798347"
    Annotations: relevant_for MED12L
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs6798347> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs6798347> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs6798347_A
@@ -3216,7 +3216,7 @@ Class: rs6801273
     Annotations: rdfs:label "rs6801273"
    Annotations: relevant_for P2RY12
    Annotations: relevant_for MED12L
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs6801273> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs6801273> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs6801273_C
@@ -3240,7 +3240,7 @@ Class: rs6809699
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for P2RY12
    Annotations: relevant_for MED12L
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs6809699> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs6809699> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs6809699_A
@@ -3263,7 +3263,7 @@ Class: rs6921269
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for TPMT
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs6921269> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs6921269> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs6921269_A
@@ -3284,7 +3284,7 @@ Class: rs7088784
     Annotations: rsid "rs7088784"
     Annotations: rdfs:label "rs7088784"
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs7088784> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs7088784> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs7088784_A
@@ -3305,7 +3305,7 @@ Class: rs7196161
     Annotations: rsid "rs7196161"
     Annotations: rdfs:label "rs7196161"
 	Annotations: can_be_tested_with 23andMe_v3 
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs7196161> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs7196161> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs7196161_A
@@ -3329,7 +3329,7 @@ Class: rs7900194
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs7900194> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs7900194> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs7900194_A
@@ -3355,7 +3355,7 @@ Class: rs7902257
     Annotations: rdfs:label "rs7902257"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs7902257> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs7902257> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs7902257_A
@@ -3378,7 +3378,7 @@ Class: rs7916649
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs7916649> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs7916649> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs7916649_A
@@ -3402,7 +3402,7 @@ Class: rs8050894
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for VKORC1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs8050894> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs8050894> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs8050894_C
@@ -3422,7 +3422,7 @@ Class: rs8175347
     SubClassOf: polymorphism
     Annotations: rsid "rs8175347"
     Annotations: rdfs:label "rs8175347"
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs8175347> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs8175347> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs8175347_TA_5
@@ -3456,7 +3456,7 @@ Class: rs8176318
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for BRCA1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs8176318> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs8176318> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs8176318_A
@@ -3481,7 +3481,7 @@ Class: rs8192709
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs8192709> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs8192709> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs8192709_C
@@ -3505,7 +3505,7 @@ Class: rs8192719
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs8192719> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs8192719> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs8192719_C
@@ -3528,7 +3528,7 @@ Class: rs9282861
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for SULT1A1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs9282861> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs9282861> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs9282861_C
@@ -3552,7 +3552,7 @@ Class: rs9332130
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs9332130> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs9332130> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs9332130_A
@@ -3576,7 +3576,7 @@ Class: rs9332131
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs9332131> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs9332131> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs9332131_A
@@ -3600,7 +3600,7 @@ Class: rs9332239
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs9332239> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs9332239> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs9332239_C
@@ -3623,7 +3623,7 @@ Class: rs9333569
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for TPMT
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs9333569> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs9333569> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs9333569_C
@@ -3646,7 +3646,7 @@ Class: rs9333570
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for TPMT
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs9333570> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs9333570> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs9333570_C
@@ -3670,7 +3670,7 @@ Class: rs9848789
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for P2RY12
    Annotations: relevant_for MED12L
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs9848789> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs9848789> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs9848789_C
@@ -3692,7 +3692,7 @@ Class: rs9859552
     Annotations: rdfs:label "rs9859552"
    Annotations: relevant_for P2RY12
    Annotations: relevant_for MED12L
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs9859552> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs9859552> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs9859552_G
@@ -3716,7 +3716,7 @@ Class: rs9908805
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for NBR1
    Annotations: relevant_for RP11-242D8.1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs9908805> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs9908805> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs9908805_C
@@ -3738,7 +3738,7 @@ Class: rs9911630
     Annotations: rdfs:label "rs9911630"
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs9911630> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs9911630> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs9911630_A
@@ -3764,7 +3764,7 @@ Class: rs9923231
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for VKORC1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs9923231> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs9923231> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs9923231_A
@@ -3798,7 +3798,7 @@ Class: rs9934438
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for VKORC1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs9934438> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs9934438> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs9934438_A
@@ -3819,7 +3819,7 @@ Class: rs10038095
     Annotations: rsid "rs10038095"
     Annotations: rdfs:label "rs10038095"
    Annotations: relevant_for HMGCR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs10038095> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs10038095> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs10038095_A
@@ -3845,7 +3845,7 @@ Class: rs10264272
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP3A5
    Annotations: relevant_for ZSCAN25
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs10264272> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs10264272> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs10264272_C
@@ -3869,7 +3869,7 @@ Class: rs10276036
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for ABCB1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs10276036> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs10276036> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs10276036_C
@@ -3902,7 +3902,7 @@ Class: rs10929302
    Annotations: relevant_for UGT1A9
    Annotations: relevant_for LOC100286922
    Annotations: relevant_for LOC101927831
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs10929302> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs10929302> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs10929302_A
@@ -3924,7 +3924,7 @@ Class: rs10935838
     Annotations: rdfs:label "rs10935838"
    Annotations: relevant_for P2RY12
    Annotations: relevant_for MED12L
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs10935838> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs10935838> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs10935838_A
@@ -3946,7 +3946,7 @@ Class: rs11045818
     Annotations: rdfs:label "rs11045818"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs11045818> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs11045818> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs11045818_A
@@ -3971,7 +3971,7 @@ Class: rs11045819
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs11045819> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs11045819> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs11045819_A
@@ -3994,7 +3994,7 @@ Class: rs11045852
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs11045852> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs11045852> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs11045852_A
@@ -4017,7 +4017,7 @@ Class: rs11045853
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs11045853> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs11045853> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs11045853_A
@@ -4038,7 +4038,7 @@ Class: rs11188072
     Annotations: rsid "rs11188072"
     Annotations: rdfs:label "rs11188072"
 	Annotations: can_be_tested_with 23andMe_v3 
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs11188072> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs11188072> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs11188072_C
@@ -4061,7 +4061,7 @@ Class: rs11568732
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs11568732> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs11568732> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs11568732_G
@@ -4086,7 +4086,7 @@ Class: rs12248560
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs12248560> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs12248560> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs12248560_A
@@ -4111,7 +4111,7 @@ Class: rs12529220
     Annotations: rsid "rs12529220"
     Annotations: rdfs:label "rs12529220"
    Annotations: relevant_for TPMT
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs12529220> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs12529220> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs12529220_A
@@ -4134,7 +4134,7 @@ Class: rs12571421
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs12571421> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs12571421> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs12571421_A
@@ -4158,7 +4158,7 @@ Class: rs12720461
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs12720461> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs12720461> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs12720461_C
@@ -4183,7 +4183,7 @@ Class: rs12721627
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP3A4
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs12721627> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs12721627> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs12721627_C
@@ -4204,7 +4204,7 @@ Class: rs12721629
     Annotations: rsid "rs12721629"
     Annotations: rdfs:label "rs12721629"
    Annotations: relevant_for CYP3A4
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs12721629> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs12721629> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs12721629_A
@@ -4228,7 +4228,7 @@ Class: rs12721634
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP3A4
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs12721634> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs12721634> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs12721634_A
@@ -4250,7 +4250,7 @@ Class: rs12721649
     Annotations: rdfs:label "rs12721649"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs12721649> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs12721649> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs12721649_A
@@ -4271,7 +4271,7 @@ Class: rs12721655
     Annotations: rsid "rs12721655"
     Annotations: rdfs:label "rs12721655"
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs12721655> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs12721655> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs12721655_A
@@ -4294,7 +4294,7 @@ Class: rs12769205
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs12769205> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs12769205> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs12769205_A
@@ -4318,7 +4318,7 @@ Class: rs12979860
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for IFNL4
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs12979860> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs12979860> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs12979860_C
@@ -4348,7 +4348,7 @@ Class: rs13404099
    Annotations: relevant_for UGT1A9
    Annotations: relevant_for LOC100286922
    Annotations: relevant_for LOC101927831
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs13404099> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs13404099> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs13404099_A
@@ -4369,7 +4369,7 @@ Class: rs17238484
     Annotations: rsid "rs17238484"
     Annotations: rdfs:label "rs17238484"
    Annotations: relevant_for HMGCR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs17238484> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs17238484> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs17238484_G
@@ -4393,7 +4393,7 @@ Class: rs17238540
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for HMGCR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs17238540> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs17238540> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs17238540_G
@@ -4416,7 +4416,7 @@ Class: rs17244841
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for HMGCR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs17244841> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs17244841> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs17244841_A
@@ -4439,7 +4439,7 @@ Class: rs17599948
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for NBR1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs17599948> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs17599948> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs17599948_A
@@ -4463,7 +4463,7 @@ Class: rs17708472
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for VKORC1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs17708472> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs17708472> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs17708472_A
@@ -4486,7 +4486,7 @@ Class: rs17861157
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs17861157> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs17861157> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs17861157_A
@@ -4510,7 +4510,7 @@ Class: rs17878459
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs17878459> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs17878459> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs17878459_A
@@ -4537,7 +4537,7 @@ Class: rs17878649
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs17878649> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs17878649> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs17878649_A
@@ -4561,7 +4561,7 @@ Class: rs17879685
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs17879685> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs17879685> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs17879685_C
@@ -4582,7 +4582,7 @@ Class: rs17879992
     Annotations: rsid "rs17879992"
     Annotations: rdfs:label "rs17879992"
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs17879992> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs17879992> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs17879992_C
@@ -4603,7 +4603,7 @@ Class: rs17880887
     Annotations: rsid "rs17880887"
     Annotations: rdfs:label "rs17880887"
 	Annotations: can_be_tested_with 23andMe_v3 
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs17880887> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs17880887> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs17880887_G
@@ -4623,7 +4623,7 @@ Class: rs17881535
     SubClassOf: polymorphism
     Annotations: rsid "rs17881535"
     Annotations: rdfs:label "rs17881535"
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs17881535> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs17881535> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs17881535_C
@@ -4646,7 +4646,7 @@ Class: rs17882687
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs17882687> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs17882687> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs17882687_A
@@ -4670,7 +4670,7 @@ Class: rs17884712
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs17884712> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs17884712> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs17884712_A
@@ -4691,7 +4691,7 @@ Class: rs17884832
     Annotations: rsid "rs17884832"
     Annotations: rdfs:label "rs17884832"
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs17884832> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs17884832> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs17884832_G
@@ -4712,7 +4712,7 @@ Class: rs17885098
     Annotations: rsid "rs17885098"
     Annotations: rdfs:label "rs17885098"
 	Annotations: can_be_tested_with 23andMe_v3 
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs17885098> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs17885098> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs17885098_C
@@ -4734,7 +4734,7 @@ Class: rs17886522
     Annotations: rdfs:label "rs17886522"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs17886522> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs17886522> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs17886522_A
@@ -4759,7 +4759,7 @@ Class: rs28365083
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP3A5
    Annotations: relevant_for ZSCAN25
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28365083> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28365083> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs28365083_G
@@ -4781,7 +4781,7 @@ Class: rs28365085
     Annotations: rdfs:label "rs28365085"
    Annotations: relevant_for CYP3A5
    Annotations: relevant_for ZSCAN25
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28365085> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28365085> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs28365085_A
@@ -4806,7 +4806,7 @@ Class: rs28371685
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28371685> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28371685> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs28371685_C
@@ -4831,7 +4831,7 @@ Class: rs28371686
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28371686> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28371686> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs28371686_C
@@ -4853,7 +4853,7 @@ Class: rs28371696
     Annotations: rdfs:label "rs28371696"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28371696> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28371696> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs28371696_C
@@ -4875,7 +4875,7 @@ Class: rs28371703
     Annotations: rdfs:label "rs28371703"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28371703> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28371703> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs28371703_G
@@ -4896,7 +4896,7 @@ Class: rs28371704
     Annotations: rsid "rs28371704"
     Annotations: rdfs:label "rs28371704"
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28371704> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28371704> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs28371704_C
@@ -4921,7 +4921,7 @@ Class: rs28371706
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28371706> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28371706> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs28371706_A
@@ -4944,7 +4944,7 @@ Class: rs28371710
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28371710> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28371710> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs28371710_C
@@ -4967,7 +4967,7 @@ Class: rs28371717
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28371717> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28371717> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs28371717_A
@@ -4992,7 +4992,7 @@ Class: rs28371725
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28371725> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28371725> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs28371725_C
@@ -5015,7 +5015,7 @@ Class: rs28371733
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28371733> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28371733> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs28371733_C
@@ -5039,7 +5039,7 @@ Class: rs28371759
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP3A4
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28371759> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28371759> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs28371759_A
@@ -5060,7 +5060,7 @@ Class: rs28374453
     Annotations: rsid "rs28374453"
     Annotations: rdfs:label "rs28374453"
    Annotations: relevant_for SULT1A1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28374453> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28374453> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs28374453_A
@@ -5084,7 +5084,7 @@ Class: rs28383468
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP3A5
    Annotations: relevant_for ZSCAN25
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28383468> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28383468> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs28383468_A
@@ -5109,7 +5109,7 @@ Class: rs28383479
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP3A5
    Annotations: relevant_for ZSCAN25
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28383479> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28383479> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs28383479_C
@@ -5133,7 +5133,7 @@ Class: rs28399424
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28399424> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28399424> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs28399424_C
@@ -5158,7 +5158,7 @@ Class: rs28399433
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2A6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28399433> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28399433> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs28399433_A
@@ -5182,7 +5182,7 @@ Class: rs28399434
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2A6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28399434> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28399434> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs28399434_C
@@ -5205,7 +5205,7 @@ Class: rs28399435
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2A6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28399435> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28399435> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs28399435_C
@@ -5230,7 +5230,7 @@ Class: rs28399454
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2A6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28399454> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28399454> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs28399454_C
@@ -5252,7 +5252,7 @@ Class: rs28399463
     Annotations: rdfs:label "rs28399463"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2A6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28399463> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28399463> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs28399463_C
@@ -5277,7 +5277,7 @@ Class: rs28399468
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2A6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28399468> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28399468> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs28399468_A
@@ -5302,7 +5302,7 @@ Class: rs28399499
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28399499> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28399499> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs28399499_C
@@ -5327,7 +5327,7 @@ Class: rs28399504
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28399504> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28399504> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs28399504_A
@@ -5350,7 +5350,7 @@ Class: rs28399513
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs28399513> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs28399513> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs28399513_A
@@ -5373,7 +5373,7 @@ Class: rs33926104
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs33926104> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs33926104> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs33926104_A
@@ -5400,7 +5400,7 @@ Class: rs33973337
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs33973337> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs33973337> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs33973337_A
@@ -5422,7 +5422,7 @@ Class: rs33980385
     Annotations: rdfs:label "rs33980385"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs33980385> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs33980385> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs33980385_A
@@ -5446,7 +5446,7 @@ Class: rs34097093
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs34097093> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs34097093> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs34097093_C
@@ -5471,7 +5471,7 @@ Class: rs34223104
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs34223104> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs34223104> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs34223104_C
@@ -5492,7 +5492,7 @@ Class: rs34284776
     Annotations: rsid "rs34284776"
     Annotations: rdfs:label "rs34284776"
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs34284776> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs34284776> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs34284776_C
@@ -5515,7 +5515,7 @@ Class: rs34671512
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs34671512> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs34671512> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs34671512_A
@@ -5538,7 +5538,7 @@ Class: rs34698757
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs34698757> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs34698757> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs34698757_C
@@ -5562,7 +5562,7 @@ Class: rs34826503
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs34826503> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs34826503> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs34826503_C
@@ -5585,7 +5585,7 @@ Class: rs34883432
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs34883432> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs34883432> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs34883432_A
@@ -5616,7 +5616,7 @@ Class: rs34946978
    Annotations: relevant_for UGT1A5
    Annotations: relevant_for UGT1A3
    Annotations: relevant_for UGT1A9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs34946978> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs34946978> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs34946978_C
@@ -5640,7 +5640,7 @@ Class: rs35010098
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs35010098> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs35010098> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs35010098_A
@@ -5661,7 +5661,7 @@ Class: rs35266616
     Annotations: rsid "rs35266616"
     Annotations: rdfs:label "rs35266616"
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs35266616> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs35266616> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs35266616_C
@@ -5685,7 +5685,7 @@ Class: rs35303484
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs35303484> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs35303484> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs35303484_A
@@ -5719,7 +5719,7 @@ Class: rs35350960
    Annotations: relevant_for UGT1A5
    Annotations: relevant_for UGT1A3
    Annotations: relevant_for UGT1A9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs35350960> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs35350960> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs35350960_A
@@ -5744,7 +5744,7 @@ Class: rs35468935
     Annotations: rsid "rs35468935"
     Annotations: rdfs:label "rs35468935"
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs35468935> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs35468935> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs35468935_C
@@ -5765,7 +5765,7 @@ Class: rs35599367
     Annotations: rsid "rs35599367"
     Annotations: rdfs:label "rs35599367"
    Annotations: relevant_for CYP3A4
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs35599367> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs35599367> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs35599367_A
@@ -5786,7 +5786,7 @@ Class: rs35622401
     Annotations: rsid "rs35622401"
     Annotations: rdfs:label "rs35622401"
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs35622401> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs35622401> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs35622401_C
@@ -5808,7 +5808,7 @@ Class: rs35694136
     Annotations: rdfs:label "rs35694136"
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs35694136> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs35694136> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs35694136_D
@@ -5829,7 +5829,7 @@ Class: rs35742686
     Annotations: rsid "rs35742686"
     Annotations: rdfs:label "rs35742686"
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs35742686> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs35742686> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs35742686_D
@@ -5853,7 +5853,7 @@ Class: rs35773040
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs35773040> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs35773040> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs35773040_A
@@ -5876,7 +5876,7 @@ Class: rs35796837
 	Annotations: can_be_tested_with 23andMe_v2 
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs35796837> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs35796837> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs35796837_A
@@ -5900,7 +5900,7 @@ Class: rs35979566
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs35979566> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs35979566> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs35979566_A
@@ -5924,7 +5924,7 @@ Class: rs36056539
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs36056539> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs36056539> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs36056539_C
@@ -5948,7 +5948,7 @@ Class: rs36060847
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs36060847> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs36060847> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs36060847_A
@@ -5972,7 +5972,7 @@ Class: rs36079186
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs36079186> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs36079186> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs36079186_C
@@ -5997,7 +5997,7 @@ Class: rs41279854
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP3A5
    Annotations: relevant_for ZSCAN25
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs41279854> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs41279854> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs41279854_A
@@ -6022,7 +6022,7 @@ Class: rs41291556
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs41291556> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs41291556> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs41291556_C
@@ -6046,7 +6046,7 @@ Class: rs41303343
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP3A5
    Annotations: relevant_for ZSCAN25
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs41303343> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs41303343> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs41303343_A
@@ -6068,7 +6068,7 @@ Class: rs45482602
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with Affymetrix_DMET_chip 
    Annotations: relevant_for CYP2B6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs45482602> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs45482602> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs45482602_A
@@ -6090,7 +6090,7 @@ Class: rs45486893
     Annotations: rdfs:label "rs45486893"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs45486893> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs45486893> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs45486893_C
@@ -6112,7 +6112,7 @@ Class: rs55640102
     Annotations: rdfs:label "rs55640102"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs55640102> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs55640102> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs55640102_A
@@ -6138,7 +6138,7 @@ Class: rs55737008
     Annotations: rdfs:label "rs55737008"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs55737008> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs55737008> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs55737008_A
@@ -6160,7 +6160,7 @@ Class: rs55752064
     Annotations: rdfs:label "rs55752064"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs55752064> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs55752064> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs55752064_A
@@ -6187,7 +6187,7 @@ Class: rs55817950
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP3A5
    Annotations: relevant_for ZSCAN25
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs55817950> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs55817950> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs55817950_A
@@ -6209,7 +6209,7 @@ Class: rs55886062
     Annotations: rdfs:label "rs55886062"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for DPYD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs55886062> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs55886062> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs55886062_A
@@ -6235,7 +6235,7 @@ Class: rs55889066
     Annotations: rdfs:label "rs55889066"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs55889066> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs55889066> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs55889066_A
@@ -6257,7 +6257,7 @@ Class: rs55901008
     Annotations: rdfs:label "rs55901008"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs55901008> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs55901008> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs55901008_A
@@ -6283,7 +6283,7 @@ Class: rs56061388
     Annotations: rdfs:label "rs56061388"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs56061388> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs56061388> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs56061388_C
@@ -6305,7 +6305,7 @@ Class: rs56101265
     Annotations: rdfs:label "rs56101265"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs56101265> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs56101265> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs56101265_C
@@ -6327,7 +6327,7 @@ Class: rs56107638
     Annotations: rdfs:label "rs56107638"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs56107638> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs56107638> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs56107638_A
@@ -6353,7 +6353,7 @@ Class: rs56160784
     Annotations: rdfs:label "rs56160784"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs56160784> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs56160784> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs56160784_C
@@ -6374,7 +6374,7 @@ Class: rs56165452
     Annotations: rsid "rs56165452"
     Annotations: rdfs:label "rs56165452"
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs56165452> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs56165452> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs56165452_A
@@ -6400,7 +6400,7 @@ Class: rs56199088
     Annotations: rdfs:label "rs56199088"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs56199088> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs56199088> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs56199088_A
@@ -6427,7 +6427,7 @@ Class: rs56244447
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP3A5
    Annotations: relevant_for ZSCAN25
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs56244447> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs56244447> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs56244447_A
@@ -6449,7 +6449,7 @@ Class: rs56276455
     Annotations: rdfs:label "rs56276455"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs56276455> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs56276455> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs56276455_A
@@ -6471,7 +6471,7 @@ Class: rs56337013
     Annotations: rdfs:label "rs56337013"
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs56337013> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs56337013> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs56337013_C
@@ -6493,7 +6493,7 @@ Class: rs56387224
     Annotations: rdfs:label "rs56387224"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs56387224> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs56387224> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs56387224_A
@@ -6520,7 +6520,7 @@ Class: rs56411402
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP3A5
    Annotations: relevant_for ZSCAN25
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs56411402> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs56411402> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs56411402_C
@@ -6542,7 +6542,7 @@ Class: rs57505750
     Annotations: rdfs:label "rs57505750"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs57505750> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs57505750> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs57505750_C
@@ -6564,7 +6564,7 @@ Class: rs58973490
     Annotations: rdfs:label "rs58973490"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs58973490> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs58973490> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs58973490_A
@@ -6585,7 +6585,7 @@ Class: rs59113707
     Annotations: rsid "rs59113707"
     Annotations: rdfs:label "rs59113707"
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs59113707> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs59113707> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs59113707_C
@@ -6607,7 +6607,7 @@ Class: rs59421388
     Annotations: rdfs:label "rs59421388"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs59421388> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs59421388> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs59421388_C
@@ -6629,7 +6629,7 @@ Class: rs59502379
     Annotations: rdfs:label "rs59502379"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs59502379> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs59502379> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs59502379_C
@@ -6651,7 +6651,7 @@ Class: rs61736512
     Annotations: rdfs:label "rs61736512"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs61736512> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs61736512> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs61736512_C
@@ -6674,7 +6674,7 @@ Class: rs67376798
 	Annotations: rank "7"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for DPYD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs67376798> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs67376798> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs67376798_A
@@ -6695,7 +6695,7 @@ Class: rs67807361
     Annotations: rsid "rs67807361"
     Annotations: rdfs:label "rs67807361"
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs67807361> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs67807361> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs67807361_A
@@ -6716,7 +6716,7 @@ Class: rs72547511
     Annotations: rsid "rs72547511"
     Annotations: rdfs:label "rs72547511"
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72547511> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72547511> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72547511_C
@@ -6737,7 +6737,7 @@ Class: rs72547512
     Annotations: rsid "rs72547512"
     Annotations: rdfs:label "rs72547512"
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72547512> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72547512> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72547512_A
@@ -6763,7 +6763,7 @@ Class: rs72547513
     Annotations: rdfs:label "rs72547513"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72547513> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72547513> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72547513_A
@@ -6789,7 +6789,7 @@ Class: rs72547515
     Annotations: rdfs:label "rs72547515"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72547515> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72547515> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs72547515_A
@@ -6811,7 +6811,7 @@ Class: rs72547516
     Annotations: rdfs:label "rs72547516"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72547516> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72547516> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72547516_A
@@ -6837,7 +6837,7 @@ Class: rs72547517
     Annotations: rdfs:label "rs72547517"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72547517> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72547517> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72547517_A
@@ -6858,7 +6858,7 @@ Class: rs72549303
     Annotations: rsid "rs72549303"
     Annotations: rdfs:label "rs72549303"
    Annotations: relevant_for DPYD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72549303> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72549303> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs72549303_D
@@ -6879,7 +6879,7 @@ Class: rs72549306
     Annotations: rsid "rs72549306"
     Annotations: rdfs:label "rs72549306"
    Annotations: relevant_for DPYD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72549306> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72549306> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72549306_A
@@ -6900,7 +6900,7 @@ Class: rs72549309
     Annotations: rsid "rs72549309"
     Annotations: rdfs:label "rs72549309"
    Annotations: relevant_for DPYD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72549309> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72549309> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72549309_ATGA
@@ -6923,7 +6923,7 @@ Class: rs72552267
 	Annotations: can_be_tested_with 23andMe_v3 
 	Annotations: can_be_tested_with University_of_Florida_and_Stanford_University_chip 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72552267> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72552267> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72552267_A
@@ -6945,7 +6945,7 @@ Class: rs72552742
     Annotations: rdfs:label "rs72552742"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for TPMT
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72552742> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72552742> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72552742_A
@@ -6968,7 +6968,7 @@ Class: rs72552791
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP3A5
    Annotations: relevant_for ZSCAN25
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72552791> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72552791> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs72552791_C
@@ -6989,7 +6989,7 @@ Class: rs72556347
     Annotations: rsid "rs72556347"
     Annotations: rdfs:label "rs72556347"
    Annotations: relevant_for TPMT
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72556347> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72556347> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs72556347_A
@@ -7010,7 +7010,7 @@ Class: rs72558184
     Annotations: rsid "rs72558184"
     Annotations: rdfs:label "rs72558184"
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72558184> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72558184> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72558184_A
@@ -7032,7 +7032,7 @@ Class: rs72558186
     Annotations: rdfs:label "rs72558186"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72558186> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72558186> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72558186_A
@@ -7053,7 +7053,7 @@ Class: rs72558187
     Annotations: rsid "rs72558187"
     Annotations: rdfs:label "rs72558187"
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72558187> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72558187> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72558187_C
@@ -7074,7 +7074,7 @@ Class: rs72558189
     Annotations: rsid "rs72558189"
     Annotations: rdfs:label "rs72558189"
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72558189> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72558189> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72558189_A
@@ -7096,7 +7096,7 @@ Class: rs72558190
     Annotations: rdfs:label "rs72558190"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72558190> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72558190> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72558190_A
@@ -7118,7 +7118,7 @@ Class: rs72558192
     Annotations: rdfs:label "rs72558192"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72558192> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72558192> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72558192_A
@@ -7140,7 +7140,7 @@ Class: rs72558193
     Annotations: rdfs:label "rs72558193"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for CYP2C9
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72558193> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72558193> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72558193_A
@@ -7161,7 +7161,7 @@ Class: rs72559745
     Annotations: rsid "rs72559745"
     Annotations: rdfs:label "rs72559745"
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72559745> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72559745> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72559745_A
@@ -7182,7 +7182,7 @@ Class: rs72559746
     Annotations: rsid "rs72559746"
     Annotations: rdfs:label "rs72559746"
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72559746> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72559746> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72559746_G
@@ -7204,7 +7204,7 @@ Class: rs72559748
     Annotations: rdfs:label "rs72559748"
 	Annotations: can_be_tested_with 23andMe_v3 
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs72559748> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs72559748> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs72559748_A
@@ -7225,7 +7225,7 @@ Class: rs74423290
     Annotations: rsid "rs74423290"
     Annotations: rdfs:label "rs74423290"
    Annotations: relevant_for TPMT
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs74423290> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs74423290> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs74423290_C
@@ -7246,7 +7246,7 @@ Class: rs74503330
     Annotations: rsid "rs74503330"
     Annotations: rdfs:label "rs74503330"
    Annotations: relevant_for CFTR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs74503330> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs74503330> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs74503330_A
@@ -7267,7 +7267,7 @@ Class: rs75527207
     Annotations: rsid "rs75527207"
     Annotations: rdfs:label "rs75527207"
    Annotations: relevant_for CFTR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs75527207> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs75527207> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs75527207_A
@@ -7288,7 +7288,7 @@ Class: rs76723693
     Annotations: rsid "rs76723693"
     Annotations: rdfs:label "rs76723693"
    Annotations: relevant_for G6PD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs76723693> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs76723693> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs76723693_A
@@ -7309,7 +7309,7 @@ Class: rs78060119
     Annotations: rsid "rs78060119"
     Annotations: rdfs:label "rs78060119"
    Annotations: relevant_for DPYD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs78060119> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs78060119> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs78060119_A
@@ -7330,7 +7330,7 @@ Class: rs78482768
     Annotations: rsid "rs78482768"
     Annotations: rdfs:label "rs78482768"
    Annotations: relevant_for CYP2D6
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs78482768> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs78482768> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs78482768_C
@@ -7351,7 +7351,7 @@ Class: rs79135870
     Annotations: rsid "rs79135870"
     Annotations: rdfs:label "rs79135870"
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs79135870> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs79135870> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs79135870_A
@@ -7372,7 +7372,7 @@ Class: rs79901429
     Annotations: rsid "rs79901429"
     Annotations: rdfs:label "rs79901429"
    Annotations: relevant_for TPMT
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs79901429> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs79901429> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs79901429_A
@@ -7393,7 +7393,7 @@ Class: rs80081766
     Annotations: rsid "rs80081766"
     Annotations: rdfs:label "rs80081766"
    Annotations: relevant_for DPYD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs80081766> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs80081766> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs80081766_C
@@ -7414,7 +7414,7 @@ Class: rs80282562
     Annotations: rsid "rs80282562"
     Annotations: rdfs:label "rs80282562"
    Annotations: relevant_for CFTR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs80282562> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs80282562> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs80282562_A
@@ -7435,7 +7435,7 @@ Class: rs111901354
     Annotations: rsid "rs111901354"
     Annotations: rdfs:label "rs111901354"
    Annotations: relevant_for TPMT
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs111901354> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs111901354> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs111901354_A
@@ -7456,7 +7456,7 @@ Class: rs112339338
     Annotations: rsid "rs112339338"
     Annotations: rdfs:label "rs112339338"
    Annotations: relevant_for TPMT
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs112339338> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs112339338> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs112339338_A
@@ -7477,7 +7477,7 @@ Class: rs113993960
     Annotations: rsid "rs113993960"
     Annotations: rdfs:label "rs113993960"
    Annotations: relevant_for CFTR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs113993960> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs113993960> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs113993960_CTT
@@ -7498,7 +7498,7 @@ Class: rs115106679
     Annotations: rsid "rs115106679"
     Annotations: rdfs:label "rs115106679"
    Annotations: relevant_for TPMT
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs115106679> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs115106679> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs115106679_C
@@ -7519,7 +7519,7 @@ Class: rs118203756
     Annotations: rsid "rs118203756"
     Annotations: rdfs:label "rs118203756"
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs118203756> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs118203756> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs118203756_C
@@ -7540,7 +7540,7 @@ Class: rs118203757
     Annotations: rsid "rs118203757"
     Annotations: rdfs:label "rs118203757"
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs118203757> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs118203757> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs118203757_A
@@ -7561,7 +7561,7 @@ Class: rs118203759
     Annotations: rsid "rs118203759"
     Annotations: rdfs:label "rs118203759"
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs118203759> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs118203759> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs118203759_C
@@ -7582,7 +7582,7 @@ Class: rs121908755
     Annotations: rsid "rs121908755"
     Annotations: rdfs:label "rs121908755"
    Annotations: relevant_for CFTR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs121908755> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs121908755> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs121908755_A
@@ -7607,7 +7607,7 @@ Class: rs121908757
     Annotations: rsid "rs121908757"
     Annotations: rdfs:label "rs121908757"
    Annotations: relevant_for CFTR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs121908757> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs121908757> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs121908757_A
@@ -7628,7 +7628,7 @@ Class: rs121909005
     Annotations: rsid "rs121909005"
     Annotations: rdfs:label "rs121909005"
    Annotations: relevant_for CFTR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs121909005> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs121909005> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs121909005_G
@@ -7649,7 +7649,7 @@ Class: rs121909013
     Annotations: rsid "rs121909013"
     Annotations: rdfs:label "rs121909013"
    Annotations: relevant_for CFTR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs121909013> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs121909013> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs121909013_A
@@ -7670,7 +7670,7 @@ Class: rs121909041
     Annotations: rsid "rs121909041"
     Annotations: rdfs:label "rs121909041"
    Annotations: relevant_for CFTR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs121909041> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs121909041> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs121909041_C
@@ -7691,7 +7691,7 @@ Class: rs137852328
     Annotations: rsid "rs137852328"
     Annotations: rdfs:label "rs137852328"
    Annotations: relevant_for G6PD
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs137852328> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs137852328> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs137852328_A
@@ -7716,7 +7716,7 @@ Class: rs138142612
     Annotations: rsid "rs138142612"
     Annotations: rdfs:label "rs138142612"
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs138142612> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs138142612> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs138142612_A
@@ -7737,7 +7737,7 @@ Class: rs138652540
     Annotations: rsid "rs138652540"
     Annotations: rdfs:label "rs138652540"
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs138652540> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs138652540> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs138652540_C
@@ -7758,7 +7758,7 @@ Class: rs139257324
     Annotations: rsid "rs139257324"
     Annotations: rdfs:label "rs139257324"
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs139257324> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs139257324> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs139257324_C
@@ -7779,7 +7779,7 @@ Class: rs140278421
     Annotations: rsid "rs140278421"
     Annotations: rdfs:label "rs140278421"
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs140278421> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs140278421> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs140278421_C
@@ -7800,7 +7800,7 @@ Class: rs140790673
     Annotations: rsid "rs140790673"
     Annotations: rdfs:label "rs140790673"
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs140790673> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs140790673> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs140790673_C
@@ -7821,7 +7821,7 @@ Class: rs142965323
     Annotations: rsid "rs142965323"
     Annotations: rdfs:label "rs142965323"
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs142965323> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs142965323> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs142965323_A
@@ -7842,7 +7842,7 @@ Class: rs143193369
     Annotations: rsid "rs143193369"
     Annotations: rdfs:label "rs143193369"
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs143193369> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs143193369> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs143193369_A
@@ -7863,7 +7863,7 @@ Class: rs144036596
     Annotations: rsid "rs144036596"
     Annotations: rdfs:label "rs144036596"
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs144036596> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs144036596> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs144036596_A
@@ -7884,7 +7884,7 @@ Class: rs144041067
     Annotations: rsid "rs144041067"
     Annotations: rdfs:label "rs144041067"
    Annotations: relevant_for TPMT
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs144041067> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs144041067> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs144041067_C
@@ -7905,7 +7905,7 @@ Class: rs144148965
     Annotations: rsid "rs144148965"
     Annotations: rdfs:label "rs144148965"
    Annotations: relevant_for CYP1A2
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs144148965> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs144148965> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs144148965_A
@@ -7926,7 +7926,7 @@ Class: rs150900439
     Annotations: rsid "rs150900439"
     Annotations: rdfs:label "rs150900439"
    Annotations: relevant_for TPMT
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs150900439> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs150900439> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs150900439_C
@@ -7947,7 +7947,7 @@ Class: rs181297724
     Annotations: rsid "rs181297724"
     Annotations: rdfs:label "rs181297724"
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs181297724> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs181297724> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs181297724_C
@@ -7968,7 +7968,7 @@ Class: rs192154563
     Annotations: rsid "rs192154563"
     Annotations: rdfs:label "rs192154563"
    Annotations: relevant_for CYP2C19
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs192154563> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs192154563> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs192154563_C
@@ -7989,7 +7989,7 @@ Class: rs193922525
     Annotations: rsid "rs193922525"
     Annotations: rdfs:label "rs193922525"
    Annotations: relevant_for CFTR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs193922525> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs193922525> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs193922525_A
@@ -8010,7 +8010,7 @@ Class: rs199826652
     Annotations: rsid "rs199826652"
     Annotations: rdfs:label "rs199826652"
    Annotations: relevant_for CFTR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs199826652> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs199826652> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs199826652_D
@@ -8031,7 +8031,7 @@ Class: rs200591577
     Annotations: rsid "rs200591577"
     Annotations: rdfs:label "rs200591577"
    Annotations: relevant_for TPMT
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs200591577> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs200591577> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs200591577_C
@@ -8052,7 +8052,7 @@ Class: rs200995543
     Annotations: rsid "rs200995543"
     Annotations: rdfs:label "rs200995543"
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs200995543> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs200995543> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs200995543_C
@@ -8073,7 +8073,7 @@ Class: rs267606723
     Annotations: rsid "rs267606723"
     Annotations: rdfs:label "rs267606723"
    Annotations: relevant_for CFTR
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs267606723> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs267606723> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs267606723_A
@@ -8098,7 +8098,7 @@ Class: rs267607275
     Annotations: rsid "rs267607275"
     Annotations: rdfs:label "rs267607275"
    Annotations: relevant_for TPMT
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs267607275> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs267607275> 
     Annotations: dbsnp_orientation_on_reference_genome "reverse" 
 
 Class: rs267607275_A
@@ -8119,7 +8119,7 @@ Class: rs373327528
     Annotations: rsid "rs373327528"
     Annotations: rdfs:label "rs373327528"
    Annotations: relevant_for SLCO1B1
-    Annotations: rdfs:seeAlso \<http://bio2rdf.org/dbsnp:rs373327528> 
+    Annotations: rdfs:seeAlso <http://bio2rdf.org/dbsnp:rs373327528> 
     Annotations: dbsnp_orientation_on_reference_genome "forward" 
 
 Class: rs373327528_A
