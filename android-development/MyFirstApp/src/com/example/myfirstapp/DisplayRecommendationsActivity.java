@@ -72,24 +72,26 @@ public class DisplayRecommendationsActivity extends ActionBarActivity {
 	@Override
    	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		/*setContentView(R.layout.activity_display_recommendations);
 		
+		/*setContentView(R.layout.activity_display_recommendations);
+			
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}*/
 		
 		
-		// Get the message from the intent
+		// Get the version and code from the intent
 		Intent intent = getIntent();
 		String code = intent.getStringExtra(MainActivity.EXTRA_CODE);
 		String version = intent.getStringExtra(MainActivity.EXTRA_VERSION);
 		
+		// Process the code to obtain the corresponding drug recommendations
 		RecommendationRulesMain rrm = new RecommendationRulesMain(version,code);
 		String htmlPage = rrm.getHTMLRecommendations();
 		//String htmlPage = generateResultHTMLPage("","","",code,version);
 		
-		// Create the Webview 
+		// Create the Webview to show the resulting web page. 
 		WebView webview = new WebView(this);
 		webview.getSettings().setJavaScriptEnabled(true);
 		webview.loadDataWithBaseURL("file:///android_asset/", htmlPage, "text/html", "UTF-8", null);

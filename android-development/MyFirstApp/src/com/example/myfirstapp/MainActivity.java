@@ -16,6 +16,7 @@ import android.widget.TextView;
 public class MainActivity extends ActionBarActivity {
 	public final static String EXTRA_CODE = "com.example.myfirstapp.CODE";
 	public final static String EXTRA_VERSION = "com.example.myfirstapp.VERSION";
+	private static final int SCAN_QR_CODE_REQUEST = 0;
 	private String code = null;
 	private String version = null;
 	
@@ -91,9 +92,11 @@ public class MainActivity extends ActionBarActivity {
 		
 		Intent intent = new Intent("com.google.zxing.client.android.SCAN");
 		intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
-		startActivityForResult(intent, 0);
+		startActivityForResult(intent, SCAN_QR_CODE_REQUEST);
 		
-		/*code = "3Lka_efiRMZA25c9Wy6BOVUepOzWP_P8e0";//example 1
+		/*	
+		//TESTING CODE WHEN AVOIDING SCANNING ZXING MODULE 
+		code = "3Lka_efiRMZA25c9Wy6BOVUepOzWP_P8e0";//example 1
 		//code = "2UYPe0zpay5riIiE-0VUeXMHt5sBFolC00";//example 2
 		version = "v0.2";
 		
@@ -102,12 +105,14 @@ public class MainActivity extends ActionBarActivity {
     	new_intent.putExtra(EXTRA_VERSION, version);
     	startActivity(new_intent);*/
 	}
-
+	
+	
+	/** Called when the user clicks the Scan button. */
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		boolean error_code = true;
 		String contents = "";
-		if (requestCode == 0) {
-			if (resultCode == RESULT_OK) {
+		if (requestCode == SCAN_QR_CODE_REQUEST) {//The scanning module finish without an error
+			if (resultCode == RESULT_OK) {//the scanning result is OK.
 				contents = intent.getStringExtra("SCAN_RESULT");
 		        if(contents.contains("/")){
 		        	code = contents.substring(contents.lastIndexOf("/")+1);
@@ -120,23 +125,21 @@ public class MainActivity extends ActionBarActivity {
 			        	startActivity(new_intent);
 			        	error_code = false;
 			        	contents = "version = "+version+";code = "+code;
-		        	}else{
+		        	}else{//The QR code should follow this format <urlserver>/<version>/<code>
 		        		contents = "Bad formed safetycode QR code";
 		        	}
-		        }else{
+		        }else{//The QR code should follow this format <urlserver>/<version>/<code>
 		        	contents = "Bad formed safetycode QR code";
 		        }
-			}else{
+			}else{//the user backed out or the operation failed for some reason
 				contents = "The scanning process was cancelled and the code ";
 			}
-		}else{
-			contents = "The scanning process did not retrieve a well formed code";
+		}else{//Other request is obtained
+			contents = "The scanning process did not retrieve a well qr code";
 		}
 		
 		if (error_code) {
-			//code = "";
-			//version = "";
-			// Handle cancel
+			// Handle error
 	    	TextView tv = (TextView) findViewById(R.id.error_message);
 	    	tv.setText("ERROR: Please use a valid QR code generated through www.safety-code.org/\nProblem: "+contents);
 	    }

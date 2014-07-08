@@ -8,18 +8,28 @@ import java.util.HashMap;
 import com.example.myfirstapp.exception.BadFormedBase64NumberException;
 import com.example.myfirstapp.exception.NotInitializedPatientsGenomicDataException;
 import com.example.myfirstapp.exception.VariantDoesNotMatchAnyAllowedVariantException;
+import com.example.myfirstapp.util.Common;
+import com.example.myfirstapp.util.OntologyManagement;
 
+/**
+ * This class is in charge of managing all classes from Genomic MSC server in order to decode a provided qr code and retrieve the html related to the drug recommendations.
+ * @JOSE It should retrieve only the triggered drug recommendations and the corresponding activity should provide the interface elements.  
+ * */
 public class RecommendationRulesMain {
-
+	/** The version of a scanned safetycode number.*/
 	private String version;
+	/** The value of a scanned safetycode number.*/
 	private String code;
+	/** The corresponding genotype of a safetycode number.*/
 	private Genotype patientGenotype;
+	/** The ontology management that contains the information from the Genomic CDS ontology.*/
 	private OntologyManagement om;
 	
+	/** Create the instance of the class with the provided version and code. It decodes the qr code and obtain the corresponding patient's genotype.*/
 	public RecommendationRulesMain(String version, String code){
 		this.version	= version;
 		this.code		= code;
-		if(this.version.equals("v0.2")){
+		if(this.version.equals(Common.VERSION)){
 			om = new OntologyManagement();
 			try{
 				patientGenotype = readBase64ProfileString(this.code);
@@ -30,7 +40,11 @@ public class RecommendationRulesMain {
 		}
 	}
 	
-	
+	/**
+	 * Get the HMTL page related to the triggered drug recommendations.
+	 * 
+	 * @return The triggered drug recommendations into an HTML equals to the result page from the Genomic MSC server application.
+	 * */
 	public String getHTMLRecommendations(){
 		
 		HashMap<String, ArrayList<DrugRecommendation>> list_recommendations=null;
@@ -124,7 +138,12 @@ public class RecommendationRulesMain {
 		
 		return htmlResultPage;
 	}
-		
+	
+	/**
+	 * It obtains the triggered drug recommendations based on the generated patient's genotype in the constructor of the class.ç
+	 * @return A map with the triggered rules grouped by the drug name.
+	 * @throws NotInitializedPatientsGenomicDataException
+	 * */	
 	private HashMap<String, ArrayList<DrugRecommendation>> obtainDrugRecommendations() throws NotInitializedPatientsGenomicDataException {
 		HashMap<String,ArrayList<DrugRecommendation>> mapDrugRecommendations = null;
 		if(patientGenotype==null){
@@ -162,7 +181,12 @@ public class RecommendationRulesMain {
 		return new Genotype(listGenotypeElements);		
 	}
 	
-	
+	/**
+	 * It produces the HTML page with the critical drug recommendations, all the drug recommendations and the inferred alleles of the patient's genotype.
+	 * @param criticalRecommendations	The triggered critical drug recommendations formatted as html list of elements.
+	 * @param allRecommendations		All the triggered drug recommendations formatted as html list of elements.
+	 * @param inferredAlleles			All the inferred alleles from the decoding qr code of the patients's genotype.
+	 * */
 	private String generateResultHTMLPage(String criticalRecommendations, String allRecommendations, String inferredAlleles){
 		String resultHTML= "";
 		resultHTML+="<!DOCTYPE html>\n";
@@ -213,8 +237,12 @@ public class RecommendationRulesMain {
 		return resultHTML;
 	}
 	
-	
-	
+	/**
+	 * It translate the internal label of a allele into a more friendly/standard allele representation
+	 * @param label		The internal label.
+	 * @param id		The id of the allele variation.
+	 * @return			The translated label. 
+	 * */	
 	private String revert_label(String label,String id){
 		if(id.matches("rs[0-9]+")){
 			label = "("+label+")";

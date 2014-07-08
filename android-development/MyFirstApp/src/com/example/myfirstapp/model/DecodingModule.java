@@ -5,11 +5,10 @@ import java.util.ArrayList;
 
 import com.example.myfirstapp.exception.BadFormedBase64NumberException;
 import com.example.myfirstapp.exception.VariantDoesNotMatchAnyAllowedVariantException;
+import com.example.myfirstapp.util.Common;
 
 public class DecodingModule {
-	//List of all characters that represents the base digits for the 64 base numbers. They were selected to avoid conflicts with URL specifications.
-	private final static char[] BASE_DIGITS = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','-','_'};
-	//List of group of alleles that contains all possible combinations of pair of alleles in a patient's genotype based on the ontology information.
+	/** List of group of alleles that contains all possible combinations of pair of alleles in a patient's genotype based on the ontology information.*/
 	private ArrayList<GeneticMarkerGroup> listGenetic_Marker_Group;
 
 	/**
@@ -262,10 +261,10 @@ public class DecodingModule {
 				break;
 			default:
 				String listChars = "";
-				for(int k=0;k<BASE_DIGITS.length;k++){
+				for(int k=0;k<Common.BASE_DIGITS.length;k++){
 					if(listChars.length()>0) listChars+=", ";
 					//if(!listChars.isEmpty()) listChars+=", ";
-					listChars+="'"+BASE_DIGITS[k]+"'";
+					listChars+="'"+Common.BASE_DIGITS[k]+"'";
 				}
 				throw new BadFormedBase64NumberException("ERROR : The number " + parameter +" is not in correctly represented in base 64. Use only one of these chars: "+listChars);
 			}
