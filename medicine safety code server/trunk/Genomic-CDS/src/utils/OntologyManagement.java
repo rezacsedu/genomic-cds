@@ -1,6 +1,8 @@
 package utils;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -520,7 +522,30 @@ public class OntologyManagement {
 					break;
 				}
 			}*/
-
+			try{
+				String fileout = "d:/snpgroups.txt";
+				BufferedWriter bw = new BufferedWriter(new FileWriter(fileout,true));
+				try{
+					bw.write("rsid = \""+rsid+"\";\n");
+					bw.write("list_SNP_names = new ArrayList<String>();\n");
+					for(String label : list_SNP_names){
+						bw.write("list_SNP_names.add(\""+label+"\");\n");
+					}
+					bw.write("rank = "+rank+";\n");
+					bw.write("strandOrientation = \""+strandOrientation+"\";\n");
+					bw.write("vcf_format_reference = \""+vcf_format_reference+"\";\n");
+					bw.write("listTestedWith = new ArrayList<String>();\n");
+					for(String label : listTestedWith){
+						bw.write("listTestedWith.add(\""+label+"\");\n");
+					}
+					bw.write("sg = new SNPsGroup(rsid, list_SNP_names, rank, strandOrientation, vcf_format_reference, listTestedWith);\n");
+					bw.write("listSNPsGroups.add(sg);\n\n");
+				}finally{
+					bw.close();
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}
 			SNPsGroup sg = new SNPsGroup(rsid, list_SNP_names, rank, strandOrientation, vcf_format_reference, listTestedWith); // create the corresponding string array of these markers
 			listSNPsGroups.add(sg);
 		}
@@ -574,6 +599,26 @@ public class OntologyManagement {
 			OWLAnnotationProperty ann_label = factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI());
 			ArrayList<String> list_allele_names = new ArrayList<String>();
 			list_allele_names.addAll(getSubAlleles(gene_class,ann_label));
+			
+			try{
+				String fileout = "d:/allelegroups.txt";
+				BufferedWriter bw = new BufferedWriter(new FileWriter(fileout,true));
+				try{
+					bw.write("gene_name = \""+gene_name+"\";\n");
+					bw.write("list_allele_names = new ArrayList<String>();\n");
+					for(String label : list_allele_names){
+						bw.write("list_allele_names.add(\""+label+"\");\n");
+					}
+					bw.write("rank_int = "+rank_int+";\n");
+					bw.write("ag = new AlleleGroup(gene_name,list_allele_names,rank_int);\n");
+					bw.write("listAlleleGroups.add(ag);\n\n");
+				}finally{
+					bw.close();
+				}
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
 			AlleleGroup ag = new AlleleGroup(gene_name,list_allele_names,rank_int); // create the corresponding string array of these markers
 			listAlleleGroups.add(ag);
 		}
@@ -772,6 +817,32 @@ public class OntologyManagement {
 			}
 			if (relevant_for == null || relevant_for.isEmpty()){
 				continue;
+			}
+			
+			try{
+				String fileout = "d:/rulegroups.txt";
+				BufferedWriter bw = new BufferedWriter(new FileWriter(fileout,true));
+				try{
+					bw.write("recommendation_label = \""+recommendation_label+"\";\n");
+					bw.write("cds_message = \""+cds_message+"\";\n");
+					bw.write("importance = \""+importance+"\";\n");
+					bw.write("source = \""+source+"\";\n");
+					bw.write("relevant_for = \""+relevant_for+"\";\n");
+					bw.write("seeAlsoList = new ArrayList<String>();\n");
+					for(String label : seeAlsoList){
+						bw.write("seeAlsoList.add(\""+label+"\");\n");
+					}
+					bw.write("lastUpdate = \""+lastUpdate+"\";\n");
+					bw.write("phenotype = \""+phenotype+"\";\n");
+					bw.write("dr = new DrugRecommendation(recommendation_label, cds_message, importance, source, relevant_for, seeAlsoList, lastUpdate,phenotype);\n");
+					bw.write("recommendation_comment = \""+recommendation_comment+"\";\n");
+					bw.write("dr.setRule(recommendation_comment);\n");
+					bw.write("listDrugRecommendations.add(dr);\n\n");
+				}finally{
+					bw.close();
+				}
+			}catch(Exception e){
+				e.printStackTrace();
 			}
 			
 			DrugRecommendation dr = new DrugRecommendation(recommendation_label, cds_message, importance, source, relevant_for, seeAlsoList, lastUpdate,phenotype);

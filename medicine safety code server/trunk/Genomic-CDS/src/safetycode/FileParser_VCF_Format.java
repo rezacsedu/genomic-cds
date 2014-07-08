@@ -170,10 +170,9 @@ public class FileParser_VCF_Format implements FileParser{
 							variants[i] = tokens[alt_col_pos];
 						}
 					}
-				
-				//if(listSNPs!=null && listSNPs.containsKey(rsid)){
+								
 					if(info.contains("IndelType=D")){
-						System.out.println("linea ["+rsid+"] = "+line);
+						//System.out.println("linea ["+rsid+"] = "+line);
 					}
 					SNPElement	snpe = listSNPs.get(rsid);
 					SNPsGroup	snpg = listSNPsGroups.get(rsid);
@@ -209,21 +208,7 @@ public class FileParser_VCF_Format implements FileParser{
 	public ArrayList<SNPElement> getListSNPElements() {
 		ArrayList<SNPElement> listParsedSNPs = new ArrayList<SNPElement>();
 		listParsedSNPs.addAll(listSNPs.values());
-		/*for(SNPElement snpe: listParsedSNPs){
-			String criteria = snpe.getCriteriaSyntax();
-			if(criteria.contains("null")){
-				SNPsGroup snpg = listSNPsGroups.get(snpe.getGeneticMarkerName());
-				if(snpg.getListElements().size()>0){
-					criteria = snpg.getListElements().get(1);
-				}
-			}
-			String[] tokens = criteria.split(";");
-			if(tokens!=null && tokens.length==2 && tokens[0].equals(tokens[1])){
-				System.out.println("has exactly 2 "+snpe.getGeneticMarkerName()+"_"+tokens[0]+",");
-			}else{
-				System.out.println("(has some "+snpe.getGeneticMarkerName()+"_"+tokens[0]+") and (has some "+snpe.getGeneticMarkerName()+"_"+tokens[1]+"),");
-			}
-		}*/
+	
 		return listParsedSNPs;
 	}
 	

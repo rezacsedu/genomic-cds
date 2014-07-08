@@ -299,24 +299,18 @@ public class SNPsGroup implements Genetic_Marker_Group {
 	 * @return It provides the corresponding string to the insertion if it exists, or "null" string otherwise.  
 	 * */
 	public String getInsertionVariant(){
-		/*if(listSNPs!=null){
-			for(String combination: listSNPs){
-				if(combination.length()>3 && !combination.contains("null")){
-					String[] tokens = combination.split(";");
-					if(tokens[1].length()>1) return tokens[1];
-					if(tokens[0].length()>1) return tokens[0];
-				}
-			}
-		}
-		return "null";*/
-		
+		String result_variant="null";
 		if(listSNPs!=null){
+			
 			for(String variant: listSNPs){
 				if(variant.length()>1){
 					return variant;
 				}
+				if(!variant.equals("D") && !variant.equals("null")){
+					result_variant = variant;
+				}
 			}
 		}
-		return "null";
+		return result_variant;
 	}
 }

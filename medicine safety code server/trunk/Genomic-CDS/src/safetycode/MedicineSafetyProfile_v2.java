@@ -34,6 +34,10 @@ public class MedicineSafetyProfile_v2 {
 		}
 	}
 	
+	public OntologyManagement getOntologyManagement(){
+		return om;
+	}
+	
 	public void initializeCodingModule(){
 		ArrayList<GenotypeElement> listGenotypeElements;
 		try {
@@ -214,4 +218,8 @@ public class MedicineSafetyProfile_v2 {
 		return display_groups;
 	}
 	
+	
+	public ArrayList<String> getGenotypeStatistics(){
+		return patientGenotype.getPatientInferredStatistics(om);
+	}
 }

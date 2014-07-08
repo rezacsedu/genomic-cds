@@ -1,15 +1,17 @@
 package bulk;
 
-import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
 
+import exception.VariantDoesNotMatchAnAllowedVariantException;
+
+import safetycode.FileParserFactory;
 import safetycode.MedicineSafetyProfile_v2;
 
 
@@ -17,16 +19,9 @@ import safetycode.MedicineSafetyProfile_v2;
  * This class coordinates the execution of several threads to parser a large number of files with genotype information.
  * */
 public class CoordinateExecution {
-
-	private int pos=0;
-	private File[] files;
-	private String output;
 	private String ontology;
-	private ArrayList<String> sortedSNP;
-	private ArrayList<String> sortedPoly;
-	private ArrayList<String> sortedRule;
-	private ArrayList<BulkThread> list_threads;
-		
+	private MedicineSafetyProfile_v2 msp;	
+	
 	/**
 	 * Constructor of the class that initializes the bulk process.
 	 * 
@@ -35,68 +30,65 @@ public class CoordinateExecution {
 	public CoordinateExecution(String ontology){
 		
 		this.ontology=ontology;
-		
-		//MedicineSafetyProfileOWLAPI msp = new MedicineSafetyProfileOWLAPI(ontology); //Replaced because of a new version of MedicineSafetyProfile
-		MedicineSafetyProfile_v2 msp = new MedicineSafetyProfile_v2(ontology); 
-		//sortedSNP	= msp.getSimplifiedListRsids();
-		//sortedPoly	= msp.getSimplifiedListPolymorphisms();
-		//sortedRule	= msp.getSimplifiedListRules();
+		msp = new MedicineSafetyProfile_v2(ontology);
 	}
 	
 	
 	/**
 	 * This method create the threads and coordinates their execution and finally compounds their returned results.
 	 * 
-	 * @param output	The file location where the statistics results will be stored.
+	 * @param output	The file where the statistics results will be stored.
 	 * @param folder	The folder where the input files are located.
-	 * @param nThreads	The number of threads that will be created to process the input files.
 	 * */
-	public void execute(String output, File folder, int nThreads ){
-
-		this.output=output;
+	public void execute(String output, String folder){
 		
-		ArrayList<String> reportResult	= new ArrayList<String>();
-		reportResult.add("Processed Lines");
-		reportResult.add("Processed Matched Lines");
-		reportResult.add("Not allowed variants");
-		ArrayList<String> all = new ArrayList<String>();
-		all.addAll(sortedSNP);
-		all.addAll(sortedPoly);
-		all.addAll(sortedRule);
-		all.addAll(reportResult);
-		
-		compoundResults("Input File",all,false);
-		
-		files = folder.listFiles(new FileFilter() {
+		File inputFolder = new File(folder);
+		File[] files = inputFolder.listFiles(new FileFilter() {
             @Override
             public boolean accept(File pathname) {
                return (pathname.getName().toLowerCase().endsWith("23andme.txt") || pathname.getName().toLowerCase().endsWith("exome-vcf.txt"));
             }
-         });
-		
-		list_threads = new ArrayList<BulkThread>();
-		for(int i=0;i<nThreads;i++){
-			BulkThread bt = new BulkThread(this,i);
-			bt.start();
-			list_threads.add(bt);
-		}
-		
-		for(int i=0;i<nThreads;i++){
-			BulkThread bt = list_threads.get(i);
-			try {
-				bt.join();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
+        });
+		try{
+			BufferedWriter bw = new BufferedWriter(new FileWriter(output));
+			bw.write("Statistics ("+ontology+")\n");
+			
+			for(int i=0;i<files.length;i++){
+				File inputFile = files[i];
+				int fileFormat = FileParserFactory.FORMAT_23ANDME_FILE;
+				if(inputFile.getName().endsWith("exome-vcf.txt")){
+					fileFormat = FileParserFactory.FORMAT_VCF_FILE;
+				}
+						
+				try {
+					FileInputStream fis = new FileInputStream(inputFile);
+					/*String report = */msp.parseFileStream(fis, fileFormat);
+					
+					ArrayList<String> results = msp.getGenotypeStatistics();
+					String resultsData = inputFile.getName()+"\n";
+					for(String line: results){
+						resultsData+="\t"+line+"\n";
+					}
+					bw.write(resultsData+"\n");
+				} catch (FileNotFoundException e) {
+					e.printStackTrace();
+				} catch (VariantDoesNotMatchAnAllowedVariantException e) {
+					e.printStackTrace();
+				}
 			}
+			
+			bw.close();
+		}catch(IOException e){
+			e.printStackTrace();
 		}
 	}
 	
 	/**
 	 * It receives the raw data from the ontology reasoning process and generate the statistics results.
 	 * 
-	 * @param fileRawData	The file that contains the raw data from the reasoning results.
+	 * @param inputFolder	The folder that contains the raw data from the reasoning results.
 	 * */
-	public String processRawData(String fileRawData){
+	/*public String processRawData(String inputFolder, String outputFolder){
 		String results="";
 		String prefix = fileRawData.substring(0,fileRawData.indexOf(".csv"));
 		try{
@@ -262,60 +254,5 @@ public class CoordinateExecution {
 			e.printStackTrace();
 		}
 		return results;
-	}
-	
-	
-	/**Get method to return the ontology model.*/
-	public String getOntology(){
-		return ontology;
-	}
-	
-	
-	/**Get method to return the sorted list of polymorphisms.*/
-	public ArrayList<String> getSortedPoly(){
-		return sortedPoly;
-	}
-	
-	
-	/**Get method to return the sorted list of SNPs.*/
-	public ArrayList<String> getSortedSNP(){
-		return sortedSNP;
-	}
-	
-	
-	/**Get method to return the sorted list of Rules.*/
-	public ArrayList<String> getSortedRule(){
-		return sortedRule;
-	}
-	
-	
-	/**Get method to obtain the next file to parse during the bulk process or null if all files have been processed already. Only one thread can access this method.*/
-	public synchronized File getNextFile(){
-		if(files!=null && pos<files.length){
-			return files[(pos++)];
-		}
-		return null;
-	}
-	
-	
-	/**Method to store the results from the statistical analysis of the raw data. Only one thread can access this method.*/
-	public synchronized void compoundResults(String file_input, ArrayList<String> results, boolean append){
-		try{
-			BufferedWriter bw = new BufferedWriter(new FileWriter(output,append));
-			bw.write(file_input+";");
-			for(int i=0;i<results.size();i++){
-				String value=results.get(i);
-				bw.write(value);
-				if(i+1<results.size()){
-					bw.write(";");
-				}
-			}
-			bw.write("\n");
-			bw.close();
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		System.out.println("File "+file_input+" processed.");
-	}
-	
+	}*/
 }

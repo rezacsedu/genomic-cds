@@ -31,41 +31,41 @@ public class prueba {
 		} catch (FileNotFoundException e1) {
 			e1.printStackTrace();
 		}
-		MedicineSafetyProfile_v2 msp2 = new MedicineSafetyProfile_v2("D:/workspace/Genomic CDS/knowledge-base/trunk/ontology/MSC_classes_new_v2.owl");
-		try {
-			String report = msp2.parseFileStream(my23AndMeFileStream, FileParserFactory.FORMAT_23ANDME_FILE);
+		MedicineSafetyProfile_v2 msp2 = new MedicineSafetyProfile_v2("D:/workspace/Genomic CDS/knowledge-base/trunk/ontology/MSC_textual_rules.owl");
+		//try {
+			//String report = msp2.parseFileStream(my23AndMeFileStream, FileParserFactory.FORMAT_23ANDME_FILE);
 			//String report = msp2.parseFileStream(my23AndMeFileStream, FileParserFactory.FORMAT_VCF_FILE);
-			System.out.println("REPORT = "+report);
+			//System.out.println("REPORT = "+report);
 			//System.out.println("genotype="+msp2.getGenotype());
-			String code = msp2.getBase64ProfileString();
-			System.out.println("Inferred base64code = "+code);
+			//String code = msp2.getBase64ProfileString();
+			//System.out.println("Inferred base64code = "+code);
 			
-			msp2 = new MedicineSafetyProfile_v2("D:/workspace/Genomic CDS/knowledge-base/trunk/ontology/MSC_classes_new_v2.owl");
-			code="3DFaKWQSTOJJhenhRlF0eHBIbm0";
-			msp2.readBase64ProfileString(code);
+			//msp2 = new MedicineSafetyProfile_v2("D:/workspace/Genomic CDS/knowledge-base/trunk/ontology/MSC_classes_new_v2.owl");
+			//code="3DFaKWQSTOJJhenhRlF0eHBIbm0";
+			//msp2.readBase64ProfileString(code);
 			//System.out.println("genotype="+msp2.getGenotype());
-			System.out.println("Inferred base64code = "+msp2.getBase64ProfileString());
+			//System.out.println("Inferred base64code = "+msp2.getBase64ProfileString());
 			
-			HashMap<String,ArrayList<DrugRecommendation>> listInferredDrugRecommendations = msp2.obtainDrugRecommendations();
-			Iterator<String> listKeys = listInferredDrugRecommendations.keySet().iterator();
-			while(listKeys.hasNext()){
-				String key = listKeys.next();
-				System.out.println("["+key+"]");
-				for(DrugRecommendation dr: listInferredDrugRecommendations.get(key)){
-					System.out.println("\t"+dr.getRuleId());
-				}
-			}
-		} catch (VariantDoesNotMatchAnAllowedVariantException e1) {
-			e1.printStackTrace();
-		} catch (NotPatientGenomicFileParsedException e) {
-			e.printStackTrace();
-		} catch (BadFormedBinaryNumberException e) {
-			e.printStackTrace();
-		} catch (NotInitializedPatientsGenomicDataException e) {
-			e.printStackTrace();
-		} catch (BadFormedBase64NumberException e) {
-			e.printStackTrace();
-		}
+			//HashMap<String,ArrayList<DrugRecommendation>> listInferredDrugRecommendations = msp2.obtainDrugRecommendations();
+			//Iterator<String> listKeys = listInferredDrugRecommendations.keySet().iterator();
+			//while(listKeys.hasNext()){
+			//	String key = listKeys.next();
+			//	System.out.println("["+key+"]");
+			//	for(DrugRecommendation dr: listInferredDrugRecommendations.get(key)){
+			//		System.out.println("\t"+dr.getRuleId());
+			//	}
+			//}
+		//} catch (VariantDoesNotMatchAnAllowedVariantException e1) {
+		//	e1.printStackTrace();
+		//} catch (NotPatientGenomicFileParsedException e) {
+		//	e.printStackTrace();
+		//} catch (BadFormedBinaryNumberException e) {
+		//	e.printStackTrace();
+		//} catch (NotInitializedPatientsGenomicDataException e) {
+		//	e.printStackTrace();
+		//} catch (BadFormedBase64NumberException e) {
+		//	e.printStackTrace();
+		//}
 		
 		/*msp2 = new MedicineSafetyProfile_v2("D:/workspace/Genomic CDS/knowledge-base/trunk/ontology/MSC_classes_new_v2.owl");
 		System.out.println("msp2 was created!");

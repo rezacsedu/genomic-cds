@@ -135,6 +135,8 @@ public class SafetyCodeInterpreter extends HttpServlet {
 					for(DrugRecommendation dr: list_data){
 						if(dr.getImportance().contains("Important")){
 							importance = true;
+						}else{
+							importance = false;
 						}
 						
 						String drug_reason=dr.getReason();

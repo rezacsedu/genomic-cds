@@ -1,7 +1,5 @@
 package safetycode;
 
-
-//import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Set;
@@ -16,7 +14,6 @@ import org.semanticweb.owlapi.model.OWLLiteral;
 import org.semanticweb.owlapi.model.OWLNamedIndividual;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-//import org.semanticweb.owlapi.model.OWLOntologyStorageException;
 import org.semanticweb.owlapi.reasoner.NodeSet;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 
@@ -85,13 +82,7 @@ public class Genotype {
 		OWLNamedIndividual patient 			= createPatient(reasoner_ontology,reasoner_manager, factory);
 		
 		initializeGenotype(reasoner_manager, patient);//Add the SNPs to the patient
-		/*try {
-			File file = new File("D:/workspace/Genomic CDS/knowledge-base/trunk/ontology/MSC_classes_new_v2_demoparser.owl");
-			reasoner_manager.saveOntology(reasoner_ontology, IRI.create(file.toURI()));
-		} catch (OWLOntologyStorageException e) {
-			e.printStackTrace();
-		}*/
-
+		
 		RELReasoner local_reasoner = new RELReasonerFactory().createReasoner(reasoner_ontology);
 		local_reasoner.precomputeInferences();
 		
@@ -296,4 +287,128 @@ public class Genotype {
 			}
 		}
 	}
+	
+	public ArrayList<String> getPatientInferredStatistics(OntologyManagement om){
+		OWLOntologyManager reasoner_manager = om.getNewOntologyManager();
+		OWLOntology reasoner_ontology		= reasoner_manager.getOntologies().iterator().next();
+		OWLDataFactory factory 				= reasoner_manager.getOWLDataFactory();
+		OWLNamedIndividual patient 			= createPatient(reasoner_ontology,reasoner_manager, factory);
+		
+		
+		
+		initializeGenotype(reasoner_manager, patient);//Add the SNPs to the patient
+		
+		RELReasoner local_reasoner = new RELReasonerFactory().createReasoner(reasoner_ontology);
+		local_reasoner.precomputeInferences();
+		
+		
+		ArrayList<String> listAlleleLabels		= new ArrayList<String>();
+		ArrayList<String> listSNPLabels			= new ArrayList<String>();
+		ArrayList<String> listRuleLabels		= new ArrayList<String>();
+		ArrayList<String> listPhenotypeLabels	= new ArrayList<String>();
+		
+		NodeSet<OWLClass> list_types = local_reasoner.getTypes(patient, false);
+		for (OWLClass type : list_types.getFlattened()) {
+			Iterator<OWLClassExpression> list_superclasses = type.getSuperClasses(reasoner_ontology).iterator();
+			while(list_superclasses.hasNext()){
+				OWLClassExpression oce = list_superclasses.next();
+				if(oce.isAnonymous()) continue;
+				OWLClass superclass = oce.asOWLClass();
+				
+				if (superclass.getIRI().toString().contains("human_with_genetic_polymorphism")) {
+					String label = "";
+					Set<OWLAnnotation> listLabels = type.getAnnotations(reasoner_ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
+					for (OWLAnnotation labelAnn : listLabels) {
+						if (labelAnn.getValue() instanceof OWLLiteral) {
+							OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
+							label = literal.getLiteral().trim();
+							listAlleleLabels.add(make_valid(label));
+							break;
+						}
+					}
+					//break;
+				}
+				if(superclass.getIRI().toString().contains("human_with_genotype_at")){
+					String label = "";
+					Set<OWLAnnotation> listLabels = type.getAnnotations(reasoner_ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
+					for (OWLAnnotation labelAnn : listLabels) {
+						if (labelAnn.getValue() instanceof OWLLiteral) {
+							OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
+							label = literal.getLiteral().trim();
+							if(label.contains("(null;null)")) break;
+							if(label.contains("human with")){
+								label = label.substring(label.indexOf("with")+4).trim();
+								listSNPLabels.add(label);
+								break;
+							}
+						}
+					}
+					//break;
+				}
+				
+				if(superclass.getIRI().toString().contains("human_triggering_phenotype_inference_rule")){
+					String label = "";
+					Set<OWLAnnotation> listLabels = type.getAnnotations(reasoner_ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
+					for (OWLAnnotation labelAnn : listLabels) {
+						if (labelAnn.getValue() instanceof OWLLiteral) {
+							OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
+							label = literal.getLiteral().trim();
+							if(label.contains("human with")){
+								label = label.substring(label.indexOf("with")+4).trim();
+								listPhenotypeLabels.add(label);
+								break;
+							}
+						}
+					}
+					//break;
+				}
+				
+				if(superclass.getIRI().toString().contains("human_triggering_CDS_rule")){
+					String label = "";
+					Set<OWLAnnotation> listLabels = type.getAnnotations(reasoner_ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
+					for (OWLAnnotation labelAnn : listLabels) {
+						if (labelAnn.getValue() instanceof OWLLiteral) {
+							OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
+							label = literal.getLiteral().trim();
+							if(label.contains("rule")){
+								label = label.substring(label.indexOf("rule")).trim();
+								listRuleLabels.add(label);
+								break;
+							}
+						}
+					}
+					//break;
+				}
+			}
+		}
+		
+		ArrayList<String> results = new ArrayList<String>();
+		
+		String snpData ="Number of SNP = "+listSNPLabels.size()+";";
+		/*for(String snp: listSNPLabels){
+			snpData+=snp+";";
+		}*/
+		results.add(snpData);
+		
+		String haplotypeData ="Number of Haplotypes = "+listAlleleLabels.size()+";";
+		for(String haplotype: listAlleleLabels){
+			haplotypeData+=haplotype+";";
+		}
+		results.add(haplotypeData);
+		
+		String phenotypeData ="Number of phenotype rules = "+listPhenotypeLabels.size()+";";
+		for(String phenotype: listPhenotypeLabels){
+			phenotypeData+=phenotype+";";
+		}
+		results.add(phenotypeData);
+		
+		String ruleData ="Number of CDS rules = "+listRuleLabels.size()+";";
+		for(String rule: listRuleLabels){
+			ruleData+=rule+";";
+		}
+		results.add(ruleData);
+		
+		return results;
+	}
+	
 }

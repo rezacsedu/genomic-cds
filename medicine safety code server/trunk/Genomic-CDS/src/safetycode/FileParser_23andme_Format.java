@@ -92,7 +92,7 @@ public class FileParser_23andme_Format implements FileParser{
 							variants[1] = snpg.getInsertionVariant();
 						}
 						snpe.setVariants(variants[0],variants[1]);//Generate the new criteria syntax for this strand
-						if(variants[0].equals("D") || variants[1].equals("D")) System.out.println("[1] snp="+snpe.getGeneticMarkerName()+"_"+snpe.getCriteriaSyntax());
+						//if(variants[0].equals("D") || variants[1].equals("D")) System.out.println("[1] snp="+snpe.getGeneticMarkerName()+"_"+snpe.getCriteriaSyntax());
 					}else{
 						linesThatDidNotMatchAllowedVariant++;
 						processingReport+="<li>Warning: " + rsid + "(" + variants[0] + ";" + variants[1] + ") with orientation " + my23AndMeStrandOrientation + " does not match any allowed genotype. Only genotypes listed in dbSNP are allowed. A possible reason for this could be that your data is not based on the same strand (+ or -) as dbSNP, and you did not choose the proper settings for strand orientation. This genotype will be reported as 'null;null' in the resulting Medicine Safety Code.\n";
@@ -173,58 +173,6 @@ public class FileParser_23andme_Format implements FileParser{
 			variant[0] = variant[1];
 			variant[1] = aux;
 		}
-
-		/*String val_1 = snpCode.substring(0,1);
-		String val_2 = snpCode.substring(1);
-		try{
-			if(val_1.equals("D")) val_1 = "-";
-			if(val_2.equals("D")) val_2 = "-";
-			
-			char [] variants_array = val_2.toCharArray();
-			if ((orientation_file == Common.DBSNP_ORIENTATION) && (orientation_seq.equals("reverse"))) {
-				if(val_1.equals("A")) val_1 = "T";
-				if(val_1.equals("T")) val_1 = "A";
-				if(val_1.equals("C")) val_1 = "G";
-				if(val_1.equals("G")) val_1 = "C";
-				
-				for(int i=0; i<variants_array.length;i++){
-					if(variants_array[i]=='A'){
-						variants_array[i]= 'T';
-						continue;
-					}
-					if(variants_array[i]=='T'){
-						variants_array[i]= 'A';
-						continue;
-					}
-					if(variants_array[i]=='C'){
-						variants_array[i]= 'G';
-						continue;
-					}
-					if(variants_array[i]=='G'){
-						variants_array[i]= 'C';
-						continue;
-					}
-				}
-			}
-			
-			if(variants_array.length>1){
-				variant[0] = val_1;
-				for(int i=0;i<variants_array.length;i++){
-					variant[1] += ""+variants_array[i];
-				}
-			}else{
-				char char_val_1 = val_1.toCharArray()[0];
-				if(char_val_1 > variants_array[0]){
-					variant[0] = ""+variants_array[0];
-					variant[1] = val_1;
-				}else{
-					variant[0] = val_1;
-					variant[1] = ""+variants_array[0];
-				}
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}*/
 		
 		return variant;
 	}
