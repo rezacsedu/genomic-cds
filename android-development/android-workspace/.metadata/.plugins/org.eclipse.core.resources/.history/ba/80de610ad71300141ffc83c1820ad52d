@@ -1,0 +1,132 @@
+package meduniwien.msc;
+
+import meduniwien.msc.model.RecommendationRulesMain;
+import android.annotation.SuppressLint;
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
+import android.view.LayoutInflater;
+
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
+import android.webkit.WebView;
+
+@SuppressLint("SetJavaScriptEnabled")
+public class DisplayRecommendationsActivity extends ActionBarActivity {
+	private String htmlPage = "" ;
+	private String version = "";
+	private String code = "";
+	
+	@Override
+   	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		
+		final WebView webview = new WebView(this);
+		webview.getSettings().setJavaScriptEnabled(true);
+		webview.getSettings().setAllowUniversalAccessFromFileURLs(true);		
+		
+		if(savedInstanceState != null){
+			String html = savedInstanceState.getString("html");
+			final String version = savedInstanceState.getString("version");
+			final String code = savedInstanceState.getString("code");
+			if(html!=null && !html.isEmpty()){
+				htmlPage = html;				
+				webview.loadDataWithBaseURL("file:///android_asset/", htmlPage, "text/html", "UTF-8", null);
+			}else{
+				final ProgressDialog ringProgressDialog = ProgressDialog.show(this, "Please wait ...", "Execution process ...", true);
+				ringProgressDialog.setCancelable(true);
+	    	
+				new Thread(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							// Get the version and code from the intent
+							htmlPage = rrm.getHTMLRecommendations(version,code);
+							webview.loadDataWithBaseURL("file:///android_asset/", htmlPage, "text/html", "UTF-8", null);
+	    				} catch (Exception e) {
+	    				}
+						ringProgressDialog.dismiss();
+					}
+				}).start();
+			}
+		}else{
+		
+			final Intent intent = getIntent();
+			final RecommendationRulesMain rrm = new RecommendationRulesMain();
+			final ProgressDialog ringProgressDialog = ProgressDialog.show(this, "Please wait ...", "Execution process ...", true);
+			ringProgressDialog.setCancelable(true);
+    	
+			new Thread(new Runnable() {
+				@Override
+				public void run() {
+					try {
+						// Get the version and code from the intent
+						version = intent.getStringExtra(MainActivity.EXTRA_VERSION);
+						code = intent.getStringExtra(MainActivity.EXTRA_CODE);
+						htmlPage = rrm.getHTMLRecommendations(version,code);
+						//htmlPage ="<html><head><title>Error Page</title></head><body><h2>The application has generated an error: \"\"\n->code = "+code+";version = "+version+".</h2><h3>Please notify your help desk.</h3></body></html>";;
+						webview.loadDataWithBaseURL("file:///android_asset/", htmlPage, "text/html", "UTF-8", null);
+    				} catch (Exception e) {
+    				}
+					ringProgressDialog.dismiss();
+				}
+			}).start();
+		}
+    	setContentView(webview);
+	}
+	
+	@Override
+	public void onSaveInstanceState(Bundle outState) {
+	   super.onSaveInstanceState(outState);
+	   outState.putString("html", htmlPage);
+	   outState.putString("version",version);
+	   outState.putString("code",code);
+	}
+
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		// Inflate the menu; this adds items to the action bar if it is present.
+		/*getMenuInflater().inflate(R.menu.main, menu);
+		return true;*/
+		
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.display_recommendations, menu);
+	    return super.onCreateOptionsMenu(menu);
+	}
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        /*int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            return true;
+        }*/
+        return super.onOptionsItemSelected(item);
+    }
+
+    /**
+     * A placeholder fragment containing a simple view.
+     */
+    public static class PlaceholderFragment extends Fragment {
+
+        public PlaceholderFragment() { }
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                  Bundle savedInstanceState) {
+              View rootView = inflater.inflate(R.layout.fragment_display_recommendations,
+                      container, false);
+              return rootView;
+        }
+    }
+}

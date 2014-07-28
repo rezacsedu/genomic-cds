@@ -1,0 +1,327 @@
+package meduniwien.msc.model;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+
+import meduniwien.msc.exception.BadFormedBase64NumberException;
+import meduniwien.msc.exception.NotInitializedPatientsGenomicDataException;
+import meduniwien.msc.exception.VariantDoesNotMatchAnyAllowedVariantException;
+import meduniwien.msc.util.Common;
+import meduniwien.msc.util.OntologyManagement;
+
+
+/**
+ * This class is in charge of managing all classes from Genomic MSC server in order to decode a provided qr code and retrieve the html related to the drug recommendations.
+ * @JOSE It should retrieve only the triggered drug recommendations and the corresponding activity should provide the interface elements.  
+ * */
+public class RecommendationRulesMain {
+	/** The version of a scanned safetycode number.*/
+	private String version;
+	/** The value of a scanned safetycode number.*/
+	private String code;
+	/** The corresponding genotype of a safetycode number.*/
+	private Genotype patientGenotype;
+	/** The ontology management that contains the information from the Genomic CDS ontology.*/
+	private OntologyManagement om;
+	
+	private String htmlPage;
+	
+	/** Create the instance of the class with the provided version and code. It decodes the qr code and obtain the corresponding patient's genotype.*/
+	public RecommendationRulesMain(){
+		om = new OntologyManagement();
+	}
+	
+	/**
+	 * Get the HMTL page related to the triggered drug recommendations.
+	 * 
+	 * @return The triggered drug recommendations into an HTML equals to the result page from the Genomic MSC server application.
+	 * */
+	public void getHTMLRecommendations(String version, String code){
+		this.version	= version;
+		this.code		= code;
+		
+		if(this.version.equals(Common.VERSION)){
+			try{
+				patientGenotype = readBase64ProfileString(this.code);
+			}catch(Exception e){
+				htmlPage = "<html><head><title>Error Page</title></head><body><h2>The application has generated an error: \""+e.getMessage()+"\"\n->code = "+code+";version = "+version+".</h2><h3>Please notify your help desk.</h3></body></html>";				 
+			}
+		}else{
+			htmlPage = "<html><head><title>Error Page</title></head><body><h2>The safetycode is not in a valid version format\n->code = "+code+";version = "+version+".</h2><h3>Please use version \""+Common.VERSION+"\".</h3></body></html>";
+		}
+		
+		HashMap<String, ArrayList<DrugRecommendation>> list_recommendations=null;
+		try {
+			list_recommendations = obtainDrugRecommendations();
+		} catch (NotInitializedPatientsGenomicDataException e) {
+			htmlPage = "<html><head><title>Error Page</title></head><body><h2>The application has generated an error: \""+e.getMessage()+"\"\n->code = "+code+";version = "+version+".</h2><h3>Please notify your help desk.</h3></body></html>";
+		}
+							
+		// Output inferred alleles
+		String allelesHTML = "";
+		
+		ArrayList<GenotypeElement> listGenotypeElements = patientGenotype.getListGenotypeElements();
+		for(GenotypeElement ge: listGenotypeElements){
+			if(!ge.getCriteriaSyntax().contains("null;null")){
+				allelesHTML+="<li>"+ge.getGeneticMarkerName()+" "+revert_label(ge.getCriteriaSyntax(),ge.getGeneticMarkerName())+"</li>\n";
+			}
+		}
+				
+		// Output recommendations
+		String recommendationsHTML = "";
+		String criticalRecommendationsHTML = "";
+		
+		if(!list_recommendations.isEmpty()){
+			Comparator<DrugRecommendation> comparator = new Comparator<DrugRecommendation>(){
+				public int compare(DrugRecommendation dr1,DrugRecommendation dr2){
+					return dr1.getSource().compareTo(dr2.getSource());
+				}
+			};
+			
+			ArrayList<String> list_sorted_keys = new ArrayList<String>();
+			list_sorted_keys.addAll(list_recommendations.keySet());
+			Collections.sort(list_sorted_keys);
+			for(String key : list_sorted_keys){
+				boolean importance = false;
+				String recommendation_html = "";
+				recommendation_html += "<li>\n\t<div data-filtertext=\""+key+"\" data-role=\"collapsible\">\n";
+				String recommendation_html_header ="";
+				ArrayList<DrugRecommendation> list_data = list_recommendations.get(key);
+				String recommendation_html_body = "";
+				
+				Collections.sort(list_data,comparator);
+				for(DrugRecommendation dr: list_data){
+					if(dr.getImportance().contains("Important")){
+						importance = true;
+					}
+					
+					String drug_reason=dr.getReason();
+					String drug_url="";
+					ArrayList<String> list_urls = dr.getSeeAlsoList();
+					if(list_urls!=null && !list_urls.isEmpty()){
+						drug_url = list_urls.get(0);
+					}
+					recommendation_html_body += "\t\t<fieldset style=\"margin-bottom:20px\">\n\t\t\t<legend>Source: "+dr.getSource()+"</legend>\n\t\t\t<div class=\"ui-bar ui-bar-e\">\n\t\t\t\t<div class=\"recommendation-small-text\">Reason: "+drug_reason+"</div>\n\t\t\t\t"+dr.getCDSMessage()+"\n\t\t\t\t<div class=\"recommendation-small-text\">Last guideline update: "+dr.getLastUpdate()+"</div>\n\t\t\t</div>\n\t\t\t<div><a href=\""+drug_url+"\" data-role=\"button\" data-mini=\"true\" data-inline=\"true\" data-icon=\"info\" target=\"_blank\">Show guideline website</a></div>\n\t\t</fieldset>\n\n";
+					//recommendation_html_body += "\t\t<fieldset style=\"margin-bottom:20px\">\n\t\t\t<div class=\"ui-body ui-body-d\" style=\"overflow: auto;\">\n\t\t\t<strong>Source: "+dr.getSource()+"</strong></br>\n\t\t\t\t<strong>Reason: "+drug_reason+"</strong><br/>\n\t\t\t\t"+dr.getCDSMessage()+"<br/>\n\t\t\t\t<strong>Last guideline update: "+dr.getLastUpdate()+"</strong><br/>\n\t\t\t</div>\n\t\t\t<div><a href=\""+drug_url+"\" class=\"ui-btn ui-btn-inline ui-icon-info ui-btn-icon-left recommendation-small-text\">Show guideline website</a></div>\n\t\t</fieldset>\n\n";
+				}
+				if(importance){
+					if(criticalRecommendationsHTML.length() == 0){
+						criticalRecommendationsHTML+="<li data-role=\"list-divider\" data-theme=\"c\">Critical</li>\n";
+					}
+					if(recommendationsHTML.length()==0){
+						recommendationsHTML+="<li data-role=\"list-divider\" data-theme=\"c\">All</li>\n";
+					}
+					recommendation_html_header = "\t\t<h3>"+key+" (!)</h3>\n";
+					recommendation_html +=recommendation_html_header+"\n"+recommendation_html_body+"\t</div>\n</li>\n";
+					criticalRecommendationsHTML+=recommendation_html;
+					recommendationsHTML+=recommendation_html;
+				}else{
+					if(recommendationsHTML.length()==0){
+						recommendationsHTML+="<li data-role=\"list-divider\" data-theme=\"c\">All</li>\n";
+					}
+					recommendation_html_header = "\t\t<h3>"+key+"</h3>\n";
+					recommendation_html +=recommendation_html_header+"\n"+recommendation_html_body+"\t</div>\n</li>\n";
+					recommendationsHTML+=recommendation_html;
+				}
+			}
+			if(criticalRecommendationsHTML.length() == 0){
+				criticalRecommendationsHTML += "<li data-role=\"list-divider\" data-theme=\"c\">Critical</li>\n";
+				String recommendation_html = "";
+				recommendation_html += "<li>\n\t<fieldset style=\"margin-bottom:20px\"><div class=\"ui-body ui-body-d\"><label>There is not any matched rule related to a critical drug recommendation with the current genomic data.</label></div></fieldset>\n";
+				criticalRecommendationsHTML += recommendation_html;
+			}
+		}else{
+			recommendationsHTML += "<li data-role=\"list-divider\" data-theme=\"c\">All</li>\n";
+			String recommendation_html = "";
+			recommendation_html += "<li>\n\t<fieldset style=\"margin-bottom:20px\"><div class=\"ui-body ui-body-d\"><label>There is not any matched rule related to a drug recommendation with the current genomic data.</label></div></fieldset>\n";
+			recommendationsHTML += recommendation_html;
+		}
+			
+		htmlPage = generateResultHTMLPage(criticalRecommendationsHTML, recommendationsHTML, allelesHTML);		
+	}
+	
+	/**
+	 * It obtains the triggered drug recommendations based on the generated patient's genotype in the constructor of the class.ç
+	 * @return A map with the triggered rules grouped by the drug name.
+	 * @throws NotInitializedPatientsGenomicDataException
+	 * */	
+	private HashMap<String, ArrayList<DrugRecommendation>> obtainDrugRecommendations() throws NotInitializedPatientsGenomicDataException {
+		HashMap<String,ArrayList<DrugRecommendation>> mapDrugRecommendations = null;
+		if(patientGenotype==null){
+			throw new NotInitializedPatientsGenomicDataException("The patient's genotype was not initialized");
+		}else{
+			mapDrugRecommendations = new HashMap<String,ArrayList<DrugRecommendation>>();
+			ArrayList<DrugRecommendation> listRecommendations = om.getListDrugRecommendations();
+			for(DrugRecommendation dr: listRecommendations){
+				if(dr.matchPatientProfile(patientGenotype)){
+					String drug_name = dr.getDrugName();
+					if(mapDrugRecommendations.containsKey(drug_name)){
+						 mapDrugRecommendations.get(drug_name).add(dr);
+					}else{
+						ArrayList<DrugRecommendation> listMatchedRecommendations = new ArrayList<DrugRecommendation>();
+						listMatchedRecommendations.add(dr);
+						mapDrugRecommendations.put(drug_name, listMatchedRecommendations);
+					}
+				}
+			}
+		}
+		return mapDrugRecommendations;
+	}
+		
+	
+	/**
+	 * Create the patient model that is related to the base64Profile.
+	 * 
+	 * @param base64Profile Base 64 number that represent the binary codification of a patient genotype.
+	 * @throws BadFormedBase64NumberException
+	 * @throws VariantDoesNotMatchAnAllowedVariantException 
+	 * */
+	private Genotype readBase64ProfileString(String base64Profile) throws BadFormedBase64NumberException, VariantDoesNotMatchAnyAllowedVariantException {
+		DecodingModule decod_mod = new DecodingModule(om.getListGeneticMarkerGroups());
+		ArrayList<GenotypeElement> listGenotypeElements = decod_mod.decodeListGenotypeVariations(base64Profile);
+		return new Genotype(listGenotypeElements);		
+	}
+	
+	/**
+	 * It produces the HTML page with the critical drug recommendations, all the drug recommendations and the inferred alleles of the patient's genotype.
+	 * @param criticalRecommendations	The triggered critical drug recommendations formatted as html list of elements.
+	 * @param allRecommendations		All the triggered drug recommendations formatted as html list of elements.
+	 * @param inferredAlleles			All the inferred alleles from the decoding qr code of the patients's genotype.
+	 * */
+	/*private String generateResultHTMLPage(String criticalRecommendations, String allRecommendations, String inferredAlleles){
+		String resultHTML= "";
+		resultHTML+="<!DOCTYPE html>\n";
+		resultHTML+="<html>\n";
+		resultHTML+="<head>\n";
+		resultHTML+="<meta charset=\"utf-8\">\n";
+		resultHTML+="<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n";
+		resultHTML+="<title>Medicine Safety Code</title>\n";
+		resultHTML+="<link rel=\"stylesheet\"	href=\"themes/msc.min.css\">\n";		
+		resultHTML+="<link rel=\"stylesheet\" href=\"themes/jquery.mobile.icons.min.css\">\n";		
+		resultHTML+="<link rel=\"stylesheet\" href=\"themes/jquery.mobile-1.4.3.min.css\">\n";
+		resultHTML+="<link rel=\"stylesheet\" href=\"css/safety-code.css\">\n";
+		resultHTML+="<link rel=\"shortcut icon\" href=\"images/favicon.png\">\n";
+		resultHTML+="<script src=\"js/jquery.min.js\"></script>\n";		
+		resultHTML+="<script src=\"js/jquery.mobile-1.4.3.min.js\"></script>\n";
+		resultHTML+="</head>\n";
+		resultHTML+="<body>\n";
+		resultHTML+="<div data-role=\"page\">\n";
+		resultHTML+="<div data-role=\"header\" style=\"text-align: center; padding: 3px\">\n";
+		resultHTML+="<img src=\"images/safety-code-logo-2014-without-slogan.png\" width=\"200\" height=\"37\" alt=\"safety-code.org\"/>\n";
+		resultHTML+="</div>";
+		resultHTML+="<div data-role=\"main\" class=\"ui-content\">\n";
+		resultHTML+="<div data-role=\"collapsible-set\">\n";
+		resultHTML+="<ul data-role=\"listview\" data-inset=\"true\" data-filter-placeholder=\"Filter substance list...\" data-filter=\"true\">\n";
+		resultHTML+=criticalRecommendations+"\n";
+		resultHTML+=allRecommendations+"\n";
+		resultHTML+="</ul>\n";
+		resultHTML+="</div>\n";
+		resultHTML+="<div data-role=\"collapsible\" data-mini=\"true\">\n";
+		resultHTML+="<h4>Show pharmacogenomic data</h4>\n";
+		resultHTML+="<ul data-inset=\"true\">\n";
+		resultHTML+=inferredAlleles+"\n";
+		resultHTML+="<li>Version="+version+"</li>\n";
+		resultHTML+="<li>Code="+code+"</li>\n";
+		resultHTML+="</ul>\n";
+		resultHTML+="</div>\n";
+		resultHTML+="</div>\n";
+		resultHTML+="<div data-role=\"footer\" data-theme=\"b\" style=\"text-align: center; padding: 5px;\">\n";
+		resultHTML+="<div>\n";
+		resultHTML+="<h3>This service is provided for research purposes only and comes without any warranty. (C)&nbsp;2012&nbsp;<a href=\"http://safety-code.org\">safety-code.org</a></h3>\n";
+		resultHTML+="</div>\n";
+		resultHTML+="</div>\n";
+		resultHTML+="</div>\n";
+		resultHTML+="</body>\n";
+		resultHTML+="</html>\n";
+		
+		return resultHTML;
+	}*/
+	private String generateResultHTMLPage(String criticalRecommendations, String allRecommendations, String inferredAlleles){
+		String resultHTML= "";
+		resultHTML+="<!DOCTYPE html>\n";
+		resultHTML+="<html>\n";
+		resultHTML+="<head>\n";
+		resultHTML+="<title>Medicine Safety Code</title>\n";
+		resultHTML+="<meta charset=\"utf-8\">\n";
+		resultHTML+="<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n";
+		resultHTML+="<link rel=\"stylesheet\"	href=\"css/themes/default/jquery.mobile-1.3.2.min.css\">\n";
+		resultHTML+="<link rel=\"stylesheet\" href=\"_assets/css/jqm-demos.css\">\n";
+		resultHTML+="<link rel=\"shortcut icon\" href=\"images/favicon.png\">\n";
+		resultHTML+="<link rel=\"stylesheet\" href=\"http://fonts.googleapis.com/css?family=Open+Sans:300,400,700\">\n";
+		resultHTML+="<link rel=\"stylesheet\" href=\"css/safety-code.css\">\n";
+		resultHTML+="<script src=\"js/jquery.js\"></script>\n";
+		resultHTML+="<script src=\"_assets/js/index.js\"></script>\n";
+		resultHTML+="<script src=\"js/jquery.mobile-1.3.2.min.js\"></script>\n";
+		resultHTML+="</head>\n";
+		resultHTML+="<body>\n";
+		resultHTML+="<div data-role=\"page\" class=\"jqm-demos\">\n";
+		resultHTML+="<div data-role=\"header\" class=\"jqm-header\" style=\"text-align: center; padding: 3px\">\n";
+		resultHTML+="<img src=\"images/safety-code-logo-2014-without-slogan.png\" width=\"200\" height=\"37\" alt=\"safety-code.org\"/>\n";
+		resultHTML+="</div>";
+		resultHTML+="<div data-role=\"content\" class=\"jqm-content\">\n";
+		resultHTML+="<div data-role=\"collapsible-set\">\n";
+		resultHTML+="<ul data-role='listview' data-inset='true' data-filter-placeholder='Filter substance list...' data-filter='true'>\n";
+		resultHTML+=criticalRecommendations+"\n";
+		resultHTML+=allRecommendations+"\n";
+		resultHTML+="</ul>\n";
+		resultHTML+="</div>\n";
+		resultHTML+="<div data-role=\"collapsible\" data-mini=\"true\">\n";
+		resultHTML+="<h4>Show pharmacogenomic data</h4>\n";
+		resultHTML+="<ul data-inset=\"true\">\n";
+		resultHTML+=inferredAlleles+"\n";
+		resultHTML+="<li>Version="+version+"</li>\n";
+		resultHTML+="<li>Code="+code+"</li>\n";
+		resultHTML+="</ul>\n";
+		resultHTML+="</div>\n";
+		resultHTML+="</div>\n";
+		resultHTML+="<div data-role=\"footer\" style=\"text-align: center; padding: 5px;\">\n";
+		resultHTML+="<div>\n";
+		resultHTML+="This service is provided for research purposes only and comes without any warranty. (C)&nbsp;2012&nbsp;<a href=\"http://safety-code.org\">safety-code.org</a>\n";
+		resultHTML+="</div>\n";
+		resultHTML+="</div>\n";
+		resultHTML+="</div>\n";
+		resultHTML+="</body>\n";
+		resultHTML+="</html>\n";
+		
+		return resultHTML;
+	}
+	
+	/**
+	 * It translate the internal label of a allele into a more friendly/standard allele representation
+	 * @param label		The internal label.
+	 * @param id		The id of the allele variation.
+	 * @return			The translated label. 
+	 * */	
+	private String revert_label(String label,String id){
+		if(id.matches("rs[0-9]+")){
+			label = "("+label+")";
+		}else{
+			if(label.contains("star_")){
+				label = label.replace("star_", "*").trim();
+			}
+			if(label.contains("hash_")){
+				label = label.replace("hash_", "#").trim();
+			}
+			if(label.contains("duplicated_")){
+				if(label.lastIndexOf("duplicated_")>=0 && label.indexOf(";")>=0 && label.lastIndexOf("duplicated_")>label.indexOf(";")){
+					String repeat = label.substring(label.lastIndexOf("duplicated_")+11);
+					label = label.substring(0,label.lastIndexOf("duplicated_"))+" "+repeat+" / "+repeat;
+				}
+				if(label.indexOf("duplicated_")>=0 && label.indexOf(";")>=0 && label.indexOf("duplicated_")<label.indexOf(";")){
+					String repeat = label.substring(label.indexOf("duplicated_")+11,label.indexOf(";"));
+					label = repeat+" / "+repeat+" "+label.substring(label.indexOf(";"));
+				}
+				label += " (note: copy number variation)";
+			}
+			if(label.contains("_")){
+				label = label.replace("_", " ").trim();
+			}
+			if(label.contains(";")){
+				label = label.replace(";"," / ");
+			}
+		}
+		return label;
+	}
+}

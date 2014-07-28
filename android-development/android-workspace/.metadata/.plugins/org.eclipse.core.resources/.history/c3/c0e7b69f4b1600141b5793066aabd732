@@ -1,0 +1,558 @@
+package meduniwien.msc.model;
+
+import java.util.ArrayList;
+/**Represents the node of a logical expression. It could be connected to other subnodes.*/
+public class NodeCondition {
+	/** List of sub node conditions of this node.*/
+	private ArrayList<NodeCondition> listConditions;
+	/** The genotype element (SNP or haplotype) variant. */
+	private String element;//GenotypeElement
+	/** The type of relation between the subnodes represented in listConditions.*/
+	private String quality;//and, or
+	/** The type of condition of the element variant.*/
+	private String type;//some, exactly, min, max 
+	/** The cardinality restriction when using exactly, min or max.*/
+	private int number;
+	
+	/** Creates an empty node condition.*/
+	public NodeCondition(){
+		listConditions=null;
+		element = "";
+		quality="";
+		type = "";
+		number=-1;
+	}
+	
+	/**
+	 * Check if the list of genetic elements match the conditions represented in the node. It has special situation when label "duplicated" appears, it counts as 2 genetic elements of a kind. 
+	 * @param listElements	List of genetic elements in a genotype.
+	 * @return	Whether the list of genetic elements matches the logical description of the node. 
+	 * */
+	public boolean test(ArrayList<GenotypeElement> listElements){
+		//if(!type.isEmpty()){
+		if(type.length()>0){
+			if(type.equals("some")){
+				//if(!element.isEmpty()){
+				if(element.length()>0){
+					for(GenotypeElement ge : listElements){
+						String variant1 = ge.getGeneticMarkerName()+"_"+ge.getVariant1();
+						
+						if(variant1.contains("duplicated_")){//When the variant contains a copy number of the genotype variation. We just need to check that there is one.
+							variant1 = variant1.replace("duplicated_", "");
+						}
+						if(variant1.equals(element)){
+							return true;
+						}
+						
+						String variant2 = ge.getGeneticMarkerName()+"_"+ge.getVariant2();
+						if(variant2.contains("duplicated_")){//When the variant contains a copy number of the genotype variation. We just need to check that there is one.
+							variant2 = variant2.replace("duplicated_", "");
+						}
+						if(variant2.equals(element)){
+							return true;
+						}
+						
+						//This exception occurs when the conditions requires one subclass of a SNPs and it does not indicate which one. Therefore, we accept all subclasses of it as matching classes. We assue that all subclasses of a SNP will contain its name in the description.
+						if(element.matches("rs[0-9]+")){
+							if(ge.getGeneticMarkerName().equals(element)&& !ge.getCriteriaSyntax().contains("null")){
+								//System.out.println("matches some element = "+element);
+								return true;
+							}
+						}
+					}
+					return false;
+				}
+				if(listConditions!=null && !listConditions.isEmpty()){
+					//if(!quality.isEmpty()){
+					if(quality.length()>0){
+						if(quality.equals("or")){
+							for(NodeCondition condition : listConditions){
+								//if(!condition.getElement().isEmpty()){
+								if(condition.getElement().length()>0){
+									String nodeElement = condition.getElement();
+									for(GenotypeElement ge : listElements){
+										String variant1 = ge.getGeneticMarkerName()+"_"+ge.getVariant1();
+										if(variant1.contains("duplicated_")){//When the variant contains a copy number of the genotype variation. We just need to check that there is one.
+											variant1 = variant1.replace("duplicated_", "");
+										}
+										if(variant1.equals(nodeElement)){
+											return true;
+										}
+										String variant2 = ge.getGeneticMarkerName()+"_"+ge.getVariant2();
+										if(variant2.contains("duplicated_")){//When the variant contains a copy number of the genotype variation. We just need to check that there is one.
+											variant2 = variant2.replace("duplicated_", "");
+										}
+										if(variant2.equals(nodeElement)){
+											return true;
+										}
+										//This exception occurs when the conditions requires one subclass of a SNPs and it does not indicate which one. Therefore, we accept all subclasses of it as matching classes. We assue that all subclasses of a SNP will contain its name in the description.
+										if(nodeElement.matches("rs[0-9]+")){
+											if(ge.getGeneticMarkerName().equals(nodeElement) && !ge.getCriteriaSyntax().contains("null")){
+												//System.out.println("matches some or nodeElement = "+nodeElement);
+												return true;
+											}
+										}
+									}
+								}
+							}
+							return false;
+						}
+						if(quality.equals("and")){
+							for(NodeCondition condition : listConditions){
+								boolean andResult = false;
+								//if(!condition.getElement().isEmpty()){
+								if(condition.getElement().length()>0){
+									String nodeElement = condition.getElement();
+									for(GenotypeElement ge : listElements){
+										String variant1 = ge.getGeneticMarkerName()+"_"+ge.getVariant1();
+										if(variant1.contains("duplicated_")){
+											variant1 = variant1.replace("duplicated_", "");
+										}
+										String variant2 = ge.getGeneticMarkerName()+"_"+ge.getVariant2();
+										if(variant2.contains("duplicated_")){
+											variant2 = variant2.replace("duplicated_", "");
+										}
+										if(variant1.equals(nodeElement) || variant2.equals(nodeElement)){
+											andResult=true;
+											break;
+										}
+										if(nodeElement.matches("rs[0-9]+")){
+											if(ge.getGeneticMarkerName().equals(nodeElement) && !ge.getCriteriaSyntax().contains("null")){
+												//System.out.println("matches some and nodeElement = "+nodeElement);
+												return true;
+											}
+										}
+									}
+								}
+								if(!andResult){
+									return false;
+								}
+							}
+							return true;
+						}
+					}else{
+						System.out.println("It should not be like this ->"+this.toString());
+					}
+				}
+			}
+			if(type.equals("exactly")&&number>=0){
+				if(listConditions!=null && !listConditions.isEmpty()){
+					//if(!quality.isEmpty()){
+					if(quality.length()>0){
+						if(quality.equals("or")){
+							for(NodeCondition condition : listConditions){
+								int nMatches = 0;
+								//if(!condition.getElement().isEmpty()){
+								if(condition.getElement().length()>0){
+									String nodeElement = condition.getElement();
+									for(GenotypeElement ge : listElements){
+										String variant1 = ge.getGeneticMarkerName()+"_"+ge.getVariant1();
+										if(variant1.contains("duplicated_")){
+											variant1 = variant1.replace("duplicated_", "");
+											if(variant1.equals(nodeElement)) nMatches+=2;
+										}else{
+											if(variant1.equals(nodeElement)) nMatches++;
+										}
+										String variant2 = ge.getGeneticMarkerName()+"_"+ge.getVariant2();
+										if(variant2.contains("duplicated_")){
+											variant2 = variant2.replace("duplicated_", "");
+											if(variant2.equals(nodeElement)) nMatches+=2;
+										}else{
+											if(variant2.equals(nodeElement)) nMatches++;
+										}
+										if(nodeElement.matches("rs[0-9]+")){
+											if(ge.getGeneticMarkerName().equals(nodeElement) && !ge.getCriteriaSyntax().contains("null")){
+												//System.out.println("matches exactly or nodeElement = "+nodeElement);
+												nMatches+=2;
+											}
+										}
+									}
+								}
+								if(nMatches == number){
+									return true;
+								}
+							}
+							return false;
+						}
+						if(quality.equals("and")){
+							for(NodeCondition condition : listConditions){
+								//if(!condition.getElement().isEmpty()){
+								if(condition.getElement().length()>0){
+									String nodeElement = condition.getElement();
+									int nMatches = 0;
+									for(GenotypeElement ge : listElements){
+										String variant1 = ge.getGeneticMarkerName()+"_"+ge.getVariant1();
+										if(variant1.contains("duplicated_")){
+											variant1 = variant1.replace("duplicated_", "");
+											if(variant1.equals(nodeElement)) nMatches+=2;
+										}else{
+											if(variant1.equals(nodeElement)) nMatches++;
+										}
+										String variant2 = ge.getGeneticMarkerName()+"_"+ge.getVariant2();
+										if(variant2.contains("duplicated_")){
+											variant2 = variant2.replace("duplicated_", "");
+											if(variant2.equals(nodeElement)) nMatches+=2;
+										}else{
+											if(variant2.equals(nodeElement)) nMatches++;
+										}
+										
+										if(nodeElement.matches("rs[0-9]+")){
+											if(ge.getGeneticMarkerName().equals(nodeElement) && !ge.getCriteriaSyntax().contains("null")){
+												//System.out.println("matches exactly and nodeElement = "+nodeElement);
+												nMatches+=2;
+											}
+										}
+									}
+									
+									if(nMatches != number){
+										return false;
+									}
+								}
+							}
+							return true;
+						}
+					}else{
+						System.out.println("It should not be like this ->"+this.toString());
+					}
+				}else{
+					//if(!element.isEmpty()){
+					if(element.length()>0){
+						int nMatches = 0;
+						for(GenotypeElement ge : listElements){
+							String variant1 = ge.getGeneticMarkerName()+"_"+ge.getVariant1();
+							if(variant1.contains("duplicated_")){
+								variant1 = variant1.replace("duplicated_", "");
+								if(variant1.equals(element)) nMatches+=2;
+							}else{
+								if(variant1.equals(element)) nMatches++;
+							}
+							String variant2 = ge.getGeneticMarkerName()+"_"+ge.getVariant2();
+							if(variant2.contains("duplicated_")){
+								variant2 = variant2.replace("duplicated_", "");
+								if(variant2.equals(element)) nMatches+=2;
+							}else{
+								if(variant2.equals(element)) nMatches++;
+							}
+							
+							if(element.matches("rs[0-9]+")){
+								if(ge.getGeneticMarkerName().equals(element) && !ge.getCriteriaSyntax().contains("null")){
+									//System.out.println("matches exactly element = "+element);
+									nMatches+=2;
+								}
+							}
+						}
+						
+						if(nMatches != number){
+							return false;
+						}
+						return true;
+					}
+				}
+			}
+			if(type.equals("min")&&number>=0){
+				if(listConditions!=null && !listConditions.isEmpty()){
+					//if(!quality.isEmpty()){
+					if(quality.length()>0){
+						if(quality.equals("or")){
+							int nMatches = 0;
+							for(NodeCondition condition : listConditions){
+								//if(!condition.getElement().isEmpty()){
+								if(condition.getElement().length()>0){
+									String nodeElement = condition.getElement();
+									for(GenotypeElement ge : listElements){
+										String variant1 = ge.getGeneticMarkerName()+"_"+ge.getVariant1();
+										if(variant1.contains("duplicated_")){
+											variant1 = variant1.replace("duplicated_", "");
+											if(variant1.equals(nodeElement)) nMatches+=2;
+										}else{
+											if(variant1.equals(nodeElement)) nMatches++;
+										}
+										String variant2 = ge.getGeneticMarkerName()+"_"+ge.getVariant2();
+										if(variant2.contains("duplicated_")){
+											variant2 = variant2.replace("duplicated_", "");
+											if(variant2.equals(nodeElement)) nMatches+=2;
+										}else{
+											if(variant2.equals(nodeElement)) nMatches++;
+										}
+										if(nodeElement.matches("rs[0-9]+")){
+											if(ge.getGeneticMarkerName().equals(nodeElement) && !ge.getCriteriaSyntax().contains("null")){
+												//System.out.println("matches min or nodeElement = "+nodeElement);
+												nMatches+=2;
+											}
+										}
+									}
+								}
+							}
+							if(nMatches >= number){
+								return true;
+							}
+							return false;
+						}
+						if(quality.equals("and")){
+							for(NodeCondition condition : listConditions){
+								//if(!condition.getElement().isEmpty()){
+								if(condition.getElement().length()>0){
+									String nodeElement = condition.getElement();
+									int nMatches = 0;
+									for(GenotypeElement ge : listElements){
+										String variant1 = ge.getGeneticMarkerName()+"_"+ge.getVariant1();
+										if(variant1.contains("duplicated_")){
+											variant1 = variant1.replace("duplicated_", "");
+											if(variant1.equals(nodeElement)) nMatches+=2;
+										}else{
+											if(variant1.equals(nodeElement)) nMatches++;
+										}
+										String variant2 = ge.getGeneticMarkerName()+"_"+ge.getVariant2();
+										if(variant2.contains("duplicated_")){
+											variant2 = variant2.replace("duplicated_", "");
+											if(variant2.equals(nodeElement)) nMatches+=2;
+										}else{
+											if(variant2.equals(nodeElement)) nMatches++;
+										}
+										if(nodeElement.matches("rs[0-9]+")){
+											if(ge.getGeneticMarkerName().equals(nodeElement) && !ge.getCriteriaSyntax().contains("null")){
+												//System.out.println("matches min and nodeElement = "+nodeElement);
+												nMatches+=2;
+											}
+										}
+									}
+									if(nMatches < number){
+										return false;
+									}
+								}
+							}
+							return true;
+						}
+					}else{
+						System.out.println("It should not be like this ->"+this.toString());
+					}
+				}else{
+					//if(!element.isEmpty()){
+					if(element.length()>0){
+						int nMatches = 0;
+						for(GenotypeElement ge : listElements){
+							String variant1 = ge.getGeneticMarkerName()+"_"+ge.getVariant1();
+							if(variant1.contains("duplicated_")){
+								variant1 = variant1.replace("duplicated_", "");
+								if(variant1.equals(element)) nMatches+=2;
+							}else{
+								if(variant1.equals(element)) nMatches++;
+							}
+							String variant2 = ge.getGeneticMarkerName()+"_"+ge.getVariant2();
+							if(variant2.contains("duplicated_")){
+								variant2 = variant2.replace("duplicated_", "");
+								if(variant2.equals(element)) nMatches+=2;
+							}else{
+								if(variant2.equals(element)) nMatches++;
+							}
+							if(element.matches("rs[0-9]+")){
+								if(ge.getGeneticMarkerName().equals(element) && !ge.getCriteriaSyntax().contains("null")){
+									//System.out.println("matches min element = "+element);
+									nMatches+=2;
+								}
+							}
+						}
+						if(nMatches < number){
+							return false;
+						}
+						return true;
+					}
+				}
+			}
+		}else{
+			//if(!quality.isEmpty()){
+			if(quality.length()>0){
+				if(quality.equals("or") && (listConditions!=null && !listConditions.isEmpty())){
+					for(NodeCondition condition : listConditions){
+						if(condition.test(listElements)){
+							return true;
+						}
+					}
+					
+					return false;
+				}
+				if(quality.equals("and") && (listConditions!=null && !listConditions.isEmpty())){
+					for(NodeCondition condition : listConditions){
+						if(!condition.test(listElements)){
+							return false;
+						}
+					}
+					return true;
+				}
+			}
+		}
+		if(type.length()==0 && quality.length()==0 && listConditions!=null && listConditions.size()==1){
+		//if(type.isEmpty()&&quality.isEmpty()&&listConditions!=null&&listConditions.size()==1){
+			return listConditions.get(0).test(listElements);
+		}
+		
+		System.out.println("ERROR: Nothing was matched->"+toString());
+		/*if(listConditions == null){
+			System.out.println("listConditions is null");
+		}else{
+			if(listConditions.isEmpty()){
+				System.out.println("listConditions is Empty");
+			}else{
+				System.out.println("listConditions has size = "+listConditions.size());
+			}
+		}
+		System.out.println("element="+element);
+		System.out.println("quality="+quality);
+		System.out.println("type="+type);
+		System.out.println("number="+number);*/
+		
+		return false;
+	}
+	
+		
+	/*private void optimized(){
+		//if(type.isEmpty()&&quality.isEmpty()&&listConditions!=null&&listConditions.size()==1){
+		if(type.length()==0 && quality.length()==0 && listConditions!=null && listConditions.size()==1){
+			NodeCondition aux = listConditions.get(0);
+			this.element = aux.getElement();
+			this.number = aux.getNumber();
+			this.quality = aux.getQuality();
+			this.type = aux.getType();
+			this.listConditions = aux.getListNodeConditions();
+		}
+	}*/
+	
+	/** It add a new node to the list of sub node conditions.
+	 * @param node	The node to be added.*/
+	public void addNode(NodeCondition node){
+		if(listConditions==null){
+			listConditions = new ArrayList<NodeCondition>();
+		}
+		if(node!=null){
+			listConditions.add(node);
+		}
+	}
+	
+	/**
+	 * Get method that returns the list of sub node conditions.
+	 * @return The list of sub node conditions.
+	 * */
+	public ArrayList<NodeCondition> getListNodeConditions(){
+		return listConditions;
+	}
+	
+	/**
+	 * Get method that retrieves the type of logical expression related to the sub nodes. It could be 'and' or 'or'.
+	 * @return The type of logical expression (AND or OR).*/
+	public String getQuality(){
+		return quality;
+	}
+	
+	/**
+	 * Set method that indicates the type of logical expression related to the sub nodes.
+	 * @param quality	The type of logical expression (AND, OR). 
+	 * */
+	public void setQuality(String quality){
+		this.quality = quality;
+	}
+	
+	/**
+	 * Set method that indicates the type of condition of the genotype element.
+	 * @param The type of condition (some, exactly, min, max). 
+	 * */
+	public void setType(String type){
+		this.type = type;
+	}
+	
+	/**
+	 * Get method that returns the type of condition of the genotype element.
+	 * @return	The type of condition of the genotype element.
+	 * */
+	public String getType(){
+		return type;
+	}
+	
+	
+	/** 
+	 * Set method that indicates the cardinality restriction of the type of condition when using exactly, min or max.
+	 * @param number	The cardinality restriction value.
+	 * */
+	public void setNumber(String number){
+		//if(number!=null && !number.isEmpty()){
+		if(number!=null && number.length()>0){
+			try{
+				this.number = Integer.parseInt(number);
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
+		
+	/** 
+	 * Get method that retrieves the cardinality value of the type of condition.
+	 * @return	The cardinality value.
+	 * */
+	public int getNumber(){
+		return number;
+	}
+	
+	/** 
+	 * Set method that stores the genotype element related to the node.
+	 * @param element	The genotype element of the node condition.
+	 * */
+	public void setElement(String element){
+		this.element = element;
+	}
+	
+	/**
+	 * Get method that returns the genotype element related to the node condition.
+	 * @return	The genotype element related to the node.
+	 * */
+	public String getElement(){
+		return element;
+	}
+	
+	/**Overrides the toString() method to show the logical description represented by the node condition.*/
+	public String toString(){
+		String desc = "";
+		//if(!quality.isEmpty() && !type.isEmpty() && listConditions!=null && !listConditions.isEmpty()){
+		if(quality.length()>0 && type.length()>0 && listConditions!=null && !listConditions.isEmpty()){
+			desc+="has "+type+" ";
+			if(number>=0){
+				desc+=number+" ";
+			}
+			String aux = "";
+			for(NodeCondition node: listConditions){
+				//if(!aux.isEmpty()) aux+=" "+quality+" ";
+				if(aux.length()>0) aux+=" "+quality+" ";
+				aux+=node.getElement();
+			}
+			aux = "( "+aux+" )";
+			desc+=aux;
+			return desc;
+		}
+		//if(!type.isEmpty() && !element.isEmpty()){
+		if(type.length()>0 && element.length()>0){
+			desc+="has "+type+" ";
+			if(number>=0){
+				desc+=number+" ";
+			}
+			desc+=element;
+			return desc;
+		}
+		//if(!quality.isEmpty() && listConditions!=null && !listConditions.isEmpty()){
+		if(quality.length()>0 && listConditions!=null && !listConditions.isEmpty()){
+			for(NodeCondition node: listConditions){
+				//if(!desc.isEmpty()) desc+=" "+quality+" ";
+				if(desc.length()>0) desc+=" "+quality+" ";
+				desc+="( "+node.toString()+" )";
+			}
+			return desc;
+		}
+		
+		if(listConditions!=null && listConditions.size()==1){
+			return listConditions.get(0).toString();
+		}
+		
+		//if(!element.isEmpty()) return "\n"+element;
+		if(element.length()>0) return "\n"+element;
+		
+		System.out.println("ERROR node tostring");
+		return desc;
+	}
+}

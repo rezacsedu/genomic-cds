@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;MyFirstApp/res/menu/display_message.xml&apos; to &apos;display_recommendations.xml&apos;" description="Rename resource &apos;display_message.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="res/menu/display_message.xml" name="display_recommendations.xml" stamp="1404806380694" updateReferences="true"/>
+</session>
