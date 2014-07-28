@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Safety Code</string>    
+    <string name="button_scan">Scan a QR Safety Code</string>
+    <string name="title_activity_display_recommendations">Relevant guidelines</string>
+    <string name="error_message"></string>
+    
+	
+	<!-- 
+	<string name="code_message"></string>
+	<string name="version_message"></string>
+	<string name="mymessage"></string>
+	<string name="action_search">Search</string>
+	<string name="action_settings">Settings</string>
+	 -->
+</resources>

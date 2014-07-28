@@ -1,0 +1,72 @@
+package meduniwien.msc.model;
+
+import java.util.ArrayList;
+
+import meduniwien.msc.exception.VariantDoesNotMatchAnyAllowedVariantException;
+
+
+public interface GeneticMarkerGroup extends Comparable<GeneticMarkerGroup>{
+
+	/**
+	 * It provides the criteria syntax of a genetic marker combination in a particular position. The set of combinations is sorted by alphabetical order and includes the null;null at the position '0'.
+	 * 
+	 * @param position	The position of the combination in the set of 2-multicombination.
+	 * @return	The textual description of the combination.
+	 * */
+	public String getGeneticMarkerVariantName(int position);
+	
+	/**
+	 * It provides the position of one particular combination by its criteria syntax. The set of combinations is sorted by alphabetical order and includes the null;null at the position '0'.
+	 * 
+	 *  @param criteriaSyntax	The textual description of the combination.
+	 *  @return		The position of the combination in the set of allele 2-multicombination.
+	 * */	
+	public int getPositionGeneticMarker(String criteriaSyntax);
+	
+	/**
+	 * Get the genotype element (SNPs or Allele) from the position in the group.
+	 * 
+	 * @param position	The position of the combination in the set of 2-multicombination.
+	 * @return The genotype element associated to the position in the group.
+	 * @throws VariantDoesNotMatchAnAllowedVariantException 
+	 * */
+	public GenotypeElement getGenotypeElement(int position) throws VariantDoesNotMatchAnyAllowedVariantException;
+	
+	/**
+	 * Get method that indicates the rank of the marker in a genotype.
+	 * 
+	 * @return	The rank of the combination set.
+	 * */
+	public int getRank();
+	
+	/**
+	 * It indicates the number of combinations that can be formed with the group of SNPs.
+	 * 
+	 * @return		Number of 2-combinations with repetition from the group of SNP variations.
+	 * */
+	public int getNumberOfVariants();
+	
+	/**
+	 * Get method that provides the id related to the combination set.
+	 * 
+	 * @return	The marker name related to the group of variants.
+	 * */
+	public String getGeneticMarkerName();
+	
+	/**
+	 * Get list elements of the combination set.
+	 * 
+	 * @return	The list of elements that form this set.
+	 * */
+	public ArrayList<String> getListElements();
+		
+	
+	/**
+	 * Implements the compareTo method to sort the groups based on their rank number.
+	 * 
+	 * @param gmg	It represents an instance of Genetic_Marker_Group.
+	 * @return		It returns a negative integer if its rank is lower than the rank of gmg, positive integer if its rank is greater than the rank of gmg, and 0 if the ranks are the same. 
+	 * */
+	public int compareTo(GeneticMarkerGroup gmg);
+	
+}

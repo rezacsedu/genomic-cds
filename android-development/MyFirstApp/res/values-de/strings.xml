@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-  	<string name="app_name">Safety Code</string>    
-    <string name="button_scan">Scan in QR Safety Code</string>
-    <string name="title_activity_display_recommendations">Drogen Empfehlungen</string>
-    <string name="error_message"></string>
-</resources>
