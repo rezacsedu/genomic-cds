@@ -3,6 +3,7 @@ package meduniwien.msc;
 import meduniwien.msc.model.RecommendationRulesMain;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.Toast;
 
 @SuppressLint("SetJavaScriptEnabled")
 public class DisplayRecommendationsActivity extends ActionBarActivity {
@@ -37,7 +39,6 @@ public class DisplayRecommendationsActivity extends ActionBarActivity {
 			if(html!=null && !html.isEmpty()){
 				htmlPage = html;				
 				webview.loadDataWithBaseURL("file:///android_asset/", htmlPage, "text/html", "UTF-8", null);
-				//setContentView(webview);
 			}else{
 				final ProgressDialog ringProgressDialog = ProgressDialog.show(this, "Please wait ...", "Execution process ...", true);
 				ringProgressDialog.setCancelable(true);
@@ -46,10 +47,8 @@ public class DisplayRecommendationsActivity extends ActionBarActivity {
 					@Override
 					public void run() {
 						try {
-							//RecommendationRulesMain rrm = new RecommendationRulesMain();
 							htmlPage = RecommendationRulesMain.getHTMLRecommendations(version,code);
 							webview.loadDataWithBaseURL("file:///android_asset/", htmlPage, "text/html", "UTF-8", null);
-							//setContentView(webview);
 	    				} catch (Exception e) {
 	    				}
 						ringProgressDialog.dismiss();
@@ -70,19 +69,15 @@ public class DisplayRecommendationsActivity extends ActionBarActivity {
 						// Get the version and code from the intent
 						version = intent.getStringExtra(MainActivity.EXTRA_VERSION);
 						code = intent.getStringExtra(MainActivity.EXTRA_CODE);
-						//RecommendationRulesMain rrm = new RecommendationRulesMain();
 						htmlPage = RecommendationRulesMain.getHTMLRecommendations(version,code);
 						webview.loadDataWithBaseURL("file:///android_asset/", htmlPage, "text/html", "UTF-8", null);
-						
-						//setContentView(webview);
+		
     				} catch (Exception e) {
     				}
 					ringProgressDialog.dismiss();
 				}
 			}).start();
 		}
-		
-    	//setContentView(webview);
 	}
 	
 	@Override
@@ -112,10 +107,31 @@ public class DisplayRecommendationsActivity extends ActionBarActivity {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        /*int id = item.getItemId();
-        if (id == R.id.action_settings) {
+    	/*switch (item.getItemId()){
+		case R.id.action_search:
+			openSearch();
+			return true;
+		case R.id.action_settings:
+			openSettings();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}*/
+		/*int id = item.getItemId();
+		if (id == R.id.action_settings) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);*/
+		    	
+    	int id = item.getItemId();
+        if (id == R.id.action_warning) {
+        	Context context = getApplicationContext();
+        	CharSequence text = "This service is provided for research purposes only and comes without any warranty. (C) 2014";
+        	int duration = Toast.LENGTH_LONG;
+        	Toast toast = Toast.makeText(context, text, duration);
+        	toast.show();
             return true;
-        }*/
+        }
         return super.onOptionsItemSelected(item);
     }
 

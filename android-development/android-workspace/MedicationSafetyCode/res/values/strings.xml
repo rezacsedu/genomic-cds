@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Safety Code</string>    
     <string name="button_scan">Scan a QR Safety Code</string>
+    <string name="button_manual">Define your own profile</string>
     <string name="title_activity_display_recommendations">Relevant guidelines</string>
     <string name="error_message"></string>
+    <string name="action_warning">Warning</string>
+	<string name="msc_initiative">The Medicine Safety Code Initiative</string>
     
+	<string name="personalized_medicine_header_msg">PERSONALIZED MEDICINE IN YOUR POCKET</string>
+	<string name="personalized_medicine_body_msg">A small set of so-called pharmacogenes has an impact on the safety and efficacy of many common medications. The Medication Safety Code makes data about these pharmacogenes available whenever needed during medical care.</string>
 	
+	<string name="general_features_header_msg">OPEN, ANONYMOUS AND SECURE</string>
+	<string name="general_features_body_msg">Patients have full control over their genetic data, just as they have full control over the content of their wallets. The Medication Safety Code is based on open standards and open-source software.</string>
+	
+	<string name="ubiquitous_cds_header_msg">UBIQUITOUS CLINICAL DECISION SUPPORT</string>
+	<string name="ubiquitous_cds_body_msg">The QR codes can be quickly decoded with any smartphone to yield recommendations for tailoring pharmacotherapy based on an individual\'s genetic profile.</string>
+		
+	<string name="footer_msg"></string>
 	<!-- 
 	<string name="code_message"></string>
 	<string name="version_message"></string>

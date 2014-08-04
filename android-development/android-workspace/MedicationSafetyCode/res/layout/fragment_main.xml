@@ -1,19 +1,132 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
-
-	<Button
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+	<LinearLayout
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:onClick="scanCode"
-	    android:text="@string/button_scan" />
+	    android:orientation="vertical" >
+	        
+	    <ImageView
+	        android:id="@+id/imageView1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:layout_margin="10dp"
+	        android:contentDescription="@string/msc_initiative"
+	        android:orientation="vertical"
+	        android:src="@drawable/medication_safety_code_logo" />
+	    
+    	<Button
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+    	    android:layout_marginLeft="10dp"
+    	    android:layout_marginRight="10dp"
+    	    android:onClick="scanCode"
+    	    android:text="@string/button_scan" />
 
-	<TextView
-	    android:id="@+id/error_message"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:hint="@string/error_message" />
+    	<Button
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+    	    android:layout_marginLeft="10dp"
+    	    android:layout_marginRight="10dp"
+    	    android:onClick="customProfile"
+    	    android:text="@string/button_manual" />
+    	
+    	
+    	<TextView
+    	    android:id="@+id/error_message"
+    	    android:layout_width="match_parent"
+    	    android:layout_height="wrap_content"
+    	    android:layout_marginLeft="10dp"
+    	    android:layout_marginRight="10dp"
+    	    android:layout_marginTop="5dp"
+    	    android:hint="@string/error_message"
+    	    android:textColor="#ff0000"
+    	    android:textSize="@dimen/font_size_large"
+    	    android:textStyle="bold" />
 
-</LinearLayout>
+	    <TextView
+	        android:id="@+id/personalized_medicine_header"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:layout_margin="5dp"
+	        android:text="@string/personalized_medicine_header_msg"
+	        android:textSize="@dimen/font_size_large"
+	        android:textStyle="bold" />
+	
+	    <TextView
+	        android:id="@+id/personalized_medicine_body"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:layout_margin="10dp"
+	        android:layout_weight="0.23"
+	        android:text="@string/personalized_medicine_body_msg"
+	        android:textSize="@dimen/font_size_small" />
+	    
+	    <TextView
+	        android:id="@+id/general_features_header"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:layout_margin="5dp"
+	        android:text="@string/general_features_header_msg"
+	        android:textSize="@dimen/font_size_large"
+	        android:textStyle="bold" />
+	
+	    <TextView
+	        android:id="@+id/general_features_body"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:layout_margin="10dp"
+	        android:layout_weight="0.17"
+	        android:text="@string/general_features_body_msg"
+	        android:textSize="@dimen/font_size_small" />
+	    
+	    <TextView
+	        android:id="@+id/ubiquitous_cds_header"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:layout_margin="5dp"
+	        android:text="@string/ubiquitous_cds_header_msg"
+	        android:textSize="@dimen/font_size_large"
+	        android:textStyle="bold" />
+	
+	    <TextView
+	        android:id="@+id/ubiquitous_cds_body"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_vertical"
+	        android:layout_margin="10dp"
+	        android:layout_weight="0.17"
+	        android:text="@string/ubiquitous_cds_body_msg"
+	        android:textSize="@dimen/font_size_small" />
+
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:background="#2B1B17"
+	        android:orientation="vertical" >
+	       	
+	        <TextView
+		        android:id="@+id/footer"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_vertical"
+		        android:layout_margin="10dp"
+		        android:layout_marginBottom="5dp"
+		        android:layout_marginLeft="5dp"
+		        android:layout_marginRight="5dp"
+		        android:layout_marginTop="5dp"
+		        android:linksClickable="true"
+		        android:hint="@string/footer_msg"
+		        android:textColor="#FFFFFF"
+		        android:textSize="@dimen/font_size_small" />
+        </LinearLayout>
+	</LinearLayout>
+</ScrollView>

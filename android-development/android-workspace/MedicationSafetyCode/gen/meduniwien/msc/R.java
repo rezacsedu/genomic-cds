@@ -1012,6 +1012,8 @@ containing a value of this type.
          (the screen is in portrait). This may be either a fraction or a dimension.
          */
         public static final int dialog_fixed_width_minor=0x7f090014;
+        public static final int font_size_large=0x7f090019;
+        public static final int font_size_small=0x7f09001a;
         public static final int half_padding=0x7f090001;
         public static final int standard_padding=0x7f090000;
     }
@@ -1104,9 +1106,11 @@ containing a value of this type.
         public static final int abc_textfield_searchview_right_holo_dark=0x7f020055;
         public static final int abc_textfield_searchview_right_holo_light=0x7f020056;
         public static final int actionbar_background_v1=0x7f020057;
-        public static final int ic_launcher=0x7f020058;
-        public static final int launcher_icon=0x7f020059;
-        public static final int share_via_barcode=0x7f02005a;
+        public static final int ic_action_warning=0x7f020058;
+        public static final int ic_launcher=0x7f020059;
+        public static final int launcher_icon=0x7f02005a;
+        public static final int medication_safety_code_logo=0x7f02005b;
+        public static final int share_via_barcode=0x7f02005c;
     }
     public static final class id {
         public static final int action_bar=0x7f0a0023;
@@ -1120,6 +1124,7 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f0a001d;
         public static final int action_menu_presenter=0x7f0a001e;
         public static final int action_mode_close_button=0x7f0a002b;
+        public static final int action_warning=0x7f0a0071;
         public static final int activity_chooser_view_content=0x7f0a002c;
         public static final int always=0x7f0a0012;
         public static final int app_picker_list_item_icon=0x7f0a0044;
@@ -1142,46 +1147,52 @@ containing a value of this type.
         public static final int dropdown=0x7f0a0016;
         public static final int edit_query=0x7f0a0037;
         public static final int end=0x7f0a001a;
-        public static final int error_message=0x7f0a0057;
+        public static final int error_message=0x7f0a0058;
         public static final int expand_activities_button=0x7f0a002d;
         public static final int expanded_menu=0x7f0a0033;
+        public static final int footer=0x7f0a005f;
         public static final int format_text_view=0x7f0a004c;
-        public static final int help_contents=0x7f0a0058;
-        public static final int history_detail=0x7f0a005a;
-        public static final int history_title=0x7f0a0059;
+        public static final int general_features_body=0x7f0a005c;
+        public static final int general_features_header=0x7f0a005b;
+        public static final int help_contents=0x7f0a0060;
+        public static final int history_detail=0x7f0a0062;
+        public static final int history_title=0x7f0a0061;
         public static final int home=0x7f0a001b;
         public static final int homeAsUp=0x7f0a000c;
         public static final int icon=0x7f0a0031;
         public static final int ifRoom=0x7f0a0011;
         public static final int image=0x7f0a002e;
+        public static final int imageView1=0x7f0a0057;
         public static final int image_view=0x7f0a0055;
         public static final int launch_product_query=0x7f0a0003;
         public static final int listMode=0x7f0a0008;
         public static final int list_item=0x7f0a0030;
-        public static final int menu_encode=0x7f0a0069;
-        public static final int menu_help=0x7f0a0068;
-        public static final int menu_history=0x7f0a0066;
-        public static final int menu_history_clear_text=0x7f0a006b;
-        public static final int menu_history_send=0x7f0a006a;
-        public static final int menu_settings=0x7f0a0067;
-        public static final int menu_share=0x7f0a0065;
+        public static final int menu_encode=0x7f0a0072;
+        public static final int menu_help=0x7f0a0070;
+        public static final int menu_history=0x7f0a006e;
+        public static final int menu_history_clear_text=0x7f0a0074;
+        public static final int menu_history_send=0x7f0a0073;
+        public static final int menu_settings=0x7f0a006f;
+        public static final int menu_share=0x7f0a006d;
         public static final int meta_text_view=0x7f0a0050;
         public static final int meta_text_view_label=0x7f0a004f;
         public static final int middle=0x7f0a0019;
         public static final int never=0x7f0a0010;
         public static final int none=0x7f0a0017;
         public static final int normal=0x7f0a0007;
-        public static final int page_number_view=0x7f0a005e;
+        public static final int page_number_view=0x7f0a0066;
+        public static final int personalized_medicine_body=0x7f0a005a;
+        public static final int personalized_medicine_header=0x7f0a0059;
         public static final int preview_view=0x7f0a0048;
         public static final int progress_circular=0x7f0a001f;
         public static final int progress_horizontal=0x7f0a0020;
-        public static final int query_button=0x7f0a005c;
-        public static final int query_text_view=0x7f0a005b;
+        public static final int query_button=0x7f0a0064;
+        public static final int query_text_view=0x7f0a0063;
         public static final int quit=0x7f0a0004;
         public static final int radio=0x7f0a0036;
         public static final int restart_preview=0x7f0a0005;
         public static final int result_button_view=0x7f0a0053;
-        public static final int result_list_view=0x7f0a005d;
+        public static final int result_list_view=0x7f0a0065;
         public static final int result_view=0x7f0a004a;
         public static final int return_scan_result=0x7f0a0006;
         public static final int search_badge=0x7f0a0039;
@@ -1194,16 +1205,16 @@ containing a value of this type.
         public static final int search_plate=0x7f0a003d;
         public static final int search_src_text=0x7f0a003e;
         public static final int search_voice_btn=0x7f0a0042;
-        public static final int share_app_button=0x7f0a0060;
-        public static final int share_bookmark_button=0x7f0a0061;
-        public static final int share_clipboard_button=0x7f0a0063;
-        public static final int share_contact_button=0x7f0a0062;
-        public static final int share_text_view=0x7f0a0064;
+        public static final int share_app_button=0x7f0a0068;
+        public static final int share_bookmark_button=0x7f0a0069;
+        public static final int share_clipboard_button=0x7f0a006b;
+        public static final int share_contact_button=0x7f0a006a;
+        public static final int share_text_view=0x7f0a006c;
         public static final int shortcut=0x7f0a0035;
         public static final int showCustom=0x7f0a000e;
         public static final int showHome=0x7f0a000b;
         public static final int showTitle=0x7f0a000d;
-        public static final int snippet_view=0x7f0a005f;
+        public static final int snippet_view=0x7f0a0067;
         public static final int split_action_bar=0x7f0a0025;
         public static final int status_view=0x7f0a0054;
         public static final int submit_area=0x7f0a0040;
@@ -1212,6 +1223,8 @@ containing a value of this type.
         public static final int title=0x7f0a0032;
         public static final int top_action_bar=0x7f0a0027;
         public static final int type_text_view=0x7f0a004d;
+        public static final int ubiquitous_cds_body=0x7f0a005e;
+        public static final int ubiquitous_cds_header=0x7f0a005d;
         public static final int up=0x7f0a0028;
         public static final int useLogo=0x7f0a000a;
         public static final int viewfinder_view=0x7f0a0049;
@@ -1335,6 +1348,7 @@ containing a value of this type.
         /**  Description of a share target (both in the list of such or the default share button) in a ShareActionProvider (share UI). [CHAR LIMIT=NONE] 
          */
         public static final int abc_shareactionprovider_share_with_application=0x7f0b0086;
+        public static final int action_warning=0x7f0b008c;
         public static final int app_name=0x7f0b0000;
         public static final int app_picker_name=0x7f0b0001;
         public static final int bookmark_picker_name=0x7f0b0002;
@@ -1346,6 +1360,7 @@ containing a value of this type.
         public static final int button_dial=0x7f0b0008;
         public static final int button_email=0x7f0b0009;
         public static final int button_get_directions=0x7f0b000a;
+        public static final int button_manual=0x7f0b0089;
         public static final int button_mms=0x7f0b000b;
         public static final int button_ok=0x7f0b000c;
         public static final int button_open_browser=0x7f0b000d;
@@ -1368,7 +1383,10 @@ containing a value of this type.
         public static final int contents_phone=0x7f0b001d;
         public static final int contents_sms=0x7f0b001e;
         public static final int contents_text=0x7f0b001f;
-        public static final int error_message=0x7f0b008a;
+        public static final int error_message=0x7f0b008b;
+        public static final int footer_msg=0x7f0b0094;
+        public static final int general_features_body_msg=0x7f0b0091;
+        public static final int general_features_header_msg=0x7f0b0090;
         public static final int history_clear_one_history_text=0x7f0b0021;
         public static final int history_clear_text=0x7f0b0020;
         public static final int history_email_title=0x7f0b0022;
@@ -1382,6 +1400,7 @@ containing a value of this type.
         public static final int menu_history=0x7f0b002a;
         public static final int menu_settings=0x7f0b002b;
         public static final int menu_share=0x7f0b002c;
+        public static final int msc_initiative=0x7f0b008d;
         public static final int msg_bulk_mode_scanned=0x7f0b002d;
         public static final int msg_camera_framework_bug=0x7f0b002e;
         public static final int msg_default_format=0x7f0b002f;
@@ -1408,6 +1427,8 @@ containing a value of this type.
         public static final int msg_share_text=0x7f0b0044;
         public static final int msg_sure=0x7f0b0045;
         public static final int msg_unmount_usb=0x7f0b0046;
+        public static final int personalized_medicine_body_msg=0x7f0b008f;
+        public static final int personalized_medicine_header_msg=0x7f0b008e;
         public static final int preferences_actions_title=0x7f0b0047;
         public static final int preferences_auto_focus_title=0x7f0b0048;
         public static final int preferences_auto_open_web_title=0x7f0b0049;
@@ -1459,7 +1480,9 @@ containing a value of this type.
         public static final int result_uri=0x7f0b0077;
         public static final int result_wifi=0x7f0b0078;
         public static final int sbc_name=0x7f0b0079;
-        public static final int title_activity_display_recommendations=0x7f0b0089;
+        public static final int title_activity_display_recommendations=0x7f0b008a;
+        public static final int ubiquitous_cds_body_msg=0x7f0b0093;
+        public static final int ubiquitous_cds_header_msg=0x7f0b0092;
         public static final int wifi_changing_network=0x7f0b007a;
     }
     public static final class style {

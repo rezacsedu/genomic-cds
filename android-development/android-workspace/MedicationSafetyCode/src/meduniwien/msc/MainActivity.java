@@ -1,10 +1,14 @@
 package meduniwien.msc;
 
+import meduniwien.msc.model.RecommendationRulesMain;
 import meduniwien.msc.util.OntologyManagement;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends ActionBarActivity {
 	public final static String EXTRA_CODE = "meduniwien.msc.CODE";
@@ -25,16 +30,26 @@ public class MainActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		//We initialize the class that provides information from the ontology.
-		OntologyManagement.getOntologyManagement();
-		
+				
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		
+		//We initialize the class that provides information from the ontology.
+		OntologyManagement.getOntologyManagement();
 	}
-
+	
+	public void onStart (){
+		super.onStart();
+		String value = "© Copyright 2014  <a href=\"http://samwald.info/\">Matthias Samwald</a> All rights reserved unless stated otherwise.";
+		final TextView text = (TextView) findViewById(R.id.footer);
+		if(text != null){
+			text.setText(Html.fromHtml(value));
+			text.setMovementMethod(LinkMovementMethod.getInstance());
+		}
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -68,6 +83,15 @@ public class MainActivity extends ActionBarActivity {
 		}
 		return super.onOptionsItemSelected(item);*/
 		
+		int id = item.getItemId();
+        if (id == R.id.action_warning) {
+        	Context context = getApplicationContext();
+        	CharSequence text = "This service is provided for research purposes only and comes without any warranty. © 2014";
+        	int duration = Toast.LENGTH_LONG;
+        	Toast toast = Toast.makeText(context, text, duration);
+        	toast.show();
+            return true;
+        }
 		return super.onOptionsItemSelected(item);
 	}
 
@@ -88,6 +112,12 @@ public class MainActivity extends ActionBarActivity {
 		}
 	}
 
+	/** Called when the user clicks on the manual definition of a genetic profile button*/
+	public void customProfile(View view){
+		Intent intent = new Intent(this,ManualDefinitionProfile.class);
+		startActivity(new_intent);
+	}
+	
 	
 	/** Called when the user clicks the Scan button */
 	public void scanCode(View view) {
@@ -96,38 +126,17 @@ public class MainActivity extends ActionBarActivity {
 		Intent intent = new Intent("com.google.zxing.client.android.SCAN");
 		intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
 		startActivityForResult(intent, SCAN_QR_CODE_REQUEST);
-		
-		
-		/*final ProgressDialog ringProgressDialog = ProgressDialog.show(this, "Please wait ...", "Execution process ...", true);
-    	ringProgressDialog.setCancelable(true);
-    	new Thread(new Runnable() {
-    	@Override
-    	public void run() {
-    	try {
-    	// Here you should write your time consuming task...
-    		code = "3Lka_efiRMZA25c9Wy6BOVUepOzWP_P8e0";//example 1
-    		version = "v0.2";
-    		rrm.getHTMLRecommendations(version,code);
-    	} catch (Exception e) {
-    	}
-    	ringProgressDialog.dismiss();
-    	}
-    	}).start();*/		
-		
-		
+				
 		/*
 		//TESTING CODE WHEN AVOIDING SCANNING ZXING MODULE 
 		code = "3Lka_efiRMZA25c9Wy6BOVUepOzWP_P8e0";//example 1
 		//code = "2UYPe0zpay5riIiE-0VUeXMHt5sBFolC00";//example 2
 		version = "v0.2";
-		
 		Intent new_intent = new Intent(this, DisplayRecommendationsActivity.class);
-    	//new_intent.putExtra(EXTRA_CODE, code);
-    	//new_intent.putExtra(EXTRA_VERSION, version);
-    	
-    	String htmlPage = rrm.getHTMLRecommendations(version,code);
-		new_intent.putExtra(EXTRA_HTML, htmlPage);
-    	
+    	new_intent.putExtra(EXTRA_CODE, code);
+    	new_intent.putExtra(EXTRA_VERSION, version);
+    	//String htmlPage = RecommendationRulesMain.getHTMLRecommendations(version,code);
+		//new_intent.putExtra(EXTRA_HTML, htmlPage);
     	startActivity(new_intent);*/
 	}
 	
@@ -136,7 +145,6 @@ public class MainActivity extends ActionBarActivity {
 	public void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		boolean error_code = true;
 		String contents = "";
-		//String htmlPage = "";
 		if (requestCode == SCAN_QR_CODE_REQUEST) {//The scanning module finish without an error
 			if (resultCode == RESULT_OK) {//the scanning result is OK.
 				contents = intent.getStringExtra("SCAN_RESULT");

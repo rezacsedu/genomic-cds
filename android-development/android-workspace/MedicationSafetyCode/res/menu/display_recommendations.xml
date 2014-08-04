@@ -9,10 +9,17 @@
           android:title="@string/action_search"
           app:showAsAction="ifRoom" />
     -->
-    <!-- Settings, should always be in the overflow
+    <!-- Settings, should always be in the overflow 
     <item
         android:id="@+id/action_settings"
         android:title="@string/action_settings"
         app:showAsAction="never"/>
- 	-->
+	-->
+    
+    <!-- Warning info-->
+    <item
+        android:id="@+id/action_warning"
+        android:title="@string/action_warning"
+        android:icon="@drawable/ic_action_warning"
+        app:showAsAction="ifRoom"/>
 </menu>

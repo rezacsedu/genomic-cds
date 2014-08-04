@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="meduniwien.msc"
-    android:versionCode="4"
-    android:versionName="1.03" >
+    android:versionCode="10"
+    android:versionName="1.09" >
 	<uses-permission android:name="android.permission.CAMERA"/>
 	<uses-permission android:name="android.permission.INTERNET"/>
     <uses-sdk
-        android:minSdkVersion="16"
+        android:minSdkVersion="11"
         android:targetSdkVersion="19" />
 
     <application
@@ -39,11 +39,6 @@
    			android:configChanges="orientation|keyboardHidden"
    			android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
    			android:windowSoftInputMode="stateAlwaysHidden">
-   			<!--
-   			<intent-filter>
-      			<action android:name="android.intent.action.MAIN"/>
-      			<category android:name="android.intent.category.DEFAULT"/>
-   			</intent-filter> -->
    			<intent-filter>
     			<action android:name="com.google.zxing.client.android.SCAN"/>
       			<category android:name="android.intent.category.DEFAULT"/>

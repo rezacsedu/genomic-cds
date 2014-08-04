@@ -3,6 +3,9 @@
 	<name>MedicationSafetyCode</name>
 	<comment></comment>
 	<projects>
+		<project>android-support-v7-appcompat</project>
+		<project>appcompat_v7</project>
+		<project>CaptureActivity</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
