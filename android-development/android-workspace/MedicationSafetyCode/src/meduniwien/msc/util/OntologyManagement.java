@@ -12,6 +12,8 @@ import meduniwien.msc.model.SNPsGroup;
 
 /**
  * It represents the content of the Genomic CDS ontology that is needed to match cds rules and genetic profiles.
+ * 
+ * @author Jose Antonio Miñarro Giménez
  * */
 public class OntologyManagement {
 	/** List of SNP groups defined in the ontology. A group could be rs12516 with the alleles rs12516(null;null), rs12516(A;A), rs12516(A;G) and rs12516(G;G).*/

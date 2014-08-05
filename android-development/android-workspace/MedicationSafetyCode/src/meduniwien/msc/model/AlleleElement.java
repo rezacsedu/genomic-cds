@@ -2,6 +2,11 @@ package meduniwien.msc.model;
 
 import java.util.ArrayList;
 
+/**
+ * 	This class represents an haplotype variant.
+ * 
+ *  @author Jose Antonio Miñarro Giménez
+ * */
 public class AlleleElement implements GenotypeElement{
 	/**Name of the gene related to the allele definitions.*/
 	private String geneName;

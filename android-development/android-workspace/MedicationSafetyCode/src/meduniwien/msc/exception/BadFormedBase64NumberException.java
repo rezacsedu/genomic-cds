@@ -2,6 +2,8 @@ package meduniwien.msc.exception;
 
 /**
  * Represents an error in the base64 codification of a safetycode number.
+ * 
+ * @author Jose Antonio Miñarro Giménez
  * */
 public class BadFormedBase64NumberException extends Exception {
 

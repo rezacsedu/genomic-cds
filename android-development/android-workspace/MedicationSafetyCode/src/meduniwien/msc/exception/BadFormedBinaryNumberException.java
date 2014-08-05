@@ -2,6 +2,8 @@ package meduniwien.msc.exception;
 
 /**
  * This Exception will capture any problem when transforming any binary number into base 64 number.
+ * 
+ * @author Jose Antonio Miñarro Giménez
  */
 public class BadFormedBinaryNumberException extends Exception {
 	

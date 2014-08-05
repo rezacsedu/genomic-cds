@@ -6,7 +6,11 @@ import java.util.Collections;
 import meduniwien.msc.exception.VariantDoesNotMatchAnyAllowedVariantException;
 import meduniwien.msc.util.Common;
 
-
+/**
+ * 	This class represents the set of haplotype variants related to one gene. 
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * */
 public class AlleleGroup implements GeneticMarkerGroup{
 	
 	/**Gene name of the set of allele definitions*/

@@ -1,6 +1,7 @@
 # cache for current jar dependency. DO NOT EDIT.
 # format is <lastModified> <length> <SHA-1> <path>
 # Encoding is UTF-8
+1404140163242 11436 7f3a6c6f3ec456156b015a39bc8cc4691cbea58f D:\android-development\android-workspace\CaptureActivity\libs\android-core-3.0.2-SNAPSHOT.jar
 1404140163242 11436 7f3a6c6f3ec456156b015a39bc8cc4691cbea58f D:\android-development\zxing\tags\BS-4.7.0\android-core\target\android-core-3.0.2-SNAPSHOT.jar
 1404140163242 11436 7f3a6c6f3ec456156b015a39bc8cc4691cbea58f D:\android-development\android-workspace\MedicationSafetyCode\libs\android-core-3.0.2-SNAPSHOT.jar
 1399295477503 349134 21297ae2bf22a0ce81c9b59992cf0693eec45d5b D:\android-development\android-workspace\MedicationSafetyCode\libs\android-support-v7-appcompat.jar

@@ -3,6 +3,8 @@ package meduniwien.msc.model;
 import java.util.ArrayList;
 /**
  * It represents a cds rule and is able to check if a patient's genotype match the logical description of the rule.
+ * 
+ * @author Jose Antonio Miñarro Giménez
  * */
 public class DrugRecommendation {
 	private String cds_message	= null; //AnnotationProperty: CDS_message

@@ -2,6 +2,11 @@ package meduniwien.msc.model;
 
 import java.util.ArrayList;
 
+/**
+ * This class represents a variant element. It could be an haplotype or a SNP variant.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * */
 public interface GenotypeElement {
 
 	/**

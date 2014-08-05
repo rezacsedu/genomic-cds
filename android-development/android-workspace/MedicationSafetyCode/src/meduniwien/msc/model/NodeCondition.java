@@ -1,7 +1,11 @@
 package meduniwien.msc.model;
 
 import java.util.ArrayList;
-/**Represents the node of a logical expression. It could be connected to other subnodes.*/
+/**
+ * Represents the node of a logical expression. It could be connected to other subnodes.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * */
 public class NodeCondition {
 	/** List of sub node conditions of this node.*/
 	private ArrayList<NodeCondition> listConditions;

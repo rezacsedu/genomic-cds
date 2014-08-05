@@ -4,7 +4,11 @@ import java.util.ArrayList;
 
 import meduniwien.msc.exception.VariantDoesNotMatchAnyAllowedVariantException;
 
-
+/**
+ * 	This class represent a set of variants related to a haplotype or SNP element.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * */
 public interface GeneticMarkerGroup extends Comparable<GeneticMarkerGroup>{
 
 	/**

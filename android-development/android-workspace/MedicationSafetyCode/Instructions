@@ -1,1 +1,14 @@
 mscserver
+@JOSE This must be improved and tested.
+
+Set up:
+
+1) Add the java projects appcompat_v7, CaptureActivity and MedicationSafetyCode into the project workspace of eclipse with android ADT installed.
+2) Set up Build Path of appcompat_v7 project:
+	2.1) We must add the "android-support-v4.jar" and "android-support-v7-appcompat.jar" files to the project appcompat_v7.
+3) Set up Build Path of CaptureActivity project:
+	3.1) We must add the "android-core-3.0.2-SNAPSHOT.jar" and "core-3.0.2-SNAPSHOT.jar" files to the project CaptureActivity.
+4)CaptureActivity and appcompat_v7 should be marked as library sources and added into the project.
+	4.1) Marked as Library in each java project: File->Properties->Android->Library{"Is Library" checkbox}
+	4.2) Added as Library into the MedicationSafetyCode project: File->Properties->Android->Library{"Add" button}
+

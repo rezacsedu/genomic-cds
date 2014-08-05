@@ -18,31 +18,56 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-@SuppressLint("SetJavaScriptEnabled")
+@SuppressLint("SetJavaScriptEnabled") //This is needed to support javascript in the webview element.
+/**
+ * This class processes the scanned version and code values and shows the corresponding drug recommendations.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * */
 public class DisplayRecommendationsActivity extends ActionBarActivity {
+	//Contains the resulting HTML page generated from the scanned code and version values. It is needed to avoid problems such as changing screen orientation or changing the application.
 	private String htmlPage = "" ;
+	//Contains the scanned version value.
 	private String version = "";
+	//Contains the scanned code value.
 	private String code = "";
 	
 	@Override
+	/**
+	 * It initializes the interface of the display recommendation activity. 
+	 * Instead of using the layout defined in the file "fragment_display_recommendations.xml", we manually add the webview to the activity interface. 
+	 * However, we use the "activity_display_recommendations.xml" to include the action bar element into the interface.
+	 * 
+	 * During the initialization of the interface, we process the scanned version and code parameters.
+	 * The first time this method is executed it decodes the scanned code value, matches the suitable drug recommendations and generates the html page with the results.
+	 * We have implemented the savedInstanceState, therefore if this method is called again it stores the resulting hmlt and it is not needed to decode the genotype profile again.
+	 * */
    	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		final WebView webview = new WebView(this);
-		webview.getSettings().setJavaScriptEnabled(true);
-		webview.getSettings().setAllowUniversalAccessFromFileURLs(true);		
-		setContentView(webview);
-		if(savedInstanceState != null){
+		if(savedInstanceState != null){//If this is not the first time the method is executed.
+			
+			//Create the WebView with enabled Javascript and access to local files, and insert it into the interface 
+			final WebView webview = new WebView(this);
+			webview.getSettings().setJavaScriptEnabled(true);
+			//webview.getSettings().setAllowUniversalAccessFromFileURLs(true);		
+			setContentView(webview);
+			
+			//Get the variable that represents the resulting HTML web page.  
 			String html = savedInstanceState.getString("html");
-			final String version = savedInstanceState.getString("version");
-			final String code = savedInstanceState.getString("code");
-			if(html!=null && !html.isEmpty()){
+			
+			if(html!=null && !html.isEmpty()){//If the HTML web page has been generated.
 				htmlPage = html;				
 				webview.loadDataWithBaseURL("file:///android_asset/", htmlPage, "text/html", "UTF-8", null);
-			}else{
+			}else{//When the HTML web page has not been generated yet.
+				
+				//Obtain the scanned version and code values and  				
+				final String version = savedInstanceState.getString("version");
+				final String code = savedInstanceState.getString("code");
+				
+				//Because of obtaining the suitable drug recommendations and generating the resulting HTML page could be a tough task we use a ProgressDialog to avoid black screen on mobile devices during the task. 
 				final ProgressDialog ringProgressDialog = ProgressDialog.show(this, "Please wait ...", "Execution process ...", true);
 				ringProgressDialog.setCancelable(true);
-	    	
 				new Thread(new Runnable() {
 					@Override
 					public void run() {
@@ -50,29 +75,37 @@ public class DisplayRecommendationsActivity extends ActionBarActivity {
 							htmlPage = RecommendationRulesMain.getHTMLRecommendations(version,code);
 							webview.loadDataWithBaseURL("file:///android_asset/", htmlPage, "text/html", "UTF-8", null);
 	    				} catch (Exception e) {
+	    					e.printStackTrace();
 	    				}
 						ringProgressDialog.dismiss();
 					}
 				}).start();
 			}
-		}else{
-		
-			final Intent intent = getIntent();
+		}else{//If it is the first time this method is executed.
 			
+			// Get the version and code from the intent
+			final Intent intent = getIntent();
+			version = intent.getStringExtra(MainActivity.EXTRA_VERSION);
+			code = intent.getStringExtra(MainActivity.EXTRA_CODE);
+			
+			//Create the WebView with enabled Javascript and access to local files, and insert it into the interface
+			final WebView webview = new WebView(this);
+			webview.getSettings().setJavaScriptEnabled(true);
+			webview.getSettings().setAllowUniversalAccessFromFileURLs(true);		
+			setContentView(webview);
+			
+			//Because of obtaining the suitable drug recommendations and generating the resulting HTML page could be a tough task we use a ProgressDialog to avoid black screen on mobile devices during the task.
 			final ProgressDialog ringProgressDialog = ProgressDialog.show(this, "Please wait ...", "Execution process ...", true);
 			ringProgressDialog.setCancelable(true);
-    	
 			new Thread(new Runnable() {
 				@Override
 				public void run() {
 					try {
-						// Get the version and code from the intent
-						version = intent.getStringExtra(MainActivity.EXTRA_VERSION);
-						code = intent.getStringExtra(MainActivity.EXTRA_CODE);
 						htmlPage = RecommendationRulesMain.getHTMLRecommendations(version,code);
 						webview.loadDataWithBaseURL("file:///android_asset/", htmlPage, "text/html", "UTF-8", null);
 		
     				} catch (Exception e) {
+    					e.printStackTrace();
     				}
 					ringProgressDialog.dismiss();
 				}
@@ -81,6 +114,10 @@ public class DisplayRecommendationsActivity extends ActionBarActivity {
 	}
 	
 	@Override
+	/**
+	 * This method is called when the application is not displayed in the mobile device or other events have interrupted its execution.
+	 * We stored the resulting HTML web page, and the scanned code and version values.
+	 * */
 	public void onSaveInstanceState(Bundle outState) {
 	   super.onSaveInstanceState(outState);
 	   outState.putString("html", htmlPage);
@@ -90,12 +127,10 @@ public class DisplayRecommendationsActivity extends ActionBarActivity {
 
 	
 	@Override
+	/**
+	 * It populates the action bar with the buttons defined in the file "display_recommendations.xml" of the menu folder. 
+	 * */
 	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		/*getMenuInflater().inflate(R.menu.main, menu);
-		return true;*/
-		
 	    MenuInflater inflater = getMenuInflater();
 	    inflater.inflate(R.menu.display_recommendations, menu);
 	    return super.onCreateOptionsMenu(menu);
@@ -103,26 +138,14 @@ public class DisplayRecommendationsActivity extends ActionBarActivity {
 
 
     @Override
+    /**
+	 * Handle the actions related to the buttons defined in the action bar. We basically display a warning about the research approach of the recommendations. 
+	 * */
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-    	/*switch (item.getItemId()){
-		case R.id.action_search:
-			openSearch();
-			return true;
-		case R.id.action_settings:
-			openSettings();
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
-		}*/
-		/*int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);*/
-		    	
+    	
     	int id = item.getItemId();
         if (id == R.id.action_warning) {
         	Context context = getApplicationContext();

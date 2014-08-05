@@ -24,8 +24,17 @@ import meduniwien.msc.model.*;
 import meduniwien.msc.util.Common;
 import meduniwien.msc.util.OntologyManagement;
 
+/**
+ *	This class represents the activity related to the custom definition of a genetic profile by means of the manual selection of alleles involved in the drug recommendations.
+ *	
+ *	@author Jose Antonio Miñarro Giménez
+ * */
 public class ManualDefinitionProfileActivity extends ActionBarActivity{
+	
 	@Override
+	/**
+	 * It initializes the interface of the manual definition of alleles with the layout defined in the file "activity_manual_definition_profile.xml" and "fragment_manual_definition_profile.xml".
+	 * */
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_manual_definition_profile);
@@ -35,203 +44,227 @@ public class ManualDefinitionProfileActivity extends ActionBarActivity{
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 	}
-
+	
+	/**
+	 * Initialize the interface with the corresponding element of the spinners. A spinner is like a <select> or drop down list in HTML.
+	 * The spinners are defined in the layout file "framgent_manual_definition_profile.xml"
+	 * The elements, that were used to populate the spinners, are defined in the string.xml as resources.
+	 * */
 	public void onStart (){
 		super.onStart();
+		//Left: spinner_1 <-> Right: spinner_2
 		
-		//CYP2C19
+		//CYP2C19		
 		Spinner spinner = (Spinner) findViewById(R.id.cyp2c19_spinner_1);		
 		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.CYP2C19, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		
 		spinner = (Spinner) findViewById(R.id.cyp2c19_spinner_2);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.CYP2C9, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);		
+		//-------------
 		
 		//CYP2C9
 		spinner = (Spinner) findViewById(R.id.cyp2c9_spinner_1);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.CYP2C9, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		
 		spinner = (Spinner) findViewById(R.id.cyp2c9_spinner_2);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.CYP2C9, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		//-------------
 		
 		//CYP2D6
 		spinner = (Spinner) findViewById(R.id.cyp2d6_spinner_1);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.CYP2D6, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		
 		spinner = (Spinner) findViewById(R.id.cyp2d6_spinner_2);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.CYP2D6, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		//-------------
 		
 		//CYP3A5
 		spinner = (Spinner) findViewById(R.id.cyp3a5_spinner_1);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.CYP3A5, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		
 		spinner = (Spinner) findViewById(R.id.cyp3a5_spinner_2);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.CYP3A5, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
-				
+		//-------------
+		
 		//DPYD
 		spinner = (Spinner) findViewById(R.id.dpyd_spinner_1);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.DPYD, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		
 		spinner = (Spinner) findViewById(R.id.dpyd_spinner_2);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.DPYD, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
-				
+		//-------------
+		
 		//HLA-A
 		spinner = (Spinner) findViewById(R.id.hla_a_spinner_1);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.HLA_A, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		
 		spinner = (Spinner) findViewById(R.id.hla_a_spinner_2);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.HLA_A, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
-				
+		//-------------
+		
 		//HLA-B
 		spinner = (Spinner) findViewById(R.id.hla_b_spinner_1);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.HLA_B, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		
 		spinner = (Spinner) findViewById(R.id.hla_b_spinner_2);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.HLA_B, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		//-------------
 		
 		//TPMT
 		spinner = (Spinner) findViewById(R.id.tpmt_spinner_1);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.TPMT, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		
 		spinner = (Spinner) findViewById(R.id.tpmt_spinner_2);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.TPMT, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
-			
+		//-------------
+		
 		//UGT1A1
 		spinner = (Spinner) findViewById(R.id.ugt1a1_spinner_1);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.UGT1A1, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		
 		spinner = (Spinner) findViewById(R.id.ugt1a1_spinner_2);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.UGT1A1, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
-				
+		//-------------
+		
 		//rs12979860
 		spinner = (Spinner) findViewById(R.id.rs12979860_spinner_1);
 		adapter = ArrayAdapter.createFromResource(this, R.array.rs12979860, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		
 		spinner = (Spinner) findViewById(R.id.rs12979860_spinner_2);
 		adapter = ArrayAdapter.createFromResource(this, R.array.rs12979860, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
-					
+		//-------------
+		
 		//rs2297595
 		spinner = (Spinner) findViewById(R.id.rs2297595_spinner_1);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.rs2297595, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		
 		spinner = (Spinner) findViewById(R.id.rs2297595_spinner_2);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.rs2297595, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
-				
+		//-------------		
+		
 		//rs4149056
 		spinner = (Spinner) findViewById(R.id.rs4149056_spinner_1);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.rs4149056, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		
 		spinner = (Spinner) findViewById(R.id.rs4149056_spinner_2);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.rs4149056, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		//-------------
 		
 		//rs6025
 		spinner = (Spinner) findViewById(R.id.rs6025_spinner_1);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.rs6025, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		
 		spinner = (Spinner) findViewById(R.id.rs6025_spinner_2);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.rs6025, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		//-------------
 		
 		//rs67376798
 		spinner = (Spinner) findViewById(R.id.rs67376798_spinner_1);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.rs67376798, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		
 		spinner = (Spinner) findViewById(R.id.rs67376798_spinner_2);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.rs67376798, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		//-------------
 		
 		//rs9923231
 		spinner = (Spinner) findViewById(R.id.rs9923231_spinner_1);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.rs9923231, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+
 		spinner = (Spinner) findViewById(R.id.rs9923231_spinner_2);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.rs9923231, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		//-------------
 		
 		//rs9934438
 		spinner = (Spinner) findViewById(R.id.rs9934438_spinner_1);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.rs9934438, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		
 		spinner = (Spinner) findViewById(R.id.rs9934438_spinner_2);		
 		adapter = ArrayAdapter.createFromResource(this, R.array.rs9934438, android.R.layout.simple_spinner_item);
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
+		//-------------
 	}
 	
 	@Override
+	/**
+	 * It populates the action bar with the buttons defined in the file "manual_definition_profile.xml" of the menu folder. 
+	 * */
 	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		/*getMenuInflater().inflate(R.menu.main, menu);
-		return true;*/
-		
 	    MenuInflater inflater = getMenuInflater();
 	    inflater.inflate(R.menu.manual_definition_profile, menu);
 	    return super.onCreateOptionsMenu(menu);
 	}
 
 	@Override
+	/**
+	 * Handle the actions related to the buttons defined in the action bar. We basically display a warning about the research approach of the recommendations. 
+	 * */
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
 		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		/*switch (item.getItemId()){
-		case R.id.action_search:
-			openSearch();
-			return true;
-		case R.id.action_settings:
-			openSettings();
-			return true;
-		default:
-			return super.onOptionsItemSelected(item);
-		}*/
-		/*int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			return true;
-		}
-		return super.onOptionsItemSelected(item);*/
+		// as you specify a parent activity in AndroidManifest.xml.		
 		
 		int id = item.getItemId();
         if (id == R.id.action_warning) {
@@ -262,6 +295,10 @@ public class ManualDefinitionProfileActivity extends ActionBarActivity{
 		}
 	}
 	
+	/**
+	 * This method collects the values of the selected spinners and generates the corresponding genetic profile. Once the genetic profile is created, we calculate the code that represents it.
+	 * Finally, the workflow is redirected to the "Display Recommendations Activity" that process the code and its version to display the appropriate drug recommendations.
+	 * */
 	public void calculateCode(View view){
 		/*
 		CYP2C19

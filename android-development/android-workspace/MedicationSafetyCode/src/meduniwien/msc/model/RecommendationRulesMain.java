@@ -12,7 +12,10 @@ import meduniwien.msc.util.OntologyManagement;
 
 /**
  * This class is in charge of managing all classes from Genomic MSC server in order to decode a provided qr code and retrieve the html related to the drug recommendations.
- * @JOSE It should retrieve only the triggered drug recommendations and the corresponding activity should provide the interface elements.  
+ *	
+ *	@JOSE It should retrieve only the triggered drug recommendations and the corresponding activity should provide the interface elements.
+ * 
+ *	@author Jose Antonio Miñarro Giménez
  * */
 public class RecommendationRulesMain {
 	/** The version of a scanned safetycode number.*/

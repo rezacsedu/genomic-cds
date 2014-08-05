@@ -5,7 +5,11 @@ import java.util.ArrayList;
 import meduniwien.msc.exception.VariantDoesNotMatchAnyAllowedVariantException;
 import meduniwien.msc.util.Common;
 
-
+/**
+ * This class represents a set of variations of a SNP. 
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * */
 public class SNPsGroup implements GeneticMarkerGroup {
 
 	/**rsid of the set of allele definitions*/

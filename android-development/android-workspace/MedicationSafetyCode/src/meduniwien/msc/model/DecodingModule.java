@@ -9,7 +9,11 @@ import meduniwien.msc.exception.VariantDoesNotMatchAnyAllowedVariantException;
 import meduniwien.msc.util.Common;
 import meduniwien.msc.util.OntologyManagement;
 
-
+/**
+ * This class codes and decodes numbers in base 64, that represent genotype profiles, using our own set of chars.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * */
 public class DecodingModule {
 	
 	private final static char[] BASE_DIGITS = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','-','_'};
@@ -19,7 +23,7 @@ public class DecodingModule {
 	 *  
 	 *	@param listAlleles	It consists of pair of alleles that defines the genotype of a patient.
 	 *	@return		The 64base number which represents a patient's genotype based on allele definitions. 
-	 * @throws BadFormedBinaryNumberException 
+	 * 	@throws BadFormedBinaryNumberException 
 	 * */
 	public static String codeListGeneticVariations(ArrayList<GenotypeElement> listGenotype) throws BadFormedBinaryNumberException {
 		BigInteger bi = new BigInteger("0");

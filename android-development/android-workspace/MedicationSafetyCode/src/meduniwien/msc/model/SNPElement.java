@@ -2,6 +2,11 @@ package meduniwien.msc.model;
 
 import java.util.ArrayList;
 
+/**
+ * This class represents a SNP variation. 
+ * 
+ *	@author Jose Antonio Miñarro Giménez
+ * */
 public class SNPElement implements GenotypeElement {
 	/**Id of the SNP that represent the combination.*/
 	private String rsid;
