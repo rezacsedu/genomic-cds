@@ -4,24 +4,44 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 
 import meduniwien.msc.exception.BadFormedBase64NumberException;
+import meduniwien.msc.exception.BadFormedBinaryNumberException;
 import meduniwien.msc.exception.VariantDoesNotMatchAnyAllowedVariantException;
 import meduniwien.msc.util.Common;
 import meduniwien.msc.util.OntologyManagement;
 
 
 public class DecodingModule {
-	/** List of group of alleles that contains all possible combinations of pair of alleles in a patient's genotype based on the ontology information.*/
-	//private ArrayList<GeneticMarkerGroup> listGenetic_Marker_Group;
+	
+	private final static char[] BASE_DIGITS = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','-','_'};
 
 	/**
-	 * Initialize the coding/decoding module based on the list of allele groups.
-	 * 
-	 *  @param listAlleleGroups List of allele groups in order based on the rank number.
+	 *  It obtains the corresponding 64base number from the a list of alleles.
+	 *  
+	 *	@param listAlleles	It consists of pair of alleles that defines the genotype of a patient.
+	 *	@return		The 64base number which represents a patient's genotype based on allele definitions. 
+	 * @throws BadFormedBinaryNumberException 
 	 * */
-	/*public DecodingModule (ArrayList<GeneticMarkerGroup> listGenetic_Marker_Group){
-		this.listGenetic_Marker_Group = listGenetic_Marker_Group;
-	}*/
+	public static String codeListGeneticVariations(ArrayList<GenotypeElement> listGenotype) throws BadFormedBinaryNumberException {
+		BigInteger bi = new BigInteger("0");
+		ArrayList<GeneticMarkerGroup> listGeneticMarkerGroup = OntologyManagement.getOntologyManagement().getListGeneticMarkerGroups();
 		
+		for(GeneticMarkerGroup gmg : listGeneticMarkerGroup){
+			BigInteger bi_number_marker_variations = BigInteger.valueOf(gmg.getNumberOfVariants());
+			BigInteger bi_marker_position = BigInteger.ZERO;
+			for(GenotypeElement ge : listGenotype){
+				if(ge.getGeneticMarkerName().equalsIgnoreCase(gmg.getGeneticMarkerName())){
+					bi_marker_position = BigInteger.valueOf(gmg.getPositionGeneticMarker(ge.getCriteriaSyntax()));
+				}
+			}
+			bi = bi.multiply(bi_number_marker_variations).add(bi_marker_position);
+		}
+		String base64Genotype = "";
+		
+		base64Genotype = convertFrom2To64(bi.toString(2));
+		return base64Genotype;
+	}
+	
+	
 	
 	/**
 	 * It obtains the list of pair of alleles that are related to the given 64base genotype code.
@@ -33,7 +53,7 @@ public class DecodingModule {
 	 * */
 	public static ArrayList<GenotypeElement> decodeListGenotypeVariations(String base64Genotype) throws BadFormedBase64NumberException, VariantDoesNotMatchAnyAllowedVariantException{
 		
-		ArrayList<GeneticMarkerGroup> listGenetic_Marker_Group = OntologyManagement.getOntologyManagement().getListGeneticMarkerGroups();
+		ArrayList<GeneticMarkerGroup> listGeneticMarkerGroup = OntologyManagement.getOntologyManagement().getListGeneticMarkerGroups();
 		
 		String binaryGenotype = "";
 		
@@ -43,8 +63,8 @@ public class DecodingModule {
 		
 		ArrayList<GenotypeElement> listGenotypeVariations = new ArrayList<GenotypeElement>();
 		
-		for(int i = listGenetic_Marker_Group.size()-1;i>=0;i--){
-			GeneticMarkerGroup gmg = listGenetic_Marker_Group.get(i);
+		for(int i = listGeneticMarkerGroup.size()-1;i>=0;i--){
+			GeneticMarkerGroup gmg = listGeneticMarkerGroup.get(i);
 			BigInteger bi_number_allele_variations = BigInteger.valueOf(gmg.getNumberOfVariants());
 			BigInteger[] values = bi.divideAndRemainder(bi_number_allele_variations);
 			bi = values[0];
@@ -57,6 +77,37 @@ public class DecodingModule {
 		return listGenotypeVariations;
 	}
 
+	/**
+	 * It transform a binary number into a base 64 number. We assume that the binary number has a multiple of six digits. In other case, we will add '0' until we obtain a multiple of 6 digits.
+	 * We add the extra digits to the left side because we process the number from right to left.
+	 * 
+	 * @param parameter		Binary number to transform into base 64
+	 * @return	The binary number in base 64.
+	 * @throws	BadFormedBinaryNumberException
+	 * */
+	private static String convertFrom2To64(String parameter) throws BadFormedBinaryNumberException{
+		int base2 = 2;
+		String notBinaryString="";
+		if(parameter.length()%6!=0){
+			int addDigits = 6 - parameter.length()%6;
+			for(int i=0;i< addDigits;i++){
+				parameter="0"+parameter;
+			}
+		}
+		for(int i=0;i<parameter.length();i+=6){
+			String num=parameter.substring(i,i+6);
+			Integer numero = 0;
+			try{
+				numero = Integer.valueOf(num, base2);
+			}catch (NumberFormatException e) {
+				System.err.print("\nERROR : The number " + num +" is not correctly represented in base " + base2+".\n");
+				throw new BadFormedBinaryNumberException("ERROR : The number " + num +" is not in correctly represented in base " + base2);
+			}
+			notBinaryString+=BASE_DIGITS[numero.intValue()];
+		}
+		return notBinaryString;	
+	}
+	
 	/**
 	 * It transform a base 64 number into a binary number.
 	 * 

@@ -1,6 +1,6 @@
 package meduniwien.msc;
 
-import meduniwien.msc.model.RecommendationRulesMain;
+
 import meduniwien.msc.util.OntologyManagement;
 import android.content.Context;
 import android.content.Intent;
@@ -114,8 +114,8 @@ public class MainActivity extends ActionBarActivity {
 
 	/** Called when the user clicks on the manual definition of a genetic profile button*/
 	public void customProfile(View view){
-		Intent intent = new Intent(this,ManualDefinitionProfile.class);
-		startActivity(new_intent);
+		Intent intent = new Intent(this,ManualDefinitionProfileActivity.class);
+		startActivity(intent);
 	}
 	
 	

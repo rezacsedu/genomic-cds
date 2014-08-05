@@ -73,8 +73,6 @@ public class AlleleGroup implements GeneticMarkerGroup{
 			position = pos1*n+pos2+1-((pos1*(pos1+1))/2);
 		}
 		return position;
-		
-		
 	}
 	
 	
@@ -189,9 +187,7 @@ public class AlleleGroup implements GeneticMarkerGroup{
 	 * @return The allele element associated to the position in the group.
 	 * */
 	public AlleleElement getGenotypeElement(int position) throws VariantDoesNotMatchAnyAllowedVariantException{
-		/*if(listAlleles.size()>position && position>=0){
-			return new AlleleElement(geneName,listAlleles.get(position));
-		}*/
+	
 		if(position<getNumberOfVariants() && position >= 0){
 			return new AlleleElement(geneName,getGeneticMarkerVariantName(position));			
 		}
