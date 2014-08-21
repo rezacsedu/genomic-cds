@@ -1,6 +1,7 @@
 package meduniwien.msc;
 
 import meduniwien.msc.model.RecommendationRulesMain;
+import meduniwien.msc.util.OntologyManagement;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -50,7 +51,7 @@ public class DisplayRecommendationsActivity extends ActionBarActivity {
 			//Create the WebView with enabled Javascript and access to local files, and insert it into the interface 
 			final WebView webview = new WebView(this);
 			webview.getSettings().setJavaScriptEnabled(true);
-			//webview.getSettings().setAllowUniversalAccessFromFileURLs(true);		
+			webview.getSettings().setAllowUniversalAccessFromFileURLs(true);		
 			setContentView(webview);
 			
 			//Get the variable that represents the resulting HTML web page.  
@@ -64,7 +65,7 @@ public class DisplayRecommendationsActivity extends ActionBarActivity {
 				//Obtain the scanned version and code values and  				
 				final String version = savedInstanceState.getString("version");
 				final String code = savedInstanceState.getString("code");
-				
+				final OntologyManagement om = OntologyManagement.getOntologyManagement(this);
 				//Because of obtaining the suitable drug recommendations and generating the resulting HTML page could be a tough task we use a ProgressDialog to avoid black screen on mobile devices during the task. 
 				final ProgressDialog ringProgressDialog = ProgressDialog.show(this, "Please wait ...", "Execution process ...", true);
 				ringProgressDialog.setCancelable(true);
@@ -72,7 +73,8 @@ public class DisplayRecommendationsActivity extends ActionBarActivity {
 					@Override
 					public void run() {
 						try {
-							htmlPage = RecommendationRulesMain.getHTMLRecommendations(version,code);
+							
+							htmlPage = RecommendationRulesMain.getHTMLRecommendations(version,code,om);
 							webview.loadDataWithBaseURL("file:///android_asset/", htmlPage, "text/html", "UTF-8", null);
 	    				} catch (Exception e) {
 	    					e.printStackTrace();
@@ -96,14 +98,14 @@ public class DisplayRecommendationsActivity extends ActionBarActivity {
 			
 			//Because of obtaining the suitable drug recommendations and generating the resulting HTML page could be a tough task we use a ProgressDialog to avoid black screen on mobile devices during the task.
 			final ProgressDialog ringProgressDialog = ProgressDialog.show(this, "Please wait ...", "Execution process ...", true);
+			final OntologyManagement om = OntologyManagement.getOntologyManagement(this);
 			ringProgressDialog.setCancelable(true);
 			new Thread(new Runnable() {
 				@Override
 				public void run() {
 					try {
-						htmlPage = RecommendationRulesMain.getHTMLRecommendations(version,code);
+						htmlPage = RecommendationRulesMain.getHTMLRecommendations(version,code,om);
 						webview.loadDataWithBaseURL("file:///android_asset/", htmlPage, "text/html", "UTF-8", null);
-		
     				} catch (Exception e) {
     					e.printStackTrace();
     				}

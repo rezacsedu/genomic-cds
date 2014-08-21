@@ -76,12 +76,11 @@
 	        android:text="@string/general_features_header_msg"
 	        android:textSize="@dimen/font_size_large"
 	        android:textStyle="bold" />
-	
+
 	    <TextView
 	        android:id="@+id/general_features_body"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
-	        android:layout_gravity="center_vertical"
 	        android:layout_margin="10dp"
 	        android:layout_weight="0.17"
 	        android:text="@string/general_features_body_msg"

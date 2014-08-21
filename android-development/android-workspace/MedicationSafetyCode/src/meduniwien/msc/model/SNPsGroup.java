@@ -77,11 +77,6 @@ public class SNPsGroup implements GeneticMarkerGroup {
 			}
 		}
 		return "null;null";
-		
-		/*if(position < listSNPs.size() && position >= 0){
-			return listSNPs.get(position);
-		}
-		return null;*/
 	}
 
 	/**
@@ -107,14 +102,6 @@ public class SNPsGroup implements GeneticMarkerGroup {
 			position = pos1*n+pos2+1-((pos1*(pos1+1))/2);
 		}
 		return position;
-			
-		/*
-		for(int position = 0; position < listSNPs.size(); position++){
-			if(listSNPs.get(position).equalsIgnoreCase(criteriaSyntax)){
-				return position;
-			}
-		}
-		return -1;*/
 	}
 	
 	/**
@@ -133,7 +120,6 @@ public class SNPsGroup implements GeneticMarkerGroup {
 	 * */
 	public int getNumberOfVariants() {
 		return Common.get_kCombinations(listSNPs.size(), 2)+1;
-		//return listSNPs.size();
 	}
 
 	/**
@@ -230,7 +216,6 @@ public class SNPsGroup implements GeneticMarkerGroup {
 		}
 		
 		return (getPositionGeneticMarker(variant1+";"+variant2)>=0);
-		//return 	(listSNPs.contains(variant1+";"+variant2));
 	}
 
 	/**
@@ -240,9 +225,6 @@ public class SNPsGroup implements GeneticMarkerGroup {
 	 * @return The SNP element associated to the position in the group.
 	 * */
 	public SNPElement getGenotypeElement(int position)  throws VariantDoesNotMatchAnyAllowedVariantException{
-		/*if(listSNPs.size()>position && position >=0){
-			return new SNPElement(rsid,listSNPs.get(position));
-		}*/
 		if(position<getNumberOfVariants() && position >=0){
 			return new SNPElement(rsid,getGeneticMarkerVariantName(position));
 		}

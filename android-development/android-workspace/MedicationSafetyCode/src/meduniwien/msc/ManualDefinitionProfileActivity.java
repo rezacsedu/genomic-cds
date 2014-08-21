@@ -2,13 +2,13 @@ package meduniwien.msc;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,7 +16,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.Spinner;
+import android.widget.TableRow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import meduniwien.msc.exception.VariantDoesNotMatchAnyAllowedVariantException;
@@ -37,12 +42,118 @@ public class ManualDefinitionProfileActivity extends ActionBarActivity{
 	 * */
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_manual_definition_profile);
+		//setContentView(R.layout.activity_manual_definition_profile);
 				
-		if (savedInstanceState == null) {
+		/*if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
+		}*/
+		
+		OntologyManagement om = OntologyManagement.getOntologyManagement(this);
+		ScrollView scrl = new ScrollView(this);
+		ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+		scrl.setLayoutParams(params);
+		LinearLayout ll = new LinearLayout(this);
+		params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+		ll.setLayoutParams(params);
+		ll.setOrientation(LinearLayout.VERTICAL);
+		
+		ArrayList<GeneticMarkerGroup> listgmg = om.getListGeneticMarkerGroups();
+		for(GeneticMarkerGroup gmg: listgmg){
+			TextView textview = new TextView(this);
+			TableRow.LayoutParams paramsAux = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, 0 , 0.23f);
+			paramsAux.setMargins(0, 10, 0, 0);
+			textview.setLayoutParams(paramsAux);
+			textview.setText(gmg.getGeneticMarkerName());
+			textview.setGravity(Gravity.CENTER);
+			textview.setTextSize(20);
+			ll.addView(textview);
+			LinearLayout llAux = new LinearLayout(this);
+			ViewGroup.LayoutParams paramsAux2 = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+			llAux.setLayoutParams(paramsAux2);
+			llAux.setOrientation(LinearLayout.HORIZONTAL);
+			
+			ArrayList<String> listOfItems = new ArrayList<String>(); 
+			listOfItems.addAll(gmg.getListElements());
+			listOfItems.add(0,"None");
+			//Spinner_1
+			Spinner spn1 = new Spinner(this);
+			TableRow.LayoutParams paramsAux3 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT , 1f);
+			spn1.setLayoutParams(paramsAux3);
+			spn1.setGravity(Gravity.LEFT);
+			ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listOfItems);
+			spn1.setAdapter(spinnerAdapter);
+			spn1.setTag(gmg.getGeneticMarkerName()+"_1");
+			llAux.addView(spn1);
+			//Spinner_2
+			Spinner spn2 = new Spinner(this);
+			//paramsAux2 = new ViewGroup.LayoutParams(0,ViewGroup.LayoutParams.WRAP_CONTENT);
+			paramsAux3 = new TableRow.LayoutParams(0, TableRow.LayoutParams.WRAP_CONTENT , 1f);
+			spn2.setLayoutParams(paramsAux3);
+			spn2.setGravity(Gravity.RIGHT);
+			spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listOfItems);
+			spn2.setAdapter(spinnerAdapter);
+			spn2.setTag(gmg.getGeneticMarkerName()+"_2");
+			//llAux.setTag(gmg.getGeneticMarkerName());
+			llAux.addView(spn2);
+			ll.addView(llAux);
 		}
+		
+		
+		Button button = new Button(this);
+		button.setText("Get recommendations");
+		TableRow.LayoutParams paramsAux = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
+		paramsAux.setMargins(10, 0, 10, 0);
+		button.setLayoutParams(paramsAux);
+		button.setOnClickListener(new View.OnClickListener() {            
+            @Override
+            public void onClick(View v) {
+            	View root = v.getRootView();
+            	OntologyManagement om = OntologyManagement.getOntologyManagement(v.getContext());
+            	ArrayList<GenotypeElement> listGenotypeElements = new ArrayList<GenotypeElement>();
+            	
+            	ArrayList<GeneticMarkerGroup> listgmg = om.getListGeneticMarkerGroups();
+            	for(GeneticMarkerGroup gmg: listgmg){
+            		String criteriaSyntax="null;null";
+            		Spinner spn1		= (Spinner) root.findViewWithTag(gmg.getGeneticMarkerName()+"_1");
+            		String variant_1	= spn1.getSelectedItem().toString();
+            		Spinner spn2		= (Spinner) root.findViewWithTag(gmg.getGeneticMarkerName()+"_2");
+            		String variant_2	= spn2.getSelectedItem().toString();
+            		if(!variant_1.equals("None") && !variant_2.equals("None")){
+            			criteriaSyntax = variant_1+";"+variant_2; 
+            		}
+            		try{
+            			if(gmg.getPositionGeneticMarker(criteriaSyntax)>=0){
+            				listGenotypeElements.add(gmg.getGenotypeElement(gmg.getPositionGeneticMarker(criteriaSyntax)));
+            			}else{
+            				listGenotypeElements.add(gmg.getGenotypeElement(0));
+            			}
+            		} catch (VariantDoesNotMatchAnyAllowedVariantException e) {
+            			e.printStackTrace();
+            		}
+            	}
+            	
+            	
+            	
+            	String code = "";
+            	String version ="";
+            	try{
+            		code = CodingModule.codeListGeneticVariations(om.getListGeneticMarkerGroups(), listGenotypeElements);
+            		version = Common.VERSION;
+            	}catch(Exception e){
+            		e.printStackTrace();
+            	}
+            	
+            	Intent new_intent = new Intent(v.getContext(), DisplayRecommendationsActivity.class);
+            	new_intent.putExtra(MainActivity.EXTRA_CODE, code);
+            	new_intent.putExtra(MainActivity.EXTRA_VERSION, version);
+            	startActivity(new_intent);
+            }
+		});	
+		
+		ll.addView(button);
+		scrl.addView(ll);
+		setContentView(scrl);
 	}
 	
 	/**
@@ -50,7 +161,115 @@ public class ManualDefinitionProfileActivity extends ActionBarActivity{
 	 * The spinners are defined in the layout file "framgent_manual_definition_profile.xml"
 	 * The elements, that were used to populate the spinners, are defined in the string.xml as resources.
 	 * */
-	public void onStart (){
+	/*public void onStart(){
+		OntologyManagement om = OntologyManagement.getOntologyManagement(this);
+		ScrollView scrl = new ScrollView(this);
+		ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.MATCH_PARENT);
+		scrl.setLayoutParams(params);
+		LinearLayout ll = new LinearLayout(this);
+		params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+		ll.setLayoutParams(params);
+		ll.setOrientation(LinearLayout.VERTICAL);
+		scrl.addView(ll);
+		ArrayList<GeneticMarkerGroup> listgmg = om.getListGeneticMarkerGroups();
+		for(GeneticMarkerGroup gmg: listgmg){
+			TextView textview = new TextView(this);
+			TableRow.LayoutParams paramsAux = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, 0 , 0.23f);
+			paramsAux.setMargins(0, 10, 0, 0);
+			textview.setLayoutParams(paramsAux);
+			textview.setText(gmg.getGeneticMarkerName());
+			textview.setGravity(Gravity.CENTER_VERTICAL);
+			textview.setTextSize(20);
+			ll.addView(textview);
+			LinearLayout llAux = new LinearLayout(this);
+			ViewGroup.LayoutParams paramsAux2 = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,ViewGroup.LayoutParams.WRAP_CONTENT);
+			llAux.setLayoutParams(paramsAux2);
+			llAux.setOrientation(LinearLayout.HORIZONTAL);
+			
+			ArrayList<String> listOfItems = new ArrayList<String>(); 
+			listOfItems.addAll(gmg.getListElements());
+			listOfItems.add(0,"None");		
+			//Spinner_1
+			Spinner spn1 = new Spinner(this);
+			paramsAux2 = new ViewGroup.LayoutParams(0,ViewGroup.LayoutParams.WRAP_CONTENT);
+			spn1.setLayoutParams(paramsAux2);
+			spn1.setGravity(Gravity.LEFT);
+			ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listOfItems);
+			spn1.setAdapter(spinnerAdapter);
+			spn1.setTag(gmg.getGeneticMarkerName()+"_1");
+			llAux.addView(spn1);
+			//Spinner_2
+			Spinner spn2 = new Spinner(this);
+			paramsAux2 = new ViewGroup.LayoutParams(0,ViewGroup.LayoutParams.WRAP_CONTENT);
+			spn2.setLayoutParams(paramsAux2);
+			spn2.setGravity(Gravity.RIGHT);
+			spinnerAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listOfItems);
+			spn2.setAdapter(spinnerAdapter);
+			spn1.setTag(gmg.getGeneticMarkerName()+"_2");
+			llAux.setTag(gmg.getGeneticMarkerName());
+			llAux.addView(spn2);
+			
+			ll.addView(llAux);
+		}
+		
+		
+		Button button = new Button(this);
+		button.setText("Get recommendations");
+		TableRow.LayoutParams paramsAux = new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT);
+		paramsAux.setMargins(10, 0, 10, 0);
+		button.setLayoutParams(paramsAux);
+		button.setOnClickListener(new View.OnClickListener() {            
+            @Override
+            public void onClick(View v) {
+            	View root = v.getRootView();
+            	OntologyManagement om = OntologyManagement.getOntologyManagement(v.getContext());
+            	ArrayList<GenotypeElement> listGenotypeElements = new ArrayList<GenotypeElement>();
+            	
+            	ArrayList<GeneticMarkerGroup> listgmg = om.getListGeneticMarkerGroups();
+            	for(GeneticMarkerGroup gmg: listgmg){
+            		String criteriaSyntax="null;null";
+            		Spinner spn1		= (Spinner) root.findViewWithTag(gmg.getGeneticMarkerName()+"_1");
+            		String variant_1	= spn1.getSelectedItem().toString();
+            		Spinner spn2		= (Spinner) root.findViewWithTag(gmg.getGeneticMarkerName()+"_2");
+            		String variant_2	= spn2.getSelectedItem().toString();
+            		if(!variant_1.equals("None") && !variant_2.equals("None")){
+            			criteriaSyntax = variant_1+";"+variant_2; 
+            		}
+            		try{
+            			if(gmg.getPositionGeneticMarker(criteriaSyntax)>=0){
+            				listGenotypeElements.add(gmg.getGenotypeElement(gmg.getPositionGeneticMarker(criteriaSyntax)));
+            			}else{
+            				listGenotypeElements.add(gmg.getGenotypeElement(0));
+            			}
+            		} catch (VariantDoesNotMatchAnyAllowedVariantException e) {
+            			e.printStackTrace();
+            		}
+            	}
+            	
+            	
+            	
+            	String code = "";
+            	String version ="";
+            	try{
+            		code = CodingModule.codeListGeneticVariations(om.getListGeneticMarkerGroups(), listGenotypeElements);
+            		version = Common.VERSION;
+            	}catch(Exception e){
+            		e.printStackTrace();
+            	}
+            	
+            	Intent new_intent = new Intent(v.getContext(), DisplayRecommendationsActivity.class);
+            	new_intent.putExtra(MainActivity.EXTRA_CODE, code);
+            	new_intent.putExtra(MainActivity.EXTRA_VERSION, version);
+            	startActivity(new_intent);
+            }
+		});	
+		
+		ll.addView(button);
+		setContentView(scrl);
+	}*/
+		
+	
+	/*public void onStart (){
 		super.onStart();
 		//Left: spinner_1 <-> Right: spinner_2
 		
@@ -245,7 +464,9 @@ public class ManualDefinitionProfileActivity extends ActionBarActivity{
 		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinner.setAdapter(adapter);
 		//-------------
-	}
+	}*/
+	
+	
 	
 	@Override
 	/**
@@ -299,25 +520,25 @@ public class ManualDefinitionProfileActivity extends ActionBarActivity{
 	 * This method collects the values of the selected spinners and generates the corresponding genetic profile. Once the genetic profile is created, we calculate the code that represents it.
 	 * Finally, the workflow is redirected to the "Display Recommendations Activity" that process the code and its version to display the appropriate drug recommendations.
 	 * */
-	public void calculateCode(View view){
-		/*
-		CYP2C19
-		CYP2C9
-		CYP2D6
-		CYP3A5
-		DPYD
-		HLA-A
-		HLA-B
-		TPMT
-		UGT1A1
-		rs12979860
-		rs2297595
-		rs4149056
-		rs6025
-		rs67376798		
-		rs9923231
-		rs9934438
-		 */
+	/*public void calculateCode(View view){
+		
+		//CYP2C19
+		//CYP2C9
+		//CYP2D6
+		//CYP3A5
+		//DPYD
+		//HLA-A
+		//HLA-B
+		//TPMT
+		//UGT1A1
+		//rs12979860
+		//rs2297595
+		//rs4149056
+		//rs6025
+		//rs67376798		
+		//rs9923231
+		//rs9934438
+		
 		
 		HashMap<String,String[]> listSelections = new HashMap<String,String[]>();
 		
@@ -437,7 +658,7 @@ public class ManualDefinitionProfileActivity extends ActionBarActivity{
 		
 		
 		ArrayList<GenotypeElement> listGenotypeElements = new ArrayList<GenotypeElement>();
-		ArrayList<GeneticMarkerGroup> listGroups = OntologyManagement.getOntologyManagement().getListGeneticMarkerGroups();
+		ArrayList<GeneticMarkerGroup> listGroups = OntologyManagement.getOntologyManagement(this).getListGeneticMarkerGroups();
 		for(GeneticMarkerGroup gmg: listGroups){
 			String criteriaSyntax="null;null";
 			if(listSelections.containsKey(gmg.getGeneticMarkerName())){
@@ -461,7 +682,7 @@ public class ManualDefinitionProfileActivity extends ActionBarActivity{
 		String code = "";
 		String version ="";
 		try{
-			code = DecodingModule.codeListGeneticVariations(listGenotypeElements);
+			code = CodingModule.codeListGeneticVariations(OntologyManagement.getOntologyManagement(this).getListGeneticMarkerGroups(), listGenotypeElements);
 			version = Common.VERSION;
 		}catch(Exception e){
 			e.printStackTrace();
@@ -471,5 +692,5 @@ public class ManualDefinitionProfileActivity extends ActionBarActivity{
     	new_intent.putExtra(MainActivity.EXTRA_CODE, code);
     	new_intent.putExtra(MainActivity.EXTRA_VERSION, version);
 		startActivity(new_intent);
-	}
+	}*/
 }

@@ -43,14 +43,14 @@ public class RecommendationRulesMain {
 	 * 
 	 * @return The triggered drug recommendations into an HTML equals to the result page from the Genomic MSC server application.
 	 * */
-	public static String getHTMLRecommendations(String version, String code){
+	public static String getHTMLRecommendations(String version, String code, OntologyManagement om){
 		//this.version	= version;
 		//this.code		= code;
 		String htmlPage = "";
 		ArrayList<GenotypeElement> patientGenotype = null;
 		if(version.equals(Common.VERSION)){
 			try{
-				patientGenotype = DecodingModule.decodeListGenotypeVariations(code);
+				patientGenotype = CodingModule.decodeListGenotypeVariations(om.getListGeneticMarkerGroups(), code);
 			}catch(Exception e){
 				htmlPage = "<html><head><title>Error Page</title></head><body><h2>The application has generated an error: \""+e.getMessage()+"\"\n->code = "+code+";version = "+version+".</h2><h3>Please notify your help desk.</h3></body></html>";
 				return htmlPage;
@@ -62,7 +62,7 @@ public class RecommendationRulesMain {
 		
 		HashMap<String, ArrayList<DrugRecommendation>> list_recommendations=null;
 		try {
-			list_recommendations = obtainDrugRecommendations(patientGenotype);
+			list_recommendations = obtainDrugRecommendations(patientGenotype,om);
 		} catch (NotInitializedPatientsGenomicDataException e) {
 			htmlPage = "<html><head><title>Error Page</title></head><body><h2>The application has generated an error: \""+e.getMessage()+"\"\n->code = "+code+";version = "+version+".</h2><h3>Please notify your help desk.</h3></body></html>";
 			return htmlPage;
@@ -157,15 +157,15 @@ public class RecommendationRulesMain {
 	 * @return A map with the triggered rules grouped by the drug name.
 	 * @throws NotInitializedPatientsGenomicDataException
 	 * */	
-	private static HashMap<String, ArrayList<DrugRecommendation>> obtainDrugRecommendations(ArrayList<GenotypeElement> genotype) throws NotInitializedPatientsGenomicDataException {
+	private static HashMap<String, ArrayList<DrugRecommendation>> obtainDrugRecommendations(ArrayList<GenotypeElement> genotype, OntologyManagement om) throws NotInitializedPatientsGenomicDataException {
 		HashMap<String,ArrayList<DrugRecommendation>> mapDrugRecommendations = null;
 		if(genotype==null){
 			throw new NotInitializedPatientsGenomicDataException("The patient's genotype was not initialized");
 		}else{
 			mapDrugRecommendations = new HashMap<String,ArrayList<DrugRecommendation>>();
-			ArrayList<DrugRecommendation> listRecommendations = OntologyManagement.getOntologyManagement().getListDrugRecommendations();
+			ArrayList<DrugRecommendation> listRecommendations = om.getListDrugRecommendations();
 			for(DrugRecommendation dr: listRecommendations){
-				if(dr.matchPatientProfile(genotype)){
+				if(dr.matchPatientProfile(new Genotype(genotype))){
 					String drug_name = dr.getDrugName();
 					if(mapDrugRecommendations.containsKey(drug_name)){
 						 mapDrugRecommendations.get(drug_name).add(dr);
@@ -189,8 +189,8 @@ public class RecommendationRulesMain {
 	 * @throws VariantDoesNotMatchAnAllowedVariantException 
 	 * */
 	/*private static Genotype readBase64ProfileString(String base64Profile) throws BadFormedBase64NumberException, VariantDoesNotMatchAnyAllowedVariantException {
-		//DecodingModule decod_mod = new DecodingModule(om.getListGeneticMarkerGroups());
-		ArrayList<GenotypeElement> listGenotypeElements = DecodingModule.decodeListGenotypeVariations(base64Profile);
+		//CodingModule decod_mod = new CodingModule(om.getListGeneticMarkerGroups());
+		ArrayList<GenotypeElement> listGenotypeElements = CodingModule.decodeListGenotypeVariations(base64Profile);
 		return new Genotype(listGenotypeElements);		
 	}*/
 	

@@ -1,7 +1,15 @@
 package meduniwien.msc.util;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+
+import android.content.Context;
+import android.content.res.AssetManager;
 
 import meduniwien.msc.model.AlleleGroup;
 import meduniwien.msc.model.DrugRecommendation;
@@ -22,25 +30,63 @@ public class OntologyManagement {
 	private ArrayList<AlleleGroup>			listAlleleGroups		= null;
 	/** List of drug recommendation rules defined in the ontology.*/
 	private ArrayList<DrugRecommendation>	listDrugRecommendations	= null;
+	/** List of phenotype rules that are used to replace their logical description into drug recommendations logical description.*/
+	private HashMap<String,String>			listPhenotypeRules = null;
 	/** List of Genetic marker groups used to define a patient's genotype. It contains all haplotype groups and some SNP groups.*/
 	private ArrayList<GeneticMarkerGroup>	listGeneticMarkers		= null;
 	
 	private static OntologyManagement singleton = null;
 	
-	
-	public static OntologyManagement getOntologyManagement(){
+	public static OntologyManagement getOntologyManagement(Context context){
 		if(singleton == null){
-			singleton = new OntologyManagement();
+			AssetManager am = context.getAssets();
+			singleton = new OntologyManagement(am);
 		}
 		return singleton;
 	}
 	
 	/**Constructor of the class that initialize the list of SNPs, Haplotypes, cds rules and the group of genetic markers used for defining a genetic profile.*/
-	public OntologyManagement(){
+	public OntologyManagement(AssetManager am){
+		
+		InputStream snpGroups=null;
+		try {
+			snpGroups = am.open("ontinfo/snpGroups.txt");
+			initializeSNPsGroups(snpGroups);
+			snpGroups.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		InputStream alleleGroups=null;
+		try {
+			alleleGroups = am.open("ontinfo/alleleGroups.txt");
+			initializeAlleleGroups(alleleGroups);
+			alleleGroups.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		initializeGeneticMarkerGroups();
+		
+		InputStream phenotypeRules=null;
+		InputStream drugRecommendations=null;
+		try {
+			phenotypeRules = am.open("ontinfo/phenotypeRules.txt");
+			drugRecommendations = am.open("ontinfo/drugRecommendations.txt");
+			initializeDrugRecommendations(phenotypeRules,drugRecommendations);
+			phenotypeRules.close();
+			drugRecommendations.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		/*
 		initializeSNPsGroups();
 		initializeAlleleGroups();
 		initializeGeneticMarkerGroups();
 		initializeDrugRecommendations();
+		*/
 	}
 	
 	/**
@@ -60,11 +106,43 @@ public class OntologyManagement {
 	}
 	
 	/** Generate the instances of AlleleGroup based on the latest version of the Genomic CDS ontology. June 2014*/
-	private void initializeAlleleGroups(){
+	private void initializeAlleleGroups(InputStream fileIn){
+		//GENENAME	RANK	LISTALLELES
 		listAlleleGroups = new ArrayList<AlleleGroup>();
 		String gene_name;
 		ArrayList<String> list_allele_names;
-		int rank_int;
+		int rank;
+		AlleleGroup ag;
+		
+		try{
+			BufferedReader br = new BufferedReader(new InputStreamReader(fileIn));
+			String linea = "";
+			br.readLine();//The first line is the header
+			while((linea=br.readLine())!=null){
+				String[] tokens = linea.split("\t");
+				if(tokens.length > 1){
+					gene_name = tokens[0];
+					rank = Integer.parseInt(tokens[1]);
+					list_allele_names = new ArrayList<String>();
+					for(int i=2; i<tokens.length;i++){
+						list_allele_names.add(tokens[i]);
+					}
+					ag = new AlleleGroup(gene_name,list_allele_names,rank);
+					listAlleleGroups.add(ag);
+				}
+			}
+			br.close();
+			fileIn.close();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+		
+	/*private void initializeAlleleGroups(){
+		listAlleleGroups = new ArrayList<AlleleGroup>();
+		String gene_name;
+		ArrayList<String> list_allele_names;
+		int rank;
 		AlleleGroup ag;
 		
 		gene_name = "ABCB1";
@@ -73,8 +151,8 @@ public class OntologyManagement {
 		list_allele_names.add("ABCB1 *13 (PMID: 12893986)");
 		list_allele_names.add("ABCB1 *2 (PMID: 11503014)");
 		list_allele_names.add("ABCB1 *2 (PMID: 12893986)");
-		rank_int = 26;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 26;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "ADRB1";
@@ -82,8 +160,8 @@ public class OntologyManagement {
 		list_allele_names.add("ADRB1 H1");
 		list_allele_names.add("ADRB1 H2");
 		list_allele_names.add("ADRB1 H3");
-		rank_int = 32;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 32;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "BRCA1";
@@ -104,14 +182,14 @@ public class OntologyManagement {
 		list_allele_names.add("BRCA1 #3");
 		list_allele_names.add("BRCA1 #4");
 		list_allele_names.add("BRCA1 #5");
-		rank_int = 12;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 12;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "CFTR";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 48;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 48;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "COMT";
@@ -119,8 +197,8 @@ public class OntologyManagement {
 		list_allele_names.add("COMT Haplotype high activity");
 		list_allele_names.add("COMT Haplotype intermediate activity");
 		list_allele_names.add("COMT Haplotype low activity");
-		rank_int = 8;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 8;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "CYP1A2";
@@ -167,8 +245,8 @@ public class OntologyManagement {
 		list_allele_names.add("CYP1A2 *7");
 		list_allele_names.add("CYP1A2 *8");
 		list_allele_names.add("CYP1A2 *9");
-		rank_int = 14;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 14;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "CYP2A6";
@@ -259,8 +337,8 @@ public class OntologyManagement {
 		list_allele_names.add("CYP2A6 *9");
 		list_allele_names.add("CYP2A6 *9A");
 		list_allele_names.add("CYP2A6 *9B");
-		rank_int = 33;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 33;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "CYP2B6";
@@ -329,8 +407,8 @@ public class OntologyManagement {
 		list_allele_names.add("CYP2B6 *7B");
 		list_allele_names.add("CYP2B6 *8");
 		list_allele_names.add("CYP2B6 *9");
-		rank_int = 36;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 36;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "CYP2C19";
@@ -373,8 +451,8 @@ public class OntologyManagement {
 		list_allele_names.add("CYP2C19 *7");
 		list_allele_names.add("CYP2C19 *8");
 		list_allele_names.add("CYP2C19 *9");
-		rank_int = 41;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 41;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "CYP2C9";
@@ -413,8 +491,8 @@ public class OntologyManagement {
 		list_allele_names.add("CYP2C9 *7");
 		list_allele_names.add("CYP2C9 *8");
 		list_allele_names.add("CYP2C9 *9");
-		rank_int = 28;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 28;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "CYP2D6";
@@ -683,8 +761,8 @@ public class OntologyManagement {
 		list_allele_names.add("CYP2D6 *75");
 		list_allele_names.add("CYP2D6 *8");
 		list_allele_names.add("CYP2D6 *9");
-		rank_int = 13;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 13;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "CYP3A4";
@@ -734,8 +812,8 @@ public class OntologyManagement {
 		list_allele_names.add("CYP3A4 *7");
 		list_allele_names.add("CYP3A4 *8");
 		list_allele_names.add("CYP3A4 *9");
-		rank_int = 39;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 39;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "CYP3A5";
@@ -764,8 +842,8 @@ public class OntologyManagement {
 		list_allele_names.add("CYP3A5 *7");
 		list_allele_names.add("CYP3A5 *8");
 		list_allele_names.add("CYP3A5 *9");
-		rank_int = 15;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 15;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "DPYD";
@@ -787,20 +865,20 @@ public class OntologyManagement {
 		list_allele_names.add("DPYD *9A");
 		list_allele_names.add("DPYD *9B");
 		list_allele_names.add("DPYD *9");
-		rank_int = 30;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 30;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "DPYD-AS1";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 31;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 31;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "F5";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 10;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 10;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "G6PD";
@@ -810,15 +888,15 @@ public class OntologyManagement {
 		list_allele_names.add("G6PD A- 680T_376G");
 		list_allele_names.add("G6PD B (wildtype)");
 		list_allele_names.add("G6PD Mediterranean Haplotype");
-		rank_int = 27;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 27;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "HLA-A";
 		list_allele_names = new ArrayList<String>();
 		list_allele_names.add("HLA-A *3101");
-		rank_int = 50;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 50;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "HLA-B";
@@ -827,52 +905,52 @@ public class OntologyManagement {
 		list_allele_names.add("HLA-B *44");
 		list_allele_names.add("HLA-B *5701");
 		list_allele_names.add("HLA-B *5801");
-		rank_int = 49;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 49;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "HMGCR";
 		list_allele_names = new ArrayList<String>();
 		list_allele_names.add("HMGCR H2");
 		list_allele_names.add("HMGCR H7");
-		rank_int = 42;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 42;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "IFNL4";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 47;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 47;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "LOC100286922";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 43;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 43;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "LOC101927831";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 44;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 44;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "MED12L";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 35;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 35;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "MIR4761";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 9;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 9;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "NBR1";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 45;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 45;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "P2RY12";
@@ -891,14 +969,14 @@ public class OntologyManagement {
 		list_allele_names.add("P2RY12 F-1");
 		list_allele_names.add("P2RY12 H1");
 		list_allele_names.add("P2RY12 H2");
-		rank_int = 34;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 34;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "RP11-242D8.1";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 46;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 46;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "SLCO1B1";
@@ -942,8 +1020,8 @@ public class OntologyManagement {
 		list_allele_names.add("SLCO1B1 *7");
 		list_allele_names.add("SLCO1B1 *8");
 		list_allele_names.add("SLCO1B1 *9");
-		rank_int = 37;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 37;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "SULT1A1";
@@ -952,8 +1030,8 @@ public class OntologyManagement {
 		list_allele_names.add("SULT1A1 *2");
 		list_allele_names.add("SULT1A1 *3");
 		list_allele_names.add("SULT1A1 *5");
-		rank_int = 29;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 29;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "TPMT";
@@ -1001,8 +1079,8 @@ public class OntologyManagement {
 		list_allele_names.add("TPMT *7");
 		list_allele_names.add("TPMT *8");
 		list_allele_names.add("TPMT *9");
-		rank_int = 38;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 38;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "UGT1A1";
@@ -1051,56 +1129,56 @@ public class OntologyManagement {
 		list_allele_names.add("UGT1A1 *VII");
 		list_allele_names.add("UGT1A1 *VIII");
 		list_allele_names.add("UGT1A1 *X");
-		rank_int = 17;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 17;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "UGT1A10";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 20;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 20;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "UGT1A3";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 24;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 24;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "UGT1A4";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 19;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 19;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "UGT1A5";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 23;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 23;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "UGT1A6";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 18;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 18;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "UGT1A7";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 22;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 22;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "UGT1A8";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 21;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 21;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "UGT1A9";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 25;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 25;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "VKORC1";
@@ -1118,25 +1196,72 @@ public class OntologyManagement {
 		list_allele_names.add("VKORC1 *2");
 		list_allele_names.add("VKORC1 *3");
 		list_allele_names.add("VKORC1 *4");
-		rank_int = 11;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 11;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "ZMIZ1-AS1";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 40;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 40;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
 
 		gene_name = "ZSCAN25";
 		list_allele_names = new ArrayList<String>();
-		rank_int = 16;
-		ag = new AlleleGroup(gene_name,list_allele_names,rank_int);
+		rank = 16;
+		ag = new AlleleGroup(gene_name,list_allele_names,rank);
 		listAlleleGroups.add(ag);
-	}
+	}*/
 	
 	/** Generate the instances of SNPsGroup based on the latest version of the Genomic CDS ontology. June 2014*/
-	private void initializeSNPsGroups(){
+	private void initializeSNPsGroups(InputStream fileIn){
+		//RSID	RANK	ORIENTATION	VCFREFERENCE	LISTGENOMICTEST(SEPARATED_BY_';')	LISTSNPS
+		listSNPsGroups = new ArrayList<SNPsGroup>();
+		String rsid;
+		ArrayList<String> list_SNP_names;
+		int rank;
+		String strandOrientation;
+		String vcf_format_reference;
+		ArrayList<String> listTestedWith;
+		SNPsGroup sg;
+		
+		try{
+			BufferedReader br = new BufferedReader(new InputStreamReader(fileIn));
+			String linea = "";
+			br.readLine();//The first line is the header
+			while((linea=br.readLine())!=null){
+				String[] tokens = linea.split("\t");
+				if(tokens.length > 4){
+					rsid = tokens[0];
+					rank = Integer.parseInt(tokens[1]);
+					strandOrientation = tokens[2];
+					vcf_format_reference = tokens[3];
+					String testFormats = tokens[4];
+					listTestedWith = new ArrayList<String>();
+					if(!testFormats.isEmpty()){
+						String[] items = testFormats.split(";");
+						for(String test : items){
+							listTestedWith.add(test);
+						}
+					}
+					
+					list_SNP_names = new ArrayList<String>();
+					for(int i=5; i<tokens.length;i++){
+						list_SNP_names.add(tokens[i]);
+					}
+					sg = new SNPsGroup(rsid, list_SNP_names, rank, strandOrientation, vcf_format_reference, listTestedWith);
+					listSNPsGroups.add(sg);
+				}
+			}
+			br.close();
+			fileIn.close();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+	
+	
+	/*private void initializeSNPsGroups(){
 		listSNPsGroups = new ArrayList<SNPsGroup>();
 		String rsid;
 		ArrayList<String> list_SNP_names;
@@ -5455,7 +5580,7 @@ public class OntologyManagement {
 		listTestedWith.add("23andme v2");
 		sg = new SNPsGroup(rsid, list_SNP_names, rank, strandOrientation, vcf_format_reference, listTestedWith);
 		listSNPsGroups.add(sg);
-	}
+	}*/
 		
 	/** Select the list of genetic markers used to represent a patient's genotype.*/
 	private void initializeGeneticMarkerGroups(){
@@ -5470,6 +5595,77 @@ public class OntologyManagement {
 	}
 	
 	/** Generates the instances of DrugRecommendation class based on the information of the latest version of the Genomic CDS ontology. June 2014*/	
+	private void initializeDrugRecommendations(InputStream phenotypeFile, InputStream recommendationsFile){
+		listPhenotypeRules = new HashMap<String,String>();
+		try{
+			String ruleId = "";
+			String logicalDescription = "";
+			BufferedReader br = new BufferedReader(new InputStreamReader(phenotypeFile));
+			String linea = "";
+			br.readLine();//The first line is the header
+			while((linea=br.readLine())!=null){
+				String[] tokens = linea.split("\t");
+				if(tokens.length == 2){
+					ruleId = tokens[0];
+					logicalDescription = tokens[1];
+					listPhenotypeRules.put("human_with_"+ruleId, logicalDescription);
+				}
+			}
+			br.close();
+			phenotypeFile.close();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		
+		listDrugRecommendations			= new ArrayList<DrugRecommendation>();
+		try{
+			String recommendation_label		= "";
+			String cds_message				= "";
+			String importance				= "";
+			String source					= "";
+			String relevant_for				= "";
+			ArrayList<String> seeAlsoList	= null;
+			String lastUpdate				= "";
+			String phenotype				= "";
+			String recommendation_comment	= "";
+			DrugRecommendation dr			= null;
+			BufferedReader br = new BufferedReader(new InputStreamReader(recommendationsFile));
+			String linea = "";
+			br.readLine();//The first line is the header
+			while((linea=br.readLine())!=null){
+				String[] tokens = linea.split("\t");
+				if(tokens.length > 8){
+					recommendation_label = tokens[0];
+					cds_message = tokens[1];
+					importance = tokens[2];
+					source = tokens[3];
+					relevant_for = tokens[4];
+					lastUpdate = tokens[5];
+					phenotype = tokens[6];
+					recommendation_comment = tokens[7];
+					for(String key: listPhenotypeRules.keySet()){
+						if(recommendation_comment.contains(key)){
+							recommendation_comment.replace(key, " ("+listPhenotypeRules.get(key)+") ");
+						}
+					}
+					seeAlsoList = new ArrayList<String>();
+					for(int i=8;i<tokens.length;i++){
+						seeAlsoList.add(tokens[i]);
+					}
+					dr = new DrugRecommendation(recommendation_label, cds_message, importance, source, relevant_for, seeAlsoList, lastUpdate, phenotype);
+					dr.setRule(recommendation_comment);
+					listDrugRecommendations.add(dr);
+				}
+			}
+			br.close();
+			recommendationsFile.close();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/*
 	private void initializeDrugRecommendations(){
 		listDrugRecommendations			= new ArrayList<DrugRecommendation>();
 		String recommendation_label		= "";
@@ -10072,6 +10268,6 @@ public class OntologyManagement {
 		recommendation_comment = "has exactly 2 CYP2C19_star_17";
 		dr.setRule(recommendation_comment);
 		listDrugRecommendations.add(dr);
-	}
+	}*/
 	
 }

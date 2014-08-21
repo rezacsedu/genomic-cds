@@ -33,9 +33,6 @@ public class NodeCondition {
 	 * @return	Whether the list of genetic elements matches the logical description of the node. 
 	 * */
 	public boolean test(ArrayList<GenotypeElement> listElements){
-		
-		
-		
 		if(type.length()>0){
 			if(type.equals("some")){
 				if(element.length()>0){
@@ -107,7 +104,6 @@ public class NodeCondition {
 						if(quality.equals("and")){
 							for(NodeCondition condition : listConditions){
 								boolean andResult = false;
-								//if(!condition.getElement().isEmpty()){
 								if(condition.getElement().length()>0){
 									String nodeElement = condition.getElement();
 									for(GenotypeElement ge : listElements){
@@ -145,12 +141,10 @@ public class NodeCondition {
 			}
 			if(type.equals("exactly")&&number>=0){
 				if(listConditions!=null && !listConditions.isEmpty()){
-					//if(!quality.isEmpty()){
 					if(quality.length()>0){
 						if(quality.equals("or")){
 							for(NodeCondition condition : listConditions){
 								int nMatches = 0;
-								//if(!condition.getElement().isEmpty()){
 								if(condition.getElement().length()>0){
 									String nodeElement = condition.getElement();
 									for(GenotypeElement ge : listElements){
@@ -185,7 +179,6 @@ public class NodeCondition {
 						}
 						if(quality.equals("and")){
 							for(NodeCondition condition : listConditions){
-								//if(!condition.getElement().isEmpty()){
 								if(condition.getElement().length()>0){
 									String nodeElement = condition.getElement();
 									int nMatches = 0;
@@ -225,7 +218,6 @@ public class NodeCondition {
 						System.out.println("It should not be like this ->"+this.toString());
 					}
 				}else{
-					//if(!element.isEmpty()){
 					if(element.length()>0){
 						int nMatches = 0;
 						for(GenotypeElement ge : listElements){
@@ -262,12 +254,10 @@ public class NodeCondition {
 			}
 			if(type.equals("min")&&number>=0){
 				if(listConditions!=null && !listConditions.isEmpty()){
-					//if(!quality.isEmpty()){
 					if(quality.length()>0){
 						if(quality.equals("or")){
 							int nMatches = 0;
 							for(NodeCondition condition : listConditions){
-								//if(!condition.getElement().isEmpty()){
 								if(condition.getElement().length()>0){
 									String nodeElement = condition.getElement();
 									for(GenotypeElement ge : listElements){
@@ -302,7 +292,6 @@ public class NodeCondition {
 						}
 						if(quality.equals("and")){
 							for(NodeCondition condition : listConditions){
-								//if(!condition.getElement().isEmpty()){
 								if(condition.getElement().length()>0){
 									String nodeElement = condition.getElement();
 									int nMatches = 0;
@@ -340,7 +329,6 @@ public class NodeCondition {
 						System.out.println("It should not be like this ->"+this.toString());
 					}
 				}else{
-					//if(!element.isEmpty()){
 					if(element.length()>0){
 						int nMatches = 0;
 						for(GenotypeElement ge : listElements){
@@ -374,7 +362,6 @@ public class NodeCondition {
 				}
 			}
 		}else{
-			//if(!quality.isEmpty()){
 			if(quality.length()>0){
 				if(quality.equals("or") && (listConditions!=null && !listConditions.isEmpty())){
 					for(NodeCondition condition : listConditions){
@@ -396,24 +383,11 @@ public class NodeCondition {
 			}
 		}
 		if(type.length()==0 && quality.length()==0 && listConditions!=null && listConditions.size()==1){
-		//if(type.isEmpty()&&quality.isEmpty()&&listConditions!=null&&listConditions.size()==1){
 			return listConditions.get(0).test(listElements);
 		}
 		
 		System.out.println("ERROR: Nothing was matched->"+toString());
-		/*if(listConditions == null){
-			System.out.println("listConditions is null");
-		}else{
-			if(listConditions.isEmpty()){
-				System.out.println("listConditions is Empty");
-			}else{
-				System.out.println("listConditions has size = "+listConditions.size());
-			}
-		}
-		System.out.println("element="+element);
-		System.out.println("quality="+quality);
-		System.out.println("type="+type);
-		System.out.println("number="+number);*/
+		
 		
 		return false;
 	}
@@ -487,7 +461,6 @@ public class NodeCondition {
 	 * @param number	The cardinality restriction value.
 	 * */
 	public void setNumber(String number){
-		//if(number!=null && !number.isEmpty()){
 		if(number!=null && number.length()>0){
 			try{
 				this.number = Integer.parseInt(number);
@@ -524,7 +497,6 @@ public class NodeCondition {
 	/**Overrides the toString() method to show the logical description represented by the node condition.*/
 	public String toString(){
 		String desc = "";
-		//if(!quality.isEmpty() && !type.isEmpty() && listConditions!=null && !listConditions.isEmpty()){
 		if(quality.length()>0 && type.length()>0 && listConditions!=null && !listConditions.isEmpty()){
 			desc+="has "+type+" ";
 			if(number>=0){
@@ -532,7 +504,6 @@ public class NodeCondition {
 			}
 			String aux = "";
 			for(NodeCondition node: listConditions){
-				//if(!aux.isEmpty()) aux+=" "+quality+" ";
 				if(aux.length()>0) aux+=" "+quality+" ";
 				aux+=node.getElement();
 			}
@@ -540,7 +511,6 @@ public class NodeCondition {
 			desc+=aux;
 			return desc;
 		}
-		//if(!type.isEmpty() && !element.isEmpty()){
 		if(type.length()>0 && element.length()>0){
 			desc+="has "+type+" ";
 			if(number>=0){
@@ -549,10 +519,8 @@ public class NodeCondition {
 			desc+=element;
 			return desc;
 		}
-		//if(!quality.isEmpty() && listConditions!=null && !listConditions.isEmpty()){
 		if(quality.length()>0 && listConditions!=null && !listConditions.isEmpty()){
 			for(NodeCondition node: listConditions){
-				//if(!desc.isEmpty()) desc+=" "+quality+" ";
 				if(desc.length()>0) desc+=" "+quality+" ";
 				desc+="( "+node.toString()+" )";
 			}
@@ -563,7 +531,6 @@ public class NodeCondition {
 			return listConditions.get(0).toString();
 		}
 		
-		//if(!element.isEmpty()) return "\n"+element;
 		if(element.length()>0) return "\n"+element;
 		
 		System.out.println("ERROR node tostring");

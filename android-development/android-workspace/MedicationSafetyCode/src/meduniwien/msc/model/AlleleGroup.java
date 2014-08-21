@@ -39,7 +39,7 @@ public class AlleleGroup implements GeneticMarkerGroup{
 			listAlleles.set(i, label);
 		}
 		
-		Collections.sort(listAlleles);
+		//Collections.sort(listAlleles);
 		this.listAlleles	= getAlleleCombinationList(listAlleles);
 		this.rank			= rank;
 	}
@@ -51,7 +51,6 @@ public class AlleleGroup implements GeneticMarkerGroup{
 	 * */
 	public int getNumberOfVariants(){
 		return Common.get_kCombinations(listAlleles.size(), 2)+1;
-		//return listAlleles.size();
 	}
 	
 	/**
@@ -141,15 +140,7 @@ public class AlleleGroup implements GeneticMarkerGroup{
 	 * @return		List of all combinations from the set of alleles in alphabetical order.
 	 * */
 	private ArrayList<String> getAlleleCombinationList(ArrayList<String> listAlleles){
-		/*ArrayList<String> listCombinations = new ArrayList<String>();
-		Collections.sort(listAlleles);
-		for(int i=0;i<listAlleles.size();i++){
-			for(int j=i;j<listAlleles.size();j++){
-				listCombinations.add(listAlleles.get(i)+";"+listAlleles.get(j));
-			}
-		}
-		listCombinations.add(0,"null;null");
-		return listCombinations;*/
+		
 		ArrayList<String> listCombinations = new ArrayList<String>();
 		if(listAlleles!=null){
 			listCombinations.addAll(listAlleles);

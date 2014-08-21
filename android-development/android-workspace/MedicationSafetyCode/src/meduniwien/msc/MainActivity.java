@@ -51,7 +51,8 @@ public class MainActivity extends ActionBarActivity {
 		}
 		
 		//We initialize the class that provides information from the ontology.
-		OntologyManagement.getOntologyManagement();
+		
+		
 	}
 	
 	/**
@@ -66,6 +67,7 @@ public class MainActivity extends ActionBarActivity {
 			text.setText(Html.fromHtml(value));
 			text.setMovementMethod(LinkMovementMethod.getInstance());
 		}
+		OntologyManagement.getOntologyManagement(this);
 	}
 	
 	@Override

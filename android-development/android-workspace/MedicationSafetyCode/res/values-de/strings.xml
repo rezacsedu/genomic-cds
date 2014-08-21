@@ -2,7 +2,7 @@
 <resources>
   	<string name="app_name">Safety Code</string>    
     <string name="button_scan">Scan in QR Safety Code</string>
-    <string name="button_manual">Define your own profile</string>
+    <string name="button_manual">Enter data manually</string>
     <string name="button_code">Get recommendations</string>
     <string name="title_activity_manual_definition">Custom genetic profile</string>
     <string name="title_activity_display_recommendations">Relevante Leitlinien</string>

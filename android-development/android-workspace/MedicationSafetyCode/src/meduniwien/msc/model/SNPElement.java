@@ -27,7 +27,6 @@ public class SNPElement implements GenotypeElement {
 		this.snp1 = "null";
 		this.snp2 = "null";
 		if(snpName1!=null && snpName1.length()>0 && snpName2!=null && snpName2.length()>0){
-		//if(snpName1!=null && !snpName1.isEmpty() && snpName2!=null && !snpName2.isEmpty()){
 			if(snpName1.compareTo(snpName2)>0){
 				String snp_aux = snpName2;
 				snpName2 = snpName1;

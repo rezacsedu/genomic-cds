@@ -7,17 +7,14 @@ import meduniwien.msc.exception.BadFormedBase64NumberException;
 import meduniwien.msc.exception.BadFormedBinaryNumberException;
 import meduniwien.msc.exception.VariantDoesNotMatchAnyAllowedVariantException;
 import meduniwien.msc.util.Common;
-import meduniwien.msc.util.OntologyManagement;
 
 /**
- * This class codes and decodes numbers in base 64, that represent genotype profiles, using our own set of chars.
- * 
+ * This class implements the functionality of the coding/decoding module. It is able to represent in base64 number a list of alleles combination associated to a patient's genotype
+ *
  * @author Jose Antonio Miñarro Giménez
  * */
-public class DecodingModule {
+public class CodingModule {
 	
-	private final static char[] BASE_DIGITS = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','-','_'};
-
 	/**
 	 *  It obtains the corresponding 64base number from the a list of alleles.
 	 *  
@@ -25,10 +22,8 @@ public class DecodingModule {
 	 *	@return		The 64base number which represents a patient's genotype based on allele definitions. 
 	 * 	@throws BadFormedBinaryNumberException 
 	 * */
-	public static String codeListGeneticVariations(ArrayList<GenotypeElement> listGenotype) throws BadFormedBinaryNumberException {
-		BigInteger bi = new BigInteger("0");
-		ArrayList<GeneticMarkerGroup> listGeneticMarkerGroup = OntologyManagement.getOntologyManagement().getListGeneticMarkerGroups();
-		
+	public static String codeListGeneticVariations(ArrayList<GeneticMarkerGroup> listGeneticMarkerGroup, ArrayList<GenotypeElement> listGenotype) throws BadFormedBinaryNumberException {
+		BigInteger bi = new BigInteger("0");		
 		for(GeneticMarkerGroup gmg : listGeneticMarkerGroup){
 			BigInteger bi_number_marker_variations = BigInteger.valueOf(gmg.getNumberOfVariants());
 			BigInteger bi_marker_position = BigInteger.ZERO;
@@ -46,7 +41,6 @@ public class DecodingModule {
 	}
 	
 	
-	
 	/**
 	 * It obtains the list of pair of alleles that are related to the given 64base genotype code.
 	 * 
@@ -55,18 +49,12 @@ public class DecodingModule {
 	 * @throws BadFormedBase64NumberException 
 	 * @throws VariantDoesNotMatchAnAllowedVariantException 
 	 * */
-	public static ArrayList<GenotypeElement> decodeListGenotypeVariations(String base64Genotype) throws BadFormedBase64NumberException, VariantDoesNotMatchAnyAllowedVariantException{
-		
-		ArrayList<GeneticMarkerGroup> listGeneticMarkerGroup = OntologyManagement.getOntologyManagement().getListGeneticMarkerGroups();
+	public static ArrayList<GenotypeElement> decodeListGenotypeVariations(ArrayList<GeneticMarkerGroup> listGeneticMarkerGroup, String base64Genotype) throws BadFormedBase64NumberException, VariantDoesNotMatchAnyAllowedVariantException{
 		
 		String binaryGenotype = "";
-		
 		binaryGenotype = convertFrom64To2(base64Genotype);
-		
 		BigInteger bi = new BigInteger(binaryGenotype, 2);
-		
 		ArrayList<GenotypeElement> listGenotypeVariations = new ArrayList<GenotypeElement>();
-		
 		for(int i = listGeneticMarkerGroup.size()-1;i>=0;i--){
 			GeneticMarkerGroup gmg = listGeneticMarkerGroup.get(i);
 			BigInteger bi_number_allele_variations = BigInteger.valueOf(gmg.getNumberOfVariants());
@@ -107,7 +95,7 @@ public class DecodingModule {
 				System.err.print("\nERROR : The number " + num +" is not correctly represented in base " + base2+".\n");
 				throw new BadFormedBinaryNumberException("ERROR : The number " + num +" is not in correctly represented in base " + base2);
 			}
-			notBinaryString+=BASE_DIGITS[numero.intValue()];
+			notBinaryString+=Common.BASE_DIGITS[numero.intValue()];
 		}
 		return notBinaryString;	
 	}
@@ -323,7 +311,6 @@ public class DecodingModule {
 				String listChars = "";
 				for(int k=0;k<Common.BASE_DIGITS.length;k++){
 					if(listChars.length()>0) listChars+=", ";
-					//if(!listChars.isEmpty()) listChars+=", ";
 					listChars+="'"+Common.BASE_DIGITS[k]+"'";
 				}
 				throw new BadFormedBase64NumberException("ERROR : The number " + parameter +" is not in correctly represented in base 64. Use only one of these chars: "+listChars);

@@ -110,8 +110,8 @@ public class DrugRecommendation {
 	 * @param A patient's genotype.
 	 * @return Whether the genotype matches the rule logical description or not.
 	 * */
-	public boolean matchPatientProfile(ArrayList<GenotypeElement> listGenotypeElements){
-		//ArrayList<GenotypeElement> listGenotypeElements = genotype.getListGenotypeElements();
+	public boolean matchPatientProfile(Genotype genotype){
+		ArrayList<GenotypeElement> listGenotypeElements = genotype.getListGenotypeElements();
 		return node.test(listGenotypeElements);
 	}
 	
@@ -177,8 +177,7 @@ public class DrugRecommendation {
 		
 		return (nOpen == nClose);
 	}
-	
-	
+		
 	/**
 	 * It parses the rule logical description to create the corresponding node conditions. i.e. ((A and B ) or C) -> is parsed as: node_1 represents condition "A", node_2 represents condition "B", node_3 represents expression "(node_1 and node_2)", node_4 represents condition "C" and node_5 represents expression "(node_3 or node_4)". For example,a condition could be "has some BRCA1_1"    
 	 * @param nodeExpression	The logical description of the rule o a subsection of the rule
@@ -191,7 +190,6 @@ public class DrugRecommendation {
 		String mainQuality = "";
 		ArrayList<NodeCondition> mainListNodes = null;
 		
-		//while(!nodeExpression.isEmpty()){
 		while(nodeExpression.length()>0){
 			if(nodeExpression.startsWith("has")){
 				String hasType ="";
@@ -222,7 +220,6 @@ public class DrugRecommendation {
 					String listElements = nodeExpression.substring(1,nodeExpression.indexOf(")")).trim();
 					nodeExpression = nodeExpression.substring(nodeExpression.indexOf(")")+1).trim();
 
-					//while(!listElements.isEmpty()){
 					while(listElements.length()>0){
 						if((listElements.startsWith("and")&&hasQuality.equals("or"))||(listElements.startsWith("and")&&hasQuality.equals("or"))){
 							System.out.println("ERROR: and/or inconsistency in has expression condition");
@@ -260,6 +257,7 @@ public class DrugRecommendation {
 						nodeExpression = "";
 					}
 				}
+				
 				NodeCondition node = new NodeCondition();
 				node.setElement(hasElement);
 				node.setQuality(hasQuality);
@@ -339,8 +337,10 @@ public class DrugRecommendation {
 		mainNode.setNumber(mainNumber);
 		mainNode.setQuality(mainQuality);
 		mainNode.setType(mainType);
-		for(NodeCondition subnodes: mainListNodes){
-			mainNode.addNode(subnodes);
+		if(mainListNodes!=null){
+			for(NodeCondition subnodes: mainListNodes){
+				mainNode.addNode(subnodes);
+			}
 		}
 		return mainNode;
 	}
