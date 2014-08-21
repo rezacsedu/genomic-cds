@@ -22,7 +22,7 @@ import org.apache.commons.lang.text.StrSubstitutor;
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
-import safetycode.Genetic_Marker_Group;
+import safetycode.GeneticMarkerGroup;
 import safetycode.MedicineSafetyProfile_v2;
 import utils.Common;
 import utils.StringReader;
@@ -95,9 +95,9 @@ public class SelectedDrugInterpreter extends HttpServlet {
 			};
 					
 			MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path+Common.ONT_NAME);
-			ArrayList<Genetic_Marker_Group> listGroups = myProfile.getGenotypeGroupsRelatedToDrugs(checkboxNamesList);
+			ArrayList<GeneticMarkerGroup> listGroups = myProfile.getGenotypeGroupsRelatedToDrugs(checkboxNamesList);
 			HashMap<String,ArrayList<String>> map_genotype = new HashMap<String,ArrayList<String>>(); 
-			for(Genetic_Marker_Group gmg: listGroups){
+			for(GeneticMarkerGroup gmg: listGroups){
 				HashSet<String> listUniqueElements = new HashSet<String>(); 
 				ArrayList<String> listElements = gmg.getListElements();
 				for(String element: listElements){

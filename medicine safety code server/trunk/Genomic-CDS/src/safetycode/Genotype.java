@@ -20,10 +20,13 @@ import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 import utils.OntologyManagement;
 import eu.trowl.owlapi3.rel.reasoner.dl.RELReasoner;
 import eu.trowl.owlapi3.rel.reasoner.dl.RELReasonerFactory;
-import exception.VariantDoesNotMatchAnAllowedVariantException;
+import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
 
-/**It represents the genotype of a patient. It can be represented as a set of SNPs or a set of Alleles and SNPs*/
+/**It represents the genotype of a patient. It can be represented as a set of SNPs or a set of Alleles and SNPs.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * */
 public class Genotype {
 	
 	/**List of SNP gathered from genotype files in the formats 23andMe or VCF.*/
@@ -32,8 +35,8 @@ public class Genotype {
 	private ArrayList<GenotypeElement> listGenotypeElements = null;
 	
 	/**Construct the patient's genotype with the information of SNPs and infer the corresponding alleles.
-	 * @throws VariantDoesNotMatchAnAllowedVariantException */	
-	public Genotype(ArrayList<SNPElement> listSNPs,OntologyManagement om) throws VariantDoesNotMatchAnAllowedVariantException{
+	 * @throws VariantDoesNotMatchAnyAllowedVariantException */	
+	public Genotype(ArrayList<SNPElement> listSNPs,OntologyManagement om) throws VariantDoesNotMatchAnyAllowedVariantException{
 		this.listSNPs = listSNPs;
 		inferGenotypeElements(om);
 	}
@@ -72,9 +75,9 @@ public class Genotype {
 	/**Method to infer the alleles associated to a patient's genotype based on its SNP variants.
 	 * 
 	 * @param om	OntologyManagement singleton instance that provides the ontology information to infer the genotype elements related to patient's genotype.
-	 * @throws VariantDoesNotMatchAnAllowedVariantException 
+	 * @throws VariantDoesNotMatchAnyAllowedVariantException 
 	 * */
-	private void inferGenotypeElements(OntologyManagement om) throws VariantDoesNotMatchAnAllowedVariantException{
+	private void inferGenotypeElements(OntologyManagement om) throws VariantDoesNotMatchAnyAllowedVariantException{
 		
 		OWLOntologyManager reasoner_manager = om.getNewOntologyManager();
 		OWLOntology reasoner_ontology		= reasoner_manager.getOntologies().iterator().next();
@@ -157,34 +160,6 @@ public class Genotype {
 	}
 	
 	/**
-	 * Initialize the patient's genotype based on the list of inferred SNPs and Allele variants.
-	 * 
-	 * @param reasoner_manager	New ontology manager instance with no patient data included.
-	 * @param patient			The new instance of the patient to be included in the ontology.
-	 * */
-	/*
-	private void initializeGenotypeProfile(OWLOntologyManager reasoner_manager, OWLNamedIndividual patient){
-		OWLOntology reasoner_ontology = reasoner_manager.getOntologies().iterator().next();
-		OWLDataFactory factory = reasoner_manager.getOWLDataFactory();
-		
-		if(listGenotypeElements!=null && (!listGenotypeElements.isEmpty())){
-			for(GenotypeElement ge: listGenotypeElements){
-				ArrayList<String> listURIs = ge.getOntologyClassURIs();
-				for(String nameClassVariant : listURIs){
-					OWLClass matchedVariantClass = factory.getOWLClass(IRI.create(nameClassVariant));
-					if(matchedVariantClass!=null){
-						OWLClassAssertionAxiom classAssertion = factory.getOWLClassAssertionAxiom(matchedVariantClass,patient);
-		        		reasoner_manager.addAxiom(reasoner_ontology,classAssertion);
-					}else{
-						System.out.println("ERROR: We could not add the genotype variant "+ge.getCriteriaSyntax()+" to the patient");
-					}
-				}
-			}
-		}		
-	}
-	*/
-	
-	/**
 	 * Create the patient instance in the model.
 	 * @return The individual that represents the patient's profile.
 	 * */
@@ -245,8 +220,13 @@ public class Genotype {
 		}
 	}
 		
-	// It transforms ids in order to be used in an ontology URI.
-	private String make_valid(String label){
+	/** 
+	 * It transforms ids in order to be used in an ontology URI.
+	 * 
+	 * @param label		The string with replaced special chars such as '*', '#', and without spaces.
+	 * @return 			The string with the original format.
+	 */
+	public String make_valid(String label){
 		String valid_label = label.replace("*","star_");
 		valid_label = valid_label.replace("#","_hash");
 		valid_label = valid_label.replaceAll("[\\[\\]()\\s/:;]","_");
@@ -260,7 +240,9 @@ public class Genotype {
 		return valid_label;
 	}
 
-	
+	/**
+	 * Overrides the toString method to show how the rule was parsed.
+	 * */
 	public String toString(){
 		String desc="";
 		for(GenotypeElement ge: listGenotypeElements){
@@ -272,6 +254,12 @@ public class Genotype {
 		return desc;
 	}
 	
+	/**
+	 * Modify the variant related to a particular genotype marker.
+	 * 
+	 * @param genotypeName		The name or id of the corresponding genotype marker group to be modified.
+	 * @param genotypeVariant	The criteria syntax of the new variant element. 
+	 * */
 	public void modifyGenotypeElement(String genotypeName,String genotypeVariant){
 		if(listGenotypeElements!=null){
 			for(GenotypeElement ge: listGenotypeElements){

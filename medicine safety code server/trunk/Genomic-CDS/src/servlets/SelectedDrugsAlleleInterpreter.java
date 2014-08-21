@@ -23,7 +23,7 @@ import net.sf.ehcache.Element;
 import org.apache.commons.lang.text.StrSubstitutor;
 
 import safetycode.DrugRecommendation;
-import safetycode.Genetic_Marker_Group;
+import safetycode.GeneticMarkerGroup;
 import safetycode.Genotype;
 import safetycode.GenotypeElement;
 import safetycode.MedicineSafetyProfile_v2;
@@ -59,11 +59,11 @@ public class SelectedDrugsAlleleInterpreter extends HttpServlet {
 		path=path.replaceAll("\\\\", "/");
 		
 		MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path+Common.ONT_NAME);
-		ArrayList<Genetic_Marker_Group> listGroups = myProfile.getListGenotypeGroups();
+		ArrayList<GeneticMarkerGroup> listGroups = myProfile.getListGenotypeGroups();
 		String selection=listdrugs+"";
 		
 		ArrayList<GenotypeElement> listGenotypeElements = new ArrayList<GenotypeElement>();
-		for(Genetic_Marker_Group gmg: listGroups){
+		for(GeneticMarkerGroup gmg: listGroups){
 			String criteriaSyntax="null;null";
 			String variant1=request.getParameter(gmg.getGeneticMarkerName()+"-0");
 			String variant2=request.getParameter(gmg.getGeneticMarkerName()+"-1");

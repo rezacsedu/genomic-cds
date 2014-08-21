@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import utils.Common;
 
-import exception.VariantDoesNotMatchAnAllowedVariantException;
+import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
-public class SNPsGroup implements Genetic_Marker_Group {
+public class SNPsGroup implements GeneticMarkerGroup {
 
 	/**rsid of the set of allele definitions*/
 	private String				rsid;
@@ -73,11 +73,6 @@ public class SNPsGroup implements Genetic_Marker_Group {
 			}
 		}
 		return "null;null";
-		
-		/*if(position < listSNPs.size() && position >= 0){
-			return listSNPs.get(position);
-		}
-		return null;*/
 	}
 
 	/**
@@ -103,14 +98,6 @@ public class SNPsGroup implements Genetic_Marker_Group {
 			position = pos1*n+pos2+1-((pos1*(pos1+1))/2);
 		}
 		return position;
-			
-		/*
-		for(int position = 0; position < listSNPs.size(); position++){
-			if(listSNPs.get(position).equalsIgnoreCase(criteriaSyntax)){
-				return position;
-			}
-		}
-		return -1;*/
 	}
 	
 	/**
@@ -129,16 +116,15 @@ public class SNPsGroup implements Genetic_Marker_Group {
 	 * */
 	public int getNumberOfVariants() {
 		return Common.get_kCombinations(listSNPs.size(), 2)+1;
-		//return listSNPs.size();
 	}
 
 	/**
 	 * Implements the compareTo method to sort the groups based on their rank number.
 	 * 
-	 * @param gmg	It represents an instance of Genetic_Marker_Group.
+	 * @param gmg	It represents an instance of GeneticMarkerGroup.
 	 * @return		It returns a negative integer if its rank is lower than the rank of gmg, positive integer if its rank is greater than the rank of gmg, and 0 if the ranks are the same. 
 	 * */
-	public int compareTo(Genetic_Marker_Group gmg) {
+	public int compareTo(GeneticMarkerGroup gmg) {
 		return (rank - gmg.getRank());
 	}
 
@@ -170,16 +156,6 @@ public class SNPsGroup implements Genetic_Marker_Group {
 	 * @return	List of all combinations from the set of SNPs in alphabetical order.
 	 * */
 	private ArrayList<String> getSNPCombinationList(ArrayList<String> listSNPs){
-		/*ArrayList<String> listCombinations = new ArrayList<String>();
-		Collections.sort(listSNPs);
-		for(int i=0;i<listSNPs.size();i++){
-			for(int j=i;j<listSNPs.size();j++){
-				listCombinations.add(listSNPs.get(i)+";"+listSNPs.get(j));
-			}
-		}
-		listCombinations.add(0,"null;null");
-		return listCombinations;*/
-		
 		
 		ArrayList<String> listCombinations = new ArrayList<String>();
 		if(listSNPs!=null){
@@ -236,7 +212,6 @@ public class SNPsGroup implements Genetic_Marker_Group {
 		}
 		
 		return (getPositionGeneticMarker(variant1+";"+variant2)>=0);
-		//return 	(listSNPs.contains(variant1+";"+variant2));
 	}
 
 	/**
@@ -245,14 +220,11 @@ public class SNPsGroup implements Genetic_Marker_Group {
 	 * @param position	The position of the combination in the set of 2-multicombination.
 	 * @return The SNP element associated to the position in the group.
 	 * */
-	public SNPElement getGenotypeElement(int position)  throws VariantDoesNotMatchAnAllowedVariantException{
-		/*if(listSNPs.size()>position && position >=0){
-			return new SNPElement(rsid,listSNPs.get(position));
-		}*/
+	public SNPElement getGenotypeElement(int position)  throws VariantDoesNotMatchAnyAllowedVariantException{
 		if(position<getNumberOfVariants() && position >=0){
 			return new SNPElement(rsid,getGeneticMarkerVariantName(position));
 		}
-		throw new VariantDoesNotMatchAnAllowedVariantException("The variant in position "+position+" does not exist. Please use other position in [0,"+(listSNPs.size()-1)+"]");
+		throw new VariantDoesNotMatchAnyAllowedVariantException("The variant in position "+position+" does not exist. Please use other position in [0,"+(listSNPs.size()-1)+"]");
 	}
 	
 	/**

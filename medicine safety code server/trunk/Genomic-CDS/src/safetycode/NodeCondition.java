@@ -2,13 +2,24 @@ package safetycode;
 
 import java.util.ArrayList;
 
+/**
+ * Represents the node of a logical expression. It could be connected to other subnodes.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * */
 public class NodeCondition {
+	/** List of sub node conditions of this node.*/
 	private ArrayList<NodeCondition> listConditions;
+	/** The genotype element (SNP or haplotype) variant. */
 	private String element;//GenotypeElement
+	/** The type of relation between the subnodes represented in listConditions.*/
 	private String quality;//and, or
+	/** The type of condition of the element variant.*/
 	private String type;//some, exactly 
+	/** The cardinality restriction when using exactly, min or max.*/
 	private int number;
 	
+	/** Creates an empty node condition.*/
 	public NodeCondition(){
 		listConditions=null;
 		element = "";
@@ -17,11 +28,17 @@ public class NodeCondition {
 		number=-1;
 	}
 	
+	/**
+	 * Check if the list of genetic elements match the conditions represented in the node. It has special situation when label "duplicated" appears, it counts as 2 genetic elements of a kind. 
+	 * @param listElements	List of genetic elements in a genotype.
+	 * @return	Whether the list of genetic elements matches the logical description of the node. 
+	 * */
 	public boolean test(ArrayList<GenotypeElement> listElements){
 		if(!type.isEmpty()){
 			if(type.equals("some")){
 				if(!element.isEmpty()){
 					for(GenotypeElement ge : listElements){
+						if(!element.contains(ge.getGeneticMarkerName())) continue;
 						String variant1 = ge.getGeneticMarkerName()+"_"+ge.getVariant1();
 						
 						if(variant1.contains("duplicated_")){//When the variant contains a copy number of the genotype variation. We just need to check that there is one.
@@ -56,6 +73,7 @@ public class NodeCondition {
 								if(!condition.getElement().isEmpty()){
 									String nodeElement = condition.getElement();
 									for(GenotypeElement ge : listElements){
+										if(!nodeElement.contains(ge.getGeneticMarkerName())) continue;
 										String variant1 = ge.getGeneticMarkerName()+"_"+ge.getVariant1();
 										if(variant1.contains("duplicated_")){//When the variant contains a copy number of the genotype variation. We just need to check that there is one.
 											variant1 = variant1.replace("duplicated_", "");
@@ -88,6 +106,7 @@ public class NodeCondition {
 								if(!condition.getElement().isEmpty()){
 									String nodeElement = condition.getElement();
 									for(GenotypeElement ge : listElements){
+										if(!nodeElement.contains(ge.getGeneticMarkerName())) continue;
 										String variant1 = ge.getGeneticMarkerName()+"_"+ge.getVariant1();
 										if(variant1.contains("duplicated_")){
 											variant1 = variant1.replace("duplicated_", "");
@@ -128,6 +147,7 @@ public class NodeCondition {
 								if(!condition.getElement().isEmpty()){
 									String nodeElement = condition.getElement();
 									for(GenotypeElement ge : listElements){
+										if(!nodeElement.contains(ge.getGeneticMarkerName())) continue;
 										String variant1 = ge.getGeneticMarkerName()+"_"+ge.getVariant1();
 										if(variant1.contains("duplicated_")){
 											variant1 = variant1.replace("duplicated_", "");
@@ -162,6 +182,7 @@ public class NodeCondition {
 									String nodeElement = condition.getElement();
 									int nMatches = 0;
 									for(GenotypeElement ge : listElements){
+										if(!nodeElement.contains(ge.getGeneticMarkerName())) continue;
 										String variant1 = ge.getGeneticMarkerName()+"_"+ge.getVariant1();
 										if(variant1.contains("duplicated_")){
 											variant1 = variant1.replace("duplicated_", "");
@@ -199,6 +220,7 @@ public class NodeCondition {
 					if(!element.isEmpty()){
 						int nMatches = 0;
 						for(GenotypeElement ge : listElements){
+							if(!element.contains(ge.getGeneticMarkerName())) continue;
 							String variant1 = ge.getGeneticMarkerName()+"_"+ge.getVariant1();
 							if(variant1.contains("duplicated_")){
 								variant1 = variant1.replace("duplicated_", "");
@@ -238,6 +260,7 @@ public class NodeCondition {
 								if(!condition.getElement().isEmpty()){
 									String nodeElement = condition.getElement();
 									for(GenotypeElement ge : listElements){
+										if(!nodeElement.contains(ge.getGeneticMarkerName())) continue;
 										String variant1 = ge.getGeneticMarkerName()+"_"+ge.getVariant1();
 										if(variant1.contains("duplicated_")){
 											variant1 = variant1.replace("duplicated_", "");
@@ -272,6 +295,7 @@ public class NodeCondition {
 									String nodeElement = condition.getElement();
 									int nMatches = 0;
 									for(GenotypeElement ge : listElements){
+										if(!nodeElement.contains(ge.getGeneticMarkerName())) continue;
 										String variant1 = ge.getGeneticMarkerName()+"_"+ge.getVariant1();
 										if(variant1.contains("duplicated_")){
 											variant1 = variant1.replace("duplicated_", "");
@@ -307,6 +331,7 @@ public class NodeCondition {
 					if(!element.isEmpty()){
 						int nMatches = 0;
 						for(GenotypeElement ge : listElements){
+							if(!element.contains(ge.getGeneticMarkerName())) continue;
 							String variant1 = ge.getGeneticMarkerName()+"_"+ge.getVariant1();
 							if(variant1.contains("duplicated_")){
 								variant1 = variant1.replace("duplicated_", "");
@@ -361,36 +386,12 @@ public class NodeCondition {
 		}
 		
 		System.out.println("ERROR: Nothing was matched->"+toString());
-		/*if(listConditions == null){
-			System.out.println("listConditions is null");
-		}else{
-			if(listConditions.isEmpty()){
-				System.out.println("listConditions is Empty");
-			}else{
-				System.out.println("listConditions has size = "+listConditions.size());
-			}
-		}
-		System.out.println("element="+element);
-		System.out.println("quality="+quality);
-		System.out.println("type="+type);
-		System.out.println("number="+number);*/
-		
+				
 		return false;
 	}
 	
-		
-	public void optimized(){
-		if(type.isEmpty()&&quality.isEmpty()&&listConditions!=null&&listConditions.size()==1){
-			NodeCondition aux = listConditions.get(0);
-			this.element = aux.getElement();
-			this.number = aux.getNumber();
-			this.quality = aux.getQuality();
-			this.type = aux.getType();
-			this.listConditions = aux.getListNodeConditions();
-		}
-	}
-	
-	
+	/** It add a new node to the list of sub node conditions.
+	 * @param node	The node to be added.*/
 	public void addNode(NodeCondition node){
 		if(listConditions==null){
 			listConditions = new ArrayList<NodeCondition>();
@@ -400,26 +401,49 @@ public class NodeCondition {
 		}
 	}
 	
+	/**
+	 * Get method that returns the list of sub node conditions.
+	 * @return The list of sub node conditions.
+	 * */
 	public ArrayList<NodeCondition> getListNodeConditions(){
 		return listConditions;
 	}
-		
+	
+	/**
+	 * Get method that retrieves the type of logical expression related to the sub nodes. It could be 'and' or 'or'.
+	 * @return The type of logical expression (AND or OR).*/
 	public String getQuality(){
 		return quality;
 	}
 	
+	/**
+	 * Set method that indicates the type of logical expression related to the sub nodes.
+	 * @param quality	The type of logical expression (AND, OR). 
+	 * */
 	public void setQuality(String quality){
 		this.quality = quality;
 	}
 	
+	/**
+	 * Set method that indicates the type of condition of the genotype element.
+	 * @param The type of condition (some, exactly, min, max). 
+	 * */
 	public void setType(String type){
 		this.type = type;
 	}
 	
+	/**
+	 * Get method that returns the type of condition of the genotype element.
+	 * @return	The type of condition of the genotype element.
+	 * */
 	public String getType(){
 		return type;
 	}
 	
+	/** 
+	 * Set method that indicates the cardinality restriction of the type of condition when using exactly, min or max.
+	 * @param number	The cardinality restriction value.
+	 * */
 	public void setNumber(String number){
 		if(number!=null && !number.isEmpty()){
 			try{
@@ -430,18 +454,31 @@ public class NodeCondition {
 		}
 	}
 	
+	/** 
+	 * Get method that retrieves the cardinality value of the type of condition.
+	 * @return	The cardinality value.
+	 * */
 	public int getNumber(){
 		return number;
 	}
 	
+	/** 
+	 * Set method that stores the genotype element related to the node.
+	 * @param element	The genotype element of the node condition.
+	 * */
 	public void setElement(String element){
 		this.element = element;
 	}
 	
+	/**
+	 * Get method that returns the genotype element related to the node condition.
+	 * @return	The genotype element related to the node.
+	 * */
 	public String getElement(){
 		return element;
 	}
 	
+	/**Overrides the toString() method to show the logical description represented by the node condition.*/
 	public String toString(){
 		String desc = "";
 		if(!quality.isEmpty() && !type.isEmpty() && listConditions!=null && !listConditions.isEmpty()){

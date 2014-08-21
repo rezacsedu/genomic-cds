@@ -10,7 +10,7 @@ import exception.BadFormedBase64NumberException;
 import exception.BadFormedBinaryNumberException;
 import exception.NotInitializedPatientsGenomicDataException;
 import exception.NotPatientGenomicFileParsedException;
-import exception.VariantDoesNotMatchAnAllowedVariantException;
+import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
 import safetycode.DrugRecommendation;
 import safetycode.FileParserFactory;
@@ -55,7 +55,7 @@ public class prueba {
 			//		System.out.println("\t"+dr.getRuleId());
 			//	}
 			//}
-		//} catch (VariantDoesNotMatchAnAllowedVariantException e1) {
+		//} catch (VariantDoesNotMatchAnyAllowedVariantException e1) {
 		//	e1.printStackTrace();
 		//} catch (NotPatientGenomicFileParsedException e) {
 		//	e.printStackTrace();
@@ -95,7 +95,7 @@ public class prueba {
 			e.printStackTrace();
 		} catch (BadFormedBinaryNumberException e) {
 			e.printStackTrace();
-		} catch (VariantDoesNotMatchAnAllowedVariantException e) {
+		} catch (VariantDoesNotMatchAnyAllowedVariantException e) {
 			e.printStackTrace();
 		}*/
 		

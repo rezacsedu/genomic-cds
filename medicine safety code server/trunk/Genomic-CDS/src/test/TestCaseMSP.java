@@ -10,7 +10,7 @@ import org.junit.Test;
 
 import exception.BadFormedBase64NumberException;
 import exception.NotInitializedPatientsGenomicDataException;
-import exception.VariantDoesNotMatchAnAllowedVariantException;
+import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
 import safetycode.DrugRecommendation;
 import safetycode.Genotype;
@@ -34,7 +34,7 @@ public class TestCaseMSP {
 	}
 	
 	@Test
-	public void testreadBase64ProfileString() throws VariantDoesNotMatchAnAllowedVariantException, BadFormedBase64NumberException, NotInitializedPatientsGenomicDataException{
+	public void testreadBase64ProfileString() throws VariantDoesNotMatchAnyAllowedVariantException, BadFormedBase64NumberException, NotInitializedPatientsGenomicDataException{
 		String base64Profile = "3O5gjSl1S-Az6GSmcClFaszmPTW7B-Yuv";
 		msp2.readBase64ProfileString(base64Profile);
 		Genotype genotype = msp2.getGenotype();
@@ -46,7 +46,7 @@ public class TestCaseMSP {
 	
 	
 	@Test
-	public void testobtainDrugRecommendations() throws VariantDoesNotMatchAnAllowedVariantException, BadFormedBase64NumberException, NotInitializedPatientsGenomicDataException{
+	public void testobtainDrugRecommendations() throws VariantDoesNotMatchAnyAllowedVariantException, BadFormedBase64NumberException, NotInitializedPatientsGenomicDataException{
 		String base64Profile = "3O5gjSl1S-Az6GSmcClFaszmPTW7B-Yuv";
 		msp2.readBase64ProfileString(base64Profile);
 		HashMap<String, ArrayList<DrugRecommendation>> listRecommendations = msp2.obtainDrugRecommendations();

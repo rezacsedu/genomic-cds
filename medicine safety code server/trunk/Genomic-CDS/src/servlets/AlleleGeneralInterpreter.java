@@ -19,13 +19,13 @@ import org.apache.commons.lang.text.StrSubstitutor;
 
 import exception.BadFormedBinaryNumberException;
 import exception.NotPatientGenomicFileParsedException;
-import exception.VariantDoesNotMatchAnAllowedVariantException;
+import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
 import net.sf.ehcache.Element;
 
-import safetycode.Genetic_Marker_Group;
+import safetycode.GeneticMarkerGroup;
 import safetycode.Genotype;
 import safetycode.GenotypeElement;
 import safetycode.MedicineSafetyProfile_v2;
@@ -57,9 +57,9 @@ public class AlleleGeneralInterpreter extends HttpServlet {
 		StringBuffer contentHTML = new StringBuffer("");
 		
 		MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path+Common.ONT_NAME);
-		ArrayList<Genetic_Marker_Group> listGroups = myProfile.getListGenotypeGroups();
+		ArrayList<GeneticMarkerGroup> listGroups = myProfile.getListGenotypeGroups();
 		String selection="";
-		for(Genetic_Marker_Group gmg: listGroups){
+		for(GeneticMarkerGroup gmg: listGroups){
 			if(!selection.isEmpty()) selection+=",";
 			selection+=request.getParameter(gmg.getGeneticMarkerName()+"-0")+";"+request.getParameter(gmg.getGeneticMarkerName()+"-1");			
 		}
@@ -84,7 +84,7 @@ public class AlleleGeneralInterpreter extends HttpServlet {
 			}
 		}else{
 			ArrayList<GenotypeElement> listGenotypeElements = new ArrayList<GenotypeElement>();
-			for(Genetic_Marker_Group gmg: listGroups){
+			for(GeneticMarkerGroup gmg: listGroups){
 				String variant1=request.getParameter(gmg.getGeneticMarkerName()+"-0");
 				String variant2=request.getParameter(gmg.getGeneticMarkerName()+"-1");
 				
@@ -107,7 +107,7 @@ public class AlleleGeneralInterpreter extends HttpServlet {
 					}else{
 						listGenotypeElements.add(gmg.getGenotypeElement(0));
 					}
-				} catch (VariantDoesNotMatchAnAllowedVariantException e) {
+				} catch (VariantDoesNotMatchAnyAllowedVariantException e) {
 					e.printStackTrace();
 				}			
 			}

@@ -9,7 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import exception.VariantDoesNotMatchAnAllowedVariantException;
+import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
 import safetycode.FileParserFactory;
 import safetycode.MedicineSafetyProfile_v2;
@@ -72,7 +72,7 @@ public class CoordinateExecution {
 					bw.write(resultsData+"\n");
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
-				} catch (VariantDoesNotMatchAnAllowedVariantException e) {
+				} catch (VariantDoesNotMatchAnyAllowedVariantException e) {
 					e.printStackTrace();
 				}
 			}

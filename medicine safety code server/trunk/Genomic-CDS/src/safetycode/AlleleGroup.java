@@ -5,12 +5,14 @@ import java.util.Collections;
 
 import utils.Common;
 
-import exception.VariantDoesNotMatchAnAllowedVariantException;
+import exception.VariantDoesNotMatchAnyAllowedVariantException;
+
 /**
- * This class represents the group of all allele combinations associated to a particular gene.
+ * 	This class represents the set of haplotype variants related to one gene. 
  * 
+ * @author Jose Antonio Miñarro Giménez
  * */
-public class AlleleGroup implements Genetic_Marker_Group{
+public class AlleleGroup implements GeneticMarkerGroup{
 	
 	/**Gene name of the set of allele definitions*/
 	private String				geneName;
@@ -50,7 +52,6 @@ public class AlleleGroup implements Genetic_Marker_Group{
 	 * */
 	public int getNumberOfVariants(){
 		return Common.get_kCombinations(listAlleles.size(), 2)+1;
-		//return listAlleles.size();
 	}
 	
 	/**
@@ -60,26 +61,7 @@ public class AlleleGroup implements Genetic_Marker_Group{
 	 *  @return		The position of the combination in the set of allele 2-multicombination.
 	 * */
 	public int getPositionGeneticMarker(String criteriaSyntax){
-		/*for(int position = 0; position < listAlleles.size(); position++){
-			if(listAlleles.get(position).equalsIgnoreCase(criteriaSyntax)){
-				return position;
-			}
-		}
-		System.out.println("Error with "+criteriaSyntax);
-		String[] tokens = criteriaSyntax.split(";");
-		criteriaSyntax = tokens[1]+";"+tokens[0];
-		for(int position = 0; position < listAlleles.size(); position++){
-			if(listAlleles.get(position).equalsIgnoreCase(criteriaSyntax)){
-				return position;
-			}
-		}
-		
-		System.out.println("Error with inverse "+criteriaSyntax);
-		for(int i=0;i<listAlleles.size();i++){
-			System.out.println("["+i+"]->"+listAlleles.get(i));
-		}
-		return -1;*/
-		
+				
 		if(criteriaSyntax.contains("null")) return 0;
 		int position = -1;
 		int n = listAlleles.size();//list n variants in the groups.
@@ -123,11 +105,6 @@ public class AlleleGroup implements Genetic_Marker_Group{
 			}
 		}
 		return "null;null";
-		
-		/*if(position < listAlleles.size() && position >= 0){
-			return listAlleles.get(position);
-		}
-		return null;*/
 	}
 	
 	/**
@@ -166,15 +143,7 @@ public class AlleleGroup implements Genetic_Marker_Group{
 	 * @return		List of all combinations from the set of alleles in alphabetical order.
 	 * */
 	private ArrayList<String> getAlleleCombinationList(ArrayList<String> listAlleles){
-		/*ArrayList<String> listCombinations = new ArrayList<String>();
-		Collections.sort(listAlleles);
-		for(int i=0;i<listAlleles.size();i++){
-			for(int j=i;j<listAlleles.size();j++){
-				listCombinations.add(listAlleles.get(i)+";"+listAlleles.get(j));
-			}
-		}
-		listCombinations.add(0,"null;null");
-		return listCombinations;*/
+		
 		ArrayList<String> listCombinations = new ArrayList<String>();
 		if(listAlleles!=null){
 			listCombinations.addAll(listAlleles);
@@ -189,7 +158,7 @@ public class AlleleGroup implements Genetic_Marker_Group{
 	 * @param gmg	It represents an instance of AlleleGroup class.
 	 * @return		It returns a negative integer if its rank is lower than the rank of gmg, positive integer if its rank is greater than the rank of gmg, and 0 if the ranks are the same. 
 	 * */
-	public int compareTo(Genetic_Marker_Group gmg) {
+	public int compareTo(GeneticMarkerGroup gmg) {
 		return (rank - gmg.getRank());
 	}
 	
@@ -215,14 +184,12 @@ public class AlleleGroup implements Genetic_Marker_Group{
 	 * @param position	The position of the combination in the set of 2-multicombination.
 	 * @return The allele element associated to the position in the group.
 	 * */
-	public AlleleElement getGenotypeElement(int position) throws VariantDoesNotMatchAnAllowedVariantException{
-		/*if(listAlleles.size()>position && position>=0){
-			return new AlleleElement(geneName,listAlleles.get(position));
-		}*/
+	public AlleleElement getGenotypeElement(int position) throws VariantDoesNotMatchAnyAllowedVariantException{
+		
 		if(position<getNumberOfVariants() && position >= 0){
 			return new AlleleElement(geneName,getGeneticMarkerVariantName(position));			
 		}
 		
-		throw new VariantDoesNotMatchAnAllowedVariantException("The variant in position "+position+" does not exist. Please use other position in [0,"+(listAlleles.size()-1)+"]");
+		throw new VariantDoesNotMatchAnyAllowedVariantException("The variant in position "+position+" does not exist. Please use other position in [0,"+(listAlleles.size()-1)+"]");
 	}
 }

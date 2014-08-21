@@ -7,7 +7,7 @@ import exception.BadFormedBase64NumberException;
 import exception.BadFormedBinaryNumberException;
 import exception.NotInitializedPatientsGenomicDataException;
 import exception.NotPatientGenomicFileParsedException;
-import exception.VariantDoesNotMatchAnAllowedVariantException;
+import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
 import utils.Common;
 import utils.OntologyManagement;
@@ -17,7 +17,7 @@ public class MedicineSafetyProfile_v2 {
 	/** Singleton instance of the OntologyManagement class which contains the base ontological model. */
 	private OntologyManagement om 		= null;
 	private Genotype patientGenotype	= null;
-	private Coding_module cod_mod		= null;
+	//private CodingModule cod_mod		= null;
 	/**
 	 * Constructor of the class. It initializes the model of the pharmacogenomics dataset.
 	 * 
@@ -43,13 +43,13 @@ public class MedicineSafetyProfile_v2 {
 		try {
 			listGenotypeElements = om.getDefaultGenotypeElement();
 			patientGenotype = new Genotype (listGenotypeElements);
-		} catch (VariantDoesNotMatchAnAllowedVariantException e) {
+		} catch (VariantDoesNotMatchAnyAllowedVariantException e) {
 			e.printStackTrace();
 		}
 		
 	}
 	
-	public ArrayList<Genetic_Marker_Group> getListGenotypeGroups(){
+	public ArrayList<GeneticMarkerGroup> getListGenotypeGroups(){
 		return om.getListGeneticMarkerGroups();
 	}
 	
@@ -61,7 +61,7 @@ public class MedicineSafetyProfile_v2 {
 		if(genotype==null){
 			try {
 				this.patientGenotype = new Genotype(om.getListGenotypeElements());
-			} catch (VariantDoesNotMatchAnAllowedVariantException e) {
+			} catch (VariantDoesNotMatchAnyAllowedVariantException e) {
 				e.printStackTrace();
 			}
 		}else{
@@ -91,9 +91,9 @@ public class MedicineSafetyProfile_v2 {
 	 * @param strandOrientationOfInputData	The orientation of the input strand to parse.
 	 * @param typeFileFormat				The type of file format that is used by the input file.
 	 * @return	The processing report of the input file.
-	 * @throws VariantDoesNotMatchAnAllowedVariantException 
+	 * @throws VariantDoesNotMatchAnyAllowedVariantException 
 	 * */
-	public String parseFileStream(InputStream fileStream, String strandOrientationOfInputData, int typeFileFormat) throws VariantDoesNotMatchAnAllowedVariantException{
+	public String parseFileStream(InputStream fileStream, String strandOrientationOfInputData, int typeFileFormat) throws VariantDoesNotMatchAnyAllowedVariantException{
 		
 		FileParser fp= FileParserFactory.getFileParser(typeFileFormat, om);
 		String report = fp.parse(fileStream, strandOrientationOfInputData);
@@ -110,9 +110,9 @@ public class MedicineSafetyProfile_v2 {
 	 * @param fileStream					The input file to parse.
 	 * @param typeFileFormat				The type of file format that is used by the input file.
 	 * @return	The processing report of the input file.
-	 * @throws VariantDoesNotMatchAnAllowedVariantException 
+	 * @throws VariantDoesNotMatchAnyAllowedVariantException 
 	 * */
-	public String parseFileStream(InputStream fileStream, int typeFileFormat) throws VariantDoesNotMatchAnAllowedVariantException{
+	public String parseFileStream(InputStream fileStream, int typeFileFormat) throws VariantDoesNotMatchAnyAllowedVariantException{
 		
 		FileParser fp= FileParserFactory.getFileParser(typeFileFormat, om);
 		String report = fp.parse(fileStream, Common.FORWARD_ORIENTATION);
@@ -134,11 +134,11 @@ public class MedicineSafetyProfile_v2 {
 		if (patientGenotype==null){
 			throw new NotPatientGenomicFileParsedException("ERROR: No patient's genomic data has been processed yet!");
 		}
-		if(cod_mod==null){
-			cod_mod = new Coding_module(om.getListGeneticMarkerGroups());
-		}
+		/*if(cod_mod==null){
+			cod_mod = new CodingModule(om.getListGeneticMarkerGroups());
+		}*/
 		
-		return cod_mod.codeListGeneticVariations(patientGenotype.getListGenotypeElements());
+		return CodingModule.codeListGeneticVariations(om.getListGeneticMarkerGroups(),patientGenotype.getListGenotypeElements());
 	}
 	
 	
@@ -147,13 +147,13 @@ public class MedicineSafetyProfile_v2 {
 	 * 
 	 * @param base64Profile Base 64 number that represent the binary codification of a patient genotype.
 	 * @throws BadFormedBase64NumberException
-	 * @throws VariantDoesNotMatchAnAllowedVariantException 
+	 * @throws VariantDoesNotMatchAnyAllowedVariantException 
 	 * */
-	public void readBase64ProfileString(String base64Profile) throws BadFormedBase64NumberException, VariantDoesNotMatchAnAllowedVariantException {
-		if(cod_mod==null){
-			cod_mod = new Coding_module(om.getListGeneticMarkerGroups());
-		}
-		ArrayList<GenotypeElement> listGenotypeElements = cod_mod.decodeListGenotypeVariations(base64Profile);
+	public void readBase64ProfileString(String base64Profile) throws BadFormedBase64NumberException, VariantDoesNotMatchAnyAllowedVariantException {
+		/*if(cod_mod==null){
+			cod_mod = new CodingModule(om.getListGeneticMarkerGroups());
+		}*/
+		ArrayList<GenotypeElement> listGenotypeElements = CodingModule.decodeListGenotypeVariations(om.getListGeneticMarkerGroups(), base64Profile);
 		if(patientGenotype==null){
 			patientGenotype = new Genotype(listGenotypeElements);
 		}else{
@@ -195,10 +195,10 @@ public class MedicineSafetyProfile_v2 {
 	 * @param listDrugs		List of drug terms which will be used to find their related genetic markers.
 	 * @return				List of genetic markers related to the provided list of drugs.
 	 * */
-	public ArrayList<Genetic_Marker_Group> getGenotypeGroupsRelatedToDrugs(String[] listDrugs){
-		ArrayList<Genetic_Marker_Group> display_groups = new ArrayList<Genetic_Marker_Group>();
-		ArrayList<Genetic_Marker_Group> list_groups = om.getListGeneticMarkerGroups();
-		for(Genetic_Marker_Group gmg: list_groups){
+	public ArrayList<GeneticMarkerGroup> getGenotypeGroupsRelatedToDrugs(String[] listDrugs){
+		ArrayList<GeneticMarkerGroup> display_groups = new ArrayList<GeneticMarkerGroup>();
+		ArrayList<GeneticMarkerGroup> list_groups = om.getListGeneticMarkerGroups();
+		for(GeneticMarkerGroup gmg: list_groups){
 			ArrayList<DrugRecommendation> list_recommendations = om.getListDrugRecommendation();
 			for(DrugRecommendation dr: list_recommendations){
 				boolean next_gmg = false;

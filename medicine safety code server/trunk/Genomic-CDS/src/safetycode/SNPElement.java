@@ -2,6 +2,11 @@ package safetycode;
 
 import java.util.ArrayList;
 
+/**
+ * This class represents a SNP variation. 
+ * 
+ *	@author Jose Antonio Miñarro Giménez
+ * */
 public class SNPElement implements GenotypeElement {
 	/**Id of the SNP that represent the combination.*/
 	private String rsid;
@@ -158,8 +163,7 @@ public class SNPElement implements GenotypeElement {
 		return -1;
 	}
 	
-	
-	
+		
 	/**
 	 * It clones the information of the instance into another instance.
 	 * 

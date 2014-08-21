@@ -23,7 +23,7 @@ import net.sf.ehcache.Element;
 
 import org.apache.commons.lang.text.StrSubstitutor;
 
-import safetycode.Genetic_Marker_Group;
+import safetycode.GeneticMarkerGroup;
 import safetycode.MedicineSafetyProfile_v2;
 import utils.Common;
 import utils.StringReader;
@@ -81,9 +81,9 @@ public class GenotypeElementDefinitions extends HttpServlet {
 				}
 			};
 			MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path+Common.ONT_NAME);
-			ArrayList<Genetic_Marker_Group> listGroups = myProfile.getListGenotypeGroups();
+			ArrayList<GeneticMarkerGroup> listGroups = myProfile.getListGenotypeGroups();
 			HashMap<String,ArrayList<String>> map_genotype = new HashMap<String,ArrayList<String>>(); 
-			for(Genetic_Marker_Group gmg: listGroups){
+			for(GeneticMarkerGroup gmg: listGroups){
 				HashSet<String> listUniqueElements = new HashSet<String>(); 
 				ArrayList<String> listElements = gmg.getListElements();
 				for(String element: listElements){

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import exception.VariantDoesNotMatchAnAllowedVariantException;
+import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
 import safetycode.DrugRecommendation;
 import safetycode.Genotype;
@@ -23,7 +23,7 @@ public class TestCaseDrugRecommendation {
 	Genotype genotype;
 	OntologyManagement om;
 	@Before
-	public void initDrugRecommendation() throws VariantDoesNotMatchAnAllowedVariantException{
+	public void initDrugRecommendation() throws VariantDoesNotMatchAnyAllowedVariantException{
 		String ontologyURI = "MSC_classes_new_v2.owl";
 		om = OntologyManagement.getOntologyManagement(ontologyURI);
 		String rule_id = "rule 1";

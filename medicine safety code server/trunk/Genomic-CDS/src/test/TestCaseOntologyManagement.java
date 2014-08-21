@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;
 
-import exception.VariantDoesNotMatchAnAllowedVariantException;
+import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
 import safetycode.DrugRecommendation;
-import safetycode.Genetic_Marker_Group;
+import safetycode.GeneticMarkerGroup;
 import safetycode.GenotypeElement;
 import safetycode.SNPElement;
 import safetycode.SNPsGroup;
@@ -74,14 +74,14 @@ public class TestCaseOntologyManagement {
 	
 	@Test
 	public void testgetListGeneticMarkerGroups(){
-		ArrayList<Genetic_Marker_Group> listgmg = om.getListGeneticMarkerGroups();
+		ArrayList<GeneticMarkerGroup> listgmg = om.getListGeneticMarkerGroups();
 		assertEquals("We check the size of the list of Genetic Marker Group is equal to 45",45,listgmg.size());
 		assertEquals("We check the first genetic marker is rs6025","rs6025",listgmg.get(0).getGeneticMarkerName());
 		assertEquals("We check the last genetic marker is HLA-B","HLA-B",listgmg.get(listgmg.size()-1).getGeneticMarkerName());
 	}
 	
 	@Test
-	public void testgetListGenotypeElements() throws VariantDoesNotMatchAnAllowedVariantException{
+	public void testgetListGenotypeElements() throws VariantDoesNotMatchAnyAllowedVariantException{
 		ArrayList<GenotypeElement> listGenotypeElements = om.getListGenotypeElements();
 		assertEquals("We check the size of the list of null genotype elements is equal to 45",45,listGenotypeElements.size());
 		assertEquals("We check the first genotype element value is rs6025","rs6025",listGenotypeElements.get(0).getGeneticMarkerName());
@@ -89,7 +89,7 @@ public class TestCaseOntologyManagement {
 	}
 	
 	@Test
-	public void testgetDefaultGenotypeElement() throws VariantDoesNotMatchAnAllowedVariantException{
+	public void testgetDefaultGenotypeElement() throws VariantDoesNotMatchAnyAllowedVariantException{
 		ArrayList<GenotypeElement> listGenotypeElements = om.getDefaultGenotypeElement();
 		assertEquals("We check the size of the list of default genotype elements is equal to 45",45,listGenotypeElements.size());
 		assertEquals("We check the first genotype element is rs6025","rs6025",listGenotypeElements.get(0).getGeneticMarkerName());

@@ -31,7 +31,7 @@ import utils.StringReader;
 
 import exception.BadFormedBase64NumberException;
 import exception.NotInitializedPatientsGenomicDataException;
-import exception.VariantDoesNotMatchAnAllowedVariantException;
+import exception.VariantDoesNotMatchAnyAllowedVariantException;
 import utils.Common;
 
 /**
@@ -84,7 +84,7 @@ public class SafetyCodeInterpreter extends HttpServlet {
 			MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path+Common.ONT_NAME);
 			try {
 				myProfile.readBase64ProfileString(base64ProfileString);
-			} catch (VariantDoesNotMatchAnAllowedVariantException e) {
+			} catch (VariantDoesNotMatchAnyAllowedVariantException e) {
 				throw (new ServletException("variant "+ e.getMessage()));
 			} catch (BadFormedBase64NumberException e) {
 				throw (new ServletException("number "+ e.getMessage()));

@@ -1,8 +1,7 @@
 package utils;
 
-import java.io.BufferedWriter;
+
 import java.io.File;
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -22,11 +21,11 @@ import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
 import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 
-import exception.VariantDoesNotMatchAnAllowedVariantException;
+import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
 import safetycode.AlleleGroup;
 import safetycode.DrugRecommendation;
-import safetycode.Genetic_Marker_Group;
+import safetycode.GeneticMarkerGroup;
 import safetycode.GenotypeElement;
 import safetycode.SNPElement;
 import safetycode.SNPsGroup;
@@ -46,7 +45,7 @@ public class OntologyManagement {
 	/** Source file where base ontology is stored */
 	private static String ontFile=null;
 	/** List of base Genetic markers groups */
-	private ArrayList<Genetic_Marker_Group> listGeneticMarkers = null;
+	private ArrayList<GeneticMarkerGroup> listGeneticMarkers = null;
 	/** List of allele groups */
 	private ArrayList<AlleleGroup> listAlleleGroups = null;
 	/** List of SNP groups */
@@ -88,7 +87,7 @@ public class OntologyManagement {
 				System.out.println("SNPsGroup["+sg.getRank()+"]="+sg.getGeneticMarkerName());
 			}*/
 			initializeGenotypeElements();
-			/*for(Genetic_Marker_Group gmg: listGeneticMarkers){
+			/*for(GeneticMarkerGroup gmg: listGeneticMarkers){
 				System.out.println("GeneticMarkerGroup["+gmg.getRank()+"]="+gmg.getGeneticMarkerName());
 			}*/
 			initializeDrugRules();
@@ -199,7 +198,7 @@ public class OntologyManagement {
 	 * 
 	 * @return List of genetic marker groups.
 	 * */
-	public ArrayList<Genetic_Marker_Group> getListGeneticMarkerGroups(){
+	public ArrayList<GeneticMarkerGroup> getListGeneticMarkerGroups(){
 		return listGeneticMarkers;
 	}
 	
@@ -208,13 +207,13 @@ public class OntologyManagement {
 	 * Get method to obtain the list of base allele variants.
 	 * 
 	 * @return		List of base Alleles, its annotations and the criteria syntax.
-	 * @throws VariantDoesNotMatchAnAllowedVariantException 
+	 * @throws VariantDoesNotMatchAnyAllowedVariantException 
 	 * */
-	public ArrayList<GenotypeElement> getListGenotypeElements() throws VariantDoesNotMatchAnAllowedVariantException{
+	public ArrayList<GenotypeElement> getListGenotypeElements() throws VariantDoesNotMatchAnyAllowedVariantException{
 		ArrayList<GenotypeElement> listGenotypeElements = new ArrayList<GenotypeElement>();
 	
 		for(int i=0;i<listGeneticMarkers.size();i++){
-			Genetic_Marker_Group gmg = listGeneticMarkers.get(i);
+			GeneticMarkerGroup gmg = listGeneticMarkers.get(i);
 			GenotypeElement new_node = gmg.getGenotypeElement(0);
 			listGenotypeElements.add(new_node);
 		}
@@ -222,11 +221,12 @@ public class OntologyManagement {
 		return listGenotypeElements;
 	}
 	
-	public ArrayList<GenotypeElement> getDefaultGenotypeElement() throws VariantDoesNotMatchAnAllowedVariantException{
+	/*This method is out of date*/
+	public ArrayList<GenotypeElement> getDefaultGenotypeElement() throws VariantDoesNotMatchAnyAllowedVariantException{
 		
 		ArrayList<GenotypeElement> listGenotypeElements = new ArrayList<GenotypeElement>();
 		for(int i=0;i<listGeneticMarkers.size();i++){
-			Genetic_Marker_Group gmg = listGeneticMarkers.get(i);
+			GeneticMarkerGroup gmg = listGeneticMarkers.get(i);
 					
 			GenotypeElement ge = null;
 			
@@ -394,12 +394,12 @@ public class OntologyManagement {
 	 * Initialize the sorted list of alleles and SNPs groups defined in the model. These groups formed the inferred patient's genotype.  
 	 * */
 	private void initializeGenotypeElements(){
-		listGeneticMarkers	= new ArrayList<Genetic_Marker_Group>();
-		ArrayList<Genetic_Marker_Group> list_gmg = new ArrayList<Genetic_Marker_Group>();
+		listGeneticMarkers	= new ArrayList<GeneticMarkerGroup>();
+		ArrayList<GeneticMarkerGroup> list_gmg = new ArrayList<GeneticMarkerGroup>();
 		list_gmg.addAll(listAlleleGroups);
 		list_gmg.addAll(listSNPsGroups);
 		Collections.sort(list_gmg);
-		for(Genetic_Marker_Group gmg: list_gmg){
+		for(GeneticMarkerGroup gmg: list_gmg){
 			if(gmg.getRank()>=0) listGeneticMarkers.add(gmg);
 		}
 	}
@@ -522,7 +522,7 @@ public class OntologyManagement {
 					break;
 				}
 			}*/
-			try{
+			/*try{
 				String fileout = "d:/snpgroups.txt";
 				BufferedWriter bw = new BufferedWriter(new FileWriter(fileout,true));
 				try{
@@ -545,7 +545,7 @@ public class OntologyManagement {
 				}
 			}catch(Exception e){
 				e.printStackTrace();
-			}
+			}*/
 			SNPsGroup sg = new SNPsGroup(rsid, list_SNP_names, rank, strandOrientation, vcf_format_reference, listTestedWith); // create the corresponding string array of these markers
 			listSNPsGroups.add(sg);
 		}
@@ -567,19 +567,19 @@ public class OntologyManagement {
 			OWLClass gene_class = list_allele_genes.next().asOWLClass();
 			
 			//rank
-			String rank = "";
+			String rank_label = "";
 			for (OWLAnnotation annotation : gene_class.getAnnotations(ontology, ann_rank)) {
 				if (annotation.getValue() instanceof OWLLiteral) {
 					OWLLiteral val = (OWLLiteral) annotation.getValue();
-					rank = val.getLiteral();
+					rank_label = val.getLiteral();
 					break;
 				}
 			}
 			
-			if (rank == null || rank.isEmpty())	continue;
-			int rank_int = -1;
+			if (rank_label == null || rank_label.isEmpty())	continue;
+			int rank = -1;
 			try {
-				rank_int = Integer.parseInt(rank);
+				rank = Integer.parseInt(rank_label);
 			} catch (NumberFormatException e) {
 				continue;
 			}
@@ -600,7 +600,7 @@ public class OntologyManagement {
 			ArrayList<String> list_allele_names = new ArrayList<String>();
 			list_allele_names.addAll(getSubAlleles(gene_class,ann_label));
 			
-			try{
+			/*try{
 				String fileout = "d:/allelegroups.txt";
 				BufferedWriter bw = new BufferedWriter(new FileWriter(fileout,true));
 				try{
@@ -617,9 +617,9 @@ public class OntologyManagement {
 				}
 			}catch(Exception e){
 				e.printStackTrace();
-			}
+			}*/
 			
-			AlleleGroup ag = new AlleleGroup(gene_name,list_allele_names,rank_int); // create the corresponding string array of these markers
+			AlleleGroup ag = new AlleleGroup(gene_name,list_allele_names,rank); // create the corresponding string array of these markers
 			listAlleleGroups.add(ag);
 		}
 		Collections.sort(listAlleleGroups);
@@ -649,6 +649,7 @@ public class OntologyManagement {
 	private void initializeDrugRules(){
 		HashMap<String, String> listPhenotypeRules	= new HashMap<String,String>();
 		OWLDataFactory factory						= manager.getOWLDataFactory();
+		
 		OWLClass rootPhenotypeRuleClass				= factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#phenotype_rule"));
 		Iterator<OWLClassExpression> list_rules		= rootPhenotypeRuleClass.getSubClasses(ontology).iterator();
 		while(list_rules.hasNext()){
@@ -819,7 +820,7 @@ public class OntologyManagement {
 				continue;
 			}
 			
-			try{
+			/*try{
 				String fileout = "d:/rulegroups.txt";
 				BufferedWriter bw = new BufferedWriter(new FileWriter(fileout,true));
 				try{
@@ -843,7 +844,7 @@ public class OntologyManagement {
 				}
 			}catch(Exception e){
 				e.printStackTrace();
-			}
+			}*/
 			
 			DrugRecommendation dr = new DrugRecommendation(recommendation_label, cds_message, importance, source, relevant_for, seeAlsoList, lastUpdate,phenotype);
 			//list_drugs.add(relevant_for);
