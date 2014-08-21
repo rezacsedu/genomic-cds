@@ -1,0 +1,337 @@
+RSID	RANK	ORIENTATION	VCFREFERENCE	LISTGENOMICTEST(SEPARATED_BY_';')	LISTSNPS*
+rs4633	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs4633_C	rs4633_T
+rs4680	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs4680_A	rs4680_G
+rs4818	-1	forward	C		rs4818_C	rs4818_G	rs4818_T
+rs6025	13	reverse	C	23andMe_v2;23andMe_v3	rs6025_C	rs6025_T
+rs6269	-1	forward	A	23andMe_v2;23andMe_v3	rs6269_A	rs6269_G
+rs7294	-1	reverse	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs7294_C	rs7294_T
+rs12516	-1	reverse	G	23andMe_v3	rs12516_A	rs12516_G
+rs16940	-1	reverse	A	23andMe_v2;23andMe_v3	rs16940_A	rs16940_G
+rs16941	-1	reverse	T	23andMe_v2;23andMe_v3	rs16941_C	rs16941_T
+rs16942	-1	reverse	T	23andMe_v2;23andMe_v3	rs16942_C	rs16942_T
+rs16947	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs16947_A	rs16947_G
+rs762551	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs762551_A	rs762551_C
+rs769258	-1	reverse	C		rs769258_C	rs769258_T
+rs776746	-1	reverse	T	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs776746_C	rs776746_T
+rs799912	-1	forward	T	23andMe_v2;23andMe_v3	rs799912_C	rs799912_T
+rs799917	-1	reverse	G	23andMe_v2;23andMe_v3	rs799917_A	rs799917_C	rs799917_G	rs799917_T
+rs873478	-1	reverse	G		rs873478_C	rs873478_G
+rs887829	-1	reverse	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs887829_C	rs887829_T
+rs1045642	-1	reverse	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs1045642_A	rs1045642_G	rs1045642_T
+rs1050828	-1	forward	C	23andMe_v2;23andMe_v3;University_of_Florida_and_Stanford_University_chip	rs1050828_C	rs1050828_T
+rs1050829	-1	forward	T	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs1050829_C	rs1050829_T
+rs1057910	-1	forward	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs1057910_A	rs1057910_C
+rs1057911	-1	forward	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs1057911_A	rs1057911_T
+rs1060915	-1	reverse	A	23andMe_v2;23andMe_v3	rs1060915_A	rs1060915_G
+rs1065852	-1	reverse	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs1065852_A	rs1065852_G
+rs1128503	-1	reverse	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs1128503_A	rs1128503_G
+rs1135822	-1	reverse	A		rs1135822_A	rs1135822_T
+rs1135823	-1	reverse	C	23andMe_v3	rs1135823_A	rs1135823_C
+rs1135824	-1	reverse	T	23andMe_v2;23andMe_v3	rs1135824_C	rs1135824_T
+rs1135840	-1	reverse	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs1135840_C	rs1135840_G
+rs1799853	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs1799853_C	rs1799853_T
+rs1799949	-1	reverse	G	23andMe_v3	rs1799949_A	rs1799949_G
+rs1799966	-1	reverse	T	23andMe_v2;23andMe_v3	rs1799966_A	rs1799966_C	rs1799966_T
+rs1801030	-1	reverse	C	23andMe_v3;Affymetrix_DMET_chip	rs1801030_C	rs1801030_T
+rs1801158	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs1801158_C	rs1801158_T
+rs1801159	-1	reverse	T	23andMe_v2;23andMe_v3	rs1801159_C	rs1801159_T
+rs1801160	-1	reverse	C	23andMe_v2;23andMe_v3	rs1801160_C	rs1801160_T
+rs1801252	-1	forward	A	23andMe_v2;23andMe_v3;University_of_Florida_and_Stanford_University_chip	rs1801252_A	rs1801252_G
+rs1801253	-1	forward	G	23andMe_v2;23andMe_v3;University_of_Florida_and_Stanford_University_chip	rs1801253_C	rs1801253_G
+rs1801265	-1	reverse	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs1801265_A	rs1801265_G
+rs1801266	-1	reverse	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs1801266_A	rs1801266_G
+rs1801267	-1	reverse	C	Affymetrix_DMET_chip	rs1801267_C	rs1801267_T
+rs1801268	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs1801268_A	rs1801268_C
+rs1801272	-1	reverse	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs1801272_A	rs1801272_T
+rs1809810	-1	reverse	T		rs1809810_A	rs1809810_T
+rs2032582	-1	reverse	A	Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs2032582_A	rs2032582_C	rs2032582_T
+rs2046934	-1	reverse	G	23andMe_v3;University_of_Florida_and_Stanford_University_chip	rs2046934_A	rs2046934_G
+rs2069514	-1	forward	G	23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs2069514_A	rs2069514_G
+rs2069526	-1	forward	T	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs2069526_G	rs2069526_T
+rs2230037	-1	reverse	A	23andMe_v2;23andMe_v3	rs2230037_A	rs2230037_G
+rs2235013	-1	forward	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs2235013_A	rs2235013_G
+rs2235033	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs2235033_C	rs2235033_T
+rs2256871	-1	forward	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs2256871_A	rs2256871_G
+rs2279341	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs2279341_C	rs2279341_G
+rs2279342	-1	forward	A	23andMe_v2;23andMe_v3	rs2279342_A	rs2279342_T
+rs2279343	-1	forward	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs2279343_A	rs2279343_G
+rs2279344	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs2279344_A	rs2279344_G
+rs2291075	-1	forward	C	23andMe_v2;Affymetrix_DMET_chip	rs2291075_C	rs2291075_T
+rs2297595	10	forward	T	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs2297595_C	rs2297595_T
+rs2306282	-1	reverse	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs2306282_A	rs2306282_G
+rs2306283	-1	reverse	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs2306283_A	rs2306283_G
+rs2359612	-1	forward	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs2359612_A	rs2359612_G
+rs2470890	-1	forward	T	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs2470890_C	rs2470890_T
+rs2472304	-1	forward	G	23andMe_v2;23andMe_v3	rs2472304_A	rs2472304_G
+rs2518463	-1	reverse	A		rs2518463_A	rs2518463_G
+rs2740574	-1	reverse	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs2740574_C	rs2740574_T
+rs2839940	-1	reverse	A		rs2839940_A	rs2839940_G
+rs2842934	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs2842934_A	rs2842934_G
+rs2884737	-1	forward	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs2884737_A	rs2884737_C
+rs3092995	-1	forward	G		rs3092995_C	rs3092995_G
+rs3211369	-1	forward	A		rs3211369_A	rs3211369_G
+rs3211371	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs3211371_C	rs3211371_T
+rs3745274	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs3745274_G	rs3745274_T
+rs3758580	-1	forward	C	23andMe_v3	rs3758580_C	rs3758580_T
+rs3758581	-1	forward	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs3758581_A	rs3758581_G
+rs3761738	-1	forward	C	23andMe_v2;23andMe_v3	rs3761738_C	rs3761738_T
+rs3761739	-1	forward	C	23andMe_v2;23andMe_v3	rs3761739_C	rs3761739_T
+rs3826711	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs3826711_C	rs3826711_G
+rs3846662	-1	reverse	A	23andMe_v2;23andMe_v3;University_of_Florida_and_Stanford_University_chip	rs3846662_A	rs3846662_G
+rs3846663	-1	forward	C	23andMe_v3	rs3846663_C	rs3846663_T
+rs3892097	-1	forward	T	23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs3892097_C	rs3892097_T
+rs3918290	-1	reverse	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs3918290_C	rs3918290_T
+rs3931660	-1	forward	A		rs3931660_A	rs3931660_T
+rs4124874	-1	reverse	T	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs4124874_G	rs4124874_T
+rs4148323	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs4148323_A	rs4148323_G
+rs4149056	12	forward	T	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs4149056_C	rs4149056_T
+rs4149057	-1	forward	T	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs4149057_C	rs4149057_T
+rs4244285	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs4244285_A	rs4244285_C	rs4244285_G
+rs4417205	-1	forward	C		rs4417205_C	rs4417205_G
+rs4629571	-1	forward	A		rs4629571_A	rs4629571_G
+rs4646438	-1	reverse		Affymetrix_DMET_chip	rs4646438_D	rs4646438_T
+rs4704209	-1	forward	A		rs4704209_A	rs4704209_G
+rs4802101	-1	forward	T		rs4802101_C	rs4802101_T
+rs4803418	-1	forward	C	23andMe_v3;Affymetrix_DMET_chip	rs4803418_C	rs4803418_G
+rs4803419	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs4803419_C	rs4803419_T
+rs4917623	-1	forward	T	23andMe_v2;23andMe_v3	rs4917623_C	rs4917623_T
+rs4986850	-1	forward	C	23andMe_v2;23andMe_v3	rs4986850_A	rs4986850_C	rs4986850_T
+rs4986852	-1	forward	C	23andMe_v2;23andMe_v3	rs4986852_C	rs4986852_T
+rs4986891	-1	reverse	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs4986891_A	rs4986891_C	rs4986891_T
+rs4986893	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs4986893_A	rs4986893_G
+rs4986894	-1	forward	T	23andMe_v2;23andMe_v3	rs4986894_C	rs4986894_T
+rs4986907	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs4986907_C	rs4986907_T
+rs4986908	-1	reverse	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs4986908_C	rs4986908_G	rs4986908_T
+rs4986909	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs4986909_A	rs4986909_G
+rs4986910	-1	reverse	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs4986910_A	rs4986910_G
+rs4986913	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs4986913_A	rs4986913_G
+rs4987161	-1	reverse	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs4987161_A	rs4987161_G
+rs5030655	-1	forward	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs5030655_A	rs5030655_D
+rs5030656	-1	forward	CTT	23andMe_v2;23andMe_v3	rs5030656_CTT	rs5030656_D
+rs5030862	-1	reverse	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs5030862_C	rs5030862_T
+rs5030865	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs5030865_A	rs5030865_C	rs5030865_T
+rs5030866	-1	reverse	C	23andMe_v2;23andMe_v3	rs5030866_C	rs5030866_T
+rs5030867	-1	forward	T	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs5030867_G	rs5030867_T
+rs5030868	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs5030868_A	rs5030868_G
+rs5031016	-1	reverse	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs5031016_A	rs5031016_G
+rs5031017	-1	reverse	C	23andMe_v2;23andMe_v3	rs5031017_A	rs5031017_C
+rs5853517	-1	forward	T	23andMe_v3	rs5853517_D	rs5853517_T
+rs6413438	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs6413438_C	rs6413438_T
+rs6413474	-1	reverse	T	23andMe_v2;23andMe_v3	rs6413474_C	rs6413474_T
+rs6453131	-1	forward	T		rs6453131_G	rs6453131_T
+rs6787801	-1	forward	A		rs6787801_A	rs6787801_G
+rs6798347	-1	forward	G		rs6798347_A	rs6798347_G
+rs6801273	-1	forward	T		rs6801273_C	rs6801273_T
+rs6809699	-1	forward	A	23andMe_v2;23andMe_v3	rs6809699_A	rs6809699_C
+rs6921269	-1	forward	C	23andMe_v3;Affymetrix_DMET_chip	rs6921269_A	rs6921269_C
+rs7088784	-1	forward	A		rs7088784_A	rs7088784_G
+rs7196161	-1	forward	G	23andMe_v3	rs7196161_A	rs7196161_G
+rs7900194	-1	forward	G	23andMe_v2;23andMe_v3;University_of_Florida_and_Stanford_University_chip	rs7900194_A	rs7900194_G	rs7900194_T
+rs7902257	-1	forward	G	23andMe_v3	rs7902257_A	rs7902257_G
+rs7916649	-1	forward	G	23andMe_v2;23andMe_v3	rs7916649_A	rs7916649_G
+rs8050894	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs8050894_C	rs8050894_G
+rs8175347	-1	forward	TA_8		rs8175347_TA_5	rs8175347_TA_6	rs8175347_TA_7	rs8175347_TA_8
+rs8176318	-1	reverse	C	23andMe_v2;23andMe_v3	rs8176318_A	rs8176318_C
+rs8192709	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs8192709_C	rs8192709_T
+rs8192719	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs8192719_C	rs8192719_T
+rs9282861	-1	reverse	C	23andMe_v3;Affymetrix_DMET_chip	rs9282861_C	rs9282861_T
+rs9332130	-1	forward	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs9332130_A	rs9332130_G
+rs9332131	-1	forward	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs9332131_A	rs9332131_D
+rs9332239	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs9332239_C	rs9332239_T
+rs9333569	-1	reverse	T	23andMe_v2;23andMe_v3	rs9333569_C	rs9333569_T
+rs9333570	-1	reverse	C	23andMe_v2;23andMe_v3	rs9333570_C	rs9333570_T
+rs9848789	-1	forward	C	23andMe_v2;23andMe_v3	rs9848789_C	rs9848789_T
+rs9859552	-1	forward	G		rs9859552_G	rs9859552_T
+rs9908805	-1	forward	C	23andMe_v2;23andMe_v3	rs9908805_C	rs9908805_T
+rs9911630	-1	forward	A	23andMe_v2;23andMe_v3	rs9911630_A	rs9911630_G
+rs9923231	18	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs9923231_A	rs9923231_C	rs9923231_G	rs9923231_T
+rs9934438	19	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs9934438_A	rs9934438_G
+rs10038095	-1	forward	A		rs10038095_A	rs10038095_T
+rs10264272	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs10264272_C	rs10264272_T
+rs10276036	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs10276036_C	rs10276036_T
+rs10929302	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs10929302_A	rs10929302_G
+rs10935838	-1	forward	A		rs10935838_A	rs10935838_G
+rs11045818	-1	forward	G	23andMe_v3	rs11045818_A	rs11045818_G
+rs11045819	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs11045819_A	rs11045819_C
+rs11045852	-1	forward	A	23andMe_v2;23andMe_v3	rs11045852_A	rs11045852_G
+rs11045853	-1	forward	G	23andMe_v2;23andMe_v3	rs11045853_A	rs11045853_G
+rs11188072	-1	forward	C	23andMe_v3	rs11188072_C	rs11188072_T
+rs11568732	-1	forward	T	23andMe_v2;23andMe_v3	rs11568732_G	rs11568732_T
+rs12248560	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs12248560_A	rs12248560_C	rs12248560_T
+rs12529220	-1	forward	T		rs12529220_A	rs12529220_T
+rs12571421	-1	forward	A	23andMe_v2;23andMe_v3	rs12571421_A	rs12571421_G
+rs12720461	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs12720461_C	rs12720461_T
+rs12721627	-1	reverse	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs12721627_C	rs12721627_G
+rs12721629	-1	forward	G		rs12721629_A	rs12721629_G
+rs12721634	-1	forward	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs12721634_A	rs12721634_G
+rs12721649	-1	forward	G	23andMe_v3	rs12721649_A	rs12721649_G
+rs12721655	-1	forward	A		rs12721655_A	rs12721655_G
+rs12769205	-1	forward	A	23andMe_v2;23andMe_v3	rs12769205_A	rs12769205_G
+rs12979860	7	forward	C	23andMe_v3;University_of_Florida_and_Stanford_University_chip	rs12979860_C	rs12979860_T
+rs13404099	-1	forward	A		rs13404099_A	rs13404099_G
+rs17238484	-1	forward	G		rs17238484_G	rs17238484_T
+rs17238540	-1	forward	T	23andMe_v2;23andMe_v3;University_of_Florida_and_Stanford_University_chip	rs17238540_G	rs17238540_T
+rs17244841	-1	forward	A	23andMe_v3;University_of_Florida_and_Stanford_University_chip	rs17244841_A	rs17244841_T
+rs17599948	-1	forward	A	23andMe_v2;23andMe_v3	rs17599948_A	rs17599948_G
+rs17708472	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs17708472_A	rs17708472_G
+rs17861157	-1	forward	C	23andMe_v2;23andMe_v3	rs17861157_A	rs17861157_C
+rs17878459	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs17878459_A	rs17878459_C	rs17878459_G
+rs17878649	-1	forward	G	23andMe_v2;23andMe_v3	rs17878649_A	rs17878649_G
+rs17879685	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs17879685_C	rs17879685_T
+rs17879992	-1	forward	T		rs17879992_C	rs17879992_T
+rs17880887	-1	reverse	G	23andMe_v3	rs17880887_G	rs17880887_T
+rs17881535	-1	reverse	C		rs17881535_C	rs17881535_G
+rs17882687	-1	forward	A	23andMe_v3;Affymetrix_DMET_chip	rs17882687_A	rs17882687_C
+rs17884712	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs17884712_A	rs17884712_G
+rs17884832	-1	forward	T		rs17884832_G	rs17884832_T
+rs17885098	-1	forward	C	23andMe_v3	rs17885098_C	rs17885098_T
+rs17886522	-1	forward	A	23andMe_v3	rs17886522_A	rs17886522_C
+rs28365083	-1	reverse	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs28365083_G	rs28365083_T
+rs28365085	-1	forward	A		rs28365085_A	rs28365085_G
+rs28371685	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs28371685_C	rs28371685_T
+rs28371686	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs28371686_C	rs28371686_G
+rs28371696	-1	reverse	C	23andMe_v3	rs28371696_C	rs28371696_T
+rs28371703	-1	forward	G	23andMe_v3	rs28371703_G	rs28371703_T
+rs28371704	-1	forward	T		rs28371704_C	rs28371704_T
+rs28371706	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs28371706_A	rs28371706_G
+rs28371710	-1	forward	C	23andMe_v2;23andMe_v3	rs28371710_C	rs28371710_T
+rs28371717	-1	reverse	C	23andMe_v2;23andMe_v3	rs28371717_A	rs28371717_C
+rs28371725	-1	reverse	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs28371725_C	rs28371725_T
+rs28371733	-1	reverse	C	23andMe_v2;23andMe_v3	rs28371733_C	rs28371733_T
+rs28371759	-1	reverse	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs28371759_A	rs28371759_G
+rs28374453	-1	forward	A		rs28374453_A	rs28374453_G
+rs28383468	-1	reverse	G	23andMe_v3;Affymetrix_DMET_chip	rs28383468_A	rs28383468_G
+rs28383479	-1	reverse	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs28383479_C	rs28383479_T
+rs28399424	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs28399424_C	rs28399424_T
+rs28399433	-1	reverse	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs28399433_A	rs28399433_C
+rs28399434	-1	reverse	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs28399434_C	rs28399434_T
+rs28399435	-1	forward	C	23andMe_v2;23andMe_v3	rs28399435_C	rs28399435_T
+rs28399454	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs28399454_C	rs28399454_T
+rs28399463	-1	reverse	T	23andMe_v3	rs28399463_C	rs28399463_T
+rs28399468	-1	reverse	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs28399468_A	rs28399468_C
+rs28399499	-1	forward	T	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs28399499_C	rs28399499_T
+rs28399504	-1	forward	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs28399504_A	rs28399504_G
+rs28399513	-1	forward	T	23andMe_v2;23andMe_v3	rs28399513_A	rs28399513_T
+rs33926104	-1	forward	C	23andMe_v2;23andMe_v3	rs33926104_A	rs33926104_C	rs33926104_T
+rs33973337	-1	forward	A	23andMe_v2;23andMe_v3	rs33973337_A	rs33973337_T
+rs33980385	-1	forward	A	23andMe_v3	rs33980385_A	rs33980385_G
+rs34097093	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs34097093_C	rs34097093_T
+rs34223104	-1	forward	T	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs34223104_C	rs34223104_T
+rs34284776	-1	forward	G		rs34284776_C	rs34284776_G
+rs34671512	-1	forward	A	23andMe_v2;23andMe_v3	rs34671512_A	rs34671512_C
+rs34698757	-1	forward	C	23andMe_v2;23andMe_v3	rs34698757_C	rs34698757_G
+rs34826503	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs34826503_C	rs34826503_T
+rs34883432	-1	forward	A	23andMe_v2;23andMe_v3	rs34883432_A	rs34883432_T
+rs34946978	-1	forward	C	23andMe_v2;23andMe_v3	rs34946978_C	rs34946978_T
+rs35010098	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs35010098_A	rs35010098_C
+rs35266616	-1	forward	C		rs35266616_C	rs35266616_T
+rs35303484	-1	forward	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs35303484_A	rs35303484_G	rs35303484_T
+rs35350960	-1	forward	C	University_of_Florida_and_Stanford_University_chip	rs35350960_A	rs35350960_C	rs35350960_T
+rs35468935	-1	forward	C		rs35468935_C	rs35468935_T
+rs35599367	-1	reverse	G		rs35599367_A	rs35599367_G
+rs35622401	-1	forward	G		rs35622401_C	rs35622401_G
+rs35694136	-1	forward	T	Affymetrix_DMET_chip	rs35694136_D	rs35694136_T
+rs35742686	-1	forward	T	University_of_Florida_and_Stanford_University_chip	rs35742686_D	rs35742686_T
+rs35773040	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs35773040_A	rs35773040_G
+rs35796837	-1	forward	G	23andMe_v2;23andMe_v3	rs35796837_A	rs35796837_G
+rs35979566	-1	forward	T	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs35979566_A	rs35979566_T
+rs36056539	-1	forward	C	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs36056539_C	rs36056539_T
+rs36060847	-1	forward	G	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs36060847_A	rs36060847_G
+rs36079186	-1	forward	T	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs36079186_C	rs36079186_T
+rs41279854	-1	forward	A	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip	rs41279854_A	rs41279854_G
+rs41291556	-1	forward	T	23andMe_v2;23andMe_v3;Affymetrix_DMET_chip;University_of_Florida_and_Stanford_University_chip	rs41291556_C	rs41291556_T
+rs41303343	-1	forward		23andMe_v3;Affymetrix_DMET_chip	rs41303343_A	rs41303343_D
+rs45482602	-1	forward	C	23andMe_v3;Affymetrix_DMET_chip	rs45482602_A	rs45482602_C
+rs45486893	-1	forward	C	23andMe_v3	rs45486893_C	rs45486893_T
+rs55640102	-1	forward	A	23andMe_v3	rs55640102_A	rs55640102_C	rs55640102_T
+rs55737008	-1	forward	A	23andMe_v3	rs55737008_A	rs55737008_G
+rs55752064	-1	forward	T	23andMe_v3	rs55752064_A	rs55752064_C	rs55752064_T
+rs55817950	-1	forward	G	23andMe_v3	rs55817950_A	rs55817950_G
+rs55886062	-1	forward	A	23andMe_v3	rs55886062_A	rs55886062_C	rs55886062_T
+rs55889066	-1	forward	G	23andMe_v3	rs55889066_A	rs55889066_G
+rs55901008	-1	forward	T	23andMe_v3	rs55901008_A	rs55901008_C	rs55901008_T
+rs56061388	-1	forward	T	23andMe_v3	rs56061388_C	rs56061388_T
+rs56101265	-1	forward	T	23andMe_v3	rs56101265_C	rs56101265_T
+rs56107638	-1	forward	G	23andMe_v3	rs56107638_A	rs56107638_C	rs56107638_G
+rs56160784	-1	forward	C	23andMe_v3	rs56160784_C	rs56160784_G
+rs56165452	-1	forward	T		rs56165452_A	rs56165452_C	rs56165452_T
+rs56199088	-1	forward	A	23andMe_v3	rs56199088_A	rs56199088_G	rs56199088_T
+rs56244447	-1	forward	A	23andMe_v3	rs56244447_A	rs56244447_C
+rs56276455	-1	forward	G	23andMe_v3	rs56276455_A	rs56276455_G
+rs56337013	-1	forward	C	University_of_Florida_and_Stanford_University_chip	rs56337013_C	rs56337013_T
+rs56387224	-1	forward	A	23andMe_v3	rs56387224_A	rs56387224_G	rs56387224_T
+rs56411402	-1	forward	T	23andMe_v3	rs56411402_C	rs56411402_T
+rs57505750	-1	forward	T	23andMe_v3	rs57505750_C	rs57505750_T
+rs58973490	-1	forward	G	23andMe_v3	rs58973490_A	rs58973490_G
+rs59113707	-1	forward	C		rs59113707_C	rs59113707_G
+rs59421388	-1	forward	C	23andMe_v3	rs59421388_C	rs59421388_T
+rs59502379	-1	forward	G	23andMe_v3	rs59502379_C	rs59502379_G
+rs61736512	-1	forward	C	23andMe_v3	rs61736512_C	rs61736512_T
+rs67376798	14	forward	T	23andMe_v3	rs67376798_A	rs67376798_T
+rs67807361	-1	forward	C		rs67807361_A	rs67807361_C
+rs72547511	-1	forward	C		rs72547511_C	rs72547511_G
+rs72547512	-1	forward	G		rs72547512_A	rs72547512_C	rs72547512_G
+rs72547513	-1	forward	C	23andMe_v3	rs72547513_A	rs72547513_C	rs72547513_T
+rs72547515	-1	reverse	G	23andMe_v3	rs72547515_A	rs72547515_G
+rs72547516	-1	forward	A	23andMe_v3	rs72547516_A	rs72547516_G	rs72547516_T
+rs72547517	-1	forward	G	23andMe_v3	rs72547517_A	rs72547517_G
+rs72549303	-1	reverse	G		rs72549303_D	rs72549303_G
+rs72549306	-1	forward	C		rs72549306_A	rs72549306_C
+rs72549309	-1	forward	ATGA		rs72549309_ATGA	rs72549309_D
+rs72552267	-1	forward	G	23andMe_v3;University_of_Florida_and_Stanford_University_chip	rs72552267_A	rs72552267_G
+rs72552742	-1	forward	T	23andMe_v3	rs72552742_A	rs72552742_T
+rs72552791	-1	reverse	T	23andMe_v3	rs72552791_C	rs72552791_T
+rs72556347	-1	reverse	A		rs72556347_A	rs72556347_G
+rs72558184	-1	forward	G		rs72558184_A	rs72558184_G
+rs72558186	-1	forward	T	23andMe_v3	rs72558186_A	rs72558186_T
+rs72558187	-1	forward	T		rs72558187_C	rs72558187_T
+rs72558189	-1	forward	G		rs72558189_A	rs72558189_G
+rs72558190	-1	forward	C	23andMe_v3	rs72558190_A	rs72558190_C
+rs72558192	-1	forward	A	23andMe_v3	rs72558192_A	rs72558192_G
+rs72558193	-1	forward	A	23andMe_v3	rs72558193_A	rs72558193_C
+rs72559745	-1	forward	A		rs72559745_A	rs72559745_G
+rs72559746	-1	forward	T		rs72559746_G	rs72559746_T
+rs72559748	-1	forward	A	23andMe_v3	rs72559748_A	rs72559748_G
+rs74423290	-1	reverse	G		rs74423290_C	rs74423290_G
+rs74503330	15	forward	G		rs74503330_A	rs74503330_G
+rs75527207	16	forward	G		rs75527207_A	rs75527207_G
+rs76723693	-1	forward	A		rs76723693_A	rs76723693_G
+rs78060119	-1	forward	C		rs78060119_A	rs78060119_C
+rs78482768	-1	forward	G		rs78482768_C	rs78482768_G
+rs79135870	-1	forward	A		rs79135870_A	rs79135870_G
+rs79901429	-1	reverse	A		rs79901429_A	rs79901429_G
+rs80081766	-1	forward	C		rs80081766_C	rs80081766_T
+rs80282562	17	forward	G		rs80282562_A	rs80282562_G
+rs111901354	-1	reverse	G		rs111901354_A	rs111901354_G
+rs112339338	-1	reverse	G		rs112339338_A	rs112339338_G
+rs113993960	1	forward	CTT		rs113993960_CTT	rs113993960_D
+rs115106679	-1	forward	C		rs115106679_C	rs115106679_T
+rs118203756	-1	forward	G		rs118203756_C	rs118203756_G
+rs118203757	-1	forward	G		rs118203757_A	rs118203757_G
+rs118203759	-1	forward	C		rs118203759_C	rs118203759_G
+rs121908755	2	forward	G		rs121908755_A	rs121908755_G	rs121908755_T
+rs121908757	3	forward	A		rs121908757_A	rs121908757_C
+rs121909005	4	forward	T		rs121909005_G	rs121909005_T
+rs121909013	5	forward	G		rs121909013_A	rs121909013_G
+rs121909041	6	forward	T		rs121909041_C	rs121909041_T
+rs137852328	-1	reverse	C		rs137852328_A	rs137852328_C	rs137852328_T
+rs138142612	-1	forward	G		rs138142612_A	rs138142612_G
+rs138652540	-1	forward	C		rs138652540_C	rs138652540_T
+rs139257324	-1	forward	C		rs139257324_C	rs139257324_T
+rs140278421	-1	forward	G		rs140278421_C	rs140278421_G
+rs140790673	-1	forward	C		rs140790673_C	rs140790673_T
+rs142965323	-1	forward	G		rs142965323_A	rs142965323_G
+rs143193369	-1	forward	C		rs143193369_A	rs143193369_C
+rs144036596	-1	forward	G		rs144036596_A	rs144036596_G
+rs144041067	-1	forward	C		rs144041067_C	rs144041067_T
+rs144148965	-1	forward	G		rs144148965_A	rs144148965_G
+rs150900439	-1	forward	T		rs150900439_C	rs150900439_T
+rs181297724	-1	forward	G		rs181297724_C	rs181297724_G
+rs192154563	-1	forward	C		rs192154563_C	rs192154563_T
+rs193922525	8	forward	G		rs193922525_A	rs193922525_G
+rs199826652	9	forward	TCT		rs199826652_D	rs199826652_TCT
+rs200591577	-1	forward	G		rs200591577_C	rs200591577_G
+rs200995543	-1	forward	C		rs200995543_C	rs200995543_T
+rs267606723	11	forward	G		rs267606723_A	rs267606723_G	rs267606723_T
+rs267607275	-1	reverse	A		rs267607275_A	rs267607275_G
+rs373327528	-1	forward	G		rs373327528_A	rs373327528_G

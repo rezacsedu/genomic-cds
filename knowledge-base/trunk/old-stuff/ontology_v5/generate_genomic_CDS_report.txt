@@ -1,6 +1,74 @@
 -- Report -- 
 
 
+	ERROR: We have found that the 1050828 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 1050829 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 1801158 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 1801268 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 2256871 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 3892097 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 4986850 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 4986852 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 4986907 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 4986909 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 4986913 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 5030655 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 5030656 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 5030867 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 5030868 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 12721629 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 12721634 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 28365085 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 28371703 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 28371704 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 28371706 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 28371710 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 28399435 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 28399454 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 35742686 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 41303343 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 76723693 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+
+	ERROR: We have found that the 80282562 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
+We have defined 336 SNPs with 707 variants in the ontology.
+We have defined 43 genes in the ontology.
+WARNING: No polymorphism variants found at all for HLA-A_star_3101
+We have defined 665 alleles variants in the ontology.
+
+	We skip processing cds rule CDS rule 303 because it was disabled.
+
+	We skip processing cds rule CDS rule 304 because it was disabled.
+
+	We skip processing cds rule CDS rule 305 because it was disabled.
+We have defined 65 drugs in the ontology.
+We have defined 308 rules in the ontology.
+
 	ERROR: We have found a phenotype rule without name. We skip processing it.
 
 	ERROR: We have found a phenotype rule without name. We skip processing it.
@@ -1805,71 +1873,3 @@
 
 	ERROR: We have found a phenotype rule without name. We skip processing it.
 We have defined 22 phenotype rules in the ontology.
-
-	We skip processing cds rule CDS rule 303 because it was disabled.
-
-	We skip processing cds rule CDS rule 304 because it was disabled.
-
-	We skip processing cds rule CDS rule 305 because it was disabled.
-We have defined 65 drugs in the ontology.
-We have defined 308 rules in the ontology.
-
-	ERROR: We have found that the 1050828 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 1050829 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 1801158 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 1801268 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 2256871 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 3892097 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 4986850 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 4986852 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 4986907 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 4986909 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 4986913 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 5030655 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 5030656 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 5030867 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 5030868 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 12721629 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 12721634 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 28365085 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 28371703 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 28371704 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 28371706 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 28371710 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 28399435 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 28399454 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 35742686 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 41303343 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 76723693 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-
-	ERROR: We have found that the 80282562 from dbSNP is inconsistent with the used alleles in the haplotype spreadsheet.
-We have defined 336 SNPs with 707 variants in the ontology.
-We have defined 43 genes in the ontology.
-WARNING: No polymorphism variants found at all for HLA-A_star_3101
-We have defined 665 alleles variants in the ontology.
