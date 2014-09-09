@@ -1,6 +1,8 @@
 package meduniwien.msc.model;
 
 import java.util.ArrayList;
+
+import meduniwien.msc.exception.BadRuleDefinitionException;
 /**
  * It represents a cds rule and is able to check if a patient's genotype match the logical description of the rule.
  * 
@@ -127,7 +129,7 @@ public class DrugRecommendation {
 	 * Generates the node structure related to the logical description of the rule.
 	 * @param genomicRule	The logical description of the rule.
 	 * */
-	public void setRule(String genomicRule){
+	public void setRule(String genomicRule) throws BadRuleDefinitionException{
 		drugRule = genomicRule;
 		
 		genomicRule = genomicRule.replaceAll("\\n", " ");
@@ -136,8 +138,13 @@ public class DrugRecommendation {
 		genomicRule = genomicRule.replaceAll("\\s+", " ");
 		genomicRule = genomicRule.trim();
 		
+		if(genomicRule.isEmpty()){
+			throw new BadRuleDefinitionException("Empty rule description");
+		}
+			
 		if(!correctMatches(genomicRule)){
-			System.out.println("ERROR-> bad parenthesis in rule="+genomicRule);
+			//System.out.println("ERROR-> bad parenthesis in rule="+genomicRule);
+			throw new BadRuleDefinitionException("Bad parenthesis in rule:"+ genomicRule);
 		}else{
 			node = getTypeNode(genomicRule);
 		}
@@ -182,7 +189,7 @@ public class DrugRecommendation {
 	 * It parses the rule logical description to create the corresponding node conditions. i.e. ((A and B ) or C) -> is parsed as: node_1 represents condition "A", node_2 represents condition "B", node_3 represents expression "(node_1 and node_2)", node_4 represents condition "C" and node_5 represents expression "(node_3 or node_4)". For example,a condition could be "has some BRCA1_1"    
 	 * @param nodeExpression	The logical description of the rule o a subsection of the rule
 	 * */
-	private NodeCondition getTypeNode(String nodeExpression){
+	private NodeCondition getTypeNode(String nodeExpression) throws BadRuleDefinitionException{
 		nodeExpression = nodeExpression.trim();
 		String mainType ="";
 		String mainNumber = "";
@@ -222,8 +229,9 @@ public class DrugRecommendation {
 
 					while(listElements.length()>0){
 						if((listElements.startsWith("and")&&hasQuality.equals("or"))||(listElements.startsWith("and")&&hasQuality.equals("or"))){
-							System.out.println("ERROR: and/or inconsistency in has expression condition");
-							return null;
+							throw new BadRuleDefinitionException("and/or inconsistency in has expression condition: " + nodeExpression);
+							//System.out.println("ERROR: and/or inconsistency in has expression condition");
+							//return null;
 						}	
 						if(listElements.startsWith("and")){
 							hasQuality = "and";
@@ -273,8 +281,9 @@ public class DrugRecommendation {
 			}else{
 				if(nodeExpression.startsWith("and")||nodeExpression.startsWith("or")){
 					if((nodeExpression.startsWith("or")&&mainQuality.equals("and"))||(nodeExpression.startsWith("and")&&mainQuality.equals("or"))){
-						System.out.println("ERROR: and/or inconsistency");
-						return null;
+						throw new BadRuleDefinitionException("and/or inconsistency in has expression condition: " + nodeExpression);
+						//System.out.println("ERROR: and/or inconsistency");
+						//return null;
 					}else{
 						if(nodeExpression.startsWith("or")){
 							mainQuality = "or";

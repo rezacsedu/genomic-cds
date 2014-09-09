@@ -38,7 +38,7 @@ public class MedicineSafetyProfile_v2 {
 		return om;
 	}
 	
-	public void initializeCodingModule(){
+	/*public void initializeCodingModule(){
 		ArrayList<GenotypeElement> listGenotypeElements;
 		try {
 			listGenotypeElements = om.getDefaultGenotypeElement();
@@ -47,7 +47,7 @@ public class MedicineSafetyProfile_v2 {
 			e.printStackTrace();
 		}
 		
-	}
+	}*/
 	
 	public ArrayList<GeneticMarkerGroup> getListGenotypeGroups(){
 		return om.getListGeneticMarkerGroups();

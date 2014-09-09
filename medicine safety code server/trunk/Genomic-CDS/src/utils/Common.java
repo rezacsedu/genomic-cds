@@ -9,13 +9,18 @@ import exception.BadFormedBase64NumberException;
 import exception.BadFormedBinaryNumberException;
 */
 public class Common {
+	//public final static String localPath = "D:/workspace/Genomic-CDS/WebContent/";// I use this just for testing the JUnit classes.
+	public final static String localPath = "./";
 	
 	/** Digits used to represent a base 64 number for a safetycode number.*/
 	public final static char[] BASE_DIGITS = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','-','_'};
+	
 	/** The current version of the safetycode system.*/
 	public final static String VERSION = "v0.2";
+	
 	/** The code that represents an important recommendation rule internally.*/
 	public final static int HAS_IMPORTANT_RECOMMENDATION = 1;
+	
 	/** The code that represents a standard recommendation rule internally.*/
 	public final static int HAS_STANDARD_RECOMMENDATION = 2;
 		
@@ -26,21 +31,40 @@ public class Common {
 			+ "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>\n"
 			+ "PREFIX pgx: <http://www.genomic-cds.org/ont/genomic-cds.owl#>\n"
 			+ "PREFIX ssr: <http://purl.org/zen/ssr.ttl#>\n";
+	
 	/** The strand orientation of a SNP. It is related to the reverse orientation.*/
 	public final static String DBSNP_ORIENTATION = "dbsnp-orientation";
+	
 	/** The strand orientation of a SNP. It is related to the forward orientation.*/
 	public final static String FORWARD_ORIENTATION = "forward-orientation";
+	
 	/** The URL root that is used to compound the web server URL.*/
 	//public final static String ROOT_URL = "http://safety-code.org/Genomic-CDS";
 	//public final static String ROOT_URL = "http://owl.msi.meduniwien.ac.at:8080/Genomic-CDS";
-	//public final static String ROOT_URL = "http://localhost:8080/Genomic-CDS";//URL for testing in my local server
+	//public final static String ROOT_URL = "http://localhost:8080/Genomic-CDS";//URL for testing on local server
 	public final static String ROOT_URL = "http://safety-code.org";
+	
 	/** The name of the ontology file.*/
-	public final static String ONT_NAME="MSC_textual_rules.owl";
+	public final static String ONT_NAME=localPath+"MSC_textual_rules.owl";
+	
 	/** The name of the cache that is needed to identify the cache in file where it is serialized.*/
 	public final static String CACHE_NAME="safetycodecache1";
+	
 	/** The name of the cache file where the cached web pages are stored.*/
 	public final static String CACHE_FILE="ehcache.xml";
+		
+	/** The name of the file with the information about SNP groups.*/
+	public final static String tabSeparatedSNPGroups = localPath+"ontinfo/snpGroups.txt";
+	
+	/** The name of the file with the information about haplotype groups.*/
+	public final static String tabSeparatedAlleleGroups = localPath+"ontinfo/alleleGroups.txt";
+	
+	/** The name of the file with the information about phenotype rules.*/
+	public final static String tabSeparatedPhenotypeRules = localPath+"ontinfo/phenotypeRules.txt";
+	
+	/** The name of the file with the information about cds rules.*/
+	public final static String tabSeparatedCDSRules = localPath+"ontinfo/drugRecommendations.txt";
+	
 	
 	/**
 	 * This method should process the file to identify the type of file format.

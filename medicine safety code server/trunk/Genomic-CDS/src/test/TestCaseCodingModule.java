@@ -13,6 +13,7 @@ import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
 import safetycode.CodingModule;
 import safetycode.GenotypeElement;
+import utils.Common;
 import utils.OntologyManagement;
 
 /**
@@ -25,24 +26,23 @@ public class TestCaseCodingModule {
 	
 	@Before
 	public void initCodingModule(){
-		String ontologyURI = "MSC_classes_new_v2.owl";
+		String ontologyURI = Common.ONT_NAME;
 		om = OntologyManagement.getOntologyManagement(ontologyURI);
-		//cod_mod = new CodingModule(om.getListGeneticMarkerGroups());
 	}
 	
 	@Test
 	public void testcodeListGeneticVariations() throws BadFormedBinaryNumberException, VariantDoesNotMatchAnyAllowedVariantException{
 		String code = CodingModule.codeListGeneticVariations(om.getListGeneticMarkerGroups(), om.getDefaultGenotypeElement());
-		assertEquals("We check if the generated code is equal to \"3O5gjSl1S-Az6GSmcClFaszmPTW7B-Yuv\"","3O5gjSl1S-Az6GSmcClFaszmPTW7B-Yuv",code);
+		assertEquals("We check if the generated code is equal to \"HflRkW-6GrNFmRhFhcd\"","HflRkW-6GrNFmRhFhcd",code);
 	}
 	
 	@Test
 	public void testdecodeListGeneticVariations() throws BadFormedBase64NumberException, VariantDoesNotMatchAnyAllowedVariantException{
-		String code = "3O5gjSl1S-Az6GSmcClFaszmPTW7B-Yuv";
+		String code = "HflRkW-6GrNFmRhFhcd";
 		               
 		ArrayList<GenotypeElement> listGE = CodingModule.decodeListGenotypeVariations(om.getListGeneticMarkerGroups(), code);
-		assertEquals("We check the generated list genotype elements size 45",45,listGE.size());
-		assertEquals("We check if the generated variation of the rs2297595 SNP in the genotype is \"C;C\"","C;C",listGE.get(0).getCriteriaSyntax());
+		assertEquals("We check the generated list genotype elements size 28",28,listGE.size());
+		assertEquals("We check if the generated variation of the rs113993960 SNP in the genotype is \"CTT;CTT\"","CTT;CTT",listGE.get(0).getCriteriaSyntax());
 	}
 	
 	@Test(expected=BadFormedBase64NumberException.class)

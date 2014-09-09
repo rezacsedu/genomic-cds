@@ -150,6 +150,11 @@ ObjectProperty: has
         rdfs:label "has",
         rdfs:comment "A generic property. For example, it can be used to relate a patient with specific attributes and features, such as genetic polymorphisms, alleles and phenotypes."
 
+ObjectProperty: using_drug
+	Annotations:
+		rdfs:label	"using drug"
+		rdfs:comment	"This property links a patient with prescription drugs."
+		
 Class: human
     Annotations: 
         rdfs:label	"Human"
