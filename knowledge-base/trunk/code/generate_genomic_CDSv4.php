@@ -45,6 +45,7 @@ $snp_groups_tab_separated_file_location = "..\\ontology\\snpGroups.txt";// Tab s
 $allele_groups_tab_separated_file_location = "..\\ontology\\alleleGroups.txt";// Tab separated file that contains the information related to the haplotype groups relevant in a patient's genotype.
 $phenotype_rules_tab_separated_file_location = "..\\ontology\\phenotypeRules.txt";// Tab separated file that contains the information related to the phenotype rules.
 $drug_recommendations_tab_separated_file_location = "..\\ontology\\drugRecommendations.txt";// Tab separated file that contains the information related to the cds rules and drug recommendations.
+$allele_rules_tab_separated_file_location = "..\\ontology\\alleleRules.txt";// Tab separated file that contains the information related to the allele rules.
 
 $report_file_location = "..\\ontology\\generate_genomic_CDS_report.txt";//Output report about problems that may happen during the execution of this script.
 
@@ -56,7 +57,7 @@ $snp_groups_tab_separated = "RSID\tRANK\tORIENTATION\tVCFREFERENCE\tLISTGENOMICT
 $allele_groups_tab_separated = "GENENAME\tRANK\tLISTALLELES*\n";//Header of the alleleGroups tab separated file that contains min 3 columns: (1) the gene name related to the haplotype; (2) the rank in a patient's genotype; (3-...) the list of variants of the haplotype.
 $phenotype_rules_tab_separated = "RULEID\tLOGICALDESCRIPTION\n";
 $drug_recommendations_tab_separated="RULEID\tCDSMESSAGE\tIMPORTANCE\tSOURCE\tRELEVANTFOR\tLASTUPDATE\tPHENOTYPE\tRECOMMENDATION_DL\tSEEALSOLIST*\n";
-
+$allele_rules_tab_separated = "ALLELEID\tLOGICAL_DESCRIPTION\n";
 
 $owl = file_get_contents($pharmacogenomic_CDS_base_file_location) . "\n\n\n"; // Read the content of base ontology.
 $msc_owl = file_get_contents($MSC_classes_base_file_location) . "\n\n\n"; // Read the content of base ontology for encoding/decoding Medicine Safety Codes (MSC server).
@@ -1063,6 +1064,9 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 	$header_array = array();
 	
 	foreach ($objWorksheet->getRowIterator() as $row) {
+		$allele_ld = "";
+		$allele_homozygous_ld = "";
+		
 		$row_array = array();
 		$error_during_processing = false;
 		
@@ -1245,6 +1249,7 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 			if (empty($allele_polymorphism_variants) == false) {
 				$owl .= "EquivalentTo:" . "\n";
 				$owl .= "has some " . implode(" and has some ", $allele_polymorphism_variants);
+				$allele_ld = "has some " . implode(" and has some ", $allele_polymorphism_variants);
 				$owl .= "\n\n";
 			}
 			else {
@@ -1281,6 +1286,7 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 			if (empty($allele_polymorphism_variants) == false) {
 				$owl .= "EquivalentTo:" . "\n";
 				$owl .= "has exactly 2 " . implode(" and has exactly 2 ", $allele_polymorphism_variants);
+				$allele_homozygous_ld = "has exactly 2 ". implode(" and has exactly 2 ", $allele_polymorphism_variants);
 				$owl .= "\n\n";
 			}
 			$owl .= "SubClassOf:" . "\n";
@@ -1291,6 +1297,10 @@ foreach ($objPHPExcel->getWorksheetIterator() as $objWorksheet) {// We analyze e
 			$owl .= "has exactly 2 " . $allele_id . "\n\n";
 		}
 		$nalleles = $nalleles+1;
+		if(!empty($allele_ld)){
+			$allele_rules_tab_separated .= $allele_id ."\t". $allele_ld ."\n";
+			$allele_rules_tab_separated .= $allele_id ."_homozygous\t". $allele_homozygous_ld ."\n";
+		}
 	}
 	
 	$list_alleles_in_group = array_unique($list_alleles_in_group);
@@ -1350,6 +1360,7 @@ file_put_contents($snp_groups_tab_separated_file_location,$snp_groups_tab_separa
 file_put_contents($allele_groups_tab_separated_file_location,$allele_groups_tab_separated); //Tab separated file with the information of haplotype groups.
 file_put_contents($phenotype_rules_tab_separated_file_location,$phenotype_rules_tab_separated); //Tab separated file with the information of phenotype rules.
 file_put_contents($drug_recommendations_tab_separated_file_location,$drug_recommendations_tab_separated); //Tab separated file with the information of drug recommendation rules.
+file_put_contents($allele_rules_tab_separated_file_location, $allele_rules_tab_separated);
 
 file_put_contents($report_file_location, $report);
 beep(2);

@@ -149,7 +149,7 @@ ObjectProperty: has
     Annotations: 
         rdfs:label "has",
         rdfs:comment "A generic property. For example, it can be used to relate a patient with specific attributes and features, such as genetic polymorphisms, alleles and phenotypes."
-
+		
 Class: human
     Annotations: 
         rdfs:label	"Human"
@@ -266,7 +266,7 @@ DisjointClasses:
 
 
 Ontology: <http://www.genomic-cds.org/ont/genomic-cds.owl>
-    Annotations: owl:versionInfo "2014/08/21"
+    Annotations: owl:versionInfo "2014/09/11"
 
 
 #
@@ -9044,216 +9044,259 @@ rs373327528_A,rs373327528_G
 Class: COMT
     SubClassOf: allele 
     Annotations: rdfs:label "COMT" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:COMT> 
 	 Annotations: rank "-1" 
 
 Class: MIR4761
     SubClassOf: allele 
     Annotations: rdfs:label "MIR4761" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:MIR4761> 
 	 Annotations: rank "-1" 
 
 Class: F5
     SubClassOf: allele 
     Annotations: rdfs:label "F5" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:F5> 
 	 Annotations: rank "-1" 
 
 Class: VKORC1
     SubClassOf: allele 
     Annotations: rdfs:label "VKORC1" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:VKORC1> 
 	 Annotations: rank "-1" 
 
 Class: BRCA1
     SubClassOf: allele 
     Annotations: rdfs:label "BRCA1" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:BRCA1> 
 	 Annotations: rank "-1" 
 
 Class: CYP2D6
     SubClassOf: allele 
     Annotations: rdfs:label "CYP2D6" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:CYP2D6> 
 	 Annotations: rank "22" 
 
 Class: CYP1A2
     SubClassOf: allele 
     Annotations: rdfs:label "CYP1A2" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:CYP1A2> 
 	 Annotations: rank "-1" 
 
 Class: CYP3A5
     SubClassOf: allele 
     Annotations: rdfs:label "CYP3A5" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:CYP3A5> 
 	 Annotations: rank "23" 
 
 Class: ZSCAN25
     SubClassOf: allele 
     Annotations: rdfs:label "ZSCAN25" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:ZSCAN25> 
 	 Annotations: rank "-1" 
 
 Class: UGT1A1
     SubClassOf: allele 
     Annotations: rdfs:label "UGT1A1" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:UGT1A1> 
 	 Annotations: rank "28" 
 
 Class: UGT1A6
     SubClassOf: allele 
     Annotations: rdfs:label "UGT1A6" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:UGT1A6> 
 	 Annotations: rank "-1" 
 
 Class: UGT1A4
     SubClassOf: allele 
     Annotations: rdfs:label "UGT1A4" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:UGT1A4> 
 	 Annotations: rank "-1" 
 
 Class: UGT1A10
     SubClassOf: allele 
     Annotations: rdfs:label "UGT1A10" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:UGT1A10> 
 	 Annotations: rank "-1" 
 
 Class: UGT1A8
     SubClassOf: allele 
     Annotations: rdfs:label "UGT1A8" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:UGT1A8> 
 	 Annotations: rank "-1" 
 
 Class: UGT1A7
     SubClassOf: allele 
     Annotations: rdfs:label "UGT1A7" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:UGT1A7> 
 	 Annotations: rank "-1" 
 
 Class: UGT1A5
     SubClassOf: allele 
     Annotations: rdfs:label "UGT1A5" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:UGT1A5> 
 	 Annotations: rank "-1" 
 
 Class: UGT1A3
     SubClassOf: allele 
     Annotations: rdfs:label "UGT1A3" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:UGT1A3> 
 	 Annotations: rank "-1" 
 
 Class: UGT1A9
     SubClassOf: allele 
     Annotations: rdfs:label "UGT1A9" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:UGT1A9> 
 	 Annotations: rank "-1" 
 
 Class: ABCB1
     SubClassOf: allele 
     Annotations: rdfs:label "ABCB1" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:ABCB1> 
 	 Annotations: rank "-1" 
 
 Class: G6PD
     SubClassOf: allele 
     Annotations: rdfs:label "G6PD" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:G6PD> 
 	 Annotations: rank "-1" 
 
 Class: CYP2C9
     SubClassOf: allele 
     Annotations: rdfs:label "CYP2C9" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:CYP2C9> 
 	 Annotations: rank "21" 
 
 Class: SULT1A1
     SubClassOf: allele 
     Annotations: rdfs:label "SULT1A1" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:SULT1A1> 
 	 Annotations: rank "-1" 
 
 Class: DPYD
     SubClassOf: allele 
     Annotations: rdfs:label "DPYD" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:DPYD> 
 	 Annotations: rank "24" 
 
 Class: DPYD-AS1
     SubClassOf: allele 
     Annotations: rdfs:label "DPYD-AS1" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:DPYD-AS1> 
 	 Annotations: rank "-1" 
 
 Class: ADRB1
     SubClassOf: allele 
     Annotations: rdfs:label "ADRB1" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:ADRB1> 
 	 Annotations: rank "-1" 
 
 Class: CYP2A6
     SubClassOf: allele 
     Annotations: rdfs:label "CYP2A6" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:CYP2A6> 
 	 Annotations: rank "-1" 
 
 Class: P2RY12
     SubClassOf: allele 
     Annotations: rdfs:label "P2RY12" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:P2RY12> 
 	 Annotations: rank "-1" 
 
 Class: MED12L
     SubClassOf: allele 
     Annotations: rdfs:label "MED12L" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:MED12L> 
 	 Annotations: rank "-1" 
 
 Class: CYP2B6
     SubClassOf: allele 
     Annotations: rdfs:label "CYP2B6" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:CYP2B6> 
 	 Annotations: rank "-1" 
 
 Class: SLCO1B1
     SubClassOf: allele 
     Annotations: rdfs:label "SLCO1B1" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:SLCO1B1> 
 	 Annotations: rank "-1" 
 
 Class: TPMT
     SubClassOf: allele 
     Annotations: rdfs:label "TPMT" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:TPMT> 
 	 Annotations: rank "27" 
 
 Class: CYP3A4
     SubClassOf: allele 
     Annotations: rdfs:label "CYP3A4" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:CYP3A4> 
 	 Annotations: rank "-1" 
 
 Class: ZMIZ1-AS1
     SubClassOf: allele 
     Annotations: rdfs:label "ZMIZ1-AS1" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:ZMIZ1-AS1> 
 	 Annotations: rank "-1" 
 
 Class: CYP2C19
     SubClassOf: allele 
     Annotations: rdfs:label "CYP2C19" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:CYP2C19> 
 	 Annotations: rank "20" 
 
 Class: HMGCR
     SubClassOf: allele 
     Annotations: rdfs:label "HMGCR" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:HMGCR> 
 	 Annotations: rank "-1" 
 
 Class: LOC100286922
     SubClassOf: allele 
     Annotations: rdfs:label "LOC100286922" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:LOC100286922> 
 	 Annotations: rank "-1" 
 
 Class: LOC101927831
     SubClassOf: allele 
     Annotations: rdfs:label "LOC101927831" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:LOC101927831> 
 	 Annotations: rank "-1" 
 
 Class: NBR1
     SubClassOf: allele 
     Annotations: rdfs:label "NBR1" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:NBR1> 
 	 Annotations: rank "-1" 
 
 Class: RP11-242D8.1
     SubClassOf: allele 
     Annotations: rdfs:label "RP11-242D8.1" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:RP11-242D8.1> 
 	 Annotations: rank "-1" 
 
 Class: IFNL4
     SubClassOf: allele 
     Annotations: rdfs:label "IFNL4" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:IFNL4> 
 	 Annotations: rank "-1" 
 
 Class: CFTR
     SubClassOf: allele 
     Annotations: rdfs:label "CFTR" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:CFTR> 
 	 Annotations: rank "-1" 
 
 Class: HLA-B
     SubClassOf: allele 
     Annotations: rdfs:label "HLA-B" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:HLA-B> 
 	 Annotations: rank "26" 
 
 Class: HLA-A
     SubClassOf: allele 
     Annotations: rdfs:label "HLA-A" 
+	 Annotations: rdfs:seeAlso <http://bio2rdf.org/hgnc.symbol:HLA-A> 
 	 Annotations: rank "25" 
 
 
@@ -24753,7 +24796,7 @@ Class: human_with_WHO_class_I_G6PD_variant
    Annotations: rdfs:seeAlso <https://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_rasburicase_G6PD_Preview.pdf>
    Annotations: date_of_evidence "27-Apr-2014"
    Annotations: date_of_addition "04-Jun-2014"
-   Annotations: date_last_validation "21-Aug-2014"
+   Annotations: date_last_validation "11-Sep-2014"
    Annotations: author_addition "Kathrin Blagec"
 	Annotations: textual_genetic_description ""
 
@@ -24767,7 +24810,7 @@ Class: human_with_WHO_class_II_G6PD_variant
    Annotations: rdfs:seeAlso <https://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_rasburicase_G6PD_Preview.pdf>
    Annotations: date_of_evidence "27-Apr-2014"
    Annotations: date_of_addition "04-Jun-2014"
-   Annotations: date_last_validation "21-Aug-2014"
+   Annotations: date_last_validation "11-Sep-2014"
    Annotations: author_addition "Kathrin Blagec"
 	Annotations: textual_genetic_description "(negative strand): rs5030869_A, rs72554665_C, rs72554665_T, rs5030868_T"
 
@@ -24781,7 +24824,7 @@ Class: human_with_WHO_class_III_G6PD_variant
    Annotations: rdfs:seeAlso <https://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_rasburicase_G6PD_Preview.pdf>
    Annotations: date_of_evidence "27-Apr-2014"
    Annotations: date_of_addition "04-Jun-2014"
-   Annotations: date_last_validation "21-Aug-2014"
+   Annotations: date_last_validation "11-Sep-2014"
    Annotations: author_addition "Kathrin Blagec"
 	Annotations: textual_genetic_description "(negative strand) rs78478128_G, rs1050828_A, rs1050828_A + rs1050829_G, rs137852328_G + rs1050829_T, rs76723693_G + rs1050829_C, rs137852339_A, (rs1050829_G)"
 
@@ -24795,7 +24838,7 @@ Class: human_with_WHO_class_IV_G6PD_variant
    Annotations: rdfs:seeAlso <https://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_rasburicase_G6PD_Preview.pdf>
    Annotations: date_of_evidence "27-Apr-2014"
    Annotations: date_of_addition "04-Jun-2014"
-   Annotations: date_last_validation "21-Aug-2014"
+   Annotations: date_last_validation "11-Sep-2014"
    Annotations: author_addition "Kathrin Blagec"
 	Annotations: textual_genetic_description "(negative strand): 
 (rs1050829_G)"
@@ -30939,7 +30982,7 @@ Class: human_triggering_CDS_rule_302
    Annotations: rdfs:seeAlso <https://www.pharmgkb.org/download.do?objCls=Attachment&objId=CPIC_Ivacaftor_PharmGKB_Update.pdf>
    Annotations: date_of_evidence "26-Mar-2014"
    Annotations: date_of_addition "03-Jun-2014"
-   Annotations: date_last_validation "21-Aug-2014"
+   Annotations: date_last_validation "11-Sep-2014"
    Annotations: author_addition "Kathrin Blagec"
    Annotations: CDS_message "Use ivacaftor according to the product label (e.g., 150 mg every 12 hours for patients age 6 and older without other diseases; modify dose in patients with hepatic impairment)"
 
@@ -30979,7 +31022,7 @@ Class: human_triggering_CDS_rule_307
    Annotations: rdfs:seeAlso <https://www.pharmgkb.org/download.do?objCls=Attachment&objId=clpt2013203a_IL28B.pdf>
    Annotations: date_of_evidence "04-Oct-2013"
    Annotations: date_of_addition "03-Jun-2014"
-   Annotations: date_last_validation "21-Aug-2014"
+   Annotations: date_last_validation "11-Sep-2014"
    Annotations: author_addition "Kathrin Blagec"
    Annotations: CDS_message "Implications for protease inhibitor combinations with PEG-IFN alpha  and RBV therapy: 
 Approximately 60% chance for SVR after 24-48 weeks of treatment. Approximately 50% of patients are eligible for shortened therapy (24-28 weeks). Patients receiving boceprevir are eligible for 24-28 weeks instead of the standard 48 weeks if HCV RNA is undetectable by week eight. Consider implications before initiating PEG-IFN  and RBV containing regimens.
@@ -31019,7 +31062,7 @@ Class: human_triggering_CDS_rule_309
    Annotations: rdfs:seeAlso <https://www.pharmgkb.org/guideline/PA166117281>
    Annotations: date_of_evidence "05-Mar-2013"
    Annotations: date_of_addition "03-Jun-2014"
-   Annotations: date_last_validation "21-Aug-2014"
+   Annotations: date_last_validation "11-Sep-2014"
    Annotations: author_addition "Kathrin Blagec"
    Annotations: CDS_message "Alternative medications should be used as first-line therapy. Consideration in the choice of alternative medications should be given to the possibility of cross-reactivity with structurally similar AEDs (oxcarbazepine, lamotrigine, phenytoin, phe- nobarbital, primidone)."
 
@@ -31059,7 +31102,7 @@ Class: human_triggering_CDS_rule_311
    Annotations: rdfs:seeAlso <https://www.pharmgkb.org/download.do?objCls=Attachment&objId=clpt2013203a_IL28B.pdf>
    Annotations: date_of_evidence "04-Oct-2013"
    Annotations: date_of_addition "04-Jun-2014"
-   Annotations: date_last_validation "21-Aug-2014"
+   Annotations: date_last_validation "11-Sep-2014"
    Annotations: author_addition "Kathrin Blagec"
    Annotations: CDS_message "Implications for protease inhibitor combinations with PEG-IFN alpha  and RBV therapy: 
 Approximately 60% chance for SVR after 24-48 weeks of treatment. Approximately 50% of patients are eligible for shortened therapy (24-28 weeks). Patients receiving telaprevir are eligible for 24 weeks of therapy instead of the standard 48 weeks if HCV RNA is undetectable by week four. Consider implications before initiating PEG-IFN  and RBV containing regimens.
