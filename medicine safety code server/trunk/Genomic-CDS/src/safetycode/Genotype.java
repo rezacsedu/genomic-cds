@@ -1,25 +1,25 @@
 package safetycode;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Set;
+//import java.util.Iterator;
+//import java.util.Set;
 
-import org.semanticweb.owlapi.model.IRI;
-import org.semanticweb.owlapi.model.OWLAnnotation;
-import org.semanticweb.owlapi.model.OWLClass;
-import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
-import org.semanticweb.owlapi.model.OWLClassExpression;
-import org.semanticweb.owlapi.model.OWLDataFactory;
-import org.semanticweb.owlapi.model.OWLLiteral;
-import org.semanticweb.owlapi.model.OWLNamedIndividual;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.reasoner.NodeSet;
-import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
+//import org.semanticweb.owlapi.model.IRI;
+//import org.semanticweb.owlapi.model.OWLAnnotation;
+//import org.semanticweb.owlapi.model.OWLClass;
+//import org.semanticweb.owlapi.model.OWLClassAssertionAxiom;
+//import org.semanticweb.owlapi.model.OWLClassExpression;
+//import org.semanticweb.owlapi.model.OWLDataFactory;
+//import org.semanticweb.owlapi.model.OWLLiteral;
+//import org.semanticweb.owlapi.model.OWLNamedIndividual;
+//import org.semanticweb.owlapi.model.OWLOntology;
+//import org.semanticweb.owlapi.model.OWLOntologyManager;
+//import org.semanticweb.owlapi.reasoner.NodeSet;
+//import org.semanticweb.owlapi.vocab.OWLRDFVocabulary;
 
 import utils.OntologyManagement;
-import eu.trowl.owlapi3.rel.reasoner.dl.RELReasoner;
-import eu.trowl.owlapi3.rel.reasoner.dl.RELReasonerFactory;
+//import eu.trowl.owlapi3.rel.reasoner.dl.RELReasoner;
+//import eu.trowl.owlapi3.rel.reasoner.dl.RELReasonerFactory;
 import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
 
@@ -36,8 +36,9 @@ public class Genotype {
 	
 	/**Construct the patient's genotype with the information of SNPs and infer the corresponding alleles.
 	 * @throws VariantDoesNotMatchAnyAllowedVariantException */	
-	public Genotype(ArrayList<SNPElement> listSNPs,OntologyManagement om) throws VariantDoesNotMatchAnyAllowedVariantException{
+	public Genotype(ArrayList<SNPElement> listSNPs, OntologyManagement om) throws VariantDoesNotMatchAnyAllowedVariantException{
 		this.listSNPs = listSNPs;
+		//for(SNPElement snpe: listSNPs){System.out.println(snpe.getGeneticMarkerName()+"_"+snpe.getCriteriaSyntax());}
 		inferGenotypeElements(om);
 	}
 	
@@ -77,7 +78,51 @@ public class Genotype {
 	 * @param om	OntologyManagement singleton instance that provides the ontology information to infer the genotype elements related to patient's genotype.
 	 * @throws VariantDoesNotMatchAnyAllowedVariantException 
 	 * */
-	private void inferGenotypeElements(OntologyManagement om) throws VariantDoesNotMatchAnyAllowedVariantException{
+	private void inferGenotypeElements(OntologyManagement om){
+		listGenotypeElements = new ArrayList<GenotypeElement>();
+		ArrayList<GenotypeElement> listSNPsElements = new ArrayList<GenotypeElement>();
+		for(SNPElement snpe: listSNPs){
+			listSNPsElements.add(snpe);
+		}
+
+		ArrayList<AlleleRule> listAlleleRules = om.getListAlleleRules();
+		ArrayList<GeneticMarkerGroup> listGMG = om.getListGeneticMarkerGroups();
+		for(GeneticMarkerGroup gmg: listGMG){
+			String geneName = gmg.getGeneticMarkerName();
+			//System.out.println("GeneName="+geneName);
+			GenotypeElement ge = null;
+			for(AlleleRule ar: listAlleleRules){
+				if(geneName.equals(ar.getGeneName())){
+					try {
+						ge=ar.matchPatientProfile(listSNPsElements);
+						break;
+					}catch (VariantDoesNotMatchAnyAllowedVariantException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			if(ge==null){
+				for(SNPElement snpe: listSNPs){
+					if(geneName.equals(snpe.getGeneticMarkerName())){
+						ge = snpe;
+						break;
+					}
+				}
+				if(ge==null){
+					try {
+						ge = gmg.getGenotypeElement(0);
+					} catch (VariantDoesNotMatchAnyAllowedVariantException e1) {
+						e1.printStackTrace();
+					}
+				}
+			}
+			//System.out.println("->"+ge.getGeneticMarkerName()+"_"+ge.getCriteriaSyntax());
+			listGenotypeElements.add(ge);
+		}
+	}
+	
+	
+	/*private void inferGenotypeElements(OntologyManagement om) throws VariantDoesNotMatchAnyAllowedVariantException{
 		
 		OWLOntologyManager reasoner_manager = om.getNewOntologyManager();
 		OWLOntology reasoner_ontology		= reasoner_manager.getOntologies().iterator().next();
@@ -132,7 +177,7 @@ public class Genotype {
 		
 		listGenotypeElements = om.getListGenotypeElements();		
 		setPatientGenotype(listAlleleLabels,listSNPLabels);
-	}
+	}*/
 	
 	
 	/**
@@ -141,7 +186,7 @@ public class Genotype {
 	 * @param reasoner_manager	New ontology manager instance with no patient data included.
 	 * @param patient			The new instance of the patient to be included in the ontology.
 	 * */
-	private void initializeGenotype(OWLOntologyManager reasoner_manager, OWLNamedIndividual patient){
+	/*private void initializeGenotype(OWLOntologyManager reasoner_manager, OWLNamedIndividual patient){
 		OWLOntology reasoner_ontology = reasoner_manager.getOntologies().iterator().next();
 		OWLDataFactory factory = reasoner_manager.getOWLDataFactory();
 		if(listSNPs!=null && (!listSNPs.isEmpty())){
@@ -157,13 +202,13 @@ public class Genotype {
 				}
 			}
 		}
-	}
+	}*/
 	
 	/**
 	 * Create the patient instance in the model.
 	 * @return The individual that represents the patient's profile.
 	 * */
-	private OWLNamedIndividual createPatient(OWLOntology reasoner_ontology, OWLOntologyManager reasoner_manager, OWLDataFactory factory){
+	/*private OWLNamedIndividual createPatient(OWLOntology reasoner_ontology, OWLOntologyManager reasoner_manager, OWLDataFactory factory){
 		
 		OWLClass humanClass = factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#human"));
 		OWLNamedIndividual patientIndividual = factory.getOWLNamedIndividual(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#this_patient"));
@@ -171,9 +216,9 @@ public class Genotype {
 		reasoner_manager.addAxiom(reasoner_ontology, classAssertion);
 
 		return patientIndividual;
-	}
+	}*/
 	
-	
+	/*
 	private void setPatientGenotype(ArrayList<String> listAlleleLabels, ArrayList<String> listSNPLabels){
 		for(GenotypeElement ge : listGenotypeElements){
 			String variant1 = ge.getVariant1();
@@ -218,7 +263,7 @@ public class Genotype {
 				}
 			}
 		}
-	}
+	}*/
 		
 	/** 
 	 * It transforms ids in order to be used in an ontology URI.
@@ -276,7 +321,7 @@ public class Genotype {
 		}
 	}
 	
-	public ArrayList<String> getPatientInferredStatistics(OntologyManagement om){
+	/*public ArrayList<String> getPatientInferredStatistics(OntologyManagement om){
 		OWLOntologyManager reasoner_manager = om.getNewOntologyManager();
 		OWLOntology reasoner_ontology		= reasoner_manager.getOntologies().iterator().next();
 		OWLDataFactory factory 				= reasoner_manager.getOWLDataFactory();
@@ -373,9 +418,7 @@ public class Genotype {
 		ArrayList<String> results = new ArrayList<String>();
 		
 		String snpData ="Number of SNP = "+listSNPLabels.size()+";";
-		/*for(String snp: listSNPLabels){
-			snpData+=snp+";";
-		}*/
+		
 		results.add(snpData);
 		
 		String haplotypeData ="Number of Haplotypes = "+listAlleleLabels.size()+";";
@@ -397,6 +440,6 @@ public class Genotype {
 		results.add(ruleData);
 		
 		return results;
-	}
+	}*/
 	
 }

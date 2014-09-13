@@ -219,7 +219,7 @@ public class MedicineSafetyProfile_v2 {
 	}
 	
 	
-	public ArrayList<String> getGenotypeStatistics(){
+	/*public ArrayList<String> getGenotypeStatistics(){
 		return patientGenotype.getPatientInferredStatistics(om);
-	}
+	}*/
 }

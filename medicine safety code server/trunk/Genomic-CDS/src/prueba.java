@@ -32,6 +32,17 @@ public class prueba {
 			e1.printStackTrace();
 		}
 		MedicineSafetyProfile_v2 msp2 = new MedicineSafetyProfile_v2("D:/workspace/Genomic CDS/knowledge-base/trunk/ontology/MSC_textual_rules.owl");
+		try {
+			msp2.parseFileStream(my23AndMeFileStream, FileParserFactory.FORMAT_23ANDME_FILE);
+			System.out.println("Code = "+msp2.getBase64ProfileString());
+		} catch (VariantDoesNotMatchAnyAllowedVariantException e) {
+			e.printStackTrace();
+		} catch (NotPatientGenomicFileParsedException e) {
+			e.printStackTrace();
+		} catch (BadFormedBinaryNumberException e) {
+			e.printStackTrace();
+		}
+		
 		//try {
 			//String report = msp2.parseFileStream(my23AndMeFileStream, FileParserFactory.FORMAT_23ANDME_FILE);
 			//String report = msp2.parseFileStream(my23AndMeFileStream, FileParserFactory.FORMAT_VCF_FILE);

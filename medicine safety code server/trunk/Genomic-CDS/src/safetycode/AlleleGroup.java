@@ -61,7 +61,6 @@ public class AlleleGroup implements GeneticMarkerGroup{
 	 *  @return		The position of the combination in the set of allele 2-multicombination.
 	 * */
 	public int getPositionGeneticMarker(String criteriaSyntax){
-				
 		if(criteriaSyntax.contains("null")) return 0;
 		int position = -1;
 		int n = listAlleles.size();//list n variants in the groups.
@@ -190,6 +189,6 @@ public class AlleleGroup implements GeneticMarkerGroup{
 			return new AlleleElement(geneName,getGeneticMarkerVariantName(position));			
 		}
 		
-		throw new VariantDoesNotMatchAnyAllowedVariantException("The variant in position "+position+" does not exist. Please use other position in [0,"+(listAlleles.size()-1)+"]");
+		throw new VariantDoesNotMatchAnyAllowedVariantException("The variant in position "+position+" does not exist. Please use other position in [0,"+getNumberOfVariants()+"]");
 	}
 }

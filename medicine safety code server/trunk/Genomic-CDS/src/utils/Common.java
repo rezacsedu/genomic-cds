@@ -65,6 +65,8 @@ public class Common {
 	/** The name of the file with the information about cds rules.*/
 	public final static String tabSeparatedCDSRules = localPath+"ontinfo/drugRecommendations.txt";
 	
+	/** The name of the file with the information about allele rules.*/
+	public final static String tabSeparatedAlleleRules = localPath+"ontinfo/alleleRules.txt";
 	
 	/**
 	 * This method should process the file to identify the type of file format.

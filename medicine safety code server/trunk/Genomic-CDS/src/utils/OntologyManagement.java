@@ -11,17 +11,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyManager;
+//import org.semanticweb.owlapi.apibinding.OWLManager;
+//import org.semanticweb.owlapi.model.OWLOntology;
+//import org.semanticweb.owlapi.model.OWLOntologyManager;
 
 import exception.BadRuleDefinitionException;
 import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
 import safetycode.AlleleGroup;
+import safetycode.AlleleRule;
 import safetycode.DrugRecommendation;
 import safetycode.GeneticMarkerGroup;
 import safetycode.GenotypeElement;
+//import safetycode.NodeCondition;
 import safetycode.SNPElement;
 import safetycode.SNPsGroup;
 
@@ -34,9 +36,9 @@ public class OntologyManagement {
 	/**	Singleton instance of this class */
 	private static OntologyManagement singleton=null;
 	/** Ontology modelo that will be always load into memory */
-	private OWLOntology ontology = null;
+	//private OWLOntology ontology = null;
 	/** Ontology manager of the base ontology */
-	private OWLOntologyManager manager = null;
+	//private OWLOntologyManager manager = null;
 	/** Source file where base ontology is stored */
 	private static String ontFile=null;
 	/** List of base Genetic markers groups */
@@ -49,6 +51,8 @@ public class OntologyManagement {
 	private ArrayList<DrugRecommendation> listDrugRecommendations = null;
 	/** List of defined phenotype rules */
 	private HashMap<String,String> listPhenotypeRules = null; 
+	/** List of defined allele rules */
+	private ArrayList<AlleleRule> listAlleleRules = null;
 	
 	/**
 	 * Static method to obtain the singleton instance of this class.
@@ -72,9 +76,9 @@ public class OntologyManagement {
 	public OntologyManagement(String ontologyFile){
 		try {
 			//Initialise ontology manager to speed up the process of inferring the corresponding haplotypes from the raw SNPs.
-			manager = OWLManager.createOWLOntologyManager();
+			/*manager = OWLManager.createOWLOntologyManager();
 			File file = new File(ontologyFile);
-			ontology = manager.loadOntologyFromOntologyDocument(file);
+			ontology = manager.loadOntologyFromOntologyDocument(file);*/
 			
 			//Initialise allele groups information from tab separated file: alleleGroups.
 			InputStream allelesStream = new FileInputStream(new File(Common.tabSeparatedAlleleGroups));			
@@ -97,6 +101,12 @@ public class OntologyManagement {
 			InputStream drugRecommendationsStream = new FileInputStream(new File(Common.tabSeparatedCDSRules));
 			initializeDrugRecommendations(phenotypeStream, drugRecommendationsStream);
 			//for(DrugRecommendation dr: listDrugRecommendations){System.out.println("Drug recommendation "+dr.getDrugName()+" = "+dr.toString());}
+			
+			//Initialise Allele rules information from tab separated file: alleleRules.
+			InputStream alleleRulesStream = new FileInputStream(new File(Common.tabSeparatedAlleleRules));
+			initializeAlleleRules(alleleRulesStream);
+			alleleRulesStream.close();
+			//for(AlleleRule ar: listAlleleRules){System.out.println("allele rule "+ar.getGeneName()+" = ");HashMap<String, NodeCondition> listNodes = ar.getListNodes();	for(String key: listNodes.keySet()){System.out.println("\tAllele->"+key+" = "+listNodes.get(key).toString());}}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -133,7 +143,7 @@ public class OntologyManagement {
 	 * 	
 	 * @return		The new ontology manager that is associated to the new instance model.
 	 * */
-	public OWLOntologyManager getNewOntologyManager(){
+	/*public OWLOntologyManager getNewOntologyManager(){
 		OWLOntologyManager mang = null;
 		try{
 			mang = OWLManager.createOWLOntologyManager();
@@ -142,7 +152,7 @@ public class OntologyManagement {
 			e.printStackTrace();
 		}
 		return mang;
-	}
+	}*/
 	
 	
 	/**
@@ -247,6 +257,10 @@ public class OntologyManagement {
 	 * */	
 	public ArrayList<SNPsGroup> getListSNPsGroups(){
 		return listSNPsGroups;
+	}
+	
+	public ArrayList<AlleleRule> getListAlleleRules(){
+		return listAlleleRules;
 	}
 	
 	/**
@@ -416,6 +430,56 @@ public class OntologyManagement {
 			br.close();
 			recommendationsFile.close();
 		}catch(IOException e){
+			e.printStackTrace();
+		}
+	}
+	
+	private void initializeAlleleRules(InputStream alleleRuleFile){
+		//AlleleID	logical_description
+		listAlleleRules = new ArrayList<AlleleRule>();
+		String allele_id;
+		String logical_description;
+		
+		HashMap<String, HashMap<String,String>> listRules = new HashMap<String,HashMap<String,String>>();
+		try{
+			BufferedReader br = new BufferedReader(new InputStreamReader(alleleRuleFile));
+			String linea = "";
+			br.readLine();//The first line is the header
+			while((linea=br.readLine())!=null){
+				String[] tokens = linea.split("\t");
+				if(tokens.length == 2){
+					allele_id = tokens[0];
+					logical_description = tokens[1];
+					String gene = allele_id.substring(0,allele_id.indexOf("_"));
+					if(listRules.containsKey(gene)){
+						HashMap<String,String> listHaplotypesRules = listRules.get(gene);
+						listHaplotypesRules.put(allele_id, logical_description);
+					}else{
+						HashMap<String,String> listHaplotypesRules = new HashMap<String,String>	();
+						listHaplotypesRules.put(allele_id, logical_description);
+						listRules.put(gene, listHaplotypesRules);
+					}
+				}
+			}
+			br.close();
+			alleleRuleFile.close();
+		}catch(IOException e){
+			e.printStackTrace();
+		}
+		
+		AlleleRule ar;
+		try{
+			for(String geneName: listRules.keySet()){
+				HashMap<String,String> listAllelesLD = listRules.get(geneName);
+				for(GeneticMarkerGroup gmg: listGeneticMarkers){
+					if(gmg.getGeneticMarkerName().equalsIgnoreCase(geneName)){
+						ar = new AlleleRule(geneName,listAllelesLD,gmg);
+						listAlleleRules.add(ar);
+						break;
+					}
+				}
+			}
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 	}
