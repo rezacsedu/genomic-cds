@@ -33,7 +33,11 @@ import utils.Common;
 import utils.StringReader;
 
 /**
- * Servlet implementation class AlleleGeneralInterpreter
+ * Servlet implementation class AlleleGeneralInterpreter.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
  */
 public class AlleleGeneralInterpreter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -56,7 +60,7 @@ public class AlleleGeneralInterpreter extends HttpServlet {
 		String code = "0";
 		StringBuffer contentHTML = new StringBuffer("");
 		
-		MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path+Common.ONT_NAME);
+		MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path);
 		ArrayList<GeneticMarkerGroup> listGroups = myProfile.getListGenotypeGroups();
 		String selection="";
 		for(GeneticMarkerGroup gmg: listGroups){

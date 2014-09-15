@@ -11,6 +11,8 @@ import exception.VariantDoesNotMatchAnyAllowedVariantException;
  * 	This class represents the set of haplotype variants related to one gene. 
  * 
  * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
  * */
 public class AlleleGroup implements GeneticMarkerGroup{
 	
@@ -76,8 +78,6 @@ public class AlleleGroup implements GeneticMarkerGroup{
 			position = pos1*n+pos2+1-((pos1*(pos1+1))/2);
 		}
 		return position;
-		
-		
 	}
 	
 	
@@ -176,7 +176,6 @@ public class AlleleGroup implements GeneticMarkerGroup{
 		return valid_label;
 	}
 
-	
 	/**
 	 * Get the AlleleElement from the position in the group.
 	 * 
@@ -188,7 +187,6 @@ public class AlleleGroup implements GeneticMarkerGroup{
 		if(position<getNumberOfVariants() && position >= 0){
 			return new AlleleElement(geneName,getGeneticMarkerVariantName(position));			
 		}
-		
 		throw new VariantDoesNotMatchAnyAllowedVariantException("The variant in position "+position+" does not exist. Please use other position in [0,"+getNumberOfVariants()+"]");
 	}
 }

@@ -6,6 +6,8 @@ import java.util.ArrayList;
  * Represents the node of a logical expression. It could be connected to other subnodes.
  * 
  * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
  * */
 public class NodeCondition {
 	/** List of sub node conditions of this node.*/
@@ -59,7 +61,6 @@ public class NodeCondition {
 						//This exception occurs when the conditions requires one subclass of a SNPs and it does not indicate which one. Therefore, we accept all subclasses of it as matching classes. We assue that all subclasses of a SNP will contain its name in the description.
 						if(element.matches("rs[0-9]+")){
 							if(ge.getGeneticMarkerName().equals(element)&& !ge.getCriteriaSyntax().contains("null")){
-								//System.out.println("matches some element = "+element);
 								return true;
 							}
 						}
@@ -91,7 +92,6 @@ public class NodeCondition {
 										//This exception occurs when the conditions requires one subclass of a SNPs and it does not indicate which one. Therefore, we accept all subclasses of it as matching classes. We assue that all subclasses of a SNP will contain its name in the description.
 										if(nodeElement.matches("rs[0-9]+")){
 											if(ge.getGeneticMarkerName().equals(nodeElement) && !ge.getCriteriaSyntax().contains("null")){
-												//System.out.println("matches some or nodeElement = "+nodeElement);
 												return true;
 											}
 										}
@@ -121,7 +121,6 @@ public class NodeCondition {
 										}
 										if(nodeElement.matches("rs[0-9]+")){
 											if(ge.getGeneticMarkerName().equals(nodeElement) && !ge.getCriteriaSyntax().contains("null")){
-												//System.out.println("matches some and nodeElement = "+nodeElement);
 												return true;
 											}
 										}
@@ -164,7 +163,6 @@ public class NodeCondition {
 										}
 										if(nodeElement.matches("rs[0-9]+")){
 											if(ge.getGeneticMarkerName().equals(nodeElement) && !ge.getCriteriaSyntax().contains("null")){
-												//System.out.println("matches exactly or nodeElement = "+nodeElement);
 												nMatches+=2;
 											}
 										}
@@ -200,7 +198,6 @@ public class NodeCondition {
 										
 										if(nodeElement.matches("rs[0-9]+")){
 											if(ge.getGeneticMarkerName().equals(nodeElement) && !ge.getCriteriaSyntax().contains("null")){
-												//System.out.println("matches exactly and nodeElement = "+nodeElement);
 												nMatches+=2;
 											}
 										}
@@ -238,7 +235,6 @@ public class NodeCondition {
 							
 							if(element.matches("rs[0-9]+")){
 								if(ge.getGeneticMarkerName().equals(element) && !ge.getCriteriaSyntax().contains("null")){
-									//System.out.println("matches exactly element = "+element);
 									nMatches+=2;
 								}
 							}
@@ -277,7 +273,6 @@ public class NodeCondition {
 										}
 										if(nodeElement.matches("rs[0-9]+")){
 											if(ge.getGeneticMarkerName().equals(nodeElement) && !ge.getCriteriaSyntax().contains("null")){
-												//System.out.println("matches min or nodeElement = "+nodeElement);
 												nMatches+=2;
 											}
 										}
@@ -312,7 +307,6 @@ public class NodeCondition {
 										}
 										if(nodeElement.matches("rs[0-9]+")){
 											if(ge.getGeneticMarkerName().equals(nodeElement) && !ge.getCriteriaSyntax().contains("null")){
-												//System.out.println("matches min and nodeElement = "+nodeElement);
 												nMatches+=2;
 											}
 										}
@@ -348,7 +342,6 @@ public class NodeCondition {
 							}
 							if(element.matches("rs[0-9]+")){
 								if(ge.getGeneticMarkerName().equals(element) && !ge.getCriteriaSyntax().contains("null")){
-									//System.out.println("matches min element = "+element);
 									nMatches+=2;
 								}
 							}
@@ -478,7 +471,10 @@ public class NodeCondition {
 		return element;
 	}
 	
-	/**Overrides the toString() method to show the logical description represented by the node condition.*/
+	/**Overrides the toString() method to show the logical description represented by the node condition.
+	 * 
+	 * @return	the description of the content of the nodeCondition instance. 
+	 * */
 	public String toString(){
 		String desc = "";
 		if(!quality.isEmpty() && !type.isEmpty() && listConditions!=null && !listConditions.isEmpty()){

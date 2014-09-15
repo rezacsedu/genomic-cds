@@ -12,9 +12,9 @@ import utils.Common;
 /**
  * Parse the content of a VCF file to gather SNPs information of a patient's genotype.
  * 
- * @author Jose
+ * @author Jose Antonio Miñarro Giménez
  * @version 2.0
- * 
+ * @date 15/09/2014
  * */
 public class FileParser_VCF_Format implements FileParser{
 	/**List of parsed SNPs variants.*/
@@ -61,9 +61,7 @@ public class FileParser_VCF_Format implements FileParser{
 			int id_col_pos		= -1;//Position of the column with SNPs id.
 			int ref_col_pos		= -1;//Position of the column with the reference nucleotide.
 			int alt_col_pos		= -1;//Position of the column with the alternative nucleotide.
-			int qual_col_pos	= -1;//Position of the column with quality value.
 			int format_col_pos	= -1;//Position of the column with the format elements and their positions.
-			int info_col_pos	= -1;//Position of the column with the general info description.
 			
 			BufferedReader br = new BufferedReader(new InputStreamReader(fileStream));
 			while((line=br.readLine())!=null){
@@ -91,17 +89,8 @@ public class FileParser_VCF_Format implements FileParser{
 							continue;
 						}
 						
-						if(header_line[i].equalsIgnoreCase("QUAL")){
-							qual_col_pos = i;
-							continue;
-						}
-						
 						if(header_line[i].equalsIgnoreCase("FORMAT")){
 							format_col_pos = i;
-							continue;
-						}
-						if(header_line[i].equalsIgnoreCase("INFO")){
-							info_col_pos = i;
 							continue;
 						}
 					}
@@ -110,20 +99,15 @@ public class FileParser_VCF_Format implements FileParser{
 				
 				processedLines++;
 				
-				if(id_col_pos < 0 || ref_col_pos < 0 || alt_col_pos < 0 || qual_col_pos < 0 || format_col_pos < 0) continue;
+				if(id_col_pos < 0 || ref_col_pos < 0 || alt_col_pos < 0 || format_col_pos < 0) continue;
 				
 				String rsid		= "";	//strand id
-				//String snpCode	= "";	//char code that is related to snp nucleotides.
 				
 				String[] tokens = line.split("\t");
 				if(tokens.length < format_col_pos+2) continue;
 				if(id_col_pos>=0)		rsid = tokens[id_col_pos];
 				
 				if(listSNPs!=null && listSNPs.containsKey(rsid)){
-					//String qual = "";
-					//if(qual_col_pos>=0)	qual = tokens[qual_col_pos];//Do something with quality value
-					String info		= "";
-					if(info_col_pos>=0)		info = tokens[info_col_pos];
 					String format	= "";
 					if(format_col_pos>=0)	format = tokens[format_col_pos];
 					String values	= "";
@@ -131,9 +115,7 @@ public class FileParser_VCF_Format implements FileParser{
 				
 					int gt_pos		= -1;
 					int gq_pos		= -1;
-					
-					//String base_nucleotides = tokens[ref_col_pos]+tokens[alt_col_pos];
-	
+										
 					String[] format_items = format.split(":");
 					for(int i = 0; i < format_items.length; i++){
 						if(format_items[i].equalsIgnoreCase("GT")){
@@ -152,7 +134,7 @@ public class FileParser_VCF_Format implements FileParser{
 					String[] values_items = values.split(":");
 					if(values_items.length < gt_pos || values_items.length < gq_pos) continue;
 					String encoded_genotype	= values_items[gt_pos];
-					//quality_genotype = values_items[gq_pos];//Do something with quality value
+
 					String[] variants = new String[2];
 					variants[0]="-";
 					variants[1]="-";
@@ -170,10 +152,7 @@ public class FileParser_VCF_Format implements FileParser{
 							variants[i] = tokens[alt_col_pos];
 						}
 					}
-								
-					if(info.contains("IndelType=D")){
-						//System.out.println("linea ["+rsid+"] = "+line);
-					}
+					
 					SNPElement	snpe = listSNPs.get(rsid);
 					SNPsGroup	snpg = listSNPsGroups.get(rsid);
 					
@@ -186,7 +165,6 @@ public class FileParser_VCF_Format implements FileParser{
 						linesThatDidNotMatchAllowedVariant++;
 						processingReport+="<li>Warning: " + rsid + "(" + variants[0] + ";" + variants[1] + ") with orientation " + strandOrientation + " does not match any allowed genotype. Only genotypes listed in dbSNP are allowed. A possible reason for this could be that your data is not based on the same strand (+ or -) as dbSNP, and you did not choose the proper settings for strand orientation. This genotype will be reported as " + snpg.getVCFReference() + " in the resulting Medicine Safety Code.\n";
 					}
-					//System.out.println("snp="+snpe.getGeneticMarkerName()+"_"+snpe.getCriteriaSyntax());
 				}
 			}
 			br.close();
@@ -260,7 +238,6 @@ public class FileParser_VCF_Format implements FileParser{
 				variants[j] = val_1;
 			}
 		}
-		
 		
 		if(variants[0].length()>variants[1].length() || (variants[0].length()==variants[1].length() && (variants[0].compareTo(variants[1])>0)) ){
 			String aux = variants[1];

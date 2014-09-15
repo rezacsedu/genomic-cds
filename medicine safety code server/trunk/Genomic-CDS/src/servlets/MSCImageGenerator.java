@@ -19,6 +19,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import utils.Common;
+
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
@@ -26,6 +28,10 @@ import com.google.zxing.qrcode.QRCodeWriter;
 /**
  * Servlet implementation class MSCImageGenerator
  * It generates the QR image with the corresponding URL.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
  */
 public class MSCImageGenerator extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -83,7 +89,7 @@ public class MSCImageGenerator extends HttpServlet {
 			
 		try {
 			
-			InputStream is = new FileInputStream(path+"images/safetyCodeFrameImage2.png");
+			InputStream is = new FileInputStream(path+Common.QR_FRAME);
 			BufferedImage frameImage = ImageIO.read(is);
 			BufferedImage finalImage = new BufferedImage(frameImage.getWidth(), frameImage.getHeight(), BufferedImage.TYPE_INT_RGB);
 			BufferedImage barcodeImage = MatrixToImageWriter.toBufferedImage(matrix);

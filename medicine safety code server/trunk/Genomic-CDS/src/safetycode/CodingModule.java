@@ -10,9 +10,11 @@ import exception.BadFormedBinaryNumberException;
 import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
 /**
- * This class implements the functionality of the coding/decoding module. It is able to represent in base64 number a list of alleles combination associated to a patient's genotype
+ * This class implements the functionality of the coding/decoding module. It is able to represent in base64 number a list of alleles combination associated to a patient's genotype.
  *
  * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
  * */
 public class CodingModule {
 		

@@ -6,12 +6,14 @@ import java.io.InputStream;
 
 import net.sf.ehcache.Cache;
 import net.sf.ehcache.CacheManager;
-
+/**
+ * Application to empty the cache of the server.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
+ */
 public class ClearCache {
-
-	/**
-	 * Application to empty the cache of the server.
-	 */
 	public static void main(String[] args) {
 		String path= new File(".").getAbsolutePath();
 		CacheManager manager = null;

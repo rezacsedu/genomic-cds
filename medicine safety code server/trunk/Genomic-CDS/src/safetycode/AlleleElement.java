@@ -1,11 +1,11 @@
 package safetycode;
 
-import java.util.ArrayList;
-
 /**
  * This class represents an allele combination related to a patient's genotype.
  * 
  * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
  * */
 public class AlleleElement implements GenotypeElement{
 	/**Name of the gene related to the allele definitions.*/
@@ -52,7 +52,6 @@ public class AlleleElement implements GenotypeElement{
 		}
 	}
 	
-	
 	/**
 	 * Create the combination of allele for a particular gene in a patient's genotype.
 	 * 
@@ -75,7 +74,6 @@ public class AlleleElement implements GenotypeElement{
 		}
 	}
 	
-	
 	/**
 	 * Get method that provides the name of the corresponding gene of the combination of alleles.
 	 * 
@@ -84,7 +82,6 @@ public class AlleleElement implements GenotypeElement{
 	public String getGeneticMarkerName(){
 		return geneName;
 	}
-	
 	
 	/**
 	 * Get method that provides the name of the first allele in the combination.
@@ -95,7 +92,6 @@ public class AlleleElement implements GenotypeElement{
 		return alleleName1;
 	}
 	
-	
 	/**
 	 * Get method that provides the name of the second allele in the combination.
 	 * 
@@ -104,7 +100,6 @@ public class AlleleElement implements GenotypeElement{
 	public String getVariant2(){
 		return alleleName2;
 	}
-	
 	
 	/**
 	 * Get method that provides the string that represents the combination of alleles in alphabetical order.
@@ -153,30 +148,14 @@ public class AlleleElement implements GenotypeElement{
 	 * */
 	public AlleleElement clone(){
 		return (new AlleleElement(geneName,alleleName1,alleleName2));  
-	}
-	
-	
-	/**
-	 * Get the list of URIs of the related classes in the ontology that corresponds to the Allele variant.
-	 * 
-	 * @return It returns a list with a homozygous class URI if the allele variants are equal or two class URIs if the alleles are different. If one of the alleles are null the list will be empty.
-	 * */
-	public ArrayList<String> getOntologyClassURIs(){
-		ArrayList<String> resultURIs = new ArrayList<String>();
-		if(alleleName1 == null || alleleName1.equals("null")|| alleleName2 == null ) return resultURIs;
-		String uriString = "http://www.genomic-cds.org/ont/genomic-cds.owl#";
-		if(alleleName1.equals(alleleName2)){//homozygous
-			resultURIs.add(uriString+"human_with_homozygous_"+geneName+"_"+alleleName1);
-		}else{//not homozygous
-			//Variant 1
-			resultURIs.add(uriString+"human_with_"+geneName+"_"+alleleName1);
-			//Variant 2
-			resultURIs.add(uriString+"human_with_"+geneName+"_"+alleleName2);
-		}
-		return resultURIs;
-	}
+	}	
 
-	// It transforms ids in order to be used in an ontology URI.
+	/** 
+	 * It transforms ids in order to be used in an ontology URI.
+	 * 
+	 * @param label		The label to be transformed.
+	 * @return		The transformed label that does not contains simbols nor spaces.
+	 * */
 	private String make_valid(String label){
 		if(label==null || label.equals("null")) return "null";
 		String valid_label = label.replace("*","star_");

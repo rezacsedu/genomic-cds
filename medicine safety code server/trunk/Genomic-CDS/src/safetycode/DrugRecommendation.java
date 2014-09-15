@@ -8,6 +8,8 @@ import exception.BadRuleDefinitionException;
  * It represents a cds rule and is able to check if a patient's genotype match the logical description of the rule.
  * 
  * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
  * */
 public class DrugRecommendation {
 	private String cds_message	= null;	//AnnotationProperty: CDS_message
@@ -239,8 +241,6 @@ public class DrugRecommendation {
 					while(!listElements.isEmpty()){
 						if((listElements.startsWith("and")&&hasQuality.equals("or"))||(listElements.startsWith("and")&&hasQuality.equals("or"))){
 							throw new BadRuleDefinitionException("and/or inconsistency in has expression condition: " + nodeExpression);
-							//System.out.println("ERROR: and/or inconsistency in has expression condition");
-							//return null;
 						}	
 						if(listElements.startsWith("and")){
 							hasQuality = "and";
@@ -291,8 +291,6 @@ public class DrugRecommendation {
 				if(nodeExpression.startsWith("and")||nodeExpression.startsWith("or")){
 					if((nodeExpression.startsWith("or")&&mainQuality.equals("and"))||(nodeExpression.startsWith("and")&&mainQuality.equals("or"))){
 						throw new BadRuleDefinitionException("and/or inconsistency in has expression condition: " + nodeExpression);
-						//System.out.println("ERROR: and/or inconsistency");
-						//return null;
 					}else{
 						if(nodeExpression.startsWith("or")){
 							mainQuality = "or";

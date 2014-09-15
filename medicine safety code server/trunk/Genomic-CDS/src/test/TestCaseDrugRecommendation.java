@@ -12,23 +12,26 @@ import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
 import safetycode.DrugRecommendation;
 import safetycode.Genotype;
-import utils.Common;
 import utils.OntologyManagement;
 
 /**
  * Test the methods implemented in class DrugRecommendation:
  * - setRule(String genomicRule)
  * - matchPatientProfile(Genotype genotype)
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
  * */
 public class TestCaseDrugRecommendation {
-	DrugRecommendation dr;
-	Genotype genotype;
-	OntologyManagement om;
+	private DrugRecommendation dr;
+	private Genotype genotype;
+	private OntologyManagement om;
+	private String path = "D:/workspace/Genomic-CDS/WebContent";
 	
 	@Before
 	public void initDrugRecommendation() throws VariantDoesNotMatchAnyAllowedVariantException{
-		String ontologyURI = Common.ONT_NAME;
-		om = OntologyManagement.getOntologyManagement(ontologyURI);
+		om = OntologyManagement.getOntologyManagement(path);
 		String rule_id = "rule 1";
 		String cds_message = "rule message";
 		String importance = "Important modification";

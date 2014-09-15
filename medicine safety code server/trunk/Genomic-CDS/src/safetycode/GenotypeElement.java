@@ -1,7 +1,13 @@
 package safetycode;
 
-import java.util.ArrayList;
 
+/**
+ * This interface represents the common methods of a genotype element. In particular, a genotype element can be a SNP or haplotype variant.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
+ * */
 public interface GenotypeElement {
 
 	/**
@@ -46,11 +52,4 @@ public interface GenotypeElement {
 	 * @return	It produces an exactly copy of the instance.
 	 * */
 	public GenotypeElement clone();
-	
-	/**
-	 * Get the list of URIs of the related classes in the ontology that corresponds to the Genotype variant.
-	 * 
-	 * @return It returns the list with a ontology class URIs related to the combination. The list can only contains 0, 1 or 2 URIs.
-	 * */
-	public ArrayList<String> getOntologyClassURIs();
 }

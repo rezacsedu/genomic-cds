@@ -32,7 +32,11 @@ import utils.StringReader;
 import exception.NotInitializedPatientsGenomicDataException;
 
 /**
- * Servlet implementation class SelectedDrugsAlleleInterpreter
+ * Servlet implementation class SelectedDrugsAlleleInterpreter.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
  */
 public class SelectedDrugsAlleleInterpreter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -58,7 +62,7 @@ public class SelectedDrugsAlleleInterpreter extends HttpServlet {
 		String path = this.getServletContext().getRealPath("/");
 		path=path.replaceAll("\\\\", "/");
 		
-		MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path+Common.ONT_NAME);
+		MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path);
 		ArrayList<GeneticMarkerGroup> listGroups = myProfile.getListGenotypeGroups();
 		String selection=listdrugs+"";
 		
@@ -71,7 +75,6 @@ public class SelectedDrugsAlleleInterpreter extends HttpServlet {
 				criteriaSyntax=variant1+";"+variant2;
 				if(!selection.isEmpty()) selection+=",";
 				selection+=criteriaSyntax;
-				//System.out.println("->"+gmg.getGeneticMarkerName()+"_"+criteriaSyntax);
 			}else{
 				if(!selection.isEmpty()) selection+=",";
 				selection+="null;null";
@@ -112,7 +115,6 @@ public class SelectedDrugsAlleleInterpreter extends HttpServlet {
 			HashMap<String, ArrayList<DrugRecommendation>> list_recommendations=null;
 			try {
 				list_recommendations = myProfile.obtainDrugRecommendations();
-				//System.out.println("listrecommendations -> "+list_recommendations.keySet());
 			} catch (NotInitializedPatientsGenomicDataException e) {
 				throw (new ServletException("The patient's genotype was not initialized."));
 			}
@@ -221,14 +223,19 @@ public class SelectedDrugsAlleleInterpreter extends HttpServlet {
 			if(cache!=null){
 				cache.put(new Element(selection,resolvedString)); //Add the new element into the cache.
 				cache.flush(); //We flush the cache to make all element persistent on disk. This avoid the wrong insert of an element due to application errors. We can avoid this here if the performance of the application is penalized.
-				//manager.shutdown();
 			}
 		}
 	}
 
-	
-	private String revert_label(String label,String id){
-		//System.out.print("\tid="+id+" with label = "+label);
+	/**
+	 * This method converts the label to a more readable format. i.e. 'star_1' -> '*1', 'hash_1' -> '#1' 
+	 * 
+	 * @param label		The allele label to be converted.
+	 * @param id		The corresponding genotype element id of the label.
+	 * 
+	 * @return		The transformed label to a more friendly format for humans. 
+	 * */
+	private String revert_label(String label, String id){
 		if(id.matches("rs[0-9]+")){
 			label = "("+label+")";
 		}else{

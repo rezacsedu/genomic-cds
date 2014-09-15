@@ -28,7 +28,11 @@ import utils.Common;
 import utils.StringReader;
 
 /**
- * Servlet implementation class SelectedDrugInterpreter
+ * Servlet implementation class SelectedDrugInterpreter.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
  */
 public class SelectedDrugInterpreter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -79,7 +83,6 @@ public class SelectedDrugInterpreter extends HttpServlet {
 				out.println((String) object);
 			}
 			
-			//manager.shutdown();		//Close the cache manager to reduce the memory use of the application.
 		}else{	//If there is a cache miss or the cache is not initialized
 			StringBuffer contentHTML = new StringBuffer("");
 			String inputDrugs = "<input type=\"hidden\" name=\"listdrugs\" id=\"listdrugs\" value=\""+code+"\"></input>\n";
@@ -94,7 +97,7 @@ public class SelectedDrugInterpreter extends HttpServlet {
 				}
 			};
 					
-			MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path+Common.ONT_NAME);
+			MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path);
 			ArrayList<GeneticMarkerGroup> listGroups = myProfile.getGenotypeGroupsRelatedToDrugs(checkboxNamesList);
 			HashMap<String,ArrayList<String>> map_genotype = new HashMap<String,ArrayList<String>>(); 
 			for(GeneticMarkerGroup gmg: listGroups){
@@ -149,7 +152,6 @@ public class SelectedDrugInterpreter extends HttpServlet {
 			if(cache!=null){
 				cache.put(new Element(code,resolvedString)); //Add the new element into the cache.
 				cache.flush(); //We flush the cache to make all element persistent on disk. This avoid the wrong insert of an element due to application errors. We can avoid this here if the performance of the application is penalized.
-				//manager.shutdown();
 			}
 		}
 		
@@ -161,5 +163,4 @@ public class SelectedDrugInterpreter extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request,response);
 	}
-
 }

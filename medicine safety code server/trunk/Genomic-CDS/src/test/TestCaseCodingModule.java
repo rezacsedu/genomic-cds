@@ -13,21 +13,24 @@ import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
 import safetycode.CodingModule;
 import safetycode.GenotypeElement;
-import utils.Common;
 import utils.OntologyManagement;
 
 /**
  * Test the methods implemented in class CodingModule:
  * - codeListGeneticVariations(ArrayList<GenotypeElement> listGenotype)
  * - decodeListGenotypeVariations(String base64Genotype)
+ *
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
  * */
 public class TestCaseCodingModule {
 	private OntologyManagement om;
+	private String path = "D:/workspace/Genomic-CDS/WebContent";
 	
 	@Before
 	public void initCodingModule(){
-		String ontologyURI = Common.ONT_NAME;
-		om = OntologyManagement.getOntologyManagement(ontologyURI);
+		om = OntologyManagement.getOntologyManagement(path);
 	}
 	
 	@Test

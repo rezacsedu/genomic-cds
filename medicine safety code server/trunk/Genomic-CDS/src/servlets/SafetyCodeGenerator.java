@@ -24,7 +24,11 @@ import utils.Common;
 import utils.StringReader;
 
 /**
- * Servlet implementation class SafetyCodeGenerator 
+ * Servlet implementation class SafetyCodeGenerator.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
  */
 public class SafetyCodeGenerator extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -83,7 +87,7 @@ public class SafetyCodeGenerator extends HttpServlet {
 	        	throw new ServletException("File is missing.");
 	        }
 	        	         
-	        MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path+Common.ONT_NAME);
+	        MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path);
 	        String processingReport = myProfile.parseFileStream(file2Parse.getInputStream(), strandOrientationOfInputData,fileformat);
         	String code = myProfile.getBase64ProfileString();
 	        String encodedProfileURL = URLEncoder.encode(Common.ROOT_URL+"/"+Common.VERSION+"/"+code, "UTF-8");

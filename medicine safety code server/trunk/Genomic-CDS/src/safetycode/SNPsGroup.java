@@ -6,6 +6,13 @@ import utils.Common;
 
 import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
+/**
+ * This class implements the group of all variants of a SNP.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
+ * */
 public class SNPsGroup implements GeneticMarkerGroup {
 
 	/**rsid of the set of allele definitions*/
@@ -45,7 +52,6 @@ public class SNPsGroup implements GeneticMarkerGroup {
 			listSNPs.set(i, label);
 		}
 		
-		//sortCollection(listSNPs);
 		this.listSNPs	= getSNPCombinationList(listSNPs);
 		this.rank		= rank;
 	}	

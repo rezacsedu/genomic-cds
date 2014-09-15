@@ -4,13 +4,17 @@ import java.io.File;
 import java.math.BigInteger;
 
 import safetycode.FileParserFactory;
-/*
-import exception.BadFormedBase64NumberException;
-import exception.BadFormedBinaryNumberException;
-*/
+
+
+/**
+ * This class provides the common variables to all classes in the application.
+ * The content must be maintained in every change, i.e. when VERSION or ROOT_URL of the server changes.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
+ * */
 public class Common {
-	//public final static String localPath = "D:/workspace/Genomic-CDS/WebContent/";// I use this just for testing the JUnit classes.
-	public final static String localPath = "./";
 	
 	/** Digits used to represent a base 64 number for a safetycode number.*/
 	public final static char[] BASE_DIGITS = {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','-','_'};
@@ -39,34 +43,32 @@ public class Common {
 	public final static String FORWARD_ORIENTATION = "forward-orientation";
 	
 	/** The URL root that is used to compound the web server URL.*/
-	//public final static String ROOT_URL = "http://safety-code.org/Genomic-CDS";
-	//public final static String ROOT_URL = "http://owl.msi.meduniwien.ac.at:8080/Genomic-CDS";
 	//public final static String ROOT_URL = "http://localhost:8080/Genomic-CDS";//URL for testing on local server
 	public final static String ROOT_URL = "http://safety-code.org";
-	
-	/** The name of the ontology file.*/
-	public final static String ONT_NAME=localPath+"MSC_textual_rules.owl";
 	
 	/** The name of the cache that is needed to identify the cache in file where it is serialized.*/
 	public final static String CACHE_NAME="safetycodecache1";
 	
 	/** The name of the cache file where the cached web pages are stored.*/
 	public final static String CACHE_FILE="ehcache.xml";
-		
+	
+	/** The name of the image that is used to frame the QR code.*/
+	public final static String QR_FRAME="images/safety-code-frame-2014.png";
+	
 	/** The name of the file with the information about SNP groups.*/
-	public final static String tabSeparatedSNPGroups = localPath+"ontinfo/snpGroups.txt";
+	public final static String tabSeparatedSNPGroups = "ontinfo/snpGroups.txt";
 	
 	/** The name of the file with the information about haplotype groups.*/
-	public final static String tabSeparatedAlleleGroups = localPath+"ontinfo/alleleGroups.txt";
+	public final static String tabSeparatedAlleleGroups = "ontinfo/alleleGroups.txt";
 	
 	/** The name of the file with the information about phenotype rules.*/
-	public final static String tabSeparatedPhenotypeRules = localPath+"ontinfo/phenotypeRules.txt";
+	public final static String tabSeparatedPhenotypeRules = "ontinfo/phenotypeRules.txt";
 	
 	/** The name of the file with the information about cds rules.*/
-	public final static String tabSeparatedCDSRules = localPath+"ontinfo/drugRecommendations.txt";
+	public final static String tabSeparatedCDSRules = "ontinfo/drugRecommendations.txt";
 	
 	/** The name of the file with the information about allele rules.*/
-	public final static String tabSeparatedAlleleRules = localPath+"ontinfo/alleleRules.txt";
+	public final static String tabSeparatedAlleleRules = "ontinfo/alleleRules.txt";
 	
 	/**
 	 * This method should process the file to identify the type of file format.

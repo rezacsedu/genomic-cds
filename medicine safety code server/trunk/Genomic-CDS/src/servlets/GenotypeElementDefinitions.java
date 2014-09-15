@@ -29,7 +29,11 @@ import utils.Common;
 import utils.StringReader;
 
 /**
- * Servlet implementation class GenotypeElementDefinitions
+ * Servlet implementation class GenotypeElementDefinitions.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
  */
 public class GenotypeElementDefinitions extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -68,7 +72,6 @@ public class GenotypeElementDefinitions extends HttpServlet {
 			if(String.class.isInstance(object)){
 				out.println((String) object);
 			}
-			//manager.shutdown();		//Close the cache manager to reduce the memory use of the application.
 		}else{	//If there is a cache miss or the cache is not initialized
 			StringBuffer contentHTML = new StringBuffer("");
 			Comparator<String> comparator = new Comparator<String>(){
@@ -80,19 +83,14 @@ public class GenotypeElementDefinitions extends HttpServlet {
 					return -1;
 				}
 			};
-			MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path+Common.ONT_NAME);
+			MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path);
 			ArrayList<GeneticMarkerGroup> listGroups = myProfile.getListGenotypeGroups();
 			HashMap<String,ArrayList<String>> map_genotype = new HashMap<String,ArrayList<String>>(); 
 			for(GeneticMarkerGroup gmg: listGroups){
 				HashSet<String> listUniqueElements = new HashSet<String>(); 
 				ArrayList<String> listElements = gmg.getListElements();
 				for(String element: listElements){
-					/*if(element.contains(";")){
-						listUniqueElements.add(element.substring(0,element.indexOf(";")));
-						listUniqueElements.add(element.substring(element.indexOf(";")+1));
-					}else{*/
-						listUniqueElements.add(element);
-					//}
+					listUniqueElements.add(element);
 				}
 				
 				if(listUniqueElements.size()<=1){
@@ -140,7 +138,6 @@ public class GenotypeElementDefinitions extends HttpServlet {
 			if(cache!=null){
 				cache.put(new Element("GenotypeElementDefinitions",resolvedString)); //Add the new element into the cache.
 				cache.flush(); //We flush the cache to make all element persistent on disk. This avoid the wrong insert of an element due to application errors. We can avoid this here if the performance of the application is penalized.
-				//manager.shutdown();
 			}
 		}
 	}

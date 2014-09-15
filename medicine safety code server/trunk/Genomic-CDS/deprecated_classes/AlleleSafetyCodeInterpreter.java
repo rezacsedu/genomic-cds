@@ -33,6 +33,9 @@ import utils.Common;
 /**
  * Servlet implementation class AlleleSafetyCodeInterpreter
  * @deprecated
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
  */
 public class AlleleSafetyCodeInterpreter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -84,7 +87,7 @@ public class AlleleSafetyCodeInterpreter extends HttpServlet {
 		}else{
 			String alleles_names = "";
 			HashMap<String,ArrayList<DrugRecommendation>> list_recommendations = null;
-			MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path+Common.ONT_NAME);
+			MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path);
 			myProfile.setGenotype(null);
 			Genotype myGenotype = myProfile.getGenotype();
 			//String uriClass = "http://www.genomic-cds.org/ont/genomic-cds.owl#human_with_homozygous_TPMT_"+allele_1;

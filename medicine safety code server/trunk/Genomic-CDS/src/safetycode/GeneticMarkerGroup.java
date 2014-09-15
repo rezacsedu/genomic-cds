@@ -4,6 +4,13 @@ import java.util.ArrayList;
 
 import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
+/**
+ * This interface represents a group of genotype element variations.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
+ * */
 public interface GeneticMarkerGroup extends Comparable<GeneticMarkerGroup>{
 	
 	/**

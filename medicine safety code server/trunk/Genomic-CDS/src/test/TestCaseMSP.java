@@ -15,7 +15,6 @@ import exception.VariantDoesNotMatchAnyAllowedVariantException;
 import safetycode.DrugRecommendation;
 import safetycode.Genotype;
 import safetycode.MedicineSafetyProfile_v2;
-import utils.Common;
 
 
 /**
@@ -24,14 +23,19 @@ import utils.Common;
  * - parseFileStream(InputStream fileStream, int typeFileFormat)
  * - readBase64ProfileString(String base64Profile)
  * - obtainDrugRecommendations()
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
  * */
 public class TestCaseMSP {
 	private MedicineSafetyProfile_v2 msp2;
-	private String ontologyURI;
+	private String path = "D:/workspace/Genomic-CDS/WebContent";
+	
 	@Before
 	public void initCodingModule(){
-		ontologyURI = Common.ONT_NAME;
-		msp2 = new MedicineSafetyProfile_v2(ontologyURI);
+		System.out.println("Local Path to run test units is: "+path+"\nIn case of error please, check your local path value.");
+		msp2 = new MedicineSafetyProfile_v2(path);
 	}
 	
 	/**
@@ -86,7 +90,7 @@ public class TestCaseMSP {
 	 * */
 	@Test(expected=NotInitializedPatientsGenomicDataException.class)
 	public void testNotInitializedPatientsGenomicDataException() throws NotInitializedPatientsGenomicDataException{
-		msp2 = new MedicineSafetyProfile_v2(ontologyURI);
+		msp2 = new MedicineSafetyProfile_v2(path);
 		msp2.obtainDrugRecommendations();
 	}
 }

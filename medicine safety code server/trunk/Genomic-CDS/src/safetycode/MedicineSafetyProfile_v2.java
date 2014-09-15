@@ -12,42 +12,36 @@ import exception.VariantDoesNotMatchAnyAllowedVariantException;
 import utils.Common;
 import utils.OntologyManagement;
 
+/**
+ * This class coordinates the use of all functionality in safetycode server.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
+ * */
 public class MedicineSafetyProfile_v2 {
 	
 	/** Singleton instance of the OntologyManagement class which contains the base ontological model. */
 	private OntologyManagement om 		= null;
 	private Genotype patientGenotype	= null;
-	//private CodingModule cod_mod		= null;
+	private String localPath			= null;
 	/**
 	 * Constructor of the class. It initializes the model of the pharmacogenomics dataset.
 	 * 
-	 * @param ontologyFile	Path of the ontology file in the local disk.
 	 * @return		New instance of MedicineSafetyProfileOptimized class.
 	 * */
-	public MedicineSafetyProfile_v2(String ontologyFile) {
+	public MedicineSafetyProfile_v2(String path) {
 		try {
-			om = OntologyManagement.getOntologyManagement(ontologyFile);
-			//patientGenotype = new Genotype(om.getListGenotypeElements());
+			localPath = path;
+			om = OntologyManagement.getOntologyManagement(localPath);
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.err.println("ERROR in Path = " + ontologyFile);
 		}
 	}
 	
 	public OntologyManagement getOntologyManagement(){
 		return om;
 	}
-	
-	/*public void initializeCodingModule(){
-		ArrayList<GenotypeElement> listGenotypeElements;
-		try {
-			listGenotypeElements = om.getDefaultGenotypeElement();
-			patientGenotype = new Genotype (listGenotypeElements);
-		} catch (VariantDoesNotMatchAnyAllowedVariantException e) {
-			e.printStackTrace();
-		}
-		
-	}*/
 	
 	public ArrayList<GeneticMarkerGroup> getListGenotypeGroups(){
 		return om.getListGeneticMarkerGroups();
@@ -68,22 +62,7 @@ public class MedicineSafetyProfile_v2 {
 			this.patientGenotype=genotype;
 		}
 	}
-	
-	/**
-	 * It initializes the model with core pharmacogenomic dataset.
-	 * 
-	 * @param ontologyFile	Path of the ontology file in the local disk.
-	 * */
-	/*private void initializeModel(String ontologyFile) {
-		try {
-			om = OntologyManagement.getOntologyManagement(ontologyFile);
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.err.println("ERROR in Path = " + ontologyFile);
-		}
-	}*/
-	
-	
+		
 	/**
 	 * It parses the input file with the corresponding file parser.
 	 * 
@@ -134,10 +113,7 @@ public class MedicineSafetyProfile_v2 {
 		if (patientGenotype==null){
 			throw new NotPatientGenomicFileParsedException("ERROR: No patient's genomic data has been processed yet!");
 		}
-		/*if(cod_mod==null){
-			cod_mod = new CodingModule(om.getListGeneticMarkerGroups());
-		}*/
-		
+	
 		return CodingModule.codeListGeneticVariations(om.getListGeneticMarkerGroups(),patientGenotype.getListGenotypeElements());
 	}
 	
@@ -150,9 +126,6 @@ public class MedicineSafetyProfile_v2 {
 	 * @throws VariantDoesNotMatchAnyAllowedVariantException 
 	 * */
 	public void readBase64ProfileString(String base64Profile) throws BadFormedBase64NumberException, VariantDoesNotMatchAnyAllowedVariantException {
-		/*if(cod_mod==null){
-			cod_mod = new CodingModule(om.getListGeneticMarkerGroups());
-		}*/
 		ArrayList<GenotypeElement> listGenotypeElements = CodingModule.decodeListGenotypeVariations(om.getListGeneticMarkerGroups(), base64Profile);
 		if(patientGenotype==null){
 			patientGenotype = new Genotype(listGenotypeElements);
@@ -217,9 +190,4 @@ public class MedicineSafetyProfile_v2 {
 		}
 		return display_groups;
 	}
-	
-	
-	/*public ArrayList<String> getGenotypeStatistics(){
-		return patientGenotype.getPatientInferredStatistics(om);
-	}*/
 }

@@ -14,7 +14,6 @@ import safetycode.GeneticMarkerGroup;
 import safetycode.GenotypeElement;
 import safetycode.SNPElement;
 import safetycode.SNPsGroup;
-import utils.Common;
 import utils.OntologyManagement;
 
 
@@ -27,14 +26,18 @@ import utils.OntologyManagement;
  * - getListGeneticMarkerGroups()
  * - getListGenotypeElements()
  * - getDefaultGenotypeElement()
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
  * */
 public class TestCaseOntologyManagement {
-	OntologyManagement om = null;
+	private OntologyManagement om = null;
+	private String path = "D:/workspace/Genomic-CDS/WebContent";
 	
 	@Before
 	public void initOntologyManagement(){
-		String ontologyURI = Common.ONT_NAME;
-		om = OntologyManagement.getOntologyManagement(ontologyURI);
+		om = OntologyManagement.getOntologyManagement(path);
 	}
 	
 	@Test

@@ -6,8 +6,17 @@ import java.util.HashMap;
 import exception.BadRuleDefinitionException;
 import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
+/**
+ * It represents a group of allele rule descriptions that makes possible to infer the corresponding haplotype variation based on raw SNP data.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
+ * */
 public class AlleleRule {
+	/**Name of the gene associated to the group of allele rules.*/
 	private String geneName;
+	/***/
 	private HashMap<String, NodeCondition> listNodes;
 	private GeneticMarkerGroup gmg;
 	
@@ -150,8 +159,6 @@ public class AlleleRule {
 					while(!listElements.isEmpty()){
 						if((listElements.startsWith("and")&&hasQuality.equals("or"))||(listElements.startsWith("and")&&hasQuality.equals("or"))){
 							throw new BadRuleDefinitionException("and/or inconsistency in has expression condition: " + nodeExpression);
-							//System.out.println("ERROR: and/or inconsistency in has expression condition");
-							//return null;
 						}	
 						if(listElements.startsWith("and")){
 							hasQuality = "and";
@@ -202,8 +209,6 @@ public class AlleleRule {
 				if(nodeExpression.startsWith("and")||nodeExpression.startsWith("or")){
 					if((nodeExpression.startsWith("or")&&mainQuality.equals("and"))||(nodeExpression.startsWith("and")&&mainQuality.equals("or"))){
 						throw new BadRuleDefinitionException("and/or inconsistency in has expression condition: " + nodeExpression);
-						//System.out.println("ERROR: and/or inconsistency");
-						//return null;
 					}else{
 						if(nodeExpression.startsWith("or")){
 							mainQuality = "or";

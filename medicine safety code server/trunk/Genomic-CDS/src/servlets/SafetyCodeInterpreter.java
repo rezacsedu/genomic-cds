@@ -35,7 +35,11 @@ import exception.VariantDoesNotMatchAnyAllowedVariantException;
 import utils.Common;
 
 /**
- * Servlet implementation class SafetyCodeInterpreter
+ * Servlet implementation class SafetyCodeInterpreter.
+ * 
+ * @author Jose Antonio Miñarro Giménez
+ * @version 2.0
+ * @date 15/09/2014
  */
 
 public class SafetyCodeInterpreter extends HttpServlet {
@@ -77,11 +81,9 @@ public class SafetyCodeInterpreter extends HttpServlet {
 			if(String.class.isInstance(object)){
 				out.println((String) object);
 			}
-			
-			//manager.shutdown();		//Close the cache manager to reduce the memory use of the application.
 		}else{	//If there is a cache miss or the cache is not initialized
 			// initialize patient profile
-			MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path+Common.ONT_NAME);
+			MedicineSafetyProfile_v2 myProfile = new MedicineSafetyProfile_v2(path);
 			try {
 				myProfile.readBase64ProfileString(base64ProfileString);
 			} catch (VariantDoesNotMatchAnyAllowedVariantException e) {
@@ -193,7 +195,6 @@ public class SafetyCodeInterpreter extends HttpServlet {
 			if(cache!=null){
 				cache.put(new Element(base64ProfileString,resolvedString)); //Add the new element into the cache.
 				cache.flush(); //We flush the cache to make all element persistent on disk. This avoid the wrong insert of an element due to application errors. We can avoid this here if the performance of the application is penalized.
-				//manager.shutdown();
 			}
 		}
 	}
@@ -206,9 +207,15 @@ public class SafetyCodeInterpreter extends HttpServlet {
 		doGet(request, response);
 	}
 	
-	
+	/**
+	 * This method converts the label to a more readable format. i.e. 'star_1' -> '*1', 'hash_1' -> '#1' 
+	 * 
+	 * @param label		The allele label to be converted.
+	 * @param id		The corresponding genotype element id of the label.
+	 * 
+	 * @return		The transformed label to a more friendly format for humans. 
+	 * */
 	private String revert_label(String label,String id){
-		//System.out.print("\tid="+id+" with label = "+label);
 		if(id.matches("rs[0-9]+")){
 			label = "("+label+")";
 		}else{
@@ -236,7 +243,6 @@ public class SafetyCodeInterpreter extends HttpServlet {
 				label = label.replace(";"," / ");
 			}
 		}
-		//System.out.println(" produces label = "+label);
 		return label;
 	}
 }

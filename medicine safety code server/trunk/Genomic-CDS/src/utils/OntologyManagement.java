@@ -11,10 +11,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-//import org.semanticweb.owlapi.apibinding.OWLManager;
-//import org.semanticweb.owlapi.model.OWLOntology;
-//import org.semanticweb.owlapi.model.OWLOntologyManager;
-
 import exception.BadRuleDefinitionException;
 import exception.VariantDoesNotMatchAnyAllowedVariantException;
 
@@ -28,19 +24,14 @@ import safetycode.SNPElement;
 import safetycode.SNPsGroup;
 
 /**
- * This class keeps a single instance of the base ontology in order to use it without having to load in memory one for every request.
+ * This class keeps a single instance of the information collected from resource files in order to use it without having to load it in memory for every request.
  * @author Jose Antonio Miñarro Giménez
  * @version 2.0
+ * @date 15/09/2014
  * */
 public class OntologyManagement {
 	/**	Singleton instance of this class */
 	private static OntologyManagement singleton=null;
-	/** Ontology modelo that will be always load into memory */
-	//private OWLOntology ontology = null;
-	/** Ontology manager of the base ontology */
-	//private OWLOntologyManager manager = null;
-	/** Source file where base ontology is stored */
-	private static String ontFile=null;
 	/** List of base Genetic markers groups */
 	private ArrayList<GeneticMarkerGroup> listGeneticMarkers = null;
 	/** List of allele groups */
@@ -59,35 +50,30 @@ public class OntologyManagement {
 	 * 
 	 * @return		A static reference to the singleton instance of OntologyManagement class.
 	 * */
-	public static OntologyManagement getOntologyManagement(String ontologyFile){
-		if(ontologyFile!=null && (!ontologyFile.equalsIgnoreCase(ontFile)||singleton==null)){
-			ontFile=ontologyFile;
-			singleton = new OntologyManagement(ontFile);
+	public static OntologyManagement getOntologyManagement(String path){
+		if(singleton == null){
+			singleton = new OntologyManagement(path);
 		}
 		return singleton;
 	}
 	
 	
 	/**
-	 * Constructor of the class. It loads the base ontology model.
+	 * Constructor of the class. Initialises the variables with the content of resource files.
 	 * 
 	 * @return		Instance of the OntologyManagement class.
 	 * */
-	public OntologyManagement(String ontologyFile){
+	public OntologyManagement(String localPath){
 		try {
-			//Initialise ontology manager to speed up the process of inferring the corresponding haplotypes from the raw SNPs.
-			/*manager = OWLManager.createOWLOntologyManager();
-			File file = new File(ontologyFile);
-			ontology = manager.loadOntologyFromOntologyDocument(file);*/
 			
 			//Initialise allele groups information from tab separated file: alleleGroups.
-			InputStream allelesStream = new FileInputStream(new File(Common.tabSeparatedAlleleGroups));			
+			InputStream allelesStream = new FileInputStream(new File(localPath+"/"+Common.tabSeparatedAlleleGroups));			
 			initializeAlleleGroups(allelesStream);
 			allelesStream.close();
 			//for(AlleleGroup ag: listAlleleGroups){System.out.println("AlleleGroup["+ag.getRank()+"]="+ag.getGeneticMarkerName());}
 			
 			//Initialise SNP groups information from tab separated file: snpGroups.
-			InputStream snpsStream = new FileInputStream(new File(Common.tabSeparatedSNPGroups));
+			InputStream snpsStream = new FileInputStream(new File(localPath+"/"+Common.tabSeparatedSNPGroups));
 			initializeSNPsGroups(snpsStream);
 			snpsStream.close();
 			//for(SNPsGroup sg: listSNPsGroups){System.out.println("SNPsGroup["+sg.getRank()+"]="+sg.getGeneticMarkerName());}
@@ -97,81 +83,31 @@ public class OntologyManagement {
 			//for(GeneticMarkerGroup gmg: listGeneticMarkers){System.out.println("GeneticMarkerGroup["+gmg.getRank()+"]="+gmg.getGeneticMarkerName());}
 			
 			//Initialise rule information from tab separated files: phenotype and drugRecommendations.
-			InputStream phenotypeStream = new FileInputStream(new File(Common.tabSeparatedPhenotypeRules));
-			InputStream drugRecommendationsStream = new FileInputStream(new File(Common.tabSeparatedCDSRules));
+			InputStream phenotypeStream = new FileInputStream(new File(localPath+"/"+Common.tabSeparatedPhenotypeRules));
+			InputStream drugRecommendationsStream = new FileInputStream(new File(localPath+"/"+Common.tabSeparatedCDSRules));
 			initializeDrugRecommendations(phenotypeStream, drugRecommendationsStream);
 			//for(DrugRecommendation dr: listDrugRecommendations){System.out.println("Drug recommendation "+dr.getDrugName()+" = "+dr.toString());}
 			
 			//Initialise Allele rules information from tab separated file: alleleRules.
-			InputStream alleleRulesStream = new FileInputStream(new File(Common.tabSeparatedAlleleRules));
+			InputStream alleleRulesStream = new FileInputStream(new File(localPath+"/"+Common.tabSeparatedAlleleRules));
 			initializeAlleleRules(alleleRulesStream);
 			alleleRulesStream.close();
 			//for(AlleleRule ar: listAlleleRules){System.out.println("allele rule "+ar.getGeneName()+" = ");HashMap<String, NodeCondition> listNodes = ar.getListNodes();	for(String key: listNodes.keySet()){System.out.println("\tAllele->"+key+" = "+listNodes.get(key).toString());}}
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			System.err.println("ERROR in Path = " + ontologyFile);
+			System.err.println("ERROR in Path = " + localPath);
 		}
 	}
 	
-	
+	/**
+	 * Get method to obtain the list of drug recommendations rules.
+	 * 
+	 * @return	The list of cds rules parsed from the resource files. 
+	 * */
 	public ArrayList<DrugRecommendation> getListDrugRecommendation(){
 		return listDrugRecommendations;
 	}
-	
-	/**
-	 * Get method to obtain the instance of the ontology model.
-	 * 
-	 * @return		The corresponding OWL ontology of the base ontological model.
-	 * */
-	/*public OWLOntology getOntology(){		
-		return singleton.ontology;
-	}*/
-	
-	
-	/**Get method to obtain the ontology manager of the corresponding base ontological model.
-	 * 
-	 * @return		The ontology manager of the base ontological model.
-	 * */
-	/*public OWLOntologyManager getManager(){
-		return singleton.manager;
-	}*/
-	
-	
-	/**
-	 * It is a clone method to create a new instance of the base ontological model with its corresponding ontology manager.
-	 * 	
-	 * @return		The new ontology manager that is associated to the new instance model.
-	 * */
-	/*public OWLOntologyManager getNewOntologyManager(){
-		OWLOntologyManager mang = null;
-		try{
-			mang = OWLManager.createOWLOntologyManager();
-			mang.createOntology(singleton.ontology.getAxioms());
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return mang;
-	}*/
-	
-	
-	/**
-	 * Obtain a TrOWL reasoner from the base ontology model.
-	 * 
-	 * @return		A TrOWL reasoner without precomputed inferences.
-	 * */
-	/*public RELReasoner getRELReasoner(){
-		RELReasoner local_reasoner = null;
-		try{
-			OWLOntologyManager mang = OWLManager.createOWLOntologyManager();
-			OWLOntology onto = mang.createOntology(singleton.ontology.getAxioms());
-			local_reasoner = new RELReasonerFactory().createReasoner(onto);
-		}catch(Exception e){
-			e.printStackTrace();
-		}
-		return local_reasoner;
-	}*/
-	
 	
 	/**
 	 * Get method to obtain the list of base variants when parsing a VCF file.
@@ -233,6 +169,11 @@ public class OntologyManagement {
 		return listGenotypeElements;
 	}
 	
+	/**
+	 * Get the genotype profile which consists of the first allele variation for both strand orientation of each gene.
+	 * 
+	 * @return	The list of genotype elements that form a genetotype profile.
+	 * */	
 	public ArrayList<GenotypeElement> getDefaultGenotypeElement() throws VariantDoesNotMatchAnyAllowedVariantException{
 		
 		ArrayList<GenotypeElement> listGenotypeElements = new ArrayList<GenotypeElement>();
@@ -251,14 +192,19 @@ public class OntologyManagement {
 	}	
 	
 	/**
-	 * Get the list of SNPs groups information from the ontology.
+	 * Get the list of SNPs groups information from the resource files.
 	 * 
 	 * @return	List of SNPs groups.
-	 * */	
+	 * */
 	public ArrayList<SNPsGroup> getListSNPsGroups(){
 		return listSNPsGroups;
 	}
 	
+	/**
+	 * Get the list of allele rules information from the resource files.
+	 * 
+	 * @return	List of Allele rules.
+	 * */
 	public ArrayList<AlleleRule> getListAlleleRules(){
 		return listAlleleRules;
 	}
@@ -277,7 +223,9 @@ public class OntologyManagement {
 		}
 	}
 	
-	/** Generate the instances of AlleleGroup based on the latest version of the Genomic CDS ontology. June 2014*/
+	/**
+	 * Generate the instances of AlleleGroup based on the latest version of the resource files.
+	 * */
 	private void initializeAlleleGroups(InputStream fileIn){
 		//GENENAME	RANK	LISTALLELES
 		listAlleleGroups = new ArrayList<AlleleGroup>();
@@ -310,7 +258,9 @@ public class OntologyManagement {
 		}
 	}	
 	
-	/** Generate the instances of SNPsGroup based on the latest version of the Genomic CDS ontology. June 2014*/
+	/**
+	 *  Generate the instances of SNPsGroup based on the latest version of the resource files.
+	 * */
 	private void initializeSNPsGroups(InputStream fileIn){
 		//RSID	RANK	ORIENTATION	VCFREFERENCE	LISTGENOMICTEST(SEPARATED_BY_';')	LISTSNPS
 		listSNPsGroups = new ArrayList<SNPsGroup>();
@@ -357,8 +307,12 @@ public class OntologyManagement {
 		}
 	}
 	
-	/** Generates the instances of DrugRecommendation class based on the information of the latest version of the Genomic CDS ontology. June 2014*/	
+	/**
+	 *  Generates the instances of DrugRecommendation class based on the information of the latest version of the resource files.
+	 *  
+	 *  */	
 	private void initializeDrugRecommendations(InputStream phenotypeFile, InputStream recommendationsFile){
+		//RULEID	LOGICALDESCRIPTION
 		listPhenotypeRules = new HashMap<String,String>();
 		try{
 			String ruleId = "";
@@ -380,6 +334,7 @@ public class OntologyManagement {
 			e.printStackTrace();
 		}
 		
+		//RULEID	CDSMESSAGE	IMPORTANCE	SOURCE	RELEVANTFOR	LASTUPDATE	PHENOTYPE	RECOMMENDATION_DL	SEEALSOLIST*
 		listDrugRecommendations			= new ArrayList<DrugRecommendation>();
 		try{
 			String recommendation_label		= "";
@@ -434,6 +389,10 @@ public class OntologyManagement {
 		}
 	}
 	
+	/**
+	 *  Generates the list of AlleleRule class based on the information of the resource files.
+	 *  
+	 *  */
 	private void initializeAlleleRules(InputStream alleleRuleFile){
 		//AlleleID	logical_description
 		listAlleleRules = new ArrayList<AlleleRule>();
@@ -483,368 +442,4 @@ public class OntologyManagement {
 			e.printStackTrace();
 		}
 	}
-	
-	/*private void initializeSNPsGroups(){
-		listSNPsGroups = new ArrayList<SNPsGroup>();
-		
-		OWLDataFactory factory					= manager.getOWLDataFactory();
-		OWLClass polymorphismClass				= factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#polymorphism"));
-		OWLAnnotationProperty ann_rsid			= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#rsid"));
-		OWLAnnotationProperty ann_testedWith	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#can_be_tested_with"));
-		OWLAnnotationProperty ann_orientation	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#dbsnp_orientation_on_reference_genome"));
-		OWLAnnotationProperty ann_rank			= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#rank"));
-		OWLAnnotationProperty ann_vcf_reference	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#vcf_format_reference"));
-		
-		Iterator<OWLClassExpression> list_polymorphisms = polymorphismClass.getSubClasses(ontology).iterator();
-		while(list_polymorphisms.hasNext()){
-			OWLClass snpClass = list_polymorphisms.next().asOWLClass();
-			
-			//rsid
-			String rsid = "";
-			for (OWLAnnotation annotation : snpClass.getAnnotations(ontology, ann_rsid)) {
-				if (annotation.getValue() instanceof OWLLiteral) {
-					OWLLiteral val = (OWLLiteral) annotation.getValue();
-					rsid = val.getLiteral();
-					break;
-				}
-			}
-			if (rsid == null || rsid.isEmpty())	continue;
-			
-			//can_be_tested_with
-			ArrayList<String> listTestedWith = new ArrayList<String>();
-			for (OWLAnnotation annotation : snpClass.getAnnotations(ontology, ann_testedWith)) {
-				IRI assay_IRI = IRI.create(annotation.getValue().toString());
-				OWLNamedIndividual assay_instance = factory.getOWLNamedIndividual(assay_IRI);
-				if (assay_instance != null) {
-					Set<OWLAnnotation> listLabels = assay_instance.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
-					for (OWLAnnotation labelAnn : listLabels) {
-						if (labelAnn.getValue() instanceof OWLLiteral) {
-							OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
-							listTestedWith.add(literal.getLiteral().trim().toLowerCase());
-							break;
-						}
-					}
-				}
-			}
-			
-			//orientation
-			String strandOrientation = "";
-			for (OWLAnnotation annotation : snpClass.getAnnotations(ontology, ann_orientation)) {
-				if (annotation.getValue() instanceof OWLLiteral) {
-					OWLLiteral val = (OWLLiteral) annotation.getValue();
-					strandOrientation = val.getLiteral();
-					break;
-				}
-			}
-			if (strandOrientation == null || strandOrientation.isEmpty())	continue;
-			
-			//List allowed nucleotides in the SNP
-			String vcf_format_reference = "";
-			ArrayList<String> list_SNP_names = new ArrayList<String>();
-			Iterator<OWLClassExpression> snpsIterator = snpClass.getSubClasses(ontology).iterator();
-			while(snpsIterator.hasNext()){
-				OWLClass snpVariantClass = snpsIterator.next().asOWLClass();
-				String snpVariant_name = "";
-				
-				Set<OWLAnnotation> listAlleleLabels = snpVariantClass.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
-				for (OWLAnnotation labelAnn : listAlleleLabels) {
-					if (labelAnn.getValue() instanceof OWLLiteral) {
-						OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
-						snpVariant_name = literal.getLiteral().trim();
-					}
-				}
-				if (snpVariant_name == null || snpVariant_name.isEmpty())	continue;
-				list_SNP_names.add(snpVariant_name);
-				
-				//vcf_format_reference
-				for (OWLAnnotation annotation_ref : snpVariantClass.getAnnotations(ontology, ann_vcf_reference)) {
-					if (annotation_ref.getValue() instanceof OWLLiteral) {
-						OWLLiteral val = (OWLLiteral) annotation_ref.getValue();
-						if(val.getLiteral().equalsIgnoreCase("true")){
-							if(snpVariant_name.contains("_")){
-								vcf_format_reference = snpVariant_name.substring(snpVariant_name.indexOf("_")+1);
-							}else{
-								vcf_format_reference = snpVariant_name;
-							}
-						}
-						break;
-					}
-				}
-			}
-			
-			//rank
-			int rank=-1;
-			String rank_label = null;
-			for (OWLAnnotation annotation : snpClass.getAnnotations(ontology, ann_rank)) {
-				if (annotation.getValue() instanceof OWLLiteral) {
-					OWLLiteral val = (OWLLiteral) annotation.getValue();
-					rank_label = val.getLiteral();
-					break;
-				}
-			}
-			if (rank_label != null && !rank_label.isEmpty()){
-				try {
-					rank = Integer.parseInt(rank_label);
-				} catch (NumberFormatException e) {
-					continue;
-				}
-			}
-						
-			SNPsGroup sg = new SNPsGroup(rsid, list_SNP_names, rank, strandOrientation, vcf_format_reference, listTestedWith); // create the corresponding string array of these markers
-			listSNPsGroups.add(sg);
-		}
-		Collections.sort(listSNPsGroups);
-	}*/
-	
-	/**
-	 * Initialize the list of allele groups defined in the ontology.
-	 * */
-	/*private void initializeAlleleGroups(){
-		listAlleleGroups	= new ArrayList<AlleleGroup>();
-		OWLDataFactory factory = manager.getOWLDataFactory();
-		OWLClass alleleClass = factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#allele"));
-		OWLAnnotationProperty ann_rank = factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#rank"));
-		
-		Iterator<OWLClassExpression> list_allele_genes = alleleClass.getSubClasses(ontology).iterator();
-		
-		while(list_allele_genes.hasNext()){
-			OWLClass gene_class = list_allele_genes.next().asOWLClass();
-			
-			//rank
-			String rank_label = "";
-			for (OWLAnnotation annotation : gene_class.getAnnotations(ontology, ann_rank)) {
-				if (annotation.getValue() instanceof OWLLiteral) {
-					OWLLiteral val = (OWLLiteral) annotation.getValue();
-					rank_label = val.getLiteral();
-					break;
-				}
-			}
-			
-			if (rank_label == null || rank_label.isEmpty())	continue;
-			int rank = -1;
-			try {
-				rank = Integer.parseInt(rank_label);
-			} catch (NumberFormatException e) {
-				continue;
-			}
-			
-			//gene_name
-			String gene_name = "";
-			Set<OWLAnnotation> listLabels = gene_class.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
-			for (OWLAnnotation labelAnn : listLabels) {
-				if (labelAnn.getValue() instanceof OWLLiteral) {
-					OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
-					gene_name = literal.getLiteral().trim();
-				}
-			}
-			if (gene_name == null || gene_name.isEmpty())	continue;
-			
-			//Allele variants
-			OWLAnnotationProperty ann_label = factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI());
-			ArrayList<String> list_allele_names = new ArrayList<String>();
-			list_allele_names.addAll(getSubAlleles(gene_class,ann_label));
-						
-			AlleleGroup ag = new AlleleGroup(gene_name,list_allele_names,rank); // create the corresponding string array of these markers
-			listAlleleGroups.add(ag);
-		}
-		Collections.sort(listAlleleGroups);
-	}*/
-	
-	/*private ArrayList<String> getSubAlleles(OWLClass root_allele,OWLAnnotationProperty ann_label){
-		ArrayList<String> listSubAlleles = new ArrayList<String>();
-		Iterator<OWLClassExpression> allelesIterator = root_allele.getSubClasses(ontology).iterator();
-		while(allelesIterator.hasNext()){
-			OWLClass allele_class = allelesIterator.next().asOWLClass();
-			String allele_name = "";
-			Set<OWLAnnotation> listAlleleLabels = allele_class.getAnnotations(ontology, ann_label);
-			for (OWLAnnotation labelAnn : listAlleleLabels) {
-				if (labelAnn.getValue() instanceof OWLLiteral) {
-					OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
-					allele_name = literal.getLiteral().trim();
-				}
-			}
-			if (allele_name == null || allele_name.isEmpty())	continue;
-			listSubAlleles.addAll(getSubAlleles(allele_class,ann_label));
-			listSubAlleles.add(allele_name);
-		}
-		return listSubAlleles;
-	}*/
-	
-	
-	/*private void initializeDrugRules(){
-		HashMap<String, String> listPhenotypeRules	= new HashMap<String,String>();
-		OWLDataFactory factory						= manager.getOWLDataFactory();
-		
-		OWLClass rootPhenotypeRuleClass				= factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#phenotype_rule"));
-		Iterator<OWLClassExpression> list_rules		= rootPhenotypeRuleClass.getSubClasses(ontology).iterator();
-		while(list_rules.hasNext()){
-			OWLClass phenotype = list_rules.next().asOWLClass();
-			
-			String phenotype_comment = "";
-			Set<OWLAnnotation> listComments = phenotype.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_COMMENT.getIRI()));
-			for (OWLAnnotation commentAnn : listComments) {
-				if (commentAnn.getValue() instanceof OWLLiteral) {
-					OWLLiteral literal = (OWLLiteral) commentAnn.getValue();
-					phenotype_comment = literal.getLiteral().trim();
-					break;
-				}
-			}
-			if (phenotype_comment == null || phenotype_comment.isEmpty()){
-				continue;
-			}
-			
-			String uri = phenotype.getIRI().toString();
-			if(uri.indexOf("#")>=0){
-				uri = uri.substring(uri.indexOf("#")+1);
-			}
-			uri = "human_with_"+uri;
-			listPhenotypeRules.put(uri, phenotype_comment);
-		}
-		
-		
-		
-		listDrugRecommendations	= new ArrayList<DrugRecommendation>();
-		OWLClass rootRuleClass		= factory.getOWLClass(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#rule"));
-		OWLAnnotationProperty ann_cds_message	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#CDS_message"));
-		OWLAnnotationProperty ann_source		= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#source"));
-		OWLAnnotationProperty ann_relevant_for	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#relevant_for"));
-		OWLAnnotationProperty ann_importance	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#recommendation_importance"));
-		OWLAnnotationProperty ann_lastUpdate	= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#date_last_validation"));
-		OWLAnnotationProperty ann_phenotype		= factory.getOWLAnnotationProperty(IRI.create("http://www.genomic-cds.org/ont/genomic-cds.owl#phenotype_description"));
-		
-		//java.util.HashSet<String> list_drugs= new java.util.HashSet<String>();
-		
-		Iterator<OWLClassExpression> list_recommendations = rootRuleClass.getSubClasses(ontology).iterator();
-		while(list_recommendations.hasNext()){
-			OWLClass recommendation = list_recommendations.next().asOWLClass();
-						
-			//cds_message
-			String cds_message = "";
-			for (OWLAnnotation annotation : recommendation.getAnnotations(ontology, ann_cds_message)) {
-				if (annotation.getValue() instanceof OWLLiteral) {
-					OWLLiteral val = (OWLLiteral) annotation.getValue();
-					cds_message = val.getLiteral();
-					break;
-				}
-			}
-			if (cds_message == null || cds_message.isEmpty()){
-				cds_message = "None.";
-				//continue;
-			}
-			
-			//source
-			String source = "";
-			for (OWLAnnotation annotation : recommendation.getAnnotations(ontology, ann_source)) {
-				if (annotation.getValue() instanceof OWLLiteral) {
-					OWLLiteral val = (OWLLiteral) annotation.getValue();
-					source = val.getLiteral();
-					break;
-				}
-			}
-			if (source == null || source.isEmpty()){
-				continue;
-			}
-
-			//phenotype description
-			String phenotype = "";
-			for (OWLAnnotation annotation : recommendation.getAnnotations(ontology, ann_phenotype)) {
-				if (annotation.getValue() instanceof OWLLiteral) {
-					OWLLiteral val = (OWLLiteral) annotation.getValue();
-					phenotype = val.getLiteral();
-					break;
-				}
-			}
-			
-			//importance
-			String importance = "";
-			for (OWLAnnotation annotation : recommendation.getAnnotations(ontology, ann_importance)) {
-				if (annotation.getValue() instanceof OWLLiteral) {
-					OWLLiteral val = (OWLLiteral) annotation.getValue();
-					importance = val.getLiteral();
-					break;
-				}
-			}
-			if (importance == null || importance.isEmpty()){
-				importance = "Standard treatment";
-			}
-
-			//last update
-			String lastUpdate = "";
-			for (OWLAnnotation annotation : recommendation.getAnnotations(ontology, ann_lastUpdate)) {
-				if (annotation.getValue() instanceof OWLLiteral) {
-					OWLLiteral val = (OWLLiteral) annotation.getValue();
-					lastUpdate = val.getLiteral();
-					break;
-				}
-			}
-			if (lastUpdate == null || lastUpdate.isEmpty()){
-				continue;
-			}
-			
-			//recommendation_comment
-			String recommendation_comment = "";
-			Set<OWLAnnotation> listComments = recommendation.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_COMMENT.getIRI()));
-			for (OWLAnnotation commentAnn : listComments) {
-				if (commentAnn.getValue() instanceof OWLLiteral) {
-					OWLLiteral literal = (OWLLiteral) commentAnn.getValue();
-					recommendation_comment = literal.getLiteral().trim();
-				}
-			}
-			if (recommendation_comment == null || recommendation_comment.isEmpty()){
-				continue;
-			}
-			
-			for(String key: listPhenotypeRules.keySet()){
-				if(recommendation_comment.contains(key)){
-					recommendation_comment = recommendation_comment.replaceAll(key, "("+listPhenotypeRules.get(key)+")");
-				}
-			}
-			
-			//recommendation_label
-			String recommendation_label = "";
-			Set<OWLAnnotation> listLabels = recommendation.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
-			for (OWLAnnotation labelAnn : listLabels) {
-				if (labelAnn.getValue() instanceof OWLLiteral) {
-					OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
-					recommendation_label = literal.getLiteral().trim();
-				}
-			}
-			if (recommendation_label == null || recommendation_label.isEmpty()){
-				continue;
-			}
-			
-			//seeAlso
-			ArrayList<String> seeAlsoList = new ArrayList<String>();
-			
-			Set<OWLAnnotation> listSeeAlso = recommendation.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_SEE_ALSO.getIRI()));
-			for (OWLAnnotation seeAlsoAnn : listSeeAlso) {
-				seeAlsoList.add(seeAlsoAnn.getValue().toString());
-			}
-			
-			//relevant_for
-			String relevant_for = "";
-			for (OWLAnnotation annotation : recommendation.getAnnotations(ontology, ann_relevant_for)) {
-				IRI assay_IRI = IRI.create(annotation.getValue().toString());
-				OWLClass drug_class = factory.getOWLClass(assay_IRI);
-				if (drug_class != null) {
-					Set<OWLAnnotation> listDrugLabels = drug_class.getAnnotations(ontology, factory.getOWLAnnotationProperty(OWLRDFVocabulary.RDFS_LABEL.getIRI()));
-					for (OWLAnnotation labelAnn : listDrugLabels) {
-						if (labelAnn.getValue() instanceof OWLLiteral) {
-							OWLLiteral literal = (OWLLiteral) labelAnn.getValue();
-							relevant_for= literal.getLiteral().trim();
-							break;
-						}
-					}
-				}
-			}
-			if (relevant_for == null || relevant_for.isEmpty()){
-				continue;
-			}
-		
-			
-			DrugRecommendation dr = new DrugRecommendation(recommendation_label, cds_message, importance, source, relevant_for, seeAlsoList, lastUpdate,phenotype);
-			dr.setRule(recommendation_comment);
-			listDrugRecommendations.add(dr);
-		}
-	}*/
 }

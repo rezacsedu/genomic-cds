@@ -9,11 +9,11 @@ import java.util.HashMap;
 import utils.Common;
 
 /**
- * Parse the content of a 23andme file to gather SNPs information of a patient's genotype
+ * Parse the content of a 23andme file to gather SNPs information of a patient's genotype.
  * 
- * @author Jose
+ * @author Jose Antonio Miñarro Giménez
  * @version 2.0
- * 
+ * @date 15/09/2014
  * */
 public class FileParser_23andme_Format implements FileParser{
 	/**List of parsed SNPs variants.*/
@@ -92,7 +92,7 @@ public class FileParser_23andme_Format implements FileParser{
 							variants[1] = snpg.getInsertionVariant();
 						}
 						snpe.setVariants(variants[0],variants[1]);//Generate the new criteria syntax for this strand
-						//if(variants[0].equals("D") || variants[1].equals("D")) System.out.println("[1] snp="+snpe.getGeneticMarkerName()+"_"+snpe.getCriteriaSyntax());
+						
 					}else{
 						linesThatDidNotMatchAllowedVariant++;
 						processingReport+="<li>Warning: " + rsid + "(" + variants[0] + ";" + variants[1] + ") with orientation " + my23AndMeStrandOrientation + " does not match any allowed genotype. Only genotypes listed in dbSNP are allowed. A possible reason for this could be that your data is not based on the same strand (+ or -) as dbSNP, and you did not choose the proper settings for strand orientation. This genotype will be reported as 'null;null' in the resulting Medicine Safety Code.\n";
